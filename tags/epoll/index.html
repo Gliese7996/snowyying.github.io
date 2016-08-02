@@ -3,18 +3,17 @@
 <head>
   <meta charset="utf-8">
   
-  <title>run a 32-bit executable file on a 64-bit multi-architecture Ubuntu system | Snowyying</title>
+  <title>Tag: epoll | Snowyying</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Method 1To run a 32-bit executable file on a 64-bit multi-architecture Ubuntu system, you have to add the i386 architecture and install the three library packages libc6:i386, libncurses5:i386, and lib">
-<meta property="og:type" content="article">
-<meta property="og:title" content="run a 32-bit executable file on a 64-bit multi-architecture Ubuntu system">
-<meta property="og:url" content="http://yoursite.com/2016/08/02/run-32b-on-64b-ubuntu/index.html">
+  <meta name="description" content="Snowyying&apos;s blog">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Snowyying">
+<meta property="og:url" content="http://yoursite.com/tags/epoll/index.html">
 <meta property="og:site_name" content="Snowyying">
-<meta property="og:description" content="Method 1To run a 32-bit executable file on a 64-bit multi-architecture Ubuntu system, you have to add the i386 architecture and install the three library packages libc6:i386, libncurses5:i386, and lib">
-<meta property="og:updated_time" content="2016-08-02T11:24:52.396Z">
+<meta property="og:description" content="Snowyying&apos;s blog">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="run a 32-bit executable file on a 64-bit multi-architecture Ubuntu system">
-<meta name="twitter:description" content="Method 1To run a 32-bit executable file on a 64-bit multi-architecture Ubuntu system, you have to add the i386 architecture and install the three library packages libc6:i386, libncurses5:i386, and lib">
+<meta name="twitter:title" content="Snowyying">
+<meta name="twitter:description" content="Snowyying&apos;s blog">
   
     <link rel="alternate" href="/atom.xml" title="Snowyying" type="application/atom+xml">
   
@@ -67,72 +66,39 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-run-32b-on-64b-ubuntu" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/08/02/run-32b-on-64b-ubuntu/" class="article-date">
-  <time datetime="2016-08-02T11:07:13.000Z" itemprop="datePublished">2016-08-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+        <section id="main">
   
-    <h1 class="article-title" itemprop="name">
-      run a 32-bit executable file on a 64-bit multi-architecture Ubuntu system
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2016" class="archive-year">2016</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2016/08/02/select-implement/" class="archive-article-date">
+  <time datetime="2016-08-02T13:21:47.000Z" itemprop="datePublished">8月 2</time>
+</a>
+      
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2016/08/02/select-implement/">SELECT是如何实现的？</a>
     </h1>
   
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Method-1"><a href="#Method-1" class="headerlink" title="Method 1"></a>Method 1</h2><p>To run a 32-bit executable file on a 64-bit multi-architecture Ubuntu system, you have to add the i386 architecture and install the three library packages libc6:i386, libncurses5:i386, and libstdc++6:i386:</p>
-<pre><code>sudo dpkg --add-architecture i386
-</code></pre><p>Or if you are using Ubuntu 12.04 LTS (Precise Pangolin) or below, use this:</p>
-<pre><code>echo &quot;foreign-architecture i386&quot; &gt; /etc/dpkg/dpkg.cfg.d/multiarch
-</code></pre><p>Then:</p>
-<pre><code>sudo apt-get update
-sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386
-</code></pre><p>After these steps, you should be able to run the 32-bit application:</p>
-<pre><code>./example32bitprogram
-</code></pre><h2 id="Method-2"><a href="#Method-2" class="headerlink" title="Method 2"></a>Method 2</h2><pre><code>sudo apt-get install ia32-libs
-</code></pre>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/08/02/run-32b-on-64b-ubuntu/" data-id="cirdiaqps0009bsskswbltru9" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/32-bit/">32-bit</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ubuntu/">Ubuntu</a></li></ul>
-
-    </footer>
+    </header>
   </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2016/08/02/define-symbol/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          define宏定义中的#,##,@#及\符号
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2016/08/02/Blog-move-to-github/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">博客迁移至Github</div>
-    </a>
-  
-</nav>
-
-  
 </article>
+  
+  
+    </div></section>
+  
 
 </section>
         

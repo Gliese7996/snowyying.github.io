@@ -68,6 +68,113 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-select-implement" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/08/02/select-implement/" class="article-date">
+  <time datetime="2016-08-02T13:21:47.000Z" itemprop="datePublished">2016-08-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/02/select-implement/">SELECT是如何实现的？</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>转自: <a href="http://www.quora.com/Network-Programming/How-is-select-implemented" target="_blank" rel="external">http://www.quora.com/Network-Programming/How-is-select-implemented</a> 2012-11-28</p>
+</blockquote>
+<p>我会以Linux为例，因为那是我熟悉的。我没有BSD或其他unix系统的经验，但我假定这些系统原理上类似。</p>
+<p>每一个Socket（实际上可以是能够注册到select()上的任意fd - file descriptor）都有一个waiters的列表，他们（waiter）在等待socket上的活动（在linux上是 struct wait_queue_head_t）。这个Socket上无论什么时候有感兴趣的事件发生（到达新数据，缓冲区有可写的空闲空间，或者某种错误），这个Socket会遍历列表通知等待活动的每一个线程。</p>
+<p>select()系统调用遍历用户传入的描述符列表。对于每一个fd，调用fd的poll()方法（这个方法和应用层的poll()系统调用是两回事），这将会添加调用者（当前线程）到fd的等待队列，返回适用于当前fd的事件（读，写，异常）。</p>
+<p>如果任何fd匹配用户传入的条件，select()在更新用户传入的fd_sets后，立即返回。</p>
+<p>如果没有匹配的fd，select()会一直休眠，一直到用户指定的最大超时时间。</p>
+<p>如果在超时时间间隔内，注册到select()上的任一fd有感兴趣的事件发生，fd会通知这个fd的等待队列。这会唤醒调用select()时休眠的用户线程，这时就会重复上面的循环，看看哪一个fd准备好返回给用户。</p>
+<p>select()会记录它添加的所有的等待队列，在返回以前，确保从所有的fd移除。</p>
+<p>summary：每一次select()调用需要 3 次遍历，第一次是对每个fd分别调用poll，第二次是遍历生成返回给用户的fd_sets，第三次是应用层面遍历进行业务逻辑处理。</p>
+<p>英文原文：</p>
+<p>I’ll answer for Linux, since that’s what I know. I have no experience with any of the BSDs or other unixes, but I would assume they work broadly similarly.</p>
+<p>Every socket (really, every file descriptor that can be select()ed on) has a list of waiters that are currently waiting for activity on that socket (struct wait_queue_head_t in Linux terminology). Whenever something interesting happens on that socket (new data is available, buffer space is free for writing, or some kind of error), that socket will walk its list and notify everyone waiting on it.</p>
+<p>select() works by looping over the list of file descriptors that the user passed in. For every file descriptor, it calls that fd’s poll() method, which will add the caller to that fd’s wait queue, and return which events (readable, writeable, exception) currently apply to that fd.</p>
+<p>If any file descriptor matches the condition that the user was looking for, select() will simply return immediately, after updating the appropriate fd_sets that the user passed.</p>
+<p>If not, however, select() will go to sleep, for up to the maximum timeout the user specified.</p>
+<p>If, during that interval, an interesting event happens to any file descriptor that select() is waiting on, that fd will notify its wait queue. That will cause the thread sleeping inside select() to wake up, at which point it will repeat the above loop and see which of the fd’s are now ready to be returned to the user.</p>
+<p>select() also keeps track of all of the wait queues it has been added to, and before returning (successfully or otherwise), must go through and ensure it’s been removed from all of them.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/08/02/select-implement/" data-id="cirdiaqqq0010bsske9z0br4o" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IT/">IT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/epoll/">epoll</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/select/">select</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网络/">网络</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-outstanding-programmer" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/08/02/outstanding-programmer/" class="article-date">
+  <time datetime="2016-08-02T13:14:02.000Z" itemprop="datePublished">2016-08-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/02/outstanding-programmer/">如何成为一位杰出的程序员</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>转自: IT江湖 编程感悟 2014-07-02</p>
+</blockquote>
+<p>如何成为一名杰出的程序员，这是一个比较复杂的问题，什么叫杰出？下面我给你大家总结一下，文中说的一些观点，你可能不认同，没关系！评论反馈一下！</p>
+<h2 id="解决问题的能力和创新能力"><a href="#解决问题的能力和创新能力" class="headerlink" title="解决问题的能力和创新能力"></a>解决问题的能力和创新能力</h2><p>个人觉的不管你是什么语言的程序员，在解决问题上面一定要有很好的方法，很快的解决问题。这种能力不是一年两年可以练出来的，需要大量的实践以及经验。创新能力对于程序员来说很重要，要学会举一反三，从不同的思路来创新出新的东西。对一些新的技术要时刻的了解并学习。</p>
+<h2 id="一颗不断学习，不断思考的大脑"><a href="#一颗不断学习，不断思考的大脑" class="headerlink" title="一颗不断学习，不断思考的大脑"></a>一颗不断学习，不断思考的大脑</h2><p>技术更新的很快，一些新的技术是来解决一些旧的框架出现的问题的，所以我们要有一颗不断学习的心，这样我们才不会被淘汰，而且这些的新的技术并不是很难，所以我们一定抽出时间来学习新的知识，丰富自己！！</p>
+<h2 id="技术要做到精益求精"><a href="#技术要做到精益求精" class="headerlink" title="技术要做到精益求精"></a>技术要做到精益求精</h2><p>编程语言那么多，多语言的程序员虽然抢手，但是如果是半瓶水的水平，估计也是没人愿意要的。<br>现在程序员非常多，是因为这个行业入门的门槛非常低，也就造成行业的水平参差不齐。做一个网站很难么，找个现成的框架，懂点数据库，建个数据表，前端再找个现成的模板，修修改改一个网站就出来了。<br>但是满足这样就完了？那么水平可能永远就是这样了，其实这其中每一个点都是可以研究的很深的，比如网站的大数据存储，如何提供程序并行运行的效率，，未来计算机行业的技术分工会越来越细，任何一个方面的专家都是相当有用的</p>
+<h2 id="Stay-hungry-，Stay-Foolish"><a href="#Stay-hungry-，Stay-Foolish" class="headerlink" title="Stay hungry ，Stay Foolish"></a>Stay hungry ，Stay Foolish</h2><p>技术是永无止境的，好的程序员必须保持对于新的技术敏感度，保持学习的热情<br>同时看书学习可以更多的得到思维模式，可以在最快的时间发现问题的所在<br>如果没有好的思维模式，很多程序员遇到需求了，先百度，看看有没有相似的代码，遇到bug再去百度下，看看别人是怎么解的，这种永远只是码农而已<br>听说一本好的程序书籍至少要读12遍才能理解。。。</p>
+<h2 id="事情做得专业的前提是能关注到细节"><a href="#事情做得专业的前提是能关注到细节" class="headerlink" title="事情做得专业的前提是能关注到细节"></a>事情做得专业的前提是能关注到细节</h2><p>我觉得细心谨慎是程序员最基本的修养和素质，逻辑能力啥的倒是更为上一层的事情。整天想好的算法和架构是没有用的，你知道当你跟产品经理说解了半天的bug是因为少了个分号的时候，产品经理心中鄙视的是多么的波涛汹涌么。<br>如果连这些代码基本的细节都不能注意的话，谈何其他呢<br>祝大家成为杰出的程序员！！</p>
+<blockquote>
+<p>IT江湖官网群：383126909 我们一起成长</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/08/02/outstanding-programmer/" data-id="cirdiaqpm0007bssk856x1bcw" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IT/">IT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/成长/">成长</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/程序员/">程序员</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-lead-the-industry" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/08/02/lead-the-industry/" class="article-date">
@@ -142,7 +249,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/08/02/lead-the-industry/" data-id="cirdhdnpf0007o8skaag5ikyx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/08/02/lead-the-industry/" data-id="cirdiaqqu0011bsskhnh0nzis" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IT/">IT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/成长/">成长</a></li></ul>
@@ -208,9 +315,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/08/02/programmers-10-investment/" data-id="cirdhdnpl0009o8sk4glo9a08" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/08/02/programmers-10-investment/" data-id="cirdiaqpn0008bsskou2ja0bb" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IT/">IT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/成长/">成长</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/程序员/">程序员</a></li></ul>
+
     </footer>
   </div>
   
@@ -314,7 +423,7 @@ int main()
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/08/02/define-symbol/" data-id="cirdhdnp40002o8sko4yuxv27" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/08/02/define-symbol/" data-id="cirdiaqpe0004bsskxhvughux" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/define/">define</a></li></ul>
@@ -362,7 +471,7 @@ sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/08/02/run-32b-on-64b-ubuntu/" data-id="cirdhdnph0008o8skp98a5cun" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/08/02/run-32b-on-64b-ubuntu/" data-id="cirdiaqps0009bsskswbltru9" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/32-bit/">32-bit</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ubuntu/">Ubuntu</a></li></ul>
@@ -408,7 +517,7 @@ sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/08/02/Blog-move-to-github/" data-id="cirdhdnox0000o8sk4c91p10c" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/08/02/Blog-move-to-github/" data-id="cirdiaqp40001bssk65umazbf" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/blog/">blog</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/">github</a></li></ul>
@@ -485,7 +594,7 @@ sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/08/02/it-kas-4-snowyying/" data-id="cirdhdnpb0005o8sklj9rky7r" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/08/02/it-kas-4-snowyying/" data-id="cirdiaqp80002bsskm5dyb5o5" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IT/">IT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/KAs/">KAs</a></li></ul>
@@ -532,7 +641,7 @@ sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/08/02/hello-world/" data-id="cirdhdnp80004o8skjx7brkmo" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/08/02/hello-world/" data-id="cirdiaqpi0005bsskzl1x4zcz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -554,7 +663,7 @@ sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/32-bit/">32-bit</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IT/">IT</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KAs/">KAs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/">Ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/define/">define</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/成长/">成长</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/32-bit/">32-bit</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IT/">IT</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KAs/">KAs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/">Ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/define/">define</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/epoll/">epoll</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/select/">select</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/成长/">成长</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/程序员/">程序员</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络/">网络</a></li></ul>
     </div>
   </div>
 
@@ -564,7 +673,7 @@ sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/32-bit/" style="font-size: 10px;">32-bit</a> <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/IT/" style="font-size: 20px;">IT</a> <a href="/tags/KAs/" style="font-size: 10px;">KAs</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/define/" style="font-size: 10px;">define</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/成长/" style="font-size: 10px;">成长</a>
+      <a href="/tags/32-bit/" style="font-size: 10px;">32-bit</a> <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/IT/" style="font-size: 20px;">IT</a> <a href="/tags/KAs/" style="font-size: 10px;">KAs</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/define/" style="font-size: 10px;">define</a> <a href="/tags/epoll/" style="font-size: 10px;">epoll</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/select/" style="font-size: 10px;">select</a> <a href="/tags/成长/" style="font-size: 16.67px;">成长</a> <a href="/tags/程序员/" style="font-size: 13.33px;">程序员</a> <a href="/tags/网络/" style="font-size: 10px;">网络</a>
     </div>
   </div>
 
@@ -586,6 +695,14 @@ sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386
       <ul>
         
           <li>
+            <a href="/2016/08/02/select-implement/">SELECT是如何实现的？</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/02/outstanding-programmer/">如何成为一位杰出的程序员</a>
+          </li>
+        
+          <li>
             <a href="/2016/08/02/lead-the-industry/">想在IT行业牛B起来, 看他说了些什么... (年轻人必读)</a>
           </li>
         
@@ -595,14 +712,6 @@ sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386
         
           <li>
             <a href="/2016/08/02/define-symbol/">define宏定义中的#,##,@#及\符号</a>
-          </li>
-        
-          <li>
-            <a href="/2016/08/02/run-32b-on-64b-ubuntu/">run a 32-bit executable file on a 64-bit multi-architecture Ubuntu system</a>
-          </li>
-        
-          <li>
-            <a href="/2016/08/02/Blog-move-to-github/">博客迁移至Github</a>
           </li>
         
       </ul>

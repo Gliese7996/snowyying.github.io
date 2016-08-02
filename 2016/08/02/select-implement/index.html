@@ -3,18 +3,27 @@
 <head>
   <meta charset="utf-8">
   
-  <title>run a 32-bit executable file on a 64-bit multi-architecture Ubuntu system | Snowyying</title>
+  <title>SELECT是如何实现的？ | Snowyying</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Method 1To run a 32-bit executable file on a 64-bit multi-architecture Ubuntu system, you have to add the i386 architecture and install the three library packages libc6:i386, libncurses5:i386, and lib">
+  <meta name="description" content="转自: http://www.quora.com/Network-Programming/How-is-select-implemented 2012-11-28
+
+我会以Linux为例，因为那是我熟悉的。我没有BSD或其他unix系统的经验，但我假定这些系统原理上类似。
+每一个Socket（实际上可以是能够注册到select()上的任意fd - file descriptor）都有一个wait">
 <meta property="og:type" content="article">
-<meta property="og:title" content="run a 32-bit executable file on a 64-bit multi-architecture Ubuntu system">
-<meta property="og:url" content="http://yoursite.com/2016/08/02/run-32b-on-64b-ubuntu/index.html">
+<meta property="og:title" content="SELECT是如何实现的？">
+<meta property="og:url" content="http://yoursite.com/2016/08/02/select-implement/index.html">
 <meta property="og:site_name" content="Snowyying">
-<meta property="og:description" content="Method 1To run a 32-bit executable file on a 64-bit multi-architecture Ubuntu system, you have to add the i386 architecture and install the three library packages libc6:i386, libncurses5:i386, and lib">
-<meta property="og:updated_time" content="2016-08-02T11:24:52.396Z">
+<meta property="og:description" content="转自: http://www.quora.com/Network-Programming/How-is-select-implemented 2012-11-28
+
+我会以Linux为例，因为那是我熟悉的。我没有BSD或其他unix系统的经验，但我假定这些系统原理上类似。
+每一个Socket（实际上可以是能够注册到select()上的任意fd - file descriptor）都有一个wait">
+<meta property="og:updated_time" content="2016-08-02T13:25:41.794Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="run a 32-bit executable file on a 64-bit multi-architecture Ubuntu system">
-<meta name="twitter:description" content="Method 1To run a 32-bit executable file on a 64-bit multi-architecture Ubuntu system, you have to add the i386 architecture and install the three library packages libc6:i386, libncurses5:i386, and lib">
+<meta name="twitter:title" content="SELECT是如何实现的？">
+<meta name="twitter:description" content="转自: http://www.quora.com/Network-Programming/How-is-select-implemented 2012-11-28
+
+我会以Linux为例，因为那是我熟悉的。我没有BSD或其他unix系统的经验，但我假定这些系统原理上类似。
+每一个Socket（实际上可以是能够注册到select()上的任意fd - file descriptor）都有一个wait">
   
     <link rel="alternate" href="/atom.xml" title="Snowyying" type="application/atom+xml">
   
@@ -67,10 +76,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-run-32b-on-64b-ubuntu" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-select-implement" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2016/08/02/run-32b-on-64b-ubuntu/" class="article-date">
-  <time datetime="2016-08-02T11:07:13.000Z" itemprop="datePublished">2016-08-02</time>
+    <a href="/2016/08/02/select-implement/" class="article-date">
+  <time datetime="2016-08-02T13:21:47.000Z" itemprop="datePublished">2016-08-02</time>
 </a>
     
   </div>
@@ -81,7 +90,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      run a 32-bit executable file on a 64-bit multi-architecture Ubuntu system
+      SELECT是如何实现的？
     </h1>
   
 
@@ -89,24 +98,33 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Method-1"><a href="#Method-1" class="headerlink" title="Method 1"></a>Method 1</h2><p>To run a 32-bit executable file on a 64-bit multi-architecture Ubuntu system, you have to add the i386 architecture and install the three library packages libc6:i386, libncurses5:i386, and libstdc++6:i386:</p>
-<pre><code>sudo dpkg --add-architecture i386
-</code></pre><p>Or if you are using Ubuntu 12.04 LTS (Precise Pangolin) or below, use this:</p>
-<pre><code>echo &quot;foreign-architecture i386&quot; &gt; /etc/dpkg/dpkg.cfg.d/multiarch
-</code></pre><p>Then:</p>
-<pre><code>sudo apt-get update
-sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386
-</code></pre><p>After these steps, you should be able to run the 32-bit application:</p>
-<pre><code>./example32bitprogram
-</code></pre><h2 id="Method-2"><a href="#Method-2" class="headerlink" title="Method 2"></a>Method 2</h2><pre><code>sudo apt-get install ia32-libs
-</code></pre>
+        <blockquote>
+<p>转自: <a href="http://www.quora.com/Network-Programming/How-is-select-implemented" target="_blank" rel="external">http://www.quora.com/Network-Programming/How-is-select-implemented</a> 2012-11-28</p>
+</blockquote>
+<p>我会以Linux为例，因为那是我熟悉的。我没有BSD或其他unix系统的经验，但我假定这些系统原理上类似。</p>
+<p>每一个Socket（实际上可以是能够注册到select()上的任意fd - file descriptor）都有一个waiters的列表，他们（waiter）在等待socket上的活动（在linux上是 struct wait_queue_head_t）。这个Socket上无论什么时候有感兴趣的事件发生（到达新数据，缓冲区有可写的空闲空间，或者某种错误），这个Socket会遍历列表通知等待活动的每一个线程。</p>
+<p>select()系统调用遍历用户传入的描述符列表。对于每一个fd，调用fd的poll()方法（这个方法和应用层的poll()系统调用是两回事），这将会添加调用者（当前线程）到fd的等待队列，返回适用于当前fd的事件（读，写，异常）。</p>
+<p>如果任何fd匹配用户传入的条件，select()在更新用户传入的fd_sets后，立即返回。</p>
+<p>如果没有匹配的fd，select()会一直休眠，一直到用户指定的最大超时时间。</p>
+<p>如果在超时时间间隔内，注册到select()上的任一fd有感兴趣的事件发生，fd会通知这个fd的等待队列。这会唤醒调用select()时休眠的用户线程，这时就会重复上面的循环，看看哪一个fd准备好返回给用户。</p>
+<p>select()会记录它添加的所有的等待队列，在返回以前，确保从所有的fd移除。</p>
+<p>summary：每一次select()调用需要 3 次遍历，第一次是对每个fd分别调用poll，第二次是遍历生成返回给用户的fd_sets，第三次是应用层面遍历进行业务逻辑处理。</p>
+<p>英文原文：</p>
+<p>I’ll answer for Linux, since that’s what I know. I have no experience with any of the BSDs or other unixes, but I would assume they work broadly similarly.</p>
+<p>Every socket (really, every file descriptor that can be select()ed on) has a list of waiters that are currently waiting for activity on that socket (struct wait_queue_head_t in Linux terminology). Whenever something interesting happens on that socket (new data is available, buffer space is free for writing, or some kind of error), that socket will walk its list and notify everyone waiting on it.</p>
+<p>select() works by looping over the list of file descriptors that the user passed in. For every file descriptor, it calls that fd’s poll() method, which will add the caller to that fd’s wait queue, and return which events (readable, writeable, exception) currently apply to that fd.</p>
+<p>If any file descriptor matches the condition that the user was looking for, select() will simply return immediately, after updating the appropriate fd_sets that the user passed.</p>
+<p>If not, however, select() will go to sleep, for up to the maximum timeout the user specified.</p>
+<p>If, during that interval, an interesting event happens to any file descriptor that select() is waiting on, that fd will notify its wait queue. That will cause the thread sleeping inside select() to wake up, at which point it will repeat the above loop and see which of the fd’s are now ready to be returned to the user.</p>
+<p>select() also keeps track of all of the wait queues it has been added to, and before returning (successfully or otherwise), must go through and ensure it’s been removed from all of them.</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/08/02/run-32b-on-64b-ubuntu/" data-id="cirdiaqps0009bsskswbltru9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/08/02/select-implement/" data-id="cirdiaqqq0010bsske9z0br4o" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/32-bit/">32-bit</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ubuntu/">Ubuntu</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IT/">IT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/epoll/">epoll</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/select/">select</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网络/">网络</a></li></ul>
 
     </footer>
   </div>
@@ -114,19 +132,10 @@ sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386
     
 <nav id="article-nav">
   
-    <a href="/2016/08/02/define-symbol/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          define宏定义中的#,##,@#及\符号
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/08/02/Blog-move-to-github/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2016/08/02/outstanding-programmer/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">博客迁移至Github</div>
+      <div class="article-nav-title">如何成为一位杰出的程序员</div>
     </a>
   
 </nav>
