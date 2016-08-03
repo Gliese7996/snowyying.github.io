@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-08-03T02:54:01.003Z</updated>
+  <updated>2016-08-03T02:58:14.433Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>IO multiplexing</title>
+    <title>再谈select, iocp, epoll, kqueue及各种I/O复用机制</title>
     <link href="http://yoursite.com/2016/IO-multiplexing/"/>
     <id>http://yoursite.com/2016/IO-multiplexing/</id>
     <published>2016-08-03T02:26:54.000Z</published>
-    <updated>2016-08-03T02:54:01.003Z</updated>
+    <updated>2016-08-03T02:58:14.433Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>&#x8F6C;&#x81EA;: <a href="http://www.cnblogs.com/huacw/p/3518461.html" target="_blank" rel="external">http://www.cnblogs.com/huacw/p/3518461.html</a> 2010-01-28</p>
