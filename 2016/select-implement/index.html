@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>SELECT是如何实现的？ | Snowyying</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="&amp;#x8F6C;&amp;#x81EA;: http://www.quora.com/Network-Programming/How-is-select-implemented 2012-11-28
+
+&amp;#x6211;&amp;#x4F1A;&amp;#x4EE5;Linux&amp;#x4E3A;&amp;#x4F8B;&amp;#xFF0C;&amp;#x56E0;&amp;#x4E3A;&amp;#x90A3;&amp;#x662F;&amp;#x6211;&amp;#x719F;&amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SELECT是如何实现的？">
+<meta property="og:url" content="http://yoursite.com/2016/select-implement/index.html">
+<meta property="og:site_name" content="Snowyying">
+<meta property="og:description" content="&amp;#x8F6C;&amp;#x81EA;: http://www.quora.com/Network-Programming/How-is-select-implemented 2012-11-28
+
+&amp;#x6211;&amp;#x4F1A;&amp;#x4EE5;Linux&amp;#x4E3A;&amp;#x4F8B;&amp;#xFF0C;&amp;#x56E0;&amp;#x4E3A;&amp;#x90A3;&amp;#x662F;&amp;#x6211;&amp;#x719F;&amp;">
+<meta property="og:updated_time" content="2016-08-02T13:25:41.794Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SELECT是如何实现的？">
+<meta name="twitter:description" content="&amp;#x8F6C;&amp;#x81EA;: http://www.quora.com/Network-Programming/How-is-select-implemented 2012-11-28
+
+&amp;#x6211;&amp;#x4F1A;&amp;#x4EE5;Linux&amp;#x4E3A;&amp;#x4F8B;&amp;#xFF0C;&amp;#x56E0;&amp;#x4E3A;&amp;#x90A3;&amp;#x662F;&amp;#x6211;&amp;#x719F;&amp;">
+  
+    <link rel="alternate" href="/atom.xml" title="Snowyying" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Snowyying</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Learn and live.</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/NPS">NPS</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-select-implement" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/select-implement/" class="article-date">
+  <time datetime="2016-08-02T13:21:47.000Z" itemprop="datePublished">2016-08-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      SELECT是如何实现的？
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>&#x8F6C;&#x81EA;: <a href="http://www.quora.com/Network-Programming/How-is-select-implemented" target="_blank" rel="external">http://www.quora.com/Network-Programming/How-is-select-implemented</a> 2012-11-28</p>
+</blockquote>
+<p>&#x6211;&#x4F1A;&#x4EE5;Linux&#x4E3A;&#x4F8B;&#xFF0C;&#x56E0;&#x4E3A;&#x90A3;&#x662F;&#x6211;&#x719F;&#x6089;&#x7684;&#x3002;&#x6211;&#x6CA1;&#x6709;BSD&#x6216;&#x5176;&#x4ED6;unix&#x7CFB;&#x7EDF;&#x7684;&#x7ECF;&#x9A8C;&#xFF0C;&#x4F46;&#x6211;&#x5047;&#x5B9A;&#x8FD9;&#x4E9B;&#x7CFB;&#x7EDF;&#x539F;&#x7406;&#x4E0A;&#x7C7B;&#x4F3C;&#x3002;</p>
+<p>&#x6BCF;&#x4E00;&#x4E2A;Socket&#xFF08;&#x5B9E;&#x9645;&#x4E0A;&#x53EF;&#x4EE5;&#x662F;&#x80FD;&#x591F;&#x6CE8;&#x518C;&#x5230;select()&#x4E0A;&#x7684;&#x4EFB;&#x610F;fd - file descriptor&#xFF09;&#x90FD;&#x6709;&#x4E00;&#x4E2A;waiters&#x7684;&#x5217;&#x8868;&#xFF0C;&#x4ED6;&#x4EEC;&#xFF08;waiter&#xFF09;&#x5728;&#x7B49;&#x5F85;socket&#x4E0A;&#x7684;&#x6D3B;&#x52A8;&#xFF08;&#x5728;linux&#x4E0A;&#x662F; struct wait_queue_head_t&#xFF09;&#x3002;&#x8FD9;&#x4E2A;Socket&#x4E0A;&#x65E0;&#x8BBA;&#x4EC0;&#x4E48;&#x65F6;&#x5019;&#x6709;&#x611F;&#x5174;&#x8DA3;&#x7684;&#x4E8B;&#x4EF6;&#x53D1;&#x751F;&#xFF08;&#x5230;&#x8FBE;&#x65B0;&#x6570;&#x636E;&#xFF0C;&#x7F13;&#x51B2;&#x533A;&#x6709;&#x53EF;&#x5199;&#x7684;&#x7A7A;&#x95F2;&#x7A7A;&#x95F4;&#xFF0C;&#x6216;&#x8005;&#x67D0;&#x79CD;&#x9519;&#x8BEF;&#xFF09;&#xFF0C;&#x8FD9;&#x4E2A;Socket&#x4F1A;&#x904D;&#x5386;&#x5217;&#x8868;&#x901A;&#x77E5;&#x7B49;&#x5F85;&#x6D3B;&#x52A8;&#x7684;&#x6BCF;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x3002;</p>
+<p>select()&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x904D;&#x5386;&#x7528;&#x6237;&#x4F20;&#x5165;&#x7684;&#x63CF;&#x8FF0;&#x7B26;&#x5217;&#x8868;&#x3002;&#x5BF9;&#x4E8E;&#x6BCF;&#x4E00;&#x4E2A;fd&#xFF0C;&#x8C03;&#x7528;fd&#x7684;poll()&#x65B9;&#x6CD5;&#xFF08;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x548C;&#x5E94;&#x7528;&#x5C42;&#x7684;poll()&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x662F;&#x4E24;&#x56DE;&#x4E8B;&#xFF09;&#xFF0C;&#x8FD9;&#x5C06;&#x4F1A;&#x6DFB;&#x52A0;&#x8C03;&#x7528;&#x8005;&#xFF08;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#xFF09;&#x5230;fd&#x7684;&#x7B49;&#x5F85;&#x961F;&#x5217;&#xFF0C;&#x8FD4;&#x56DE;&#x9002;&#x7528;&#x4E8E;&#x5F53;&#x524D;fd&#x7684;&#x4E8B;&#x4EF6;&#xFF08;&#x8BFB;&#xFF0C;&#x5199;&#xFF0C;&#x5F02;&#x5E38;&#xFF09;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x4EFB;&#x4F55;fd&#x5339;&#x914D;&#x7528;&#x6237;&#x4F20;&#x5165;&#x7684;&#x6761;&#x4EF6;&#xFF0C;select()&#x5728;&#x66F4;&#x65B0;&#x7528;&#x6237;&#x4F20;&#x5165;&#x7684;fd_sets&#x540E;&#xFF0C;&#x7ACB;&#x5373;&#x8FD4;&#x56DE;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x6CA1;&#x6709;&#x5339;&#x914D;&#x7684;fd&#xFF0C;select()&#x4F1A;&#x4E00;&#x76F4;&#x4F11;&#x7720;&#xFF0C;&#x4E00;&#x76F4;&#x5230;&#x7528;&#x6237;&#x6307;&#x5B9A;&#x7684;&#x6700;&#x5927;&#x8D85;&#x65F6;&#x65F6;&#x95F4;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x5728;&#x8D85;&#x65F6;&#x65F6;&#x95F4;&#x95F4;&#x9694;&#x5185;&#xFF0C;&#x6CE8;&#x518C;&#x5230;select()&#x4E0A;&#x7684;&#x4EFB;&#x4E00;fd&#x6709;&#x611F;&#x5174;&#x8DA3;&#x7684;&#x4E8B;&#x4EF6;&#x53D1;&#x751F;&#xFF0C;fd&#x4F1A;&#x901A;&#x77E5;&#x8FD9;&#x4E2A;fd&#x7684;&#x7B49;&#x5F85;&#x961F;&#x5217;&#x3002;&#x8FD9;&#x4F1A;&#x5524;&#x9192;&#x8C03;&#x7528;select()&#x65F6;&#x4F11;&#x7720;&#x7684;&#x7528;&#x6237;&#x7EBF;&#x7A0B;&#xFF0C;&#x8FD9;&#x65F6;&#x5C31;&#x4F1A;&#x91CD;&#x590D;&#x4E0A;&#x9762;&#x7684;&#x5FAA;&#x73AF;&#xFF0C;&#x770B;&#x770B;&#x54EA;&#x4E00;&#x4E2A;fd&#x51C6;&#x5907;&#x597D;&#x8FD4;&#x56DE;&#x7ED9;&#x7528;&#x6237;&#x3002;</p>
+<p>select()&#x4F1A;&#x8BB0;&#x5F55;&#x5B83;&#x6DFB;&#x52A0;&#x7684;&#x6240;&#x6709;&#x7684;&#x7B49;&#x5F85;&#x961F;&#x5217;&#xFF0C;&#x5728;&#x8FD4;&#x56DE;&#x4EE5;&#x524D;&#xFF0C;&#x786E;&#x4FDD;&#x4ECE;&#x6240;&#x6709;&#x7684;fd&#x79FB;&#x9664;&#x3002;</p>
+<p>summary&#xFF1A;&#x6BCF;&#x4E00;&#x6B21;select()&#x8C03;&#x7528;&#x9700;&#x8981; 3 &#x6B21;&#x904D;&#x5386;&#xFF0C;&#x7B2C;&#x4E00;&#x6B21;&#x662F;&#x5BF9;&#x6BCF;&#x4E2A;fd&#x5206;&#x522B;&#x8C03;&#x7528;poll&#xFF0C;&#x7B2C;&#x4E8C;&#x6B21;&#x662F;&#x904D;&#x5386;&#x751F;&#x6210;&#x8FD4;&#x56DE;&#x7ED9;&#x7528;&#x6237;&#x7684;fd_sets&#xFF0C;&#x7B2C;&#x4E09;&#x6B21;&#x662F;&#x5E94;&#x7528;&#x5C42;&#x9762;&#x904D;&#x5386;&#x8FDB;&#x884C;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#x5904;&#x7406;&#x3002;</p>
+<p>&#x82F1;&#x6587;&#x539F;&#x6587;&#xFF1A;</p>
+<p>I&#x2019;ll answer for Linux, since that&#x2019;s what I know. I have no experience with any of the BSDs or other unixes, but I would assume they work broadly similarly.</p>
+<p>Every socket (really, every file descriptor that can be select()ed on) has a list of waiters that are currently waiting for activity on that socket (struct wait_queue_head_t in Linux terminology). Whenever something interesting happens on that socket (new data is available, buffer space is free for writing, or some kind of error), that socket will walk its list and notify everyone waiting on it.</p>
+<p>select() works by looping over the list of file descriptors that the user passed in. For every file descriptor, it calls that fd&#x2019;s poll() method, which will add the caller to that fd&#x2019;s wait queue, and return which events (readable, writeable, exception) currently apply to that fd.</p>
+<p>If any file descriptor matches the condition that the user was looking for, select() will simply return immediately, after updating the appropriate fd_sets that the user passed.</p>
+<p>If not, however, select() will go to sleep, for up to the maximum timeout the user specified.</p>
+<p>If, during that interval, an interesting event happens to any file descriptor that select() is waiting on, that fd will notify its wait queue. That will cause the thread sleeping inside select() to wake up, at which point it will repeat the above loop and see which of the fd&#x2019;s are now ready to be returned to the user.</p>
+<p>select() also keeps track of all of the wait queues it has been added to, and before returning (successfully or otherwise), must go through and ensure it&#x2019;s been removed from all of them.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/select-implement/" data-id="cireah729000hrgskp8yd9x25" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IT/">IT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/epoll/">epoll</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/select/">select</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网络/">网络</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/IO-multiplexing/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          IO multiplexing
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/outstanding-programmer/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">如何成为一位杰出的程序员</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/32-bit/">32-bit</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/I-O/">I/O</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IT/">IT</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KAs/">KAs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/">Ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/define/">define</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/epoll/">epoll</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/select/">select</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/复用/">复用</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/成长/">成长</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/效率/">效率</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/程序员/">程序员</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络/">网络</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/32-bit/" style="font-size: 10px;">32-bit</a> <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/I-O/" style="font-size: 10px;">I/O</a> <a href="/tags/IT/" style="font-size: 20px;">IT</a> <a href="/tags/KAs/" style="font-size: 10px;">KAs</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/define/" style="font-size: 10px;">define</a> <a href="/tags/epoll/" style="font-size: 10px;">epoll</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/select/" style="font-size: 10px;">select</a> <a href="/tags/复用/" style="font-size: 10px;">复用</a> <a href="/tags/成长/" style="font-size: 16.67px;">成长</a> <a href="/tags/效率/" style="font-size: 10px;">效率</a> <a href="/tags/程序员/" style="font-size: 13.33px;">程序员</a> <a href="/tags/网络/" style="font-size: 13.33px;">网络</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/IO-multiplexing/">IO multiplexing</a>
+          </li>
+        
+          <li>
+            <a href="/2016/select-implement/">SELECT是如何实现的？</a>
+          </li>
+        
+          <li>
+            <a href="/2016/outstanding-programmer/">如何成为一位杰出的程序员</a>
+          </li>
+        
+          <li>
+            <a href="/2016/lead-the-industry/">想在IT行业牛B起来, 看他说了些什么... (年轻人必读)</a>
+          </li>
+        
+          <li>
+            <a href="/2016/programmers-10-investment/">程序员必须进行的10项投资</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 Snowyying<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/NPS" class="mobile-nav-link">NPS</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

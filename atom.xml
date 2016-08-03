@@ -1,98 +1,28 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
   <title>Snowyying</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Snowyying&apos;s blog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Snowyying">
-<meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="Snowyying">
-<meta property="og:description" content="Snowyying&apos;s blog">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Snowyying">
-<meta name="twitter:description" content="Snowyying&apos;s blog">
+  <subtitle>Learn and live.</subtitle>
+  <link href="/atom.xml" rel="self"/>
   
-    <link rel="alternate" href="/atom.xml" title="Snowyying" type="application/atom+xml">
+  <link href="http://yoursite.com/"/>
+  <updated>2016-08-03T02:54:01.003Z</updated>
+  <id>http://yoursite.com/</id>
   
+  <author>
+    <name>Snowyying</name>
+    <email>marvin.nps@gmail.com</email>
+  </author>
   
-    <link rel="icon" href="/favicon.png">
+  <generator uri="http://hexo.io/">Hexo</generator>
   
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link rel="stylesheet" href="/css/style.css">
-  
-
-</head>
-
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Snowyying</a>
-      </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">Learn and live.</a>
-        </h2>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/NPS">NPS</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
-      </div>
-    </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main">
-  
-    <article id="post-IO-multiplexing" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/IO-multiplexing/" class="article-date">
-  <time datetime="2016-08-03T02:26:54.000Z" itemprop="datePublished">2016-08-03</time>
-</a>
+  <entry>
+    <title>IO multiplexing</title>
+    <link href="http://yoursite.com/2016/IO-multiplexing/"/>
+    <id>http://yoursite.com/2016/IO-multiplexing/</id>
+    <published>2016-08-03T02:26:54.000Z</published>
+    <updated>2016-08-03T02:54:01.003Z</updated>
     
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/IO-multiplexing/">IO multiplexing</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
+    <content type="html"><![CDATA[<blockquote>
 <p>&#x8F6C;&#x81EA;: <a href="http://www.cnblogs.com/huacw/p/3518461.html" target="_blank" rel="external">http://www.cnblogs.com/huacw/p/3518461.html</a> 2010-01-28</p>
 </blockquote>
 <p>&#x9996;&#x5148;&#xFF0C;&#x4ECB;&#x7ECD;&#x51E0;&#x79CD;&#x5E38;&#x89C1;&#x7684;I/O&#x6A21;&#x578B;&#x53CA;&#x5176;&#x533A;&#x522B;&#xFF0C;&#x5982;&#x4E0B;&#xFF1A;</p>
@@ -140,45 +70,36 @@
 <li>epoll, kqueue&#x662F;Reacor&#x6A21;&#x5F0F;&#xFF0C;IOCP&#x662F;Proactor&#x6A21;&#x5F0F;&#x3002;</li>
 <li>java nio&#x5305;&#x662F;select&#x6A21;&#x578B;&#x3002;&#x3002;</li>
 </ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/IO-multiplexing/" data-id="cireah7220009rgskd8dkb9n3" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/I-O/">I/O</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IT/">IT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/复用/">复用</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/效率/">效率</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网络/">网络</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-select-implement" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/select-implement/" class="article-date">
-  <time datetime="2016-08-02T13:21:47.000Z" itemprop="datePublished">2016-08-02</time>
-</a>
+]]></content>
     
-  </div>
-  <div class="article-inner">
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;&amp;#x8F6C;&amp;#x81EA;: &lt;a href=&quot;http://www.cnblogs.com/huacw/p/3518461.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.cnblogs.co
+    
+    </summary>
     
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/select-implement/">SELECT是如何实现的？</a>
-    </h1>
-  
-
-      </header>
+      <category term="IT" scheme="http://yoursite.com/tags/IT/"/>
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
+      <category term="网络" scheme="http://yoursite.com/tags/%E7%BD%91%E7%BB%9C/"/>
+    
+      <category term="I/O" scheme="http://yoursite.com/tags/I-O/"/>
+    
+      <category term="效率" scheme="http://yoursite.com/tags/%E6%95%88%E7%8E%87/"/>
+    
+      <category term="复用" scheme="http://yoursite.com/tags/%E5%A4%8D%E7%94%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SELECT是如何实现的？</title>
+    <link href="http://yoursite.com/2016/select-implement/"/>
+    <id>http://yoursite.com/2016/select-implement/</id>
+    <published>2016-08-02T13:21:47.000Z</published>
+    <updated>2016-08-02T13:25:41.794Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
 <p>&#x8F6C;&#x81EA;: <a href="http://www.quora.com/Network-Programming/How-is-select-implemented" target="_blank" rel="external">http://www.quora.com/Network-Programming/How-is-select-implemented</a> 2012-11-28</p>
 </blockquote>
 <p>&#x6211;&#x4F1A;&#x4EE5;Linux&#x4E3A;&#x4F8B;&#xFF0C;&#x56E0;&#x4E3A;&#x90A3;&#x662F;&#x6211;&#x719F;&#x6089;&#x7684;&#x3002;&#x6211;&#x6CA1;&#x6709;BSD&#x6216;&#x5176;&#x4ED6;unix&#x7CFB;&#x7EDF;&#x7684;&#x7ECF;&#x9A8C;&#xFF0C;&#x4F46;&#x6211;&#x5047;&#x5B9A;&#x8FD9;&#x4E9B;&#x7CFB;&#x7EDF;&#x539F;&#x7406;&#x4E0A;&#x7C7B;&#x4F3C;&#x3002;</p>
@@ -197,45 +118,34 @@
 <p>If not, however, select() will go to sleep, for up to the maximum timeout the user specified.</p>
 <p>If, during that interval, an interesting event happens to any file descriptor that select() is waiting on, that fd will notify its wait queue. That will cause the thread sleeping inside select() to wake up, at which point it will repeat the above loop and see which of the fd&#x2019;s are now ready to be returned to the user.</p>
 <p>select() also keeps track of all of the wait queues it has been added to, and before returning (successfully or otherwise), must go through and ensure it&#x2019;s been removed from all of them.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/select-implement/" data-id="cireah729000hrgskp8yd9x25" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IT/">IT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/epoll/">epoll</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/select/">select</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网络/">网络</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-outstanding-programmer" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/outstanding-programmer/" class="article-date">
-  <time datetime="2016-08-02T13:14:02.000Z" itemprop="datePublished">2016-08-02</time>
-</a>
+]]></content>
     
-  </div>
-  <div class="article-inner">
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;&amp;#x8F6C;&amp;#x81EA;: &lt;a href=&quot;http://www.quora.com/Network-Programming/How-is-select-implemented&quot; target=&quot;_blank&quot; rel=&quot;external
+    
+    </summary>
     
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/outstanding-programmer/">如何成为一位杰出的程序员</a>
-    </h1>
-  
-
-      </header>
+      <category term="IT" scheme="http://yoursite.com/tags/IT/"/>
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
+      <category term="网络" scheme="http://yoursite.com/tags/%E7%BD%91%E7%BB%9C/"/>
+    
+      <category term="select" scheme="http://yoursite.com/tags/select/"/>
+    
+      <category term="epoll" scheme="http://yoursite.com/tags/epoll/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>如何成为一位杰出的程序员</title>
+    <link href="http://yoursite.com/2016/outstanding-programmer/"/>
+    <id>http://yoursite.com/2016/outstanding-programmer/</id>
+    <published>2016-08-02T13:14:02.000Z</published>
+    <updated>2016-08-02T13:17:59.860Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
 <p>&#x8F6C;&#x81EA;: IT&#x6C5F;&#x6E56; &#x7F16;&#x7A0B;&#x611F;&#x609F; 2014-07-02</p>
 </blockquote>
 <p>&#x5982;&#x4F55;&#x6210;&#x4E3A;&#x4E00;&#x540D;&#x6770;&#x51FA;&#x7684;&#x7A0B;&#x5E8F;&#x5458;&#xFF0C;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x6BD4;&#x8F83;&#x590D;&#x6742;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x4EC0;&#x4E48;&#x53EB;&#x6770;&#x51FA;&#xFF1F;&#x4E0B;&#x9762;&#x6211;&#x7ED9;&#x4F60;&#x5927;&#x5BB6;&#x603B;&#x7ED3;&#x4E00;&#x4E0B;&#xFF0C;&#x6587;&#x4E2D;&#x8BF4;&#x7684;&#x4E00;&#x4E9B;&#x89C2;&#x70B9;&#xFF0C;&#x4F60;&#x53EF;&#x80FD;&#x4E0D;&#x8BA4;&#x540C;&#xFF0C;&#x6CA1;&#x5173;&#x7CFB;&#xFF01;&#x8BC4;&#x8BBA;&#x53CD;&#x9988;&#x4E00;&#x4E0B;&#xFF01;</p>
@@ -247,45 +157,34 @@
 <blockquote>
 <p>IT&#x6C5F;&#x6E56;&#x5B98;&#x7F51;&#x7FA4;&#xFF1A;383126909 &#x6211;&#x4EEC;&#x4E00;&#x8D77;&#x6210;&#x957F;</p>
 </blockquote>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/outstanding-programmer/" data-id="cireah724000argska2o5frf9" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IT/">IT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/成长/">成长</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/程序员/">程序员</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-lead-the-industry" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/lead-the-industry/" class="article-date">
-  <time datetime="2016-08-02T12:50:05.000Z" itemprop="datePublished">2016-08-02</time>
-</a>
+]]></content>
     
-  </div>
-  <div class="article-inner">
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;&amp;#x8F6C;&amp;#x81EA;: IT&amp;#x6C5F;&amp;#x6E56; &amp;#x7F16;&amp;#x7A0B;&amp;#x611F;&amp;#x609F; 2014-07-02&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&amp;#x5982;&amp;#x4F55;&amp;#x621
+    
+    </summary>
     
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/lead-the-industry/">想在IT行业牛B起来, 看他说了些什么... (年轻人必读)</a>
-    </h1>
-  
-
-      </header>
+      <category term="IT" scheme="http://yoursite.com/tags/IT/"/>
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
+      <category term="成长" scheme="http://yoursite.com/tags/%E6%88%90%E9%95%BF/"/>
+    
+      <category term="程序员" scheme="http://yoursite.com/tags/%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>想在IT行业牛B起来, 看他说了些什么... (年轻人必读)</title>
+    <link href="http://yoursite.com/2016/lead-the-industry/"/>
+    <id>http://yoursite.com/2016/lead-the-industry/</id>
+    <published>2016-08-02T12:50:05.000Z</published>
+    <updated>2016-08-02T13:08:38.413Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
 <p>&#x8F6C;&#x81EA;: CSDN&#x535A;&#x5BA2; &#x7A0B;&#x5E8F;&#x4EBA;&#x751F; 2015-05-27</p>
 </blockquote>
 <p>&#x6700;&#x8FD1;&#x6536;&#x5230;&#x4E00;&#x4E9B;&#x5728;&#x6821;&#x5927;&#x5B66;&#x751F;&#x7684;&#x6765;&#x4FE1;&#xFF0C;&#x8BE2;&#x95EE;&#x5927;&#x5B66;&#x5E94;&#x8BE5;&#x600E;&#x6837;&#x5B66;&#x4E60;&#xFF0C;&#x5E94;&#x8BE5;&#x9009;&#x62E9;&#x4EC0;&#x4E48;&#x65B9;&#x5411;&#x5B66;&#x4E60;&#x4EC0;&#x4E48;&#x6280;&#x672F;&#xFF0C;&#x5E94;&#x8BE5;&#x5982;&#x4F55;&#x4E3A;&#x5DE5;&#x4F5C;&#x51C6;&#x5907;&#x2026;&#x2026; &#x770B;&#x5230;&#x8FD9;&#x4E9B;&#x95EE;&#x4EFF;&#x4F5B;&#x770B;&#x5230;&#x4E86;&#x5F53;&#x5E74;&#x7684;&#x81EA;&#x5DF1;&#xFF0C;&#x6DF1;&#x6709;&#x611F;&#x89E6;&#xFF01;&#x53D1;&#x73B0;&#x5176;&#x4E2D;&#x5F88;&#x591A;&#x95EE;&#x9898;&#x5BF9;&#x5927;&#x90E8;&#x5206;&#x5927;&#x5B66;&#x751F;&#x90FD;&#x5F88;&#x6709;&#x5E2E;&#x52A9;&#xFF0C;&#x4E8E;&#x662F;&#x5C06;&#x56DE;&#x4FE1;&#x4EE5;&#x535A;&#x5BA2;&#x7684;&#x5F62;&#x5F0F;&#x516C;&#x5F00;&#xFF0C;&#x7ED3;&#x5408;&#x81EA;&#x5DF1;&#x4E00;&#x8DEF;&#x8D70;&#x6765;&#x7684;&#x7ECF;&#x5386;&#x4E0E;&#x5927;&#x5BB6;&#x5206;&#x4EAB;&#x4E2A;&#x4EBA;&#x5BF9;IT&#x884C;&#x4E1A;&#x3001;&#x5B66;&#x4E60;&#x3001;&#x5DE5;&#x4F5C;&#x7684;&#x770B;&#x6CD5;&#xFF0C;&#x5E0C;&#x671B;&#x80FD;&#x5E2E;&#x52A9;&#x66F4;&#x591A;&#x7684;&#x4EBA;&#x3002;</p>
@@ -333,45 +232,32 @@
 <blockquote>
 <p>&#x6765;&#x6E90;&#xFF1A;CSDN&#x535A;&#x5BA2;      &#x4F5C;&#x8005;&#xFF1A;SmilingSunrise</p>
 </blockquote>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/lead-the-industry/" data-id="cireah71x0008rgsk8e4l5thn" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IT/">IT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/成长/">成长</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-programmers-10-investment" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/programmers-10-investment/" class="article-date">
-  <time datetime="2016-08-02T12:41:13.000Z" itemprop="datePublished">2016-08-02</time>
-</a>
+]]></content>
     
-  </div>
-  <div class="article-inner">
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;&amp;#x8F6C;&amp;#x81EA;: CSDN&amp;#x535A;&amp;#x5BA2; &amp;#x7A0B;&amp;#x5E8F;&amp;#x4EBA;&amp;#x751F; 2015-05-27&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&amp;#x6700;&amp;#x8FD1;&amp;#x6
+    
+    </summary>
     
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/programmers-10-investment/">程序员必须进行的10项投资</a>
-    </h1>
-  
-
-      </header>
+      <category term="IT" scheme="http://yoursite.com/tags/IT/"/>
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
+      <category term="成长" scheme="http://yoursite.com/tags/%E6%88%90%E9%95%BF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>程序员必须进行的10项投资</title>
+    <link href="http://yoursite.com/2016/programmers-10-investment/"/>
+    <id>http://yoursite.com/2016/programmers-10-investment/</id>
+    <published>2016-08-02T12:41:13.000Z</published>
+    <updated>2016-08-02T13:16:25.674Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
 <p>&#x8F6C;&#x81EA;: &#x535A;&#x5BA2;&#x56ED; <a href="http://news.cnblogs.com/n/209983/" target="_blank" rel="external">http://news.cnblogs.com/n/209983/</a> 2014-06-09</p>
 </blockquote>
 <h2 id="&#x4F60;&#x7684;&#x5065;&#x5EB7;"><a href="#&#x4F60;&#x7684;&#x5065;&#x5EB7;" class="headerlink" title="&#x4F60;&#x7684;&#x5065;&#x5EB7;"></a>&#x4F60;&#x7684;&#x5065;&#x5EB7;</h2><p>&#x663E;&#x800C;&#x6613;&#x89C1;&#xFF0C;&#x5F00;&#x53D1;&#x4EBA;&#x5458;&#x7ECF;&#x5E38;&#x90FD;&#x662F;&#x5750;&#x7740;&#x4E0D;&#x52A8;&#x7684;&#x3002;&#x6BCF;&#x5929;&#x5750;8&#x5230;16&#x4E2A;&#x5C0F;&#x65F6;&#xFF0C;&#x53EA;&#x4F11;&#x606F;&#x5F88;&#x77ED;&#x7684;&#x65F6;&#x95F4;&#xFF0C;&#x4F60;&#x7684;&#x809A;&#x5B50;&#x5468;&#x56F4;&#x5F88;&#x5BB9;&#x6613;&#x4F1A;&#x5806;&#x8D77;&#x8D58;&#x8089;&#x3002;&#x80A5;&#x80D6;&#x662F;&#x5176;&#x5B83;&#x75BE;&#x75C5;&#x7684;&#x50AC;&#x5316;&#x5242;&#xFF0C;&#x800C;&#x5176;&#x4E2D;&#x5FC3;&#x810F;&#x75C5;&#x53C8;&#x662F;&#x6700;&#x53EF;&#x6015;&#x7684;&#x3002;&#x591A;&#x82B1;&#x70B9;&#x65F6;&#x95F4;&#x8FD0;&#x52A8;&#x4E00;&#x4E0B;&#x5C31;&#x80FD;&#x907F;&#x514D;&#x8FD9;&#x6837;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x5982;&#x679C;&#x6709;&#x53EF;&#x80FD;&#x7684;&#x8BDD;&#xFF0C;&#x82B1;&#x70B9;&#x94B1;&#x529E;&#x4E00;&#x5F20;&#x5065;&#x8EAB;&#x623F;&#x7684;&#x4F1A;&#x5458;&#x5361;&#x3002;</p>
@@ -399,45 +285,32 @@
 <blockquote>
 <p>&#x6765;&#x81EA;: it.deepinmind.com</p>
 </blockquote>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/programmers-10-investment/" data-id="cireah726000drgskqdozazj2" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IT/">IT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/成长/">成长</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/程序员/">程序员</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-define-symbol" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/define-symbol/" class="article-date">
-  <time datetime="2016-08-02T11:29:29.000Z" itemprop="datePublished">2016-08-02</time>
-</a>
+]]></content>
     
-  </div>
-  <div class="article-inner">
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;&amp;#x8F6C;&amp;#x81EA;: &amp;#x535A;&amp;#x5BA2;&amp;#x56ED; &lt;a href=&quot;http://news.cnblogs.com/n/209983/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http:/
+    
+    </summary>
     
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/define-symbol/">define宏定义中的#,##,@#及\符号</a>
-    </h1>
-  
-
-      </header>
+      <category term="IT" scheme="http://yoursite.com/tags/IT/"/>
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="1-stringizing-&#x5B57;&#x7B26;&#x4E32;&#x5316;&#x64CD;&#x4F5C;&#x7B26;"><a href="#1-stringizing-&#x5B57;&#x7B26;&#x4E32;&#x5316;&#x64CD;&#x4F5C;&#x7B26;" class="headerlink" title="1 # (stringizing) &#x5B57;&#x7B26;&#x4E32;&#x5316;&#x64CD;&#x4F5C;&#x7B26;"></a>1 # (stringizing) &#x5B57;&#x7B26;&#x4E32;&#x5316;&#x64CD;&#x4F5C;&#x7B26;</h2><p>#&#x7684;&#x4F5C;&#x7528;&#x662F;:</p>
+      <category term="成长" scheme="http://yoursite.com/tags/%E6%88%90%E9%95%BF/"/>
+    
+      <category term="程序员" scheme="http://yoursite.com/tags/%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>define宏定义中的#,##,@#及\符号</title>
+    <link href="http://yoursite.com/2016/define-symbol/"/>
+    <id>http://yoursite.com/2016/define-symbol/</id>
+    <published>2016-08-02T11:29:29.000Z</published>
+    <updated>2016-08-02T12:29:06.403Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="1-stringizing-&#x5B57;&#x7B26;&#x4E32;&#x5316;&#x64CD;&#x4F5C;&#x7B26;"><a href="#1-stringizing-&#x5B57;&#x7B26;&#x4E32;&#x5316;&#x64CD;&#x4F5C;&#x7B26;" class="headerlink" title="1 # (stringizing) &#x5B57;&#x7B26;&#x4E32;&#x5316;&#x64CD;&#x4F5C;&#x7B26;"></a>1 # (stringizing) &#x5B57;&#x7B26;&#x4E32;&#x5316;&#x64CD;&#x4F5C;&#x7B26;</h2><p>#&#x7684;&#x4F5C;&#x7528;&#x662F;:</p>
 <blockquote>
 <p>&#x5C06;&#x5B8F;&#x5B9A;&#x4E49;&#x4E2D;&#x7684;&#x4F20;&#x5165;&#x53C2;&#x6570;&#x540D;&#x8F6C;&#x6362;&#x6210;&#x7528;&#x4E00;&#x5BF9;&#x53CC;&#x5F15;&#x53F7;&#x62EC;&#x8D77;&#x6765;&#x53C2;&#x6570;&#x540D;&#x5B57;&#x7B26;&#x4E32;.&#x5176;&#x53EA;&#x80FD;&#x7528;&#x4E8E;&#x6709;&#x4F20;&#x5165;&#x53C2;&#x6570;&#x7684;&#x5B8F;&#x5B9A;&#x4E49;&#x4E2D;, &#x4E14;&#x5FC5;&#x987B;&#x7F6E;&#x4E8E;&#x5B8F;&#x5B9A;&#x4E49;&#x4F53;&#x4E2D;&#x7684;&#x53C2;&#x6570;&#x540D;&#x524D;.</p>
 </blockquote>
@@ -507,45 +380,29 @@ int main()
 </code></pre><h2 id="4-&#x884C;&#x7EE7;&#x7EED;&#x64CD;&#x4F5C;&#x7B26;"><a href="#4-&#x884C;&#x7EE7;&#x7EED;&#x64CD;&#x4F5C;&#x7B26;" class="headerlink" title="4 \ &#x884C;&#x7EE7;&#x7EED;&#x64CD;&#x4F5C;&#x7B26;"></a>4 \ &#x884C;&#x7EE7;&#x7EED;&#x64CD;&#x4F5C;&#x7B26;</h2><blockquote>
 <p>&#x5F53;&#x5B9A;&#x4E49;&#x7684;&#x5B8F;&#x4E0D;&#x80FD;&#x7528;&#x4E00;&#x884C;&#x8868;&#x8FBE;&#x5B8C;&#x6574;&#x65F6;, &#x53EF;&#x4EE5;&#x7528;&#x201D;\&#x201D;&#x8868;&#x793A;&#x4E0B;&#x4E00;&#x884C;&#x7EE7;&#x7EED;&#x6B64;&#x5B8F;&#x7684;&#x5B9A;&#x4E49;.</p>
 </blockquote>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/define-symbol/" data-id="cireah71j0003rgsknxc758fl" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/define/">define</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-run-32b-on-64b-ubuntu" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/run-32b-on-64b-ubuntu/" class="article-date">
-  <time datetime="2016-08-02T11:07:13.000Z" itemprop="datePublished">2016-08-02</time>
-</a>
+]]></content>
     
-  </div>
-  <div class="article-inner">
+    <summary type="html">
+    
+      &lt;h2 id=&quot;1-stringizing-&amp;#x5B57;&amp;#x7B26;&amp;#x4E32;&amp;#x5316;&amp;#x64CD;&amp;#x4F5C;&amp;#x7B26;&quot;&gt;&lt;a href=&quot;#1-stringizing-&amp;#x5B57;&amp;#x7B26;&amp;#x4E32;&amp;#x5316;&amp;#x6
+    
+    </summary>
     
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/run-32b-on-64b-ubuntu/">run a 32-bit executable file on a 64-bit multi-architecture Ubuntu system</a>
-    </h1>
-  
-
-      </header>
+      <category term="C" scheme="http://yoursite.com/tags/C/"/>
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Method-1"><a href="#Method-1" class="headerlink" title="Method 1"></a>Method 1</h2><p>To run a 32-bit executable file on a 64-bit multi-architecture Ubuntu system, you have to add the i386 architecture and install the three library packages libc6:i386, libncurses5:i386, and libstdc++6:i386:</p>
+      <category term="define" scheme="http://yoursite.com/tags/define/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>run a 32-bit executable file on a 64-bit multi-architecture Ubuntu system</title>
+    <link href="http://yoursite.com/2016/run-32b-on-64b-ubuntu/"/>
+    <id>http://yoursite.com/2016/run-32b-on-64b-ubuntu/</id>
+    <published>2016-08-02T11:07:13.000Z</published>
+    <updated>2016-08-02T11:24:52.396Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Method-1"><a href="#Method-1" class="headerlink" title="Method 1"></a>Method 1</h2><p>To run a 32-bit executable file on a 64-bit multi-architecture Ubuntu system, you have to add the i386 architecture and install the three library packages libc6:i386, libncurses5:i386, and libstdc++6:i386:</p>
 <pre><code>sudo dpkg --add-architecture i386
 </code></pre><p>Or if you are using Ubuntu 12.04 LTS (Precise Pangolin) or below, use this:</p>
 <pre><code>echo &quot;foreign-architecture i386&quot; &gt; /etc/dpkg/dpkg.cfg.d/multiarch
@@ -555,45 +412,29 @@ sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386
 </code></pre><p>After these steps, you should be able to run the 32-bit application:</p>
 <pre><code>./example32bitprogram
 </code></pre><h2 id="Method-2"><a href="#Method-2" class="headerlink" title="Method 2"></a>Method 2</h2><pre><code>sudo apt-get install ia32-libs
-</code></pre>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/run-32b-on-64b-ubuntu/" data-id="cireah727000frgskoqalypcq" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/32-bit/">32-bit</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ubuntu/">Ubuntu</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Blog-move-to-github" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/Blog-move-to-github/" class="article-date">
-  <time datetime="2016-08-02T08:28:45.000Z" itemprop="datePublished">2016-08-02</time>
-</a>
+</code></pre>]]></content>
     
-  </div>
-  <div class="article-inner">
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Method-1&quot;&gt;&lt;a href=&quot;#Method-1&quot; class=&quot;headerlink&quot; title=&quot;Method 1&quot;&gt;&lt;/a&gt;Method 1&lt;/h2&gt;&lt;p&gt;To run a 32-bit executable file on a 64-bit mu
+    
+    </summary>
     
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/Blog-move-to-github/">博客迁移至Github</a>
-    </h1>
-  
-
-      </header>
+      <category term="Ubuntu" scheme="http://yoursite.com/tags/Ubuntu/"/>
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <pre><code>&#x66FE;&#x5728;&#x767E;&#x5EA6;&#x7A7A;&#x95F4;, CSDN, &#x535A;&#x5BA2;&#x56ED;, LOFTER&#x7B49;&#x7F51;&#x7AD9;&#x653E;&#x8FC7;&#x535A;&#x5BA2;, &#x73B0;&#x7EDF;&#x4E00;&#x8FC1;&#x79FB;&#x81F3;Github.
+      <category term="32-bit" scheme="http://yoursite.com/tags/32-bit/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>博客迁移至Github</title>
+    <link href="http://yoursite.com/2016/Blog-move-to-github/"/>
+    <id>http://yoursite.com/2016/Blog-move-to-github/</id>
+    <published>2016-08-02T08:28:45.000Z</published>
+    <updated>2016-08-02T08:58:24.764Z</updated>
+    
+    <content type="html"><![CDATA[<pre><code>&#x66FE;&#x5728;&#x767E;&#x5EA6;&#x7A7A;&#x95F4;, CSDN, &#x535A;&#x5BA2;&#x56ED;, LOFTER&#x7B49;&#x7F51;&#x7AD9;&#x653E;&#x8FC7;&#x535A;&#x5BA2;, &#x73B0;&#x7EDF;&#x4E00;&#x8FC1;&#x79FB;&#x81F3;Github.
 </code></pre><ul>
 <li>&#x767E;&#x5EA6;&#x7A7A;&#x95F4;: <a href="https://wenzhang.baidu.com/" target="_blank" rel="external">https://wenzhang.baidu.com/</a></li>
 <li>CSDN: <a href="http://blog.csdn.net/sinat_26663605/" target="_blank" rel="external">http://blog.csdn.net/sinat_26663605/</a></li>
@@ -601,45 +442,29 @@ sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386
 <li>LOFTER: <em>&#x5FD8;&#x4E86;</em> &#x2026;</li>
 </ul>
 <p>&#x4EE5;&#x524D;&#x5199;&#x7684;&#x6587;&#x7AE0;, &#x5C06;&#x4F1A;&#x9009;&#x62E9;&#x6027;&#x7684;&#x8FC1;&#x79FB;&#x5230;&#x8FD9;&#x91CC;, &#x5176;&#x4ED6;&#x535A;&#x5BA2;&#x5C06;&#x4E0D;&#x518D;&#x66F4;&#x65B0;.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/Blog-move-to-github/" data-id="cireah71b0001rgskh7qpxxsb" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/blog/">blog</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/">github</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-it-kas-4-snowyying" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/it-kas-4-snowyying/" class="article-date">
-  <time datetime="2016-08-02T02:56:37.000Z" itemprop="datePublished">2016-08-02</time>
-</a>
+]]></content>
     
-  </div>
-  <div class="article-inner">
+    <summary type="html">
+    
+      &lt;pre&gt;&lt;code&gt;&amp;#x66FE;&amp;#x5728;&amp;#x767E;&amp;#x5EA6;&amp;#x7A7A;&amp;#x95F4;, CSDN, &amp;#x535A;&amp;#x5BA2;&amp;#x56ED;, LOFTER&amp;#x7B49;&amp;#x7F51;&amp;#x7AD9;&amp;#x653E;&amp;#x8FC7;&amp;
+    
+    </summary>
     
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/it-kas-4-snowyying/">IT KAs 4 Snowyying</a>
-    </h1>
-  
-
-      </header>
+      <category term="blog" scheme="http://yoursite.com/tags/blog/"/>
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <pre><code>&#x6574;&#x7406;&#x65F6;&#x95F4;: 20160801
+      <category term="github" scheme="http://yoursite.com/tags/github/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>IT KAs 4 Snowyying</title>
+    <link href="http://yoursite.com/2016/it-kas-4-snowyying/"/>
+    <id>http://yoursite.com/2016/it-kas-4-snowyying/</id>
+    <published>2016-08-02T02:56:37.000Z</published>
+    <updated>2016-08-02T13:40:12.944Z</updated>
+    
+    <content type="html"><![CDATA[<pre><code>&#x6574;&#x7406;&#x65F6;&#x95F4;: 20160801
 </code></pre><h2 id="1-C"><a href="#1-C" class="headerlink" title="1. C++"></a>1. C++</h2><ul>
 <li>C (procedural)</li>
 <li>C++ (object-oriented)</li>
@@ -678,45 +503,30 @@ sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386
 <li>&#x57FA;&#x7840;/&#x5E38;&#x7528;&#x5E93;</li>
 <li>swebok_v3_zh</li>
 </ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/it-kas-4-snowyying/" data-id="cireah71r0005rgsk60nwcsnm" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IT/">IT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/KAs/">KAs</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/hello-world/" class="article-date">
-  <time datetime="2016-08-02T01:48:34.792Z" itemprop="datePublished">2016-08-02</time>
-</a>
+]]></content>
     
-  </div>
-  <div class="article-inner">
+    <summary type="html">
+    
+      &lt;pre&gt;&lt;code&gt;&amp;#x6574;&amp;#x7406;&amp;#x65F6;&amp;#x95F4;: 20160801
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;1-C&quot;&gt;&lt;a href=&quot;#1-C&quot; class=&quot;headerlink&quot; title=&quot;1. C++&quot;&gt;&lt;/a&gt;1. C++&lt;
+    
+    </summary>
     
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
+      <category term="IT" scheme="http://yoursite.com/tags/IT/"/>
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+      <category term="KAs" scheme="http://yoursite.com/tags/KAs/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://yoursite.com/2016/hello-world/"/>
+    <id>http://yoursite.com/2016/hello-world/</id>
+    <published>2016-08-02T01:48:34.792Z</published>
+    <updated>2016-08-02T01:48:34.794Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></div></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
 <h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
@@ -725,121 +535,15 @@ sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386
 <p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
 <h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/hello-world/" data-id="cireah71v0006rgskli55schp" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
-</section>
-        
-          <aside id="sidebar">
-  
+]]></content>
     
-
-  
+    <summary type="html">
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/32-bit/">32-bit</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/I-O/">I/O</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IT/">IT</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KAs/">KAs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/">Ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/define/">define</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/epoll/">epoll</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/select/">select</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/复用/">复用</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/成长/">成长</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/效率/">效率</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/程序员/">程序员</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络/">网络</a></li></ul>
-    </div>
-  </div>
-
-
-  
+      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签云</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/32-bit/" style="font-size: 10px;">32-bit</a> <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/I-O/" style="font-size: 10px;">I/O</a> <a href="/tags/IT/" style="font-size: 20px;">IT</a> <a href="/tags/KAs/" style="font-size: 10px;">KAs</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/define/" style="font-size: 10px;">define</a> <a href="/tags/epoll/" style="font-size: 10px;">epoll</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/select/" style="font-size: 10px;">select</a> <a href="/tags/复用/" style="font-size: 10px;">复用</a> <a href="/tags/成长/" style="font-size: 16.67px;">成长</a> <a href="/tags/效率/" style="font-size: 10px;">效率</a> <a href="/tags/程序员/" style="font-size: 13.33px;">程序员</a> <a href="/tags/网络/" style="font-size: 13.33px;">网络</a>
-    </div>
-  </div>
-
-  
+    </summary>
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">归档</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li></ul>
-    </div>
-  </div>
-
-
-  
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">最新文章</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2016/IO-multiplexing/">IO multiplexing</a>
-          </li>
-        
-          <li>
-            <a href="/2016/select-implement/">SELECT是如何实现的？</a>
-          </li>
-        
-          <li>
-            <a href="/2016/outstanding-programmer/">如何成为一位杰出的程序员</a>
-          </li>
-        
-          <li>
-            <a href="/2016/lead-the-industry/">想在IT行业牛B起来, 看他说了些什么... (年轻人必读)</a>
-          </li>
-        
-          <li>
-            <a href="/2016/programmers-10-investment/">程序员必须进行的10项投资</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
+  </entry>
   
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2016 Snowyying<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/NPS" class="mobile-nav-link">NPS</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-<script src="/js/script.js"></script>
-
-  </div>
-</body>
-</html>
+</feed>
