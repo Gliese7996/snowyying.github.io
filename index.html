@@ -70,6 +70,796 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-linux-serial-with-libcssl" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/linux-serial-with-libcssl/" class="article-date">
+  <time datetime="2016-08-03T03:46:46.000Z" itemprop="datePublished">2016-08-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/linux-serial-with-libcssl/">linux下使用libcssl库串口编程</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>&#x4F7F;&#x7528;libcssl(&#x6700;&#x65B0;&#x7248;0.9.4)&#x8FDB;&#x884C;&#x4E32;&#x53E3;&#x901A;&#x8BAF;&#x65F6;, &#x53D1;&#x73B0;&#x5947;&#x5076;&#x6821;&#x9A8C;&#x8BBE;&#x7F6E;&#x65E0;&#x6548;, &#x67E5;&#x770B;&#x6E90;&#x7801;&#x540E;&#x53D1;&#x73B0;&#x6709;&#x4E24;&#x5904;&#x95EE;&#x9898;</p>
+<h6 id="1-cssl-open-&#x4E2D;&#x53C2;&#x6570;&#x8C03;&#x7528;&#x987A;&#x5E8F;&#x95EE;&#x9898;"><a href="#1-cssl-open-&#x4E2D;&#x53C2;&#x6570;&#x8C03;&#x7528;&#x987A;&#x5E8F;&#x95EE;&#x9898;" class="headerlink" title="1 cssl_open()&#x4E2D;&#x53C2;&#x6570;&#x8C03;&#x7528;&#x987A;&#x5E8F;&#x95EE;&#x9898;"></a>1 cssl_open()&#x4E2D;&#x53C2;&#x6570;&#x8C03;&#x7528;&#x987A;&#x5E8F;&#x95EE;&#x9898;</h6><pre><code>/* opens the port */
+cssl_t *cssl_open(const char *fname,
+      cssl_callback_t callback,
+      int id,
+      int baud,
+      int bits,
+      int parity,
+      int stop)
+{
+    cssl_t *serial;
+
+    ...
+
+    /* now we set new values */
+    //cssl_setup(serial,baud,parity,bits,stop);
+    // Bug fix @ 20160727 by Snowyying 
+    cssl_setup(serial,baud,bits,parity,stop);
+
+    ...
+
+    return serial;
+}
+</code></pre><h6 id="2-cssl-setup-&#x4E2D;c-iflag&#x8BBE;&#x7F6E;&#x95EE;&#x9898;"><a href="#2-cssl-setup-&#x4E2D;c-iflag&#x8BBE;&#x7F6E;&#x95EE;&#x9898;" class="headerlink" title="2 cssl_setup()&#x4E2D;c_iflag&#x8BBE;&#x7F6E;&#x95EE;&#x9898;"></a>2 cssl_setup()&#x4E2D;c_iflag&#x8BBE;&#x7F6E;&#x95EE;&#x9898;</h6><pre><code>/* sets up the port parameters */
+void cssl_setup(cssl_t *serial,
+       int baud,
+       int bits,
+       int parity,
+       int stop)
+{
+    tcflag_t baudrate;
+    tcflag_t databits;
+    tcflag_t stopbits;
+    tcflag_t checkparity;
+
+    ...
+
+    /* now we setup the values in port&apos;s termios */
+    serial-&gt;tio.c_cflag=baudrate|databits|checkparity|stopbits|CLOCAL|CREAD;
+    //serial-&gt;tio.c_iflag=IGNPAR;
+    // Bug fix @ 20160727 by Snowyying
+    if (parity)
+        serial-&gt;tio.c_iflag |= INPCK;
+    else
+        serial-&gt;tio.c_iflag=IGNPAR;
+    serial-&gt;tio.c_oflag=0;
+    serial-&gt;tio.c_lflag=0;
+    serial-&gt;tio.c_cc[VMIN]=1;
+    serial-&gt;tio.c_cc[VTIME]=0;
+
+    /* we flush the port */
+    tcflush(serial-&gt;fd,TCOFLUSH);
+    tcflush(serial-&gt;fd,TCIFLUSH);
+
+    /* we send new config to the port */
+    tcsetattr(serial-&gt;fd,TCSANOW,&amp;(serial-&gt;tio));
+
+    cssl_error=CSSL_OK;
+}
+</code></pre><hr>
+<p>&#x9644;: libcssl 0.9.4 source code</p>
+<p><em>cssl.c</em></p>
+<pre><code>/* Copyright 2003 Marcin Siennicki &lt;m.siennicki@cloos.pl&gt;
+ * see COPYING file for details */
+
+#include &lt;stdio.h&gt;
+
+#include &lt;string.h&gt;
+#include &lt;termios.h&gt;
+#include &lt;sys/types.h&gt;
+#include &lt;sys/stat.h&gt;
+#include &lt;fcntl.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;signal.h&gt;
+#include &lt;unistd.h&gt;
+
+#include &quot;cssl.h&quot;
+
+/*
+ * Static variables and constants
+ */
+
+/* signal number for serial i/o read */
+static int CSSL_SIGNAL=0;
+
+/* boolean that say if we have started cssl */
+static int cssl_started=0;
+
+/* sigactions */
+static struct sigaction sa;
+static struct sigaction oldsa;
+
+/* head of the cssl_t list */
+static cssl_t *head=0;
+
+/* error messages table */
+static const char *cssl_errors[]= {
+    &quot;cssl: OK&quot;,
+    &quot;cssl: there&apos;s no free signal&quot;,
+    &quot;cssl: not started&quot;,
+    &quot;cssl: null pointer&quot;,
+    &quot;cssl: oops&quot;,
+    &quot;cssl: out of memory&quot;,
+    &quot;cssl: cannot open file&quot;
+};
+
+/* status of last cssl function */
+static cssl_error_t cssl_error=CSSL_OK;
+
+/* prototype of signal handler */
+static void cssl_handler(int signo, siginfo_t *info, void *ignored);
+
+
+/**************************************
+ * Public functions
+ **************************************/
+
+/*-------------------------------------
+ * Error handling
+ */
+
+/* gets the last operation status message */
+const char *cssl_geterrormsg()
+{
+    return cssl_errors[cssl_error];
+}
+
+
+/* gets the last error code */
+int cssl_geterror()
+{
+    return cssl_error;
+}
+
+/*-------------------------------------
+ * Startig/stoping cssl
+ */
+
+/* starts cssl */
+void cssl_start()
+{
+    int sig;
+
+    if (cssl_started) {
+    return;
+    }
+
+    /* Here we scan for unused real time signal */
+    sig=SIGRTMIN;
+
+    do {
+
+    /* get old sigaction */
+    sigaction(sig,0,&amp;oldsa);
+
+    /* if signal&apos;s handler is empty */
+    if (oldsa.sa_handler == 0)
+    {
+        /* set the signal handler, and others */
+        CSSL_SIGNAL=sig;
+        sa.sa_sigaction = cssl_handler;
+        sa.sa_flags = SA_SIGINFO;
+        sa.sa_restorer = NULL;
+        sigemptyset(&amp;sa.sa_mask);
+        sigaction(CSSL_SIGNAL,&amp;sa,0);
+
+        /* OK, the cssl is started */
+        cssl_started=1;
+        cssl_error=CSSL_OK;
+        return;
+    } else {
+        /* signal handler was not empty,
+           restore original */
+        sigaction(CSSL_SIGNAL,&amp;oldsa,0);
+    }
+    sig++;
+    } while(sig&lt;=SIGRTMAX);
+
+
+    /* Sorry, there&apos;s no free signal */
+    cssl_error=CSSL_ERROR_NOSIGNAL;
+
+}
+
+/* stops the cssl */
+void cssl_stop()
+{
+    /* if not started we do nothing */
+    if (!cssl_started)
+    return;
+
+    /* we close all ports, and free the list */
+    while (head)
+    cssl_close(head);
+
+    /* then we remove the signal handler */
+    sigaction(CSSL_SIGNAL,&amp;oldsa,NULL);
+
+    /* And at least : */
+    cssl_started=0;
+    cssl_error=CSSL_OK;
+}
+
+/*-------------------------------------
+ * Basic port operation - open/close
+ */
+
+
+/* opens the port */
+cssl_t *cssl_open(const char *fname,
+          cssl_callback_t callback,
+          int id,
+          int baud,
+          int bits,
+          int parity,
+          int stop)
+{
+    cssl_t *serial;
+
+    if (!cssl_started) {
+    cssl_error=CSSL_ERROR_NOTSTARTED;
+    return NULL;
+    }
+
+    /* create new cssl_t structure */
+    serial=calloc(1,sizeof(cssl_t));
+
+    /* oops, no memory */
+    if (!serial) {
+    cssl_error=CSSL_ERROR_MEMORY;
+    return 0;
+    }
+
+    /* opening the file */
+    if(callback) {
+    /* user wants event driven reading */
+    serial-&gt;fd=open(fname,O_RDWR|O_NOCTTY|O_NONBLOCK);
+    fcntl(serial-&gt;fd,F_SETSIG,CSSL_SIGNAL);
+    fcntl(serial-&gt;fd,F_SETOWN,getpid());
+    fcntl(serial-&gt;fd,F_SETFL,O_ASYNC|O_NONBLOCK);
+    } else {
+    /* the read/write operations will be bloking */
+    serial-&gt;fd=open(fname,O_RDWR|O_NOCTTY);
+    }
+
+    /* oops, cannot open */
+    if (serial-&gt;fd == -1) {
+    cssl_error=CSSL_ERROR_OPEN;
+    free(serial);
+    return NULL;
+    }
+
+    /* we remember old termios */
+    tcgetattr(serial-&gt;fd,&amp;(serial-&gt;oldtio));
+
+    /* now we set new values */
+    cssl_setup(serial,baud,parity,bits,stop);
+
+    /* and id */
+    serial-&gt;id=id;
+
+    /* then set the callback */
+    serial-&gt;callback=callback;
+
+    /* we add the serial to our list */
+    serial-&gt;next=head;
+    head=serial;
+
+    cssl_error=CSSL_OK;
+
+    return serial;
+}
+
+
+/* closes file, removes serial from the list and frees it */
+void cssl_close(cssl_t *serial)
+{
+    cssl_t *cur;
+
+    if (!cssl_started) {
+    cssl_error=CSSL_ERROR_NOTSTARTED;
+    return;
+    }
+
+    if (!serial) {
+    cssl_error=CSSL_ERROR_NULLPOINTER;
+    return;
+    }
+
+    /* first we flush the port */
+    tcflush(serial-&gt;fd,TCOFLUSH);
+    tcflush(serial-&gt;fd,TCIFLUSH);
+
+    /* then we restore old settings */
+    tcsetattr(serial-&gt;fd,TCSANOW,&amp;(serial-&gt;oldtio));
+
+    /* and close the file */
+    close(serial-&gt;fd);
+
+    /* now we can remove the serial from the list */
+
+    if (head==serial) {
+    head=serial-&gt;next;
+    free(serial);
+    cssl_error=CSSL_OK;
+    return;
+    }
+
+    for (cur=head;cur;cur=cur-&gt;next) {
+    if (cur-&gt;next==serial) {
+        cur-&gt;next=serial-&gt;next;
+        free(serial);
+        cssl_error=CSSL_OK;
+        return;
+    }
+    }
+
+    /* we should never reach there,
+       it means, that serial was not found in the list */
+    cssl_error=CSSL_ERROR_OOPS;
+}
+
+
+/*-------------------------------------
+ * Port setup
+ */
+
+/* sets up the port parameters */
+void cssl_setup(cssl_t *serial,
+           int baud,
+           int bits,
+           int parity,
+           int stop)
+{
+    tcflag_t baudrate;
+    tcflag_t databits;
+    tcflag_t stopbits;
+    tcflag_t checkparity;
+
+    if (!cssl_started) {
+    cssl_error=CSSL_ERROR_NOTSTARTED;
+    return;
+    }
+
+    if (!serial) {
+    cssl_error=CSSL_ERROR_NULLPOINTER;
+    return;
+    }    
+
+    /* get the propr baudrate */
+    switch (baud) {
+    case 75:
+    baudrate=B75;
+    break;
+    case 110:
+    baudrate=B110;
+    break;
+    case 150:
+    baudrate=B150;
+    break;
+    case 300:
+    baudrate=B300;
+    break;
+    case 600:
+    baudrate=B600;
+    break;
+    case 1200:
+    baudrate=B1200;
+    break;
+    case 2400:
+    baudrate=B2400;
+    break;
+    case 4800:
+    baudrate=B4800;
+    break;
+    case 9600:
+    baudrate=B9600;
+    break;
+    case 19200:
+    baudrate=B19200;
+    break;
+    case 38400:
+    baudrate=B38400;
+    break;
+    case 57600:
+    baudrate=B57600;
+    break;
+    case 115200:
+    baudrate=B115200;
+    break;
+    default:
+    baudrate=B9600;
+    }
+
+    /* databits */
+    switch (bits) {
+    case 7:
+    databits=CS7;
+    break;
+    case 8:
+    databits=CS8;
+    break;
+    default:
+    databits=CS8;
+    }
+
+    /* parity, */
+    switch (parity) {
+    case 0:
+    checkparity=0;
+    break;
+    case 1:   //odd
+    checkparity=PARENB|PARODD;
+    break;
+    case 2:
+    checkparity=PARENB;
+    break;
+    default:
+    checkparity=0;
+    }
+
+    /* and stop bits */
+    switch (stop) {
+    case 1:
+    stopbits=0;
+    break;
+    case 2:
+    stopbits=CSTOPB;
+    break;
+    default:
+    stopbits=0;
+    }
+
+    /* now we setup the values in port&apos;s termios */
+    serial-&gt;tio.c_cflag=baudrate|databits|checkparity|stopbits|CLOCAL|CREAD;
+    serial-&gt;tio.c_iflag=IGNPAR;
+    serial-&gt;tio.c_oflag=0;
+    serial-&gt;tio.c_lflag=0;
+    serial-&gt;tio.c_cc[VMIN]=1;
+    serial-&gt;tio.c_cc[VTIME]=0;
+
+    /* we flush the port */
+    tcflush(serial-&gt;fd,TCOFLUSH);
+    tcflush(serial-&gt;fd,TCIFLUSH);
+
+    /* we send new config to the port */
+    tcsetattr(serial-&gt;fd,TCSANOW,&amp;(serial-&gt;tio));
+
+    cssl_error=CSSL_OK;
+}
+
+void cssl_setflowcontrol(cssl_t *serial,
+             int rtscts,
+             int xonxoff)
+{
+    if (!cssl_started) {
+    cssl_error=CSSL_ERROR_NOTSTARTED;
+    return;
+    }
+
+    if (!serial) {
+    cssl_error=CSSL_ERROR_NULLPOINTER;
+    return;
+    }    
+
+    /* We setup rts/cts (hardware) flow control */
+    if (rtscts) {
+    serial-&gt;tio.c_cflag |= CRTSCTS;
+    } else {
+    serial-&gt;tio.c_cflag &amp;= ~CRTSCTS;
+    }
+
+    /* We setup xon/xoff (soft) flow control */
+    if (xonxoff) {
+    serial-&gt;tio.c_iflag |= (IXON|IXOFF);
+    } else {
+    serial-&gt;tio.c_iflag &amp;= ~(IXON|IXOFF);
+    }
+
+    tcsetattr(serial-&gt;fd,TCSANOW,&amp;(serial-&gt;tio));
+
+    cssl_error=CSSL_OK;
+}
+
+
+
+/* Blocking mode: sets the timeout in
+   hundreds of miliseconds */
+void cssl_settimeout(cssl_t *serial, int timeout)
+{
+    if (!cssl_started) {
+    cssl_error=CSSL_ERROR_NOTSTARTED;
+    return;
+    }
+
+    if (!serial) {
+    cssl_error=CSSL_ERROR_NULLPOINTER;
+    return;
+    }    
+
+    serial-&gt;tio.c_cc[VTIME]=timeout;
+
+    tcsetattr(serial-&gt;fd,TCSANOW,&amp;(serial-&gt;tio));
+
+    cssl_error=CSSL_OK;
+}
+
+
+/*-------------------------------------
+ * Serial communication
+ */
+
+/* sending a char */
+void cssl_putchar(cssl_t *serial,
+             char c)
+{
+    if (!cssl_started) {
+    cssl_error=CSSL_ERROR_NOTSTARTED;
+    return;
+    }
+
+    if (!serial) {
+    cssl_error=CSSL_ERROR_NULLPOINTER;
+    return;
+    }    
+
+    write(serial-&gt;fd,&amp;c,1);
+}
+
+/* sending a null-terminated string */
+void cssl_putstring(cssl_t *serial,
+             char *str)
+{
+    if (!cssl_started) {
+    cssl_error=CSSL_ERROR_NOTSTARTED;
+    return;
+    }
+
+    if (!serial) {
+    cssl_error=CSSL_ERROR_NULLPOINTER;
+    return;
+    }    
+    write(serial-&gt;fd,str,strlen(str));
+}
+
+
+/* sending a data of known size */
+void cssl_putdata(cssl_t *serial,
+          uint8_t *data,
+          int datalen)
+{
+    if (!cssl_started) {
+    cssl_error=CSSL_ERROR_NOTSTARTED;
+    return;
+    }
+
+    if (!serial) {
+    cssl_error=CSSL_ERROR_NULLPOINTER;
+    return;
+    }    
+
+    write(serial-&gt;fd,data,datalen);
+}
+
+void cssl_drain(cssl_t *serial)
+{
+    if (!cssl_started) {
+    cssl_error=CSSL_ERROR_NOTSTARTED;
+    return;
+    }
+
+    if (!serial) {
+    cssl_error=CSSL_ERROR_NULLPOINTER;
+    return;
+    }    
+
+    tcdrain(serial-&gt;fd);
+}
+
+/* blocking mode: reading a char */
+int cssl_getchar(cssl_t *serial)
+{
+    int result;
+    uint8_t c;
+
+    result=read(serial-&gt;fd,&amp;c,sizeof(c));
+    if (result&lt;=0)
+    return -1;
+
+    return c;
+}
+
+/* blocking mode: reading a data buffer */
+int cssl_getdata(cssl_t *serial,
+         uint8_t *buffer,
+         int size)
+{
+    return read(serial-&gt;fd,buffer,size);
+}
+
+/*------------------------------------------*/
+
+/* The most important: signal handler */
+void cssl_handler(int signo, siginfo_t *info, void *ignored)
+{
+    cssl_t *cur;
+    int n;
+
+    /* is this signal which says about
+       incoming of the data? */
+    if (info-&gt;si_code==POLL_IN) {
+
+    /* Yes, we got some data */
+    for(cur=head;cur;cur=cur-&gt;next) {
+
+        /* Let&apos;s find proper cssl_t */
+        if (cur-&gt;fd==info-&gt;si_fd) {
+
+        /* Got it */
+        n=read(cur-&gt;fd,cur-&gt;buffer,255);
+
+        /* Execute callback */
+        if ((n&gt;0)&amp;&amp;(cur-&gt;callback))
+            cur-&gt;callback(cur-&gt;id,cur-&gt;buffer,n);
+        return;
+        }
+    }
+    }
+}
+</code></pre><p><em>cssl.h</em></p>
+<pre><code>/* Copyright 2003 Marcin Siennicki &lt;m.siennicki@cloos.pl&gt;
+ * see COPYING file for details */
+
+#ifndef __CSSL_H__
+#define __CSSL_H__
+
+#include &lt;stdint.h&gt;
+#include &lt;signal.h&gt;
+#include &lt;termios.h&gt;
+
+
+typedef void (*cssl_callback_t)(int id,  /* id passed to callback */
+        uint8_t *buffer, /* data received */
+        int len); /* length of data in bytes */
+
+typedef struct __cssl_t {
+
+    uint8_t buffer[255];      /* input buffer */
+
+    int fd;                   /* tty file descriptor */
+
+    struct termios tio;       /* termios structure for the port */
+    struct termios oldtio;    /* old termios structure */
+
+    cssl_callback_t callback; /* callback function */
+
+    int id;                   /* id which would be passed to callback */
+
+    struct __cssl_t *next;
+
+} cssl_t;
+
+typedef enum {
+    CSSL_OK,                 /* everything is all right */
+    CSSL_ERROR_NOSIGNAL,     /* there&apos;s no free signal */
+    CSSL_ERROR_NOTSTARTED,   /* you should first start cssl */
+    CSSL_ERROR_NULLPOINTER,  /* you gave a null pointer to the function */
+    CSSL_ERROR_OOPS,         /* internal error, something&apos;s erong */
+    CSSL_ERROR_MEMORY,       /* there&apos;s no memory for cssl_t structure */
+    CSSL_ERROR_OPEN          /* file doesnt exist or you aren&apos;t good user */
+} cssl_error_t;
+
+/* get the error message */
+const char *cssl_geterrormsg();
+
+/* get the error code */
+int cssl_geterror();
+
+/* start the cssl */
+void cssl_start();
+
+/* finish all jobs, clear memory, etc. */
+void cssl_stop();
+
+/* alloc new cssl_t struct and open the port */
+cssl_t *cssl_open(const char *fname, /* pathname of port file,
+              * for example &quot;/dev/ttyS0&quot; */
+      cssl_callback_t callback, /* callback function
+               * If you dont want
+               * event driven reading - set
+               * it to NULL */
+      int id,     /* your own id for the port, it can help
+             * to identify the port in callback f.*/
+      int baud,   /* baudrate, integer, for example 19200 */
+      int bits,   /* data bits: 7 or 8 */
+      int parity, /* parity: 0 - none, 1-odd, 2-even */
+      int stop);  /* stop bits: 1 or 2 */
+
+/* closes the port, and frees its cssl_t struct */
+void cssl_close(cssl_t *serial);
+
+/* setups the port, look at cssl_open */
+void cssl_setup(cssl_t *serial,
+       int baud,
+       int bits,
+       int parity,
+       int stop);
+
+void cssl_setflowcontrol(cssl_t *serial,
+       int rtscts,   /* Boolean:
+          * 0 - no rts/cts control,
+          * 1 - rts/cts control
+          */
+       int xonxoff); /* Boolean:
+          * 0 - no xon/xoff,
+          * 1 - xon/xoff
+          */
+
+/* sends a char via serial port */
+void cssl_putchar(cssl_t *serial,
+         char c);
+
+/* sends a null terminated string */
+void cssl_putstring(cssl_t *serial,
+           char *str);
+
+/* sends a data of known size */
+void cssl_putdata(cssl_t *serial,
+      uint8_t *data, /* data */
+      int datalen);  /* length of data */
+
+/* waits until all data has been transmited */
+
+void cssl_drain(cssl_t *serial);
+
+/*======================================
+ * Blocking mode
+ */
+
+/* Sets port timeout (deciseconds) in blocking mode */
+void cssl_settimeout(cssl_t *serial, int timeout);
+
+/* reads a char in blocking mode */
+int cssl_getchar(cssl_t *serial);
+
+/* reads a data to a buffer in blocking mode*/
+int cssl_getdata(cssl_t *serial,
+     uint8_t *buffer,  /* buffer for data */
+     int size);        /* buffer size */
+
+
+#endif /* __CSSL_H__ */
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/linux-serial-with-libcssl/" data-id="cireenwmm0007w4sk8pvuvinm" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IT/">IT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/libcssl/">libcssl</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/串口/">串口</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-IO-multiplexing" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/IO-multiplexing/" class="article-date">
@@ -144,7 +934,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/IO-multiplexing/" data-id="cireb0jhq0005i0skcroo3wyr" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/IO-multiplexing/" data-id="cireenwm00001w4skd4420e10" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/I-O/">I/O</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IT/">IT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/复用/">复用</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/效率/">效率</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网络/">网络</a></li></ul>
@@ -201,7 +991,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/select-implement/" data-id="cireb0jia000hi0sk3kaeua4k" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/select-implement/" data-id="cireenwoc001kw4sknhcfkgot" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IT/">IT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/epoll/">epoll</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/select/">select</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网络/">网络</a></li></ul>
@@ -251,7 +1041,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/outstanding-programmer/" data-id="cireb0ji6000di0sknl5pks6q" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/outstanding-programmer/" data-id="cireenwmt000bw4sk4l1t97iy" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IT/">IT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/成长/">成长</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/程序员/">程序员</a></li></ul>
@@ -337,7 +1127,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/lead-the-industry/" data-id="cireb0ji20009i0skpuur0leh" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/lead-the-industry/" data-id="cireenwmn0008w4ske8i559k6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IT/">IT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/成长/">成长</a></li></ul>
@@ -403,7 +1193,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/programmers-10-investment/" data-id="cireb0ji8000fi0skyup4a9ih" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/programmers-10-investment/" data-id="cireenwmv000dw4skzh89pq11" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IT/">IT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/成长/">成长</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/程序员/">程序员</a></li></ul>
@@ -511,7 +1301,7 @@ int main()
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/define-symbol/" data-id="cireb0jhj0003i0skf9vy0hwd" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/define-symbol/" data-id="cireenwm60003w4skwkg595ch" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/define/">define</a></li></ul>
@@ -559,7 +1349,7 @@ sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/run-32b-on-64b-ubuntu/" data-id="cireb0ji4000ai0skvfitl8ji" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/run-32b-on-64b-ubuntu/" data-id="cireenwo4001iw4sk9x662dfz" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/32-bit/">32-bit</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ubuntu/">Ubuntu</a></li></ul>
@@ -605,7 +1395,7 @@ sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/Blog-move-to-github/" data-id="cireb0jhd0001i0sk5dsd260p" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/Blog-move-to-github/" data-id="cireenwlw0000w4skii00lwc9" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/blog/">blog</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/">github</a></li></ul>
@@ -682,7 +1472,7 @@ sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/it-kas-4-snowyying/" data-id="cireb0jhx0008i0skrlll4aql" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/it-kas-4-snowyying/" data-id="cireenwmj0006w4sktxjnuqgy" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IT/">IT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/KAs/">KAs</a></li></ul>
@@ -729,7 +1519,7 @@ sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/hello-world/" data-id="cireb0jhv0006i0sk4gyp75mp" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/hello-world/" data-id="cireenwme0004w4sk1354ivnk" class="article-share-link">Share</a>
       
       
     </footer>
@@ -751,7 +1541,7 @@ sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/32-bit/">32-bit</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/I-O/">I/O</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IT/">IT</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KAs/">KAs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/">Ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/define/">define</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/epoll/">epoll</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/select/">select</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/复用/">复用</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/成长/">成长</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/效率/">效率</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/程序员/">程序员</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络/">网络</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/32-bit/">32-bit</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/I-O/">I/O</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IT/">IT</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KAs/">KAs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/">Ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/define/">define</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/epoll/">epoll</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/libcssl/">libcssl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/select/">select</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/串口/">串口</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/复用/">复用</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/成长/">成长</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/效率/">效率</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/程序员/">程序员</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络/">网络</a></li></ul>
     </div>
   </div>
 
@@ -761,7 +1551,7 @@ sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/32-bit/" style="font-size: 10px;">32-bit</a> <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/I-O/" style="font-size: 10px;">I/O</a> <a href="/tags/IT/" style="font-size: 20px;">IT</a> <a href="/tags/KAs/" style="font-size: 10px;">KAs</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/define/" style="font-size: 10px;">define</a> <a href="/tags/epoll/" style="font-size: 10px;">epoll</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/select/" style="font-size: 10px;">select</a> <a href="/tags/复用/" style="font-size: 10px;">复用</a> <a href="/tags/成长/" style="font-size: 16.67px;">成长</a> <a href="/tags/效率/" style="font-size: 10px;">效率</a> <a href="/tags/程序员/" style="font-size: 13.33px;">程序员</a> <a href="/tags/网络/" style="font-size: 13.33px;">网络</a>
+      <a href="/tags/32-bit/" style="font-size: 10px;">32-bit</a> <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/I-O/" style="font-size: 10px;">I/O</a> <a href="/tags/IT/" style="font-size: 20px;">IT</a> <a href="/tags/KAs/" style="font-size: 10px;">KAs</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/define/" style="font-size: 10px;">define</a> <a href="/tags/epoll/" style="font-size: 10px;">epoll</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/libcssl/" style="font-size: 10px;">libcssl</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/select/" style="font-size: 10px;">select</a> <a href="/tags/串口/" style="font-size: 10px;">串口</a> <a href="/tags/复用/" style="font-size: 10px;">复用</a> <a href="/tags/成长/" style="font-size: 16.67px;">成长</a> <a href="/tags/效率/" style="font-size: 10px;">效率</a> <a href="/tags/程序员/" style="font-size: 13.33px;">程序员</a> <a href="/tags/网络/" style="font-size: 13.33px;">网络</a>
     </div>
   </div>
 
@@ -783,6 +1573,10 @@ sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386
       <ul>
         
           <li>
+            <a href="/2016/linux-serial-with-libcssl/">linux下使用libcssl库串口编程</a>
+          </li>
+        
+          <li>
             <a href="/2016/IO-multiplexing/">再谈select, iocp, epoll, kqueue及各种I/O复用机制</a>
           </li>
         
@@ -796,10 +1590,6 @@ sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386
         
           <li>
             <a href="/2016/lead-the-industry/">想在IT行业牛B起来, 看他说了些什么... (年轻人必读)</a>
-          </li>
-        
-          <li>
-            <a href="/2016/programmers-10-investment/">程序员必须进行的10项投资</a>
           </li>
         
       </ul>
