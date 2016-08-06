@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-08-06T06:49:13.328Z</updated>
+  <updated>2016-08-06T07:18:50.587Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2016/socket-select/"/>
     <id>http://yoursite.com/2016/socket-select/</id>
     <published>2016-08-06T02:26:48.000Z</published>
-    <updated>2016-08-06T06:49:13.328Z</updated>
+    <updated>2016-08-06T07:18:50.587Z</updated>
     
     <content type="html"><![CDATA[<p><code>&#x8F6C;&#x81EA;: &#x535A;&#x5BA2;&#x56ED; http://www.cnblogs.com/ggzss/archive/2011/08/25/2153746.html 2011-08-25</code></p>
 <blockquote>
@@ -196,6 +196,8 @@ struct timeval* timeout&#x662F;select&#x7684;&#x8D85;&#x65F6;&#x65F6;&#x95F4;&#x
     
     </summary>
     
+      <category term="网络" scheme="http://yoursite.com/categories/%E7%BD%91%E7%BB%9C/"/>
+    
     
       <category term="IT" scheme="http://yoursite.com/tags/IT/"/>
     
@@ -212,7 +214,7 @@ struct timeval* timeout&#x662F;select&#x7684;&#x8D85;&#x65F6;&#x65F6;&#x95F4;&#x
     <link href="http://yoursite.com/2016/socket-SO-REUSEADDR/"/>
     <id>http://yoursite.com/2016/socket-SO-REUSEADDR/</id>
     <published>2016-08-05T11:46:10.000Z</published>
-    <updated>2016-08-06T04:00:36.252Z</updated>
+    <updated>2016-08-06T07:18:50.475Z</updated>
     
     <content type="html"><![CDATA[<p><code>&#x8F6C;&#x81EA;: &#x535A;&#x5BA2;&#x56ED; http://www.cnblogs.com/qq78292959/archive/2013/01/18/2865926.html 2013-01-18</code></p>
 <h6 id="1-&#x4E00;&#x822C;&#x6765;&#x8BF4;&#xFF0C;&#x4E00;&#x4E2A;&#x7AEF;&#x53E3;&#x91CA;&#x653E;&#x540E;&#x4F1A;&#x7B49;&#x5F85;&#x4E24;&#x5206;&#x949F;&#x4E4B;&#x540E;&#x624D;&#x80FD;&#x518D;&#x88AB;&#x4F7F;&#x7528;&#xFF0C;SO-REUSEADDR&#x662F;&#x8BA9;&#x7AEF;&#x53E3;&#x91CA;&#x653E;&#x540E;&#x7ACB;&#x5373;&#x5C31;&#x53EF;&#x4EE5;&#x88AB;&#x518D;&#x6B21;&#x4F7F;&#x7528;&#x3002;"><a href="#1-&#x4E00;&#x822C;&#x6765;&#x8BF4;&#xFF0C;&#x4E00;&#x4E2A;&#x7AEF;&#x53E3;&#x91CA;&#x653E;&#x540E;&#x4F1A;&#x7B49;&#x5F85;&#x4E24;&#x5206;&#x949F;&#x4E4B;&#x540E;&#x624D;&#x80FD;&#x518D;&#x88AB;&#x4F7F;&#x7528;&#xFF0C;SO-REUSEADDR&#x662F;&#x8BA9;&#x7AEF;&#x53E3;&#x91CA;&#x653E;&#x540E;&#x7ACB;&#x5373;&#x5C31;&#x53EF;&#x4EE5;&#x88AB;&#x518D;&#x6B21;&#x4F7F;&#x7528;&#x3002;" class="headerlink" title="1. &#x4E00;&#x822C;&#x6765;&#x8BF4;&#xFF0C;&#x4E00;&#x4E2A;&#x7AEF;&#x53E3;&#x91CA;&#x653E;&#x540E;&#x4F1A;&#x7B49;&#x5F85;&#x4E24;&#x5206;&#x949F;&#x4E4B;&#x540E;&#x624D;&#x80FD;&#x518D;&#x88AB;&#x4F7F;&#x7528;&#xFF0C;SO_REUSEADDR&#x662F;&#x8BA9;&#x7AEF;&#x53E3;&#x91CA;&#x653E;&#x540E;&#x7ACB;&#x5373;&#x5C31;&#x53EF;&#x4EE5;&#x88AB;&#x518D;&#x6B21;&#x4F7F;&#x7528;&#x3002;"></a>1. &#x4E00;&#x822C;&#x6765;&#x8BF4;&#xFF0C;&#x4E00;&#x4E2A;&#x7AEF;&#x53E3;&#x91CA;&#x653E;&#x540E;&#x4F1A;&#x7B49;&#x5F85;&#x4E24;&#x5206;&#x949F;&#x4E4B;&#x540E;&#x624D;&#x80FD;&#x518D;&#x88AB;&#x4F7F;&#x7528;&#xFF0C;SO_REUSEADDR&#x662F;&#x8BA9;&#x7AEF;&#x53E3;&#x91CA;&#x653E;&#x540E;&#x7ACB;&#x5373;&#x5C31;&#x53EF;&#x4EE5;&#x88AB;&#x518D;&#x6B21;&#x4F7F;&#x7528;&#x3002;</h6><p>SO_REUSEADDR&#x7528;&#x4E8E;&#x5BF9;TCP&#x5957;&#x63A5;&#x5B57;&#x5904;&#x4E8E;TIME_WAIT&#x72B6;&#x6001;&#x4E0B;&#x7684;socket&#xFF0C;&#x624D;&#x53EF;&#x4EE5;&#x91CD;&#x590D;&#x7ED1;&#x5B9A;&#x4F7F;&#x7528;&#x3002;server&#x7A0B;&#x5E8F;&#x603B;&#x662F;&#x5E94;&#x8BE5;&#x5728;&#x8C03;&#x7528;bind()&#x4E4B;&#x524D;&#x8BBE;&#x7F6E;SO_REUSEADDR&#x5957;&#x63A5;&#x5B57;&#x9009;&#x9879;&#x3002;TCP&#xFF0C;&#x5148;&#x8C03;&#x7528;close()&#x7684;&#x4E00;&#x65B9;&#x4F1A;&#x8FDB;&#x5165;TIME_WAIT&#x72B6;&#x6001;</p>
@@ -247,6 +249,8 @@ struct timeval* timeout&#x662F;select&#x7684;&#x8D85;&#x65F6;&#x65F6;&#x95F4;&#x
     
     </summary>
     
+      <category term="网络" scheme="http://yoursite.com/categories/%E7%BD%91%E7%BB%9C/"/>
+    
     
       <category term="IT" scheme="http://yoursite.com/tags/IT/"/>
     
@@ -265,7 +269,7 @@ struct timeval* timeout&#x662F;select&#x7684;&#x8D85;&#x65F6;&#x65F6;&#x95F4;&#x
     <link href="http://yoursite.com/2016/linux-serial-with-libcssl/"/>
     <id>http://yoursite.com/2016/linux-serial-with-libcssl/</id>
     <published>2016-08-03T03:46:46.000Z</published>
-    <updated>2016-08-03T04:50:03.189Z</updated>
+    <updated>2016-08-06T07:18:50.535Z</updated>
     
     <content type="html"><![CDATA[<p>&#x4F7F;&#x7528;libcssl(&#x6700;&#x65B0;&#x7248;0.9.4)&#x8FDB;&#x884C;&#x4E32;&#x53E3;&#x901A;&#x8BAF;&#x65F6;, &#x53D1;&#x73B0;&#x5947;&#x5076;&#x6821;&#x9A8C;&#x8BBE;&#x7F6E;&#x65E0;&#x6548;, &#x67E5;&#x770B;&#x6E90;&#x7801;&#x540E;&#x53D1;&#x73B0;&#x6709;&#x4E24;&#x5904;&#x95EE;&#x9898;</p>
 <h6 id="1-cssl-open-&#x4E2D;&#x53C2;&#x6570;&#x8C03;&#x7528;&#x987A;&#x5E8F;&#x95EE;&#x9898;"><a href="#1-cssl-open-&#x4E2D;&#x53C2;&#x6570;&#x8C03;&#x7528;&#x987A;&#x5E8F;&#x95EE;&#x9898;" class="headerlink" title="1 cssl_open()&#x4E2D;&#x53C2;&#x6570;&#x8C03;&#x7528;&#x987A;&#x5E8F;&#x95EE;&#x9898;"></a>1 cssl_open()&#x4E2D;&#x53C2;&#x6570;&#x8C03;&#x7528;&#x987A;&#x5E8F;&#x95EE;&#x9898;</h6><pre><code>/* opens the port */
@@ -338,6 +342,8 @@ void cssl_setup(cssl_t *serial,
     
     </summary>
     
+      <category term="I/O" scheme="http://yoursite.com/categories/I-O/"/>
+    
     
       <category term="IT" scheme="http://yoursite.com/tags/IT/"/>
     
@@ -354,7 +360,7 @@ void cssl_setup(cssl_t *serial,
     <link href="http://yoursite.com/2016/IO-multiplexing/"/>
     <id>http://yoursite.com/2016/IO-multiplexing/</id>
     <published>2016-08-03T02:26:54.000Z</published>
-    <updated>2016-08-06T04:00:39.038Z</updated>
+    <updated>2016-08-06T07:18:50.566Z</updated>
     
     <content type="html"><![CDATA[<p><code>&#x8F6C;&#x81EA;: http://www.cnblogs.com/huacw/p/3518461.html 2010-01-28</code></p>
 <p>&#x9996;&#x5148;&#xFF0C;&#x4ECB;&#x7ECD;&#x51E0;&#x79CD;&#x5E38;&#x89C1;&#x7684;I/O&#x6A21;&#x578B;&#x53CA;&#x5176;&#x533A;&#x522B;&#xFF0C;&#x5982;&#x4E0B;&#xFF1A;</p>
@@ -411,6 +417,8 @@ void cssl_setup(cssl_t *serial,
     
     </summary>
     
+      <category term="I/O" scheme="http://yoursite.com/categories/I-O/"/>
+    
     
       <category term="IT" scheme="http://yoursite.com/tags/IT/"/>
     
@@ -429,7 +437,7 @@ void cssl_setup(cssl_t *serial,
     <link href="http://yoursite.com/2016/select-implement/"/>
     <id>http://yoursite.com/2016/select-implement/</id>
     <published>2016-08-02T13:21:47.000Z</published>
-    <updated>2016-08-06T04:00:38.994Z</updated>
+    <updated>2016-08-06T07:18:50.487Z</updated>
     
     <content type="html"><![CDATA[<p><code>&#x8F6C;&#x81EA;: QUORA http://www.quora.com/Network-Programming/How-is-select-implemented 2012-11-28</code></p>
 <p>&#x6211;&#x4F1A;&#x4EE5;Linux&#x4E3A;&#x4F8B;&#xFF0C;&#x56E0;&#x4E3A;&#x90A3;&#x662F;&#x6211;&#x719F;&#x6089;&#x7684;&#x3002;&#x6211;&#x6CA1;&#x6709;BSD&#x6216;&#x5176;&#x4ED6;unix&#x7CFB;&#x7EDF;&#x7684;&#x7ECF;&#x9A8C;&#xFF0C;&#x4F46;&#x6211;&#x5047;&#x5B9A;&#x8FD9;&#x4E9B;&#x7CFB;&#x7EDF;&#x539F;&#x7406;&#x4E0A;&#x7C7B;&#x4F3C;&#x3002;</p>
@@ -457,6 +465,8 @@ void cssl_setup(cssl_t *serial,
     
     </summary>
     
+      <category term="网络" scheme="http://yoursite.com/categories/%E7%BD%91%E7%BB%9C/"/>
+    
     
       <category term="IT" scheme="http://yoursite.com/tags/IT/"/>
     
@@ -473,7 +483,7 @@ void cssl_setup(cssl_t *serial,
     <link href="http://yoursite.com/2016/outstanding-programmer/"/>
     <id>http://yoursite.com/2016/outstanding-programmer/</id>
     <published>2016-08-02T13:14:02.000Z</published>
-    <updated>2016-08-06T04:00:39.015Z</updated>
+    <updated>2016-08-06T07:18:50.522Z</updated>
     
     <content type="html"><![CDATA[<p><code>&#x8F6C;&#x81EA;: IT&#x6C5F;&#x6E56; &#x7F16;&#x7A0B;&#x611F;&#x609F; 2014-07-02</code></p>
 <p>&#x5982;&#x4F55;&#x6210;&#x4E3A;&#x4E00;&#x540D;&#x6770;&#x51FA;&#x7684;&#x7A0B;&#x5E8F;&#x5458;&#xFF0C;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x6BD4;&#x8F83;&#x590D;&#x6742;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x4EC0;&#x4E48;&#x53EB;&#x6770;&#x51FA;&#xFF1F;&#x4E0B;&#x9762;&#x6211;&#x7ED9;&#x4F60;&#x5927;&#x5BB6;&#x603B;&#x7ED3;&#x4E00;&#x4E0B;&#xFF0C;&#x6587;&#x4E2D;&#x8BF4;&#x7684;&#x4E00;&#x4E9B;&#x89C2;&#x70B9;&#xFF0C;&#x4F60;&#x53EF;&#x80FD;&#x4E0D;&#x8BA4;&#x540C;&#xFF0C;&#x6CA1;&#x5173;&#x7CFB;&#xFF01;&#x8BC4;&#x8BBA;&#x53CD;&#x9988;&#x4E00;&#x4E0B;&#xFF01;</p>
@@ -494,6 +504,8 @@ void cssl_setup(cssl_t *serial,
     
     </summary>
     
+      <category term="管理" scheme="http://yoursite.com/categories/%E7%AE%A1%E7%90%86/"/>
+    
     
       <category term="IT" scheme="http://yoursite.com/tags/IT/"/>
     
@@ -508,7 +520,7 @@ void cssl_setup(cssl_t *serial,
     <link href="http://yoursite.com/2016/lead-the-industry/"/>
     <id>http://yoursite.com/2016/lead-the-industry/</id>
     <published>2016-08-02T12:50:05.000Z</published>
-    <updated>2016-08-06T04:00:39.026Z</updated>
+    <updated>2016-08-06T07:18:50.545Z</updated>
     
     <content type="html"><![CDATA[<p><code>&#x8F6C;&#x81EA;: CSDN&#x535A;&#x5BA2; &#x7A0B;&#x5E8F;&#x4EBA;&#x751F; 2015-05-27</code></p>
 <p>&#x6700;&#x8FD1;&#x6536;&#x5230;&#x4E00;&#x4E9B;&#x5728;&#x6821;&#x5927;&#x5B66;&#x751F;&#x7684;&#x6765;&#x4FE1;&#xFF0C;&#x8BE2;&#x95EE;&#x5927;&#x5B66;&#x5E94;&#x8BE5;&#x600E;&#x6837;&#x5B66;&#x4E60;&#xFF0C;&#x5E94;&#x8BE5;&#x9009;&#x62E9;&#x4EC0;&#x4E48;&#x65B9;&#x5411;&#x5B66;&#x4E60;&#x4EC0;&#x4E48;&#x6280;&#x672F;&#xFF0C;&#x5E94;&#x8BE5;&#x5982;&#x4F55;&#x4E3A;&#x5DE5;&#x4F5C;&#x51C6;&#x5907;&#x2026;&#x2026; &#x770B;&#x5230;&#x8FD9;&#x4E9B;&#x95EE;&#x4EFF;&#x4F5B;&#x770B;&#x5230;&#x4E86;&#x5F53;&#x5E74;&#x7684;&#x81EA;&#x5DF1;&#xFF0C;&#x6DF1;&#x6709;&#x611F;&#x89E6;&#xFF01;&#x53D1;&#x73B0;&#x5176;&#x4E2D;&#x5F88;&#x591A;&#x95EE;&#x9898;&#x5BF9;&#x5927;&#x90E8;&#x5206;&#x5927;&#x5B66;&#x751F;&#x90FD;&#x5F88;&#x6709;&#x5E2E;&#x52A9;&#xFF0C;&#x4E8E;&#x662F;&#x5C06;&#x56DE;&#x4FE1;&#x4EE5;&#x535A;&#x5BA2;&#x7684;&#x5F62;&#x5F0F;&#x516C;&#x5F00;&#xFF0C;&#x7ED3;&#x5408;&#x81EA;&#x5DF1;&#x4E00;&#x8DEF;&#x8D70;&#x6765;&#x7684;&#x7ECF;&#x5386;&#x4E0E;&#x5927;&#x5BB6;&#x5206;&#x4EAB;&#x4E2A;&#x4EBA;&#x5BF9;IT&#x884C;&#x4E1A;&#x3001;&#x5B66;&#x4E60;&#x3001;&#x5DE5;&#x4F5C;&#x7684;&#x770B;&#x6CD5;&#xFF0C;&#x5E0C;&#x671B;&#x80FD;&#x5E2E;&#x52A9;&#x66F4;&#x591A;&#x7684;&#x4EBA;&#x3002;</p>
@@ -565,6 +577,8 @@ void cssl_setup(cssl_t *serial,
     
     </summary>
     
+      <category term="管理" scheme="http://yoursite.com/categories/%E7%AE%A1%E7%90%86/"/>
+    
     
       <category term="IT" scheme="http://yoursite.com/tags/IT/"/>
     
@@ -577,7 +591,7 @@ void cssl_setup(cssl_t *serial,
     <link href="http://yoursite.com/2016/programmers-10-investment/"/>
     <id>http://yoursite.com/2016/programmers-10-investment/</id>
     <published>2016-08-02T12:41:13.000Z</published>
-    <updated>2016-08-06T04:00:39.005Z</updated>
+    <updated>2016-08-06T07:18:50.511Z</updated>
     
     <content type="html"><![CDATA[<p><code>&#x8F6C;&#x81EA;: &#x535A;&#x5BA2;&#x56ED; http://news.cnblogs.com/n/209983/ 2014-06-09</code></p>
 <h2 id="&#x4F60;&#x7684;&#x5065;&#x5EB7;"><a href="#&#x4F60;&#x7684;&#x5065;&#x5EB7;" class="headerlink" title="&#x4F60;&#x7684;&#x5065;&#x5EB7;"></a>&#x4F60;&#x7684;&#x5065;&#x5EB7;</h2><p>&#x663E;&#x800C;&#x6613;&#x89C1;&#xFF0C;&#x5F00;&#x53D1;&#x4EBA;&#x5458;&#x7ECF;&#x5E38;&#x90FD;&#x662F;&#x5750;&#x7740;&#x4E0D;&#x52A8;&#x7684;&#x3002;&#x6BCF;&#x5929;&#x5750;8&#x5230;16&#x4E2A;&#x5C0F;&#x65F6;&#xFF0C;&#x53EA;&#x4F11;&#x606F;&#x5F88;&#x77ED;&#x7684;&#x65F6;&#x95F4;&#xFF0C;&#x4F60;&#x7684;&#x809A;&#x5B50;&#x5468;&#x56F4;&#x5F88;&#x5BB9;&#x6613;&#x4F1A;&#x5806;&#x8D77;&#x8D58;&#x8089;&#x3002;&#x80A5;&#x80D6;&#x662F;&#x5176;&#x5B83;&#x75BE;&#x75C5;&#x7684;&#x50AC;&#x5316;&#x5242;&#xFF0C;&#x800C;&#x5176;&#x4E2D;&#x5FC3;&#x810F;&#x75C5;&#x53C8;&#x662F;&#x6700;&#x53EF;&#x6015;&#x7684;&#x3002;&#x591A;&#x82B1;&#x70B9;&#x65F6;&#x95F4;&#x8FD0;&#x52A8;&#x4E00;&#x4E0B;&#x5C31;&#x80FD;&#x907F;&#x514D;&#x8FD9;&#x6837;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x5982;&#x679C;&#x6709;&#x53EF;&#x80FD;&#x7684;&#x8BDD;&#xFF0C;&#x82B1;&#x70B9;&#x94B1;&#x529E;&#x4E00;&#x5F20;&#x5065;&#x8EAB;&#x623F;&#x7684;&#x4F1A;&#x5458;&#x5361;&#x3002;</p>
@@ -614,6 +628,8 @@ void cssl_setup(cssl_t *serial,
     
     </summary>
     
+      <category term="管理" scheme="http://yoursite.com/categories/%E7%AE%A1%E7%90%86/"/>
+    
     
       <category term="IT" scheme="http://yoursite.com/tags/IT/"/>
     
@@ -628,7 +644,7 @@ void cssl_setup(cssl_t *serial,
     <link href="http://yoursite.com/2016/define-symbol/"/>
     <id>http://yoursite.com/2016/define-symbol/</id>
     <published>2016-08-02T11:29:29.000Z</published>
-    <updated>2016-08-02T12:29:06.403Z</updated>
+    <updated>2016-08-06T07:18:50.575Z</updated>
     
     <content type="html"><![CDATA[<h2 id="1-stringizing-&#x5B57;&#x7B26;&#x4E32;&#x5316;&#x64CD;&#x4F5C;&#x7B26;"><a href="#1-stringizing-&#x5B57;&#x7B26;&#x4E32;&#x5316;&#x64CD;&#x4F5C;&#x7B26;" class="headerlink" title="1 # (stringizing) &#x5B57;&#x7B26;&#x4E32;&#x5316;&#x64CD;&#x4F5C;&#x7B26;"></a>1 # (stringizing) &#x5B57;&#x7B26;&#x4E32;&#x5316;&#x64CD;&#x4F5C;&#x7B26;</h2><p>#&#x7684;&#x4F5C;&#x7528;&#x662F;:</p>
 <blockquote>
@@ -708,6 +724,8 @@ int main()
     
     </summary>
     
+      <category term="C/C++" scheme="http://yoursite.com/categories/C-C/"/>
+    
     
       <category term="C" scheme="http://yoursite.com/tags/C/"/>
     
@@ -720,7 +738,7 @@ int main()
     <link href="http://yoursite.com/2016/run-32b-on-64b-ubuntu/"/>
     <id>http://yoursite.com/2016/run-32b-on-64b-ubuntu/</id>
     <published>2016-08-02T11:07:13.000Z</published>
-    <updated>2016-08-02T11:24:52.396Z</updated>
+    <updated>2016-08-06T07:18:50.497Z</updated>
     
     <content type="html"><![CDATA[<h2 id="Method-1"><a href="#Method-1" class="headerlink" title="Method 1"></a>Method 1</h2><p>To run a 32-bit executable file on a 64-bit multi-architecture Ubuntu system, you have to add the i386 architecture and install the three library packages libc6:i386, libncurses5:i386, and libstdc++6:i386:</p>
 <pre><code>sudo dpkg --add-architecture i386
@@ -740,6 +758,8 @@ sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386
     
     </summary>
     
+      <category term="嵌入式" scheme="http://yoursite.com/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F/"/>
+    
     
       <category term="Ubuntu" scheme="http://yoursite.com/tags/Ubuntu/"/>
     
@@ -752,7 +772,7 @@ sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386
     <link href="http://yoursite.com/2016/Blog-move-to-github/"/>
     <id>http://yoursite.com/2016/Blog-move-to-github/</id>
     <published>2016-08-02T08:28:45.000Z</published>
-    <updated>2016-08-06T03:33:19.618Z</updated>
+    <updated>2016-08-06T07:14:12.474Z</updated>
     
     <content type="html"><![CDATA[<pre><code>&#x66FE;&#x5728;&#x767E;&#x5EA6;&#x7A7A;&#x95F4;, CSDN, &#x535A;&#x5BA2;&#x56ED;, LOFTER&#x7B49;&#x7F51;&#x7AD9;&#x653E;&#x8FC7;&#x535A;&#x5BA2;, &#x73B0;&#x7EDF;&#x4E00;&#x8FC1;&#x79FB;&#x81F3;Github.
 </code></pre><ul>
@@ -770,6 +790,8 @@ sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386
     
     </summary>
     
+      <category term="Test" scheme="http://yoursite.com/categories/Test/"/>
+    
     
       <category term="blog" scheme="http://yoursite.com/tags/blog/"/>
     
@@ -782,7 +804,7 @@ sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386
     <link href="http://yoursite.com/2016/it-kas-4-snowyying/"/>
     <id>http://yoursite.com/2016/it-kas-4-snowyying/</id>
     <published>2016-08-02T02:56:37.000Z</published>
-    <updated>2016-08-02T13:40:12.944Z</updated>
+    <updated>2016-08-06T07:18:50.556Z</updated>
     
     <content type="html"><![CDATA[<pre><code>&#x6574;&#x7406;&#x65F6;&#x95F4;: 20160801
 </code></pre><h2 id="1-C"><a href="#1-C" class="headerlink" title="1. C++"></a>1. C++</h2><ul>
@@ -831,6 +853,8 @@ sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386
 &lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;1-C&quot;&gt;&lt;a href=&quot;#1-C&quot; class=&quot;headerlink&quot; title=&quot;1. C++&quot;&gt;&lt;/a&gt;1. C++&lt;
     
     </summary>
+    
+      <category term="Test" scheme="http://yoursite.com/categories/Test/"/>
     
     
       <category term="IT" scheme="http://yoursite.com/tags/IT/"/>
