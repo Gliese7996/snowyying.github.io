@@ -6,27 +6,24 @@
   <title>再谈select, iocp, epoll, kqueue及各种I/O复用机制 | Snowyying</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="&amp;#x8F6C;&amp;#x81EA;: http://www.cnblogs.com/huacw/p/3518461.html 2010-01-28
-
-&amp;#x9996;&amp;#x5148;&amp;#xFF0C;&amp;#x4ECB;&amp;#x7ECD;&amp;#x51E0;&amp;#x79CD;&amp;#x5E38;&amp;#x89C1;&amp;#x7684;I/O&amp;#x6A21;&amp;#x578B;&amp;#x53CA;&amp;#x5176;&amp;#x533A;&amp;#">
+&amp;#x9996;&amp;#x5148;&amp;#xFF0C;&amp;#x4ECB;&amp;#x7ECD;&amp;#x51E0;&amp;#x79CD;&amp;#x5E38;&amp;#x89C1;&amp;#x7684;I/O&amp;#x6A21;&amp;#x578B;&amp;#x53CA;&amp;#x5176;&amp;#x533A;&amp;#x5">
 <meta property="og:type" content="article">
 <meta property="og:title" content="再谈select, iocp, epoll, kqueue及各种I/O复用机制">
 <meta property="og:url" content="http://yoursite.com/2016/IO-multiplexing/index.html">
 <meta property="og:site_name" content="Snowyying">
 <meta property="og:description" content="&amp;#x8F6C;&amp;#x81EA;: http://www.cnblogs.com/huacw/p/3518461.html 2010-01-28
-
-&amp;#x9996;&amp;#x5148;&amp;#xFF0C;&amp;#x4ECB;&amp;#x7ECD;&amp;#x51E0;&amp;#x79CD;&amp;#x5E38;&amp;#x89C1;&amp;#x7684;I/O&amp;#x6A21;&amp;#x578B;&amp;#x53CA;&amp;#x5176;&amp;#x533A;&amp;#">
+&amp;#x9996;&amp;#x5148;&amp;#xFF0C;&amp;#x4ECB;&amp;#x7ECD;&amp;#x51E0;&amp;#x79CD;&amp;#x5E38;&amp;#x89C1;&amp;#x7684;I/O&amp;#x6A21;&amp;#x578B;&amp;#x53CA;&amp;#x5176;&amp;#x533A;&amp;#x5">
 <meta property="og:image" content="http://yoursite.com/2016/IO-multiplexing/io_module_01.jpg">
 <meta property="og:image" content="http://yoursite.com/2016/IO-multiplexing/io_module_02.jpg">
 <meta property="og:image" content="http://yoursite.com/2016/IO-multiplexing/io_module_03.jpg">
 <meta property="og:image" content="http://yoursite.com/2016/IO-multiplexing/io_module_04.jpg">
 <meta property="og:image" content="http://yoursite.com/2016/IO-multiplexing/io_module_05.jpg">
 <meta property="og:image" content="http://yoursite.com/2016/IO-multiplexing/io_module_cmp.jpg">
-<meta property="og:updated_time" content="2016-08-03T02:58:14.433Z">
+<meta property="og:updated_time" content="2016-08-06T04:00:39.038Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="再谈select, iocp, epoll, kqueue及各种I/O复用机制">
 <meta name="twitter:description" content="&amp;#x8F6C;&amp;#x81EA;: http://www.cnblogs.com/huacw/p/3518461.html 2010-01-28
-
-&amp;#x9996;&amp;#x5148;&amp;#xFF0C;&amp;#x4ECB;&amp;#x7ECD;&amp;#x51E0;&amp;#x79CD;&amp;#x5E38;&amp;#x89C1;&amp;#x7684;I/O&amp;#x6A21;&amp;#x578B;&amp;#x53CA;&amp;#x5176;&amp;#x533A;&amp;#">
+&amp;#x9996;&amp;#x5148;&amp;#xFF0C;&amp;#x4ECB;&amp;#x7ECD;&amp;#x51E0;&amp;#x79CD;&amp;#x5E38;&amp;#x89C1;&amp;#x7684;I/O&amp;#x6A21;&amp;#x578B;&amp;#x53CA;&amp;#x5176;&amp;#x533A;&amp;#x5">
 <meta name="twitter:image" content="http://yoursite.com/2016/IO-multiplexing/io_module_01.jpg">
   
     <link rel="alternate" href="/atom.xml" title="Snowyying" type="application/atom+xml">
@@ -104,9 +101,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <blockquote>
-<p>&#x8F6C;&#x81EA;: <a href="http://www.cnblogs.com/huacw/p/3518461.html" target="_blank" rel="external">http://www.cnblogs.com/huacw/p/3518461.html</a> 2010-01-28</p>
-</blockquote>
+        <p><code>&#x8F6C;&#x81EA;: http://www.cnblogs.com/huacw/p/3518461.html 2010-01-28</code></p>
 <p>&#x9996;&#x5148;&#xFF0C;&#x4ECB;&#x7ECD;&#x51E0;&#x79CD;&#x5E38;&#x89C1;&#x7684;I/O&#x6A21;&#x578B;&#x53CA;&#x5176;&#x533A;&#x522B;&#xFF0C;&#x5982;&#x4E0B;&#xFF1A;</p>
 <ul>
 <li>blocking I/O</li>
@@ -156,7 +151,9 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/IO-multiplexing/" data-id="cirikq0p80003qoskeb5lua8f" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/IO-multiplexing/" data-id="cirir0bhz0006z8sk1lnu5lid" class="article-share-link">Share</a>
+      
+        <a href="http://yoursite.com/2016/IO-multiplexing/#disqus_thread" class="article-comment-link">留言</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/I-O/">I/O</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IT/">IT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/复用/">复用</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/效率/">效率</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网络/">网络</a></li></ul>
@@ -187,6 +184,25 @@
   
 </article>
 
+
+<section id="comments">
+  <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="2016/IO-multiplexing/" data-title="再谈select, iocp, epoll, kqueue及各种I/O复用机制" data-url="http://yoursite.com/2016/IO-multiplexing/"></div>
+  <!-- 多说评论框 end -->
+  <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"snowyying"};
+  (function() {
+  	var ds = document.createElement('script');
+  	ds.type = 'text/javascript';ds.async = true;
+  	ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+  	ds.charset = 'UTF-8';
+  	(document.getElementsByTagName('head')[0] 
+  	 || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+  <!-- 多说公共JS代码 end -->
+</section>
 </section>
         
           <aside id="sidebar">
@@ -230,6 +246,10 @@
       <ul>
         
           <li>
+            <a href="/2016/test/">test</a>
+          </li>
+        
+          <li>
             <a href="/2016/socket-select/">socket编程之select函数</a>
           </li>
         
@@ -245,10 +265,6 @@
             <a href="/2016/IO-multiplexing/">再谈select, iocp, epoll, kqueue及各种I/O复用机制</a>
           </li>
         
-          <li>
-            <a href="/2016/select-implement/">SELECT是如何实现的？</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -262,7 +278,9 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2016 Snowyying<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>.
+Analyse with <script src="http://s23.cnzz.com/z_stat.php?id=1260081840&web_id=1260081840" language="JavaScript"></script>
+
     </div>
   </div>
 </footer>

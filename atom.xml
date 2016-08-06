@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-08-06T02:39:09.094Z</updated>
+  <updated>2016-08-06T04:51:50.082Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,16 +16,36 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>test</title>
+    <link href="http://yoursite.com/2016/test/"/>
+    <id>http://yoursite.com/2016/test/</id>
+    <published>2016-08-06T04:41:51.000Z</published>
+    <updated>2016-08-06T04:51:50.082Z</updated>
+    
+    <content type="html"><![CDATA[<p>xxx</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;xxx&lt;/p&gt;
+
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>socket编程之select函数</title>
     <link href="http://yoursite.com/2016/socket-select/"/>
     <id>http://yoursite.com/2016/socket-select/</id>
     <published>2016-08-06T02:26:48.000Z</published>
-    <updated>2016-08-06T02:39:09.094Z</updated>
+    <updated>2016-08-06T04:00:39.064Z</updated>
     
-    <content type="html"><![CDATA[<blockquote>
-<p>&#x8F6C;&#x81EA;: &#x535A;&#x5BA2;&#x56ED; <a href="http://www.cnblogs.com/ggzss/archive/2011/08/25/2153746.html" target="_blank" rel="external">http://www.cnblogs.com/ggzss/archive/2011/08/25/2153746.html</a> 2011-08-25</p>
-</blockquote>
+    <content type="html"><![CDATA[<p><code>&#x8F6C;&#x81EA;: &#x535A;&#x5BA2;&#x56ED; http://www.cnblogs.com/ggzss/archive/2011/08/25/2153746.html 2011-08-25</code></p>
+<blockquote>
 <p>Select&#x5728;Socket&#x7F16;&#x7A0B;&#x4E2D;&#x8FD8;&#x662F;&#x6BD4;&#x8F83;&#x91CD;&#x8981;&#x7684;&#xFF0C;&#x5B83;&#x80FD;&#x591F;&#x76D1;&#x89C6;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x76D1;&#x89C6;&#x7684;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#x7684;&#x53D8;&#x5316;&#x60C5;&#x51B5;&#x2014;&#x2014;&#x8BFB;&#x5199;&#x6216;&#x662F;&#x5F02;&#x5E38;&#x3002;</p>
+</blockquote>
 <p>Select&#x7684;&#x51FD;&#x6570;&#x683C;&#x5F0F;, Unix&#x7CFB;&#x7EDF;&#x4E0B;&#x7684;&#x4F2F;&#x514B;&#x5229;socket&#x7F16;&#x7A0B;&#xFF0C;&#x548C;windows&#x4E0B;&#x7684;&#x7565;&#x6709;&#x533A;&#x522B;&#xFF0C;&#x4F53;&#x73B0;&#x4E24;&#x4E2A;&#x65B9;&#x9762;&#xFF1A;</p>
 <ol>
 <li>select&#x51FD;&#x6570;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x5728;windows&#x4E0B;&#x53EF;&#x4EE5;&#x5FFD;&#x7565;&#xFF0C;&#x4F46;&#x5728;linux&#x4E0B;&#x5FC5;&#x987B;&#x8BBE;&#x4E3A;&#x6700;&#x5927;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#x52A0;1&#xFF1B;</li>
@@ -173,8 +193,8 @@ g,DWORD dwCallbackData)
     
     <summary type="html">
     
-      &lt;blockquote&gt;
-&lt;p&gt;&amp;#x8F6C;&amp;#x81EA;: &amp;#x535A;&amp;#x5BA2;&amp;#x56ED; &lt;a href=&quot;http://www.cnblogs.com/ggzss/archive/2011/08/25/2153746.html&quot; target=&quot;_b
+      &lt;p&gt;&lt;code&gt;&amp;#x8F6C;&amp;#x81EA;: &amp;#x535A;&amp;#x5BA2;&amp;#x56ED; http://www.cnblogs.com/ggzss/archive/2011/08/25/2153746.html 2011-08-25&lt;/code&gt;&lt;/p&gt;
+&lt;bloc
     
     </summary>
     
@@ -183,9 +203,9 @@ g,DWORD dwCallbackData)
     
       <category term="网络" scheme="http://yoursite.com/tags/%E7%BD%91%E7%BB%9C/"/>
     
-      <category term="socket" scheme="http://yoursite.com/tags/socket/"/>
-    
       <category term="select" scheme="http://yoursite.com/tags/select/"/>
+    
+      <category term="socket" scheme="http://yoursite.com/tags/socket/"/>
     
   </entry>
   
@@ -194,11 +214,9 @@ g,DWORD dwCallbackData)
     <link href="http://yoursite.com/2016/socket-SO-REUSEADDR/"/>
     <id>http://yoursite.com/2016/socket-SO-REUSEADDR/</id>
     <published>2016-08-05T11:46:10.000Z</published>
-    <updated>2016-08-06T02:41:06.554Z</updated>
+    <updated>2016-08-06T04:00:36.252Z</updated>
     
-    <content type="html"><![CDATA[<blockquote>
-<p>&#x8F6C;&#x81EA;: &#x535A;&#x5BA2;&#x56ED; <a href="http://www.cnblogs.com/qq78292959/archive/2013/01/18/2865926.html" target="_blank" rel="external">http://www.cnblogs.com/qq78292959/archive/2013/01/18/2865926.html</a> 2013-01-18</p>
-</blockquote>
+    <content type="html"><![CDATA[<p><code>&#x8F6C;&#x81EA;: &#x535A;&#x5BA2;&#x56ED; http://www.cnblogs.com/qq78292959/archive/2013/01/18/2865926.html 2013-01-18</code></p>
 <h6 id="1-&#x4E00;&#x822C;&#x6765;&#x8BF4;&#xFF0C;&#x4E00;&#x4E2A;&#x7AEF;&#x53E3;&#x91CA;&#x653E;&#x540E;&#x4F1A;&#x7B49;&#x5F85;&#x4E24;&#x5206;&#x949F;&#x4E4B;&#x540E;&#x624D;&#x80FD;&#x518D;&#x88AB;&#x4F7F;&#x7528;&#xFF0C;SO-REUSEADDR&#x662F;&#x8BA9;&#x7AEF;&#x53E3;&#x91CA;&#x653E;&#x540E;&#x7ACB;&#x5373;&#x5C31;&#x53EF;&#x4EE5;&#x88AB;&#x518D;&#x6B21;&#x4F7F;&#x7528;&#x3002;"><a href="#1-&#x4E00;&#x822C;&#x6765;&#x8BF4;&#xFF0C;&#x4E00;&#x4E2A;&#x7AEF;&#x53E3;&#x91CA;&#x653E;&#x540E;&#x4F1A;&#x7B49;&#x5F85;&#x4E24;&#x5206;&#x949F;&#x4E4B;&#x540E;&#x624D;&#x80FD;&#x518D;&#x88AB;&#x4F7F;&#x7528;&#xFF0C;SO-REUSEADDR&#x662F;&#x8BA9;&#x7AEF;&#x53E3;&#x91CA;&#x653E;&#x540E;&#x7ACB;&#x5373;&#x5C31;&#x53EF;&#x4EE5;&#x88AB;&#x518D;&#x6B21;&#x4F7F;&#x7528;&#x3002;" class="headerlink" title="1. &#x4E00;&#x822C;&#x6765;&#x8BF4;&#xFF0C;&#x4E00;&#x4E2A;&#x7AEF;&#x53E3;&#x91CA;&#x653E;&#x540E;&#x4F1A;&#x7B49;&#x5F85;&#x4E24;&#x5206;&#x949F;&#x4E4B;&#x540E;&#x624D;&#x80FD;&#x518D;&#x88AB;&#x4F7F;&#x7528;&#xFF0C;SO_REUSEADDR&#x662F;&#x8BA9;&#x7AEF;&#x53E3;&#x91CA;&#x653E;&#x540E;&#x7ACB;&#x5373;&#x5C31;&#x53EF;&#x4EE5;&#x88AB;&#x518D;&#x6B21;&#x4F7F;&#x7528;&#x3002;"></a>1. &#x4E00;&#x822C;&#x6765;&#x8BF4;&#xFF0C;&#x4E00;&#x4E2A;&#x7AEF;&#x53E3;&#x91CA;&#x653E;&#x540E;&#x4F1A;&#x7B49;&#x5F85;&#x4E24;&#x5206;&#x949F;&#x4E4B;&#x540E;&#x624D;&#x80FD;&#x518D;&#x88AB;&#x4F7F;&#x7528;&#xFF0C;SO_REUSEADDR&#x662F;&#x8BA9;&#x7AEF;&#x53E3;&#x91CA;&#x653E;&#x540E;&#x7ACB;&#x5373;&#x5C31;&#x53EF;&#x4EE5;&#x88AB;&#x518D;&#x6B21;&#x4F7F;&#x7528;&#x3002;</h6><p>SO_REUSEADDR&#x7528;&#x4E8E;&#x5BF9;TCP&#x5957;&#x63A5;&#x5B57;&#x5904;&#x4E8E;TIME_WAIT&#x72B6;&#x6001;&#x4E0B;&#x7684;socket&#xFF0C;&#x624D;&#x53EF;&#x4EE5;&#x91CD;&#x590D;&#x7ED1;&#x5B9A;&#x4F7F;&#x7528;&#x3002;server&#x7A0B;&#x5E8F;&#x603B;&#x662F;&#x5E94;&#x8BE5;&#x5728;&#x8C03;&#x7528;bind()&#x4E4B;&#x524D;&#x8BBE;&#x7F6E;SO_REUSEADDR&#x5957;&#x63A5;&#x5B57;&#x9009;&#x9879;&#x3002;TCP&#xFF0C;&#x5148;&#x8C03;&#x7528;close()&#x7684;&#x4E00;&#x65B9;&#x4F1A;&#x8FDB;&#x5165;TIME_WAIT&#x72B6;&#x6001;</p>
 <h6 id="2-SO-REUSEADDR&#x548C;SO-REUSEPORT"><a href="#2-SO-REUSEADDR&#x548C;SO-REUSEPORT" class="headerlink" title="2. SO_REUSEADDR&#x548C;SO_REUSEPORT"></a>2. SO_REUSEADDR&#x548C;SO_REUSEPORT</h6><p>SO_REUSEADDR&#x63D0;&#x4F9B;&#x5982;&#x4E0B;&#x56DB;&#x4E2A;&#x529F;&#x80FD;&#xFF1A;</p>
 <ul>
@@ -226,8 +244,8 @@ g,DWORD dwCallbackData)
     
     <summary type="html">
     
-      &lt;blockquote&gt;
-&lt;p&gt;&amp;#x8F6C;&amp;#x81EA;: &amp;#x535A;&amp;#x5BA2;&amp;#x56ED; &lt;a href=&quot;http://www.cnblogs.com/qq78292959/archive/2013/01/18/2865926.html&quot; targe
+      &lt;p&gt;&lt;code&gt;&amp;#x8F6C;&amp;#x81EA;: &amp;#x535A;&amp;#x5BA2;&amp;#x56ED; http://www.cnblogs.com/qq78292959/archive/2013/01/18/2865926.html 2013-01-18&lt;/code&gt;&lt;/p&gt;
+
     
     </summary>
     
@@ -338,11 +356,9 @@ void cssl_setup(cssl_t *serial,
     <link href="http://yoursite.com/2016/IO-multiplexing/"/>
     <id>http://yoursite.com/2016/IO-multiplexing/</id>
     <published>2016-08-03T02:26:54.000Z</published>
-    <updated>2016-08-03T02:58:14.433Z</updated>
+    <updated>2016-08-06T04:00:39.038Z</updated>
     
-    <content type="html"><![CDATA[<blockquote>
-<p>&#x8F6C;&#x81EA;: <a href="http://www.cnblogs.com/huacw/p/3518461.html" target="_blank" rel="external">http://www.cnblogs.com/huacw/p/3518461.html</a> 2010-01-28</p>
-</blockquote>
+    <content type="html"><![CDATA[<p><code>&#x8F6C;&#x81EA;: http://www.cnblogs.com/huacw/p/3518461.html 2010-01-28</code></p>
 <p>&#x9996;&#x5148;&#xFF0C;&#x4ECB;&#x7ECD;&#x51E0;&#x79CD;&#x5E38;&#x89C1;&#x7684;I/O&#x6A21;&#x578B;&#x53CA;&#x5176;&#x533A;&#x522B;&#xFF0C;&#x5982;&#x4E0B;&#xFF1A;</p>
 <ul>
 <li>blocking I/O</li>
@@ -392,8 +408,8 @@ void cssl_setup(cssl_t *serial,
     
     <summary type="html">
     
-      &lt;blockquote&gt;
-&lt;p&gt;&amp;#x8F6C;&amp;#x81EA;: &lt;a href=&quot;http://www.cnblogs.com/huacw/p/3518461.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.cnblogs.co
+      &lt;p&gt;&lt;code&gt;&amp;#x8F6C;&amp;#x81EA;: http://www.cnblogs.com/huacw/p/3518461.html 2010-01-28&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&amp;#x9996;&amp;#x5148;&amp;#xFF0C;&amp;#x4ECB;&amp;#x7ECD;&amp;#x5
     
     </summary>
     
@@ -415,11 +431,9 @@ void cssl_setup(cssl_t *serial,
     <link href="http://yoursite.com/2016/select-implement/"/>
     <id>http://yoursite.com/2016/select-implement/</id>
     <published>2016-08-02T13:21:47.000Z</published>
-    <updated>2016-08-02T13:25:41.794Z</updated>
+    <updated>2016-08-06T04:00:38.994Z</updated>
     
-    <content type="html"><![CDATA[<blockquote>
-<p>&#x8F6C;&#x81EA;: <a href="http://www.quora.com/Network-Programming/How-is-select-implemented" target="_blank" rel="external">http://www.quora.com/Network-Programming/How-is-select-implemented</a> 2012-11-28</p>
-</blockquote>
+    <content type="html"><![CDATA[<p><code>&#x8F6C;&#x81EA;: QUORA http://www.quora.com/Network-Programming/How-is-select-implemented 2012-11-28</code></p>
 <p>&#x6211;&#x4F1A;&#x4EE5;Linux&#x4E3A;&#x4F8B;&#xFF0C;&#x56E0;&#x4E3A;&#x90A3;&#x662F;&#x6211;&#x719F;&#x6089;&#x7684;&#x3002;&#x6211;&#x6CA1;&#x6709;BSD&#x6216;&#x5176;&#x4ED6;unix&#x7CFB;&#x7EDF;&#x7684;&#x7ECF;&#x9A8C;&#xFF0C;&#x4F46;&#x6211;&#x5047;&#x5B9A;&#x8FD9;&#x4E9B;&#x7CFB;&#x7EDF;&#x539F;&#x7406;&#x4E0A;&#x7C7B;&#x4F3C;&#x3002;</p>
 <p>&#x6BCF;&#x4E00;&#x4E2A;Socket&#xFF08;&#x5B9E;&#x9645;&#x4E0A;&#x53EF;&#x4EE5;&#x662F;&#x80FD;&#x591F;&#x6CE8;&#x518C;&#x5230;select()&#x4E0A;&#x7684;&#x4EFB;&#x610F;fd - file descriptor&#xFF09;&#x90FD;&#x6709;&#x4E00;&#x4E2A;waiters&#x7684;&#x5217;&#x8868;&#xFF0C;&#x4ED6;&#x4EEC;&#xFF08;waiter&#xFF09;&#x5728;&#x7B49;&#x5F85;socket&#x4E0A;&#x7684;&#x6D3B;&#x52A8;&#xFF08;&#x5728;linux&#x4E0A;&#x662F; struct wait_queue_head_t&#xFF09;&#x3002;&#x8FD9;&#x4E2A;Socket&#x4E0A;&#x65E0;&#x8BBA;&#x4EC0;&#x4E48;&#x65F6;&#x5019;&#x6709;&#x611F;&#x5174;&#x8DA3;&#x7684;&#x4E8B;&#x4EF6;&#x53D1;&#x751F;&#xFF08;&#x5230;&#x8FBE;&#x65B0;&#x6570;&#x636E;&#xFF0C;&#x7F13;&#x51B2;&#x533A;&#x6709;&#x53EF;&#x5199;&#x7684;&#x7A7A;&#x95F2;&#x7A7A;&#x95F4;&#xFF0C;&#x6216;&#x8005;&#x67D0;&#x79CD;&#x9519;&#x8BEF;&#xFF09;&#xFF0C;&#x8FD9;&#x4E2A;Socket&#x4F1A;&#x904D;&#x5386;&#x5217;&#x8868;&#x901A;&#x77E5;&#x7B49;&#x5F85;&#x6D3B;&#x52A8;&#x7684;&#x6BCF;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x3002;</p>
 <p>select()&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x904D;&#x5386;&#x7528;&#x6237;&#x4F20;&#x5165;&#x7684;&#x63CF;&#x8FF0;&#x7B26;&#x5217;&#x8868;&#x3002;&#x5BF9;&#x4E8E;&#x6BCF;&#x4E00;&#x4E2A;fd&#xFF0C;&#x8C03;&#x7528;fd&#x7684;poll()&#x65B9;&#x6CD5;&#xFF08;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x548C;&#x5E94;&#x7528;&#x5C42;&#x7684;poll()&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x662F;&#x4E24;&#x56DE;&#x4E8B;&#xFF09;&#xFF0C;&#x8FD9;&#x5C06;&#x4F1A;&#x6DFB;&#x52A0;&#x8C03;&#x7528;&#x8005;&#xFF08;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#xFF09;&#x5230;fd&#x7684;&#x7B49;&#x5F85;&#x961F;&#x5217;&#xFF0C;&#x8FD4;&#x56DE;&#x9002;&#x7528;&#x4E8E;&#x5F53;&#x524D;fd&#x7684;&#x4E8B;&#x4EF6;&#xFF08;&#x8BFB;&#xFF0C;&#x5199;&#xFF0C;&#x5F02;&#x5E38;&#xFF09;&#x3002;</p>
@@ -440,8 +454,8 @@ void cssl_setup(cssl_t *serial,
     
     <summary type="html">
     
-      &lt;blockquote&gt;
-&lt;p&gt;&amp;#x8F6C;&amp;#x81EA;: &lt;a href=&quot;http://www.quora.com/Network-Programming/How-is-select-implemented&quot; target=&quot;_blank&quot; rel=&quot;external
+      &lt;p&gt;&lt;code&gt;&amp;#x8F6C;&amp;#x81EA;: QUORA http://www.quora.com/Network-Programming/How-is-select-implemented 2012-11-28&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&amp;#x6211;&amp;#x4F1A
     
     </summary>
     
@@ -461,11 +475,9 @@ void cssl_setup(cssl_t *serial,
     <link href="http://yoursite.com/2016/outstanding-programmer/"/>
     <id>http://yoursite.com/2016/outstanding-programmer/</id>
     <published>2016-08-02T13:14:02.000Z</published>
-    <updated>2016-08-02T13:17:59.860Z</updated>
+    <updated>2016-08-06T04:00:39.015Z</updated>
     
-    <content type="html"><![CDATA[<blockquote>
-<p>&#x8F6C;&#x81EA;: IT&#x6C5F;&#x6E56; &#x7F16;&#x7A0B;&#x611F;&#x609F; 2014-07-02</p>
-</blockquote>
+    <content type="html"><![CDATA[<p><code>&#x8F6C;&#x81EA;: IT&#x6C5F;&#x6E56; &#x7F16;&#x7A0B;&#x611F;&#x609F; 2014-07-02</code></p>
 <p>&#x5982;&#x4F55;&#x6210;&#x4E3A;&#x4E00;&#x540D;&#x6770;&#x51FA;&#x7684;&#x7A0B;&#x5E8F;&#x5458;&#xFF0C;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x6BD4;&#x8F83;&#x590D;&#x6742;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x4EC0;&#x4E48;&#x53EB;&#x6770;&#x51FA;&#xFF1F;&#x4E0B;&#x9762;&#x6211;&#x7ED9;&#x4F60;&#x5927;&#x5BB6;&#x603B;&#x7ED3;&#x4E00;&#x4E0B;&#xFF0C;&#x6587;&#x4E2D;&#x8BF4;&#x7684;&#x4E00;&#x4E9B;&#x89C2;&#x70B9;&#xFF0C;&#x4F60;&#x53EF;&#x80FD;&#x4E0D;&#x8BA4;&#x540C;&#xFF0C;&#x6CA1;&#x5173;&#x7CFB;&#xFF01;&#x8BC4;&#x8BBA;&#x53CD;&#x9988;&#x4E00;&#x4E0B;&#xFF01;</p>
 <h2 id="&#x89E3;&#x51B3;&#x95EE;&#x9898;&#x7684;&#x80FD;&#x529B;&#x548C;&#x521B;&#x65B0;&#x80FD;&#x529B;"><a href="#&#x89E3;&#x51B3;&#x95EE;&#x9898;&#x7684;&#x80FD;&#x529B;&#x548C;&#x521B;&#x65B0;&#x80FD;&#x529B;" class="headerlink" title="&#x89E3;&#x51B3;&#x95EE;&#x9898;&#x7684;&#x80FD;&#x529B;&#x548C;&#x521B;&#x65B0;&#x80FD;&#x529B;"></a>&#x89E3;&#x51B3;&#x95EE;&#x9898;&#x7684;&#x80FD;&#x529B;&#x548C;&#x521B;&#x65B0;&#x80FD;&#x529B;</h2><p>&#x4E2A;&#x4EBA;&#x89C9;&#x7684;&#x4E0D;&#x7BA1;&#x4F60;&#x662F;&#x4EC0;&#x4E48;&#x8BED;&#x8A00;&#x7684;&#x7A0B;&#x5E8F;&#x5458;&#xFF0C;&#x5728;&#x89E3;&#x51B3;&#x95EE;&#x9898;&#x4E0A;&#x9762;&#x4E00;&#x5B9A;&#x8981;&#x6709;&#x5F88;&#x597D;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x5F88;&#x5FEB;&#x7684;&#x89E3;&#x51B3;&#x95EE;&#x9898;&#x3002;&#x8FD9;&#x79CD;&#x80FD;&#x529B;&#x4E0D;&#x662F;&#x4E00;&#x5E74;&#x4E24;&#x5E74;&#x53EF;&#x4EE5;&#x7EC3;&#x51FA;&#x6765;&#x7684;&#xFF0C;&#x9700;&#x8981;&#x5927;&#x91CF;&#x7684;&#x5B9E;&#x8DF5;&#x4EE5;&#x53CA;&#x7ECF;&#x9A8C;&#x3002;&#x521B;&#x65B0;&#x80FD;&#x529B;&#x5BF9;&#x4E8E;&#x7A0B;&#x5E8F;&#x5458;&#x6765;&#x8BF4;&#x5F88;&#x91CD;&#x8981;&#xFF0C;&#x8981;&#x5B66;&#x4F1A;&#x4E3E;&#x4E00;&#x53CD;&#x4E09;&#xFF0C;&#x4ECE;&#x4E0D;&#x540C;&#x7684;&#x601D;&#x8DEF;&#x6765;&#x521B;&#x65B0;&#x51FA;&#x65B0;&#x7684;&#x4E1C;&#x897F;&#x3002;&#x5BF9;&#x4E00;&#x4E9B;&#x65B0;&#x7684;&#x6280;&#x672F;&#x8981;&#x65F6;&#x523B;&#x7684;&#x4E86;&#x89E3;&#x5E76;&#x5B66;&#x4E60;&#x3002;</p>
 <h2 id="&#x4E00;&#x9897;&#x4E0D;&#x65AD;&#x5B66;&#x4E60;&#xFF0C;&#x4E0D;&#x65AD;&#x601D;&#x8003;&#x7684;&#x5927;&#x8111;"><a href="#&#x4E00;&#x9897;&#x4E0D;&#x65AD;&#x5B66;&#x4E60;&#xFF0C;&#x4E0D;&#x65AD;&#x601D;&#x8003;&#x7684;&#x5927;&#x8111;" class="headerlink" title="&#x4E00;&#x9897;&#x4E0D;&#x65AD;&#x5B66;&#x4E60;&#xFF0C;&#x4E0D;&#x65AD;&#x601D;&#x8003;&#x7684;&#x5927;&#x8111;"></a>&#x4E00;&#x9897;&#x4E0D;&#x65AD;&#x5B66;&#x4E60;&#xFF0C;&#x4E0D;&#x65AD;&#x601D;&#x8003;&#x7684;&#x5927;&#x8111;</h2><p>&#x6280;&#x672F;&#x66F4;&#x65B0;&#x7684;&#x5F88;&#x5FEB;&#xFF0C;&#x4E00;&#x4E9B;&#x65B0;&#x7684;&#x6280;&#x672F;&#x662F;&#x6765;&#x89E3;&#x51B3;&#x4E00;&#x4E9B;&#x65E7;&#x7684;&#x6846;&#x67B6;&#x51FA;&#x73B0;&#x7684;&#x95EE;&#x9898;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x8981;&#x6709;&#x4E00;&#x9897;&#x4E0D;&#x65AD;&#x5B66;&#x4E60;&#x7684;&#x5FC3;&#xFF0C;&#x8FD9;&#x6837;&#x6211;&#x4EEC;&#x624D;&#x4E0D;&#x4F1A;&#x88AB;&#x6DD8;&#x6C70;&#xFF0C;&#x800C;&#x4E14;&#x8FD9;&#x4E9B;&#x7684;&#x65B0;&#x7684;&#x6280;&#x672F;&#x5E76;&#x4E0D;&#x662F;&#x5F88;&#x96BE;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x4E00;&#x5B9A;&#x62BD;&#x51FA;&#x65F6;&#x95F4;&#x6765;&#x5B66;&#x4E60;&#x65B0;&#x7684;&#x77E5;&#x8BC6;&#xFF0C;&#x4E30;&#x5BCC;&#x81EA;&#x5DF1;&#xFF01;&#xFF01;</p>
@@ -479,19 +491,17 @@ void cssl_setup(cssl_t *serial,
     
     <summary type="html">
     
-      &lt;blockquote&gt;
-&lt;p&gt;&amp;#x8F6C;&amp;#x81EA;: IT&amp;#x6C5F;&amp;#x6E56; &amp;#x7F16;&amp;#x7A0B;&amp;#x611F;&amp;#x609F; 2014-07-02&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&amp;#x5982;&amp;#x4F55;&amp;#x621
+      &lt;p&gt;&lt;code&gt;&amp;#x8F6C;&amp;#x81EA;: IT&amp;#x6C5F;&amp;#x6E56; &amp;#x7F16;&amp;#x7A0B;&amp;#x611F;&amp;#x609F; 2014-07-02&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&amp;#x5982;&amp;#x4F55;&amp;#x6210;&amp;#x4E3A;&amp;#x4
     
     </summary>
     
     
       <category term="IT" scheme="http://yoursite.com/tags/IT/"/>
     
-      <category term="程序员" scheme="http://yoursite.com/tags/%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
-    
       <category term="成长" scheme="http://yoursite.com/tags/%E6%88%90%E9%95%BF/"/>
+    
+      <category term="程序员" scheme="http://yoursite.com/tags/%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
     
   </entry>
   
@@ -500,11 +510,9 @@ void cssl_setup(cssl_t *serial,
     <link href="http://yoursite.com/2016/lead-the-industry/"/>
     <id>http://yoursite.com/2016/lead-the-industry/</id>
     <published>2016-08-02T12:50:05.000Z</published>
-    <updated>2016-08-02T13:08:38.413Z</updated>
+    <updated>2016-08-06T04:00:39.026Z</updated>
     
-    <content type="html"><![CDATA[<blockquote>
-<p>&#x8F6C;&#x81EA;: CSDN&#x535A;&#x5BA2; &#x7A0B;&#x5E8F;&#x4EBA;&#x751F; 2015-05-27</p>
-</blockquote>
+    <content type="html"><![CDATA[<p><code>&#x8F6C;&#x81EA;: CSDN&#x535A;&#x5BA2; &#x7A0B;&#x5E8F;&#x4EBA;&#x751F; 2015-05-27</code></p>
 <p>&#x6700;&#x8FD1;&#x6536;&#x5230;&#x4E00;&#x4E9B;&#x5728;&#x6821;&#x5927;&#x5B66;&#x751F;&#x7684;&#x6765;&#x4FE1;&#xFF0C;&#x8BE2;&#x95EE;&#x5927;&#x5B66;&#x5E94;&#x8BE5;&#x600E;&#x6837;&#x5B66;&#x4E60;&#xFF0C;&#x5E94;&#x8BE5;&#x9009;&#x62E9;&#x4EC0;&#x4E48;&#x65B9;&#x5411;&#x5B66;&#x4E60;&#x4EC0;&#x4E48;&#x6280;&#x672F;&#xFF0C;&#x5E94;&#x8BE5;&#x5982;&#x4F55;&#x4E3A;&#x5DE5;&#x4F5C;&#x51C6;&#x5907;&#x2026;&#x2026; &#x770B;&#x5230;&#x8FD9;&#x4E9B;&#x95EE;&#x4EFF;&#x4F5B;&#x770B;&#x5230;&#x4E86;&#x5F53;&#x5E74;&#x7684;&#x81EA;&#x5DF1;&#xFF0C;&#x6DF1;&#x6709;&#x611F;&#x89E6;&#xFF01;&#x53D1;&#x73B0;&#x5176;&#x4E2D;&#x5F88;&#x591A;&#x95EE;&#x9898;&#x5BF9;&#x5927;&#x90E8;&#x5206;&#x5927;&#x5B66;&#x751F;&#x90FD;&#x5F88;&#x6709;&#x5E2E;&#x52A9;&#xFF0C;&#x4E8E;&#x662F;&#x5C06;&#x56DE;&#x4FE1;&#x4EE5;&#x535A;&#x5BA2;&#x7684;&#x5F62;&#x5F0F;&#x516C;&#x5F00;&#xFF0C;&#x7ED3;&#x5408;&#x81EA;&#x5DF1;&#x4E00;&#x8DEF;&#x8D70;&#x6765;&#x7684;&#x7ECF;&#x5386;&#x4E0E;&#x5927;&#x5BB6;&#x5206;&#x4EAB;&#x4E2A;&#x4EBA;&#x5BF9;IT&#x884C;&#x4E1A;&#x3001;&#x5B66;&#x4E60;&#x3001;&#x5DE5;&#x4F5C;&#x7684;&#x770B;&#x6CD5;&#xFF0C;&#x5E0C;&#x671B;&#x80FD;&#x5E2E;&#x52A9;&#x66F4;&#x591A;&#x7684;&#x4EBA;&#x3002;</p>
 <blockquote>
 <p>&#x6709;&#x4EC0;&#x4E48;&#x65B9;&#x5F0F;&#x53EF;&#x4EE5;&#x8BA9;&#x6211;&#x4ECE;&#x725B;A&#x53D8;&#x6210;&#x725B;B&#xFF1F;</p>
@@ -554,10 +562,8 @@ void cssl_setup(cssl_t *serial,
     
     <summary type="html">
     
-      &lt;blockquote&gt;
-&lt;p&gt;&amp;#x8F6C;&amp;#x81EA;: CSDN&amp;#x535A;&amp;#x5BA2; &amp;#x7A0B;&amp;#x5E8F;&amp;#x4EBA;&amp;#x751F; 2015-05-27&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&amp;#x6700;&amp;#x8FD1;&amp;#x6
+      &lt;p&gt;&lt;code&gt;&amp;#x8F6C;&amp;#x81EA;: CSDN&amp;#x535A;&amp;#x5BA2; &amp;#x7A0B;&amp;#x5E8F;&amp;#x4EBA;&amp;#x751F; 2015-05-27&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&amp;#x6700;&amp;#x8FD1;&amp;#x6536;&amp;#x5230;&amp;#
     
     </summary>
     
@@ -573,11 +579,9 @@ void cssl_setup(cssl_t *serial,
     <link href="http://yoursite.com/2016/programmers-10-investment/"/>
     <id>http://yoursite.com/2016/programmers-10-investment/</id>
     <published>2016-08-02T12:41:13.000Z</published>
-    <updated>2016-08-02T13:16:25.674Z</updated>
+    <updated>2016-08-06T04:00:39.005Z</updated>
     
-    <content type="html"><![CDATA[<blockquote>
-<p>&#x8F6C;&#x81EA;: &#x535A;&#x5BA2;&#x56ED; <a href="http://news.cnblogs.com/n/209983/" target="_blank" rel="external">http://news.cnblogs.com/n/209983/</a> 2014-06-09</p>
-</blockquote>
+    <content type="html"><![CDATA[<p><code>&#x8F6C;&#x81EA;: &#x535A;&#x5BA2;&#x56ED; http://news.cnblogs.com/n/209983/ 2014-06-09</code></p>
 <h2 id="&#x4F60;&#x7684;&#x5065;&#x5EB7;"><a href="#&#x4F60;&#x7684;&#x5065;&#x5EB7;" class="headerlink" title="&#x4F60;&#x7684;&#x5065;&#x5EB7;"></a>&#x4F60;&#x7684;&#x5065;&#x5EB7;</h2><p>&#x663E;&#x800C;&#x6613;&#x89C1;&#xFF0C;&#x5F00;&#x53D1;&#x4EBA;&#x5458;&#x7ECF;&#x5E38;&#x90FD;&#x662F;&#x5750;&#x7740;&#x4E0D;&#x52A8;&#x7684;&#x3002;&#x6BCF;&#x5929;&#x5750;8&#x5230;16&#x4E2A;&#x5C0F;&#x65F6;&#xFF0C;&#x53EA;&#x4F11;&#x606F;&#x5F88;&#x77ED;&#x7684;&#x65F6;&#x95F4;&#xFF0C;&#x4F60;&#x7684;&#x809A;&#x5B50;&#x5468;&#x56F4;&#x5F88;&#x5BB9;&#x6613;&#x4F1A;&#x5806;&#x8D77;&#x8D58;&#x8089;&#x3002;&#x80A5;&#x80D6;&#x662F;&#x5176;&#x5B83;&#x75BE;&#x75C5;&#x7684;&#x50AC;&#x5316;&#x5242;&#xFF0C;&#x800C;&#x5176;&#x4E2D;&#x5FC3;&#x810F;&#x75C5;&#x53C8;&#x662F;&#x6700;&#x53EF;&#x6015;&#x7684;&#x3002;&#x591A;&#x82B1;&#x70B9;&#x65F6;&#x95F4;&#x8FD0;&#x52A8;&#x4E00;&#x4E0B;&#x5C31;&#x80FD;&#x907F;&#x514D;&#x8FD9;&#x6837;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x5982;&#x679C;&#x6709;&#x53EF;&#x80FD;&#x7684;&#x8BDD;&#xFF0C;&#x82B1;&#x70B9;&#x94B1;&#x529E;&#x4E00;&#x5F20;&#x5065;&#x8EAB;&#x623F;&#x7684;&#x4F1A;&#x5458;&#x5361;&#x3002;</p>
 <p>&#x957F;&#x65F6;&#x95F4;&#x4EE5;&#x4E0D;&#x7B26;&#x5408;&#x4EBA;&#x4F53;&#x5DE5;&#x7A0B;&#x5B66;&#x7684;&#x59FF;&#x52BF;&#x6253;&#x5B57;&#xFF0C;&#x4E5F;&#x5BB9;&#x6613;&#x4F7F;&#x5F00;&#x53D1;&#x4EBA;&#x5458;&#x9009;&#x6210;&#x91CD;&#x590D;&#x6027;&#x7684;&#x808C;&#x8089;&#x635F;&#x4F24;&#xFF0C;&#x6BD4;&#x5982;&#x8BF4;&#x8155;&#x7BA1;&#x7EFC;&#x5408;&#x5F81;&#x3002;&#x6BCF;&#x9694;&#x51E0;&#x4E2A;&#x5C0F;&#x65F6;&#x62C9;&#x4F38;&#x4E00;&#x4E0B;&#x4F60;&#x7684;&#x624B;&#x8155;&#x6216;&#x8005;&#x4E70;&#x5757;&#x9F20;&#x6807;&#x548C;&#x952E;&#x76D8;&#x90FD;&#x80FD;&#x7528;&#x7684;&#x624B;&#x8155;&#x62A4;&#x57AB;&#x53EF;&#x4EE5;&#x907F;&#x514D;&#x8FD9;&#x6837;&#x7684;&#x635F;&#x4F24;&#x3002;</p>
 <p>&#x76EF;&#x7740;&#x5C4F;&#x5E55;&#x4E5F;&#x4F1A;&#x7ED9;&#x4F60;&#x7684;&#x773C;&#x775B;&#x9020;&#x6210;&#x538B;&#x8FEB;&#xFF0C;&#x8FD9;&#x5C31;&#x662F;&#x4E3A;&#x4EC0;&#x4E48;&#x5EFA;&#x8BAE;&#x914D;&#x4E00;&#x526F;&#x9632;&#x7729;&#x5149;&#x773C;&#x955C;&#x800C;&#x4E0D;&#x662F;&#x666E;&#x901A;&#x773C;&#x955C;&#x7684;&#x539F;&#x56E0;&#xFF08;&#x5047;&#x8BBE;&#x4F60;&#x662F;&#x6234;&#x773C;&#x955C;&#x7684;&#xFF09;&#x3002;</p>
@@ -607,17 +611,17 @@ void cssl_setup(cssl_t *serial,
     
     <summary type="html">
     
-      &lt;blockquote&gt;
-&lt;p&gt;&amp;#x8F6C;&amp;#x81EA;: &amp;#x535A;&amp;#x5BA2;&amp;#x56ED; &lt;a href=&quot;http://news.cnblogs.com/n/209983/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http:/
+      &lt;p&gt;&lt;code&gt;&amp;#x8F6C;&amp;#x81EA;: &amp;#x535A;&amp;#x5BA2;&amp;#x56ED; http://news.cnblogs.com/n/209983/ 2014-06-09&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&quot;&amp;#x4F60;&amp;#x7684;&amp;#x5065;
     
     </summary>
     
     
       <category term="IT" scheme="http://yoursite.com/tags/IT/"/>
     
-      <category term="程序员" scheme="http://yoursite.com/tags/%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
-    
       <category term="成长" scheme="http://yoursite.com/tags/%E6%88%90%E9%95%BF/"/>
+    
+      <category term="程序员" scheme="http://yoursite.com/tags/%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
     
   </entry>
   
@@ -750,7 +754,7 @@ sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386
     <link href="http://yoursite.com/2016/Blog-move-to-github/"/>
     <id>http://yoursite.com/2016/Blog-move-to-github/</id>
     <published>2016-08-02T08:28:45.000Z</published>
-    <updated>2016-08-02T08:58:24.764Z</updated>
+    <updated>2016-08-06T03:33:19.618Z</updated>
     
     <content type="html"><![CDATA[<pre><code>&#x66FE;&#x5728;&#x767E;&#x5EA6;&#x7A7A;&#x95F4;, CSDN, &#x535A;&#x5BA2;&#x56ED;, LOFTER&#x7B49;&#x7F51;&#x7AD9;&#x653E;&#x8FC7;&#x535A;&#x5BA2;, &#x73B0;&#x7EDF;&#x4E00;&#x8FC1;&#x79FB;&#x81F3;Github.
 </code></pre><ul>
@@ -842,7 +846,7 @@ sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386
     <link href="http://yoursite.com/2016/hello-world/"/>
     <id>http://yoursite.com/2016/hello-world/</id>
     <published>2016-08-02T01:48:34.792Z</published>
-    <updated>2016-08-02T01:48:34.794Z</updated>
+    <updated>2016-08-06T04:00:39.051Z</updated>
     
     <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></div></pre></td></tr></table></figure>

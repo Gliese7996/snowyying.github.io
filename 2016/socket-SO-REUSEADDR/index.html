@@ -6,21 +6,18 @@
   <title>socket选项之SO_REUSEADDR的意义 | Snowyying</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="&amp;#x8F6C;&amp;#x81EA;: &amp;#x535A;&amp;#x5BA2;&amp;#x56ED; http://www.cnblogs.com/qq78292959/archive/2013/01/18/2865926.html 2013-01-18
-
-1. &amp;#x4E00;&amp;#x822C;&amp;#x6765;&amp;#x8BF4;&amp;#xFF0C;&amp;#x4E00;&amp;#x4E2A;&amp;#x7AEF;&amp;#x53E3;&amp;#x">
+1. &amp;#x4E00;&amp;#x822C;&amp;#x6765;&amp;#x8BF4;&amp;#xFF0C;&amp;#x4E00;&amp;#x4E2A;&amp;#x7AEF;&amp;#x53E3;&amp;#x91">
 <meta property="og:type" content="article">
 <meta property="og:title" content="socket选项之SO_REUSEADDR的意义">
 <meta property="og:url" content="http://yoursite.com/2016/socket-SO-REUSEADDR/index.html">
 <meta property="og:site_name" content="Snowyying">
 <meta property="og:description" content="&amp;#x8F6C;&amp;#x81EA;: &amp;#x535A;&amp;#x5BA2;&amp;#x56ED; http://www.cnblogs.com/qq78292959/archive/2013/01/18/2865926.html 2013-01-18
-
-1. &amp;#x4E00;&amp;#x822C;&amp;#x6765;&amp;#x8BF4;&amp;#xFF0C;&amp;#x4E00;&amp;#x4E2A;&amp;#x7AEF;&amp;#x53E3;&amp;#x">
-<meta property="og:updated_time" content="2016-08-06T02:41:06.554Z">
+1. &amp;#x4E00;&amp;#x822C;&amp;#x6765;&amp;#x8BF4;&amp;#xFF0C;&amp;#x4E00;&amp;#x4E2A;&amp;#x7AEF;&amp;#x53E3;&amp;#x91">
+<meta property="og:updated_time" content="2016-08-06T04:00:36.252Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="socket选项之SO_REUSEADDR的意义">
 <meta name="twitter:description" content="&amp;#x8F6C;&amp;#x81EA;: &amp;#x535A;&amp;#x5BA2;&amp;#x56ED; http://www.cnblogs.com/qq78292959/archive/2013/01/18/2865926.html 2013-01-18
-
-1. &amp;#x4E00;&amp;#x822C;&amp;#x6765;&amp;#x8BF4;&amp;#xFF0C;&amp;#x4E00;&amp;#x4E2A;&amp;#x7AEF;&amp;#x53E3;&amp;#x">
+1. &amp;#x4E00;&amp;#x822C;&amp;#x6765;&amp;#x8BF4;&amp;#xFF0C;&amp;#x4E00;&amp;#x4E2A;&amp;#x7AEF;&amp;#x53E3;&amp;#x91">
   
     <link rel="alternate" href="/atom.xml" title="Snowyying" type="application/atom+xml">
   
@@ -97,9 +94,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <blockquote>
-<p>&#x8F6C;&#x81EA;: &#x535A;&#x5BA2;&#x56ED; <a href="http://www.cnblogs.com/qq78292959/archive/2013/01/18/2865926.html" target="_blank" rel="external">http://www.cnblogs.com/qq78292959/archive/2013/01/18/2865926.html</a> 2013-01-18</p>
-</blockquote>
+        <p><code>&#x8F6C;&#x81EA;: &#x535A;&#x5BA2;&#x56ED; http://www.cnblogs.com/qq78292959/archive/2013/01/18/2865926.html 2013-01-18</code></p>
 <h6 id="1-&#x4E00;&#x822C;&#x6765;&#x8BF4;&#xFF0C;&#x4E00;&#x4E2A;&#x7AEF;&#x53E3;&#x91CA;&#x653E;&#x540E;&#x4F1A;&#x7B49;&#x5F85;&#x4E24;&#x5206;&#x949F;&#x4E4B;&#x540E;&#x624D;&#x80FD;&#x518D;&#x88AB;&#x4F7F;&#x7528;&#xFF0C;SO-REUSEADDR&#x662F;&#x8BA9;&#x7AEF;&#x53E3;&#x91CA;&#x653E;&#x540E;&#x7ACB;&#x5373;&#x5C31;&#x53EF;&#x4EE5;&#x88AB;&#x518D;&#x6B21;&#x4F7F;&#x7528;&#x3002;"><a href="#1-&#x4E00;&#x822C;&#x6765;&#x8BF4;&#xFF0C;&#x4E00;&#x4E2A;&#x7AEF;&#x53E3;&#x91CA;&#x653E;&#x540E;&#x4F1A;&#x7B49;&#x5F85;&#x4E24;&#x5206;&#x949F;&#x4E4B;&#x540E;&#x624D;&#x80FD;&#x518D;&#x88AB;&#x4F7F;&#x7528;&#xFF0C;SO-REUSEADDR&#x662F;&#x8BA9;&#x7AEF;&#x53E3;&#x91CA;&#x653E;&#x540E;&#x7ACB;&#x5373;&#x5C31;&#x53EF;&#x4EE5;&#x88AB;&#x518D;&#x6B21;&#x4F7F;&#x7528;&#x3002;" class="headerlink" title="1. &#x4E00;&#x822C;&#x6765;&#x8BF4;&#xFF0C;&#x4E00;&#x4E2A;&#x7AEF;&#x53E3;&#x91CA;&#x653E;&#x540E;&#x4F1A;&#x7B49;&#x5F85;&#x4E24;&#x5206;&#x949F;&#x4E4B;&#x540E;&#x624D;&#x80FD;&#x518D;&#x88AB;&#x4F7F;&#x7528;&#xFF0C;SO_REUSEADDR&#x662F;&#x8BA9;&#x7AEF;&#x53E3;&#x91CA;&#x653E;&#x540E;&#x7ACB;&#x5373;&#x5C31;&#x53EF;&#x4EE5;&#x88AB;&#x518D;&#x6B21;&#x4F7F;&#x7528;&#x3002;"></a>1. &#x4E00;&#x822C;&#x6765;&#x8BF4;&#xFF0C;&#x4E00;&#x4E2A;&#x7AEF;&#x53E3;&#x91CA;&#x653E;&#x540E;&#x4F1A;&#x7B49;&#x5F85;&#x4E24;&#x5206;&#x949F;&#x4E4B;&#x540E;&#x624D;&#x80FD;&#x518D;&#x88AB;&#x4F7F;&#x7528;&#xFF0C;SO_REUSEADDR&#x662F;&#x8BA9;&#x7AEF;&#x53E3;&#x91CA;&#x653E;&#x540E;&#x7ACB;&#x5373;&#x5C31;&#x53EF;&#x4EE5;&#x88AB;&#x518D;&#x6B21;&#x4F7F;&#x7528;&#x3002;</h6><p>SO_REUSEADDR&#x7528;&#x4E8E;&#x5BF9;TCP&#x5957;&#x63A5;&#x5B57;&#x5904;&#x4E8E;TIME_WAIT&#x72B6;&#x6001;&#x4E0B;&#x7684;socket&#xFF0C;&#x624D;&#x53EF;&#x4EE5;&#x91CD;&#x590D;&#x7ED1;&#x5B9A;&#x4F7F;&#x7528;&#x3002;server&#x7A0B;&#x5E8F;&#x603B;&#x662F;&#x5E94;&#x8BE5;&#x5728;&#x8C03;&#x7528;bind()&#x4E4B;&#x524D;&#x8BBE;&#x7F6E;SO_REUSEADDR&#x5957;&#x63A5;&#x5B57;&#x9009;&#x9879;&#x3002;TCP&#xFF0C;&#x5148;&#x8C03;&#x7528;close()&#x7684;&#x4E00;&#x65B9;&#x4F1A;&#x8FDB;&#x5165;TIME_WAIT&#x72B6;&#x6001;</p>
 <h6 id="2-SO-REUSEADDR&#x548C;SO-REUSEPORT"><a href="#2-SO-REUSEADDR&#x548C;SO-REUSEPORT" class="headerlink" title="2. SO_REUSEADDR&#x548C;SO_REUSEPORT"></a>2. SO_REUSEADDR&#x548C;SO_REUSEPORT</h6><p>SO_REUSEADDR&#x63D0;&#x4F9B;&#x5982;&#x4E0B;&#x56DB;&#x4E2A;&#x529F;&#x80FD;&#xFF1A;</p>
 <ul>
@@ -127,7 +122,9 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/socket-SO-REUSEADDR/" data-id="cirikq0pw000fqoskr1kkh3d2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/socket-SO-REUSEADDR/" data-id="cirir0bip000lz8skzpciyax2" class="article-share-link">Share</a>
+      
+        <a href="http://yoursite.com/2016/socket-SO-REUSEADDR/#disqus_thread" class="article-comment-link">留言</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IT/">IT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SO-REUSEADDR/">SO_REUSEADDR</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/setsockopt/">setsockopt</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/socket/">socket</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网络/">网络</a></li></ul>
@@ -158,6 +155,25 @@
   
 </article>
 
+
+<section id="comments">
+  <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="2016/socket-SO-REUSEADDR/" data-title="socket选项之SO_REUSEADDR的意义" data-url="http://yoursite.com/2016/socket-SO-REUSEADDR/"></div>
+  <!-- 多说评论框 end -->
+  <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"snowyying"};
+  (function() {
+  	var ds = document.createElement('script');
+  	ds.type = 'text/javascript';ds.async = true;
+  	ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+  	ds.charset = 'UTF-8';
+  	(document.getElementsByTagName('head')[0] 
+  	 || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+  <!-- 多说公共JS代码 end -->
+</section>
 </section>
         
           <aside id="sidebar">
@@ -201,6 +217,10 @@
       <ul>
         
           <li>
+            <a href="/2016/test/">test</a>
+          </li>
+        
+          <li>
             <a href="/2016/socket-select/">socket编程之select函数</a>
           </li>
         
@@ -216,10 +236,6 @@
             <a href="/2016/IO-multiplexing/">再谈select, iocp, epoll, kqueue及各种I/O复用机制</a>
           </li>
         
-          <li>
-            <a href="/2016/select-implement/">SELECT是如何实现的？</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -233,7 +249,9 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2016 Snowyying<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>.
+Analyse with <script src="http://s23.cnzz.com/z_stat.php?id=1260081840&web_id=1260081840" language="JavaScript"></script>
+
     </div>
   </div>
 </footer>

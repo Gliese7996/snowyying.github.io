@@ -2,16 +2,72 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yoursite.com/2016/socket-SO-REUSEADDR/</loc>
+    <loc>http://yoursite.com/2016/test/</loc>
     
-    <lastmod>2016-08-06T02:41:06.554Z</lastmod>
+    <lastmod>2016-08-06T04:51:50.082Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2016/socket-select/</loc>
     
-    <lastmod>2016-08-06T02:39:09.094Z</lastmod>
+    <lastmod>2016-08-06T04:00:39.064Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2016/hello-world/</loc>
+    
+    <lastmod>2016-08-06T04:00:39.051Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2016/IO-multiplexing/</loc>
+    
+    <lastmod>2016-08-06T04:00:39.038Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2016/lead-the-industry/</loc>
+    
+    <lastmod>2016-08-06T04:00:39.026Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2016/outstanding-programmer/</loc>
+    
+    <lastmod>2016-08-06T04:00:39.015Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2016/programmers-10-investment/</loc>
+    
+    <lastmod>2016-08-06T04:00:39.005Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2016/select-implement/</loc>
+    
+    <lastmod>2016-08-06T04:00:38.994Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2016/socket-SO-REUSEADDR/</loc>
+    
+    <lastmod>2016-08-06T04:00:36.252Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2016/Blog-move-to-github/</loc>
+    
+    <lastmod>2016-08-06T03:33:19.618Z</lastmod>
     
   </url>
   
@@ -30,44 +86,9 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2016/IO-multiplexing/</loc>
-    
-    <lastmod>2016-08-03T02:58:14.433Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yoursite.com/2016/it-kas-4-snowyying/</loc>
     
     <lastmod>2016-08-02T13:40:12.944Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2016/select-implement/</loc>
-    
-    <lastmod>2016-08-02T13:25:41.794Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2016/outstanding-programmer/</loc>
-    
-    <lastmod>2016-08-02T13:17:59.860Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2016/programmers-10-investment/</loc>
-    
-    <lastmod>2016-08-02T13:16:25.674Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2016/lead-the-industry/</loc>
-    
-    <lastmod>2016-08-02T13:08:38.413Z</lastmod>
     
   </url>
   
@@ -86,23 +107,9 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2016/Blog-move-to-github/</loc>
-    
-    <lastmod>2016-08-02T08:58:24.764Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yoursite.com/NPS/index.html</loc>
     
     <lastmod>2016-08-02T02:57:01.823Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2016/hello-world/</loc>
-    
-    <lastmod>2016-08-02T01:48:34.794Z</lastmod>
     
   </url>
   
