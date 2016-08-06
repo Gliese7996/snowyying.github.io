@@ -52,7 +52,7 @@
         
           <a class="main-nav-link" href="/archives">Archives</a>
         
-          <a class="main-nav-link" href="/about">About</a>
+          <a class="main-nav-link" href="/About">About</a>
         
       </nav>
       <nav id="sub-nav">
@@ -69,45 +69,6 @@
 </header>
       <div class="outer">
         <section id="main">
-  
-    <article id="post-test" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/test/" class="article-date">
-  <time datetime="2016-08-06T04:41:51.000Z" itemprop="datePublished">2016-08-06</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/test/">test</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>xxx</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/test/" data-id="ciriteug4000op0skkdz017h5" class="article-share-link">Share</a>
-      
-        <a href="http://yoursite.com/2016/test/#disqus_thread" class="article-comment-link">留言</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
   
     <article id="post-socket-select" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -143,27 +104,39 @@
 <pre><code>int select(int maxfdp,fd_set *readfds,fd_set *writefds,fd_set *errorfds,struct timeval *timeout);
 
 /*&#x53C2;&#x6570;&#x5217;&#x8868;
-int maxfdp&#x662F;&#x4E00;&#x4E2A;&#x6574;&#x6570;&#x503C;&#xFF0C;&#x662F;&#x6307;&#x96C6;&#x5408;&#x4E2D;&#x6240;&#x6709;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#x7684;&#x8303;&#x56F4;&#xFF0C;&#x5373;&#x6240;&#x6709;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#x7684;&#x6700;&#x5927;&#x503C;&#x52A0;1&#xFF0C;&#x4E0D;&#x80FD;&#x9519;&#xFF01;&#x5728;Windows&#x4E2D;&#x8FD9;&#x4E2A;&#x53C2;&#x6570;&#x7684;&#x503C;&#x65E0;&#x6240;&#x8C13;&#xFF0C;&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;&#x4E0D;&#x6B63;&#x786E;&#x3002;
+int maxfdp&#x662F;&#x4E00;&#x4E2A;&#x6574;&#x6570;&#x503C;&#xFF0C;&#x662F;&#x6307;&#x96C6;&#x5408;&#x4E2D;&#x6240;&#x6709;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#x7684;&#x8303;&#x56F4;&#xFF0C;
+&#x5373;&#x6240;&#x6709;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#x7684;&#x6700;&#x5927;&#x503C;&#x52A0;1&#xFF0C;&#x4E0D;&#x80FD;&#x9519;&#xFF01;
+&#x5728;Windows&#x4E2D;&#x8FD9;&#x4E2A;&#x53C2;&#x6570;&#x7684;&#x503C;&#x65E0;&#x6240;&#x8C13;&#xFF0C;&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;&#x4E0D;&#x6B63;&#x786E;&#x3002;
 
-fd_set *readfds&#x662F;&#x6307;&#x5411;fd_set&#x7ED3;&#x6784;&#x7684;&#x6307;&#x9488;&#xFF0C;&#x8FD9;&#x4E2A;&#x96C6;&#x5408;&#x4E2D;&#x5E94;&#x8BE5;&#x5305;&#x62EC;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#xFF0C;&#x6211;&#x4EEC;&#x662F;&#x8981;&#x76D1;&#x89C6;&#x8FD9;&#x4E9B;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#x7684;&#x8BFB;&#x53D8;&#x5316;&#x7684;&#xFF0C;&#x5373;&#x6211;&#x4EEC;&#x5173;&#x5FC3;&#x662F;&#x5426;&#x53EF;&#x4EE5;&#x4ECE;&#x8FD9;&#x4E9B;&#x6587;&#x4EF6;&#x4E2D;&#x8BFB;&#x53D6;&#x6570;&#x636E;&#x4E86;&#xFF0C;&#x5982;&#x679C;&#x8FD9;&#x4E2A;&#x96C6;&#x5408;&#x4E2D;&#x6709;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x53EF;&#x8BFB;&#xFF0C;select&#x5C31;&#x4F1A;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x5927;&#x4E8E;0&#x7684;&#x503C;&#xFF0C;&#x8868;&#x793A;&#x6709;&#x6587;&#x4EF6;&#x53EF;&#x8BFB;&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x53EF;&#x8BFB;&#x7684;&#x6587;&#x4EF6;&#xFF0C;&#x5219;&#x6839;&#x636E;timeout&#x53C2;&#x6570;&#x518D;&#x5224;&#x65AD;&#x662F;&#x5426;&#x8D85;&#x65F6;&#xFF0C;&#x82E5;&#x8D85;&#x51FA;timeout&#x7684;&#x65F6;&#x95F4;&#xFF0C;select&#x8FD4;&#x56DE;0&#xFF0C;&#x82E5;&#x53D1;&#x751F;&#x9519;&#x8BEF;&#x8FD4;&#x56DE;&#x8D1F;&#x503C;&#x3002;&#x53EF;&#x4EE5;&#x4F20;&#x5165;NULL&#x503C;&#xFF0C;&#x8868;&#x793A;&#x4E0D;&#x5173;&#x5FC3;&#x4EFB;&#x4F55;&#x6587;&#x4EF6;&#x7684;&#x8BFB;&#x53D8;&#x5316;&#x3002;
+fd_set *readfds&#x662F;&#x6307;&#x5411;fd_set&#x7ED3;&#x6784;&#x7684;&#x6307;&#x9488;&#xFF0C;&#x8FD9;&#x4E2A;&#x96C6;&#x5408;&#x4E2D;&#x5E94;&#x8BE5;&#x5305;&#x62EC;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#xFF0C;
+&#x6211;&#x4EEC;&#x662F;&#x8981;&#x76D1;&#x89C6;&#x8FD9;&#x4E9B;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#x7684;&#x8BFB;&#x53D8;&#x5316;&#x7684;&#xFF0C;&#x5373;&#x6211;&#x4EEC;&#x5173;&#x5FC3;&#x662F;&#x5426;&#x53EF;&#x4EE5;&#x4ECE;&#x8FD9;&#x4E9B;&#x6587;&#x4EF6;&#x4E2D;&#x8BFB;&#x53D6;&#x6570;&#x636E;&#x4E86;&#xFF0C;
+&#x5982;&#x679C;&#x8FD9;&#x4E2A;&#x96C6;&#x5408;&#x4E2D;&#x6709;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x53EF;&#x8BFB;&#xFF0C;select&#x5C31;&#x4F1A;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x5927;&#x4E8E;0&#x7684;&#x503C;&#xFF0C;&#x8868;&#x793A;&#x6709;&#x6587;&#x4EF6;&#x53EF;&#x8BFB;&#xFF0C;
+&#x5982;&#x679C;&#x6CA1;&#x6709;&#x53EF;&#x8BFB;&#x7684;&#x6587;&#x4EF6;&#xFF0C;&#x5219;&#x6839;&#x636E;timeout&#x53C2;&#x6570;&#x518D;&#x5224;&#x65AD;&#x662F;&#x5426;&#x8D85;&#x65F6;&#xFF0C;
+&#x82E5;&#x8D85;&#x51FA;timeout&#x7684;&#x65F6;&#x95F4;&#xFF0C;select&#x8FD4;&#x56DE;0&#xFF0C;&#x82E5;&#x53D1;&#x751F;&#x9519;&#x8BEF;&#x8FD4;&#x56DE;&#x8D1F;&#x503C;&#x3002;
+&#x53EF;&#x4EE5;&#x4F20;&#x5165;NULL&#x503C;&#xFF0C;&#x8868;&#x793A;&#x4E0D;&#x5173;&#x5FC3;&#x4EFB;&#x4F55;&#x6587;&#x4EF6;&#x7684;&#x8BFB;&#x53D8;&#x5316;&#x3002;
 
-fd_set *writefds&#x662F;&#x6307;&#x5411;fd_set&#x7ED3;&#x6784;&#x7684;&#x6307;&#x9488;&#xFF0C;&#x8FD9;&#x4E2A;&#x96C6;&#x5408;&#x4E2D;&#x5E94;&#x8BE5;&#x5305;&#x62EC;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#xFF0C;&#x6211;&#x4EEC;&#x662F;&#x8981;&#x76D1;&#x89C6;&#x8FD9;&#x4E9B;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#x7684;&#x5199;&#x53D8;&#x5316;&#x7684;&#xFF0C;&#x5373;&#x6211;&#x4EEC;&#x5173;&#x5FC3;&#x662F;&#x5426;&#x53EF;&#x4EE5;&#x5411;&#x8FD9;&#x4E9B;&#x6587;&#x4EF6;&#x4E2D;&#x5199;&#x5165;&#x6570;&#x636E;&#x4E86;&#xFF0C;&#x5982;&#x679C;&#x8FD9;&#x4E2A;&#x96C6;&#x5408;&#x4E2D;&#x6709;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x53EF;&#x5199;&#xFF0C;select&#x5C31;&#x4F1A;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x5927;&#x4E8E;0&#x7684;&#x503C;&#xFF0C;&#x8868;&#x793A;&#x6709;&#x6587;&#x4EF6;&#x53EF;&#x5199;&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x53EF;&#x5199;&#x7684;&#x6587;&#x4EF6;&#xFF0C;&#x5219;&#x6839;&#x636E;timeout&#x53C2;&#x6570;&#x518D;&#x5224;&#x65AD;&#x662F;&#x5426;&#x8D85;&#x65F6;&#xFF0C;&#x82E5;&#x8D85;&#x51FA;timeout&#x7684;&#x65F6;&#x95F4;&#xFF0C;select&#x8FD4;&#x56DE;0&#xFF0C;&#x82E5;&#x53D1;&#x751F;&#x9519;&#x8BEF;&#x8FD4;&#x56DE;&#x8D1F;&#x503C;&#x3002;&#x53EF;&#x4EE5;&#x4F20;&#x5165;NULL&#x503C;&#xFF0C;&#x8868;&#x793A;&#x4E0D;&#x5173;&#x5FC3;&#x4EFB;&#x4F55;&#x6587;&#x4EF6;&#x7684;&#x5199;&#x53D8;&#x5316;&#x3002;
+fd_set *writefds&#x662F;&#x6307;&#x5411;fd_set&#x7ED3;&#x6784;&#x7684;&#x6307;&#x9488;&#xFF0C;&#x8FD9;&#x4E2A;&#x96C6;&#x5408;&#x4E2D;&#x5E94;&#x8BE5;&#x5305;&#x62EC;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#xFF0C;
+&#x6211;&#x4EEC;&#x662F;&#x8981;&#x76D1;&#x89C6;&#x8FD9;&#x4E9B;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#x7684;&#x5199;&#x53D8;&#x5316;&#x7684;&#xFF0C;&#x5373;&#x6211;&#x4EEC;&#x5173;&#x5FC3;&#x662F;&#x5426;&#x53EF;&#x4EE5;&#x5411;&#x8FD9;&#x4E9B;&#x6587;&#x4EF6;&#x4E2D;&#x5199;&#x5165;&#x6570;&#x636E;&#x4E86;&#xFF0C;
+&#x5982;&#x679C;&#x8FD9;&#x4E2A;&#x96C6;&#x5408;&#x4E2D;&#x6709;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x53EF;&#x5199;&#xFF0C;select&#x5C31;&#x4F1A;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x5927;&#x4E8E;0&#x7684;&#x503C;&#xFF0C;&#x8868;&#x793A;&#x6709;&#x6587;&#x4EF6;&#x53EF;&#x5199;&#xFF0C;
+&#x5982;&#x679C;&#x6CA1;&#x6709;&#x53EF;&#x5199;&#x7684;&#x6587;&#x4EF6;&#xFF0C;&#x5219;&#x6839;&#x636E;timeout&#x53C2;&#x6570;&#x518D;&#x5224;&#x65AD;&#x662F;&#x5426;&#x8D85;&#x65F6;&#xFF0C;
+&#x82E5;&#x8D85;&#x51FA;timeout&#x7684;&#x65F6;&#x95F4;&#xFF0C;select&#x8FD4;&#x56DE;0&#xFF0C;&#x82E5;&#x53D1;&#x751F;&#x9519;&#x8BEF;&#x8FD4;&#x56DE;&#x8D1F;&#x503C;&#x3002;
+&#x53EF;&#x4EE5;&#x4F20;&#x5165;NULL&#x503C;&#xFF0C;&#x8868;&#x793A;&#x4E0D;&#x5173;&#x5FC3;&#x4EFB;&#x4F55;&#x6587;&#x4EF6;&#x7684;&#x5199;&#x53D8;&#x5316;&#x3002;
 
 fd_set *errorfds&#x540C;&#x4E0A;&#x9762;&#x4E24;&#x4E2A;&#x53C2;&#x6570;&#x7684;&#x610F;&#x56FE;&#xFF0C;&#x7528;&#x6765;&#x76D1;&#x89C6;&#x6587;&#x4EF6;&#x9519;&#x8BEF;&#x5F02;&#x5E38;&#x3002;
 
 struct timeval* timeout&#x662F;select&#x7684;&#x8D85;&#x65F6;&#x65F6;&#x95F4;&#xFF0C;&#x8FD9;&#x4E2A;&#x53C2;&#x6570;&#x81F3;&#x5173;&#x91CD;&#x8981;&#xFF0C;&#x5B83;&#x53EF;&#x4EE5;&#x4F7F;select&#x5904;&#x4E8E;&#x4E09;&#x79CD;&#x72B6;&#x6001;&#xFF1A;
-&#x7B2C;&#x4E00;&#xFF0C;&#x82E5;&#x5C06;NULL&#x4EE5;&#x5F62;&#x53C2;&#x4F20;&#x5165;&#xFF0C;&#x5373;&#x4E0D;&#x4F20;&#x5165;&#x65F6;&#x95F4;&#x7ED3;&#x6784;&#xFF0C;&#x5C31;&#x662F;&#x5C06;select&#x7F6E;&#x4E8E;&#x963B;&#x585E;&#x72B6;&#x6001;&#xFF0C;&#x4E00;&#x5B9A;&#x7B49;&#x5230;&#x76D1;&#x89C6;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#x96C6;&#x5408;&#x4E2D;&#x67D0;&#x4E2A;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#x53D1;&#x751F;&#x53D8;&#x5316;&#x4E3A;&#x6B62;&#xFF1B;
-&#x7B2C;&#x4E8C;&#xFF0C;&#x82E5;&#x5C06;&#x65F6;&#x95F4;&#x503C;&#x8BBE;&#x4E3A;0&#x79D2;0&#x6BEB;&#x79D2;&#xFF0C;&#x5C31;&#x53D8;&#x6210;&#x4E00;&#x4E2A;&#x7EAF;&#x7CB9;&#x7684;&#x975E;&#x963B;&#x585E;&#x51FD;&#x6570;&#xFF0C;&#x4E0D;&#x7BA1;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#x662F;&#x5426;&#x6709;&#x53D8;&#x5316;&#xFF0C;&#x90FD;&#x7ACB;&#x523B;&#x8FD4;&#x56DE;&#x7EE7;&#x7EED;&#x6267;&#x884C;&#xFF0C;&#x6587;&#x4EF6;&#x65E0;&#x53D8;&#x5316;&#x8FD4;&#x56DE;0&#xFF0C;&#x6709;&#x53D8;&#x5316;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x6B63;&#x503C;&#xFF1B;
-&#x7B2C;&#x4E09;&#xFF0C;timeout&#x7684;&#x503C;&#x5927;&#x4E8E;0&#xFF0C;&#x8FD9;&#x5C31;&#x662F;&#x7B49;&#x5F85;&#x7684;&#x8D85;&#x65F6;&#x65F6;&#x95F4;&#xFF0C;&#x5373; select&#x5728;timeout&#x65F6;&#x95F4;&#x5185;&#x963B;&#x585E;&#xFF0C;&#x8D85;&#x65F6;&#x65F6;&#x95F4;&#x4E4B;&#x5185;&#x6709;&#x4E8B;&#x4EF6;&#x5230;&#x6765;&#x5C31;&#x8FD4;&#x56DE;&#x4E86;&#xFF0C;&#x5426;&#x5219;&#x5728;&#x8D85;&#x65F6;&#x540E;&#x4E0D;&#x7BA1;&#x600E;&#x6837;&#x4E00;&#x5B9A;&#x8FD4;&#x56DE;&#xFF0C;&#x8FD4;&#x56DE;&#x503C;&#x540C;&#x4E0A;&#x8FF0;&#x3002;
+1. &#x82E5;&#x5C06;NULL&#x4EE5;&#x5F62;&#x53C2;&#x4F20;&#x5165;&#xFF0C;&#x5373;&#x4E0D;&#x4F20;&#x5165;&#x65F6;&#x95F4;&#x7ED3;&#x6784;&#xFF0C;&#x5C31;&#x662F;&#x5C06;select&#x7F6E;&#x4E8E;&#x963B;&#x585E;&#x72B6;&#x6001;&#xFF0C;
+&#x4E00;&#x5B9A;&#x7B49;&#x5230;&#x76D1;&#x89C6;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#x96C6;&#x5408;&#x4E2D;&#x67D0;&#x4E2A;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#x53D1;&#x751F;&#x53D8;&#x5316;&#x4E3A;&#x6B62;&#xFF1B;
+2. &#x82E5;&#x5C06;&#x65F6;&#x95F4;&#x503C;&#x8BBE;&#x4E3A;0&#x79D2;0&#x6BEB;&#x79D2;&#xFF0C;&#x5C31;&#x53D8;&#x6210;&#x4E00;&#x4E2A;&#x7EAF;&#x7CB9;&#x7684;&#x975E;&#x963B;&#x585E;&#x51FD;&#x6570;&#xFF0C;
+&#x4E0D;&#x7BA1;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#x662F;&#x5426;&#x6709;&#x53D8;&#x5316;&#xFF0C;&#x90FD;&#x7ACB;&#x523B;&#x8FD4;&#x56DE;&#x7EE7;&#x7EED;&#x6267;&#x884C;&#xFF0C;&#x6587;&#x4EF6;&#x65E0;&#x53D8;&#x5316;&#x8FD4;&#x56DE;0&#xFF0C;&#x6709;&#x53D8;&#x5316;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x6B63;&#x503C;&#xFF1B;
+3. timeout&#x7684;&#x503C;&#x5927;&#x4E8E;0&#xFF0C;&#x8FD9;&#x5C31;&#x662F;&#x7B49;&#x5F85;&#x7684;&#x8D85;&#x65F6;&#x65F6;&#x95F4;&#xFF0C;&#x5373; select&#x5728;timeout&#x65F6;&#x95F4;&#x5185;&#x963B;&#x585E;&#xFF0C;
+&#x8D85;&#x65F6;&#x65F6;&#x95F4;&#x4E4B;&#x5185;&#x6709;&#x4E8B;&#x4EF6;&#x5230;&#x6765;&#x5C31;&#x8FD4;&#x56DE;&#x4E86;&#xFF0C;&#x5426;&#x5219;&#x5728;&#x8D85;&#x65F6;&#x540E;&#x4E0D;&#x7BA1;&#x600E;&#x6837;&#x4E00;&#x5B9A;&#x8FD4;&#x56DE;&#xFF0C;&#x8FD4;&#x56DE;&#x503C;&#x540C;&#x4E0A;&#x8FF0;&#x3002;
 */
 
 /*
 &#x8FD4;&#x56DE;&#x503C;&#xFF1A;
-
 &#x8D1F;&#x503C;&#xFF1A;select&#x9519;&#x8BEF;
-
 &#x6B63;&#x503C;&#xFF1A;&#x67D0;&#x4E9B;&#x6587;&#x4EF6;&#x53EF;&#x8BFB;&#x5199;&#x6216;&#x51FA;&#x9519;
-
 0&#xFF1A;&#x7B49;&#x5F85;&#x8D85;&#x65F6;&#xFF0C;&#x6CA1;&#x6709;&#x53EF;&#x8BFB;&#x5199;&#x6216;&#x9519;&#x8BEF;&#x7684;&#x6587;&#x4EF6;
 */
 </code></pre><p><strong>&#x8BF4;&#x660E;&#x4E24;&#x4E2A;&#x7ED3;&#x6784;&#x4F53;&#xFF1A;</strong></p>
@@ -261,8 +234,14 @@ struct timeval* timeout&#x662F;select&#x7684;&#x8D85;&#x65F6;&#x65F6;&#x95F4;&#x
 <li>&#x63A5;&#x53D7;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x8FDE;&#x63A5;&#x3002;</li>
 </ol>
 <p>&#x8FD9;&#x91CC;&#x6709;&#x4E00;&#x70B9;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#xFF0C;&#x5C31;&#x662F;&#x6211;&#x6CA1;&#x6709;&#x91CD;&#x65B0;&#x5B9A;&#x4E49;FD_SETSIZE&#x5B8F;&#xFF0C;&#x6240;&#x4EE5;&#x670D;&#x52A1;&#x5668;&#x6700;&#x591A;&#x652F;&#x6301;&#x7684;&#x5E76;&#x53D1;&#x8FDE;&#x63A5;&#x6570;&#x4E3A;64&#x3002;&#x800C;&#x4E14;&#xFF0C;&#x8FD9;&#x91CC;&#x51B3;&#x4E0D;&#x80FD;&#x65E0;&#x6761;&#x4EF6;&#x7684;accept,&#x670D;&#x52A1;&#x5668;&#x5E94;&#x8BE5;&#x6839;&#x636E;&#x5F53;&#x524D;&#x7684;&#x8FDE;&#x63A5;&#x6570;&#x6765;&#x51B3;&#x5B9A;&#x662F;&#x5426;&#x63A5;&#x53D7;&#x6765;&#x81EA;&#x67D0;&#x4E2A;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x8FDE;&#x63A5;&#x3002;&#x4E00;&#x79CD;&#x6BD4;&#x8F83;&#x597D;&#x7684;&#x5B9E;&#x73B0;&#x65B9;&#x6848;&#x5C31;&#x662F;&#x91C7;&#x7528;WSAAccept&#x51FD;&#x6570;&#xFF0C;&#x800C;&#x4E14;&#x8BA9;WSAAccept&#x56DE;&#x8C03;&#x81EA;&#x5DF1;&#x5B9E;&#x73B0;&#x7684;Condition Function&#x3002;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
-<pre><code>int CALLBACK ConditionFunc(LPWSABUF lpCallerId,LPWSABUF lpCallerData, LPQOS lpSQOS,LPQOS lpGQOS,LPWSABUF lpCalleeId, LPWSABUF lpCalleeData,GROUP FAR *
-g,DWORD dwCallbackData)
+<pre><code>int CALLBACK ConditionFunc(LPWSABUF lpCallerId,
+  LPWSABUF lpCallerData,
+  LPQOS lpSQOS,
+  LPQOS lpGQOS,
+  LPWSABUF lpCalleeId,
+  LPWSABUF lpCalleeData,
+  GROUP FAR *g,
+  DWORD dwCallbackData)
 {
 &#x3000;&#x3000;if (&#x5F53;&#x524D;&#x8FDE;&#x63A5;&#x6570; &lt; FD_SETSIZE)
 &#x3000;&#x3000;&#x3000;&#x3000;return CF_ACCEPT;
@@ -282,7 +261,7 @@ g,DWORD dwCallbackData)
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/socket-select/" data-id="ciriteug0000np0sku9nqdnz4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/socket-select/" data-id="ciriu8tef000n38skl52k0rqv" class="article-share-link">Share</a>
       
         <a href="http://yoursite.com/2016/socket-select/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -346,7 +325,7 @@ g,DWORD dwCallbackData)
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/socket-SO-REUSEADDR/" data-id="ciriteufw000lp0sk2sn532qj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/socket-SO-REUSEADDR/" data-id="ciriu8tek000o38sk5dgk6ulv" class="article-share-link">Share</a>
       
         <a href="http://yoursite.com/2016/socket-SO-REUSEADDR/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -449,7 +428,7 @@ void cssl_setup(cssl_t *serial,
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/linux-serial-with-libcssl/" data-id="ciriteufh000dp0sk86voeavm" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/linux-serial-with-libcssl/" data-id="ciriu8te8000i38skzqh5hz23" class="article-share-link">Share</a>
       
         <a href="http://yoursite.com/2016/linux-serial-with-libcssl/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -535,7 +514,7 @@ void cssl_setup(cssl_t *serial,
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/IO-multiplexing/" data-id="ciriteuf20005p0sksoi04s4f" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/IO-multiplexing/" data-id="ciriu8tdn000638sksofoaw8v" class="article-share-link">Share</a>
       
         <a href="http://yoursite.com/2016/IO-multiplexing/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -592,7 +571,7 @@ void cssl_setup(cssl_t *serial,
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/select-implement/" data-id="ciriteufv000kp0skz09u2nj6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/select-implement/" data-id="ciriu8teb000l38sk86jhtu28" class="article-share-link">Share</a>
       
         <a href="http://yoursite.com/2016/select-implement/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -642,7 +621,7 @@ void cssl_setup(cssl_t *serial,
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/outstanding-programmer/" data-id="ciriteufm000fp0skd5kufev8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/outstanding-programmer/" data-id="ciriu8te1000c38sk2l8245pk" class="article-share-link">Share</a>
       
         <a href="http://yoursite.com/2016/outstanding-programmer/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -728,7 +707,7 @@ void cssl_setup(cssl_t *serial,
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/lead-the-industry/" data-id="ciriteufe000ap0sk5el4vfgk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/lead-the-industry/" data-id="ciriu8tdz000b38sk06y6smxd" class="article-share-link">Share</a>
       
         <a href="http://yoursite.com/2016/lead-the-industry/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -794,7 +773,7 @@ void cssl_setup(cssl_t *serial,
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/programmers-10-investment/" data-id="ciriteufp000hp0sk8oy7pvbg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/programmers-10-investment/" data-id="ciriu8te3000g38sk5g48gww7" class="article-share-link">Share</a>
       
         <a href="http://yoursite.com/2016/programmers-10-investment/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -904,7 +883,7 @@ int main()
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/define-symbol/" data-id="ciriteuf50006p0skjx9ohqhd" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/define-symbol/" data-id="ciriu8tdp000838skfc20eemx" class="article-share-link">Share</a>
       
         <a href="http://yoursite.com/2016/define-symbol/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -954,7 +933,7 @@ sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/run-32b-on-64b-ubuntu/" data-id="ciriteufs000ip0skdll38rtk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/run-32b-on-64b-ubuntu/" data-id="ciriu8tea000k38sk0g5ywwz0" class="article-share-link">Share</a>
       
         <a href="http://yoursite.com/2016/run-32b-on-64b-ubuntu/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -1002,7 +981,7 @@ sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/Blog-move-to-github/" data-id="ciriteuer0001p0sk3g6xzdmd" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/Blog-move-to-github/" data-id="ciriu8tdd000338skcgz3479j" class="article-share-link">Share</a>
       
         <a href="http://yoursite.com/2016/Blog-move-to-github/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -1081,7 +1060,7 @@ sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/it-kas-4-snowyying/" data-id="ciriteufb0009p0sk7apx0x5m" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/it-kas-4-snowyying/" data-id="ciriu8tdx000a38sko0zeu2aw" class="article-share-link">Share</a>
       
         <a href="http://yoursite.com/2016/it-kas-4-snowyying/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -1101,6 +1080,10 @@ sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386
   <time datetime="2016-08-02T01:48:34.792Z" itemprop="datePublished">2016-08-02</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Test/">Test</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
@@ -1130,7 +1113,7 @@ sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/hello-world/" data-id="ciriteuf90008p0skbswledzf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/hello-world/" data-id="ciriu8tdg000438skggpst307" class="article-share-link">Share</a>
       
         <a href="http://yoursite.com/2016/hello-world/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -1148,6 +1131,13 @@ sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386
           <aside id="sidebar">
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Test/">Test</a></li></ul>
+    </div>
+  </div>
+
 
   
     
@@ -1186,10 +1176,6 @@ sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386
       <ul>
         
           <li>
-            <a href="/2016/test/">test</a>
-          </li>
-        
-          <li>
             <a href="/2016/socket-select/">socket编程之select函数</a>
           </li>
         
@@ -1203,6 +1189,10 @@ sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386
         
           <li>
             <a href="/2016/IO-multiplexing/">再谈select, iocp, epoll, kqueue及各种I/O复用机制</a>
+          </li>
+        
+          <li>
+            <a href="/2016/select-implement/">SELECT是如何实现的？</a>
           </li>
         
       </ul>
@@ -1231,19 +1221,12 @@ Analyse with <script src="http://s23.cnzz.com/z_stat.php?id=1260081840&web_id=12
   
     <a href="/archives" class="mobile-nav-link">Archives</a>
   
-    <a href="/about" class="mobile-nav-link">About</a>
+    <a href="/About" class="mobile-nav-link">About</a>
   
 </nav>
     
 
-<script src="http://apps.bdimg.com/libs/jquery/2.0.3/jquery.min.js"></script>
-<script type="text/javascript">
-//<![CDATA[
-if (typeof jQuery == 'undefined') {
-document.write(unescape("%3Cscript src='/js/jquery-3.1.0.min.js' type='text/javascript'%3E%3C/script%3E"));
-}
-// ]]>
-</script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 
   <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">

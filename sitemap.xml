@@ -2,23 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yoursite.com/2016/test/</loc>
+    <loc>http://yoursite.com/2016/hello-world/</loc>
     
-    <lastmod>2016-08-06T04:51:50.082Z</lastmod>
+    <lastmod>2016-08-06T07:07:25.688Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/About/index.html</loc>
+    
+    <lastmod>2016-08-06T07:03:57.487Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2016/socket-select/</loc>
     
-    <lastmod>2016-08-06T04:00:39.064Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2016/hello-world/</loc>
-    
-    <lastmod>2016-08-06T04:00:39.051Z</lastmod>
+    <lastmod>2016-08-06T06:49:13.328Z</lastmod>
     
   </url>
   
@@ -75,13 +75,6 @@
     <loc>http://yoursite.com/2016/linux-serial-with-libcssl/</loc>
     
     <lastmod>2016-08-03T04:50:03.189Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/About/index.html</loc>
-    
-    <lastmod>2016-08-03T02:58:58.233Z</lastmod>
     
   </url>
   
