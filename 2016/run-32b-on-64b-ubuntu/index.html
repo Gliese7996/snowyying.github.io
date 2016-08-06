@@ -11,7 +11,7 @@
 <meta property="og:url" content="http://snowyying.github.io/2016/run-32b-on-64b-ubuntu/index.html">
 <meta property="og:site_name" content="Snowyying">
 <meta property="og:description" content="Method 1To run a 32-bit executable file on a 64-bit multi-architecture Ubuntu system, you have to add the i386 architecture and install the three library packages libc6:i386, libncurses5:i386, and lib">
-<meta property="og:updated_time" content="2016-08-06T07:18:50.497Z">
+<meta property="og:updated_time" content="2016-08-06T08:54:51.496Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="run a 32-bit executable file on a 64-bit multi-architecture Ubuntu system">
 <meta name="twitter:description" content="Method 1To run a 32-bit executable file on a 64-bit multi-architecture Ubuntu system, you have to add the i386 architecture and install the three library packages libc6:i386, libncurses5:i386, and lib">
@@ -96,20 +96,19 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="Method-1"><a href="#Method-1" class="headerlink" title="Method 1"></a>Method 1</h2><p>To run a 32-bit executable file on a 64-bit multi-architecture Ubuntu system, you have to add the i386 architecture and install the three library packages libc6:i386, libncurses5:i386, and libstdc++6:i386:</p>
-<pre><code>sudo dpkg --add-architecture i386
-</code></pre><p>Or if you are using Ubuntu 12.04 LTS (Precise Pangolin) or below, use this:</p>
-<pre><code>echo &quot;foreign-architecture i386&quot; &gt; /etc/dpkg/dpkg.cfg.d/multiarch
-</code></pre><p>Then:</p>
-<pre><code>sudo apt-get update
-sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386
-</code></pre><p>After these steps, you should be able to run the 32-bit application:</p>
-<pre><code>./example32bitprogram
-</code></pre><h2 id="Method-2"><a href="#Method-2" class="headerlink" title="Method 2"></a>Method 2</h2><pre><code>sudo apt-get install ia32-libs
-</code></pre>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo dpkg --add-architecture i386</div></pre></td></tr></table></figure>
+<p>Or if you are using Ubuntu 12.04 LTS (Precise Pangolin) or below, use this:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">echo</span> <span class="string">&quot;foreign-architecture i386&quot;</span> &gt; /etc/dpkg/dpkg.cfg.d/multiarch</div></pre></td></tr></table></figure>
+<p>Then:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo apt-get update</div><div class="line">sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386</div></pre></td></tr></table></figure>
+<p>After these steps, you should be able to run the 32-bit application:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./example32bitprogram</div></pre></td></tr></table></figure>
+<h2 id="Method-2"><a href="#Method-2" class="headerlink" title="Method 2"></a>Method 2</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install ia32-libs</div></pre></td></tr></table></figure>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://snowyying.github.io/2016/run-32b-on-64b-ubuntu/" data-id="cirivsjcn000q10skp5hi2jod" class="article-share-link">Share</a>
+      <a data-url="http://snowyying.github.io/2016/run-32b-on-64b-ubuntu/" data-id="cirix473a000i5ssk8ndlutqa" class="article-share-link">Share</a>
       
         <a href="http://snowyying.github.io/2016/run-32b-on-64b-ubuntu/#ds-thread" class="article-comment-link">留言</a>
       
@@ -153,7 +152,7 @@ sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386
   (function() {
   	var ds = document.createElement('script');
   	ds.type = 'text/javascript';ds.async = true;
-  	ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+  	ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.unstable.js';
   	ds.charset = 'UTF-8';
   	(document.getElementsByTagName('head')[0] 
   	 || document.getElementsByTagName('body')[0]).appendChild(ds);

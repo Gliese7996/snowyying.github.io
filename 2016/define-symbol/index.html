@@ -15,7 +15,7 @@
 <meta property="og:description" content="1 # (stringizing) &amp;#x5B57;&amp;#x7B26;&amp;#x4E32;&amp;#x5316;&amp;#x64CD;&amp;#x4F5C;&amp;#x7B26;#&amp;#x7684;&amp;#x4F5C;&amp;#x7528;&amp;#x662F;:
 
 &amp;#x5C06;&amp;#x5B8F;&amp;#x5B9A;&amp;#x4E49;&amp;#x4E2D;&amp;#x7684;&amp;#x4F20;&amp;#x5165;&amp;#x53C2;&amp;#x6570;&amp;#x540D;&amp;#">
-<meta property="og:updated_time" content="2016-08-06T07:18:50.575Z">
+<meta property="og:updated_time" content="2016-08-06T08:14:37.673Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="define宏定义中的#,##,@#及\符号">
 <meta name="twitter:description" content="1 # (stringizing) &amp;#x5B57;&amp;#x7B26;&amp;#x4E32;&amp;#x5316;&amp;#x64CD;&amp;#x4F5C;&amp;#x7B26;#&amp;#x7684;&amp;#x4F5C;&amp;#x7528;&amp;#x662F;:
@@ -106,76 +106,55 @@
 <p>&#x5C06;&#x5B8F;&#x5B9A;&#x4E49;&#x4E2D;&#x7684;&#x4F20;&#x5165;&#x53C2;&#x6570;&#x540D;&#x8F6C;&#x6362;&#x6210;&#x7528;&#x4E00;&#x5BF9;&#x53CC;&#x5F15;&#x53F7;&#x62EC;&#x8D77;&#x6765;&#x53C2;&#x6570;&#x540D;&#x5B57;&#x7B26;&#x4E32;.&#x5176;&#x53EA;&#x80FD;&#x7528;&#x4E8E;&#x6709;&#x4F20;&#x5165;&#x53C2;&#x6570;&#x7684;&#x5B8F;&#x5B9A;&#x4E49;&#x4E2D;, &#x4E14;&#x5FC5;&#x987B;&#x7F6E;&#x4E8E;&#x5B8F;&#x5B9A;&#x4E49;&#x4F53;&#x4E2D;&#x7684;&#x53C2;&#x6570;&#x540D;&#x524D;.</p>
 </blockquote>
 <p>&#x5982;:</p>
-<pre><code>#define example(instr) printf(&quot;the input string is:\t%s\n&quot;, #instr)
-#define example1(instr) #instr
-</code></pre><p>&#x5F53;&#x4F7F;&#x7528;&#x8BE5;&#x5B8F;&#x5B9A;&#x4E49;&#x65F6;</p>
-<pre><code>example(abc);
-</code></pre><p>(&#x5728;&#x7F16;&#x8BD1;&#x65F6;) &#x5C06;&#x4F1A;&#x5C55;&#x5F00;&#x6210;</p>
-<pre><code>printf(&quot;the input string is:\t%s\n&quot;, &quot;abc&quot;);
-</code></pre><p>&#x5F53;&#x4F7F;&#x7528;&#x8BE5;&#x5B8F;&#x5B9A;&#x4E49;&#x65F6;</p>
-<pre><code>string str=example1(abc);
-</code></pre><p>&#x5C06;&#x4F1A;&#x5C55;&#x5F00;&#x6210;</p>
-<pre><code>string str=&quot;abc&quot;;
-</code></pre><p>&#x6CE8;&#x610F;:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">define</span> example(instr) printf(<span class="meta-string">&quot;the input string is:\t%s\n&quot;</span>, #instr)</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> example1(instr) #instr</span></div></pre></td></tr></table></figure>
+<p>&#x5F53;&#x4F7F;&#x7528;&#x8BE5;&#x5B8F;&#x5B9A;&#x4E49;&#x65F6;</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">example(abc);</div></pre></td></tr></table></figure>
+<p>(&#x5728;&#x7F16;&#x8BD1;&#x65F6;)&#x5C06;&#x4F1A;&#x5C55;&#x5F00;&#x6210;</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">printf</span>(<span class="string">&quot;the input string is:\t%s\n&quot;</span>, <span class="string">&quot;abc&quot;</span>);</div></pre></td></tr></table></figure>
+<p>&#x5F53;&#x4F7F;&#x7528;&#x8BE5;&#x5B8F;&#x5B9A;&#x4E49;&#x65F6;</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">string</span> str=example1(abc);</div></pre></td></tr></table></figure>
+<p>&#x5C06;&#x4F1A;&#x5C55;&#x5F00;&#x6210;</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">string</span> str=<span class="string">&quot;abc&quot;</span>;</div></pre></td></tr></table></figure>
+<p><strong>&#x6CE8;&#x610F;:</strong></p>
 <p>&#x5BF9;&#x7A7A;&#x683C;&#x7684;&#x5904;&#x7406;</p>
 <p>a. &#x5FFD;&#x7565;&#x4F20;&#x5165;&#x53C2;&#x6570;&#x540D;&#x524D;&#x9762;&#x548C;&#x540E;&#x9762;&#x7684;&#x7A7A;&#x683C;</p>
 <p>&#x5982;:</p>
-<pre><code>str = example1(   abc   );
-</code></pre><p>&#x5C06;&#x4F1A;&#x88AB;&#x6269;&#x5C55;&#x6210;</p>
-<pre><code>str = &quot;abc&quot;;
-</code></pre><p>b. &#x5F53;&#x4F20;&#x5165;&#x53C2;&#x6570;&#x540D;&#x95F4;&#x5B58;&#x5728;&#x7A7A;&#x683C;&#x65F6;, &#x7F16;&#x8BD1;&#x5668;&#x5C06;&#x4F1A;&#x81EA;&#x52A8;&#x8FDE;&#x63A5;&#x5404;&#x4E2A;&#x5B50;&#x5B57;&#x7B26;&#x4E32;, &#x7528;&#x6BCF;&#x4E2A;&#x5B50;&#x5B57;&#x7B26;&#x4E32;&#x4E2D;&#x53EA;&#x4EE5;&#x4E00;&#x4E2A;&#x7A7A;&#x683C;&#x8FDE;&#x63A5;, &#x5FFD;&#x7565;&#x5176;&#x4E2D;&#x591A;&#x4F59;&#x4E00;&#x4E2A;&#x7684;&#x7A7A;&#x683C;</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">str = example1(   abc   );</div></pre></td></tr></table></figure>
+<p>&#x5C06;&#x4F1A;&#x88AB;&#x6269;&#x5C55;&#x6210;</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">str = <span class="string">&quot;abc&quot;</span>;</div></pre></td></tr></table></figure>
+<p>b. &#x5F53;&#x4F20;&#x5165;&#x53C2;&#x6570;&#x540D;&#x95F4;&#x5B58;&#x5728;&#x7A7A;&#x683C;&#x65F6;, &#x7F16;&#x8BD1;&#x5668;&#x5C06;&#x4F1A;&#x81EA;&#x52A8;&#x8FDE;&#x63A5;&#x5404;&#x4E2A;&#x5B50;&#x5B57;&#x7B26;&#x4E32;, &#x7528;&#x6BCF;&#x4E2A;&#x5B50;&#x5B57;&#x7B26;&#x4E32;&#x4E2D;&#x53EA;&#x4EE5;&#x4E00;&#x4E2A;&#x7A7A;&#x683C;&#x8FDE;&#x63A5;, &#x5FFD;&#x7565;&#x5176;&#x4E2D;&#x591A;&#x4F59;&#x4E00;&#x4E2A;&#x7684;&#x7A7A;&#x683C;</p>
 <p>&#x5982;:</p>
-<pre><code>str=exapme(   abc    def   );
-</code></pre><p>&#x5C06;&#x4F1A;&#x88AB;&#x6269;&#x5C55;&#x6210;</p>
-<pre><code>str=&quot;abc def&quot;;
-</code></pre><h2 id="2-token-pasting-&#x7B26;&#x53F7;&#x8FDE;&#x63A5;&#x64CD;&#x4F5C;&#x7B26;"><a href="#2-token-pasting-&#x7B26;&#x53F7;&#x8FDE;&#x63A5;&#x64CD;&#x4F5C;&#x7B26;" class="headerlink" title="2 ## (token-pasting) &#x7B26;&#x53F7;&#x8FDE;&#x63A5;&#x64CD;&#x4F5C;&#x7B26;"></a>2 ## (token-pasting) &#x7B26;&#x53F7;&#x8FDE;&#x63A5;&#x64CD;&#x4F5C;&#x7B26;</h2><p>&#x5B8F;&#x5B9A;&#x4E49;&#x4E2D;: &#x53C2;&#x6570;&#x540D;, &#x5373;&#x4E3A;&#x5F62;&#x53C2;, &#x5982;#define sum(a, b) (a+b); &#x4E2D;a&#x548C;b&#x5747;&#x4E3A;&#x67D0;&#x4E00;&#x53C2;&#x6570;&#x7684;&#x4EE3;&#x8868;&#x7B26;&#x53F7;, &#x5373;&#x5F62;&#x5F0F;&#x53C2;&#x6570;.</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">str=exapme(   abc    def   );</div></pre></td></tr></table></figure>
+<p>&#x5C06;&#x4F1A;&#x88AB;&#x6269;&#x5C55;&#x6210;</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">str=<span class="string">&quot;abc def&quot;</span>;</div></pre></td></tr></table></figure>
+<h2 id="2-token-pasting-&#x7B26;&#x53F7;&#x8FDE;&#x63A5;&#x64CD;&#x4F5C;&#x7B26;"><a href="#2-token-pasting-&#x7B26;&#x53F7;&#x8FDE;&#x63A5;&#x64CD;&#x4F5C;&#x7B26;" class="headerlink" title="2 ## (token-pasting) &#x7B26;&#x53F7;&#x8FDE;&#x63A5;&#x64CD;&#x4F5C;&#x7B26;"></a>2 ## (token-pasting) &#x7B26;&#x53F7;&#x8FDE;&#x63A5;&#x64CD;&#x4F5C;&#x7B26;</h2><p>&#x5B8F;&#x5B9A;&#x4E49;&#x4E2D;: &#x53C2;&#x6570;&#x540D;, &#x5373;&#x4E3A;&#x5F62;&#x53C2;, &#x5982;#define sum(a, b) (a+b); &#x4E2D;a&#x548C;b&#x5747;&#x4E3A;&#x67D0;&#x4E00;&#x53C2;&#x6570;&#x7684;&#x4EE3;&#x8868;&#x7B26;&#x53F7;, &#x5373;&#x5F62;&#x5F0F;&#x53C2;&#x6570;.</p>
 <p>##&#x7684;&#x4F5C;&#x7528;&#x5219;&#x662F;:</p>
 <blockquote>
 <p>&#x5C06;&#x5B8F;&#x5B9A;&#x4E49;&#x7684;&#x591A;&#x4E2A;&#x5F62;&#x53C2;&#x6210;&#x4E00;&#x4E2A;&#x5B9E;&#x9645;&#x53C2;&#x6570;&#x540D;.</p>
 </blockquote>
 <p>&#x5982;:</p>
-<pre><code>#define exampleNum(n) num##n
-int num9=9;
-</code></pre><p>&#x5F53;&#x4F7F;&#x7528;&#x8BE5;&#x5B8F;&#x5B9A;&#x4E49;&#x65F6;</p>
-<pre><code>int num=exampleNum(9);
-</code></pre><p>&#x5C06;&#x4F1A;&#x6269;&#x5C55;&#x6210;</p>
-<pre><code>int num=num9;
-</code></pre><p>&#x6CE8;&#x610F;:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">define</span> exampleNum(n) num##n</span></div><div class="line"><span class="keyword">int</span> num9=<span class="number">9</span>;</div></pre></td></tr></table></figure>
+<p>&#x5F53;&#x4F7F;&#x7528;&#x8BE5;&#x5B8F;&#x5B9A;&#x4E49;&#x65F6;</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> num=exampleNum(<span class="number">9</span>);</div></pre></td></tr></table></figure>
+<p>&#x5C06;&#x4F1A;&#x6269;&#x5C55;&#x6210;</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> num=num9;</div></pre></td></tr></table></figure>
+<p>&#x6CE8;&#x610F;:</p>
 <p>a. &#x5F53;&#x7528;##&#x8FDE;&#x63A5;&#x5F62;&#x53C2;&#x65F6;, ##&#x524D;&#x540E;&#x7684;&#x7A7A;&#x683C;&#x53EF;&#x6709;&#x53EF;&#x65E0;</p>
-<pre><code>#define exampleNum(n) num ## n
-</code></pre><p>&#x76F8;&#x5F53;&#x4E8E;</p>
-<pre><code>#define exampleNum(n) num##n
-</code></pre><p>b. &#x8FDE;&#x63A5;&#x540E;&#x7684;&#x5B9E;&#x9645;&#x53C2;&#x6570;&#x540D;, &#x5FC5;&#x987B;&#x4E3A;&#x5B9E;&#x9645;&#x5B58;&#x5728;&#x7684;&#x53C2;&#x6570;&#x540D;&#x6216;&#x662F;&#x7F16;&#x8BD1;&#x5668;&#x5DF2;&#x77E5;&#x7684;&#x5B8F;&#x5B9A;&#x4E49;</p>
-<pre><code>// preprocessor_token_pasting.cpp
-#include
-#define paster( n ) printf_s( &quot;token&quot; #n &quot; = %d&quot;, token##n )
-int token9 = 9;
-
-int main()
-{
-    paster(9);
-}
-</code></pre><p>&#x8FD0;&#x884C;&#x7ED3;&#x679C;:</p>
-<p>token9 = 9</p>
-<h2 id="3-charizing-&#x5B57;&#x7B26;&#x5316;&#x64CD;&#x4F5C;&#x7B26;"><a href="#3-charizing-&#x5B57;&#x7B26;&#x5316;&#x64CD;&#x4F5C;&#x7B26;" class="headerlink" title="3 @# (charizing) &#x5B57;&#x7B26;&#x5316;&#x64CD;&#x4F5C;&#x7B26;"></a>3 @# (charizing) &#x5B57;&#x7B26;&#x5316;&#x64CD;&#x4F5C;&#x7B26;</h2><p>&#x53EA;&#x80FD;&#x7528;&#x4E8E;&#x6709;&#x4F20;&#x5165;&#x53C2;&#x6570;&#x7684;&#x5B8F;&#x5B9A;&#x4E49;&#x4E2D;, &#x4E14;&#x5FC5;&#x987B;&#x7F6E;&#x4E8E;&#x5B8F;&#x5B9A;&#x4E49;&#x4F53;&#x4E2D;&#x7684;&#x53C2;&#x6570;&#x540D;&#x524D;.</p>
-<p>\@#&#x4F5C;&#x7528;&#x662F;:</p>
-<blockquote>
-<p>&#x5C06;&#x4F20;&#x7684;&#x5355;&#x5B57;&#x7B26;&#x53C2;&#x6570;&#x540D;&#x8F6C;&#x6362;&#x6210;&#x5B57;&#x7B26;, &#x4EE5;&#x4E00;&#x5BF9;&#x5355;&#x5F15;&#x7528;&#x62EC;&#x8D77;&#x6765;.</p>
-</blockquote>
-<p>&#x5982;:</p>
-<pre><code>#define makechar(x) #@x
-</code></pre><p>&#x5F53;&#x4F7F;&#x7528;&#x8BE5;&#x5B8F;&#x5B9A;&#x4E49;&#x65F6;</p>
-<pre><code>a = makechar(b);
-</code></pre><p>&#x5C55;&#x5F00;&#x540E;&#x53D8;&#x6210;</p>
-<pre><code>a= &apos;b&apos;;
-</code></pre><h2 id="4-&#x884C;&#x7EE7;&#x7EED;&#x64CD;&#x4F5C;&#x7B26;"><a href="#4-&#x884C;&#x7EE7;&#x7EED;&#x64CD;&#x4F5C;&#x7B26;" class="headerlink" title="4 \ &#x884C;&#x7EE7;&#x7EED;&#x64CD;&#x4F5C;&#x7B26;"></a>4 \ &#x884C;&#x7EE7;&#x7EED;&#x64CD;&#x4F5C;&#x7B26;</h2><blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">define</span> exampleNum(n) num ## n</span></div></pre></td></tr></table></figure>
+<p>&#x76F8;&#x5F53;&#x4E8E;</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">define</span> exampleNum(n) num##n</span></div></pre></td></tr></table></figure>
+<p>b. &#x8FDE;&#x63A5;&#x540E;&#x7684;&#x5B9E;&#x9645;&#x53C2;&#x6570;&#x540D;, &#x5FC5;&#x987B;&#x4E3A;&#x5B9E;&#x9645;&#x5B58;&#x5728;&#x7684;&#x53C2;&#x6570;&#x540D;&#x6216;&#x662F;&#x7F16;&#x8BD1;&#x5668;&#x5DF2;&#x77E5;&#x7684;&#x5B8F;&#x5B9A;&#x4E49;</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// preprocessor_token_pasting.cpp</span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> paster( n ) printf_s( <span class="meta-string">&quot;token&quot;</span> #n <span class="meta-string">&quot; = %d&quot;</span>, token##n )</span></div><div class="line"><span class="keyword">int</span> token9 = <span class="number">9</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">{</div><div class="line">    paster(<span class="number">9</span>);</div><div class="line">}</div></pre></td></tr></table></figure>
+<p>&#x8FD0;&#x884C;&#x7ED3;&#x679C;: <figure class="highlight plain"><figcaption><span>= 9```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">## 3 @# (charizing) &#x5B57;&#x7B26;&#x5316;&#x64CD;&#x4F5C;&#x7B26;</div><div class="line"></div><div class="line">&#x53EA;&#x80FD;&#x7528;&#x4E8E;&#x6709;&#x4F20;&#x5165;&#x53C2;&#x6570;&#x7684;&#x5B8F;&#x5B9A;&#x4E49;&#x4E2D;, &#x4E14;&#x5FC5;&#x987B;&#x7F6E;&#x4E8E;&#x5B8F;&#x5B9A;&#x4E49;&#x4F53;&#x4E2D;&#x7684;&#x53C2;&#x6570;&#x540D;&#x524D;.</div><div class="line"></div><div class="line">\@#&#x4F5C;&#x7528;&#x662F;:</div><div class="line">&gt;&#x5C06;&#x4F20;&#x7684;&#x5355;&#x5B57;&#x7B26;&#x53C2;&#x6570;&#x540D;&#x8F6C;&#x6362;&#x6210;&#x5B57;&#x7B26;, &#x4EE5;&#x4E00;&#x5BF9;&#x5355;&#x5F15;&#x7528;&#x62EC;&#x8D77;&#x6765;.</div><div class="line"></div><div class="line">&#x5982;:</div><div class="line"></div><div class="line">``` c</div><div class="line">#define makechar(x) #@x</div></pre></td></tr></table></figure></p>
+<p>&#x5F53;&#x4F7F;&#x7528;&#x8BE5;&#x5B8F;&#x5B9A;&#x4E49;&#x65F6; <code>a = makechar(b);</code> &#x5C55;&#x5F00;&#x540E;&#x53D8;&#x6210; <code>a= &apos;b&apos;;</code></p>
+<h2 id="4-&#x884C;&#x7EE7;&#x7EED;&#x64CD;&#x4F5C;&#x7B26;"><a href="#4-&#x884C;&#x7EE7;&#x7EED;&#x64CD;&#x4F5C;&#x7B26;" class="headerlink" title="4 \ &#x884C;&#x7EE7;&#x7EED;&#x64CD;&#x4F5C;&#x7B26;"></a>4 \ &#x884C;&#x7EE7;&#x7EED;&#x64CD;&#x4F5C;&#x7B26;</h2><blockquote>
 <p>&#x5F53;&#x5B9A;&#x4E49;&#x7684;&#x5B8F;&#x4E0D;&#x80FD;&#x7528;&#x4E00;&#x884C;&#x8868;&#x8FBE;&#x5B8C;&#x6574;&#x65F6;, &#x53EF;&#x4EE5;&#x7528;&#x201D;\&#x201D;&#x8868;&#x793A;&#x4E0B;&#x4E00;&#x884C;&#x7EE7;&#x7EED;&#x6B64;&#x5B8F;&#x7684;&#x5B9A;&#x4E49;.</p>
 </blockquote>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://snowyying.github.io/2016/define-symbol/" data-id="cirivsjbu000710skijr2kqnv" class="article-share-link">Share</a>
+      <a data-url="http://snowyying.github.io/2016/define-symbol/" data-id="cirix472j00065sskwocqia6d" class="article-share-link">Share</a>
       
         <a href="http://snowyying.github.io/2016/define-symbol/#ds-thread" class="article-comment-link">留言</a>
       
@@ -219,7 +198,7 @@ int main()
   (function() {
   	var ds = document.createElement('script');
   	ds.type = 'text/javascript';ds.async = true;
-  	ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+  	ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.unstable.js';
   	ds.charset = 'UTF-8';
   	(document.getElementsByTagName('head')[0] 
   	 || document.getElementsByTagName('body')[0]).appendChild(ds);

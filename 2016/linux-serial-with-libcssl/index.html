@@ -11,7 +11,7 @@
 <meta property="og:url" content="http://snowyying.github.io/2016/linux-serial-with-libcssl/index.html">
 <meta property="og:site_name" content="Snowyying">
 <meta property="og:description" content="&amp;#x4F7F;&amp;#x7528;libcssl(&amp;#x6700;&amp;#x65B0;&amp;#x7248;0.9.4)&amp;#x8FDB;&amp;#x884C;&amp;#x4E32;&amp;#x53E3;&amp;#x901A;&amp;#x8BAF;&amp;#x65F6;, &amp;#x53D1;&amp;#x73B0;&amp;#x5947;&amp;#x5076;&amp;#x6821;&amp;#x9A8C;&amp;#x8BBE;&amp;#x7F6E;&amp;#x65E0;&amp;#x6548;, &amp;#x67E">
-<meta property="og:updated_time" content="2016-08-06T07:18:50.535Z">
+<meta property="og:updated_time" content="2016-08-06T08:17:16.299Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux下使用libcssl库串口编程">
 <meta name="twitter:description" content="&amp;#x4F7F;&amp;#x7528;libcssl(&amp;#x6700;&amp;#x65B0;&amp;#x7248;0.9.4)&amp;#x8FDB;&amp;#x884C;&amp;#x4E32;&amp;#x53E3;&amp;#x901A;&amp;#x8BAF;&amp;#x65F6;, &amp;#x53D1;&amp;#x73B0;&amp;#x5947;&amp;#x5076;&amp;#x6821;&amp;#x9A8C;&amp;#x8BBE;&amp;#x7F6E;&amp;#x65E0;&amp;#x6548;, &amp;#x67E">
@@ -96,65 +96,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>&#x4F7F;&#x7528;libcssl(&#x6700;&#x65B0;&#x7248;0.9.4)&#x8FDB;&#x884C;&#x4E32;&#x53E3;&#x901A;&#x8BAF;&#x65F6;, &#x53D1;&#x73B0;&#x5947;&#x5076;&#x6821;&#x9A8C;&#x8BBE;&#x7F6E;&#x65E0;&#x6548;, &#x67E5;&#x770B;&#x6E90;&#x7801;&#x540E;&#x53D1;&#x73B0;&#x6709;&#x4E24;&#x5904;&#x95EE;&#x9898;</p>
-<h6 id="1-cssl-open-&#x4E2D;&#x53C2;&#x6570;&#x8C03;&#x7528;&#x987A;&#x5E8F;&#x95EE;&#x9898;"><a href="#1-cssl-open-&#x4E2D;&#x53C2;&#x6570;&#x8C03;&#x7528;&#x987A;&#x5E8F;&#x95EE;&#x9898;" class="headerlink" title="1 cssl_open()&#x4E2D;&#x53C2;&#x6570;&#x8C03;&#x7528;&#x987A;&#x5E8F;&#x95EE;&#x9898;"></a>1 cssl_open()&#x4E2D;&#x53C2;&#x6570;&#x8C03;&#x7528;&#x987A;&#x5E8F;&#x95EE;&#x9898;</h6><pre><code>/* opens the port */
-cssl_t *cssl_open(const char *fname,
-      cssl_callback_t callback,
-      int id,
-      int baud,
-      int bits,
-      int parity,
-      int stop)
-{
-    cssl_t *serial;
-
-    ...
-
-    /* now we set new values */
-    //cssl_setup(serial,baud,parity,bits,stop);
-    // Bug fix @ 20160727 by Snowyying
-    cssl_setup(serial,baud,bits,parity,stop);
-
-    ...
-
-    return serial;
-}
-</code></pre><h6 id="2-cssl-setup-&#x4E2D;c-iflag&#x8BBE;&#x7F6E;&#x95EE;&#x9898;"><a href="#2-cssl-setup-&#x4E2D;c-iflag&#x8BBE;&#x7F6E;&#x95EE;&#x9898;" class="headerlink" title="2 cssl_setup()&#x4E2D;c_iflag&#x8BBE;&#x7F6E;&#x95EE;&#x9898;"></a>2 cssl_setup()&#x4E2D;c_iflag&#x8BBE;&#x7F6E;&#x95EE;&#x9898;</h6><pre><code>/* sets up the port parameters */
-void cssl_setup(cssl_t *serial,
-       int baud,
-       int bits,
-       int parity,
-       int stop)
-{
-    tcflag_t baudrate;
-    tcflag_t databits;
-    tcflag_t stopbits;
-    tcflag_t checkparity;
-
-    ...
-
-    /* now we setup the values in port&apos;s termios */
-    serial-&gt;tio.c_cflag=baudrate|databits|checkparity|stopbits|CLOCAL|CREAD;
-    //serial-&gt;tio.c_iflag=IGNPAR;
-    // Bug fix @ 20160727 by Snowyying
-    if (parity)
-        serial-&gt;tio.c_iflag |= INPCK;
-    else
-        serial-&gt;tio.c_iflag=IGNPAR;
-    serial-&gt;tio.c_oflag=0;
-    serial-&gt;tio.c_lflag=0;
-    serial-&gt;tio.c_cc[VMIN]=1;
-    serial-&gt;tio.c_cc[VTIME]=0;
-
-    /* we flush the port */
-    tcflush(serial-&gt;fd,TCOFLUSH);
-    tcflush(serial-&gt;fd,TCIFLUSH);
-
-    /* we send new config to the port */
-    tcsetattr(serial-&gt;fd,TCSANOW,&amp;(serial-&gt;tio));
-
-    cssl_error=CSSL_OK;
-}
-</code></pre><hr>
+<h6 id="1-cssl-open-&#x4E2D;&#x53C2;&#x6570;&#x8C03;&#x7528;&#x987A;&#x5E8F;&#x95EE;&#x9898;"><a href="#1-cssl-open-&#x4E2D;&#x53C2;&#x6570;&#x8C03;&#x7528;&#x987A;&#x5E8F;&#x95EE;&#x9898;" class="headerlink" title="1 cssl_open()&#x4E2D;&#x53C2;&#x6570;&#x8C03;&#x7528;&#x987A;&#x5E8F;&#x95EE;&#x9898;"></a>1 cssl_open()&#x4E2D;&#x53C2;&#x6570;&#x8C03;&#x7528;&#x987A;&#x5E8F;&#x95EE;&#x9898;</h6><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* opens the port */</span></div><div class="line"><span class="keyword">cssl_t</span> *cssl_open(<span class="keyword">const</span> <span class="keyword">char</span> *fname,</div><div class="line">      <span class="keyword">cssl_callback_t</span> callback,</div><div class="line">      <span class="keyword">int</span> id,</div><div class="line">      <span class="keyword">int</span> baud,</div><div class="line">      <span class="keyword">int</span> bits,</div><div class="line">      <span class="keyword">int</span> parity,</div><div class="line">      <span class="keyword">int</span> stop)</div><div class="line">{</div><div class="line">    <span class="keyword">cssl_t</span> *serial;</div><div class="line"></div><div class="line">    <span class="comment">//...</span></div><div class="line"></div><div class="line">    <span class="comment">/* now we set new values */</span></div><div class="line">    <span class="comment">//cssl_setup(serial,baud,parity,bits,stop);</span></div><div class="line">    <span class="comment">// Bug fix @ 20160727 by Snowyying</span></div><div class="line">    cssl_setup(serial,baud,bits,parity,stop);</div><div class="line"></div><div class="line">    <span class="comment">//...</span></div><div class="line"></div><div class="line">    <span class="keyword">return</span> serial;</div><div class="line">}</div></pre></td></tr></table></figure>
+<h6 id="2-cssl-setup-&#x4E2D;c-iflag&#x8BBE;&#x7F6E;&#x95EE;&#x9898;"><a href="#2-cssl-setup-&#x4E2D;c-iflag&#x8BBE;&#x7F6E;&#x95EE;&#x9898;" class="headerlink" title="2 cssl_setup()&#x4E2D;c_iflag&#x8BBE;&#x7F6E;&#x95EE;&#x9898;"></a>2 cssl_setup()&#x4E2D;c_iflag&#x8BBE;&#x7F6E;&#x95EE;&#x9898;</h6><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* sets up the port parameters */</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">cssl_setup</span><span class="params">(<span class="keyword">cssl_t</span> *serial,</span></span></div><div class="line">       <span class="keyword">int</span> baud,</div><div class="line">       <span class="keyword">int</span> bits,</div><div class="line">       <span class="keyword">int</span> parity,</div><div class="line">       <span class="keyword">int</span> stop)</div><div class="line">{</div><div class="line">    <span class="keyword">tcflag_t</span> baudrate;</div><div class="line">    <span class="keyword">tcflag_t</span> databits;</div><div class="line">    <span class="keyword">tcflag_t</span> stopbits;</div><div class="line">    <span class="keyword">tcflag_t</span> checkparity;</div><div class="line"></div><div class="line">    <span class="comment">//...</span></div><div class="line"></div><div class="line">    <span class="comment">/* now we setup the values in port&apos;s termios */</span></div><div class="line">    serial-&gt;tio.c_cflag=baudrate|databits|checkparity|stopbits|CLOCAL|CREAD;</div><div class="line">    <span class="comment">//serial-&gt;tio.c_iflag=IGNPAR;</span></div><div class="line">    <span class="comment">// Bug fix @ 20160727 by Snowyying</span></div><div class="line">    <span class="keyword">if</span> (parity)</div><div class="line">        serial-&gt;tio.c_iflag |= INPCK;</div><div class="line">    <span class="keyword">else</span></div><div class="line">        serial-&gt;tio.c_iflag=IGNPAR;</div><div class="line">    serial-&gt;tio.c_oflag=<span class="number">0</span>;</div><div class="line">    serial-&gt;tio.c_lflag=<span class="number">0</span>;</div><div class="line">    serial-&gt;tio.c_cc[VMIN]=<span class="number">1</span>;</div><div class="line">    serial-&gt;tio.c_cc[VTIME]=<span class="number">0</span>;</div><div class="line"></div><div class="line">    <span class="comment">/* we flush the port */</span></div><div class="line">    tcflush(serial-&gt;fd,TCOFLUSH);</div><div class="line">    tcflush(serial-&gt;fd,TCIFLUSH);</div><div class="line"></div><div class="line">    <span class="comment">/* we send new config to the port */</span></div><div class="line">    tcsetattr(serial-&gt;fd,TCSANOW,&amp;(serial-&gt;tio));</div><div class="line"></div><div class="line">    cssl_error=CSSL_OK;</div><div class="line">}</div></pre></td></tr></table></figure>
+<hr>
 <p>&#x6CE8;&#x610F;: &#x7F16;&#x8BD1;&#x65F6;&#x9700;&#x4F7F;&#x7528;-D_GNU_SOURCE&#x9009;&#x9879;</p>
 <p>libcssl 0.9.4 source code <a href="https://github.com/mwheels/libcssl" target="_blank" rel="external">https://github.com/mwheels/libcssl</a></p>
 <p>&#x53C2;&#x8003;: developerWorks &#x4E2D;&#x56FD; Linux &#x4E0B;&#x4E32;&#x53E3;&#x7F16;&#x7A0B;&#x5165;&#x95E8;  <a href="http://www.ibm.com/developerworks/cn/linux/l-serials/" target="_blank" rel="external">http://www.ibm.com/developerworks/cn/linux/l-serials/</a></p>
@@ -162,7 +106,7 @@ void cssl_setup(cssl_t *serial,
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://snowyying.github.io/2016/linux-serial-with-libcssl/" data-id="cirivsjc7000e10sk9r2x97wy" class="article-share-link">Share</a>
+      <a data-url="http://snowyying.github.io/2016/linux-serial-with-libcssl/" data-id="cirix4731000b5sske0arxzr8" class="article-share-link">Share</a>
       
         <a href="http://snowyying.github.io/2016/linux-serial-with-libcssl/#ds-thread" class="article-comment-link">留言</a>
       
@@ -206,7 +150,7 @@ void cssl_setup(cssl_t *serial,
   (function() {
   	var ds = document.createElement('script');
   	ds.type = 'text/javascript';ds.async = true;
-  	ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+  	ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.unstable.js';
   	ds.charset = 'UTF-8';
   	(document.getElementsByTagName('head')[0] 
   	 || document.getElementsByTagName('body')[0]).appendChild(ds);

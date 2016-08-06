@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="Snowyying">
 <meta property="og:description" content="&amp;#x8F6C;&amp;#x81EA;: QUORA http://www.quora.com/Network-Programming/How-is-select-implemented 2012-11-28
 &amp;#x6211;&amp;#x4F1A;&amp;#x4EE5;Linux&amp;#x4E3A;&amp;#x4F8B;&amp;#xFF0C;&amp;#x56E0;&amp;#x4E3A;&amp;#x90A3;&amp;#x662F;&amp;#x6211;&amp;#x71">
-<meta property="og:updated_time" content="2016-08-06T07:18:50.487Z">
+<meta property="og:updated_time" content="2016-08-06T08:21:06.018Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SELECT是如何实现的？">
 <meta name="twitter:description" content="&amp;#x8F6C;&amp;#x81EA;: QUORA http://www.quora.com/Network-Programming/How-is-select-implemented 2012-11-28
@@ -108,6 +108,7 @@
 <p>select()&#x4F1A;&#x8BB0;&#x5F55;&#x5B83;&#x6DFB;&#x52A0;&#x7684;&#x6240;&#x6709;&#x7684;&#x7B49;&#x5F85;&#x961F;&#x5217;&#xFF0C;&#x5728;&#x8FD4;&#x56DE;&#x4EE5;&#x524D;&#xFF0C;&#x786E;&#x4FDD;&#x4ECE;&#x6240;&#x6709;&#x7684;fd&#x79FB;&#x9664;&#x3002;</p>
 <p>summary&#xFF1A;&#x6BCF;&#x4E00;&#x6B21;select()&#x8C03;&#x7528;&#x9700;&#x8981; 3 &#x6B21;&#x904D;&#x5386;&#xFF0C;&#x7B2C;&#x4E00;&#x6B21;&#x662F;&#x5BF9;&#x6BCF;&#x4E2A;fd&#x5206;&#x522B;&#x8C03;&#x7528;poll&#xFF0C;&#x7B2C;&#x4E8C;&#x6B21;&#x662F;&#x904D;&#x5386;&#x751F;&#x6210;&#x8FD4;&#x56DE;&#x7ED9;&#x7528;&#x6237;&#x7684;fd_sets&#xFF0C;&#x7B2C;&#x4E09;&#x6B21;&#x662F;&#x5E94;&#x7528;&#x5C42;&#x9762;&#x904D;&#x5386;&#x8FDB;&#x884C;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#x5904;&#x7406;&#x3002;</p>
 <p>&#x82F1;&#x6587;&#x539F;&#x6587;&#xFF1A;</p>
+<blockquote>
 <p>I&#x2019;ll answer for Linux, since that&#x2019;s what I know. I have no experience with any of the BSDs or other unixes, but I would assume they work broadly similarly.</p>
 <p>Every socket (really, every file descriptor that can be select()ed on) has a list of waiters that are currently waiting for activity on that socket (struct wait_queue_head_t in Linux terminology). Whenever something interesting happens on that socket (new data is available, buffer space is free for writing, or some kind of error), that socket will walk its list and notify everyone waiting on it.</p>
 <p>select() works by looping over the list of file descriptors that the user passed in. For every file descriptor, it calls that fd&#x2019;s poll() method, which will add the caller to that fd&#x2019;s wait queue, and return which events (readable, writeable, exception) currently apply to that fd.</p>
@@ -115,11 +116,12 @@
 <p>If not, however, select() will go to sleep, for up to the maximum timeout the user specified.</p>
 <p>If, during that interval, an interesting event happens to any file descriptor that select() is waiting on, that fd will notify its wait queue. That will cause the thread sleeping inside select() to wake up, at which point it will repeat the above loop and see which of the fd&#x2019;s are now ready to be returned to the user.</p>
 <p>select() also keeps track of all of the wait queues it has been added to, and before returning (successfully or otherwise), must go through and ensure it&#x2019;s been removed from all of them.</p>
+</blockquote>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://snowyying.github.io/2016/select-implement/" data-id="cirivsjct000s10skc7ifmmkp" class="article-share-link">Share</a>
+      <a data-url="http://snowyying.github.io/2016/select-implement/" data-id="cirix473h000m5sskw6iq64ei" class="article-share-link">Share</a>
       
         <a href="http://snowyying.github.io/2016/select-implement/#ds-thread" class="article-comment-link">留言</a>
       
@@ -163,7 +165,7 @@
   (function() {
   	var ds = document.createElement('script');
   	ds.type = 'text/javascript';ds.async = true;
-  	ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+  	ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.unstable.js';
   	ds.charset = 'UTF-8';
   	(document.getElementsByTagName('head')[0] 
   	 || document.getElementsByTagName('body')[0]).appendChild(ds);

@@ -15,7 +15,7 @@ Select&amp;#x5728;Socket&amp;#x7F16;&amp;#x7A0B;&amp;#x4E2D;&amp;#x8FD8;&amp;#x6
 <meta property="og:description" content="&amp;#x8F6C;&amp;#x81EA;: &amp;#x535A;&amp;#x5BA2;&amp;#x56ED; http://www.cnblogs.com/ggzss/archive/2011/08/25/2153746.html 2011-08-25
 
 Select&amp;#x5728;Socket&amp;#x7F16;&amp;#x7A0B;&amp;#x4E2D;&amp;#x8FD8;&amp;#x662F;&amp;#x6BD4;&amp;#x8F83;&amp;#x91CD;">
-<meta property="og:updated_time" content="2016-08-06T07:18:50.587Z">
+<meta property="og:updated_time" content="2016-08-06T08:27:49.393Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="socket编程之select函数">
 <meta name="twitter:description" content="&amp;#x8F6C;&amp;#x81EA;: &amp;#x535A;&amp;#x5BA2;&amp;#x56ED; http://www.cnblogs.com/ggzss/archive/2011/08/25/2153746.html 2011-08-25
@@ -110,132 +110,15 @@ Select&amp;#x5728;Socket&amp;#x7F16;&amp;#x7A0B;&amp;#x4E2D;&amp;#x8FD8;&amp;#x6
 <li>select&#x51FD;&#x6570;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x5728;windows&#x4E0B;&#x53EF;&#x4EE5;&#x5FFD;&#x7565;&#xFF0C;&#x4F46;&#x5728;linux&#x4E0B;&#x5FC5;&#x987B;&#x8BBE;&#x4E3A;&#x6700;&#x5927;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#x52A0;1&#xFF1B;</li>
 <li>&#x7ED3;&#x6784;fd_set&#x5728;&#x4E24;&#x4E2A;&#x7CFB;&#x7EDF;&#x91CC;&#x5B9A;&#x4E49;&#x4E0D;&#x4E00;&#x6837;</li>
 </ol>
-<pre><code>int select(int maxfdp,fd_set *readfds,fd_set *writefds,fd_set *errorfds,struct timeval *timeout);
-
-/*&#x53C2;&#x6570;&#x5217;&#x8868;
-int maxfdp&#x662F;&#x4E00;&#x4E2A;&#x6574;&#x6570;&#x503C;&#xFF0C;&#x662F;&#x6307;&#x96C6;&#x5408;&#x4E2D;&#x6240;&#x6709;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#x7684;&#x8303;&#x56F4;&#xFF0C;
-&#x5373;&#x6240;&#x6709;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#x7684;&#x6700;&#x5927;&#x503C;&#x52A0;1&#xFF0C;&#x4E0D;&#x80FD;&#x9519;&#xFF01;
-&#x5728;Windows&#x4E2D;&#x8FD9;&#x4E2A;&#x53C2;&#x6570;&#x7684;&#x503C;&#x65E0;&#x6240;&#x8C13;&#xFF0C;&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;&#x4E0D;&#x6B63;&#x786E;&#x3002;
-
-fd_set *readfds&#x662F;&#x6307;&#x5411;fd_set&#x7ED3;&#x6784;&#x7684;&#x6307;&#x9488;&#xFF0C;&#x8FD9;&#x4E2A;&#x96C6;&#x5408;&#x4E2D;&#x5E94;&#x8BE5;&#x5305;&#x62EC;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#xFF0C;
-&#x6211;&#x4EEC;&#x662F;&#x8981;&#x76D1;&#x89C6;&#x8FD9;&#x4E9B;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#x7684;&#x8BFB;&#x53D8;&#x5316;&#x7684;&#xFF0C;&#x5373;&#x6211;&#x4EEC;&#x5173;&#x5FC3;&#x662F;&#x5426;&#x53EF;&#x4EE5;&#x4ECE;&#x8FD9;&#x4E9B;&#x6587;&#x4EF6;&#x4E2D;&#x8BFB;&#x53D6;&#x6570;&#x636E;&#x4E86;&#xFF0C;
-&#x5982;&#x679C;&#x8FD9;&#x4E2A;&#x96C6;&#x5408;&#x4E2D;&#x6709;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x53EF;&#x8BFB;&#xFF0C;select&#x5C31;&#x4F1A;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x5927;&#x4E8E;0&#x7684;&#x503C;&#xFF0C;&#x8868;&#x793A;&#x6709;&#x6587;&#x4EF6;&#x53EF;&#x8BFB;&#xFF0C;
-&#x5982;&#x679C;&#x6CA1;&#x6709;&#x53EF;&#x8BFB;&#x7684;&#x6587;&#x4EF6;&#xFF0C;&#x5219;&#x6839;&#x636E;timeout&#x53C2;&#x6570;&#x518D;&#x5224;&#x65AD;&#x662F;&#x5426;&#x8D85;&#x65F6;&#xFF0C;
-&#x82E5;&#x8D85;&#x51FA;timeout&#x7684;&#x65F6;&#x95F4;&#xFF0C;select&#x8FD4;&#x56DE;0&#xFF0C;&#x82E5;&#x53D1;&#x751F;&#x9519;&#x8BEF;&#x8FD4;&#x56DE;&#x8D1F;&#x503C;&#x3002;
-&#x53EF;&#x4EE5;&#x4F20;&#x5165;NULL&#x503C;&#xFF0C;&#x8868;&#x793A;&#x4E0D;&#x5173;&#x5FC3;&#x4EFB;&#x4F55;&#x6587;&#x4EF6;&#x7684;&#x8BFB;&#x53D8;&#x5316;&#x3002;
-
-fd_set *writefds&#x662F;&#x6307;&#x5411;fd_set&#x7ED3;&#x6784;&#x7684;&#x6307;&#x9488;&#xFF0C;&#x8FD9;&#x4E2A;&#x96C6;&#x5408;&#x4E2D;&#x5E94;&#x8BE5;&#x5305;&#x62EC;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#xFF0C;
-&#x6211;&#x4EEC;&#x662F;&#x8981;&#x76D1;&#x89C6;&#x8FD9;&#x4E9B;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#x7684;&#x5199;&#x53D8;&#x5316;&#x7684;&#xFF0C;&#x5373;&#x6211;&#x4EEC;&#x5173;&#x5FC3;&#x662F;&#x5426;&#x53EF;&#x4EE5;&#x5411;&#x8FD9;&#x4E9B;&#x6587;&#x4EF6;&#x4E2D;&#x5199;&#x5165;&#x6570;&#x636E;&#x4E86;&#xFF0C;
-&#x5982;&#x679C;&#x8FD9;&#x4E2A;&#x96C6;&#x5408;&#x4E2D;&#x6709;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x53EF;&#x5199;&#xFF0C;select&#x5C31;&#x4F1A;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x5927;&#x4E8E;0&#x7684;&#x503C;&#xFF0C;&#x8868;&#x793A;&#x6709;&#x6587;&#x4EF6;&#x53EF;&#x5199;&#xFF0C;
-&#x5982;&#x679C;&#x6CA1;&#x6709;&#x53EF;&#x5199;&#x7684;&#x6587;&#x4EF6;&#xFF0C;&#x5219;&#x6839;&#x636E;timeout&#x53C2;&#x6570;&#x518D;&#x5224;&#x65AD;&#x662F;&#x5426;&#x8D85;&#x65F6;&#xFF0C;
-&#x82E5;&#x8D85;&#x51FA;timeout&#x7684;&#x65F6;&#x95F4;&#xFF0C;select&#x8FD4;&#x56DE;0&#xFF0C;&#x82E5;&#x53D1;&#x751F;&#x9519;&#x8BEF;&#x8FD4;&#x56DE;&#x8D1F;&#x503C;&#x3002;
-&#x53EF;&#x4EE5;&#x4F20;&#x5165;NULL&#x503C;&#xFF0C;&#x8868;&#x793A;&#x4E0D;&#x5173;&#x5FC3;&#x4EFB;&#x4F55;&#x6587;&#x4EF6;&#x7684;&#x5199;&#x53D8;&#x5316;&#x3002;
-
-fd_set *errorfds&#x540C;&#x4E0A;&#x9762;&#x4E24;&#x4E2A;&#x53C2;&#x6570;&#x7684;&#x610F;&#x56FE;&#xFF0C;&#x7528;&#x6765;&#x76D1;&#x89C6;&#x6587;&#x4EF6;&#x9519;&#x8BEF;&#x5F02;&#x5E38;&#x3002;
-
-struct timeval* timeout&#x662F;select&#x7684;&#x8D85;&#x65F6;&#x65F6;&#x95F4;&#xFF0C;&#x8FD9;&#x4E2A;&#x53C2;&#x6570;&#x81F3;&#x5173;&#x91CD;&#x8981;&#xFF0C;&#x5B83;&#x53EF;&#x4EE5;&#x4F7F;select&#x5904;&#x4E8E;&#x4E09;&#x79CD;&#x72B6;&#x6001;&#xFF1A;
-1. &#x82E5;&#x5C06;NULL&#x4EE5;&#x5F62;&#x53C2;&#x4F20;&#x5165;&#xFF0C;&#x5373;&#x4E0D;&#x4F20;&#x5165;&#x65F6;&#x95F4;&#x7ED3;&#x6784;&#xFF0C;&#x5C31;&#x662F;&#x5C06;select&#x7F6E;&#x4E8E;&#x963B;&#x585E;&#x72B6;&#x6001;&#xFF0C;
-&#x4E00;&#x5B9A;&#x7B49;&#x5230;&#x76D1;&#x89C6;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#x96C6;&#x5408;&#x4E2D;&#x67D0;&#x4E2A;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#x53D1;&#x751F;&#x53D8;&#x5316;&#x4E3A;&#x6B62;&#xFF1B;
-2. &#x82E5;&#x5C06;&#x65F6;&#x95F4;&#x503C;&#x8BBE;&#x4E3A;0&#x79D2;0&#x6BEB;&#x79D2;&#xFF0C;&#x5C31;&#x53D8;&#x6210;&#x4E00;&#x4E2A;&#x7EAF;&#x7CB9;&#x7684;&#x975E;&#x963B;&#x585E;&#x51FD;&#x6570;&#xFF0C;
-&#x4E0D;&#x7BA1;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#x662F;&#x5426;&#x6709;&#x53D8;&#x5316;&#xFF0C;&#x90FD;&#x7ACB;&#x523B;&#x8FD4;&#x56DE;&#x7EE7;&#x7EED;&#x6267;&#x884C;&#xFF0C;&#x6587;&#x4EF6;&#x65E0;&#x53D8;&#x5316;&#x8FD4;&#x56DE;0&#xFF0C;&#x6709;&#x53D8;&#x5316;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x6B63;&#x503C;&#xFF1B;
-3. timeout&#x7684;&#x503C;&#x5927;&#x4E8E;0&#xFF0C;&#x8FD9;&#x5C31;&#x662F;&#x7B49;&#x5F85;&#x7684;&#x8D85;&#x65F6;&#x65F6;&#x95F4;&#xFF0C;&#x5373; select&#x5728;timeout&#x65F6;&#x95F4;&#x5185;&#x963B;&#x585E;&#xFF0C;
-&#x8D85;&#x65F6;&#x65F6;&#x95F4;&#x4E4B;&#x5185;&#x6709;&#x4E8B;&#x4EF6;&#x5230;&#x6765;&#x5C31;&#x8FD4;&#x56DE;&#x4E86;&#xFF0C;&#x5426;&#x5219;&#x5728;&#x8D85;&#x65F6;&#x540E;&#x4E0D;&#x7BA1;&#x600E;&#x6837;&#x4E00;&#x5B9A;&#x8FD4;&#x56DE;&#xFF0C;&#x8FD4;&#x56DE;&#x503C;&#x540C;&#x4E0A;&#x8FF0;&#x3002;
-*/
-
-/*
-&#x8FD4;&#x56DE;&#x503C;&#xFF1A;
-&#x8D1F;&#x503C;&#xFF1A;select&#x9519;&#x8BEF;
-&#x6B63;&#x503C;&#xFF1A;&#x67D0;&#x4E9B;&#x6587;&#x4EF6;&#x53EF;&#x8BFB;&#x5199;&#x6216;&#x51FA;&#x9519;
-0&#xFF1A;&#x7B49;&#x5F85;&#x8D85;&#x65F6;&#xFF0C;&#x6CA1;&#x6709;&#x53EF;&#x8BFB;&#x5199;&#x6216;&#x9519;&#x8BEF;&#x7684;&#x6587;&#x4EF6;
-*/
-</code></pre><p><strong>&#x8BF4;&#x660E;&#x4E24;&#x4E2A;&#x7ED3;&#x6784;&#x4F53;&#xFF1A;</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">select</span><span class="params">(<span class="keyword">int</span> maxfdp,fd_set *readfds,fd_set *writefds,fd_set *errorfds,<span class="keyword">struct</span> timeval *timeout)</span></span>;</div><div class="line"></div><div class="line"><span class="comment">/*&#x53C2;&#x6570;&#x5217;&#x8868;</span></div><div class="line">int maxfdp&#x662F;&#x4E00;&#x4E2A;&#x6574;&#x6570;&#x503C;&#xFF0C;&#x662F;&#x6307;&#x96C6;&#x5408;&#x4E2D;&#x6240;&#x6709;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#x7684;&#x8303;&#x56F4;&#xFF0C;</div><div class="line">&#x5373;&#x6240;&#x6709;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#x7684;&#x6700;&#x5927;&#x503C;&#x52A0;1&#xFF0C;&#x4E0D;&#x80FD;&#x9519;&#xFF01;</div><div class="line">&#x5728;Windows&#x4E2D;&#x8FD9;&#x4E2A;&#x53C2;&#x6570;&#x7684;&#x503C;&#x65E0;&#x6240;&#x8C13;&#xFF0C;&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;&#x4E0D;&#x6B63;&#x786E;&#x3002;</div><div class="line"></div><div class="line">fd_set *readfds&#x662F;&#x6307;&#x5411;fd_set&#x7ED3;&#x6784;&#x7684;&#x6307;&#x9488;&#xFF0C;&#x8FD9;&#x4E2A;&#x96C6;&#x5408;&#x4E2D;&#x5E94;&#x8BE5;&#x5305;&#x62EC;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#xFF0C;</div><div class="line">&#x6211;&#x4EEC;&#x662F;&#x8981;&#x76D1;&#x89C6;&#x8FD9;&#x4E9B;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#x7684;&#x8BFB;&#x53D8;&#x5316;&#x7684;&#xFF0C;&#x5373;&#x6211;&#x4EEC;&#x5173;&#x5FC3;&#x662F;&#x5426;&#x53EF;&#x4EE5;&#x4ECE;&#x8FD9;&#x4E9B;&#x6587;&#x4EF6;&#x4E2D;&#x8BFB;&#x53D6;&#x6570;&#x636E;&#x4E86;&#xFF0C;</div><div class="line">&#x5982;&#x679C;&#x8FD9;&#x4E2A;&#x96C6;&#x5408;&#x4E2D;&#x6709;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x53EF;&#x8BFB;&#xFF0C;select&#x5C31;&#x4F1A;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x5927;&#x4E8E;0&#x7684;&#x503C;&#xFF0C;&#x8868;&#x793A;&#x6709;&#x6587;&#x4EF6;&#x53EF;&#x8BFB;&#xFF0C;</div><div class="line">&#x5982;&#x679C;&#x6CA1;&#x6709;&#x53EF;&#x8BFB;&#x7684;&#x6587;&#x4EF6;&#xFF0C;&#x5219;&#x6839;&#x636E;timeout&#x53C2;&#x6570;&#x518D;&#x5224;&#x65AD;&#x662F;&#x5426;&#x8D85;&#x65F6;&#xFF0C;</div><div class="line">&#x82E5;&#x8D85;&#x51FA;timeout&#x7684;&#x65F6;&#x95F4;&#xFF0C;select&#x8FD4;&#x56DE;0&#xFF0C;&#x82E5;&#x53D1;&#x751F;&#x9519;&#x8BEF;&#x8FD4;&#x56DE;&#x8D1F;&#x503C;&#x3002;</div><div class="line">&#x53EF;&#x4EE5;&#x4F20;&#x5165;NULL&#x503C;&#xFF0C;&#x8868;&#x793A;&#x4E0D;&#x5173;&#x5FC3;&#x4EFB;&#x4F55;&#x6587;&#x4EF6;&#x7684;&#x8BFB;&#x53D8;&#x5316;&#x3002;</div><div class="line"></div><div class="line">fd_set *writefds&#x662F;&#x6307;&#x5411;fd_set&#x7ED3;&#x6784;&#x7684;&#x6307;&#x9488;&#xFF0C;&#x8FD9;&#x4E2A;&#x96C6;&#x5408;&#x4E2D;&#x5E94;&#x8BE5;&#x5305;&#x62EC;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#xFF0C;</div><div class="line">&#x6211;&#x4EEC;&#x662F;&#x8981;&#x76D1;&#x89C6;&#x8FD9;&#x4E9B;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#x7684;&#x5199;&#x53D8;&#x5316;&#x7684;&#xFF0C;&#x5373;&#x6211;&#x4EEC;&#x5173;&#x5FC3;&#x662F;&#x5426;&#x53EF;&#x4EE5;&#x5411;&#x8FD9;&#x4E9B;&#x6587;&#x4EF6;&#x4E2D;&#x5199;&#x5165;&#x6570;&#x636E;&#x4E86;&#xFF0C;</div><div class="line">&#x5982;&#x679C;&#x8FD9;&#x4E2A;&#x96C6;&#x5408;&#x4E2D;&#x6709;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x53EF;&#x5199;&#xFF0C;select&#x5C31;&#x4F1A;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x5927;&#x4E8E;0&#x7684;&#x503C;&#xFF0C;&#x8868;&#x793A;&#x6709;&#x6587;&#x4EF6;&#x53EF;&#x5199;&#xFF0C;</div><div class="line">&#x5982;&#x679C;&#x6CA1;&#x6709;&#x53EF;&#x5199;&#x7684;&#x6587;&#x4EF6;&#xFF0C;&#x5219;&#x6839;&#x636E;timeout&#x53C2;&#x6570;&#x518D;&#x5224;&#x65AD;&#x662F;&#x5426;&#x8D85;&#x65F6;&#xFF0C;</div><div class="line">&#x82E5;&#x8D85;&#x51FA;timeout&#x7684;&#x65F6;&#x95F4;&#xFF0C;select&#x8FD4;&#x56DE;0&#xFF0C;&#x82E5;&#x53D1;&#x751F;&#x9519;&#x8BEF;&#x8FD4;&#x56DE;&#x8D1F;&#x503C;&#x3002;</div><div class="line">&#x53EF;&#x4EE5;&#x4F20;&#x5165;NULL&#x503C;&#xFF0C;&#x8868;&#x793A;&#x4E0D;&#x5173;&#x5FC3;&#x4EFB;&#x4F55;&#x6587;&#x4EF6;&#x7684;&#x5199;&#x53D8;&#x5316;&#x3002;</div><div class="line"></div><div class="line">fd_set *errorfds&#x540C;&#x4E0A;&#x9762;&#x4E24;&#x4E2A;&#x53C2;&#x6570;&#x7684;&#x610F;&#x56FE;&#xFF0C;&#x7528;&#x6765;&#x76D1;&#x89C6;&#x6587;&#x4EF6;&#x9519;&#x8BEF;&#x5F02;&#x5E38;&#x3002;</div><div class="line"></div><div class="line">struct timeval* timeout&#x662F;select&#x7684;&#x8D85;&#x65F6;&#x65F6;&#x95F4;&#xFF0C;&#x8FD9;&#x4E2A;&#x53C2;&#x6570;&#x81F3;&#x5173;&#x91CD;&#x8981;&#xFF0C;&#x5B83;&#x53EF;&#x4EE5;&#x4F7F;select&#x5904;&#x4E8E;&#x4E09;&#x79CD;&#x72B6;&#x6001;&#xFF1A;</div><div class="line">1. &#x82E5;&#x5C06;NULL&#x4EE5;&#x5F62;&#x53C2;&#x4F20;&#x5165;&#xFF0C;&#x5373;&#x4E0D;&#x4F20;&#x5165;&#x65F6;&#x95F4;&#x7ED3;&#x6784;&#xFF0C;&#x5C31;&#x662F;&#x5C06;select&#x7F6E;&#x4E8E;&#x963B;&#x585E;&#x72B6;&#x6001;&#xFF0C;</div><div class="line">&#x4E00;&#x5B9A;&#x7B49;&#x5230;&#x76D1;&#x89C6;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#x96C6;&#x5408;&#x4E2D;&#x67D0;&#x4E2A;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#x53D1;&#x751F;&#x53D8;&#x5316;&#x4E3A;&#x6B62;&#xFF1B;</div><div class="line">2. &#x82E5;&#x5C06;&#x65F6;&#x95F4;&#x503C;&#x8BBE;&#x4E3A;0&#x79D2;0&#x6BEB;&#x79D2;&#xFF0C;&#x5C31;&#x53D8;&#x6210;&#x4E00;&#x4E2A;&#x7EAF;&#x7CB9;&#x7684;&#x975E;&#x963B;&#x585E;&#x51FD;&#x6570;&#xFF0C;</div><div class="line">&#x4E0D;&#x7BA1;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#x662F;&#x5426;&#x6709;&#x53D8;&#x5316;&#xFF0C;&#x90FD;&#x7ACB;&#x523B;&#x8FD4;&#x56DE;&#x7EE7;&#x7EED;&#x6267;&#x884C;&#xFF0C;&#x6587;&#x4EF6;&#x65E0;&#x53D8;&#x5316;&#x8FD4;&#x56DE;0&#xFF0C;&#x6709;&#x53D8;&#x5316;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x6B63;&#x503C;&#xFF1B;</div><div class="line">3. timeout&#x7684;&#x503C;&#x5927;&#x4E8E;0&#xFF0C;&#x8FD9;&#x5C31;&#x662F;&#x7B49;&#x5F85;&#x7684;&#x8D85;&#x65F6;&#x65F6;&#x95F4;&#xFF0C;&#x5373; select&#x5728;timeout&#x65F6;&#x95F4;&#x5185;&#x963B;&#x585E;&#xFF0C;</div><div class="line">&#x8D85;&#x65F6;&#x65F6;&#x95F4;&#x4E4B;&#x5185;&#x6709;&#x4E8B;&#x4EF6;&#x5230;&#x6765;&#x5C31;&#x8FD4;&#x56DE;&#x4E86;&#xFF0C;&#x5426;&#x5219;&#x5728;&#x8D85;&#x65F6;&#x540E;&#x4E0D;&#x7BA1;&#x600E;&#x6837;&#x4E00;&#x5B9A;&#x8FD4;&#x56DE;&#xFF0C;&#x8FD4;&#x56DE;&#x503C;&#x540C;&#x4E0A;&#x8FF0;&#x3002;</div><div class="line">*/</div><div class="line"></div><div class="line"><span class="comment">/*</span></div><div class="line">&#x8FD4;&#x56DE;&#x503C;&#xFF1A;</div><div class="line">&#x8D1F;&#x503C;&#xFF1A;select&#x9519;&#x8BEF;</div><div class="line">&#x6B63;&#x503C;&#xFF1A;&#x67D0;&#x4E9B;&#x6587;&#x4EF6;&#x53EF;&#x8BFB;&#x5199;&#x6216;&#x51FA;&#x9519;</div><div class="line">0&#xFF1A;&#x7B49;&#x5F85;&#x8D85;&#x65F6;&#xFF0C;&#x6CA1;&#x6709;&#x53EF;&#x8BFB;&#x5199;&#x6216;&#x9519;&#x8BEF;&#x7684;&#x6587;&#x4EF6;</div><div class="line">*/</div></pre></td></tr></table></figure>
+<p><strong>&#x8BF4;&#x660E;&#x4E24;&#x4E2A;&#x7ED3;&#x6784;&#x4F53;&#xFF1A;</strong></p>
 <ol>
 <li>struct fd_set&#x53EF;&#x4EE5;&#x7406;&#x89E3;&#x4E3A;&#x4E00;&#x4E2A;&#x96C6;&#x5408;&#xFF0C;&#x8FD9;&#x4E2A;&#x96C6;&#x5408;&#x4E2D;&#x5B58;&#x653E;&#x7684;&#x662F;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;(file descriptor)&#xFF0C;&#x5373;&#x6587;&#x4EF6;&#x53E5;&#x67C4;&#xFF0C;&#x8FD9;&#x53EF;&#x4EE5;&#x662F;&#x6211;&#x4EEC;&#x6240;&#x8BF4;&#x7684;&#x666E;&#x901A;&#x610F;&#x4E49;&#x7684;&#x6587;&#x4EF6;&#xFF0C;&#x5F53;&#x7136;Unix&#x4E0B;&#x4EFB;&#x4F55;&#x8BBE;&#x5907;&#x3001;&#x7BA1;&#x9053;&#x3001;FIFO&#x7B49;&#x90FD;&#x662F;&#x6587;&#x4EF6;&#x5F62;&#x5F0F;&#xFF0C;&#x5168;&#x90E8;&#x5305;&#x62EC;&#x5728;&#x5185;&#xFF0C;&#x6240;&#x4EE5;&#x6BEB;&#x65E0;&#x7591;&#x95EE;&#x4E00;&#x4E2A;socket&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#xFF0C;socket&#x53E5;&#x67C4;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#x3002;fd_set&#x96C6;&#x5408;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4E00;&#x4E9B;&#x5B8F;&#x7531;&#x4EBA;&#x4E3A;&#x6765;&#x64CD;&#x4F5C;&#xFF0C;&#x6BD4;&#x5982;&#x6E05;&#x7A7A;&#x96C6;&#x5408; FD_ZERO(fd_set *)&#xFF0C;&#x5C06;&#x4E00;&#x4E2A;&#x7ED9;&#x5B9A;&#x7684;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#x52A0;&#x5165;&#x96C6;&#x5408;&#x4E4B;&#x4E2D;FD_SET(int ,fd_set *)&#xFF0C;&#x5C06;&#x4E00;&#x4E2A;&#x7ED9;&#x5B9A;&#x7684;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#x4ECE;&#x96C6;&#x5408;&#x4E2D;&#x5220;&#x9664;FD_CLR(int ,fd_set<em>)&#xFF0C;&#x68C0;&#x67E5;&#x96C6;&#x5408;&#x4E2D;&#x6307;&#x5B9A;&#x7684;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#x662F;&#x5426;&#x53EF;&#x4EE5;&#x8BFB;&#x5199;FD_ISSET(int ,fd_set</em> )&#x3002;&#x4E00;&#x4F1A;&#x513F;&#x4E3E;&#x4F8B;&#x8BF4;&#x660E;&#x3002;</li>
 <li>struct timeval&#x662F;&#x4E00;&#x4E2A;&#x5927;&#x5BB6;&#x5E38;&#x7528;&#x7684;&#x7ED3;&#x6784;&#xFF0C;&#x7528;&#x6765;&#x4EE3;&#x8868;&#x65F6;&#x95F4;&#x503C;&#xFF0C;&#x6709;&#x4E24;&#x4E2A;&#x6210;&#x5458;&#xFF0C;&#x4E00;&#x4E2A;&#x662F;&#x79D2;&#x6570;&#xFF0C;&#x53E6;&#x4E00;&#x4E2A;&#x662F;&#x6BEB;&#x79D2;&#x6570;&#x3002;</li>
 </ol>
 <p>&#x5728;&#x6709;&#x4E86;select&#x540E;&#x53EF;&#x4EE5;&#x5199;&#x51FA;&#x50CF;&#x6837;&#x7684;&#x7F51;&#x7EDC;&#x7A0B;&#x5E8F;&#x6765;&#xFF01;&#x4E3E;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x4F8B;&#x5B50;&#xFF0C;&#x5C31;&#x662F;&#x4ECE;&#x7F51;&#x7EDC;&#x4E0A;&#x63A5;&#x53D7;&#x6570;&#x636E;&#x5199;&#x5165;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x4E2D;&#x3002;</p>
-<pre><code>#include &lt;winsock.h&gt;
-  #include &lt;stdio.h&gt;
-  #define PORT       5150
-  #define MSGSIZE     1024
-  #pragma comment(lib, &quot;ws2_32.lib&quot;)
-  int     g_iTotalConn = 0;
-  SOCKET g_CliSocketArr[FD_SETSIZE];
-  DWORD WINAPI WorkerThread(LPVOID lpParameter);
-  int main()
-  {   
-      WSADATA     wsaData;   
-      SOCKET       sListen, sClient;   
-      SOCKADDR_IN local, client;   
-      int         iaddrSize = sizeof(SOCKADDR_IN);   
-      DWORD       dwThreadId;   
-      // Initialize Windows socket library   
-      WSAStartup(0x0202, &amp;wsaData);   
-      // Create listening socket   
-      sListen = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);   
-      // Bind           
-      local.sin_addr.S_un.S_addr = htonl(INADDR_ANY);
-      local.sin_family = AF_INET;
-      local.sin_port = htons(PORT);   
-      bind(sListen, (struct sockaddr *)&amp;local, sizeof(SOCKADDR_IN));   
-      // Listen   listen(sListen, 3);   
-      // Create worker thread   
-      CreateThread(NULL, 0, WorkerThread, NULL, 0, &amp;dwThreadId);     
-      while (TRUE)   
-      {               // Accept a connection     
-          sClient = accept(sListen, (struct sockaddr *)&amp;client, &amp;iaddrSize);     
-          printf(&quot;Accepted client:%s:%d\n&quot;, inet_ntoa(client.sin_addr), ntohs(client.sin_port));     
-          // Add socket to g_CliSocketArr     
-          g_CliSocketArr[g_iTotalConn++] = sClient;   
-      }     
-      return 0;
-  }
-  DWORD WINAPI WorkerThread(LPVOID lpParam)
-  {   
-      int             i;   
-      fd_set         fdread;   
-      int             ret;   
-      struct timeval tv = {1, 0};   
-      char           szMessage[MSGSIZE];     
-      while (TRUE)   
-      {     
-          FD_ZERO(&amp;fdread);     
-          for (i = 0; i &lt; g_iTotalConn; i++)
-          {
-              FD_SET(g_CliSocketArr, &amp;fdread);
-          }                     // We only care read event
-          ret = select(0, &amp;fdread, NULL, NULL, &amp;tv);
-          if (ret == 0)
-          {       // Time expired
-              continue;
-          }
-          for (i = 0; i &lt; g_iTotalConn; i++)
-          {
-              if (FD_ISSET(g_CliSocketArr, &amp;fdread))
-              {         // A read event happened on g_CliSocketArr
-                  ret = recv(g_CliSocketArr, szMessage, MSGSIZE, 0);
-                  if (ret == 0 || (ret == SOCKET_ERROR &amp;&amp; WSAGetLastError() == WSAECONNRESET))
-                      {
-                          // Client socket closed           
-                          printf(&quot;Client socket %d closed.\n&quot;, g_CliSocketArr);
-                          closesocket(g_CliSocketArr);
-                          if (i &lt; g_iTotalConn - 1)
-                          {
-                              g_CliSocketArr[i--] = g_CliSocketArr[--g_iTotalConn];
-                          }
-                      }
-                      else
-                      {
-                          // We received a message from client
-                          szMessage[ret] = &apos;\0&apos;;
-                          send(g_CliSocketArr, szMessage, strlen(szMessage), 0);
-                      }
-              } //if
-          }//for
-      }//while     
-      return 0;
-  }
-</code></pre><p>&#x670D;&#x52A1;&#x5668;&#x7684;&#x51E0;&#x4E2A;&#x4E3B;&#x8981;&#x52A8;&#x4F5C;&#x5982;&#x4E0B;&#xFF1A;</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;winsock.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> PORT 5150</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MSGSIZE 1024</span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">pragma</span> comment(lib, <span class="meta-string">&quot;ws2_32.lib&quot;</span>)</span></div><div class="line"></div><div class="line"><span class="keyword">int</span> g_iTotalConn = <span class="number">0</span>;</div><div class="line">SOCKET g_CliSocketArr[FD_SETSIZE];</div><div class="line"></div><div class="line"><span class="function">DWORD WINAPI <span class="title">WorkerThread</span><span class="params">(LPVOID lpParameter)</span></span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">{</div><div class="line">    WSADATA wsaData;</div><div class="line">    SOCKET sListen, sClient;</div><div class="line">    SOCKADDR_IN local, client;</div><div class="line">    <span class="keyword">int</span> iaddrSize = <span class="keyword">sizeof</span>(SOCKADDR_IN);</div><div class="line">    DWORD dwThreadId;</div><div class="line">    <span class="comment">// Initialize Windows socket library</span></div><div class="line">    WSAStartup(<span class="number">0x0202</span>, &amp;wsaData);</div><div class="line">    <span class="comment">// Create listening socket</span></div><div class="line">    sListen = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);</div><div class="line">    <span class="comment">// Bind</span></div><div class="line">    local.sin_addr.S_un.S_addr = htonl(INADDR_ANY);</div><div class="line">    local.sin_family = AF_INET;</div><div class="line">    local.sin_port = htons(PORT);</div><div class="line">    bind(sListen, (<span class="keyword">struct</span> sockaddr *)&amp;local, <span class="keyword">sizeof</span>(SOCKADDR_IN));</div><div class="line">    <span class="comment">// Listen listen(sListen, 3);</span></div><div class="line">    <span class="comment">// Create worker thread</span></div><div class="line">    CreateThread(<span class="literal">NULL</span>, <span class="number">0</span>, WorkerThread, <span class="literal">NULL</span>, <span class="number">0</span>, &amp;dwThreadId);</div><div class="line">    <span class="keyword">while</span> (TRUE)</div><div class="line">    {</div><div class="line">        <span class="comment">// Accept a connection</span></div><div class="line">        sClient = accept(sListen, (<span class="keyword">struct</span> sockaddr *)&amp;client, &amp;iaddrSize);</div><div class="line">        <span class="built_in">printf</span>(<span class="string">&quot;Accepted client:%s:%d\n&quot;</span>, inet_ntoa(client.sin_addr), ntohs(client.sin_port));</div><div class="line">        <span class="comment">// Add socket to g_CliSocketArr</span></div><div class="line">        g_CliSocketArr[g_iTotalConn++] = sClient;</div><div class="line">    }</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">}</div><div class="line"></div><div class="line"><span class="function">DWORD WINAPI <span class="title">WorkerThread</span><span class="params">(LPVOID lpParam)</span></span></div><div class="line">{</div><div class="line">    <span class="keyword">int</span> i;</div><div class="line">    fd_set fdread;</div><div class="line">    <span class="keyword">int</span> ret;</div><div class="line">    <span class="keyword">struct</span> timeval tv = {<span class="number">1</span>, <span class="number">0</span>};</div><div class="line">    <span class="keyword">char</span> szMessage[MSGSIZE];</div><div class="line">    <span class="keyword">while</span> (TRUE)</div><div class="line">    {</div><div class="line">        FD_ZERO(&amp;fdread);</div><div class="line">        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; g_iTotalConn; i++)</div><div class="line">        {</div><div class="line">            FD_SET(g_CliSocketArr, &amp;fdread);</div><div class="line">        } <span class="comment">// We only care read event</span></div><div class="line">        ret = select(<span class="number">0</span>, &amp;fdread, <span class="literal">NULL</span>, <span class="literal">NULL</span>, &amp;tv);</div><div class="line">        <span class="keyword">if</span> (ret == <span class="number">0</span>)</div><div class="line">        { <span class="comment">// Time expired</span></div><div class="line">            <span class="keyword">continue</span>;</div><div class="line">        }</div><div class="line">        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; g_iTotalConn; i++)</div><div class="line">        {</div><div class="line">            <span class="keyword">if</span> (FD_ISSET(g_CliSocketArr, &amp;fdread))</div><div class="line">            { <span class="comment">// A read event happened on g_CliSocketArr</span></div><div class="line">                ret = recv(g_CliSocketArr, szMessage, MSGSIZE, <span class="number">0</span>);</div><div class="line">                <span class="keyword">if</span> (ret == <span class="number">0</span> || (ret == SOCKET_ERROR &amp;&amp; WSAGetLastError() == WSAECONNRESET))</div><div class="line">                {</div><div class="line">                    <span class="comment">// Client socket closed</span></div><div class="line">                    <span class="built_in">printf</span>(<span class="string">&quot;Client socket %d closed.\n&quot;</span>, g_CliSocketArr);</div><div class="line">                    closesocket(g_CliSocketArr);</div><div class="line">                    <span class="keyword">if</span> (i &lt; g_iTotalConn - <span class="number">1</span>)</div><div class="line">                    {</div><div class="line">                        g_CliSocketArr[i--] = g_CliSocketArr[--g_iTotalConn];</div><div class="line">                    }</div><div class="line">                }</div><div class="line">                <span class="keyword">else</span></div><div class="line">                {</div><div class="line">                    <span class="comment">// We received a message from client</span></div><div class="line">                    szMessage[ret] = <span class="string">&apos;\0&apos;</span>;</div><div class="line">                    send(g_CliSocketArr, szMessage, <span class="built_in">strlen</span>(szMessage), <span class="number">0</span>);</div><div class="line">                }</div><div class="line">            } <span class="comment">//if</span></div><div class="line">        }<span class="comment">//for</span></div><div class="line">    }<span class="comment">//while</span></div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">}</div></pre></td></tr></table></figure>
+<p>&#x670D;&#x52A1;&#x5668;&#x7684;&#x51E0;&#x4E2A;&#x4E3B;&#x8981;&#x52A8;&#x4F5C;&#x5982;&#x4E0B;&#xFF1A;</p>
 <ol>
 <li>&#x521B;&#x5EFA;&#x76D1;&#x542C;&#x5957;&#x63A5;&#x5B57;&#xFF0C;&#x7ED1;&#x5B9A;&#xFF0C;&#x76D1;&#x542C;&#xFF1B;</li>
 <li>&#x521B;&#x5EFA;&#x5DE5;&#x4F5C;&#x8005;&#x7EBF;&#x7A0B;&#xFF1B;</li>
@@ -243,21 +126,8 @@ struct timeval* timeout&#x662F;select&#x7684;&#x8D85;&#x65F6;&#x65F6;&#x95F4;&#x
 <li>&#x63A5;&#x53D7;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x8FDE;&#x63A5;&#x3002;</li>
 </ol>
 <p>&#x8FD9;&#x91CC;&#x6709;&#x4E00;&#x70B9;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#xFF0C;&#x5C31;&#x662F;&#x6211;&#x6CA1;&#x6709;&#x91CD;&#x65B0;&#x5B9A;&#x4E49;FD_SETSIZE&#x5B8F;&#xFF0C;&#x6240;&#x4EE5;&#x670D;&#x52A1;&#x5668;&#x6700;&#x591A;&#x652F;&#x6301;&#x7684;&#x5E76;&#x53D1;&#x8FDE;&#x63A5;&#x6570;&#x4E3A;64&#x3002;&#x800C;&#x4E14;&#xFF0C;&#x8FD9;&#x91CC;&#x51B3;&#x4E0D;&#x80FD;&#x65E0;&#x6761;&#x4EF6;&#x7684;accept,&#x670D;&#x52A1;&#x5668;&#x5E94;&#x8BE5;&#x6839;&#x636E;&#x5F53;&#x524D;&#x7684;&#x8FDE;&#x63A5;&#x6570;&#x6765;&#x51B3;&#x5B9A;&#x662F;&#x5426;&#x63A5;&#x53D7;&#x6765;&#x81EA;&#x67D0;&#x4E2A;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x8FDE;&#x63A5;&#x3002;&#x4E00;&#x79CD;&#x6BD4;&#x8F83;&#x597D;&#x7684;&#x5B9E;&#x73B0;&#x65B9;&#x6848;&#x5C31;&#x662F;&#x91C7;&#x7528;WSAAccept&#x51FD;&#x6570;&#xFF0C;&#x800C;&#x4E14;&#x8BA9;WSAAccept&#x56DE;&#x8C03;&#x81EA;&#x5DF1;&#x5B9E;&#x73B0;&#x7684;Condition Function&#x3002;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
-<pre><code>int CALLBACK ConditionFunc(LPWSABUF lpCallerId,
-  LPWSABUF lpCallerData,
-  LPQOS lpSQOS,
-  LPQOS lpGQOS,
-  LPWSABUF lpCalleeId,
-  LPWSABUF lpCalleeData,
-  GROUP FAR *g,
-  DWORD dwCallbackData)
-{
-&#x3000;&#x3000;if (&#x5F53;&#x524D;&#x8FDE;&#x63A5;&#x6570; &lt; FD_SETSIZE)
-&#x3000;&#x3000;&#x3000;&#x3000;return CF_ACCEPT;
-&#x3000;&#x3000;else   
-&#x3000;&#x3000;&#x3000;&#x3000;return CF_REJECT;
-}
-</code></pre><p>&#x5DE5;&#x4F5C;&#x8005;&#x7EBF;&#x7A0B;&#x91CC;&#x9762;&#x662F;&#x4E00;&#x4E2A;&#x6B7B;&#x5FAA;&#x73AF;&#xFF0C;&#x4E00;&#x6B21;&#x5FAA;&#x73AF;&#x5B8C;&#x6210;&#x7684;&#x52A8;&#x4F5C;&#x662F;&#xFF1A;</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> CALLBACK <span class="title">ConditionFunc</span><span class="params">(LPWSABUF lpCallerId,</span></span></div><div class="line">    LPWSABUF lpCallerData,</div><div class="line">    LPQOS lpSQOS,</div><div class="line">    LPQOS lpGQOS,</div><div class="line">    LPWSABUF lpCalleeId,</div><div class="line">    LPWSABUF lpCalleeData,</div><div class="line">    GROUP FAR *g,</div><div class="line">    DWORD dwCallbackData)</div><div class="line">{</div><div class="line">&#x3000;&#x3000;<span class="keyword">if</span> (&#x5F53;&#x524D;&#x8FDE;&#x63A5;&#x6570; &lt; FD_SETSIZE)</div><div class="line">&#x3000;&#x3000;&#x3000;&#x3000;<span class="keyword">return</span> CF_ACCEPT;</div><div class="line">&#x3000;&#x3000;<span class="keyword">else</span>   </div><div class="line">&#x3000;&#x3000;&#x3000;&#x3000;<span class="keyword">return</span> CF_REJECT;</div><div class="line">}</div></pre></td></tr></table></figure>
+<p>&#x5DE5;&#x4F5C;&#x8005;&#x7EBF;&#x7A0B;&#x91CC;&#x9762;&#x662F;&#x4E00;&#x4E2A;&#x6B7B;&#x5FAA;&#x73AF;&#xFF0C;&#x4E00;&#x6B21;&#x5FAA;&#x73AF;&#x5B8C;&#x6210;&#x7684;&#x52A8;&#x4F5C;&#x662F;&#xFF1A;</p>
 <ol>
 <li>&#x5C06;&#x5F53;&#x524D;&#x6240;&#x6709;&#x7684;&#x5BA2;&#x6237;&#x7AEF;&#x5957;&#x63A5;&#x5B57;&#x52A0;&#x5165;&#x5230;&#x8BFB;&#x96C6;fdread&#x4E2D;&#xFF1B;</li>
 <li>&#x8C03;&#x7528;select&#x51FD;&#x6570;&#xFF1B;</li>
@@ -270,7 +140,7 @@ struct timeval* timeout&#x662F;select&#x7684;&#x8D85;&#x65F6;&#x65F6;&#x95F4;&#x
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://snowyying.github.io/2016/socket-select/" data-id="cirivsjd9000x10skcw2ic7t9" class="article-share-link">Share</a>
+      <a data-url="http://snowyying.github.io/2016/socket-select/" data-id="cirix473p000s5sskwq12p2xu" class="article-share-link">Share</a>
       
         <a href="http://snowyying.github.io/2016/socket-select/#ds-thread" class="article-comment-link">留言</a>
       
@@ -305,7 +175,7 @@ struct timeval* timeout&#x662F;select&#x7684;&#x8D85;&#x65F6;&#x65F6;&#x95F4;&#x
   (function() {
   	var ds = document.createElement('script');
   	ds.type = 'text/javascript';ds.async = true;
-  	ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+  	ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.unstable.js';
   	ds.charset = 'UTF-8';
   	(document.getElementsByTagName('head')[0] 
   	 || document.getElementsByTagName('body')[0]).appendChild(ds);
