@@ -114,8 +114,8 @@ button::-moz-focus-inner {
   font-family: FontAwesome;
   font-style: normal;
   font-weight: normal;
-  src: url("fonts/fontawesome-webfont.eot?v=#4.0.3");
-  src: url("fonts/fontawesome-webfont.eot?#iefix&v=#4.0.3") format("embedded-opentype"), url("fonts/fontawesome-webfont.woff?v=#4.0.3") format("woff"), url("fonts/fontawesome-webfont.ttf?v=#4.0.3") format("truetype"), url("fonts/fontawesome-webfont.svg#fontawesomeregular?v=#4.0.3") format("svg");
+  src: url("fonts/fontawesome-webfont.eot?v=#4.6.3");
+  src: url("fonts/fontawesome-webfont.eot?#iefix&v=#4.6.3") format("embedded-opentype"), url("fonts/fontawesome-webfont.woff?v=#4.6.3") format("woff"), url("fonts/fontawesome-webfont.ttf?v=#4.6.3") format("truetype"), url("fonts/fontawesome-webfont.svg#fontawesomeregular?v=#4.6.3") format("svg");
 }
 html,
 body,
@@ -521,17 +521,28 @@ body {
   clear: both;
 }
 .article-date {
+  margin: 20px 15px 0px 15px;
   float: left;
+}
+a.article-date:hover {
+  color: #258fb8;
+}
+.article-date:before {
+  font-family: FontAwesome;
+  color: #ccc;
+  content: "\f073";
 }
 .article-category {
+  margin: 20px 15px 0px 15px;
   float: left;
-  line-height: 1em;
-  color: #ccc;
-  text-shadow: 0 1px #fff;
-  margin-left: 8px;
+}
+a.article-category:hover {
+  color: #258fb8;
 }
 .article-category:before {
-  content: "\2022";
+  font-family: FontAwesome;
+  color: #ccc;
+  content: "\f0ca";
 }
 .article-category-link {
   margin: 0 12px 1em;
@@ -728,7 +739,7 @@ a.article-title:hover {
   float: right;
 }
 .article-comment-link:before {
-  content: "\f075";
+  content: "\f086";
   font-family: FontAwesome;
   padding-right: 8px;
 }
@@ -738,7 +749,7 @@ a.article-title:hover {
   margin-left: 20px;
 }
 .article-share-link:before {
-  content: "\f064";
+  content: "\f1e0";
   font-family: FontAwesome;
   padding-right: 6px;
 }
@@ -1104,12 +1115,14 @@ a.article-title:hover {
 .article-entry pre,
 .article-entry .highlight {
   background: #2d2d2d;
-  margin: 0 -20px;
+  margin: auto;
   padding: 15px 20px;
   border-style: solid;
   border-color: #ddd;
   border-width: 1px 0;
   overflow: auto;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
   color: #ccc;
   line-height: 22.400000000000002px;
 }
