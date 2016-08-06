@@ -9,22 +9,22 @@
 &amp;#x9996;&amp;#x5148;&amp;#xFF0C;&amp;#x4ECB;&amp;#x7ECD;&amp;#x51E0;&amp;#x79CD;&amp;#x5E38;&amp;#x89C1;&amp;#x7684;I/O&amp;#x6A21;&amp;#x578B;&amp;#x53CA;&amp;#x5176;&amp;#x533A;&amp;#x5">
 <meta property="og:type" content="article">
 <meta property="og:title" content="再谈select, iocp, epoll, kqueue及各种I/O复用机制">
-<meta property="og:url" content="http://yoursite.com/2016/IO-multiplexing/index.html">
+<meta property="og:url" content="http://snowyying.github.io/2016/IO-multiplexing/index.html">
 <meta property="og:site_name" content="Snowyying">
 <meta property="og:description" content="&amp;#x8F6C;&amp;#x81EA;: http://www.cnblogs.com/huacw/p/3518461.html 2010-01-28
 &amp;#x9996;&amp;#x5148;&amp;#xFF0C;&amp;#x4ECB;&amp;#x7ECD;&amp;#x51E0;&amp;#x79CD;&amp;#x5E38;&amp;#x89C1;&amp;#x7684;I/O&amp;#x6A21;&amp;#x578B;&amp;#x53CA;&amp;#x5176;&amp;#x533A;&amp;#x5">
-<meta property="og:image" content="http://yoursite.com/2016/IO-multiplexing/io_module_01.jpg">
-<meta property="og:image" content="http://yoursite.com/2016/IO-multiplexing/io_module_02.jpg">
-<meta property="og:image" content="http://yoursite.com/2016/IO-multiplexing/io_module_03.jpg">
-<meta property="og:image" content="http://yoursite.com/2016/IO-multiplexing/io_module_04.jpg">
-<meta property="og:image" content="http://yoursite.com/2016/IO-multiplexing/io_module_05.jpg">
-<meta property="og:image" content="http://yoursite.com/2016/IO-multiplexing/io_module_cmp.jpg">
+<meta property="og:image" content="http://snowyying.github.io/2016/IO-multiplexing/io_module_01.jpg">
+<meta property="og:image" content="http://snowyying.github.io/2016/IO-multiplexing/io_module_02.jpg">
+<meta property="og:image" content="http://snowyying.github.io/2016/IO-multiplexing/io_module_03.jpg">
+<meta property="og:image" content="http://snowyying.github.io/2016/IO-multiplexing/io_module_04.jpg">
+<meta property="og:image" content="http://snowyying.github.io/2016/IO-multiplexing/io_module_05.jpg">
+<meta property="og:image" content="http://snowyying.github.io/2016/IO-multiplexing/io_module_cmp.jpg">
 <meta property="og:updated_time" content="2016-08-06T07:18:50.566Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="再谈select, iocp, epoll, kqueue及各种I/O复用机制">
 <meta name="twitter:description" content="&amp;#x8F6C;&amp;#x81EA;: http://www.cnblogs.com/huacw/p/3518461.html 2010-01-28
 &amp;#x9996;&amp;#x5148;&amp;#xFF0C;&amp;#x4ECB;&amp;#x7ECD;&amp;#x51E0;&amp;#x79CD;&amp;#x5E38;&amp;#x89C1;&amp;#x7684;I/O&amp;#x6A21;&amp;#x578B;&amp;#x53CA;&amp;#x5176;&amp;#x533A;&amp;#x5">
-<meta name="twitter:image" content="http://yoursite.com/2016/IO-multiplexing/io_module_01.jpg">
+<meta name="twitter:image" content="http://snowyying.github.io/2016/IO-multiplexing/io_module_01.jpg">
   
     <link rel="alternate" href="/atom.xml" title="Snowyying" type="application/atom+xml">
   
@@ -73,7 +73,7 @@
         <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://snowyying.github.io"></form>
       </div>
     </div>
   </div>
@@ -155,9 +155,9 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/IO-multiplexing/" data-id="ciriusw270004zosk6klujaqi" class="article-share-link">Share</a>
+      <a data-url="http://snowyying.github.io/2016/IO-multiplexing/" data-id="cirivsjbl000410skyu48ih32" class="article-share-link">Share</a>
       
-        <a href="http://yoursite.com/2016/IO-multiplexing/#disqus_thread" class="article-comment-link">留言</a>
+        <a href="http://snowyying.github.io/2016/IO-multiplexing/#ds-thread" class="article-comment-link">留言</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/I-O/">I/O</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IT/">IT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/复用/">复用</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/效率/">效率</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网络/">网络</a></li></ul>
@@ -191,7 +191,7 @@
 
 <section id="comments">
   <!-- 多说评论框 start -->
-  <div class="ds-thread" data-thread-key="2016/IO-multiplexing/" data-title="再谈select, iocp, epoll, kqueue及各种I/O复用机制" data-url="http://yoursite.com/2016/IO-multiplexing/"></div>
+  <div class="ds-thread" data-thread-key="2016/IO-multiplexing/" data-title="再谈select, iocp, epoll, kqueue及各种I/O复用机制" data-url="http://snowyying.github.io/2016/IO-multiplexing/"></div>
   <!-- 多说评论框 end -->
   <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
   <script type="text/javascript">

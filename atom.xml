@@ -4,9 +4,9 @@
   <subtitle>Learn and live.</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
+  <link href="http://snowyying.github.io/"/>
   <updated>2016-08-06T07:18:50.587Z</updated>
-  <id>http://yoursite.com/</id>
+  <id>http://snowyying.github.io/</id>
   
   <author>
     <name>Snowyying</name>
@@ -17,8 +17,8 @@
   
   <entry>
     <title>socket编程之select函数</title>
-    <link href="http://yoursite.com/2016/socket-select/"/>
-    <id>http://yoursite.com/2016/socket-select/</id>
+    <link href="http://snowyying.github.io/2016/socket-select/"/>
+    <id>http://snowyying.github.io/2016/socket-select/</id>
     <published>2016-08-06T02:26:48.000Z</published>
     <updated>2016-08-06T07:18:50.587Z</updated>
     
@@ -196,23 +196,23 @@ struct timeval* timeout&#x662F;select&#x7684;&#x8D85;&#x65F6;&#x65F6;&#x95F4;&#x
     
     </summary>
     
-      <category term="网络" scheme="http://yoursite.com/categories/%E7%BD%91%E7%BB%9C/"/>
+      <category term="网络" scheme="http://snowyying.github.io/categories/%E7%BD%91%E7%BB%9C/"/>
     
     
-      <category term="IT" scheme="http://yoursite.com/tags/IT/"/>
+      <category term="IT" scheme="http://snowyying.github.io/tags/IT/"/>
     
-      <category term="网络" scheme="http://yoursite.com/tags/%E7%BD%91%E7%BB%9C/"/>
+      <category term="网络" scheme="http://snowyying.github.io/tags/%E7%BD%91%E7%BB%9C/"/>
     
-      <category term="select" scheme="http://yoursite.com/tags/select/"/>
+      <category term="select" scheme="http://snowyying.github.io/tags/select/"/>
     
-      <category term="socket" scheme="http://yoursite.com/tags/socket/"/>
+      <category term="socket" scheme="http://snowyying.github.io/tags/socket/"/>
     
   </entry>
   
   <entry>
     <title>socket选项之SO_REUSEADDR的意义</title>
-    <link href="http://yoursite.com/2016/socket-SO-REUSEADDR/"/>
-    <id>http://yoursite.com/2016/socket-SO-REUSEADDR/</id>
+    <link href="http://snowyying.github.io/2016/socket-SO-REUSEADDR/"/>
+    <id>http://snowyying.github.io/2016/socket-SO-REUSEADDR/</id>
     <published>2016-08-05T11:46:10.000Z</published>
     <updated>2016-08-06T07:18:50.475Z</updated>
     
@@ -249,25 +249,25 @@ struct timeval* timeout&#x662F;select&#x7684;&#x8D85;&#x65F6;&#x65F6;&#x95F4;&#x
     
     </summary>
     
-      <category term="网络" scheme="http://yoursite.com/categories/%E7%BD%91%E7%BB%9C/"/>
+      <category term="网络" scheme="http://snowyying.github.io/categories/%E7%BD%91%E7%BB%9C/"/>
     
     
-      <category term="IT" scheme="http://yoursite.com/tags/IT/"/>
+      <category term="IT" scheme="http://snowyying.github.io/tags/IT/"/>
     
-      <category term="网络" scheme="http://yoursite.com/tags/%E7%BD%91%E7%BB%9C/"/>
+      <category term="网络" scheme="http://snowyying.github.io/tags/%E7%BD%91%E7%BB%9C/"/>
     
-      <category term="socket" scheme="http://yoursite.com/tags/socket/"/>
+      <category term="socket" scheme="http://snowyying.github.io/tags/socket/"/>
     
-      <category term="setsockopt" scheme="http://yoursite.com/tags/setsockopt/"/>
+      <category term="setsockopt" scheme="http://snowyying.github.io/tags/setsockopt/"/>
     
-      <category term="SO_REUSEADDR" scheme="http://yoursite.com/tags/SO-REUSEADDR/"/>
+      <category term="SO_REUSEADDR" scheme="http://snowyying.github.io/tags/SO-REUSEADDR/"/>
     
   </entry>
   
   <entry>
     <title>linux下使用libcssl库串口编程</title>
-    <link href="http://yoursite.com/2016/linux-serial-with-libcssl/"/>
-    <id>http://yoursite.com/2016/linux-serial-with-libcssl/</id>
+    <link href="http://snowyying.github.io/2016/linux-serial-with-libcssl/"/>
+    <id>http://snowyying.github.io/2016/linux-serial-with-libcssl/</id>
     <published>2016-08-03T03:46:46.000Z</published>
     <updated>2016-08-06T07:18:50.535Z</updated>
     
@@ -342,23 +342,23 @@ void cssl_setup(cssl_t *serial,
     
     </summary>
     
-      <category term="I/O" scheme="http://yoursite.com/categories/I-O/"/>
+      <category term="I/O" scheme="http://snowyying.github.io/categories/I-O/"/>
     
     
-      <category term="IT" scheme="http://yoursite.com/tags/IT/"/>
+      <category term="IT" scheme="http://snowyying.github.io/tags/IT/"/>
     
-      <category term="linux" scheme="http://yoursite.com/tags/linux/"/>
+      <category term="linux" scheme="http://snowyying.github.io/tags/linux/"/>
     
-      <category term="串口" scheme="http://yoursite.com/tags/%E4%B8%B2%E5%8F%A3/"/>
+      <category term="串口" scheme="http://snowyying.github.io/tags/%E4%B8%B2%E5%8F%A3/"/>
     
-      <category term="libcssl" scheme="http://yoursite.com/tags/libcssl/"/>
+      <category term="libcssl" scheme="http://snowyying.github.io/tags/libcssl/"/>
     
   </entry>
   
   <entry>
     <title>再谈select, iocp, epoll, kqueue及各种I/O复用机制</title>
-    <link href="http://yoursite.com/2016/IO-multiplexing/"/>
-    <id>http://yoursite.com/2016/IO-multiplexing/</id>
+    <link href="http://snowyying.github.io/2016/IO-multiplexing/"/>
+    <id>http://snowyying.github.io/2016/IO-multiplexing/</id>
     <published>2016-08-03T02:26:54.000Z</published>
     <updated>2016-08-06T07:18:50.566Z</updated>
     
@@ -417,25 +417,25 @@ void cssl_setup(cssl_t *serial,
     
     </summary>
     
-      <category term="I/O" scheme="http://yoursite.com/categories/I-O/"/>
+      <category term="I/O" scheme="http://snowyying.github.io/categories/I-O/"/>
     
     
-      <category term="IT" scheme="http://yoursite.com/tags/IT/"/>
+      <category term="IT" scheme="http://snowyying.github.io/tags/IT/"/>
     
-      <category term="网络" scheme="http://yoursite.com/tags/%E7%BD%91%E7%BB%9C/"/>
+      <category term="网络" scheme="http://snowyying.github.io/tags/%E7%BD%91%E7%BB%9C/"/>
     
-      <category term="I/O" scheme="http://yoursite.com/tags/I-O/"/>
+      <category term="I/O" scheme="http://snowyying.github.io/tags/I-O/"/>
     
-      <category term="效率" scheme="http://yoursite.com/tags/%E6%95%88%E7%8E%87/"/>
+      <category term="效率" scheme="http://snowyying.github.io/tags/%E6%95%88%E7%8E%87/"/>
     
-      <category term="复用" scheme="http://yoursite.com/tags/%E5%A4%8D%E7%94%A8/"/>
+      <category term="复用" scheme="http://snowyying.github.io/tags/%E5%A4%8D%E7%94%A8/"/>
     
   </entry>
   
   <entry>
     <title>SELECT是如何实现的？</title>
-    <link href="http://yoursite.com/2016/select-implement/"/>
-    <id>http://yoursite.com/2016/select-implement/</id>
+    <link href="http://snowyying.github.io/2016/select-implement/"/>
+    <id>http://snowyying.github.io/2016/select-implement/</id>
     <published>2016-08-02T13:21:47.000Z</published>
     <updated>2016-08-06T07:18:50.487Z</updated>
     
@@ -465,23 +465,23 @@ void cssl_setup(cssl_t *serial,
     
     </summary>
     
-      <category term="网络" scheme="http://yoursite.com/categories/%E7%BD%91%E7%BB%9C/"/>
+      <category term="网络" scheme="http://snowyying.github.io/categories/%E7%BD%91%E7%BB%9C/"/>
     
     
-      <category term="IT" scheme="http://yoursite.com/tags/IT/"/>
+      <category term="IT" scheme="http://snowyying.github.io/tags/IT/"/>
     
-      <category term="网络" scheme="http://yoursite.com/tags/%E7%BD%91%E7%BB%9C/"/>
+      <category term="网络" scheme="http://snowyying.github.io/tags/%E7%BD%91%E7%BB%9C/"/>
     
-      <category term="select" scheme="http://yoursite.com/tags/select/"/>
+      <category term="select" scheme="http://snowyying.github.io/tags/select/"/>
     
-      <category term="epoll" scheme="http://yoursite.com/tags/epoll/"/>
+      <category term="epoll" scheme="http://snowyying.github.io/tags/epoll/"/>
     
   </entry>
   
   <entry>
     <title>如何成为一位杰出的程序员</title>
-    <link href="http://yoursite.com/2016/outstanding-programmer/"/>
-    <id>http://yoursite.com/2016/outstanding-programmer/</id>
+    <link href="http://snowyying.github.io/2016/outstanding-programmer/"/>
+    <id>http://snowyying.github.io/2016/outstanding-programmer/</id>
     <published>2016-08-02T13:14:02.000Z</published>
     <updated>2016-08-06T07:18:50.522Z</updated>
     
@@ -504,21 +504,21 @@ void cssl_setup(cssl_t *serial,
     
     </summary>
     
-      <category term="管理" scheme="http://yoursite.com/categories/%E7%AE%A1%E7%90%86/"/>
+      <category term="管理" scheme="http://snowyying.github.io/categories/%E7%AE%A1%E7%90%86/"/>
     
     
-      <category term="IT" scheme="http://yoursite.com/tags/IT/"/>
+      <category term="IT" scheme="http://snowyying.github.io/tags/IT/"/>
     
-      <category term="成长" scheme="http://yoursite.com/tags/%E6%88%90%E9%95%BF/"/>
+      <category term="成长" scheme="http://snowyying.github.io/tags/%E6%88%90%E9%95%BF/"/>
     
-      <category term="程序员" scheme="http://yoursite.com/tags/%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
+      <category term="程序员" scheme="http://snowyying.github.io/tags/%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
     
   </entry>
   
   <entry>
     <title>想在IT行业牛B起来, 看他说了些什么... (年轻人必读)</title>
-    <link href="http://yoursite.com/2016/lead-the-industry/"/>
-    <id>http://yoursite.com/2016/lead-the-industry/</id>
+    <link href="http://snowyying.github.io/2016/lead-the-industry/"/>
+    <id>http://snowyying.github.io/2016/lead-the-industry/</id>
     <published>2016-08-02T12:50:05.000Z</published>
     <updated>2016-08-06T07:18:50.545Z</updated>
     
@@ -577,19 +577,19 @@ void cssl_setup(cssl_t *serial,
     
     </summary>
     
-      <category term="管理" scheme="http://yoursite.com/categories/%E7%AE%A1%E7%90%86/"/>
+      <category term="管理" scheme="http://snowyying.github.io/categories/%E7%AE%A1%E7%90%86/"/>
     
     
-      <category term="IT" scheme="http://yoursite.com/tags/IT/"/>
+      <category term="IT" scheme="http://snowyying.github.io/tags/IT/"/>
     
-      <category term="成长" scheme="http://yoursite.com/tags/%E6%88%90%E9%95%BF/"/>
+      <category term="成长" scheme="http://snowyying.github.io/tags/%E6%88%90%E9%95%BF/"/>
     
   </entry>
   
   <entry>
     <title>程序员必须进行的10项投资</title>
-    <link href="http://yoursite.com/2016/programmers-10-investment/"/>
-    <id>http://yoursite.com/2016/programmers-10-investment/</id>
+    <link href="http://snowyying.github.io/2016/programmers-10-investment/"/>
+    <id>http://snowyying.github.io/2016/programmers-10-investment/</id>
     <published>2016-08-02T12:41:13.000Z</published>
     <updated>2016-08-06T07:18:50.511Z</updated>
     
@@ -628,21 +628,21 @@ void cssl_setup(cssl_t *serial,
     
     </summary>
     
-      <category term="管理" scheme="http://yoursite.com/categories/%E7%AE%A1%E7%90%86/"/>
+      <category term="管理" scheme="http://snowyying.github.io/categories/%E7%AE%A1%E7%90%86/"/>
     
     
-      <category term="IT" scheme="http://yoursite.com/tags/IT/"/>
+      <category term="IT" scheme="http://snowyying.github.io/tags/IT/"/>
     
-      <category term="成长" scheme="http://yoursite.com/tags/%E6%88%90%E9%95%BF/"/>
+      <category term="成长" scheme="http://snowyying.github.io/tags/%E6%88%90%E9%95%BF/"/>
     
-      <category term="程序员" scheme="http://yoursite.com/tags/%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
+      <category term="程序员" scheme="http://snowyying.github.io/tags/%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
     
   </entry>
   
   <entry>
     <title>define宏定义中的#,##,@#及\符号</title>
-    <link href="http://yoursite.com/2016/define-symbol/"/>
-    <id>http://yoursite.com/2016/define-symbol/</id>
+    <link href="http://snowyying.github.io/2016/define-symbol/"/>
+    <id>http://snowyying.github.io/2016/define-symbol/</id>
     <published>2016-08-02T11:29:29.000Z</published>
     <updated>2016-08-06T07:18:50.575Z</updated>
     
@@ -724,19 +724,19 @@ int main()
     
     </summary>
     
-      <category term="C/C++" scheme="http://yoursite.com/categories/C-C/"/>
+      <category term="C/C++" scheme="http://snowyying.github.io/categories/C-C/"/>
     
     
-      <category term="C" scheme="http://yoursite.com/tags/C/"/>
+      <category term="C" scheme="http://snowyying.github.io/tags/C/"/>
     
-      <category term="define" scheme="http://yoursite.com/tags/define/"/>
+      <category term="define" scheme="http://snowyying.github.io/tags/define/"/>
     
   </entry>
   
   <entry>
     <title>run a 32-bit executable file on a 64-bit multi-architecture Ubuntu system</title>
-    <link href="http://yoursite.com/2016/run-32b-on-64b-ubuntu/"/>
-    <id>http://yoursite.com/2016/run-32b-on-64b-ubuntu/</id>
+    <link href="http://snowyying.github.io/2016/run-32b-on-64b-ubuntu/"/>
+    <id>http://snowyying.github.io/2016/run-32b-on-64b-ubuntu/</id>
     <published>2016-08-02T11:07:13.000Z</published>
     <updated>2016-08-06T07:18:50.497Z</updated>
     
@@ -758,19 +758,19 @@ sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386
     
     </summary>
     
-      <category term="嵌入式" scheme="http://yoursite.com/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F/"/>
+      <category term="嵌入式" scheme="http://snowyying.github.io/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F/"/>
     
     
-      <category term="Ubuntu" scheme="http://yoursite.com/tags/Ubuntu/"/>
+      <category term="Ubuntu" scheme="http://snowyying.github.io/tags/Ubuntu/"/>
     
-      <category term="32-bit" scheme="http://yoursite.com/tags/32-bit/"/>
+      <category term="32-bit" scheme="http://snowyying.github.io/tags/32-bit/"/>
     
   </entry>
   
   <entry>
     <title>博客迁移至Github</title>
-    <link href="http://yoursite.com/2016/Blog-move-to-github/"/>
-    <id>http://yoursite.com/2016/Blog-move-to-github/</id>
+    <link href="http://snowyying.github.io/2016/Blog-move-to-github/"/>
+    <id>http://snowyying.github.io/2016/Blog-move-to-github/</id>
     <published>2016-08-02T08:28:45.000Z</published>
     <updated>2016-08-06T07:14:12.474Z</updated>
     
@@ -790,19 +790,19 @@ sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386
     
     </summary>
     
-      <category term="Test" scheme="http://yoursite.com/categories/Test/"/>
+      <category term="Test" scheme="http://snowyying.github.io/categories/Test/"/>
     
     
-      <category term="blog" scheme="http://yoursite.com/tags/blog/"/>
+      <category term="blog" scheme="http://snowyying.github.io/tags/blog/"/>
     
-      <category term="github" scheme="http://yoursite.com/tags/github/"/>
+      <category term="github" scheme="http://snowyying.github.io/tags/github/"/>
     
   </entry>
   
   <entry>
     <title>IT KAs 4 Snowyying</title>
-    <link href="http://yoursite.com/2016/it-kas-4-snowyying/"/>
-    <id>http://yoursite.com/2016/it-kas-4-snowyying/</id>
+    <link href="http://snowyying.github.io/2016/it-kas-4-snowyying/"/>
+    <id>http://snowyying.github.io/2016/it-kas-4-snowyying/</id>
     <published>2016-08-02T02:56:37.000Z</published>
     <updated>2016-08-06T07:18:50.556Z</updated>
     
@@ -854,19 +854,19 @@ sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386
     
     </summary>
     
-      <category term="Test" scheme="http://yoursite.com/categories/Test/"/>
+      <category term="Test" scheme="http://snowyying.github.io/categories/Test/"/>
     
     
-      <category term="IT" scheme="http://yoursite.com/tags/IT/"/>
+      <category term="IT" scheme="http://snowyying.github.io/tags/IT/"/>
     
-      <category term="KAs" scheme="http://yoursite.com/tags/KAs/"/>
+      <category term="KAs" scheme="http://snowyying.github.io/tags/KAs/"/>
     
   </entry>
   
   <entry>
     <title>Hello World</title>
-    <link href="http://yoursite.com/2016/hello-world/"/>
-    <id>http://yoursite.com/2016/hello-world/</id>
+    <link href="http://snowyying.github.io/2016/hello-world/"/>
+    <id>http://snowyying.github.io/2016/hello-world/</id>
     <published>2016-08-02T01:48:34.792Z</published>
     <updated>2016-08-06T07:07:25.688Z</updated>
     
@@ -887,7 +887,7 @@ sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386
     
     </summary>
     
-      <category term="Test" scheme="http://yoursite.com/categories/Test/"/>
+      <category term="Test" scheme="http://snowyying.github.io/categories/Test/"/>
     
     
   </entry>
