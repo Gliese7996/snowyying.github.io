@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://snowyying.github.io/About/index.html</loc>
+    
+    <lastmod>2016-08-07T00:43:08.115Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/it-kas-4-snowyying/</loc>
+    
+    <lastmod>2016-08-07T00:41:30.694Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/Blog-move-to-github/</loc>
+    
+    <lastmod>2016-08-07T00:41:15.679Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://snowyying.github.io/2016/socket-SO-REUSEADDR/</loc>
     
     <lastmod>2016-08-06T15:48:22.738Z</lastmod>
@@ -65,30 +86,9 @@
   </url>
   
   <url>
-    <loc>http://snowyying.github.io/2016/it-kas-4-snowyying/</loc>
-    
-    <lastmod>2016-08-06T15:39:45.393Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.github.io/About/index.html</loc>
-    
-    <lastmod>2016-08-06T09:02:00.419Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://snowyying.github.io/2016/programmers-10-investment/</loc>
     
     <lastmod>2016-08-06T07:18:50.511Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.github.io/2016/Blog-move-to-github/</loc>
-    
-    <lastmod>2016-08-06T07:14:12.474Z</lastmod>
     
   </url>
   
