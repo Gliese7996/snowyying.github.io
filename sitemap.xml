@@ -2,9 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://snowyying.github.io/2016/io-reactor-and-proactor/</loc>
+    
+    <lastmod>2016-08-07T07:49:33.492Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/io-multiplexing/</loc>
+    
+    <lastmod>2016-08-07T07:49:30.668Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/linux-asynchronous-io/</loc>
+    
+    <lastmod>2016-08-07T07:49:13.536Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://snowyying.github.io/About/index.html</loc>
     
-    <lastmod>2016-08-07T00:43:08.115Z</lastmod>
+    <lastmod>2016-08-07T05:08:03.036Z</lastmod>
     
   </url>
   
@@ -40,13 +61,6 @@
     <loc>http://snowyying.github.io/2016/select-implement/</loc>
     
     <lastmod>2016-08-06T15:48:22.714Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.github.io/2016/IO-multiplexing/</loc>
-    
-    <lastmod>2016-08-06T15:48:22.701Z</lastmod>
     
   </url>
   
