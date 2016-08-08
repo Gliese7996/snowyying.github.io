@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://snowyying.github.io/2016/io-multiplexing-mechanism/</loc>
+    
+    <lastmod>2016-08-08T07:02:16.085Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://snowyying.github.io/2016/io-reactor-and-proactor/</loc>
     
     <lastmod>2016-08-08T00:32:15.899Z</lastmod>
@@ -12,13 +19,6 @@
     <loc>http://snowyying.github.io/2016/linux-asynchronous-io/</loc>
     
     <lastmod>2016-08-08T00:31:01.450Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.github.io/2016/io-multiplexing/</loc>
-    
-    <lastmod>2016-08-07T07:49:30.668Z</lastmod>
     
   </url>
   
