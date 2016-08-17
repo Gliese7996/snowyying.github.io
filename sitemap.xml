@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://snowyying.github.io/2016/Understand-TCP-IP-network-2/</loc>
+    
+    <lastmod>2016-08-17T02:12:04.127Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://snowyying.github.io/2016/Understand-TCP-IP-network-1/</loc>
     
     <lastmod>2016-08-17T02:00:36.145Z</lastmod>
@@ -54,13 +61,6 @@
     <loc>http://snowyying.github.io/2016/lead-the-industry/</loc>
     
     <lastmod>2016-08-17T02:00:36.079Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.github.io/2016/Understand-TCP-IP-network-2/</loc>
-    
-    <lastmod>2016-08-17T02:00:12.025Z</lastmod>
     
   </url>
   
