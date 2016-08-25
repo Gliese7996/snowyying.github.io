@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://snowyying.github.io/"/>
-  <updated>2016-08-25T03:03:29.383Z</updated>
+  <updated>2016-08-25T03:08:07.365Z</updated>
   <id>http://snowyying.github.io/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>c_cpp_growth</title>
+    <title>C/C++ 成长路线 (教程)</title>
     <link href="http://snowyying.github.io/2016/c-cpp-growth/"/>
     <id>http://snowyying.github.io/2016/c-cpp-growth/</id>
     <published>2016-08-24T11:05:07.000Z</published>
-    <updated>2016-08-25T03:03:29.383Z</updated>
+    <updated>2016-08-25T03:08:07.365Z</updated>
     
     <content type="html"><![CDATA[<h2 id="1-&#x57FA;&#x7840;"><a href="#1-&#x57FA;&#x7840;" class="headerlink" title="1. &#x57FA;&#x7840;"></a>1. &#x57FA;&#x7840;</h2><ul>
 <li>The C++ Programming Language</li>
@@ -46,6 +46,7 @@
 <li>&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;</li>
 <li>UML&#x7528;&#x6237;&#x6307;&#x5357;</li>
 </ul>
+<p><code>&#x81F3;&#x6B64;, &#x606D;&#x559C;&#x4F60;&#x5DF2;&#x7ECF;&#x5165;&#x95E8;&#x4E86;, &#x53EF;&#x4EE5;&#x5F00;&#x59CB;&#x5728;&#x7B80;&#x5386;&#x4E0A;&#x5199;&#x4E0A;&apos;&#x4E86;&#x89E3;C++&apos;!</code></p>
 ]]></content>
     
     <summary type="html">
