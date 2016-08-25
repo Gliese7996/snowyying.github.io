@@ -19,7 +19,7 @@
 <meta property="og:image" content="http://snowyying.github.io/2016/Understand-TCP-IP-network-2/driver_nic_cmomunication_how_to_receive_packets.png">
 <meta property="og:image" content="http://snowyying.github.io/2016/Understand-TCP-IP-network-2/buffers_related_to_packet_transmission.png">
 <meta property="og:image" content="http://snowyying.github.io/2016/Understand-TCP-IP-network-2/buffers_related_to_packaet_receiving.png">
-<meta property="og:updated_time" content="2016-08-17T02:23:38.316Z">
+<meta property="og:updated_time" content="2016-08-25T04:03:19.555Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="理解TCP/IP网络栈&编写网络应用 (下)">
 <meta name="twitter:description" content="&amp;#x6765;&amp;#x81EA;: &amp;#x535A;&amp;#x5BA2; Axb&amp;#x7684;&amp;#x81EA;&amp;#x6211;&amp;#x4FEE;&amp;#x517B; http://blog.2baxb.me/archives/1190 2015/05/01
@@ -125,6 +125,7 @@
 <h6 id="3-&#x5982;&#x4F55;&#x589E;&#x52A0;&#x6216;&#x5220;&#x9664;&#x5934;"><a href="#3-&#x5982;&#x4F55;&#x589E;&#x52A0;&#x6216;&#x5220;&#x9664;&#x5934;" class="headerlink" title="3. &#x5982;&#x4F55;&#x589E;&#x52A0;&#x6216;&#x5220;&#x9664;&#x5934;"></a>3. &#x5982;&#x4F55;&#x589E;&#x52A0;&#x6216;&#x5220;&#x9664;&#x5934;</h6><p>&#x6570;&#x636E;&#x5305;&#x5728;&#x7F51;&#x7EDC;&#x6808;&#x7684;&#x5404;&#x5C42;&#x4E2D;&#x4E0A;&#x5347;&#x6216;&#x4E0B;&#x964D;&#x65F6;&#x4F1A;&#x589E;&#x52A0;&#x6216;&#x5220;&#x9664;&#x6570;&#x636E;&#x5934;&#x3002;&#x4E3A;&#x4E86;&#x66F4;&#x6709;&#x6548;&#x7387;&#x7684;&#x5904;&#x7406;&#x800C;&#x4F7F;&#x7528;&#x4E86;&#x6307;&#x9488;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x8981;&#x5220;&#x9664;&#x94FE;&#x8DEF;&#x5934;&#x53EA;&#x9700;&#x8981;&#x4FEE;&#x6539;head pointer&#x7684;&#x503C;&#x3002;</p>
 <h6 id="4-&#x5982;&#x4F55;&#x5408;&#x5E76;&#x6216;&#x5207;&#x5206;&#x6570;&#x636E;&#x5305;"><a href="#4-&#x5982;&#x4F55;&#x5408;&#x5E76;&#x6216;&#x5207;&#x5206;&#x6570;&#x636E;&#x5305;" class="headerlink" title="4. &#x5982;&#x4F55;&#x5408;&#x5E76;&#x6216;&#x5207;&#x5206;&#x6570;&#x636E;&#x5305;"></a>4. &#x5982;&#x4F55;&#x5408;&#x5E76;&#x6216;&#x5207;&#x5206;&#x6570;&#x636E;&#x5305;</h6><p>&#x4E3A;&#x4E86;&#x66F4;&#x6709;&#x6548;&#x7387;&#x7684;&#x6267;&#x884C;&#x628A;&#x6570;&#x636E;&#x5305;&#x589E;&#x5230;&#x6216;&#x4ECE;socket&#x7F13;&#x51B2;&#x533A;&#x4E2D;&#x5220;&#x9664;&#x8FD9;&#x7C7B;&#x64CD;&#x4F5C;&#x800C;&#x4F7F;&#x7528;&#x4E86;&#x94FE;&#x8868;&#xFF0C;&#x6216;&#x8005;&#x53EB;&#x6570;&#x636E;&#x5305;&#x94FE;&#x3002;next&#x548C;prev&#x6307;&#x9488;&#x7528;&#x4E8E;&#x8FD9;&#x4E2A;&#x573A;&#x666F;&#x3002;</p>
 <h6 id="5-&#x5FEB;&#x901F;&#x5206;&#x914D;&#x548C;&#x91CA;&#x653E;"><a href="#5-&#x5FEB;&#x901F;&#x5206;&#x914D;&#x548C;&#x91CA;&#x653E;" class="headerlink" title="5. &#x5FEB;&#x901F;&#x5206;&#x914D;&#x548C;&#x91CA;&#x653E;"></a>5. &#x5FEB;&#x901F;&#x5206;&#x914D;&#x548C;&#x91CA;&#x653E;</h6><p>&#x65E0;&#x8BBA;&#x4F55;&#x65F6;&#x521B;&#x5EFA;&#x6570;&#x636E;&#x5305;&#x90FD;&#x4F1A;&#x5206;&#x914D;&#x4E00;&#x4E2A;&#x6570;&#x636E;&#x7ED3;&#x6784;&#xFF0C;&#x6B64;&#x65F6;&#x4F1A;&#x7528;&#x5230;&#x5FEB;&#x901F;&#x5206;&#x914D;&#x5668;&#x3002;&#x6BD4;&#x5982;&#xFF0C;&#x5982;&#x679C;&#x6570;&#x636E;&#x901A;&#x8FC7;10Gb&#x7684;&#x4EE5;&#x592A;&#x7F51;&#x4F20;&#x8F93;&#xFF0C;&#x6BCF;&#x79D2;&#x4F1A;&#x6709;&#x8D85;&#x8FC7;&#x4E00;&#x767E;&#x4E07;&#x4E2A;&#x5BF9;&#x8C61;&#x88AB;&#x521B;&#x5EFA;&#x548C;&#x9500;&#x6BC1;&#x3002;</p>
+<a id="more"></a>
 <h2 id="&#x4E09;-TCP&#x63A7;&#x5236;&#x5757;&#xFF08;TCP-Control-Block&#xFF09;"><a href="#&#x4E09;-TCP&#x63A7;&#x5236;&#x5757;&#xFF08;TCP-Control-Block&#xFF09;" class="headerlink" title="&#x4E09; TCP&#x63A7;&#x5236;&#x5757;&#xFF08;TCP Control Block&#xFF09;"></a>&#x4E09; TCP&#x63A7;&#x5236;&#x5757;&#xFF08;TCP Control Block&#xFF09;</h2><p>&#x5176;&#x6B21;&#xFF0C;&#x6709;&#x4E00;&#x4E2A;&#x8868;&#x793A;TCP&#x8FDE;&#x63A5;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;&#xFF0C;&#x4E4B;&#x524D;&#x5B83;&#x88AB;&#x62BD;&#x8C61;&#x7684;&#x53EB;&#x505A;TCP&#x63A7;&#x5236;&#x5757;&#x3002;Linux&#x4F7F;&#x7528;&#x4E86;tcp_sock&#x8FD9;&#x4E2A;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x3002;&#x5728; <strong>&#x56FE;7</strong> &#x4E2D;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x6587;&#x4EF6;&#x3001;socket&#x548C; <strong>tcp_socket</strong> &#x7684;&#x5173;&#x7CFB;&#x3002;</p>
 <p><img src="/2016/Understand-TCP-IP-network-2/tcp_connection_structure.png" alt="img"></p>
 <center>&#x56FE;7&#xFF1A;TCP Connection&#x7ED3;&#x6784;</center>
@@ -217,7 +218,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://snowyying.github.io/2016/Understand-TCP-IP-network-2/" data-id="cis9qzlbp0008d8skjc94d06j" class="article-share-link">Share</a>
+      <a data-url="http://snowyying.github.io/2016/Understand-TCP-IP-network-2/" data-id="cis9st01u0008jwskv6ylj2dc" class="article-share-link">Share</a>
       
         <a href="http://snowyying.github.io/2016/Understand-TCP-IP-network-2/#ds-thread" class="article-comment-link">留言</a>
       
@@ -277,7 +278,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C-C/">C/C++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Embedded/">Embedded</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/I-O/">I/O</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Manage/">Manage</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Test/">Test</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C-C/">C/C++</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Embedded/">Embedded</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/I-O/">I/O</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Manage/">Manage</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Test/">Test</a><span class="category-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -296,7 +297,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">17</span></li></ul>
     </div>
   </div>
 
