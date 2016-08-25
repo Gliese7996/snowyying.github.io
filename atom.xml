@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://snowyying.github.io/"/>
-  <updated>2016-08-17T02:23:38.316Z</updated>
+  <updated>2016-08-25T03:03:29.383Z</updated>
   <id>http://snowyying.github.io/</id>
   
   <author>
@@ -14,6 +14,61 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>c_cpp_growth</title>
+    <link href="http://snowyying.github.io/2016/c-cpp-growth/"/>
+    <id>http://snowyying.github.io/2016/c-cpp-growth/</id>
+    <published>2016-08-24T11:05:07.000Z</published>
+    <updated>2016-08-25T03:03:29.383Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="1-&#x57FA;&#x7840;"><a href="#1-&#x57FA;&#x7840;" class="headerlink" title="1. &#x57FA;&#x7840;"></a>1. &#x57FA;&#x7840;</h2><ul>
+<li>The C++ Programming Language</li>
+<li>The C++ standard library</li>
+</ul>
+<h2 id="2-&#x6DF1;&#x5165;"><a href="#2-&#x6DF1;&#x5165;" class="headerlink" title="2. &#x6DF1;&#x5165;"></a>2. &#x6DF1;&#x5165;</h2><blockquote>
+<p>7E1L</p>
+</blockquote>
+<ul>
+<li>Effective C++</li>
+<li>More Effective C++</li>
+<li>Effective modern C++</li>
+<li>Exceptional C++</li>
+<li>More Exceptional C++</li>
+<li>Exceptional C++ Style</li>
+<li>Effective STL</li>
+<li>Imperfect C++</li>
+</ul>
+<h2 id="3-&#x6280;&#x5DE7;"><a href="#3-&#x6280;&#x5DE7;" class="headerlink" title="3. &#x6280;&#x5DE7;"></a>3. &#x6280;&#x5DE7;</h2><ul>
+<li>Google&#x7F16;&#x7A0B;&#x98CE;&#x683C;&#x6307;&#x5357;</li>
+<li>&#x4EE3;&#x7801;&#x6B63;&#x89E3;&#x4E4B;&#x9053;</li>
+<li>&#x91CD;&#x6784; - &#x6539;&#x5584;&#x65E2;&#x6709;&#x4EE3;&#x7801;&#x7684;&#x8BBE;&#x8BA1;</li>
+<li>&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;</li>
+<li>UML&#x7528;&#x6237;&#x6307;&#x5357;</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;1-&amp;#x57FA;&amp;#x7840;&quot;&gt;&lt;a href=&quot;#1-&amp;#x57FA;&amp;#x7840;&quot; class=&quot;headerlink&quot; title=&quot;1. &amp;#x57FA;&amp;#x7840;&quot;&gt;&lt;/a&gt;1. &amp;#x57FA;&amp;#x7840;&lt;/h2&gt;&lt;ul&gt;
+&lt;l
+    
+    </summary>
+    
+      <category term="C/C++" scheme="http://snowyying.github.io/categories/C-C/"/>
+    
+    
+      <category term="C" scheme="http://snowyying.github.io/tags/C/"/>
+    
+      <category term="C++" scheme="http://snowyying.github.io/tags/C/"/>
+    
+      <category term="学习" scheme="http://snowyying.github.io/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="成长" scheme="http://snowyying.github.io/tags/%E6%88%90%E9%95%BF/"/>
+    
+      <category term="教程" scheme="http://snowyying.github.io/tags/%E6%95%99%E7%A8%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>理解TCP/IP网络栈&amp;编写网络应用 (下)</title>
