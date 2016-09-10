@@ -70,6 +70,201 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-variadic-functions" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/variadic-functions/">函数不定参数的定义与解析</a>
+    </h1>
+  
+
+      </header>
+    
+  
+  <div class="article-meta">
+    <a href="/2016/variadic-functions/" class="article-date">
+  <time datetime="2016-09-08T02:45:23.000Z" itemprop="datePublished">2016-09-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/C-C/">C/C++</a>
+  </div>
+
+  </div>
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">ErrMsg</span><span class="params">(LPTSTR szFormat,...)</span></span></div><div class="line">{</div><div class="line">	<span class="keyword">static</span> TCHAR szBuffer[<span class="number">2048</span>]={<span class="number">0</span>};</div><div class="line">	<span class="keyword">const</span> <span class="keyword">size_t</span> NUMCHARS = <span class="keyword">sizeof</span>(szBuffer) / <span class="keyword">sizeof</span>(szBuffer[<span class="number">0</span>]);</div><div class="line">	<span class="keyword">const</span> <span class="keyword">int</span> LASTCHAR = NUMCHARS - <span class="number">1</span>;</div><div class="line">	va_list pArgs;</div><div class="line">	va_start(pArgs, szFormat);</div><div class="line"></div><div class="line">	<span class="comment">// Use a bounded buffer size to prevent buffer overruns.  Limit count to</span></div><div class="line">	<span class="comment">// character size minus one to allow for a NULL terminating character.</span></div><div class="line">	<span class="number">_</span>vsntprintf(szBuffer, NUMCHARS - <span class="number">1</span>, szFormat, pArgs);</div><div class="line">	va_end(pArgs);</div><div class="line">}</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://snowyying.github.io/2016/variadic-functions/" data-id="cistqep8u003yqssk38wjchfh" class="article-share-link">Share</a>
+      
+        <a href="http://snowyying.github.io/2016/variadic-functions/#ds-thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C-C/">C/C++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/不定参数/">不定参数</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/函数/">函数</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-ntp-time" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/ntp-time/">使用 NTPD 进行时间同步</a>
+    </h1>
+  
+
+      </header>
+    
+  
+  <div class="article-meta">
+    <a href="/2016/ntp-time/" class="article-date">
+  <time datetime="2016-09-07T09:00:02.000Z" itemprop="datePublished">2016-09-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/网络/">网络</a>
+  </div>
+
+  </div>
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="NTPD"><a href="#NTPD" class="headerlink" title="NTPD"></a>NTPD</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">root@OpenWrt:~# ntpd --help</div><div class="line">BusyBox v1.22.1 (2014-09-20 22:01:35 CEST) multi-call binary.</div><div class="line"></div><div class="line">Usage: ntpd [-dnqNwl] [-S PROG] [-p PEER]...</div><div class="line"></div><div class="line">NTP client/server</div><div class="line"></div><div class="line">        -d      Verbose</div><div class="line">        -n      Do not daemonize</div><div class="line">        -q      Quit after clock is set</div><div class="line">        -N      Run at high priority</div><div class="line">        -w      Do not set time (only query peers), implies -n</div><div class="line">        -l      Run as server on port 123</div><div class="line">        -S PROG Run PROG after stepping time, stratum change, and every 11 mins</div><div class="line">        -p PEER Obtain time from PEER (may be repeated)</div><div class="line"></div><div class="line">root@OpenWrt:~# ntpd -dnw -p ntp5.aliyun.com</div><div class="line">ntpd: resolved peer ntp5.aliyun.com to 182.92.12.11</div><div class="line">ntpd: sending query to 182.92.12.11</div><div class="line">ntpd: reply from 182.92.12.11: offset:-0.004123 delay:0.037180 status:0x24 strat:2 refid:0x0a892656 rootdelay:0.000107 reach:0x01</div><div class="line">ntpd: sending query to 182.92.12.11</div><div class="line">ntpd: reply from 182.92.12.11: offset:-0.005355 delay:0.043251 status:0x24 strat:2 refid:0x0a892656 rootdelay:0.000107 reach:0x03</div><div class="line">ntpd: sending query to 182.92.12.11</div><div class="line">ntpd: reply from 182.92.12.11: offset:-0.001800 delay:0.039695 status:0x24 strat:2 refid:0x0a892656 rootdelay:0.000107 reach:0x07</div><div class="line">ntpd: sending query to 182.92.12.11</div><div class="line">ntpd: reply from 182.92.12.11: offset:-0.005965 delay:0.039983 status:0x24 strat:2 refid:0x0a892656 rootdelay:0.000107 reach:0x0f</div><div class="line">^C</div><div class="line">root@OpenWrt:~#</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ntpd -dn -p ntp5.aliyun.com</div><div class="line">ntpd -dn -p pool.ntp.org time.nist.gov</div><div class="line">ntpd -dnq -p pool.ntp.org</div></pre></td></tr></table></figure>
+<h2 id="Localtime"><a href="#Localtime" class="headerlink" title="Localtime"></a>Localtime</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"># vi /etc/sysconfig/clock ZONE=Asia/Shanghai UTC=false ARC=false</div><div class="line"># rm /etc/localtime</div><div class="line"># ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://snowyying.github.io/2016/ntp-time/" data-id="cistqep8n003vqsskzudjpemb" class="article-share-link">Share</a>
+      
+        <a href="http://snowyying.github.io/2016/ntp-time/#ds-thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NTP/">NTP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/同步/">同步</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/时间/">时间</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网络/">网络</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-arm-cross-compile" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/arm-cross-compile/">ARM 交叉编译</a>
+    </h1>
+  
+
+      </header>
+    
+  
+  <div class="article-meta">
+    <a href="/2016/arm-cross-compile/" class="article-date">
+  <time datetime="2016-08-27T10:13:05.000Z" itemprop="datePublished">2016-08-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Embedded/">Embedded</a>
+  </div>
+
+  </div>
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Configure"><a href="#Configure" class="headerlink" title="Configure"></a>Configure</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">./configure --host=arm-linux \</div><div class="line">CC=arm-none-linux-gnueabi-gcc \</div><div class="line">CPP=arm-none-linux-gnueabi-cpp \</div><div class="line">CXX=arm-none-linux-gnueabi-g++ \</div><div class="line">AR=arm-none-linux-gnueabi-ar \</div><div class="line">RANLIB=arm-none-linux-gnueabi-ranlib</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://snowyying.github.io/2016/arm-cross-compile/" data-id="cistqep5s000gqsskummqncp7" class="article-share-link">Share</a>
+      
+        <a href="http://snowyying.github.io/2016/arm-cross-compile/#ds-thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ARM/">ARM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/交叉编译/">交叉编译</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/嵌入式/">嵌入式</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-sqlite3-usage-summary" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/sqlite3-usage-summary/">Sqlite3 使用总结</a>
+    </h1>
+  
+
+      </header>
+    
+  
+  <div class="article-meta">
+    <a href="/2016/sqlite3-usage-summary/" class="article-date">
+  <time datetime="2016-08-27T10:06:34.000Z" itemprop="datePublished">2016-08-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Database/">Database</a>
+  </div>
+
+  </div>
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="&#x4F7F;&#x7528;Callback"><a href="#&#x4F7F;&#x7528;Callback" class="headerlink" title="&#x4F7F;&#x7528;Callback"></a>&#x4F7F;&#x7528;Callback</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;stdafx.h&quot;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;sqlite3.h&quot;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line">sqlite3 *smh_db = <span class="literal">NULL</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">smh_callback</span><span class="params">(<span class="keyword">void</span>* user, <span class="keyword">int</span> column, <span class="keyword">char</span>** value, <span class="keyword">char</span>** name)</span></span></div><div class="line">{</div><div class="line">	<span class="built_in">printf</span>(<span class="string">&quot;SQL data: [%d] %s - %s\n&quot;</span>, column, value[<span class="number">1</span>], name[<span class="number">1</span>]);</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">}</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">{</div><div class="line">	<span class="keyword">int</span> rc = sqlite3_open(<span class="string">&quot;E:/share/smh.db&quot;</span>, &amp;smh_db);</div><div class="line">	<span class="keyword">if</span> (rc != SQLITE_OK)</div><div class="line">	{</div><div class="line">		<span class="built_in">printf</span>(<span class="string">&quot;SQL open: Can&apos;t open database: %s\n&quot;</span>, sqlite3_errmsg(smh_db));</div><div class="line">		sqlite3_close(smh_db);</div><div class="line">		smh_db = <span class="literal">NULL</span>;</div><div class="line">	}</div><div class="line"></div><div class="line">	<span class="keyword">char</span> *zErrMsg = <span class="number">0</span>;</div><div class="line">	<span class="keyword">char</span> *sql = <span class="string">&quot;select * from scene_info&quot;</span>;</div><div class="line"></div><div class="line">	rc = sqlite3_exec(smh_db, sql, smh_callback, <span class="number">0</span>, &amp;zErrMsg);</div><div class="line">	<span class="keyword">if</span> (rc != SQLITE_OK)</div><div class="line">	{</div><div class="line">		<span class="built_in">printf</span>(<span class="string">&quot;SQL error: %s\n&quot;</span>, zErrMsg);</div><div class="line">		sqlite3_free(zErrMsg);</div><div class="line">	}</div><div class="line"></div><div class="line">	<span class="keyword">if</span> (smh_db != <span class="literal">NULL</span>)</div><div class="line">	{</div><div class="line">		sqlite3_close(smh_db);</div><div class="line">		smh_db = <span class="literal">NULL</span>;</div><div class="line">	}</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">}</div></pre></td></tr></table></figure>
+<h2 id="&#x4F7F;&#x7528;bind"><a href="#&#x4F7F;&#x7528;bind" class="headerlink" title="&#x4F7F;&#x7528;bind"></a>&#x4F7F;&#x7528;bind</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;stdafx.h&quot;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;sqlite3.h&quot;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line">sqlite3 *smh_db = <span class="literal">NULL</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">smh_callback</span><span class="params">(<span class="keyword">void</span>* user, <span class="keyword">int</span> column, <span class="keyword">char</span>** value, <span class="keyword">char</span>** name)</span></span></div><div class="line">{</div><div class="line">	<span class="built_in">printf</span>(<span class="string">&quot;SQL data: [%d] %s - %s\n&quot;</span>, column, value[<span class="number">1</span>], name[<span class="number">1</span>]);</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">}</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">{</div><div class="line">	<span class="keyword">int</span> rc = sqlite3_open(<span class="string">&quot;E:/share/smh.db&quot;</span>, &amp;smh_db);</div><div class="line">	<span class="keyword">if</span> (rc != SQLITE_OK)</div><div class="line">	{</div><div class="line">		<span class="built_in">printf</span>(<span class="string">&quot;SQL open: Can&apos;t open database: %s\n&quot;</span>, sqlite3_errmsg(smh_db));</div><div class="line">		sqlite3_close(smh_db);</div><div class="line">		smh_db = <span class="literal">NULL</span>;</div><div class="line">	}</div><div class="line"></div><div class="line">	<span class="keyword">char</span> *zErrMsg = <span class="number">0</span>;</div><div class="line">	<span class="keyword">char</span> *sql = <span class="string">&quot;select * from scene_info&quot;</span>;</div><div class="line"><span class="comment">/*</span></div><div class="line">	rc = sqlite3_exec(smh_db, sql, smh_callback, 0, &amp;zErrMsg);</div><div class="line">	if (rc != SQLITE_OK)</div><div class="line">	{</div><div class="line">		printf(&quot;SQL error: %s\n&quot;, zErrMsg);</div><div class="line">		sqlite3_free(zErrMsg);</div><div class="line">	}</div><div class="line">*/</div><div class="line">	sqlite3_stmt *pStmt = <span class="literal">NULL</span>;</div><div class="line">	sqlite3_prepare_v2(smh_db, sql, <span class="number">-1</span>, &amp;pStmt, (<span class="keyword">const</span> <span class="keyword">char</span> **)&amp;zErrMsg);</div><div class="line">	<span class="comment">//int sqlite3_bind_text(sqlite3_stmt*, int, const char*, int n, void(*)(void*));</span></div><div class="line">	<span class="keyword">while</span> (sqlite3_step(pStmt) == SQLITE_ROW)</div><div class="line">	{</div><div class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%d,&quot;</span>, sqlite3_column_int(pStmt, <span class="number">0</span>));</div><div class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%s;&quot;</span>, sqlite3_column_text(pStmt, <span class="number">1</span>));</div><div class="line">	}</div><div class="line"></div><div class="line">	sqlite3_finalize(pStmt);</div><div class="line"></div><div class="line">	<span class="keyword">if</span> (smh_db != <span class="literal">NULL</span>)</div><div class="line">	{</div><div class="line">		sqlite3_close(smh_db);</div><div class="line">		smh_db = <span class="literal">NULL</span>;</div><div class="line">	}</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">}</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://snowyying.github.io/2016/sqlite3-usage-summary/" data-id="cistqep900043qssk0jgxyeso" class="article-share-link">Share</a>
+      
+        <a href="http://snowyying.github.io/2016/sqlite3-usage-summary/#ds-thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C-C/">C/C++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQLite/">SQLite</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-c-cpp-growth" class="article article-type-post" itemscope itemprop="blogPost">
 
   <div class="article-inner">
@@ -128,7 +323,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://snowyying.github.io/2016/c-cpp-growth/" data-id="cis9st01r0006jwskmzd3f6ef" class="article-share-link">Share</a>
+      <a data-url="http://snowyying.github.io/2016/c-cpp-growth/" data-id="cistqep5g000aqsskrnlyucnj" class="article-share-link">Share</a>
       
         <a href="http://snowyying.github.io/2016/c-cpp-growth/#ds-thread" class="article-comment-link">留言</a>
       
@@ -196,7 +391,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://snowyying.github.io/2016/Understand-TCP-IP-network-2/" data-id="cis9st01u0008jwskv6ylj2dc" class="article-share-link">Share</a>
+      <a data-url="http://snowyying.github.io/2016/Understand-TCP-IP-network-2/" data-id="cistqep4x0006qsskfvfdn9wz" class="article-share-link">Share</a>
       
         <a href="http://snowyying.github.io/2016/Understand-TCP-IP-network-2/#ds-thread" class="article-comment-link">留言</a>
       
@@ -256,7 +451,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://snowyying.github.io/2016/Understand-TCP-IP-network-1/" data-id="cis9st01f0002jwskoawqv21d" class="article-share-link">Share</a>
+      <a data-url="http://snowyying.github.io/2016/Understand-TCP-IP-network-1/" data-id="cistqep4u0005qssk6ogymc0h" class="article-share-link">Share</a>
       
         <a href="http://snowyying.github.io/2016/Understand-TCP-IP-network-1/#ds-thread" class="article-comment-link">留言</a>
       
@@ -310,7 +505,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://snowyying.github.io/2016/linux-asynchronous-io/" data-id="cis9st02q000cjwsktjxbi8cw" class="article-share-link">Share</a>
+      <a data-url="http://snowyying.github.io/2016/linux-asynchronous-io/" data-id="cistqep66000sqssktcn554xs" class="article-share-link">Share</a>
       
         <a href="http://snowyying.github.io/2016/linux-asynchronous-io/#ds-thread" class="article-comment-link">留言</a>
       
@@ -368,7 +563,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://snowyying.github.io/2016/io-reactor-and-proactor/" data-id="cis9st03p000sjwskzwpca5hh" class="article-share-link">Share</a>
+      <a data-url="http://snowyying.github.io/2016/io-reactor-and-proactor/" data-id="cistqep5q000fqsskben810fp" class="article-share-link">Share</a>
       
         <a href="http://snowyying.github.io/2016/io-reactor-and-proactor/#ds-thread" class="article-comment-link">留言</a>
       
@@ -439,7 +634,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://snowyying.github.io/2016/socket-SO-REUSEADDR/" data-id="cis9st042000zjwskuch8lni1" class="article-share-link">Share</a>
+      <a data-url="http://snowyying.github.io/2016/socket-SO-REUSEADDR/" data-id="cistqep8x0040qssklav6j3gt" class="article-share-link">Share</a>
       
         <a href="http://snowyying.github.io/2016/socket-SO-REUSEADDR/#ds-thread" class="article-comment-link">留言</a>
       
@@ -514,7 +709,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://snowyying.github.io/2016/io-multiplexing-mechanism/" data-id="cis9st028000ajwsk9wrrgcwx" class="article-share-link">Share</a>
+      <a data-url="http://snowyying.github.io/2016/io-multiplexing-mechanism/" data-id="cistqep5m000dqsskavje6it6" class="article-share-link">Share</a>
       
         <a href="http://snowyying.github.io/2016/io-multiplexing-mechanism/#ds-thread" class="article-comment-link">留言</a>
       
@@ -574,7 +769,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://snowyying.github.io/2016/select-implement/" data-id="cis9st03z000xjwsky0981jlx" class="article-share-link">Share</a>
+      <a data-url="http://snowyying.github.io/2016/select-implement/" data-id="cistqep7z003iqssk11uslkiy" class="article-share-link">Share</a>
       
         <a href="http://snowyying.github.io/2016/select-implement/#ds-thread" class="article-comment-link">留言</a>
       
@@ -635,7 +830,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://snowyying.github.io/2016/socket-select/" data-id="cis9st08v004ajwskzd0f6cp6" class="article-share-link">Share</a>
+      <a data-url="http://snowyying.github.io/2016/socket-select/" data-id="cistqep920045qssk0sw1rszh" class="article-share-link">Share</a>
       
         <a href="http://snowyying.github.io/2016/socket-select/#ds-thread" class="article-comment-link">留言</a>
       
@@ -689,7 +884,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://snowyying.github.io/2016/linux-serial-with-libcssl/" data-id="cis9st03s000tjwskoxm6lacf" class="article-share-link">Share</a>
+      <a data-url="http://snowyying.github.io/2016/linux-serial-with-libcssl/" data-id="cistqep5y000lqsskmpsdvj4g" class="article-share-link">Share</a>
       
         <a href="http://snowyying.github.io/2016/linux-serial-with-libcssl/#ds-thread" class="article-comment-link">留言</a>
       
@@ -766,7 +961,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://snowyying.github.io/2016/define-symbol/" data-id="cis9st01n0005jwskqqcyfoao" class="article-share-link">Share</a>
+      <a data-url="http://snowyying.github.io/2016/define-symbol/" data-id="cistqep540008qsskomy03rox" class="article-share-link">Share</a>
       
         <a href="http://snowyying.github.io/2016/define-symbol/#ds-thread" class="article-comment-link">留言</a>
       
@@ -822,7 +1017,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://snowyying.github.io/2016/run-32b-on-64b-ubuntu/" data-id="cis9st04u001ajwsk477xqfcg" class="article-share-link">Share</a>
+      <a data-url="http://snowyying.github.io/2016/run-32b-on-64b-ubuntu/" data-id="cistqep87003oqsskf7brjeg5" class="article-share-link">Share</a>
       
         <a href="http://snowyying.github.io/2016/run-32b-on-64b-ubuntu/#ds-thread" class="article-comment-link">留言</a>
       
@@ -892,7 +1087,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://snowyying.github.io/2016/lead-the-industry/" data-id="cis9st03l000ojwskqnbfwm6m" class="article-share-link">Share</a>
+      <a data-url="http://snowyying.github.io/2016/lead-the-industry/" data-id="cistqep7x003hqssk0ccz3k60" class="article-share-link">Share</a>
       
         <a href="http://snowyying.github.io/2016/lead-the-industry/#ds-thread" class="article-comment-link">留言</a>
       
@@ -965,7 +1160,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://snowyying.github.io/2016/programmers-10-investment/" data-id="cis9st03i000mjwsk8hifhecx" class="article-share-link">Share</a>
+      <a data-url="http://snowyying.github.io/2016/programmers-10-investment/" data-id="cistqep68000xqsskti3n2sik" class="article-share-link">Share</a>
       
         <a href="http://snowyying.github.io/2016/programmers-10-investment/#ds-thread" class="article-comment-link">留言</a>
       
@@ -1022,7 +1217,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://snowyying.github.io/2016/outstanding-programmer/" data-id="cis9st032000ijwskpzba5kpj" class="article-share-link">Share</a>
+      <a data-url="http://snowyying.github.io/2016/outstanding-programmer/" data-id="cistqep82003kqssktpz8hw6d" class="article-share-link">Share</a>
       
         <a href="http://snowyying.github.io/2016/outstanding-programmer/#ds-thread" class="article-comment-link">留言</a>
       
@@ -1079,7 +1274,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://snowyying.github.io/2016/Blog-move-to-github/" data-id="cis9st0170000jwskv4jt605v" class="article-share-link">Share</a>
+      <a data-url="http://snowyying.github.io/2016/Blog-move-to-github/" data-id="cistqep8b003rqsskzd2zaeft" class="article-share-link">Share</a>
       
         <a href="http://snowyying.github.io/2016/Blog-move-to-github/#ds-thread" class="article-comment-link">留言</a>
       
@@ -1167,7 +1362,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://snowyying.github.io/2016/it-kas-4-snowyying/" data-id="cis9st02y000gjwskd7ligisl" class="article-share-link">Share</a>
+      <a data-url="http://snowyying.github.io/2016/it-kas-4-snowyying/" data-id="cistqep5v000kqssky0rj0owq" class="article-share-link">Share</a>
       
         <a href="http://snowyying.github.io/2016/it-kas-4-snowyying/#ds-thread" class="article-comment-link">留言</a>
       
@@ -1190,7 +1385,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C-C/">C/C++</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Embedded/">Embedded</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/I-O/">I/O</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Manage/">Manage</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Test/">Test</a><span class="category-list-count">2</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C-C/">C/C++</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/">Database</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Embedded/">Embedded</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/I-O/">I/O</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Manage/">Manage</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Test/">Test</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/网络/">网络</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -1200,7 +1395,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/32-bit/" style="font-size: 10px;">32-bit</a> <a href="/tags/C/" style="font-size: 12px;">C</a> <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/I-O/" style="font-size: 14px;">I/O</a> <a href="/tags/IT/" style="font-size: 20px;">IT</a> <a href="/tags/KAs/" style="font-size: 10px;">KAs</a> <a href="/tags/Proactor/" style="font-size: 10px;">Proactor</a> <a href="/tags/Reactor/" style="font-size: 10px;">Reactor</a> <a href="/tags/SO-REUSEADDR/" style="font-size: 10px;">SO_REUSEADDR</a> <a href="/tags/TCP-IP/" style="font-size: 12px;">TCP/IP</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/define/" style="font-size: 10px;">define</a> <a href="/tags/epoll/" style="font-size: 10px;">epoll</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/libcssl/" style="font-size: 10px;">libcssl</a> <a href="/tags/linux/" style="font-size: 12px;">linux</a> <a href="/tags/select/" style="font-size: 12px;">select</a> <a href="/tags/setsockopt/" style="font-size: 10px;">setsockopt</a> <a href="/tags/socket/" style="font-size: 12px;">socket</a> <a href="/tags/串口/" style="font-size: 10px;">串口</a> <a href="/tags/复用/" style="font-size: 10px;">复用</a> <a href="/tags/学习/" style="font-size: 10px;">学习</a> <a href="/tags/异步/" style="font-size: 10px;">异步</a> <a href="/tags/性能/" style="font-size: 14px;">性能</a> <a href="/tags/成长/" style="font-size: 16px;">成长</a> <a href="/tags/教程/" style="font-size: 10px;">教程</a> <a href="/tags/程序员/" style="font-size: 12px;">程序员</a> <a href="/tags/网络/" style="font-size: 18px;">网络</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
+      <a href="/tags/32-bit/" style="font-size: 10px;">32-bit</a> <a href="/tags/ARM/" style="font-size: 10px;">ARM</a> <a href="/tags/C/" style="font-size: 12px;">C</a> <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/C-C/" style="font-size: 12px;">C/C++</a> <a href="/tags/I-O/" style="font-size: 14px;">I/O</a> <a href="/tags/IT/" style="font-size: 20px;">IT</a> <a href="/tags/KAs/" style="font-size: 10px;">KAs</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/NTP/" style="font-size: 10px;">NTP</a> <a href="/tags/Proactor/" style="font-size: 10px;">Proactor</a> <a href="/tags/Reactor/" style="font-size: 10px;">Reactor</a> <a href="/tags/SO-REUSEADDR/" style="font-size: 10px;">SO_REUSEADDR</a> <a href="/tags/SQLite/" style="font-size: 10px;">SQLite</a> <a href="/tags/TCP-IP/" style="font-size: 12px;">TCP/IP</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/define/" style="font-size: 10px;">define</a> <a href="/tags/epoll/" style="font-size: 10px;">epoll</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/libcssl/" style="font-size: 10px;">libcssl</a> <a href="/tags/linux/" style="font-size: 12px;">linux</a> <a href="/tags/select/" style="font-size: 12px;">select</a> <a href="/tags/setsockopt/" style="font-size: 10px;">setsockopt</a> <a href="/tags/socket/" style="font-size: 12px;">socket</a> <a href="/tags/不定参数/" style="font-size: 10px;">不定参数</a> <a href="/tags/串口/" style="font-size: 10px;">串口</a> <a href="/tags/交叉编译/" style="font-size: 10px;">交叉编译</a> <a href="/tags/函数/" style="font-size: 10px;">函数</a> <a href="/tags/同步/" style="font-size: 10px;">同步</a> <a href="/tags/复用/" style="font-size: 10px;">复用</a> <a href="/tags/学习/" style="font-size: 10px;">学习</a> <a href="/tags/嵌入式/" style="font-size: 10px;">嵌入式</a> <a href="/tags/异步/" style="font-size: 10px;">异步</a> <a href="/tags/性能/" style="font-size: 14px;">性能</a> <a href="/tags/成长/" style="font-size: 16px;">成长</a> <a href="/tags/教程/" style="font-size: 10px;">教程</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/时间/" style="font-size: 10px;">时间</a> <a href="/tags/程序员/" style="font-size: 12px;">程序员</a> <a href="/tags/网络/" style="font-size: 18px;">网络</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
     </div>
   </div>
 
@@ -1209,7 +1404,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">17</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">19</span></li></ul>
     </div>
   </div>
 
@@ -1222,23 +1417,23 @@
       <ul>
         
           <li>
+            <a href="/2016/variadic-functions/">函数不定参数的定义与解析</a>
+          </li>
+        
+          <li>
+            <a href="/2016/ntp-time/">使用 NTPD 进行时间同步</a>
+          </li>
+        
+          <li>
+            <a href="/2016/arm-cross-compile/">ARM 交叉编译</a>
+          </li>
+        
+          <li>
+            <a href="/2016/sqlite3-usage-summary/">Sqlite3 使用总结</a>
+          </li>
+        
+          <li>
             <a href="/2016/c-cpp-growth/">C/C++ 成长路线 (教程)</a>
-          </li>
-        
-          <li>
-            <a href="/2016/Understand-TCP-IP-network-2/">理解TCP/IP网络栈&amp;编写网络应用 (下)</a>
-          </li>
-        
-          <li>
-            <a href="/2016/Understand-TCP-IP-network-1/">理解TCP/IP网络栈&amp;编写网络应用 (上)</a>
-          </li>
-        
-          <li>
-            <a href="/2016/linux-asynchronous-io/">linux 异步 I/O 的实现</a>
-          </li>
-        
-          <li>
-            <a href="/2016/io-reactor-and-proactor/">两种高性能 I/O 设计模式 (Reactor/Proactor) 的比较</a>
           </li>
         
       </ul>
