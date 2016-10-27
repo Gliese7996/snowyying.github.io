@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://snowyying.github.io/"/>
-  <updated>2016-09-08T02:48:13.562Z</updated>
+  <updated>2016-10-27T08:39:48.267Z</updated>
   <id>http://snowyying.github.io/</id>
   
   <author>
@@ -16,18 +16,94 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>函数不定参数的定义与解析</title>
-    <link href="http://snowyying.github.io/2016/variadic-functions/"/>
-    <id>http://snowyying.github.io/2016/variadic-functions/</id>
-    <published>2016-09-08T02:45:23.000Z</published>
-    <updated>2016-09-08T02:48:13.562Z</updated>
+    <title>通过 API 获取 GUID(UUID)</title>
+    <link href="http://snowyying.github.io/2016/generate-guid-uuid/"/>
+    <id>http://snowyying.github.io/2016/generate-guid-uuid/</id>
+    <published>2016-10-27T08:26:33.000Z</published>
+    <updated>2016-10-27T08:39:48.267Z</updated>
     
-    <content type="html"><![CDATA[<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">ErrMsg</span><span class="params">(LPTSTR szFormat,...)</span></span></div><div class="line">{</div><div class="line">	<span class="keyword">static</span> TCHAR szBuffer[<span class="number">2048</span>]={<span class="number">0</span>};</div><div class="line">	<span class="keyword">const</span> <span class="keyword">size_t</span> NUMCHARS = <span class="keyword">sizeof</span>(szBuffer) / <span class="keyword">sizeof</span>(szBuffer[<span class="number">0</span>]);</div><div class="line">	<span class="keyword">const</span> <span class="keyword">int</span> LASTCHAR = NUMCHARS - <span class="number">1</span>;</div><div class="line">	va_list pArgs;</div><div class="line">	va_start(pArgs, szFormat);</div><div class="line"></div><div class="line">	<span class="comment">// Use a bounded buffer size to prevent buffer overruns.  Limit count to</span></div><div class="line">	<span class="comment">// character size minus one to allow for a NULL terminating character.</span></div><div class="line">	<span class="number">_</span>vsntprintf(szBuffer, NUMCHARS - <span class="number">1</span>, szFormat, pArgs);</div><div class="line">	va_end(pArgs);</div><div class="line">}</div></pre></td></tr></table></figure>
+    <content type="html"><![CDATA[<h2 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h2><p>&#x4F7F;&#x7528; CoCreateGuid &#x51FD;&#x6570; (GUID)</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;objbase.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> GUID_LEN 64</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span>* argv[])</span></span></div><div class="line">{  </div><div class="line">    <span class="keyword">char</span> buffer[GUID_LEN] = { <span class="number">0</span> };</div><div class="line">    GUID guid;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (CoCreateGuid(&amp;guid))</div><div class="line">    {</div><div class="line">        <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">&quot;create guid error\n&quot;</span>);</div><div class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line">    }</div><div class="line"></div><div class="line">    <span class="number">_</span><span class="built_in">snprintf</span>(buffer, <span class="keyword">sizeof</span>(buffer),</div><div class="line">        <span class="string">&quot;%08X-%04X-%04x-%02X%02X-%02X%02X%02X%02X%02X%02X&quot;</span>,</div><div class="line">        guid.Data1, guid.Data2, guid.Data3,</div><div class="line">        guid.Data4[<span class="number">0</span>], guid.Data4[<span class="number">1</span>], guid.Data4[<span class="number">2</span>],</div><div class="line">        guid.Data4[<span class="number">3</span>], guid.Data4[<span class="number">4</span>], guid.Data4[<span class="number">5</span>],</div><div class="line">        guid.Data4[<span class="number">6</span>], guid.Data4[<span class="number">7</span>]);</div><div class="line">    <span class="built_in">printf</span>(<span class="string">&quot;guid: %s\n&quot;</span>, buffer);</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">}</div></pre></td></tr></table></figure>
+<h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h2><p>&#x4F7F;&#x7528; uuid_generate &#x51FD;&#x6570; (UUID)</p>
+<blockquote>
+<p>&#x7F16;&#x8BD1;&#x547D;&#x4EE4;&#xFF1A;gcc atemp.c -o atemp -luuid</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span>  </span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;uuid/uuid.h&gt;</span>  </span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span>   </span></div><div class="line">{   </div><div class="line">    <span class="keyword">uuid_t</span> uuid;  </div><div class="line">    <span class="keyword">int</span> i;  </div><div class="line">    uuid_generate(uuid);</div><div class="line"></div><div class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>; i&lt;<span class="number">16</span>; i++)</div><div class="line">    {   </div><div class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%02X&quot;</span>,uuid[i]);</div><div class="line">    }</div><div class="line">    <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;   </div><div class="line">}</div></pre></td></tr></table></figure>
 ]]></content>
     
     <summary type="html">
     
-      &lt;figure class=&quot;highlight c&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;d
+      &lt;h2 id=&quot;Windows&quot;&gt;&lt;a href=&quot;#Windows&quot; class=&quot;headerlink&quot; title=&quot;Windows&quot;&gt;&lt;/a&gt;Windows&lt;/h2&gt;&lt;p&gt;&amp;#x4F7F;&amp;#x7528; CoCreateGuid &amp;#x51FD;&amp;#x6570; (GU
+    
+    </summary>
+    
+      <category term="C++" scheme="http://snowyying.github.io/categories/C/"/>
+    
+    
+      <category term="C++" scheme="http://snowyying.github.io/tags/C/"/>
+    
+      <category term="GUID" scheme="http://snowyying.github.io/tags/GUID/"/>
+    
+      <category term="UUID" scheme="http://snowyying.github.io/tags/UUID/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>VS 2013 编译和使用 Boost</title>
+    <link href="http://snowyying.github.io/2016/boost-vs-windows/"/>
+    <id>http://snowyying.github.io/2016/boost-vs-windows/</id>
+    <published>2016-10-19T06:44:28.000Z</published>
+    <updated>2016-10-19T06:58:22.817Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>&#x4EE5; 1.58.0 &#x7248;&#x672C; boost &#x4E3A;&#x4F8B;, &#x5F53;&#x524D;&#x7CFB;&#x7EDF;&#x7248;&#x672C;&#x4E3A; Windows 8.1 x64</p>
+</blockquote>
+<h2 id="1-&#x7F16;&#x8BD1;boost"><a href="#1-&#x7F16;&#x8BD1;boost" class="headerlink" title="1 &#x7F16;&#x8BD1;boost"></a>1 &#x7F16;&#x8BD1;boost</h2><h6 id="1-&#x6253;&#x5F00;VS2013&#x547D;&#x4EE4;&#x63D0;&#x793A;&#x7B26;"><a href="#1-&#x6253;&#x5F00;VS2013&#x547D;&#x4EE4;&#x63D0;&#x793A;&#x7B26;" class="headerlink" title="1) &#x6253;&#x5F00;VS2013&#x547D;&#x4EE4;&#x63D0;&#x793A;&#x7B26;"></a>1) &#x6253;&#x5F00;VS2013&#x547D;&#x4EE4;&#x63D0;&#x793A;&#x7B26;</h6><h6 id="2-&#x8FD0;&#x884C;-bootstrap-bat"><a href="#2-&#x8FD0;&#x884C;-bootstrap-bat" class="headerlink" title="2) &#x8FD0;&#x884C; bootstrap.bat"></a>2) &#x8FD0;&#x884C; bootstrap.bat</h6><p><strong>&#x6CE8;&#x610F;: &#x5168;&#x7A0B;&#x4E0D;&#x8981;&#x5173;&#x95ED;&#x547D;&#x4EE4;&#x63D0;&#x793A;&#x7B26;, &#x6240;&#x6709;&#x64CD;&#x4F5C;&#x5747;&#x5728;&#x6B64;&#x4E2D;&#x5B8C;&#x6210;</strong></p>
+<h6 id="3-&#x8FD0;&#x884C;-b2-exe-&#x6216;-bjam-exe"><a href="#3-&#x8FD0;&#x884C;-b2-exe-&#x6216;-bjam-exe" class="headerlink" title="3) &#x8FD0;&#x884C; b2.exe &#x6216; bjam.exe"></a>3) &#x8FD0;&#x884C; b2.exe &#x6216; bjam.exe</h6><p>&#x2460; &#x67E5;&#x770B;&#x7F16;&#x8BD1;&#x9009;&#x9879;, &#x5728;&#x547D;&#x4EE4;&#x63D0;&#x793A;&#x7B26;&#x4E0B;&#x8F93;&#x5165;&#x201D;b2 &#x2013;help&#x201D;</p>
+<p>&#x8BF7;&#x6CE8;&#x610F;&#x4EE5;&#x4E0B;&#x51E0;&#x4E2A;&#x7F16;&#x8BD1;&#x9009;&#x9879;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">Properties:</div><div class="line"></div><div class="line">toolset=toolset</div><div class="line">Indicate the toolset to build with.</div><div class="line"></div><div class="line">variant=debug|release</div><div class="line">Select the build variant</div><div class="line"></div><div class="line">link=static|shared</div><div class="line">Whether to build static or shared libraries</div><div class="line"></div><div class="line">threading=single|multi</div><div class="line">Whether to build single or multithreaded binaries</div><div class="line"></div><div class="line">runtime-link=static|shared</div><div class="line">Whether to link to static or shared C and C++ runtime.</div></pre></td></tr></table></figure>
+<p>&#x2461; &#x7F16;&#x8BD1;, &#x5728;&#x547D;&#x4EE4;&#x63D0;&#x793A;&#x7B26;&#x4E0B;&#x8F93;&#x5165;&#x201D;b2 link=static threading=multi&#x201D;</p>
+<p><strong>&#x6CE8;&#x610F;: &#x6B64;&#x5904;&#x7684;&#x9009;&#x9879;&#x8981;&#x6839;&#x636E;&#x5DE5;&#x7A0B;&#x7684;&#x9700;&#x8981;&#x53BB;&#x7F16;&#x8BD1;, &#x5982;&#x679C;&#x4EC5;&#x4EC5;&#x4E3A;&#x4E86;&#x6D4B;&#x8BD5;&#x7F16;&#x8BD1;&#x8FC7;&#x7A0B;, &#x53EF;&#x4EE5;&#x4E0D;&#x5E26;&#x4EFB;&#x4F55;&#x53C2;&#x6570;</strong></p>
+<h2 id="2-&#x4F7F;&#x7528;boost"><a href="#2-&#x4F7F;&#x7528;boost" class="headerlink" title="2 &#x4F7F;&#x7528;boost"></a>2 &#x4F7F;&#x7528;boost</h2><p>&#x5728;&#x5DE5;&#x7A0B;&#x7684;&#x5C5E;&#x6027;&#x8BBE;&#x7F6E;&#x201D;VC++ Directories&#x201D;&#x4E2D;&#x7684;Include&#x548C;Library&#x4E2D;&#x589E;&#x52A0;boost, &#x5982;&#x4E0B;&#x56FE;&#x914D;&#x7F6E;</p>
+<h2 id="3-&#x6CE8;&#x610F;&#x4E8B;&#x9879;"><a href="#3-&#x6CE8;&#x610F;&#x4E8B;&#x9879;" class="headerlink" title="3 &#x6CE8;&#x610F;&#x4E8B;&#x9879;"></a>3 &#x6CE8;&#x610F;&#x4E8B;&#x9879;</h2><p>1) &#x94FE;&#x63A5;&#x4E0D;&#x6210;&#x529F;, &#x627E;&#x4E0D;&#x5230;xxx.lib</p>
+<p>&#x53EF;&#x80FD;&#x662F;&#x7F16;&#x8BD1;&#x9009;&#x9879;&#x548C;boost&#x7684;&#x7F16;&#x8BD1;&#x9009;&#x9879;&#x4E0D;&#x4E00;&#x81F4;&#x5BFC;&#x81F4;&#x7684;,</p>
+<p>&#x8BF7;&#x6309;&#x7167;&#x5DE5;&#x7A0B;&#x7684;&#x7F16;&#x8BD1;&#x9009;&#x9879;&#x91CD;&#x65B0;&#x7F16;&#x8BD1;boost&#x6216;&#x4FEE;&#x6539;vs&#x7684;&#x914D;&#x7F6E;&#x548C;boost&#x4E2D;&#x914D;&#x7F6E;&#x4E00;&#x81F4;.</p>
+<p>2) &#x591A;&#x6B21;&#x7F16;&#x8BD1;boost, &#x4F7F;&#x7528;b2&#x7F16;&#x8BD1;&#x65F6;, &#x53EF;&#x4E0D;&#x505A;&#x6E05;&#x7406;, &#x53EF;&#x540C;&#x65F6;&#x7F16;&#x8BD1;&#x51FA;debug&#x548C;release&#x7248;&#x672C;, &#x591A;&#x7EBF;&#x7A0B;&#x548C;&#x5355;&#x7EBF;&#x7A0B;&#x7248;&#x672C;</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;&amp;#x4EE5; 1.58.0 &amp;#x7248;&amp;#x672C; boost &amp;#x4E3A;&amp;#x4F8B;, &amp;#x5F53;&amp;#x524D;&amp;#x7CFB;&amp;#x7EDF;&amp;#x7248;&amp;#x672C;&amp;#x4E3A; Windows 8.
+    
+    </summary>
+    
+      <category term="C++" scheme="http://snowyying.github.io/categories/C/"/>
+    
+    
+      <category term="C++" scheme="http://snowyying.github.io/tags/C/"/>
+    
+      <category term="Boost" scheme="http://snowyying.github.io/tags/Boost/"/>
+    
+      <category term="Windows" scheme="http://snowyying.github.io/tags/Windows/"/>
+    
+      <category term="VS" scheme="http://snowyying.github.io/tags/VS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>函数不定参数的定义与解析</title>
+    <link href="http://snowyying.github.io/2016/variadic-functions/"/>
+    <id>http://snowyying.github.io/2016/variadic-functions/</id>
+    <published>2016-09-08T02:45:23.000Z</published>
+    <updated>2016-09-10T08:44:16.544Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="va-list-va-start-va-arg-va-end"><a href="#va-list-va-start-va-arg-va-end" class="headerlink" title="va_list, va_start / va_arg / va_end"></a>va_list, va_start / va_arg / va_end</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">ErrMsg</span><span class="params">(LPTSTR szFormat,...)</span></span></div><div class="line">{</div><div class="line">	<span class="keyword">static</span> TCHAR szBuffer[<span class="number">2048</span>] = {<span class="number">0</span>};</div><div class="line">	<span class="keyword">const</span> <span class="keyword">size_t</span> NUMCHARS = <span class="keyword">sizeof</span>(szBuffer) / <span class="keyword">sizeof</span>(szBuffer[<span class="number">0</span>]);</div><div class="line">	<span class="keyword">const</span> <span class="keyword">int</span> LASTCHAR = NUMCHARS - <span class="number">1</span>;</div><div class="line">	va_list pArgs;</div><div class="line">	va_start(pArgs, szFormat);</div><div class="line"></div><div class="line">	<span class="comment">// Use a bounded buffer size to prevent buffer overruns.  Limit count to</span></div><div class="line">	<span class="comment">// character size minus one to allow for a NULL terminating character.</span></div><div class="line">	<span class="number">_</span>vsntprintf(szBuffer, NUMCHARS - <span class="number">1</span>, szFormat, pArgs);</div><div class="line">	va_end(pArgs);</div><div class="line">}</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;va-list-va-start-va-arg-va-end&quot;&gt;&lt;a href=&quot;#va-list-va-start-va-arg-va-end&quot; class=&quot;headerlink&quot; title=&quot;va_list, va_start / va_arg / va_
     
     </summary>
     
@@ -47,7 +123,7 @@
     <link href="http://snowyying.github.io/2016/ntp-time/"/>
     <id>http://snowyying.github.io/2016/ntp-time/</id>
     <published>2016-09-07T09:00:02.000Z</published>
-    <updated>2016-09-10T08:33:52.680Z</updated>
+    <updated>2016-09-10T09:05:55.333Z</updated>
     
     <content type="html"><![CDATA[<h2 id="NTPD"><a href="#NTPD" class="headerlink" title="NTPD"></a>NTPD</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">root@OpenWrt:~# ntpd --help</div><div class="line">BusyBox v1.22.1 (2014-09-20 22:01:35 CEST) multi-call binary.</div><div class="line"></div><div class="line">Usage: ntpd [-dnqNwl] [-S PROG] [-p PEER]...</div><div class="line"></div><div class="line">NTP client/server</div><div class="line"></div><div class="line">        -d      Verbose</div><div class="line">        -n      Do not daemonize</div><div class="line">        -q      Quit after clock is set</div><div class="line">        -N      Run at high priority</div><div class="line">        -w      Do not set time (only query peers), implies -n</div><div class="line">        -l      Run as server on port 123</div><div class="line">        -S PROG Run PROG after stepping time, stratum change, and every 11 mins</div><div class="line">        -p PEER Obtain time from PEER (may be repeated)</div><div class="line"></div><div class="line">root@OpenWrt:~# ntpd -dnw -p ntp5.aliyun.com</div><div class="line">ntpd: resolved peer ntp5.aliyun.com to 182.92.12.11</div><div class="line">ntpd: sending query to 182.92.12.11</div><div class="line">ntpd: reply from 182.92.12.11: offset:-0.004123 delay:0.037180 status:0x24 strat:2 refid:0x0a892656 rootdelay:0.000107 reach:0x01</div><div class="line">ntpd: sending query to 182.92.12.11</div><div class="line">ntpd: reply from 182.92.12.11: offset:-0.005355 delay:0.043251 status:0x24 strat:2 refid:0x0a892656 rootdelay:0.000107 reach:0x03</div><div class="line">ntpd: sending query to 182.92.12.11</div><div class="line">ntpd: reply from 182.92.12.11: offset:-0.001800 delay:0.039695 status:0x24 strat:2 refid:0x0a892656 rootdelay:0.000107 reach:0x07</div><div class="line">ntpd: sending query to 182.92.12.11</div><div class="line">ntpd: reply from 182.92.12.11: offset:-0.005965 delay:0.039983 status:0x24 strat:2 refid:0x0a892656 rootdelay:0.000107 reach:0x0f</div><div class="line">^C</div><div class="line">root@OpenWrt:~#</div></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ntpd -dn -p ntp5.aliyun.com</div><div class="line">ntpd -dn -p pool.ntp.org time.nist.gov</div><div class="line">ntpd -dnq -p pool.ntp.org</div></pre></td></tr></table></figure>
@@ -60,7 +136,7 @@
     
     </summary>
     
-      <category term="网络" scheme="http://snowyying.github.io/categories/%E7%BD%91%E7%BB%9C/"/>
+      <category term="Network" scheme="http://snowyying.github.io/categories/Network/"/>
     
     
       <category term="网络" scheme="http://snowyying.github.io/tags/%E7%BD%91%E7%BB%9C/"/>
@@ -174,9 +250,9 @@
       <category term="C/C++" scheme="http://snowyying.github.io/categories/C-C/"/>
     
     
-      <category term="C" scheme="http://snowyying.github.io/tags/C/"/>
-    
       <category term="C++" scheme="http://snowyying.github.io/tags/C/"/>
+    
+      <category term="C" scheme="http://snowyying.github.io/tags/C/"/>
     
       <category term="学习" scheme="http://snowyying.github.io/tags/%E5%AD%A6%E4%B9%A0/"/>
     

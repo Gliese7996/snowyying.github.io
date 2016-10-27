@@ -2,6 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://snowyying.github.io/2016/generate-guid-uuid/</loc>
+    
+    <lastmod>2016-10-27T08:39:48.267Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/boost-vs-windows/</loc>
+    
+    <lastmod>2016-10-19T06:58:22.817Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/ntp-time/</loc>
+    
+    <lastmod>2016-09-10T09:05:55.333Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/variadic-functions/</loc>
+    
+    <lastmod>2016-09-10T08:44:16.544Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://snowyying.github.io/2016/sqlite3-usage-summary/</loc>
     
     <lastmod>2016-09-10T08:38:17.935Z</lastmod>
@@ -16,23 +44,9 @@
   </url>
   
   <url>
-    <loc>http://snowyying.github.io/2016/ntp-time/</loc>
-    
-    <lastmod>2016-09-10T08:33:52.680Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://snowyying.github.io/2016/io-reactor-and-proactor/</loc>
     
     <lastmod>2016-09-10T08:28:22.329Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.github.io/2016/variadic-functions/</loc>
-    
-    <lastmod>2016-09-08T02:48:13.562Z</lastmod>
     
   </url>
   
