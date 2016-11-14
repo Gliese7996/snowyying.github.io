@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://snowyying.github.io/About/index.html</loc>
+    
+    <lastmod>2016-11-14T11:16:50.081Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://snowyying.github.io/2016/sqlite3-usage-summary/</loc>
     
     <lastmod>2016-11-14T07:40:53.535Z</lastmod>
@@ -215,13 +222,6 @@
     <loc>http://snowyying.github.io/2016/outstanding-programmer/</loc>
     
     <lastmod>2016-08-17T02:00:36.088Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.github.io/About/index.html</loc>
-    
-    <lastmod>2016-08-07T05:08:03.036Z</lastmod>
     
   </url>
   
