@@ -3,24 +3,24 @@
 <head>
   <meta charset="utf-8">
   
-  <title>VS 2013 编译和使用 Boost | Snowyying</title>
+  <title>Visual Studio 编译和使用 Boost | Snowyying</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="&amp;#x4EE5; 1.58.0 &amp;#x7248;&amp;#x672C; boost &amp;#x4E3A;&amp;#x4F8B;, &amp;#x5F53;&amp;#x524D;&amp;#x7CFB;&amp;#x7EDF;&amp;#x7248;&amp;#x672C;&amp;#x4E3A; Windows 8.1 x64
+  <meta name="description" content="&amp;#x4EE5; 1.58.0 &amp;#x7248;&amp;#x672C; boost &amp;#x548C; Visual Studio 2013 &amp;#x4E3A;&amp;#x4F8B;, &amp;#x5F53;&amp;#x524D;&amp;#x7CFB;&amp;#x7EDF;&amp;#x7248;&amp;#x672C;&amp;#x4E3A; Windows 8.1 x64
 
-1 &amp;#x7F16;&amp;#x8BD1;boost1) &amp;#x6253;&amp;#x5F00;VS2013&amp;#x547D;&amp;#x4EE4;&amp;#x6">
+1 &amp;#x7F16;&amp;#x8BD1;boost1) &amp;#x6253;&amp;#x5F0">
 <meta property="og:type" content="article">
-<meta property="og:title" content="VS 2013 编译和使用 Boost">
+<meta property="og:title" content="Visual Studio 编译和使用 Boost">
 <meta property="og:url" content="http://snowyying.github.io/2016/boost-vs-windows/index.html">
 <meta property="og:site_name" content="Snowyying">
-<meta property="og:description" content="&amp;#x4EE5; 1.58.0 &amp;#x7248;&amp;#x672C; boost &amp;#x4E3A;&amp;#x4F8B;, &amp;#x5F53;&amp;#x524D;&amp;#x7CFB;&amp;#x7EDF;&amp;#x7248;&amp;#x672C;&amp;#x4E3A; Windows 8.1 x64
+<meta property="og:description" content="&amp;#x4EE5; 1.58.0 &amp;#x7248;&amp;#x672C; boost &amp;#x548C; Visual Studio 2013 &amp;#x4E3A;&amp;#x4F8B;, &amp;#x5F53;&amp;#x524D;&amp;#x7CFB;&amp;#x7EDF;&amp;#x7248;&amp;#x672C;&amp;#x4E3A; Windows 8.1 x64
 
-1 &amp;#x7F16;&amp;#x8BD1;boost1) &amp;#x6253;&amp;#x5F00;VS2013&amp;#x547D;&amp;#x4EE4;&amp;#x6">
-<meta property="og:updated_time" content="2016-10-19T06:58:22.817Z">
+1 &amp;#x7F16;&amp;#x8BD1;boost1) &amp;#x6253;&amp;#x5F0">
+<meta property="og:updated_time" content="2016-11-14T07:18:12.226Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="VS 2013 编译和使用 Boost">
-<meta name="twitter:description" content="&amp;#x4EE5; 1.58.0 &amp;#x7248;&amp;#x672C; boost &amp;#x4E3A;&amp;#x4F8B;, &amp;#x5F53;&amp;#x524D;&amp;#x7CFB;&amp;#x7EDF;&amp;#x7248;&amp;#x672C;&amp;#x4E3A; Windows 8.1 x64
+<meta name="twitter:title" content="Visual Studio 编译和使用 Boost">
+<meta name="twitter:description" content="&amp;#x4EE5; 1.58.0 &amp;#x7248;&amp;#x672C; boost &amp;#x548C; Visual Studio 2013 &amp;#x4E3A;&amp;#x4F8B;, &amp;#x5F53;&amp;#x524D;&amp;#x7CFB;&amp;#x7EDF;&amp;#x7248;&amp;#x672C;&amp;#x4E3A; Windows 8.1 x64
 
-1 &amp;#x7F16;&amp;#x8BD1;boost1) &amp;#x6253;&amp;#x5F00;VS2013&amp;#x547D;&amp;#x4EE4;&amp;#x6">
+1 &amp;#x7F16;&amp;#x8BD1;boost1) &amp;#x6253;&amp;#x5F0">
   
     <link rel="alternate" href="/atom.xml" title="Snowyying" type="application/atom+xml">
   
@@ -84,7 +84,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      VS 2013 编译和使用 Boost
+      Visual Studio 编译和使用 Boost
     </h1>
   
 
@@ -105,7 +105,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <blockquote>
-<p>&#x4EE5; 1.58.0 &#x7248;&#x672C; boost &#x4E3A;&#x4F8B;, &#x5F53;&#x524D;&#x7CFB;&#x7EDF;&#x7248;&#x672C;&#x4E3A; Windows 8.1 x64</p>
+<p>&#x4EE5; 1.58.0 &#x7248;&#x672C; boost &#x548C; Visual Studio 2013 &#x4E3A;&#x4F8B;, &#x5F53;&#x524D;&#x7CFB;&#x7EDF;&#x7248;&#x672C;&#x4E3A; Windows 8.1 x64</p>
 </blockquote>
 <h2 id="1-&#x7F16;&#x8BD1;boost"><a href="#1-&#x7F16;&#x8BD1;boost" class="headerlink" title="1 &#x7F16;&#x8BD1;boost"></a>1 &#x7F16;&#x8BD1;boost</h2><h6 id="1-&#x6253;&#x5F00;VS2013&#x547D;&#x4EE4;&#x63D0;&#x793A;&#x7B26;"><a href="#1-&#x6253;&#x5F00;VS2013&#x547D;&#x4EE4;&#x63D0;&#x793A;&#x7B26;" class="headerlink" title="1) &#x6253;&#x5F00;VS2013&#x547D;&#x4EE4;&#x63D0;&#x793A;&#x7B26;"></a>1) &#x6253;&#x5F00;VS2013&#x547D;&#x4EE4;&#x63D0;&#x793A;&#x7B26;</h6><h6 id="2-&#x8FD0;&#x884C;-bootstrap-bat"><a href="#2-&#x8FD0;&#x884C;-bootstrap-bat" class="headerlink" title="2) &#x8FD0;&#x884C; bootstrap.bat"></a>2) &#x8FD0;&#x884C; bootstrap.bat</h6><p><strong>&#x6CE8;&#x610F;: &#x5168;&#x7A0B;&#x4E0D;&#x8981;&#x5173;&#x95ED;&#x547D;&#x4EE4;&#x63D0;&#x793A;&#x7B26;, &#x6240;&#x6709;&#x64CD;&#x4F5C;&#x5747;&#x5728;&#x6B64;&#x4E2D;&#x5B8C;&#x6210;</strong></p>
 <h6 id="3-&#x8FD0;&#x884C;-b2-exe-&#x6216;-bjam-exe"><a href="#3-&#x8FD0;&#x884C;-b2-exe-&#x6216;-bjam-exe" class="headerlink" title="3) &#x8FD0;&#x884C; b2.exe &#x6216; bjam.exe"></a>3) &#x8FD0;&#x884C; b2.exe &#x6216; bjam.exe</h6><p>&#x2460; &#x67E5;&#x770B;&#x7F16;&#x8BD1;&#x9009;&#x9879;, &#x5728;&#x547D;&#x4EE4;&#x63D0;&#x793A;&#x7B26;&#x4E0B;&#x8F93;&#x5165;&#x201D;b2 &#x2013;help&#x201D;</p>
@@ -122,7 +122,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://snowyying.github.io/2016/boost-vs-windows/" data-id="cius3lvyu0001gcsk4aemxx27" class="article-share-link">Share</a>
+      <a data-url="http://snowyying.github.io/2016/boost-vs-windows/" data-id="civhpztg7000uuwsk5ycszpy6" class="article-share-link">Share</a>
       
         <a href="http://snowyying.github.io/2016/boost-vs-windows/#ds-thread" class="article-comment-link">留言</a>
       
@@ -158,7 +158,7 @@
 
 <section id="comments">
   <!-- 多说评论框 start -->
-  <div class="ds-thread" data-thread-key="2016/boost-vs-windows/" data-title="VS 2013 编译和使用 Boost" data-url="http://snowyying.github.io/2016/boost-vs-windows/"></div>
+  <div class="ds-thread" data-thread-key="2016/boost-vs-windows/" data-title="Visual Studio 编译和使用 Boost" data-url="http://snowyying.github.io/2016/boost-vs-windows/"></div>
   <!-- 多说评论框 end -->
   <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
   <script type="text/javascript">
@@ -182,7 +182,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C++</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/C-C/">C/C++</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/">Database</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Embedded/">Embedded</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/I-O/">I/O</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Manage/">Manage</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Test/">Test</a><span class="category-list-count">2</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C++</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/C-C/">C/C++</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/">Database</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Embedded/">Embedded</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/I-O/">I/O</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Manage/">Manage</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Test/">Test</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/多媒体/">多媒体</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/计算机基础/">计算机基础</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件工程/">软件工程</a><span class="category-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -192,7 +192,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/32-bit/" style="font-size: 10px;">32-bit</a> <a href="/tags/ARM/" style="font-size: 10px;">ARM</a> <a href="/tags/Boost/" style="font-size: 10px;">Boost</a> <a href="/tags/C/" style="font-size: 12px;">C</a> <a href="/tags/C/" style="font-size: 14px;">C++</a> <a href="/tags/C-C/" style="font-size: 12px;">C/C++</a> <a href="/tags/GUID/" style="font-size: 10px;">GUID</a> <a href="/tags/I-O/" style="font-size: 14px;">I/O</a> <a href="/tags/IT/" style="font-size: 20px;">IT</a> <a href="/tags/KAs/" style="font-size: 10px;">KAs</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/NTP/" style="font-size: 10px;">NTP</a> <a href="/tags/Proactor/" style="font-size: 10px;">Proactor</a> <a href="/tags/Reactor/" style="font-size: 10px;">Reactor</a> <a href="/tags/SO-REUSEADDR/" style="font-size: 10px;">SO_REUSEADDR</a> <a href="/tags/SQLite/" style="font-size: 10px;">SQLite</a> <a href="/tags/TCP-IP/" style="font-size: 12px;">TCP/IP</a> <a href="/tags/UUID/" style="font-size: 10px;">UUID</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/VS/" style="font-size: 10px;">VS</a> <a href="/tags/Windows/" style="font-size: 10px;">Windows</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/define/" style="font-size: 10px;">define</a> <a href="/tags/epoll/" style="font-size: 10px;">epoll</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/libcssl/" style="font-size: 10px;">libcssl</a> <a href="/tags/linux/" style="font-size: 12px;">linux</a> <a href="/tags/select/" style="font-size: 12px;">select</a> <a href="/tags/setsockopt/" style="font-size: 10px;">setsockopt</a> <a href="/tags/socket/" style="font-size: 12px;">socket</a> <a href="/tags/不定参数/" style="font-size: 10px;">不定参数</a> <a href="/tags/串口/" style="font-size: 10px;">串口</a> <a href="/tags/交叉编译/" style="font-size: 10px;">交叉编译</a> <a href="/tags/函数/" style="font-size: 10px;">函数</a> <a href="/tags/同步/" style="font-size: 10px;">同步</a> <a href="/tags/复用/" style="font-size: 10px;">复用</a> <a href="/tags/学习/" style="font-size: 10px;">学习</a> <a href="/tags/嵌入式/" style="font-size: 10px;">嵌入式</a> <a href="/tags/异步/" style="font-size: 10px;">异步</a> <a href="/tags/性能/" style="font-size: 14px;">性能</a> <a href="/tags/成长/" style="font-size: 16px;">成长</a> <a href="/tags/教程/" style="font-size: 10px;">教程</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/时间/" style="font-size: 10px;">时间</a> <a href="/tags/程序员/" style="font-size: 12px;">程序员</a> <a href="/tags/网络/" style="font-size: 18px;">网络</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
+      <a href="/tags/32-bit/" style="font-size: 10px;">32-bit</a> <a href="/tags/ARM/" style="font-size: 10px;">ARM</a> <a href="/tags/Big-Endian/" style="font-size: 10px;">Big-Endian</a> <a href="/tags/Boost/" style="font-size: 10px;">Boost</a> <a href="/tags/C/" style="font-size: 14px;">C</a> <a href="/tags/C/" style="font-size: 14px;">C++</a> <a href="/tags/C-C/" style="font-size: 12px;">C/C++</a> <a href="/tags/GUID/" style="font-size: 10px;">GUID</a> <a href="/tags/I-O/" style="font-size: 14px;">I/O</a> <a href="/tags/IT/" style="font-size: 20px;">IT</a> <a href="/tags/KAs/" style="font-size: 10px;">KAs</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Little-Endian/" style="font-size: 10px;">Little-Endian</a> <a href="/tags/NTP/" style="font-size: 10px;">NTP</a> <a href="/tags/Proactor/" style="font-size: 10px;">Proactor</a> <a href="/tags/Reactor/" style="font-size: 10px;">Reactor</a> <a href="/tags/SO-REUSEADDR/" style="font-size: 10px;">SO_REUSEADDR</a> <a href="/tags/SQLite/" style="font-size: 10px;">SQLite</a> <a href="/tags/SQuaRE/" style="font-size: 10px;">SQuaRE</a> <a href="/tags/TCP-IP/" style="font-size: 12px;">TCP/IP</a> <a href="/tags/UML/" style="font-size: 10px;">UML</a> <a href="/tags/UUID/" style="font-size: 10px;">UUID</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/VS/" style="font-size: 10px;">VS</a> <a href="/tags/Windows/" style="font-size: 10px;">Windows</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/decode/" style="font-size: 10px;">decode</a> <a href="/tags/define/" style="font-size: 10px;">define</a> <a href="/tags/epoll/" style="font-size: 10px;">epoll</a> <a href="/tags/ffmpeg/" style="font-size: 12px;">ffmpeg</a> <a href="/tags/ffplay/" style="font-size: 10px;">ffplay</a> <a href="/tags/ffprobe/" style="font-size: 10px;">ffprobe</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/h264/" style="font-size: 10px;">h264</a> <a href="/tags/libcssl/" style="font-size: 10px;">libcssl</a> <a href="/tags/linux/" style="font-size: 12px;">linux</a> <a href="/tags/select/" style="font-size: 12px;">select</a> <a href="/tags/setsockopt/" style="font-size: 10px;">setsockopt</a> <a href="/tags/socket/" style="font-size: 12px;">socket</a> <a href="/tags/不定参数/" style="font-size: 10px;">不定参数</a> <a href="/tags/串口/" style="font-size: 10px;">串口</a> <a href="/tags/交叉编译/" style="font-size: 10px;">交叉编译</a> <a href="/tags/函数/" style="font-size: 10px;">函数</a> <a href="/tags/同步/" style="font-size: 10px;">同步</a> <a href="/tags/复用/" style="font-size: 10px;">复用</a> <a href="/tags/学习/" style="font-size: 10px;">学习</a> <a href="/tags/嵌入式/" style="font-size: 10px;">嵌入式</a> <a href="/tags/异步/" style="font-size: 10px;">异步</a> <a href="/tags/性能/" style="font-size: 14px;">性能</a> <a href="/tags/成长/" style="font-size: 16px;">成长</a> <a href="/tags/教程/" style="font-size: 10px;">教程</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/时间/" style="font-size: 10px;">时间</a> <a href="/tags/程序员/" style="font-size: 12px;">程序员</a> <a href="/tags/统一建模语言/" style="font-size: 10px;">统一建模语言</a> <a href="/tags/网络/" style="font-size: 18px;">网络</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
     </div>
   </div>
 
@@ -201,7 +201,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">19</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">19</span></li></ul>
     </div>
   </div>
 
@@ -214,23 +214,23 @@
       <ul>
         
           <li>
-            <a href="/2016/generate-guid-uuid/">通过 API 获取 GUID(UUID)</a>
+            <a href="/2016/square-overview/">SQuaRE 简介</a>
           </li>
         
           <li>
-            <a href="/2016/boost-vs-windows/">VS 2013 编译和使用 Boost</a>
+            <a href="/2016/uml-overview/">UML 概述</a>
           </li>
         
           <li>
-            <a href="/2016/variadic-functions/">函数不定参数的定义与解析</a>
+            <a href="/2016/swebok-overview/">swebok 概述</a>
           </li>
         
           <li>
-            <a href="/2016/ntp-time/">使用 NTPD 进行时间同步</a>
+            <a href="/2016/design-pattern/">设计模式概述</a>
           </li>
         
           <li>
-            <a href="/2016/arm-cross-compile/">ARM 交叉编译</a>
+            <a href="/2016/trace-route/">trace route 网络命令原理</a>
           </li>
         
       </ul>
