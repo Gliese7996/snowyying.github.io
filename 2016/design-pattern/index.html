@@ -5,16 +5,22 @@
   
   <title>设计模式概述 | Snowyying</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="&amp;#x8BBE;&amp;#x8BA1;&amp;#x539F;&amp;#x5219;1. &amp;#x5355;&amp;#x4E00;&amp;#x804C;&amp;#x8D23;&amp;#x539F;&amp;#x5219;(SRP)&amp;#x539F;&amp;#x5219;: &amp;#x5E94;&amp;#x8BE5;&amp;#x6709;&amp;#x4E14;&amp;#x4EC5;&amp;#x6709;&amp;#x4E00;&amp;#x4E2A;&amp;#x539F;&amp;#x56E0;&amp;#x5F15;&amp;#x8D7">
+  <meta name="description" content="&amp;#x8BBE;&amp;#x8BA1;&amp;#x539F;&amp;#x5219;
+1. &amp;#x5355;&amp;#x4E00;&amp;#x804C;&amp;#x8D23;&amp;#x539F;&amp;#x5219;(SRP)&amp;#x539F;&amp;#x5219;: &amp;#x5E94;&amp;#x8BE5;&amp;#x6709;&amp;#x4E14;&amp;#x4EC5;&amp;#x6709;&amp;#x4E00;&amp;#x4E2A;&amp;#x539F;&amp;#x56E0;&amp;#x5F15;&amp;#x8D">
 <meta property="og:type" content="article">
 <meta property="og:title" content="设计模式概述">
 <meta property="og:url" content="http://snowyying.github.io/2016/design-pattern/index.html">
 <meta property="og:site_name" content="Snowyying">
-<meta property="og:description" content="&amp;#x8BBE;&amp;#x8BA1;&amp;#x539F;&amp;#x5219;1. &amp;#x5355;&amp;#x4E00;&amp;#x804C;&amp;#x8D23;&amp;#x539F;&amp;#x5219;(SRP)&amp;#x539F;&amp;#x5219;: &amp;#x5E94;&amp;#x8BE5;&amp;#x6709;&amp;#x4E14;&amp;#x4EC5;&amp;#x6709;&amp;#x4E00;&amp;#x4E2A;&amp;#x539F;&amp;#x56E0;&amp;#x5F15;&amp;#x8D7">
-<meta property="og:updated_time" content="2016-11-14T07:02:24.420Z">
+<meta property="og:description" content="&amp;#x8BBE;&amp;#x8BA1;&amp;#x539F;&amp;#x5219;
+1. &amp;#x5355;&amp;#x4E00;&amp;#x804C;&amp;#x8D23;&amp;#x539F;&amp;#x5219;(SRP)&amp;#x539F;&amp;#x5219;: &amp;#x5E94;&amp;#x8BE5;&amp;#x6709;&amp;#x4E14;&amp;#x4EC5;&amp;#x6709;&amp;#x4E00;&amp;#x4E2A;&amp;#x539F;&amp;#x56E0;&amp;#x5F15;&amp;#x8D">
+<meta property="og:image" content="http://snowyying.github.io/2016/design-pattern/Design-principles.png">
+<meta property="og:image" content="http://snowyying.github.io/2016/design-pattern/Design-pattern.png">
+<meta property="og:updated_time" content="2016-11-15T02:39:04.718Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="设计模式概述">
-<meta name="twitter:description" content="&amp;#x8BBE;&amp;#x8BA1;&amp;#x539F;&amp;#x5219;1. &amp;#x5355;&amp;#x4E00;&amp;#x804C;&amp;#x8D23;&amp;#x539F;&amp;#x5219;(SRP)&amp;#x539F;&amp;#x5219;: &amp;#x5E94;&amp;#x8BE5;&amp;#x6709;&amp;#x4E14;&amp;#x4EC5;&amp;#x6709;&amp;#x4E00;&amp;#x4E2A;&amp;#x539F;&amp;#x56E0;&amp;#x5F15;&amp;#x8D7">
+<meta name="twitter:description" content="&amp;#x8BBE;&amp;#x8BA1;&amp;#x539F;&amp;#x5219;
+1. &amp;#x5355;&amp;#x4E00;&amp;#x804C;&amp;#x8D23;&amp;#x539F;&amp;#x5219;(SRP)&amp;#x539F;&amp;#x5219;: &amp;#x5E94;&amp;#x8BE5;&amp;#x6709;&amp;#x4E14;&amp;#x4EC5;&amp;#x6709;&amp;#x4E00;&amp;#x4E2A;&amp;#x539F;&amp;#x56E0;&amp;#x5F15;&amp;#x8D">
+<meta name="twitter:image" content="http://snowyying.github.io/2016/design-pattern/Design-principles.png">
   
     <link rel="alternate" href="/atom.xml" title="Snowyying" type="application/atom+xml">
   
@@ -94,14 +100,16 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="&#x8BBE;&#x8BA1;&#x539F;&#x5219;"><a href="#&#x8BBE;&#x8BA1;&#x539F;&#x5219;" class="headerlink" title="&#x8BBE;&#x8BA1;&#x539F;&#x5219;"></a>&#x8BBE;&#x8BA1;&#x539F;&#x5219;</h2><h6 id="1-&#x5355;&#x4E00;&#x804C;&#x8D23;&#x539F;&#x5219;-SRP"><a href="#1-&#x5355;&#x4E00;&#x804C;&#x8D23;&#x539F;&#x5219;-SRP" class="headerlink" title="1. &#x5355;&#x4E00;&#x804C;&#x8D23;&#x539F;&#x5219;(SRP)"></a>1. &#x5355;&#x4E00;&#x804C;&#x8D23;&#x539F;&#x5219;(SRP)</h6><p>&#x539F;&#x5219;: &#x5E94;&#x8BE5;&#x6709;&#x4E14;&#x4EC5;&#x6709;&#x4E00;&#x4E2A;&#x539F;&#x56E0;&#x5F15;&#x8D77;&#x7C7B;&#x7684;&#x53D8;&#x66F4;.<br>&#x9002;&#x7528;&#x4E8E; &#x63A5;&#x53E3;, &#x7C7B;, &#x65B9;&#x6CD5; &#x2026;<br>&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#x5C3D;&#x53EF;&#x80FD;&#x53EA;&#x505A;&#x4E00;&#x4EF6;&#x4E8B;, &#x4E0D;&#x8981;&#x8BA9;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#x62C5;&#x4EFB;&#x591A;&#x4E2A;&#x804C;&#x8D23;.<br>&#x5982;: &#x5C5E;&#x6027; &#x548C; &#x884C;&#x4E3A; &#x5206;&#x79BB;</p>
+        <h2 id="&#x8BBE;&#x8BA1;&#x539F;&#x5219;"><a href="#&#x8BBE;&#x8BA1;&#x539F;&#x5219;" class="headerlink" title="&#x8BBE;&#x8BA1;&#x539F;&#x5219;"></a>&#x8BBE;&#x8BA1;&#x539F;&#x5219;</h2><p><img src="/2016/design-pattern/Design-principles.png" alt="&#x8BBE;&#x8BA1;&#x539F;&#x5219;"></p>
+<h6 id="1-&#x5355;&#x4E00;&#x804C;&#x8D23;&#x539F;&#x5219;-SRP"><a href="#1-&#x5355;&#x4E00;&#x804C;&#x8D23;&#x539F;&#x5219;-SRP" class="headerlink" title="1. &#x5355;&#x4E00;&#x804C;&#x8D23;&#x539F;&#x5219;(SRP)"></a>1. &#x5355;&#x4E00;&#x804C;&#x8D23;&#x539F;&#x5219;(SRP)</h6><p>&#x539F;&#x5219;: &#x5E94;&#x8BE5;&#x6709;&#x4E14;&#x4EC5;&#x6709;&#x4E00;&#x4E2A;&#x539F;&#x56E0;&#x5F15;&#x8D77;&#x7C7B;&#x7684;&#x53D8;&#x66F4;.<br>&#x9002;&#x7528;&#x4E8E; &#x63A5;&#x53E3;, &#x7C7B;, &#x65B9;&#x6CD5; &#x2026;<br>&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#x5C3D;&#x53EF;&#x80FD;&#x53EA;&#x505A;&#x4E00;&#x4EF6;&#x4E8B;, &#x4E0D;&#x8981;&#x8BA9;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#x62C5;&#x4EFB;&#x591A;&#x4E2A;&#x804C;&#x8D23;.<br>&#x5982;: &#x5C5E;&#x6027; &#x548C; &#x884C;&#x4E3A; &#x5206;&#x79BB;</p>
 <h6 id="2-&#x91CC;&#x6C0F;&#x66FF;&#x6362;&#x539F;&#x5219;-LSP"><a href="#2-&#x91CC;&#x6C0F;&#x66FF;&#x6362;&#x539F;&#x5219;-LSP" class="headerlink" title="2. &#x91CC;&#x6C0F;&#x66FF;&#x6362;&#x539F;&#x5219;(LSP)"></a>2. &#x91CC;&#x6C0F;&#x66FF;&#x6362;&#x539F;&#x5219;(LSP)</h6><p>Overload &#x91CD;&#x8F7D;<br>Override &#x8986;&#x5199;<br>Design by Contract &#x5951;&#x7EA6;&#x8BBE;&#x8BA1;<br>&#x539F;&#x5219;: &#x53EA;&#x8981;&#x7236;&#x7C7B;&#x51FA;&#x73B0;&#x7684;&#x5730;&#x65B9;&#x5B50;&#x7C7B;&#x5C31;&#x53EF;&#x4EE5;&#x51FA;&#x73B0;, &#x800C;&#x4E14;&#x66FF;&#x6362;&#x4E3A;&#x5B50;&#x7C7B;&#x4E0D;&#x4F1A;&#x4EA7;&#x751F;&#x4EFB;&#x4F55;&#x9519;&#x8BEF;&#x6216;&#x5F02;&#x5E38;.<br>&#x76EE;&#x7684;: &#x589E;&#x5F3A;&#x7A0B;&#x5E8F;&#x7684;&#x5065;&#x58EE;&#x6027;, &#x7248;&#x672C;&#x5347;&#x7EA7;&#x4E5F;&#x53EF;&#x4EE5;&#x4FDD;&#x6301;&#x597D;&#x7684;&#x517C;&#x5BB9;&#x6027;.</p>
 <h6 id="3-&#x4F9D;&#x8D56;&#x5012;&#x7F6E;&#x539F;&#x5219;-DIP"><a href="#3-&#x4F9D;&#x8D56;&#x5012;&#x7F6E;&#x539F;&#x5219;-DIP" class="headerlink" title="3. &#x4F9D;&#x8D56;&#x5012;&#x7F6E;&#x539F;&#x5219;(DIP)"></a>3. &#x4F9D;&#x8D56;&#x5012;&#x7F6E;&#x539F;&#x5219;(DIP)</h6><p>&#x672C;&#x8D28;: &#x901A;&#x8FC7;&#x62BD;&#x8C61;(&#x63A5;&#x53E3;&#x6216;&#x62BD;&#x8C61;&#x7C7B;)&#x4F7F;&#x5404;&#x4E2A;&#x7C7B;&#x6216;&#x6A21;&#x5757;&#x7684;&#x5B9E;&#x73B0;&#x5F7C;&#x6B64;&#x72EC;&#x7ACB;, &#x5B9E;&#x73B0;&#x6A21;&#x5757;&#x677E;&#x8026;&#x5408;<br>&#x9762;&#x5411;&#x63A5;&#x53E3;&#x7F16;&#x7A0B;<br>&#x4F9D;&#x8D56;&#x62BD;&#x8C61;, &#x4E0D;&#x8BE5;&#x4F9D;&#x8D56;&#x7EC6;&#x8282;</p>
 <h6 id="4-&#x63A5;&#x53E3;&#x9694;&#x79BB;&#x539F;&#x5219;"><a href="#4-&#x63A5;&#x53E3;&#x9694;&#x79BB;&#x539F;&#x5219;" class="headerlink" title="4. &#x63A5;&#x53E3;&#x9694;&#x79BB;&#x539F;&#x5219;"></a>4. &#x63A5;&#x53E3;&#x9694;&#x79BB;&#x539F;&#x5219;</h6><p>&#x539F;&#x5219;: &#x63A5;&#x53E3;&#x548C;&#x7C7B;&#x7684;&#x5B9A;&#x4E49;&#x5C3D;&#x91CF;&#x4F7F;&#x7528;&#x539F;&#x5B50;&#x63A5;&#x53E3;&#x6216;&#x539F;&#x5B50;&#x7C7B;<br>&#x548C;&#x5355;&#x4E00;&#x804C;&#x8D23;&#x539F;&#x5219;&#x7684;&#x5BA1;&#x89C6;&#x89D2;&#x5EA6;&#x4E0D;&#x540C;</p>
 <h6 id="5-&#x8FEA;&#x7C73;&#x7279;&#x6CD5;&#x5219;-LoD-&#x6700;&#x5C11;&#x77E5;&#x8BC6;&#x539F;&#x5219;-LKP"><a href="#5-&#x8FEA;&#x7C73;&#x7279;&#x6CD5;&#x5219;-LoD-&#x6700;&#x5C11;&#x77E5;&#x8BC6;&#x539F;&#x5219;-LKP" class="headerlink" title="5. &#x8FEA;&#x7C73;&#x7279;&#x6CD5;&#x5219;(LoD) / &#x6700;&#x5C11;&#x77E5;&#x8BC6;&#x539F;&#x5219;(LKP)"></a>5. &#x8FEA;&#x7C73;&#x7279;&#x6CD5;&#x5219;(LoD) / &#x6700;&#x5C11;&#x77E5;&#x8BC6;&#x539F;&#x5219;(LKP)</h6><p>&#x5BF9;&#x8C61;&#x5E94;&#x8BE5;&#x5BF9;&#x5176;&#x4ED6;&#x5BF9;&#x8C61;&#x6709;&#x6700;&#x5C11;&#x7684;&#x4E86;&#x89E3;<br>&#x7C7B;&#x95F4;&#x89E3;&#x8026;, &#x5F31;&#x8026;&#x5408;</p>
 <h6 id="6-&#x5F00;&#x95ED;&#x539F;&#x5219;"><a href="#6-&#x5F00;&#x95ED;&#x539F;&#x5219;" class="headerlink" title="6. &#x5F00;&#x95ED;&#x539F;&#x5219;"></a>6. &#x5F00;&#x95ED;&#x539F;&#x5219;</h6><p>&#x5BF9;&#x6269;&#x5C55;&#x5F00;&#x653E;, &#x5BF9;&#x4FEE;&#x6539;&#x5173;&#x95ED;<br>&#x524D;5&#x4E2A;&#x90FD;&#x662F;&#x5F00;&#x95ED;&#x539F;&#x5219;&#x7684;&#x5177;&#x4F53;&#x5F62;&#x6001;<br>&#x5F00;&#x95ED;&#x539F;&#x5219;&#x662F;&#x5176;&#x7CBE;&#x795E;&#x9886;&#x8896;</p>
-<a id="more"></a> 
-<h2 id="&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;"><a href="#&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;" class="headerlink" title="&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;"></a>&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;</h2><h4 id="&#x521B;&#x5EFA;&#x6A21;&#x5F0F;"><a href="#&#x521B;&#x5EFA;&#x6A21;&#x5F0F;" class="headerlink" title="&#x521B;&#x5EFA;&#x6A21;&#x5F0F;"></a>&#x521B;&#x5EFA;&#x6A21;&#x5F0F;</h4><ol>
+<a id="more"></a>
+<h2 id="&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;"><a href="#&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;" class="headerlink" title="&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;"></a>&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;</h2><p><img src="/2016/design-pattern/Design-pattern.png" alt="&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;"></p>
+<h4 id="&#x521B;&#x5EFA;&#x6A21;&#x5F0F;"><a href="#&#x521B;&#x5EFA;&#x6A21;&#x5F0F;" class="headerlink" title="&#x521B;&#x5EFA;&#x6A21;&#x5F0F;"></a>&#x521B;&#x5EFA;&#x6A21;&#x5F0F;</h4><ol>
 <li><p><strong>Abstract Factory&#xFF08;&#x62BD;&#x8C61;&#x5DE5;&#x5382;&#x6A21;&#x5F0F;&#xFF09;</strong>&#xFF1A;&#x63D0;&#x4F9B;&#x4E00;&#x4E2A;&#x521B;&#x5EFA;&#x4E00;&#x7CFB;&#x5217;&#x76F8;&#x5173;&#x6216;&#x76F8;&#x4E92;&#x4F9D;&#x8D56;&#x5BF9;&#x8C61;&#x7684;&#x63A5;&#x53E3;&#xFF0C;&#x800C;&#x65E0;&#x9700;&#x6307;&#x5B9A;&#x5B83;&#x4EEC;&#x5177;&#x4F53;&#x7684;&#x7C7B;&#x3002;</p>
 </li>
 <li><p><strong>Builder&#xFF08;&#x5EFA;&#x9020;&#x8005;&#x6A21;&#x5F0F;&#xFF09;</strong>&#xFF1A;&#x5C06;&#x4E00;&#x4E2A;&#x590D;&#x6742;&#x5BF9;&#x8C61;&#x7684;&#x6784;&#x5EFA;&#x4E0E;&#x5B83;&#x7684;&#x8868;&#x793A;&#x5206;&#x79BB;&#xFF0C;&#x4F7F;&#x5F97;&#x540C;&#x6837;&#x7684;&#x6784;&#x5EFA;&#x8FC7;&#x7A0B;&#x53EF;&#x4EE5;&#x521B;&#x5EFA;&#x4E0D;&#x540C;&#x7684;&#x8868;&#x793A;&#x3002;</p>
@@ -157,7 +165,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://snowyying.github.io/2016/design-pattern/" data-id="civi1wr7900110gsk8lla2vfv" class="article-share-link">Share</a>
+      <a data-url="http://snowyying.github.io/2016/design-pattern/" data-id="civiw4nff000kikskvz8kvtju" class="article-share-link">Share</a>
       
         <a href="http://snowyying.github.io/2016/design-pattern/#ds-thread" class="article-comment-link">留言</a>
       

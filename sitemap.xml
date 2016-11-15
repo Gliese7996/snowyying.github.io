@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://snowyying.github.io/2016/design-pattern/</loc>
+    
+    <lastmod>2016-11-15T02:39:04.718Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://snowyying.github.io/About/index.html</loc>
     
     <lastmod>2016-11-14T11:33:23.341Z</lastmod>
@@ -96,13 +103,6 @@
     <loc>http://snowyying.github.io/2016/trace-route/</loc>
     
     <lastmod>2016-11-14T07:03:02.530Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.github.io/2016/design-pattern/</loc>
-    
-    <lastmod>2016-11-14T07:02:24.420Z</lastmod>
     
   </url>
   
