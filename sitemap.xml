@@ -2,30 +2,58 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://snowyying.github.io/2016/p2p-overview/</loc>
+    <loc>http://snowyying.github.io/2016/uml-overview/</loc>
     
-    <lastmod>2016-11-16T14:41:10.071Z</lastmod>
+    <lastmod>2016-11-16T15:31:23.743Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://snowyying.github.io/2016/swebok-overview/</loc>
     
-    <lastmod>2016-11-16T14:38:05.771Z</lastmod>
+    <lastmod>2016-11-16T15:29:55.316Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/trace-route/</loc>
+    
+    <lastmod>2016-11-16T15:29:44.128Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://snowyying.github.io/2016/square-overview/</loc>
     
-    <lastmod>2016-11-16T14:38:03.840Z</lastmod>
+    <lastmod>2016-11-16T15:26:50.450Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://snowyying.github.io/2016/design-pattern/</loc>
+    <loc>http://snowyying.github.io/2016/dp-metaphor/</loc>
     
-    <lastmod>2016-11-15T02:39:04.718Z</lastmod>
+    <lastmod>2016-11-16T15:26:47.042Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/dp-explain/</loc>
+    
+    <lastmod>2016-11-16T15:20:24.344Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/dp-overview/</loc>
+    
+    <lastmod>2016-11-16T15:11:53.946Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/p2p-overview/</loc>
+    
+    <lastmod>2016-11-16T14:41:10.071Z</lastmod>
     
   </url>
   
@@ -93,23 +121,9 @@
   </url>
   
   <url>
-    <loc>http://snowyying.github.io/2016/uml-overview/</loc>
-    
-    <lastmod>2016-11-14T07:21:58.353Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://snowyying.github.io/2016/boost-vs-windows/</loc>
     
     <lastmod>2016-11-14T07:20:20.738Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.github.io/2016/trace-route/</loc>
-    
-    <lastmod>2016-11-14T07:03:02.530Z</lastmod>
     
   </url>
   
