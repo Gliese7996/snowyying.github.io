@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://snowyying.github.io/"/>
-  <updated>2016-11-14T07:24:21.620Z</updated>
+  <updated>2016-11-14T07:21:58.353Z</updated>
   <id>http://snowyying.github.io/</id>
   
   <author>
@@ -14,33 +14,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>SQuaRE 简介</title>
-    <link href="http://snowyying.github.io/2016/square-overview/"/>
-    <id>http://snowyying.github.io/2016/square-overview/</id>
-    <published>2016-11-14T06:43:23.000Z</published>
-    <updated>2016-11-14T07:24:21.620Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote>
-<p>&#x7248;&#x6743;&#x58F0;&#x660E;&#xFF1A;&#x672C;&#x6587;&#x4E3A;&#x535A;&#x4E3B;&#x539F;&#x521B;&#x6587;&#x7AE0;&#xFF0C;&#x8F6C;&#x8F7D;&#x8BF7;&#x6CE8;&#x660E;&#x51FA;&#x5904;&#x3002;</p>
-</blockquote>
-<p><img src="/2016/square-overview/SQuaRE.png" alt="SQuaRE"></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;&amp;#x7248;&amp;#x6743;&amp;#x58F0;&amp;#x660E;&amp;#xFF1A;&amp;#x672C;&amp;#x6587;&amp;#x4E3A;&amp;#x535A;&amp;#x4E3B;&amp;#x539F;&amp;#x521B;&amp;#x6587;&amp;#x7AE0;&amp;#xFF0C;&amp;#x8
-    
-    </summary>
-    
-      <category term="Software Engineering" scheme="http://snowyying.github.io/categories/Software-Engineering/"/>
-    
-    
-      <category term="SQuaRE" scheme="http://snowyying.github.io/tags/SQuaRE/"/>
-    
-  </entry>
   
   <entry>
     <title>UML 概述</title>
@@ -72,11 +45,38 @@
   </entry>
   
   <entry>
-    <title>swebok 概述</title>
+    <title>SQuaRE 概览</title>
+    <link href="http://snowyying.github.io/2016/square-overview/"/>
+    <id>http://snowyying.github.io/2016/square-overview/</id>
+    <published>2016-11-14T06:43:23.000Z</published>
+    <updated>2016-11-16T14:38:03.840Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>&#x7248;&#x6743;&#x58F0;&#x660E;&#xFF1A;&#x672C;&#x6587;&#x4E3A;&#x535A;&#x4E3B;&#x539F;&#x521B;&#x6587;&#x7AE0;&#xFF0C;&#x8F6C;&#x8F7D;&#x8BF7;&#x6CE8;&#x660E;&#x51FA;&#x5904;&#x3002;</p>
+</blockquote>
+<p><img src="/2016/square-overview/SQuaRE.png" alt="SQuaRE"></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;&amp;#x7248;&amp;#x6743;&amp;#x58F0;&amp;#x660E;&amp;#xFF1A;&amp;#x672C;&amp;#x6587;&amp;#x4E3A;&amp;#x535A;&amp;#x4E3B;&amp;#x539F;&amp;#x521B;&amp;#x6587;&amp;#x7AE0;&amp;#xFF0C;&amp;#x8
+    
+    </summary>
+    
+      <category term="Software Engineering" scheme="http://snowyying.github.io/categories/Software-Engineering/"/>
+    
+    
+      <category term="SQuaRE" scheme="http://snowyying.github.io/tags/SQuaRE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>swebok 概览</title>
     <link href="http://snowyying.github.io/2016/swebok-overview/"/>
     <id>http://snowyying.github.io/2016/swebok-overview/</id>
     <published>2016-11-14T06:39:07.000Z</published>
-    <updated>2016-11-14T07:22:29.698Z</updated>
+    <updated>2016-11-16T14:38:05.771Z</updated>
     
     <summary type="html">
     
@@ -213,16 +213,50 @@
   </entry>
   
   <entry>
-    <title>p2p overview</title>
+    <title>p2p 概览</title>
     <link href="http://snowyying.github.io/2016/p2p-overview/"/>
     <id>http://snowyying.github.io/2016/p2p-overview/</id>
     <published>2016-11-10T02:50:41.000Z</published>
-    <updated>2016-11-10T02:50:41.073Z</updated>
+    <updated>2016-11-16T14:41:10.071Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="1-NAT-amp-NATP"><a href="#1-NAT-amp-NATP" class="headerlink" title="1 NAT&amp;NATP"></a>1 NAT&amp;NATP</h2><p>NAT&#x5927;&#x81F4;&#x5206;&#x4E3A;&#x4E0B;&#x9762;&#x56DB;&#x7C7B;</p>
+<ol>
+<li><p>Full Cone<br>&#x8FD9;&#x79CD;NAT&#x5185;&#x90E8;&#x7684;&#x673A;&#x5668;A&#x8FDE;&#x63A5;&#x8FC7;&#x5916;&#x7F51;&#x673A;&#x5668;C&#x540E;,NAT&#x4F1A;&#x6253;&#x5F00;&#x4E00;&#x4E2A;&#x7AEF;&#x53E3;.&#x7136;&#x540E;&#x5916;&#x7F51;&#x7684;&#x4EFB;&#x4F55;&#x53D1;&#x5230;&#x8FD9;&#x4E2A;&#x6253;&#x5F00;&#x7684;&#x7AEF;&#x53E3;&#x7684;UDP&#x6570;&#x636E;&#x62A5;&#x90FD;&#x53EF;&#x4EE5;&#x5230;&#x8FBE;A.&#x4E0D;&#x7BA1;&#x662F;&#x4E0D;&#x662F;C&#x53D1;&#x8FC7;&#x6765;&#x7684;.<br>&#x4F8B;&#x5982; A:192.168.8.100 NAT:202.100.100.100 C:292.88.88.88<br>A(192.168.8.100:5000) -&gt; NAT(202.100.100.100 : 8000) -&gt; C(292.88.88.88:2000)<br>&#x4EFB;&#x4F55;&#x53D1;&#x9001;&#x5230; NAT(202.100.100.100:8000)&#x7684;&#x6570;&#x636E;&#x90FD;&#x53EF;&#x4EE5;&#x5230;&#x8FBE;A(192.168.8.100:5000)</p>
+</li>
+<li><p>Restricted Cone<br>&#x8FD9;&#x79CD;NAT&#x5185;&#x90E8;&#x7684;&#x673A;&#x5668;A&#x8FDE;&#x63A5;&#x8FC7;&#x5916;&#x7F51;&#x7684;&#x673A;&#x5668;C&#x540E;,NAT&#x6253;&#x5F00;&#x4E00;&#x4E2A;&#x7AEF;&#x53E3;.&#x7136;&#x540E;C&#x53EF;&#x4EE5;&#x7528;&#x4EFB;&#x4F55;&#x7AEF;&#x53E3;&#x548C;A&#x901A;&#x4FE1;.&#x5176;&#x4ED6;&#x7684;&#x5916;&#x7F51;&#x673A;&#x5668;&#x4E0D;&#x884C;.<br>&#x4F8B;&#x5982; A:192.168.8.100 NAT:202.100.100.100 C:292.88.88.88<br>A(192.168.8.100:5000) -&gt; NAT(202.100.100.100 : 8000) -&gt; C(292.88.88.88:2000)<br>&#x4EFB;&#x4F55;&#x4ECE;C&#x53D1;&#x9001;&#x5230; NAT(202.100.100.100:8000)&#x7684;&#x6570;&#x636E;&#x90FD;&#x53EF;&#x4EE5;&#x5230;&#x8FBE;A(192.168.8.100:5000)</p>
+</li>
+<li><p>Port Restricted Cone<br>&#x8FD9;&#x79CD;NAT&#x5185;&#x90E8;&#x7684;&#x673A;&#x5668;A&#x8FDE;&#x63A5;&#x8FC7;&#x5916;&#x7F51;&#x7684;&#x673A;&#x5668;C&#x540E;,NAT&#x6253;&#x5F00;&#x4E00;&#x4E2A;&#x7AEF;&#x53E3;.&#x7136;&#x540E;C&#x53EF;&#x4EE5;&#x7528;&#x539F;&#x6765;&#x7684;&#x7AEF;&#x53E3;&#x548C;A&#x901A;&#x4FE1;.&#x5176;&#x4ED6;&#x7684;&#x5916;&#x7F51;&#x673A;&#x5668;&#x4E0D;&#x884C;.<br>&#x4F8B;&#x5982; A:192.168.8.100 NAT:202.100.100.100 C:292.88.88.88<br>A(192.168.8.100:5000) -&gt; NAT(202.100.100.100 : 8000) -&gt; C(292.88.88.88:2000)<br>C(202.88.88.88:2000)&#x53D1;&#x9001;&#x5230; NAT(202.100.100.100:8000)&#x7684;&#x6570;&#x636E;&#x90FD;&#x53EF;&#x4EE5;&#x5230;&#x8FBE;A(192.168.8.100:5000)<br><em>&#x4EE5;&#x4E0A;&#x4E09;&#x79CD;NAT&#x901A;&#x79F0;Cone NAT.&#x6211;&#x4EEC;&#x53EA;&#x80FD;&#x7528;&#x8FD9;&#x79CD;NAT&#x8FDB;&#x884C;UDP&#x6253;&#x6D1E;.</em></p>
+</li>
+<li><p>Symmetic<br>&#x5BF9;&#x4E8E;&#x8FD9;&#x79CD;NAT.&#x8FDE;&#x63A5;&#x4E0D;&#x540C;&#x7684;&#x5916;&#x90E8;&#x76EE;&#x6807;.&#x539F;&#x6765;NAT&#x6253;&#x5F00;&#x7684;&#x7AEF;&#x53E3;&#x4F1A;&#x53D8;&#x5316;.&#x800C;Cone NAT&#x4E0D;&#x4F1A;.&#x867D;&#x7136;&#x53EF;&#x4EE5;&#x7528;&#x7AEF;&#x53E3;&#x731C;&#x6D4B;.&#x4F46;&#x662F;&#x6210;&#x529F;&#x7684;&#x6982;&#x7387;&#x5F88;&#x5C0F;.&#x56E0;&#x6B64;&#x653E;&#x5F03;&#x8FD9;&#x79CD;NAT&#x7684;UDP&#x6253;&#x6D1E;.</p>
+</li>
+</ol>
+<p><img src="/2016/p2p-overview/12101539_K5KU.gif" alt="NAT &#x68C0;&#x6D4B;&#x6D41;&#x7A0B;"></p>
+<h2 id="2-UPNP"><a href="#2-UPNP" class="headerlink" title="2 UPNP"></a>2 UPNP</h2><h2 id="3-STUN-amp-TURN-amp-ICE"><a href="#3-STUN-amp-TURN-amp-ICE" class="headerlink" title="3 STUN&amp;TURN&amp;ICE"></a>3 STUN&amp;TURN&amp;ICE</h2>]]></content>
     
     <summary type="html">
     
+      &lt;h2 id=&quot;1-NAT-amp-NATP&quot;&gt;&lt;a href=&quot;#1-NAT-amp-NATP&quot; class=&quot;headerlink&quot; title=&quot;1 NAT&amp;amp;NATP&quot;&gt;&lt;/a&gt;1 NAT&amp;amp;NATP&lt;/h2&gt;&lt;p&gt;NAT&amp;#x5927;&amp;#x81F4;&amp;#x
+    
     </summary>
     
+      <category term="Network" scheme="http://snowyying.github.io/categories/Network/"/>
+    
+    
+      <category term="Network" scheme="http://snowyying.github.io/tags/Network/"/>
+    
+      <category term="p2p" scheme="http://snowyying.github.io/tags/p2p/"/>
+    
+      <category term="NTP" scheme="http://snowyying.github.io/tags/NTP/"/>
+    
+      <category term="NATP" scheme="http://snowyying.github.io/tags/NATP/"/>
+    
+      <category term="UPNP" scheme="http://snowyying.github.io/tags/UPNP/"/>
+    
+      <category term="STUN" scheme="http://snowyying.github.io/tags/STUN/"/>
+    
+      <category term="TRUN" scheme="http://snowyying.github.io/tags/TRUN/"/>
+    
+      <category term="ICE" scheme="http://snowyying.github.io/tags/ICE/"/>
     
   </entry>
   
@@ -1363,9 +1397,9 @@
     
       <category term="网络" scheme="http://snowyying.github.io/tags/%E7%BD%91%E7%BB%9C/"/>
     
-      <category term="socket" scheme="http://snowyying.github.io/tags/socket/"/>
-    
       <category term="select" scheme="http://snowyying.github.io/tags/select/"/>
+    
+      <category term="socket" scheme="http://snowyying.github.io/tags/socket/"/>
     
   </entry>
   
