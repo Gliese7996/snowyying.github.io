@@ -2,6 +2,55 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://snowyying.github.io/2016/swebok-overview/</loc>
+    
+    <lastmod>2016-11-17T04:03:33.929Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/uml-overview/</loc>
+    
+    <lastmod>2016-11-17T03:50:03.205Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/dp-overview/</loc>
+    
+    <lastmod>2016-11-17T03:49:13.032Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/square-overview/</loc>
+    
+    <lastmod>2016-11-17T03:48:12.515Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/KPAs-4-CMMI/</loc>
+    
+    <lastmod>2016-11-17T03:46:26.480Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/cmmi-overview/</loc>
+    
+    <lastmod>2016-11-17T03:44:35.788Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/Big-Endian-Little-Endian/</loc>
+    
+    <lastmod>2016-11-17T01:03:49.925Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://snowyying.github.io/2016/io-multiplexing-mechanism/</loc>
     
     <lastmod>2016-11-16T15:43:22.179Z</lastmod>
@@ -44,20 +93,6 @@
   </url>
   
   <url>
-    <loc>http://snowyying.github.io/2016/uml-overview/</loc>
-    
-    <lastmod>2016-11-16T15:31:23.743Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.github.io/2016/swebok-overview/</loc>
-    
-    <lastmod>2016-11-16T15:29:55.316Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://snowyying.github.io/2016/trace-route/</loc>
     
     <lastmod>2016-11-16T15:29:44.128Z</lastmod>
@@ -65,23 +100,9 @@
   </url>
   
   <url>
-    <loc>http://snowyying.github.io/2016/square-overview/</loc>
-    
-    <lastmod>2016-11-16T15:26:50.450Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://snowyying.github.io/2016/dp-explain/</loc>
     
     <lastmod>2016-11-16T15:20:24.344Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.github.io/2016/dp-overview/</loc>
-    
-    <lastmod>2016-11-16T15:11:53.946Z</lastmod>
     
   </url>
   
@@ -110,13 +131,6 @@
     <loc>http://snowyying.github.io/2016/generate-guid-uuid/</loc>
     
     <lastmod>2016-11-14T07:39:22.630Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.github.io/2016/Big-Endian-Little-Endian/</loc>
-    
-    <lastmod>2016-11-14T07:38:21.677Z</lastmod>
     
   </url>
   
