@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://snowyying.github.io/2016/memory-leak-detect/</loc>
+    
+    <lastmod>2016-11-25T06:16:15.698Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/stress-testing/</loc>
+    
+    <lastmod>2016-11-21T01:56:40.650Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://snowyying.github.io/2016/swebok-overview/</loc>
     
     <lastmod>2016-11-17T04:03:33.929Z</lastmod>

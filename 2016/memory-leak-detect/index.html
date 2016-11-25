@@ -3,17 +3,24 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Tag: TRUN | Snowyying</title>
+  <title>C/C++内存泄露检查及工具使用 | Snowyying</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Snowyying&apos;s blog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Snowyying">
-<meta property="og:url" content="http://snowyying.github.io/tags/TRUN/index.html">
+  <meta name="description" content="Windiws&amp;#x4F7F;&amp;#x7528; Visual Studio (2015), &amp;#x5728;&amp;#x4EE3;&amp;#x7801;&amp;#x4E2D;&amp;#x589E;&amp;#x52A0;&amp;#x4EE5;&amp;#x4E0B;&amp;#x4EE3;&amp;#x7801;:
+1234567#define CRTDBG_MAP_ALLOC#include &amp;lt;crtdbg.h&amp;gt;inline void Enab">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C/C++内存泄露检查及工具使用">
+<meta property="og:url" content="http://snowyying.github.io/2016/memory-leak-detect/index.html">
 <meta property="og:site_name" content="Snowyying">
-<meta property="og:description" content="Snowyying&apos;s blog">
+<meta property="og:description" content="Windiws&amp;#x4F7F;&amp;#x7528; Visual Studio (2015), &amp;#x5728;&amp;#x4EE3;&amp;#x7801;&amp;#x4E2D;&amp;#x589E;&amp;#x52A0;&amp;#x4EE5;&amp;#x4E0B;&amp;#x4EE3;&amp;#x7801;:
+1234567#define CRTDBG_MAP_ALLOC#include &amp;lt;crtdbg.h&amp;gt;inline void Enab">
+<meta property="og:image" content="http://snowyying.github.io/2016/memory-leak-detect/json_c_mem_leak_test_1.png">
+<meta property="og:image" content="http://snowyying.github.io/2016/memory-leak-detect/json_c_mem_leak_test_2.png">
+<meta property="og:updated_time" content="2016-11-25T06:16:15.698Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Snowyying">
-<meta name="twitter:description" content="Snowyying&apos;s blog">
+<meta name="twitter:title" content="C/C++内存泄露检查及工具使用">
+<meta name="twitter:description" content="Windiws&amp;#x4F7F;&amp;#x7528; Visual Studio (2015), &amp;#x5728;&amp;#x4EE3;&amp;#x7801;&amp;#x4E2D;&amp;#x589E;&amp;#x52A0;&amp;#x4EE5;&amp;#x4E0B;&amp;#x4EE3;&amp;#x7801;:
+1234567#define CRTDBG_MAP_ALLOC#include &amp;lt;crtdbg.h&amp;gt;inline void Enab">
+<meta name="twitter:image" content="http://snowyying.github.io/2016/memory-leak-detect/json_c_mem_leak_test_1.png">
   
     <link rel="alternate" href="/atom.xml" title="Snowyying" type="application/atom+xml">
   
@@ -68,40 +75,85 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
+        <section id="main"><article id="post-memory-leak-detect" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <div class="article-inner">
     
     
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/p2p-overview/" class="archive-article-date">
-  <time datetime="2016-11-10T02:50:41.000Z" itemprop="datePublished">11月 10</time>
-</a>
-      
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/p2p-overview/">p2p 概览</a>
+    <h1 class="article-title" itemprop="name">
+      C/C++内存泄露检查及工具使用
     </h1>
   
 
-    </header>
+      </header>
+    
+  
+  <div class="article-meta">
+    <a href="/2016/memory-leak-detect/" class="article-date">
+  <time datetime="2016-11-24T03:58:56.000Z" itemprop="datePublished">2016-11-24</time>
+</a>
+    
   </div>
-</article>
-  
-  
-    </div></section>
-  
 
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Windiws"><a href="#Windiws" class="headerlink" title="Windiws"></a>Windiws</h2><p>&#x4F7F;&#x7528; Visual Studio (2015), &#x5728;&#x4EE3;&#x7801;&#x4E2D;&#x589E;&#x52A0;&#x4EE5;&#x4E0B;&#x4EE3;&#x7801;:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">define</span> CRTDBG_MAP_ALLOC</span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;crtdbg.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">EnableMemLeakCheck</span><span class="params">()</span></span></div><div class="line">{</div><div class="line">	<span class="number">_</span>CrtSetDbgFlag(<span class="number">_</span>CrtSetDbgFlag(<span class="number">_</span>CRTDBG_REPORT_FLAG) | <span class="number">_</span>CRTDBG_LEAK_CHECK_DF);</div><div class="line">}</div></pre></td></tr></table></figure>
+<p>&#x4EE5;&#x4E0B;&#x6848;&#x4F8B;&#x793A;&#x610F;&#x5728;&#x4F7F;&#x7528;json-c&#x5E93;&#x65F6;&#x53D1;&#x751F;&#x5185;&#x5B58;&#x6CC4;&#x9732;, &#x4EE3;&#x7801;&#x5982;&#x4E0B;:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">define</span> CRTDBG_MAP_ALLOC</span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;crtdbg.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">EnableMemLeakCheck</span><span class="params">()</span></span></div><div class="line">{</div><div class="line">    <span class="number">_</span>CrtSetDbgFlag(<span class="number">_</span>CrtSetDbgFlag(<span class="number">_</span>CRTDBG_REPORT_FLAG) | <span class="number">_</span>CRTDBG_LEAK_CHECK_DF);</div><div class="line">}</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;stdio.h&quot;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;json_object.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">{</div><div class="line">    EnableMemLeakCheck();</div><div class="line"></div><div class="line">    json_object	*my_string = json_object_new_string(<span class="string">&quot;\t&quot;</span>);</div><div class="line">    <span class="built_in">printf</span>(<span class="string">&quot;my_string=%s\n&quot;</span>, json_object_get_string(my_string));</div><div class="line">    <span class="built_in">printf</span>(<span class="string">&quot;my_string.to_string()=%s\n&quot;</span>, json_object_to_json_string(my_string));</div><div class="line">    <span class="comment">//json_object_put(my_string); // &#x82E5;&#x4E0D;&#x8C03;&#x7528;&#x5219;&#x4EA7;&#x751F;&#x5185;&#x5B58;&#x6CC4;&#x9732;</span></div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">}</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>&#x6D4B;&#x8BD5;&#x7ED3;&#x679C;</p>
+<p><em>&#x6CA1;&#x6709;&#x91CA;&#x653E;json object&#x8D44;&#x6E90;</em><br><img src="/2016/memory-leak-detect/json_c_mem_leak_test_1.png" alt="&#x5185;&#x5B58;&#x6CC4;&#x9732;"></p>
+<p><em>&#x6B63;&#x786E;&#x91CA;&#x653E;json object&#x8D44;&#x6E90;</em><br><img src="/2016/memory-leak-detect/json_c_mem_leak_test_2.png" alt="&#x5185;&#x5B58;&#x6B63;&#x5E38;"></p>
+<h6 id="&#x53C2;&#x8003;"><a href="#&#x53C2;&#x8003;" class="headerlink" title="&#x53C2;&#x8003;"></a>&#x53C2;&#x8003;</h6><p>crtdbg <code>long _CrtSetBreakAlloc(long nAllocID);</code></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://snowyying.github.io/2016/memory-leak-detect/" data-id="civxe4dew001vgsskdqtw491l" class="article-share-link">Share</a>
+      
+        <a href="http://snowyying.github.io/2016/memory-leak-detect/#ds-thread" class="article-comment-link">留言</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/stress-testing/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">stress testing</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="2016/memory-leak-detect/" data-title="C/C++内存泄露检查及工具使用" data-url="http://snowyying.github.io/2016/memory-leak-detect/"></div>
+  <!-- 多说评论框 end -->
+  <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"snowyying"};
+  (function() {
+  	var ds = document.createElement('script');
+  	ds.type = 'text/javascript';ds.async = true;
+  	ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+  	ds.charset = 'UTF-8';
+  	(document.getElementsByTagName('head')[0] 
+  	 || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+  <!-- 多说公共JS代码 end -->
+</section>
 </section>
         
           <aside id="sidebar">
