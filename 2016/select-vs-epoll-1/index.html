@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>select, poll 和 epoll 的比较 (1) | Snowyying</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="&amp;#x8F6C;&amp;#x81EA;: http://www.cnblogs.com/xuxm2007/archive/2011/08/15/2139809.html &amp;#x963F;&amp;#x7B28;&amp;#x732B; 2011-08-15
+http://my.chinaunix.net/space.php?uid=20196318&amp;amp;do=blog&amp;amp;id=366042http://blo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="select, poll 和 epoll 的比较 (1)">
+<meta property="og:url" content="http://snowyying.github.io/2016/select-vs-epoll-1/index.html">
+<meta property="og:site_name" content="Snowyying">
+<meta property="og:description" content="&amp;#x8F6C;&amp;#x81EA;: http://www.cnblogs.com/xuxm2007/archive/2011/08/15/2139809.html &amp;#x963F;&amp;#x7B28;&amp;#x732B; 2011-08-15
+http://my.chinaunix.net/space.php?uid=20196318&amp;amp;do=blog&amp;amp;id=366042http://blo">
+<meta property="og:updated_time" content="2016-12-01T05:01:28.781Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="select, poll 和 epoll 的比较 (1)">
+<meta name="twitter:description" content="&amp;#x8F6C;&amp;#x81EA;: http://www.cnblogs.com/xuxm2007/archive/2011/08/15/2139809.html &amp;#x963F;&amp;#x7B28;&amp;#x732B; 2011-08-15
+http://my.chinaunix.net/space.php?uid=20196318&amp;amp;do=blog&amp;amp;id=366042http://blo">
+  
+    <link rel="alternate" href="/atom.xml" title="Snowyying" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Snowyying</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Learn and live.</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/About">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://snowyying.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-select-vs-epoll-1" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      select, poll 和 epoll 的比较 (1)
+    </h1>
+  
+
+      </header>
+    
+  
+  <div class="article-meta">
+    <a href="/2016/select-vs-epoll-1/" class="article-date">
+  <time datetime="2016-08-06T03:59:25.000Z" itemprop="datePublished">2016-08-06</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/I-O/">I/O</a>
+  </div>
+
+  </div>
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><code>&#x8F6C;&#x81EA;: http://www.cnblogs.com/xuxm2007/archive/2011/08/15/2139809.html &#x963F;&#x7B28;&#x732B; 2011-08-15</code></p>
+<p><a href="http://my.chinaunix.net/space.php?uid=20196318&amp;do=blog&amp;id=366042" target="_blank" rel="external">http://my.chinaunix.net/space.php?uid=20196318&amp;do=blog&amp;id=366042</a><br><a href="http://blog.endlesscode.com/2010/03/27/select-poll-epoll-intro/" target="_blank" rel="external">http://blog.endlesscode.com/2010/03/27/select-poll-epoll-intro/</a></p>
+<p>linux&#x63D0;&#x4F9B;&#x4E86;select&#x3001;poll&#x3001;epoll&#x63A5;&#x53E3;&#x6765;&#x5B9E;&#x73B0;IO&#x590D;&#x7528;&#xFF0C;&#x4E09;&#x8005;&#x7684;&#x539F;&#x578B;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF0C;&#x672C;&#x6587;&#x4ECE;&#x53C2;&#x6570;&#x3001;&#x5B9E;&#x73B0;&#x3001;&#x6027;&#x80FD;&#x7B49;&#x65B9;&#x9762;&#x5BF9;&#x4E09;&#x8005;&#x8FDB;&#x884C;&#x5BF9;&#x6BD4;&#x3002;</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">select</span><span class="params">(<span class="keyword">int</span> nfds, fd_set *readfds, fd_set *writefds, fd_set *exceptfds,</span></span></div><div class="line">  <span class="keyword">struct</span> timeval *timeout);</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">poll</span><span class="params">(<span class="keyword">struct</span> pollfd *fds, <span class="keyword">nfds_t</span> nfds, <span class="keyword">int</span> timeout)</span></span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">epoll_wait</span><span class="params">(<span class="keyword">int</span> epfd, <span class="keyword">struct</span> epoll_event *events, <span class="keyword">int</span> maxevents, <span class="keyword">int</span> timeout)</span></span>;</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="select&#x3001;poll&#x3001;epoll-wait&#x53C2;&#x6570;&#x53CA;&#x5B9E;&#x73B0;&#x5BF9;&#x6BD4;"><a href="#select&#x3001;poll&#x3001;epoll-wait&#x53C2;&#x6570;&#x53CA;&#x5B9E;&#x73B0;&#x5BF9;&#x6BD4;" class="headerlink" title="select&#x3001;poll&#x3001;epoll_wait&#x53C2;&#x6570;&#x53CA;&#x5B9E;&#x73B0;&#x5BF9;&#x6BD4;"></a>select&#x3001;poll&#x3001;epoll_wait&#x53C2;&#x6570;&#x53CA;&#x5B9E;&#x73B0;&#x5BF9;&#x6BD4;</h2><h6 id="1-select"><a href="#1-select" class="headerlink" title="1. select"></a>1. select</h6><p>select&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;nfds&#x4E3A;fdset&#x96C6;&#x5408;&#x4E2D;&#x6700;&#x5927;&#x63CF;&#x8FF0;&#x7B26;&#x503C;&#x52A0;1&#xFF0C;fdset&#x662F;&#x4E00;&#x4E2A;&#x4F4D;&#x6570;&#x7EC4;&#xFF0C;&#x5176;&#x5927;&#x5C0F;&#x9650;&#x5236;&#x4E3A;__FD_SETSIZE&#xFF08;1024&#xFF09;&#xFF0C;&#x4F4D;&#x6570;&#x7EC4;&#x7684;&#x6BCF;&#x4E00;&#x4F4D;&#x4EE3;&#x8868;&#x5176;&#x5BF9;&#x5E94;&#x7684;&#x63CF;&#x8FF0;&#x7B26;&#x662F;&#x5426;&#x9700;&#x8981;&#x88AB;&#x68C0;&#x67E5;&#x3002;</p>
+<p>select&#x7684;&#x7B2C;&#x4E8C;&#x4E09;&#x56DB;&#x4E2A;&#x53C2;&#x6570;&#x8868;&#x793A;&#x9700;&#x8981;&#x5173;&#x6CE8;&#x8BFB;&#x3001;&#x5199;&#x3001;&#x9519;&#x8BEF;&#x4E8B;&#x4EF6;&#x7684;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#x4F4D;&#x6570;&#x7EC4;&#xFF0C;&#x8FD9;&#x4E9B;&#x53C2;&#x6570;&#x65E2;&#x662F;&#x8F93;&#x5165;&#x53C2;&#x6570;&#x4E5F;&#x662F;&#x8F93;&#x51FA;&#x53C2;&#x6570;&#xFF0C;&#x53EF;&#x80FD;&#x4F1A;&#x88AB;&#x5185;&#x6838;&#x4FEE;&#x6539;&#x7528;&#x4E8E;&#x6807;&#x793A;&#x54EA;&#x4E9B;&#x63CF;&#x8FF0;&#x7B26;&#x4E0A;&#x53D1;&#x751F;&#x4E86;&#x5173;&#x6CE8;&#x7684;&#x4E8B;&#x4EF6;&#x3002;&#x6240;&#x4EE5;&#x6BCF;&#x6B21;&#x8C03;&#x7528;select&#x524D;&#x90FD;&#x9700;&#x8981;&#x91CD;&#x65B0;&#x521D;&#x59CB;&#x5316;fdset&#x3002;</p>
+<p>timeout&#x53C2;&#x6570;&#x4E3A;&#x8D85;&#x65F6;&#x65F6;&#x95F4;&#xFF0C;&#x8BE5;&#x7ED3;&#x6784;&#x4F1A;&#x88AB;&#x5185;&#x6838;&#x4FEE;&#x6539;&#xFF0C;&#x5176;&#x503C;&#x4E3A;&#x8D85;&#x65F6;&#x5269;&#x4F59;&#x7684;&#x65F6;&#x95F4;&#x3002;</p>
+<p>select&#x5BF9;&#x5E94;&#x4E8E;&#x5185;&#x6838;&#x4E2D;&#x7684;sys_select&#x8C03;&#x7528;&#xFF0C;sys_select&#x9996;&#x5148;&#x5C06;&#x7B2C;&#x4E8C;&#x4E09;&#x56DB;&#x4E2A;&#x53C2;&#x6570;&#x6307;&#x5411;&#x7684;fd_set&#x62F7;&#x8D1D;&#x5230;&#x5185;&#x6838;&#xFF0C;&#x7136;&#x540E;&#x5BF9;&#x6BCF;&#x4E2A;&#x88AB;SET&#x7684;&#x63CF;&#x8FF0;&#x7B26;&#x8C03;&#x7528;&#x8FDB;&#x884C;poll&#xFF0C;&#x5E76;&#x8BB0;&#x5F55;&#x5728;&#x4E34;&#x65F6;&#x7ED3;&#x679C;&#x4E2D;&#xFF08;fdset&#xFF09;&#xFF0C;&#x5982;&#x679C;&#x6709;&#x4E8B;&#x4EF6;&#x53D1;&#x751F;&#xFF0C;select&#x4F1A;&#x5C06;&#x4E34;&#x65F6;&#x7ED3;&#x679C;&#x5199;&#x5230;&#x7528;&#x6237;&#x7A7A;&#x95F4;&#x5E76;&#x8FD4;&#x56DE;&#xFF1B;&#x5F53;&#x8F6E;&#x8BE2;&#x4E00;&#x904D;&#x540E;&#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x4E8B;&#x4EF6;&#x53D1;&#x751F;&#x65F6;&#xFF0C;&#x5982;&#x679C;&#x6307;&#x5B9A;&#x4E86;&#x8D85;&#x65F6;&#x65F6;&#x95F4;&#xFF0C;&#x5219;select&#x4F1A;&#x7761;&#x7720;&#x5230;&#x8D85;&#x65F6;&#xFF0C;&#x7761;&#x7720;&#x7ED3;&#x675F;&#x540E;&#x518D;&#x8FDB;&#x884C;&#x4E00;&#x6B21;&#x8F6E;&#x8BE2;&#xFF0C;&#x5E76;&#x5C06;&#x4E34;&#x65F6;&#x7ED3;&#x679C;&#x5199;&#x5230;&#x7528;&#x6237;&#x7A7A;&#x95F4;&#xFF0C;&#x7136;&#x540E;&#x8FD4;&#x56DE;&#x3002;</p>
+<p>select&#x8FD4;&#x56DE;&#x540E;&#xFF0C;&#x9700;&#x8981;&#x9010;&#x4E00;&#x68C0;&#x67E5;&#x5173;&#x6CE8;&#x7684;&#x63CF;&#x8FF0;&#x7B26;&#x662F;&#x5426;&#x88AB;SET&#xFF08;&#x4E8B;&#x4EF6;&#x662F;&#x5426;&#x53D1;&#x751F;&#xFF09;&#x3002;</p>
+<h6 id="2-poll"><a href="#2-poll" class="headerlink" title="2. poll"></a>2. poll</h6><p>poll&#x4E0E;select&#x4E0D;&#x540C;&#xFF0C;&#x901A;&#x8FC7;&#x4E00;&#x4E2A;pollfd&#x6570;&#x7EC4;&#x5411;&#x5185;&#x6838;&#x4F20;&#x9012;&#x9700;&#x8981;&#x5173;&#x6CE8;&#x7684;&#x4E8B;&#x4EF6;&#xFF0C;&#x6545;&#x6CA1;&#x6709;&#x63CF;&#x8FF0;&#x7B26;&#x4E2A;&#x6570;&#x7684;&#x9650;&#x5236;&#xFF0C;pollfd&#x4E2D;&#x7684;events&#x5B57;&#x6BB5;&#x548C;revents&#x5206;&#x522B;&#x7528;&#x4E8E;&#x6807;&#x793A;&#x5173;&#x6CE8;&#x7684;&#x4E8B;&#x4EF6;&#x548C;&#x53D1;&#x751F;&#x7684;&#x4E8B;&#x4EF6;&#xFF0C;&#x6545;pollfd&#x6570;&#x7EC4;&#x53EA;&#x9700;&#x8981;&#x88AB;&#x521D;&#x59CB;&#x5316;&#x4E00;&#x6B21;&#x3002;</p>
+<p>poll&#x7684;&#x5B9E;&#x73B0;&#x673A;&#x5236;&#x4E0E;select&#x7C7B;&#x4F3C;&#xFF0C;&#x5176;&#x5BF9;&#x5E94;&#x5185;&#x6838;&#x4E2D;&#x7684;sys_poll&#xFF0C;&#x53EA;&#x4E0D;&#x8FC7;poll&#x5411;&#x5185;&#x6838;&#x4F20;&#x9012;pollfd&#x6570;&#x7EC4;&#xFF0C;&#x7136;&#x540E;&#x5BF9;pollfd&#x4E2D;&#x7684;&#x6BCF;&#x4E2A;&#x63CF;&#x8FF0;&#x7B26;&#x8FDB;&#x884C;poll&#xFF0C;&#x76F8;&#x6BD4;&#x5904;&#x7406;fdset&#x6765;&#x8BF4;&#xFF0C;poll&#x6548;&#x7387;&#x66F4;&#x9AD8;&#x3002;</p>
+<p>poll&#x8FD4;&#x56DE;&#x540E;&#xFF0C;&#x9700;&#x8981;&#x5BF9;pollfd&#x4E2D;&#x7684;&#x6BCF;&#x4E2A;&#x5143;&#x7D20;&#x68C0;&#x67E5;&#x5176;revents&#x503C;&#xFF0C;&#x6765;&#x5F97;&#x6307;&#x4E8B;&#x4EF6;&#x662F;&#x5426;&#x53D1;&#x751F;&#x3002;</p>
+<h6 id="3-epoll"><a href="#3-epoll" class="headerlink" title="3. epoll"></a>3. epoll</h6><p>epoll&#x901A;&#x8FC7;epoll_create&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x7528;&#x4E8E;epoll&#x8F6E;&#x8BE2;&#x7684;&#x63CF;&#x8FF0;&#x7B26;&#xFF0C;&#x901A;&#x8FC7;epoll_ctl&#x6DFB;&#x52A0;/&#x4FEE;&#x6539;/&#x5220;&#x9664;&#x4E8B;&#x4EF6;&#xFF0C;&#x901A;&#x8FC7;epoll_wait&#x68C0;&#x67E5;&#x4E8B;&#x4EF6;&#xFF0C;epoll_wait&#x7684;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#x7528;&#x4E8E;&#x5B58;&#x653E;&#x7ED3;&#x679C;&#x3002;</p>
+<p>epoll&#x4E0E;select&#x3001;poll&#x4E0D;&#x540C;&#xFF0C;&#x9996;&#x5148;&#xFF0C;&#x5176;&#x4E0D;&#x7528;&#x6BCF;&#x6B21;&#x8C03;&#x7528;&#x90FD;&#x5411;&#x5185;&#x6838;&#x62F7;&#x8D1D;&#x4E8B;&#x4EF6;&#x63CF;&#x8FF0;&#x4FE1;&#x606F;&#xFF0C;&#x5728;&#x7B2C;&#x4E00;&#x6B21;&#x8C03;&#x7528;&#x540E;&#xFF0C;&#x4E8B;&#x4EF6;&#x4FE1;&#x606F;&#x5C31;&#x4F1A;&#x4E0E;&#x5BF9;&#x5E94;&#x7684;epoll&#x63CF;&#x8FF0;&#x7B26;&#x5173;&#x8054;&#x8D77;&#x6765;&#x3002;&#x53E6;&#x5916;epoll&#x4E0D;&#x662F;&#x901A;&#x8FC7;&#x8F6E;&#x8BE2;&#xFF0C;&#x800C;&#x662F;&#x901A;&#x8FC7;&#x5728;&#x7B49;&#x5F85;&#x7684;&#x63CF;&#x8FF0;&#x7B26;&#x4E0A;&#x6CE8;&#x518C;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#xFF0C;&#x5F53;&#x4E8B;&#x4EF6;&#x53D1;&#x751F;&#x65F6;&#xFF0C;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x8D1F;&#x8D23;&#x628A;&#x53D1;&#x751F;&#x7684;&#x4E8B;&#x4EF6;&#x5B58;&#x50A8;&#x5728;&#x5C31;&#x7EEA;&#x4E8B;&#x4EF6;&#x94FE;&#x8868;&#x4E2D;&#xFF0C;&#x6700;&#x540E;&#x5199;&#x5230;&#x7528;&#x6237;&#x7A7A;&#x95F4;&#x3002;</p>
+<p>epoll&#x8FD4;&#x56DE;&#x540E;&#xFF0C;&#x8BE5;&#x53C2;&#x6570;&#x6307;&#x5411;&#x7684;&#x7F13;&#x51B2;&#x533A;&#x4E2D;&#x5373;&#x4E3A;&#x53D1;&#x751F;&#x7684;&#x4E8B;&#x4EF6;&#xFF0C;&#x5BF9;&#x7F13;&#x51B2;&#x533A;&#x4E2D;&#x6BCF;&#x4E2A;&#x5143;&#x7D20;&#x8FDB;&#x884C;&#x5904;&#x7406;&#x5373;&#x53EF;&#xFF0C;&#x800C;&#x4E0D;&#x9700;&#x8981;&#x50CF;poll&#x3001;select&#x90A3;&#x6837;&#x8FDB;&#x884C;&#x8F6E;&#x8BE2;&#x68C0;&#x67E5;&#x3002;</p>
+<h2 id="select&#x3001;poll&#x3001;epoll-wait&#x6027;&#x80FD;&#x5BF9;&#x6BD4;"><a href="#select&#x3001;poll&#x3001;epoll-wait&#x6027;&#x80FD;&#x5BF9;&#x6BD4;" class="headerlink" title="select&#x3001;poll&#x3001;epoll_wait&#x6027;&#x80FD;&#x5BF9;&#x6BD4;"></a>select&#x3001;poll&#x3001;epoll_wait&#x6027;&#x80FD;&#x5BF9;&#x6BD4;</h2><p>select&#x3001;poll&#x7684;&#x5185;&#x90E8;&#x5B9E;&#x73B0;&#x673A;&#x5236;&#x76F8;&#x4F3C;&#xFF0C;&#x6027;&#x80FD;&#x5DEE;&#x522B;&#x4E3B;&#x8981;&#x5728;&#x4E8E;&#x5411;&#x5185;&#x6838;&#x4F20;&#x9012;&#x53C2;&#x6570;&#x4EE5;&#x53CA;&#x5BF9;fdset&#x7684;&#x4F4D;&#x64CD;&#x4F5C;&#x4E0A;&#xFF0C;&#x53E6;&#x5916;&#xFF0C;select&#x5B58;&#x5728;&#x63CF;&#x8FF0;&#x7B26;&#x6570;&#x7684;&#x786C;&#x9650;&#x5236;&#xFF0C;&#x4E0D;&#x80FD;&#x5904;&#x7406;&#x5F88;&#x5927;&#x7684;&#x63CF;&#x8FF0;&#x7B26;&#x96C6;&#x5408;&#x3002;&#x8FD9;&#x91CC;&#x4E3B;&#x8981;&#x8003;&#x5BDF;poll&#x4E0E;epoll&#x5728;&#x4E0D;&#x540C;&#x5927;&#x5C0F;&#x63CF;&#x8FF0;&#x7B26;&#x96C6;&#x5408;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x6027;&#x80FD;&#x7684;&#x5DEE;&#x5F02;&#x3002;</p>
+<p>&#x6D4B;&#x8BD5;&#x7A0B;&#x5E8F;&#x4F1A;&#x7EDF;&#x8BA1;&#x5728;&#x4E0D;&#x540C;&#x7684;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#x96C6;&#x5408;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;1s&#x5185;poll&#x4E0E;epoll&#x8C03;&#x7528;&#x7684;&#x6B21;&#x6570;&#x3002;&#x7EDF;&#x8BA1;&#x7ED3;&#x679C;&#x5982;&#x4E0B;&#xFF0C;&#x4ECE;&#x7ED3;&#x679C;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#xFF0C;&#x5BF9;poll&#x800C;&#x8A00;&#xFF0C;&#x6BCF;&#x79D2;&#x949F;&#x5185;&#x7684;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x6570;&#x76EE;&#x867D;&#x96C6;&#x5408;&#x589E;&#x5927;&#x800C;&#x5F88;&#x5FEB;&#x964D;&#x4F4E;&#xFF0C;&#x800C;epoll&#x57FA;&#x672C;&#x4FDD;&#x6301;&#x4E0D;&#x53D8;&#xFF0C;&#x5177;&#x6709;&#x5F88;&#x597D;&#x7684;&#x6269;&#x5C55;&#x6027;&#x3002;</p>
+<p>&#x63CF;&#x8FF0;&#x7B26;&#x96C6;&#x5408;&#x5927;&#x5C0F;<br>poll<br>epoll<br>1<br>331598<br>258604<br>10<br>330648<br>297033<br>100<br>91199<br>288784<br>1000<br>27411<br>296357<br>5000<br>5943<br>288671<br>10000<br>2893<br>292397<br>25000<br>1041<br>285905<br>50000<br>536<br>293033<br>100000<br>224<br>285825</p>
+<p><a href="http://www.cppblog.com/feixuwu/archive/2010/07/10/119995.html" target="_blank" rel="external">http://www.cppblog.com/feixuwu/archive/2010/07/10/119995.html</a></p>
+<p>&#x4E00;&#x3001;&#x8FDE;&#x63A5;&#x6570;<br>&#x6211;&#x672C;&#x4EBA;&#x4E5F;&#x66FE;&#x7ECF;&#x5728;&#x9879;&#x76EE;&#x4E2D;&#x7528;&#x8FC7;select&#x548C;epoll,&#x5BF9;&#x4E8E;select&#xFF0C;&#x611F;&#x89E6;&#x6700;&#x6DF1;&#x7684;&#x662F;linux&#x4E0B;select&#x6700;&#x5927;&#x6570;&#x76EE;&#x9650;&#x5236;(windows &#x4E0B;&#x4F3C;&#x4E4E;&#x6CA1;&#x6709;&#x9650;&#x5236;)&#xFF0C;&#x6BCF;&#x4E2A;&#x8FDB;&#x7A0B;&#x7684;select&#x6700;&#x591A;&#x80FD;&#x5904;&#x7406;FD_SETSIZE&#x4E2A;FD(&#x6587;&#x4EF6;&#x53E5;&#x67C4;)&#xFF0C;<br>&#x5982;&#x679C;&#x8981;&#x5904;&#x7406;&#x8D85;&#x8FC7;1024&#x4E2A;&#x53E5;&#x67C4;&#xFF0C;&#x53EA;&#x80FD;&#x91C7;&#x7528;&#x591A;&#x8FDB;&#x7A0B;&#x4E86;&#x3002;<br>&#x5E38;&#x89C1;&#x7684;&#x4F7F;&#x7528;slect&#x7684;&#x591A;&#x8FDB;&#x7A0B;&#x6A21;&#x578B;&#x662F;&#x8FD9;&#x6837;&#x7684;&#xFF1A; &#x4E00;&#x4E2A;&#x8FDB;&#x7A0B;&#x4E13;&#x95E8;accept&#xFF0C;&#x6210;&#x529F;&#x540E;&#x5C06;fd&#x901A;&#x8FC7;unix socket&#x4F20;&#x9012;&#x7ED9;&#x5B50;&#x8FDB;&#x7A0B;&#x5904;&#x7406;&#xFF0C;&#x7236;&#x8FDB;&#x7A0B;&#x53EF;&#x4EE5;&#x6839;&#x636E;&#x5B50;&#x8FDB;&#x7A0B;&#x8D1F;&#x8F7D;&#x5206;&#x6D3E;&#x3002;&#x66FE;&#x7ECF;&#x7528;&#x8FC7;1&#x4E2A;&#x7236;&#x8FDB;&#x7A0B;+4&#x4E2A;&#x5B50;&#x8FDB;&#x7A0B; &#x627F;&#x8F7D;&#x4E86;&#x8D85;&#x8FC7;4000&#x4E2A;&#x7684;&#x8D1F;&#x8F7D;&#x3002;<br>&#x8FD9;&#x79CD;&#x6A21;&#x578B;&#x5728;&#x6211;&#x4EEC;&#x5F53;&#x65F6;&#x7684;&#x4E1A;&#x52A1;&#x8FD0;&#x884C;&#x7684;&#x975E;&#x5E38;&#x597D;&#x3002;epoll&#x5728;&#x8FDE;&#x63A5;&#x6570;&#x65B9;&#x9762;&#x6CA1;&#x6709;&#x9650;&#x5236;&#xFF0C;&#x5F53;&#x7136;&#x53EF;&#x80FD;&#x9700;&#x8981;&#x7528;&#x6237;&#x8C03;&#x7528;API&#x91CD;&#x73B0;&#x8BBE;&#x7F6E;&#x8FDB;&#x7A0B;&#x7684;&#x8D44;&#x6E90;&#x9650;&#x5236;&#x3002;</p>
+<p>&#x4E8C;&#x3001;IO&#x5DEE;&#x522B;<br>1&#x3001;select&#x7684;&#x5B9E;&#x73B0;</p>
+<p>&#x8FD9;&#x6BB5;&#x53EF;&#x4EE5;&#x7ED3;&#x5408;linux&#x5185;&#x6838;&#x4EE3;&#x7801;&#x63CF;&#x8FF0;&#x4E86;&#xFF0C;&#x6211;&#x4F7F;&#x7528;&#x7684;&#x662F;2.6.28&#xFF0C;&#x5176;&#x4ED6;2.6&#x7684;&#x4EE3;&#x7801;&#x5E94;&#x8BE5;&#x5DEE;&#x4E0D;&#x591A;&#x5427;&#x3002;<br>&#x5148;&#x770B;&#x770B;select:<br>select&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x7684;&#x4EE3;&#x7801;&#x5728;fs/Select.c&#x4E0B;&#xFF0C;</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="function">asmlinkage <span class="keyword">long</span> <span class="title">sys_select</span><span class="params">(<span class="keyword">int</span> n, fd_set <span class="number">__u</span>ser *inp, fd_set <span class="number">__u</span>ser *outp,</span></span></div><div class="line">            fd_set <span class="number">__u</span>ser *<span class="built_in">exp</span>, <span class="keyword">struct</span> timeval <span class="number">__u</span>ser *tvp)</div><div class="line">{</div><div class="line">    <span class="keyword">struct</span> timespec end_time, *to = <span class="literal">NULL</span>;</div><div class="line">    <span class="keyword">struct</span> timeval tv;</div><div class="line">    <span class="keyword">int</span> ret;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (tvp) {</div><div class="line">        <span class="keyword">if</span> (copy_from_user(&amp;tv, tvp, <span class="keyword">sizeof</span>(tv)))</div><div class="line">            <span class="keyword">return</span> -EFAULT;</div><div class="line"></div><div class="line">        to = &amp;end_time;</div><div class="line">        <span class="keyword">if</span> (poll_select_set_timeout(to,</div><div class="line">                tv.tv_sec + (tv.tv_usec / USEC_PER_SEC),</div><div class="line">                (tv.tv_usec % USEC_PER_SEC) * NSEC_PER_USEC))</div><div class="line">            <span class="keyword">return</span> -EINVAL;</div><div class="line">    }</div><div class="line"></div><div class="line">    ret = core_sys_select(n, inp, outp, <span class="built_in">exp</span>, to);</div><div class="line">    ret = poll_select_copy_remaining(&amp;end_time, tvp, <span class="number">1</span>, ret);</div><div class="line"></div><div class="line">    <span class="keyword">return</span> ret;</div><div class="line">}</div></pre></td></tr></table></figure>
+<p>&#x524D;&#x9762;&#x662F;&#x4ECE;&#x7528;&#x6237;&#x63A7;&#x4EF6;&#x62F7;&#x8D1D;&#x5404;&#x4E2A;fd_set&#x5230;&#x5185;&#x6838;&#x7A7A;&#x95F4;&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x7684;&#x5177;&#x4F53;&#x5DE5;&#x4F5C;&#x5728;core_sys_select&#x4E2D;&#xFF0C;<br>core_sys_select-&gt;do_select,&#x771F;&#x6B63;&#x7684;&#x6838;&#x5FC3;&#x5185;&#x5BB9;&#x5728;do_select&#x91CC;&#xFF1A;</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">do_select</span><span class="params">(<span class="keyword">int</span> n, fd_set_bits *fds, <span class="keyword">struct</span> timespec *end_time)</span></span></div><div class="line">{</div><div class="line">    <span class="keyword">ktime_t</span> expire, *to = <span class="literal">NULL</span>;</div><div class="line">    <span class="keyword">struct</span> poll_wqueues table;</div><div class="line">    poll_table *wait;</div><div class="line">    <span class="keyword">int</span> retval, i, timed_out = <span class="number">0</span>;</div><div class="line">    <span class="keyword">unsigned</span> <span class="keyword">long</span> slack = <span class="number">0</span>;</div><div class="line"></div><div class="line">    rcu_read_lock();</div><div class="line">    retval = max_select_fd(n, fds);</div><div class="line">    rcu_read_unlock();</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (retval &lt; <span class="number">0</span>)</div><div class="line">        <span class="keyword">return</span> retval;</div><div class="line">    n = retval;</div><div class="line"></div><div class="line">    poll_initwait(&amp;table);</div><div class="line">    wait = &amp;table.pt;</div><div class="line">    <span class="keyword">if</span> (end_time &amp;&amp; !end_time-&gt;tv_sec &amp;&amp; !end_time-&gt;tv_nsec) {</div><div class="line">        wait = <span class="literal">NULL</span>;</div><div class="line">        timed_out = <span class="number">1</span>;</div><div class="line">    }</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (end_time &amp;&amp; !timed_out)</div><div class="line">        slack = estimate_accuracy(end_time);</div><div class="line"></div><div class="line">    retval = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> (;;) {</div><div class="line">        <span class="keyword">unsigned</span> <span class="keyword">long</span> *rinp, *routp, *rexp, *inp, *outp, *<span class="built_in">exp</span>;</div><div class="line"></div><div class="line">        set_current_state(TASK_INTERRUPTIBLE);</div><div class="line"></div><div class="line">        inp = fds-&gt;in; outp = fds-&gt;out; <span class="built_in">exp</span> = fds-&gt;ex;</div><div class="line">        rinp = fds-&gt;res_in; routp = fds-&gt;res_out; rexp = fds-&gt;res_ex;</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; ++rinp, ++routp, ++rexp) {</div><div class="line">            <span class="keyword">unsigned</span> <span class="keyword">long</span> in, out, ex, all_bits, bit = <span class="number">1</span>, mask, j;</div><div class="line">            <span class="keyword">unsigned</span> <span class="keyword">long</span> res_in = <span class="number">0</span>, res_out = <span class="number">0</span>, res_ex = <span class="number">0</span>;</div><div class="line">            <span class="keyword">const</span> <span class="keyword">struct</span> file_operations *f_op = <span class="literal">NULL</span>;</div><div class="line">            <span class="keyword">struct</span> file *file = <span class="literal">NULL</span>;</div><div class="line"></div><div class="line">            in = *inp++; out = *outp++; ex = *<span class="built_in">exp</span>++;</div><div class="line">            all_bits = in | out | ex;</div><div class="line">            <span class="keyword">if</span> (all_bits == <span class="number">0</span>) {</div><div class="line">                i += <span class="number">__</span>NFDBITS;</div><div class="line">                <span class="keyword">continue</span>;</div><div class="line">            }</div><div class="line"></div><div class="line">            <span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; <span class="number">__</span>NFDBITS; ++j, ++i, bit &lt;&lt;= <span class="number">1</span>) {</div><div class="line">                <span class="keyword">int</span> fput_needed;</div><div class="line">                <span class="keyword">if</span> (i &gt;= n)</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">                <span class="keyword">if</span> (!(bit &amp; all_bits))</div><div class="line">                    <span class="keyword">continue</span>;</div><div class="line">                file = fget_light(i, &amp;fput_needed);</div><div class="line">                <span class="keyword">if</span> (file) {</div><div class="line">                    f_op = file-&gt;f_op;</div><div class="line">                    mask = DEFAULT_POLLMASK;</div><div class="line">                    <span class="keyword">if</span> (f_op &amp;&amp; f_op-&gt;poll)</div><div class="line">                        mask = (*f_op-&gt;poll)(file, retval ? <span class="literal">NULL</span> : wait);</div><div class="line">                    fput_light(file, fput_needed);</div><div class="line">                    <span class="keyword">if</span> ((mask &amp; POLLIN_SET) &amp;&amp; (in &amp; bit)) {</div><div class="line">                        res_in |= bit;</div><div class="line">                        retval++;</div><div class="line">                    }</div><div class="line">                    <span class="keyword">if</span> ((mask &amp; POLLOUT_SET) &amp;&amp; (out &amp; bit)) {</div><div class="line">                        res_out |= bit;</div><div class="line">                        retval++;</div><div class="line">                    }</div><div class="line">                    <span class="keyword">if</span> ((mask &amp; POLLEX_SET) &amp;&amp; (ex &amp; bit)) {</div><div class="line">                        res_ex |= bit;</div><div class="line">                        retval++;</div><div class="line">                    }</div><div class="line">                }</div><div class="line">            }</div><div class="line">            <span class="keyword">if</span> (res_in)</div><div class="line">                *rinp = res_in;</div><div class="line">            <span class="keyword">if</span> (res_out)</div><div class="line">                *routp = res_out;</div><div class="line">            <span class="keyword">if</span> (res_ex)</div><div class="line">                *rexp = res_ex;</div><div class="line">            cond_resched();</div><div class="line">        }</div><div class="line">        wait = <span class="literal">NULL</span>;</div><div class="line">        <span class="keyword">if</span> (retval || timed_out || signal_pending(current))</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">if</span> (table.error) {</div><div class="line">            retval = table.error;</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        }</div><div class="line"></div><div class="line">        <span class="comment">/*</span></div><div class="line">         * If this is the first loop and we have a timeout</div><div class="line">         * given, then we convert to ktime_t and set the to</div><div class="line">         * pointer to the expiry value.</div><div class="line">         */</div><div class="line">        <span class="keyword">if</span> (end_time &amp;&amp; !to) {</div><div class="line">            expire = timespec_to_ktime(*end_time);</div><div class="line">            to = &amp;expire;</div><div class="line">        }</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (!schedule_hrtimeout_range(to, slack, HRTIMER_MODE_ABS))</div><div class="line">            timed_out = <span class="number">1</span>;</div><div class="line">    }</div><div class="line">    <span class="number">__</span>set_current_state(TASK_RUNNING);</div><div class="line"></div><div class="line">    poll_freewait(&amp;table);</div><div class="line"></div><div class="line">    <span class="keyword">return</span> retval;</div><div class="line">}</div></pre></td></tr></table></figure>
+<p>&#x4E0A;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x5F88;&#x591A;&#xFF0C;&#x5176;&#x5B9E;&#x771F;&#x6B63;&#x5173;&#x952E;&#x7684;&#x4EE3;&#x7801;&#x662F;&#x8FD9;&#x4E00;&#x53E5;:<br>mask = (*f_op-&gt;poll)(file, retval ? NULL : wait);<br>&#x8FD9;&#x4E2A;&#x662F;&#x8C03;&#x7528;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x7684; poll&#x51FD;&#x6570;&#xFF0C;&#x4E0D;&#x540C;&#x7684;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;poll&#x51FD;&#x6570;&#x81EA;&#x7136;&#x4E0D;&#x540C;&#xFF0C;&#x7531;&#x4E8E;&#x6211;&#x4EEC;&#x8FD9;&#x91CC;&#x5173;&#x6CE8;&#x7684;&#x662F;tcp&#x8FDE;&#x63A5;&#xFF0C;&#x800C;socketfs&#x7684;&#x6CE8;&#x518C;&#x5728; net/Socket.c&#x91CC;&#x3002;<br>register_filesystem(&amp;sock_fs_type);<br>socket&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x7684;&#x51FD;&#x6570;&#x4E5F;&#x662F;&#x5728;net/Socket.c&#x91CC;&#xFF1A;</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">struct</span> file_operations socket_file_ops = {</div><div class="line">    .owner =    THIS_MODULE,</div><div class="line">    .llseek =    no_llseek,</div><div class="line">    .aio_read =    sock_aio_read,</div><div class="line">    .aio_write =    sock_aio_write,</div><div class="line">    .poll =        sock_poll,</div><div class="line">    .unlocked_ioctl = sock_ioctl,</div><div class="line">#ifdef CONFIG_COMPAT</div><div class="line">    .compat_ioctl = compat_sock_ioctl,</div><div class="line">#endif</div><div class="line">    .mmap =        sock_mmap,</div><div class="line">    .open =        sock_no_open,    <span class="comment">/* special open code to disallow open via /proc */</span></div><div class="line">    .release =    sock_close,</div><div class="line">    .fasync =    sock_fasync,</div><div class="line">    .sendpage =    sock_sendpage,</div><div class="line">    .splice_write = generic_splice_sendpage,</div><div class="line">    .splice_read =    sock_splice_read,</div><div class="line">};</div></pre></td></tr></table></figure>
+<p>&#x4ECE;sock_poll&#x8DDF;&#x968F;&#x4E0B;&#x53BB;&#xFF0C;<br>&#x6700;&#x540E;&#x53EF;&#x4EE5;&#x5230; net/ipv4/tcp.c&#x7684;<br>unsigned int tcp_poll(struct file <em>file, struct socket </em>sock, poll_table *wait)<br>&#x8FD9;&#x4E2A;&#x662F;&#x6700;&#x7EC8;&#x7684;&#x67E5;&#x8BE2;&#x51FD;&#x6570;&#xFF0C;<br>&#x4E5F;&#x5C31;&#x662F;&#x8BF4;select &#x7684;&#x6838;&#x5FC3;&#x529F;&#x80FD;&#x662F;&#x8C03;&#x7528;tcp&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x7684;poll&#x51FD;&#x6570;&#xFF0C;&#x4E0D;&#x505C;&#x7684;&#x67E5;&#x8BE2;&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x60F3;&#x8981;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x4E3B;&#x52A8;&#x6267;&#x884C;&#x4E00;&#x6B21;&#x8C03;&#x5EA6;&#xFF08;&#x9632;&#x6B62;&#x4E00;&#x76F4;&#x5360;&#x7528;cpu&#xFF09;&#xFF0C;&#x76F4;&#x5230;&#x6709;&#x4E00;&#x4E2A;&#x8FDE;&#x63A5;&#x6709;&#x60F3;&#x8981;&#x7684;&#x6D88;&#x606F;&#x4E3A;&#x6B62;&#x3002;<br>&#x4ECE;&#x8FD9;&#x91CC;&#x53EF;&#x4EE5;&#x770B;&#x51FA;select&#x7684;&#x6267;&#x884C;&#x65B9;&#x5F0F;&#x57FA;&#x672C;&#x5C31;&#x662F;&#x4E0D;&#x540C;&#x7684;&#x8C03;&#x7528;poll,&#x76F4;&#x5230;&#x6709;&#x9700;&#x8981;&#x7684;&#x6D88;&#x606F;&#x4E3A;&#x6B62;&#xFF0C;&#x5982;&#x679C;select &#x5904;&#x7406;&#x7684;socket&#x5F88;&#x591A;&#xFF0C;&#x8FD9;&#x5176;&#x5B9E;&#x5BF9;&#x6574;&#x4E2A;&#x673A;&#x5668;&#x7684;&#x6027;&#x80FD;&#x4E5F;&#x662F;&#x4E00;&#x4E2A;&#x6D88;&#x8017;&#x3002;</p>
+<p>2&#x3001;epoll&#x7684;&#x5B9E;&#x73B0;</p>
+<p>epoll&#x7684;&#x5B9E;&#x73B0;&#x4EE3;&#x7801;&#x5728; fs/EventPoll.c&#x4E0B;&#xFF0C;<br>&#x7531;&#x4E8E;epoll&#x6D89;&#x53CA;&#x5230;&#x51E0;&#x4E2A;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#xFF0C;&#x8FD9;&#x91CC;&#x4E0D;&#x9010;&#x4E2A;&#x5206;&#x6790;&#x4E86;&#xFF0C;&#x4EC5;&#x4EC5;&#x5206;&#x6790;&#x51E0;&#x4E2A;&#x5173;&#x952E;&#x70B9;&#xFF0C;<br>&#x7B2C;&#x4E00;&#x4E2A;&#x5173;&#x952E;&#x70B9;&#x5728;<br>static int ep_insert(struct eventpoll <em>ep, struct epoll_event </em>event,<br>             struct file *tfile, int fd)<br>&#x8FD9;&#x662F;&#x5728;&#x6211;&#x4EEC;&#x8C03;&#x7528;sys_epoll_ctl &#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x88AB;&#x7BA1;&#x7406;socket&#x7684;&#x65F6;&#x5019;&#x8C03;&#x7528;&#x7684;&#x51FD;&#x6570;&#xFF0C;&#x5173;&#x952E;&#x7684;&#x51E0;&#x884C;&#x5982;&#x4E0B;&#xFF1A;<br>epq.epi = epi;<br>    init_poll_funcptr(&amp;epq.pt, ep_ptable_queue_proc);</p>
+<pre><code>/*
+ * Attach the item to the poll hooks and get current event bits.
+ * We can safely use the file* here because its usage count has
+ * been increased by the caller of this function. Note that after
+ * this operation completes, the poll callback can start hitting
+ * the new item.
+ */
+revents = tfile-&gt;f_op-&gt;poll(tfile, &amp;epq.pt);
+</code></pre><p>&#x8FD9;&#x91CC;&#x4E5F;&#x662F;&#x8C03;&#x7528;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x7684;poll&#x51FD;&#x6570;&#xFF0C;&#x4E0D;&#x8FC7;&#x8FD9;&#x6B21;&#x521D;&#x59CB;&#x5316;&#x4E86;&#x4E00;&#x4E2A;&#x7ED3;&#x6784;&#xFF0C;&#x8FD9;&#x4E2A;&#x7ED3;&#x6784;&#x4F1A;&#x5E26;&#x6709;&#x4E00;&#x4E2A;poll&#x51FD;&#x6570;&#x7684;callback&#x51FD;&#x6570;&#xFF1A;ep_ptable_queue_proc&#xFF0C;<br>&#x5728;&#x8C03;&#x7528;poll&#x51FD;&#x6570;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F1A;&#x6267;&#x884C;&#x8FD9;&#x4E2A;callback&#xFF0C;&#x8FD9;&#x4E2A;callback&#x7684;&#x529F;&#x80FD;&#x5C31;&#x662F;&#x5C06;&#x5F53;&#x524D;&#x8FDB;&#x7A0B;&#x6DFB;&#x52A0;&#x5230; socket&#x7684;&#x7B49;&#x5F85;&#x8FDB;&#x7A0B;&#x4E0A;&#x3002;<br>static void ep_ptable_queue_proc(struct file <em>file, wait_queue_head_t </em>whead,<br>                 poll_table <em>pt)<br>{<br>    struct epitem </em>epi = ep_item_from_epqueue(pt);<br>    struct eppoll_entry *pwq;</p>
+<pre><code>if (epi-&gt;nwait &gt;= 0 &amp;&amp; (pwq = kmem_cache_alloc(pwq_cache, GFP_KERNEL))) {
+    init_waitqueue_func_entry(&amp;pwq-&gt;wait, ep_poll_callback);
+    pwq-&gt;whead = whead;
+    pwq-&gt;base = epi;
+    add_wait_queue(whead, &amp;pwq-&gt;wait);
+    list_add_tail(&amp;pwq-&gt;llink, &amp;epi-&gt;pwqlist);
+    epi-&gt;nwait++;
+} else {
+    /* We have to signal that an error occurred */
+    epi-&gt;nwait = -1;
+}
+</code></pre><p>}<br>&#x6CE8;&#x610F;&#x5230;&#x53C2;&#x6570; whead &#x5B9E;&#x9645;&#x4E0A;&#x662F; sk-&gt;sleep&#xFF0C;&#x5176;&#x5B9E;&#x5C31;&#x662F;&#x5C06;&#x5F53;&#x524D;&#x8FDB;&#x7A0B;&#x6DFB;&#x52A0;&#x5230;sk&#x7684;&#x7B49;&#x5F85;&#x961F;&#x5217;&#x91CC;&#xFF0C;&#x5F53;&#x8BE5;socket&#x6536;&#x5230;&#x6570;&#x636E;&#x6216;&#x8005;&#x5176;&#x4ED6;&#x4E8B;&#x4EF6;&#x89E6;&#x53D1;&#x65F6;&#xFF0C;&#x4F1A;&#x8C03;&#x7528;<br>sock_def_readable &#x6216;&#x8005;sock_def_write_space &#x901A;&#x77E5;&#x51FD;&#x6570;&#x6765;&#x5524;&#x9192;&#x7B49;&#x5F85;&#x8FDB;&#x7A0B;&#xFF0C;&#x8FD9;2&#x4E2A;&#x51FD;&#x6570;&#x90FD;&#x662F;&#x5728;socket&#x521B;&#x5EFA;&#x7684;&#x65F6;&#x5019;&#x586B;&#x5145;&#x5728;sk&#x7ED3;&#x6784;&#x91CC;&#x7684;&#x3002;<br>&#x4ECE;&#x524D;&#x9762;&#x7684;&#x5206;&#x6790;&#x6765;&#x770B;&#xFF0C;epoll&#x786E;&#x5B9E;&#x662F;&#x6BD4;select&#x806A;&#x660E;&#x7684;&#x591A;&#x3001;&#x8F7B;&#x677E;&#x7684;&#x591A;&#xFF0C;&#x4E0D;&#x7528;&#x518D;&#x82E6;&#x54C8;&#x54C8;&#x7684;&#x53BB;&#x8F6E;&#x8BE2;&#x4E86;&#x3002;</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://snowyying.github.io/2016/select-vs-epoll-1/" data-id="ciw5y23if004384sk8fy8j6pn" class="article-share-link">Share</a>
+      
+        <a href="http://snowyying.github.io/2016/select-vs-epoll-1/#ds-thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/epoll/">epoll</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/select/">select</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/select-vs-epoll-2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          select, poll 和 epoll 的比较 (2)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/select-implement/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">SELECT是如何实现的？</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="2016/select-vs-epoll-1/" data-title="select, poll 和 epoll 的比较 (1)" data-url="http://snowyying.github.io/2016/select-vs-epoll-1/"></div>
+  <!-- 多说评论框 end -->
+  <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"snowyying"};
+  (function() {
+  	var ds = document.createElement('script');
+  	ds.type = 'text/javascript';ds.async = true;
+  	ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+  	ds.charset = 'UTF-8';
+  	(document.getElementsByTagName('head')[0] 
+  	 || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+  <!-- 多说公共JS代码 end -->
+</section>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C-C/">C/C++</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/">Database</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Embedded/">Embedded</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/I-O/">I/O</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JSON/">JSON</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Manage/">Manage</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Media/">Media</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Software-Engineering/">Software Engineering</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Theory/">Theory</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/32-bit/" style="font-size: 10px;">32-bit</a> <a href="/tags/4-1/" style="font-size: 10px;">4+1</a> <a href="/tags/ARM/" style="font-size: 10px;">ARM</a> <a href="/tags/Big-Endian/" style="font-size: 10px;">Big-Endian</a> <a href="/tags/Boost/" style="font-size: 10px;">Boost</a> <a href="/tags/C/" style="font-size: 14.29px;">C</a> <a href="/tags/C/" style="font-size: 12.86px;">C++</a> <a href="/tags/C-C/" style="font-size: 15.71px;">C/C++</a> <a href="/tags/CMMI/" style="font-size: 11.43px;">CMMI</a> <a href="/tags/GUID/" style="font-size: 10px;">GUID</a> <a href="/tags/I-O/" style="font-size: 14.29px;">I/O</a> <a href="/tags/ICE/" style="font-size: 10px;">ICE</a> <a href="/tags/IIC/" style="font-size: 10px;">IIC</a> <a href="/tags/IT/" style="font-size: 20px;">IT</a> <a href="/tags/JSON/" style="font-size: 10px;">JSON</a> <a href="/tags/KAs/" style="font-size: 10px;">KAs</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Little-Endian/" style="font-size: 10px;">Little-Endian</a> <a href="/tags/NATP/" style="font-size: 10px;">NATP</a> <a href="/tags/NTP/" style="font-size: 11.43px;">NTP</a> <a href="/tags/Network/" style="font-size: 10px;">Network</a> <a href="/tags/Proactor/" style="font-size: 10px;">Proactor</a> <a href="/tags/Reactor/" style="font-size: 10px;">Reactor</a> <a href="/tags/SO-REUSEADDR/" style="font-size: 10px;">SO_REUSEADDR</a> <a href="/tags/SQLite/" style="font-size: 10px;">SQLite</a> <a href="/tags/SQuaRE/" style="font-size: 10px;">SQuaRE</a> <a href="/tags/STUN/" style="font-size: 10px;">STUN</a> <a href="/tags/SWE/" style="font-size: 17.14px;">SWE</a> <a href="/tags/Software-Engineering/" style="font-size: 10px;">Software Engineering</a> <a href="/tags/TCP-IP/" style="font-size: 11.43px;">TCP/IP</a> <a href="/tags/TRUN/" style="font-size: 10px;">TRUN</a> <a href="/tags/TWSI/" style="font-size: 10px;">TWSI</a> <a href="/tags/UML/" style="font-size: 10px;">UML</a> <a href="/tags/UPNP/" style="font-size: 10px;">UPNP</a> <a href="/tags/UUID/" style="font-size: 10px;">UUID</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/VS/" style="font-size: 10px;">VS</a> <a href="/tags/Windows/" style="font-size: 10px;">Windows</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/decode/" style="font-size: 10px;">decode</a> <a href="/tags/define/" style="font-size: 10px;">define</a> <a href="/tags/epoll/" style="font-size: 11.43px;">epoll</a> <a href="/tags/ffmpeg/" style="font-size: 11.43px;">ffmpeg</a> <a href="/tags/ffplay/" style="font-size: 10px;">ffplay</a> <a href="/tags/ffprobe/" style="font-size: 10px;">ffprobe</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/h264/" style="font-size: 10px;">h264</a> <a href="/tags/libcssl/" style="font-size: 10px;">libcssl</a> <a href="/tags/linux/" style="font-size: 11.43px;">linux</a> <a href="/tags/p2p/" style="font-size: 10px;">p2p</a> <a href="/tags/select/" style="font-size: 12.86px;">select</a> <a href="/tags/setsockopt/" style="font-size: 10px;">setsockopt</a> <a href="/tags/socket/" style="font-size: 11.43px;">socket</a> <a href="/tags/swebok/" style="font-size: 10px;">swebok</a> <a href="/tags/不定参数/" style="font-size: 10px;">不定参数</a> <a href="/tags/串口/" style="font-size: 10px;">串口</a> <a href="/tags/交叉编译/" style="font-size: 10px;">交叉编译</a> <a href="/tags/函数/" style="font-size: 10px;">函数</a> <a href="/tags/发展/" style="font-size: 10px;">发展</a> <a href="/tags/同步/" style="font-size: 10px;">同步</a> <a href="/tags/复用/" style="font-size: 10px;">复用</a> <a href="/tags/学习/" style="font-size: 10px;">学习</a> <a href="/tags/嵌入式/" style="font-size: 10px;">嵌入式</a> <a href="/tags/异步/" style="font-size: 10px;">异步</a> <a href="/tags/性能/" style="font-size: 12.86px;">性能</a> <a href="/tags/成长/" style="font-size: 15.71px;">成长</a> <a href="/tags/攻略/" style="font-size: 10px;">攻略</a> <a href="/tags/教程/" style="font-size: 10px;">教程</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/时间/" style="font-size: 10px;">时间</a> <a href="/tags/架构/" style="font-size: 10px;">架构</a> <a href="/tags/程序员/" style="font-size: 14.29px;">程序员</a> <a href="/tags/统一建模语言/" style="font-size: 10px;">统一建模语言</a> <a href="/tags/网络/" style="font-size: 18.57px;">网络</a> <a href="/tags/设计模式/" style="font-size: 14.29px;">设计模式</a> <a href="/tags/软件质量/" style="font-size: 11.43px;">软件质量</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">16</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/programming-guide-dream/">码路指南：保持内心的青春与理想 理想驱动编程</a>
+          </li>
+        
+          <li>
+            <a href="/2016/programming-guide-driving-force/">码路指南：物质驱动与兴趣驱动 编程驱动力是什么？</a>
+          </li>
+        
+          <li>
+            <a href="/2016/programming-guide-golden-time/">码路指南：别错过人生中学习的黄金时期 保持知识更新</a>
+          </li>
+        
+          <li>
+            <a href="/2016/programming-guide-extensive-and-professional/">码路指南：在博与专之间取得平衡 平衡最合适</a>
+          </li>
+        
+          <li>
+            <a href="/2016/programming-guide-become-a-master/">码路指南：为何你成不了编程高手？ 成长路上常见的坑</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 Snowyying<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> . 
+Analyse with <script src="https://s4.cnzz.com/z_stat.php?id=1260081840&web_id=1260081840" language="JavaScript"></script>
+
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/About" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

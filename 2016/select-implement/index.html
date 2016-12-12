@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="Snowyying">
 <meta property="og:description" content="&amp;#x8F6C;&amp;#x81EA;: QUORA http://www.quora.com/Network-Programming/How-is-select-implemented 2012-11-28
 &amp;#x6211;&amp;#x4F1A;&amp;#x4EE5;Linux&amp;#x4E3A;&amp;#x4F8B;&amp;#xFF0C;&amp;#x56E0;&amp;#x4E3A;&amp;#x90A3;&amp;#x662F;&amp;#x6211;&amp;#x71">
-<meta property="og:updated_time" content="2016-08-25T04:03:25.971Z">
+<meta property="og:updated_time" content="2016-12-01T04:55:42.401Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SELECT是如何实现的？">
 <meta name="twitter:description" content="&amp;#x8F6C;&amp;#x81EA;: QUORA http://www.quora.com/Network-Programming/How-is-select-implemented 2012-11-28
@@ -110,8 +110,8 @@
 <p>&#x5982;&#x679C;&#x5728;&#x8D85;&#x65F6;&#x65F6;&#x95F4;&#x95F4;&#x9694;&#x5185;&#xFF0C;&#x6CE8;&#x518C;&#x5230;select()&#x4E0A;&#x7684;&#x4EFB;&#x4E00;fd&#x6709;&#x611F;&#x5174;&#x8DA3;&#x7684;&#x4E8B;&#x4EF6;&#x53D1;&#x751F;&#xFF0C;fd&#x4F1A;&#x901A;&#x77E5;&#x8FD9;&#x4E2A;fd&#x7684;&#x7B49;&#x5F85;&#x961F;&#x5217;&#x3002;&#x8FD9;&#x4F1A;&#x5524;&#x9192;&#x8C03;&#x7528;select()&#x65F6;&#x4F11;&#x7720;&#x7684;&#x7528;&#x6237;&#x7EBF;&#x7A0B;&#xFF0C;&#x8FD9;&#x65F6;&#x5C31;&#x4F1A;&#x91CD;&#x590D;&#x4E0A;&#x9762;&#x7684;&#x5FAA;&#x73AF;&#xFF0C;&#x770B;&#x770B;&#x54EA;&#x4E00;&#x4E2A;fd&#x51C6;&#x5907;&#x597D;&#x8FD4;&#x56DE;&#x7ED9;&#x7528;&#x6237;&#x3002;</p>
 <p>select()&#x4F1A;&#x8BB0;&#x5F55;&#x5B83;&#x6DFB;&#x52A0;&#x7684;&#x6240;&#x6709;&#x7684;&#x7B49;&#x5F85;&#x961F;&#x5217;&#xFF0C;&#x5728;&#x8FD4;&#x56DE;&#x4EE5;&#x524D;&#xFF0C;&#x786E;&#x4FDD;&#x4ECE;&#x6240;&#x6709;&#x7684;fd&#x79FB;&#x9664;&#x3002;</p>
 <p>summary&#xFF1A;&#x6BCF;&#x4E00;&#x6B21;select()&#x8C03;&#x7528;&#x9700;&#x8981; 3 &#x6B21;&#x904D;&#x5386;&#xFF0C;&#x7B2C;&#x4E00;&#x6B21;&#x662F;&#x5BF9;&#x6BCF;&#x4E2A;fd&#x5206;&#x522B;&#x8C03;&#x7528;poll&#xFF0C;&#x7B2C;&#x4E8C;&#x6B21;&#x662F;&#x904D;&#x5386;&#x751F;&#x6210;&#x8FD4;&#x56DE;&#x7ED9;&#x7528;&#x6237;&#x7684;fd_sets&#xFF0C;&#x7B2C;&#x4E09;&#x6B21;&#x662F;&#x5E94;&#x7528;&#x5C42;&#x9762;&#x904D;&#x5386;&#x8FDB;&#x884C;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#x5904;&#x7406;&#x3002;</p>
-<a id="more"></a> 
-<p>&#x82F1;&#x6587;&#x539F;&#x6587;&#xFF1A;</p>
+<a id="more"></a>
+<p><em>&#x82F1;&#x6587;&#x539F;&#x6587;&#xFF1A;</em></p>
 <blockquote>
 <p>I&#x2019;ll answer for Linux, since that&#x2019;s what I know. I have no experience with any of the BSDs or other unixes, but I would assume they work broadly similarly.</p>
 <p>Every socket (really, every file descriptor that can be select()ed on) has a list of waiters that are currently waiting for activity on that socket (struct wait_queue_head_t in Linux terminology). Whenever something interesting happens on that socket (new data is available, buffer space is free for writing, or some kind of error), that socket will walk its list and notify everyone waiting on it.</p>
@@ -125,7 +125,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://snowyying.github.io/2016/select-implement/" data-id="civxe4dgj002ygsskaru2mgfl" class="article-share-link">Share</a>
+      <a data-url="http://snowyying.github.io/2016/select-implement/" data-id="ciw5y23id004184skocpkxssn" class="article-share-link">Share</a>
       
         <a href="http://snowyying.github.io/2016/select-implement/#ds-thread" class="article-comment-link">留言</a>
       
@@ -138,11 +138,11 @@
     
 <nav id="article-nav">
   
-    <a href="/2016/io-multiplexing-mechanism/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2016/select-vs-epoll-1/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          再谈select, iocp, epoll, kqueue及各种I/O复用机制
+          select, poll 和 epoll 的比较 (1)
         
       </div>
     </a>
@@ -185,7 +185,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C-C/">C/C++</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/">Database</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Embedded/">Embedded</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/I-O/">I/O</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Manage/">Manage</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Media/">Media</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Software-Engineering/">Software Engineering</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Theory/">Theory</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C-C/">C/C++</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/">Database</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Embedded/">Embedded</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/I-O/">I/O</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JSON/">JSON</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Manage/">Manage</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Media/">Media</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Software-Engineering/">Software Engineering</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Theory/">Theory</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -195,7 +195,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/32-bit/" style="font-size: 10px;">32-bit</a> <a href="/tags/ARM/" style="font-size: 10px;">ARM</a> <a href="/tags/Big-Endian/" style="font-size: 10px;">Big-Endian</a> <a href="/tags/Boost/" style="font-size: 10px;">Boost</a> <a href="/tags/C/" style="font-size: 13.33px;">C</a> <a href="/tags/C/" style="font-size: 13.33px;">C++</a> <a href="/tags/C-C/" style="font-size: 11.67px;">C/C++</a> <a href="/tags/CMMI/" style="font-size: 11.67px;">CMMI</a> <a href="/tags/GUID/" style="font-size: 10px;">GUID</a> <a href="/tags/I-O/" style="font-size: 13.33px;">I/O</a> <a href="/tags/ICE/" style="font-size: 10px;">ICE</a> <a href="/tags/IT/" style="font-size: 20px;">IT</a> <a href="/tags/KAs/" style="font-size: 10px;">KAs</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Little-Endian/" style="font-size: 10px;">Little-Endian</a> <a href="/tags/NATP/" style="font-size: 10px;">NATP</a> <a href="/tags/NTP/" style="font-size: 11.67px;">NTP</a> <a href="/tags/Network/" style="font-size: 10px;">Network</a> <a href="/tags/Proactor/" style="font-size: 10px;">Proactor</a> <a href="/tags/Reactor/" style="font-size: 10px;">Reactor</a> <a href="/tags/SO-REUSEADDR/" style="font-size: 10px;">SO_REUSEADDR</a> <a href="/tags/SQLite/" style="font-size: 10px;">SQLite</a> <a href="/tags/SQuaRE/" style="font-size: 10px;">SQuaRE</a> <a href="/tags/STUN/" style="font-size: 10px;">STUN</a> <a href="/tags/SWE/" style="font-size: 16.67px;">SWE</a> <a href="/tags/TCP-IP/" style="font-size: 11.67px;">TCP/IP</a> <a href="/tags/TRUN/" style="font-size: 10px;">TRUN</a> <a href="/tags/UML/" style="font-size: 10px;">UML</a> <a href="/tags/UPNP/" style="font-size: 10px;">UPNP</a> <a href="/tags/UUID/" style="font-size: 10px;">UUID</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/VS/" style="font-size: 10px;">VS</a> <a href="/tags/Windows/" style="font-size: 10px;">Windows</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/decode/" style="font-size: 10px;">decode</a> <a href="/tags/define/" style="font-size: 10px;">define</a> <a href="/tags/epoll/" style="font-size: 10px;">epoll</a> <a href="/tags/ffmpeg/" style="font-size: 11.67px;">ffmpeg</a> <a href="/tags/ffplay/" style="font-size: 10px;">ffplay</a> <a href="/tags/ffprobe/" style="font-size: 10px;">ffprobe</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/h264/" style="font-size: 10px;">h264</a> <a href="/tags/libcssl/" style="font-size: 10px;">libcssl</a> <a href="/tags/linux/" style="font-size: 11.67px;">linux</a> <a href="/tags/p2p/" style="font-size: 10px;">p2p</a> <a href="/tags/select/" style="font-size: 11.67px;">select</a> <a href="/tags/setsockopt/" style="font-size: 10px;">setsockopt</a> <a href="/tags/socket/" style="font-size: 11.67px;">socket</a> <a href="/tags/swebok/" style="font-size: 10px;">swebok</a> <a href="/tags/不定参数/" style="font-size: 10px;">不定参数</a> <a href="/tags/串口/" style="font-size: 10px;">串口</a> <a href="/tags/交叉编译/" style="font-size: 10px;">交叉编译</a> <a href="/tags/函数/" style="font-size: 10px;">函数</a> <a href="/tags/同步/" style="font-size: 10px;">同步</a> <a href="/tags/复用/" style="font-size: 10px;">复用</a> <a href="/tags/学习/" style="font-size: 10px;">学习</a> <a href="/tags/嵌入式/" style="font-size: 10px;">嵌入式</a> <a href="/tags/异步/" style="font-size: 10px;">异步</a> <a href="/tags/性能/" style="font-size: 13.33px;">性能</a> <a href="/tags/成长/" style="font-size: 15px;">成长</a> <a href="/tags/教程/" style="font-size: 10px;">教程</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/时间/" style="font-size: 10px;">时间</a> <a href="/tags/程序员/" style="font-size: 11.67px;">程序员</a> <a href="/tags/统一建模语言/" style="font-size: 10px;">统一建模语言</a> <a href="/tags/网络/" style="font-size: 18.33px;">网络</a> <a href="/tags/设计模式/" style="font-size: 15px;">设计模式</a> <a href="/tags/软件质量/" style="font-size: 11.67px;">软件质量</a>
+      <a href="/tags/32-bit/" style="font-size: 10px;">32-bit</a> <a href="/tags/4-1/" style="font-size: 10px;">4+1</a> <a href="/tags/ARM/" style="font-size: 10px;">ARM</a> <a href="/tags/Big-Endian/" style="font-size: 10px;">Big-Endian</a> <a href="/tags/Boost/" style="font-size: 10px;">Boost</a> <a href="/tags/C/" style="font-size: 14.29px;">C</a> <a href="/tags/C/" style="font-size: 12.86px;">C++</a> <a href="/tags/C-C/" style="font-size: 15.71px;">C/C++</a> <a href="/tags/CMMI/" style="font-size: 11.43px;">CMMI</a> <a href="/tags/GUID/" style="font-size: 10px;">GUID</a> <a href="/tags/I-O/" style="font-size: 14.29px;">I/O</a> <a href="/tags/ICE/" style="font-size: 10px;">ICE</a> <a href="/tags/IIC/" style="font-size: 10px;">IIC</a> <a href="/tags/IT/" style="font-size: 20px;">IT</a> <a href="/tags/JSON/" style="font-size: 10px;">JSON</a> <a href="/tags/KAs/" style="font-size: 10px;">KAs</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Little-Endian/" style="font-size: 10px;">Little-Endian</a> <a href="/tags/NATP/" style="font-size: 10px;">NATP</a> <a href="/tags/NTP/" style="font-size: 11.43px;">NTP</a> <a href="/tags/Network/" style="font-size: 10px;">Network</a> <a href="/tags/Proactor/" style="font-size: 10px;">Proactor</a> <a href="/tags/Reactor/" style="font-size: 10px;">Reactor</a> <a href="/tags/SO-REUSEADDR/" style="font-size: 10px;">SO_REUSEADDR</a> <a href="/tags/SQLite/" style="font-size: 10px;">SQLite</a> <a href="/tags/SQuaRE/" style="font-size: 10px;">SQuaRE</a> <a href="/tags/STUN/" style="font-size: 10px;">STUN</a> <a href="/tags/SWE/" style="font-size: 17.14px;">SWE</a> <a href="/tags/Software-Engineering/" style="font-size: 10px;">Software Engineering</a> <a href="/tags/TCP-IP/" style="font-size: 11.43px;">TCP/IP</a> <a href="/tags/TRUN/" style="font-size: 10px;">TRUN</a> <a href="/tags/TWSI/" style="font-size: 10px;">TWSI</a> <a href="/tags/UML/" style="font-size: 10px;">UML</a> <a href="/tags/UPNP/" style="font-size: 10px;">UPNP</a> <a href="/tags/UUID/" style="font-size: 10px;">UUID</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/VS/" style="font-size: 10px;">VS</a> <a href="/tags/Windows/" style="font-size: 10px;">Windows</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/decode/" style="font-size: 10px;">decode</a> <a href="/tags/define/" style="font-size: 10px;">define</a> <a href="/tags/epoll/" style="font-size: 11.43px;">epoll</a> <a href="/tags/ffmpeg/" style="font-size: 11.43px;">ffmpeg</a> <a href="/tags/ffplay/" style="font-size: 10px;">ffplay</a> <a href="/tags/ffprobe/" style="font-size: 10px;">ffprobe</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/h264/" style="font-size: 10px;">h264</a> <a href="/tags/libcssl/" style="font-size: 10px;">libcssl</a> <a href="/tags/linux/" style="font-size: 11.43px;">linux</a> <a href="/tags/p2p/" style="font-size: 10px;">p2p</a> <a href="/tags/select/" style="font-size: 12.86px;">select</a> <a href="/tags/setsockopt/" style="font-size: 10px;">setsockopt</a> <a href="/tags/socket/" style="font-size: 11.43px;">socket</a> <a href="/tags/swebok/" style="font-size: 10px;">swebok</a> <a href="/tags/不定参数/" style="font-size: 10px;">不定参数</a> <a href="/tags/串口/" style="font-size: 10px;">串口</a> <a href="/tags/交叉编译/" style="font-size: 10px;">交叉编译</a> <a href="/tags/函数/" style="font-size: 10px;">函数</a> <a href="/tags/发展/" style="font-size: 10px;">发展</a> <a href="/tags/同步/" style="font-size: 10px;">同步</a> <a href="/tags/复用/" style="font-size: 10px;">复用</a> <a href="/tags/学习/" style="font-size: 10px;">学习</a> <a href="/tags/嵌入式/" style="font-size: 10px;">嵌入式</a> <a href="/tags/异步/" style="font-size: 10px;">异步</a> <a href="/tags/性能/" style="font-size: 12.86px;">性能</a> <a href="/tags/成长/" style="font-size: 15.71px;">成长</a> <a href="/tags/攻略/" style="font-size: 10px;">攻略</a> <a href="/tags/教程/" style="font-size: 10px;">教程</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/时间/" style="font-size: 10px;">时间</a> <a href="/tags/架构/" style="font-size: 10px;">架构</a> <a href="/tags/程序员/" style="font-size: 14.29px;">程序员</a> <a href="/tags/统一建模语言/" style="font-size: 10px;">统一建模语言</a> <a href="/tags/网络/" style="font-size: 18.57px;">网络</a> <a href="/tags/设计模式/" style="font-size: 14.29px;">设计模式</a> <a href="/tags/软件质量/" style="font-size: 11.43px;">软件质量</a>
     </div>
   </div>
 
@@ -204,7 +204,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">19</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">16</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -217,23 +217,23 @@
       <ul>
         
           <li>
-            <a href="/2016/memory-leak-detect/">C/C++内存泄露检查及工具使用</a>
+            <a href="/2016/programming-guide-dream/">码路指南：保持内心的青春与理想 理想驱动编程</a>
           </li>
         
           <li>
-            <a href="/2016/stress-testing/">stress testing</a>
+            <a href="/2016/programming-guide-driving-force/">码路指南：物质驱动与兴趣驱动 编程驱动力是什么？</a>
           </li>
         
           <li>
-            <a href="/2016/KPAs-4-CMMI/">CMMI 主要内容及各过程域的相互关系</a>
+            <a href="/2016/programming-guide-golden-time/">码路指南：别错过人生中学习的黄金时期 保持知识更新</a>
           </li>
         
           <li>
-            <a href="/2016/cmmi-overview/">CMMI 概览</a>
+            <a href="/2016/programming-guide-extensive-and-professional/">码路指南：在博与专之间取得平衡 平衡最合适</a>
           </li>
         
           <li>
-            <a href="/2016/square-overview/">SQuaRE 概览</a>
+            <a href="/2016/programming-guide-become-a-master/">码路指南：为何你成不了编程高手？ 成长路上常见的坑</a>
           </li>
         
       </ul>
