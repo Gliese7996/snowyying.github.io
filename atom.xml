@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://snowyying.github.io/"/>
-  <updated>2017-01-21T07:57:48.455Z</updated>
+  <updated>2017-01-21T11:39:25.671Z</updated>
   <id>http://snowyying.github.io/</id>
   
   <author>
@@ -16,17 +16,19 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>it manage redmine</title>
+    <title>IT 项目管理工具 Redmine</title>
     <link href="http://snowyying.github.io/2017/it-manage-redmine/"/>
     <id>http://snowyying.github.io/2017/it-manage-redmine/</id>
     <published>2017-01-18T07:33:42.000Z</published>
-    <updated>2017-01-21T07:57:48.455Z</updated>
+    <updated>2017-01-21T11:39:25.671Z</updated>
     
-    <content type="html"><![CDATA[<p><a href="http://www.redmine.org/projects/redmine/wiki/RedmineInstall" target="_blank" rel="external">redmine</a></p>
+    <content type="html"><![CDATA[<p>Ubuntu Server 16 + MySQL</p>
+<p><a href="http://www.redmine.org/projects/redmine/wiki/RedmineInstall" target="_blank" rel="external">redmine</a></p>
 <h6 id="1-Redmine-application-amp-Database"><a href="#1-Redmine-application-amp-Database" class="headerlink" title="1. Redmine application &amp; Database"></a>1. Redmine application &amp; Database</h6><p>MySQL</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"># install</div><div class="line">snowyying@snowyying-ub16~&gt; sudo apt-get install mysql-server</div><div class="line">snowyying@snowyying-ub16~&gt; sudo apt-get install mysql-client</div><div class="line">snowyying@snowyying-ub16~&gt; sudo apt-get install libmysqlclient-dev</div><div class="line"># config</div><div class="line">mysql -u root -p</div></pre></td></tr></table></figure>
 <p>PostgreSQL</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># install</div><div class="line">sudo apt-get install postgresql</div><div class="line"># config</div><div class="line">sudo -u postgres psql</div></pre></td></tr></table></figure>
+<a id="more"></a>
 <h6 id="2-Create-an-empty-database-and-accompanying-user"><a href="#2-Create-an-empty-database-and-accompanying-user" class="headerlink" title="2. Create an empty database and accompanying user"></a>2. Create an empty database and accompanying user</h6><p>MySQL</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">CREATE DATABASE redmine CHARACTER SET utf8;</div><div class="line">CREATE USER &apos;redmine&apos;@&apos;localhost&apos; IDENTIFIED BY &apos;password&apos;;</div><div class="line">GRANT ALL PRIVILEGES ON redmine.* TO &apos;redmine&apos;@&apos;localhost&apos;;</div><div class="line"># quit;</div></pre></td></tr></table></figure>
 <p>PostgreSQL</p>
@@ -51,7 +53,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mkdir -p tmp tmp/pdf public/plugin_assets</div><div class="line">sudo chown -R redmine:redmine files log tmp public/plugin_assets</div><div class="line">sudo chmod -R 755 files log tmp public/plugin_assets</div></pre></td></tr></table></figure>
 <h6 id="9-Test-the-installation"><a href="#9-Test-the-installation" class="headerlink" title="9. Test the installation"></a>9. Test the installation</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">bundle exec rails server webrick -e production -b 0.0.0.0</div></pre></td></tr></table></figure>
 <p><em>-b 0.0.0.0</em></p>
-<h6 id="10-Startup"><a href="#10-Startup" class="headerlink" title="10. Startup"></a>10. Startup</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo vi /etc/init.d/redmine</div></pre></td></tr></table></figure>
+<h6 id="10-Start-On-Boot"><a href="#10-Start-On-Boot" class="headerlink" title="10. Start On Boot"></a>10. Start On Boot</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo vi /etc/init.d/redmine</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">#!/bin/sh</div><div class="line">#</div><div class="line"># description: Auto-starts redmine</div><div class="line"># processname: redmine</div><div class="line"></div><div class="line">cd /srv/redmine</div><div class="line">bundle exec rails server webrick -e production -b 0.0.0.0 &amp;</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">sudo chmod 755 /etc/init.d/redmine</div><div class="line">sudo apt-get install sysv-rc-conf</div><div class="line">sudo sysv-rc-conf</div><div class="line">#redmine 2, 3, 4, 5</div></pre></td></tr></table></figure>
 <p><img src="/2017/it-manage-redmine/SYS_CONF_REDMINE.png" alt="redmine"></p>
@@ -59,24 +61,34 @@
     
     <summary type="html">
     
-      &lt;p&gt;&lt;a href=&quot;http://www.redmine.org/projects/redmine/wiki/RedmineInstall&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;redmine&lt;/a&gt;&lt;/p&gt;
-&lt;h6 id=&quot;1-Redmine-ap
+      &lt;p&gt;Ubuntu Server 16 + MySQL&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.redmine.org/projects/redmine/wiki/RedmineInstall&quot;&gt;redmine&lt;/a&gt;&lt;/p&gt;
+&lt;h6 id=&quot;1-Redmine-application-amp-Database&quot;&gt;&lt;a href=&quot;#1-Redmine-application-amp-Database&quot; class=&quot;headerlink&quot; title=&quot;1. Redmine application &amp;amp; Database&quot;&gt;&lt;/a&gt;1. Redmine application &amp;amp; Database&lt;/h6&gt;&lt;p&gt;MySQL&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;# install&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;snowyying@snowyying-ub16~&amp;gt; sudo apt-get install mysql-server&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;snowyying@snowyying-ub16~&amp;gt; sudo apt-get install mysql-client&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;snowyying@snowyying-ub16~&amp;gt; sudo apt-get install libmysqlclient-dev&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;# config&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;mysql -u root -p&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;PostgreSQL&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;# install&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;sudo apt-get install postgresql&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;# config&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;sudo -u postgres psql&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
     
     </summary>
     
+      <category term="General" scheme="http://snowyying.github.io/categories/General/"/>
+    
+    
+      <category term="Redmine" scheme="http://snowyying.github.io/tags/Redmine/"/>
+    
+      <category term="项目管理" scheme="http://snowyying.github.io/tags/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/"/>
     
   </entry>
   
   <entry>
     <title>无线电波段和频谱</title>
-    <link href="http://snowyying.github.io/2017/radio-spectrum/"/>
-    <id>http://snowyying.github.io/2017/radio-spectrum/</id>
+    <link href="http://snowyying.github.io/2017/misc-radio-spectrum/"/>
+    <id>http://snowyying.github.io/2017/misc-radio-spectrum/</id>
     <published>2017-01-18T01:59:19.000Z</published>
-    <updated>2017-01-18T03:28:54.683Z</updated>
+    <updated>2017-01-21T12:23:40.295Z</updated>
     
     <content type="html"><![CDATA[<h2 id="&#x7535;&#x78C1;&#x6CE2;"><a href="#&#x7535;&#x78C1;&#x6CE2;" class="headerlink" title="&#x7535;&#x78C1;&#x6CE2;"></a>&#x7535;&#x78C1;&#x6CE2;</h2><p>&#x5728;&#x7A7A;&#x95F4;&#x4F20;&#x64AD;&#x7740;&#x7684;&#x4EA4;&#x53D8;&#x7535;&#x78C1;&#x573A;&#xFF0C;&#x5373;&#x7535;&#x78C1;&#x6CE2;&#x3002;&#x5B83;&#x5728;&#x771F;&#x7A7A;&#x4E2D;&#x7684;&#x4F20;&#x64AD;&#x901F;&#x5EA6;&#x7EA6;&#x4E3A;&#x6BCF;&#x79D2;30&#x4E07;&#x516C;&#x91CC;&#x3002;&#x7535;&#x78C1;&#x6CE2;&#x5305;&#x62EC;&#x7684;&#x8303;&#x56F4;&#x5F88;&#x5E7F;&#x3002;&#x5B9E;&#x9A8C;&#x8BC1;&#x660E;&#xFF0C;&#x65E0;&#x7EBF;&#x7535;&#x6CE2;&#x3001;&#x7EA2;&#x5916;&#x7EBF;&#x3001;&#x53EF;&#x89C1;&#x5149;&#x3001;&#x7D2B;&#x5916;&#x7EBF;&#x3001;X&#x5C04;&#x7EBF;&#x3001;&#x3B3;&#x5C04;&#x7EBF;&#x90FD;&#x662F;&#x7535;&#x78C1;&#x6CE2;&#x3002;&#x5149;&#x6CE2;&#x7684;&#x9891;&#x7387;&#x6BD4;&#x65E0;&#x7EBF;&#x7535;&#x6CE2;&#x7684;&#x9891;&#x7387;&#x8981;&#x9AD8;&#x5F88;&#x591A;&#xFF0C;&#x5149;&#x6CE2;&#x7684;&#x6CE2;&#x957F;&#x6BD4;&#x65E0;&#x7EBF;&#x7535;&#x6CE2;&#x7684;&#x6CE2;&#x957F;&#x77ED;&#x5F88;&#x591A;&#xFF1B;&#x800C;X&#x5C04;&#x7EBF;&#x548C;&#x3B3;&#x5C04;&#x7EBF;&#x7684;&#x9891;&#x7387;&#x5219;&#x66F4;&#x9AD8;&#xFF0C;&#x6CE2;&#x957F;&#x5219;&#x66F4;&#x77ED;&#x3002;</p>
 <p>&#x4E3A;&#x4E86;&#x5BF9;&#x5404;&#x79CD;&#x7535;&#x78C1;&#x6CE2;&#x6709;&#x4E2A;&#x5168;&#x9762;&#x7684;&#x4E86;&#x89E3;&#xFF0C;&#x4EBA;&#x4EEC;&#x5C06;&#x8FD9;&#x4E9B;&#x7535;&#x78C1;&#x6CE2;&#x6309;&#x7167;&#x5B83;&#x4EEC;&#x7684;&#x6CE2;&#x957F;&#x6216;&#x9891;&#x7387;&#x3001;&#x6CE2;&#x6570;&#x3001;&#x80FD;&#x91CF;&#x7684;&#x5927;&#x5C0F;&#x987A;&#x5E8F;&#x8FDB;&#x884C;&#x6392;&#x5217;&#xFF0C;&#x8FD9;&#x5C31;&#x662F;&#x7535;&#x78C1;&#x6CE2;&#x8C31;&#x3002;</p>
-<p><img src="/2017/radio-spectrum/electromagnetic_spectrum.jpg" alt="&#x7535;&#x78C1;&#x6CE2;&#x8C31;"></p>
+<p><img src="/2017/misc-radio-spectrum/radio-spectrum/electromagnetic_spectrum.jpg" alt="&#x7535;&#x78C1;&#x6CE2;&#x8C31;"></p>
 <h2 id="&#x65E0;&#x7EBF;&#x7535;&#x6CE2;"><a href="#&#x65E0;&#x7EBF;&#x7535;&#x6CE2;" class="headerlink" title="&#x65E0;&#x7EBF;&#x7535;&#x6CE2;"></a>&#x65E0;&#x7EBF;&#x7535;&#x6CE2;</h2><p>&#x65E0;&#x7EBF;&#x7535;&#x6CE2;&#x662F;&#x9891;&#x7387;&#x4ECB;&#x4E8E;3&#x8D6B;&#x5179;&#x548C;&#x7EA6;300G&#x8D6B;&#x4E4B;&#x95F4;&#x7684;&#x7535;&#x78C1;&#x6CE2;&#xFF0C;&#x4E5F;&#x4F5C;&#x5C04;&#x9891;&#x7535;&#x6CE2;&#xFF0C;&#x6216;&#x7B80;&#x79F0;&#x5C04;&#x9891;&#x3001;&#x5C04;&#x7535;&#x3002;&#x65E0;&#x7EBF;&#x7535;&#x6280;&#x672F;&#x5C06;&#x58F0;&#x97F3;&#x8BAF;&#x53F7;&#x6216;&#x5176;&#x4ED6;&#x4FE1;&#x53F7;&#x7ECF;&#x8FC7;&#x8F6C;&#x6362;&#xFF0C;&#x5229;&#x7528;&#x65E0;&#x7EBF;&#x7535;&#x6CE2;&#x4F20;&#x64AD;&#x3002;</p>
 <blockquote>
 <p>&#x56FD;&#x9645;&#x7535;&#x4FE1;&#x8054;&#x76DF;&#x9891;&#x8C31;&#x548C;&#x6CE2;&#x6BB5;&#x5212;&#x5206;</p>
@@ -224,6 +236,14 @@
     
     </summary>
     
+      <category term="Misc" scheme="http://snowyying.github.io/categories/Misc/"/>
+    
+    
+      <category term="电磁波" scheme="http://snowyying.github.io/tags/%E7%94%B5%E7%A3%81%E6%B3%A2/"/>
+    
+      <category term="无线电" scheme="http://snowyying.github.io/tags/%E6%97%A0%E7%BA%BF%E7%94%B5/"/>
+    
+      <category term="通信" scheme="http://snowyying.github.io/tags/%E9%80%9A%E4%BF%A1/"/>
     
   </entry>
   
@@ -851,11 +871,11 @@
       <category term="Network" scheme="http://snowyying.github.io/categories/Network/"/>
     
     
+      <category term="NTP" scheme="http://snowyying.github.io/tags/NTP/"/>
+    
       <category term="Network" scheme="http://snowyying.github.io/tags/Network/"/>
     
       <category term="p2p" scheme="http://snowyying.github.io/tags/p2p/"/>
-    
-      <category term="NTP" scheme="http://snowyying.github.io/tags/NTP/"/>
     
       <category term="NATP" scheme="http://snowyying.github.io/tags/NATP/"/>
     
