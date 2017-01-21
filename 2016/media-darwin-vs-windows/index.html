@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Visual Studio 编译 Darwin Streaming Server | Snowyying</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1 Patch12patch -bp1 &amp;lt; dss-hh-20080728-1.patchpatch -bp1 &amp;lt; dss-6.0.3.patch">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Visual Studio 编译 Darwin Streaming Server">
+<meta property="og:url" content="http://snowyying.github.io/2016/media-darwin-vs-windows/index.html">
+<meta property="og:site_name" content="Snowyying">
+<meta property="og:description" content="1 Patch12patch -bp1 &amp;lt; dss-hh-20080728-1.patchpatch -bp1 &amp;lt; dss-6.0.3.patch">
+<meta property="og:updated_time" content="2017-01-12T05:52:20.533Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Visual Studio 编译 Darwin Streaming Server">
+<meta name="twitter:description" content="1 Patch12patch -bp1 &amp;lt; dss-hh-20080728-1.patchpatch -bp1 &amp;lt; dss-6.0.3.patch">
+  
+    <link rel="alternate" href="/atom.xml" title="Snowyying" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Snowyying</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Learn and live.</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/About">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://snowyying.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-media-darwin-vs-windows" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Visual Studio 编译 Darwin Streaming Server
+    </h1>
+  
+
+      </header>
+    
+  
+  <div class="article-meta">
+    <a href="/2016/media-darwin-vs-windows/" class="article-date">
+  <time datetime="2016-12-20T09:16:29.000Z" itemprop="datePublished">2016-12-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Media/">Media</a>
+  </div>
+
+  </div>
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-Patch"><a href="#1-Patch" class="headerlink" title="1 Patch"></a>1 Patch</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">patch -bp1 &lt; dss-hh-20080728-1.patch</div><div class="line">patch -bp1 &lt; dss-6.0.3.patch</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="2-Fix-compile-error"><a href="#2-Fix-compile-error" class="headerlink" title="2 Fix compile error"></a>2 Fix compile error</h2><h6 id="1-OSHeaders-h"><a href="#1-OSHeaders-h" class="headerlink" title="1) OSHeaders.h"></a>1) OSHeaders.h</h6><ul>
+<li>&#x89E3;&#x51B3;socket&#x76F8;&#x5173;&#x51FD;&#x6570;&#x91CD;&#x590D;&#x5B9A;&#x95EE;&#x9898;;</li>
+<li>&#x89E3;&#x51B3;time&#x76F8;&#x5173;&#x51FD;&#x6570;&#x7F16;&#x8BD1;&#x5931;&#x8D25;&#x7684;&#x95EE;&#x9898;.</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">elif</span> __Win32__</span></div><div class="line">    <span class="comment">// Fixed 4 VS2015 @ 20161216</span></div><div class="line">    <span class="comment">// Add space characters &apos; &apos;</span></div><div class="line">    <span class="comment">/* Defines */</span></div><div class="line">    <span class="meta">#<span class="meta-keyword">define</span> _64BITARG_ <span class="meta-string">&quot;I64&quot;</span></span></div><div class="line">    <span class="meta">#<span class="meta-keyword">define</span> _S64BITARG_ <span class="meta-string">&quot;I64d&quot;</span></span></div><div class="line">    <span class="meta">#<span class="meta-keyword">define</span> _U64BITARG_ <span class="meta-string">&quot;I64u&quot;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">if</span> __LP64__</span></div><div class="line">	<span class="meta">#<span class="meta-keyword">define</span> _S32BITARG_ <span class="meta-string">&quot;d&quot;</span></span></div><div class="line">	<span class="meta">#<span class="meta-keyword">define</span> _U32BITARG_ <span class="meta-string">&quot;u&quot;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">else</span></span></div><div class="line">	<span class="meta">#<span class="meta-keyword">define</span> _S32BITARG_ <span class="meta-string">&quot;ld&quot;</span></span></div><div class="line">	<span class="meta">#<span class="meta-keyword">define</span> _U32BITARG_ <span class="meta-string">&quot;lu&quot;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line"></div><div class="line">    <span class="comment">/* paths */</span></div><div class="line">    <span class="meta">#<span class="meta-keyword">define</span> kEOLString <span class="meta-string">&quot;\r\n&quot;</span></span></div><div class="line">    <span class="meta">#<span class="meta-keyword">define</span> kPathDelimiterString <span class="meta-string">&quot;\\&quot;</span></span></div><div class="line">    <span class="meta">#<span class="meta-keyword">define</span> kPathDelimiterChar <span class="meta-string">&apos;\\&apos;</span></span></div><div class="line">    <span class="meta">#<span class="meta-keyword">define</span> kPartialPathBeginsWithDelimiter 0</span></div><div class="line"></div><div class="line">    <span class="meta">#<span class="meta-keyword">define</span> crypt(buf, salt) ((char*)buf)</span></div><div class="line"></div><div class="line">    <span class="comment">// Fixed 4 VS2015 @ 20161216</span></div><div class="line">    <span class="meta">#<span class="meta-keyword">define</span> WIN32_LEAN_AND_MEAN</span></div><div class="line"></div><div class="line">    <span class="comment">/* Includes */</span></div><div class="line">    <span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;windows.h&gt;</span></span></div><div class="line">    <span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;winsock2.h&gt;</span></span></div><div class="line">    <span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;mswsock.h&gt;</span></span></div><div class="line">    <span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;process.h&gt;</span></span></div><div class="line">    <span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ws2tcpip.h&gt;</span></span></div><div class="line">    <span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;io.h&gt;</span></span></div><div class="line">    <span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;direct.h&gt;</span></span></div><div class="line">    <span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;errno.h&gt;</span></span></div><div class="line"></div><div class="line">    <span class="comment">// Fixed 4 VS2015 @ 20161216</span></div><div class="line">    <span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;mmsystem.h&gt;</span></span></div></pre></td></tr></table></figure>
+<h6 id="2-&#x5B8F;&#x5B9A;&#x4E49;"><a href="#2-&#x5B8F;&#x5B9A;&#x4E49;" class="headerlink" title="2) &#x5B8F;&#x5B9A;&#x4E49;"></a>2) &#x5B8F;&#x5B9A;&#x4E49;</h6><p>&#x641C;&#x7D22;&#x89E3;&#x51B3;&#x65B9;&#x6848;, &#x5728;<code>_S32BITARG_ / _U32BITARG_ / _64BITARG_ / _S64BITARG_ / _U64BITARG_</code>&#x524D;&#x540E;&#x52A0;&#x7A7A;&#x683C;.</p>
+<p><em>&#x5728;VS2015&#x4E0B;&#x5B8F;&#x5B9A;&#x4E49;&#x5FC5;&#x987B;&#x524D;&#x540E;&#x5E26;&#x7A7A;&#x683C;&#x7B26;, &#x5426;&#x5219;&#x4F1A;&#x88AB;&#x8BC6;&#x522B;&#x6210;&#x5B57;&#x7B26;&#x4E32;&#x5BFC;&#x81F4;&#x7F16;&#x8BD1;&#x5931;&#x8D25;.</em></p>
+<h6 id="3-arpa-inet-h"><a href="#3-arpa-inet-h" class="headerlink" title="3) arpa/inet.h"></a>3) arpa/inet.h</h6><p>&#x641C;&#x7D22;&#x89E3;&#x51B3;&#x65B9;&#x6848;, &#x5BF9;#include <arpa inet.h="">&#x8FDB;&#x884C;&#x4FEE;&#x6539;, &#x5728;Windows&#x4E0A;&#x5E73;&#x53F0;&#x4E0A;&#x6CA1;&#x6709;&#x6B64;&#x5934;&#x6587;&#x4EF6;.</arpa></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Fixed 4 VS2015 @ 20161216</span></div><div class="line"><span class="meta">#<span class="meta-keyword">if</span> __Win32__</span></div><div class="line"><span class="meta">#<span class="meta-keyword">else</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;arpa/inet.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div></pre></td></tr></table></figure>
+<p>4) QTAccessFile.cpp</p>
+<p>&#x6CE8;&#x91CA;&#x6389;&#x4EE5;&#x4E0B;&#x5934;&#x6587;&#x4EF6;&#x7684;&#x5F15;&#x7528;, &#x540C;&#x65F6;, &#x6CE8;&#x91CA;&#x6389;&#x4E00;&#x4E2A;&#x672A;&#x88AB;&#x5F15;&#x7528;&#x7684;&#x51FD;&#x6570;.</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Fixed 4 VS2015 @ 20161216</span></div><div class="line"><span class="meta">#<span class="meta-keyword">if</span> __Win32__</span></div><div class="line"><span class="meta">#<span class="meta-keyword">else</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;grp.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> __MacOSX__</span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;membership.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;pwd.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;signal.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line"></div><div class="line">...</div><div class="line"></div><div class="line"><span class="comment">// Fixed 4 VS2015 @ 20161216</span></div><div class="line"><span class="meta">#<span class="meta-keyword">if</span> 0</span></div><div class="line">Bool16 DSAccessFile::ValidUser( <span class="keyword">char</span>*userName, <span class="keyword">void</span>* extraDataPtr)</div><div class="line">{</div><div class="line">    <span class="keyword">struct</span> passwd	*user = getpwnam(userName);</div><div class="line">    Bool16 result =<span class="literal">true</span>;</div><div class="line">    <span class="keyword">if</span> ( user == <span class="literal">NULL</span> )</div><div class="line">    {    </div><div class="line">         <span class="keyword">return</span> result;</div><div class="line">    }</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">}</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div></pre></td></tr></table></figure>
+<p>5) QTSSPasswd.cpp</p>
+<p>&#x6253;&#x5F00;&#x6B64;&#x6CE8;&#x91CA;</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Fixed 4 VS2015 @ 20161216</span></div><div class="line"><span class="meta">#<span class="meta-keyword">if</span> __Win32__</span></div><div class="line"><span class="comment">/* unused routine */</span></div><div class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">char</span>* <span class="title">SetTempPath</span><span class="params">(<span class="keyword">char</span>* bufferToSet, <span class="keyword">int</span> bufferLen, <span class="keyword">char</span>* base, <span class="keyword">int</span> baseLen, <span class="keyword">char</span> id)</span></span></div><div class="line">{</div><div class="line">    <span class="keyword">if</span> (bufferLen &gt; <span class="number">0</span> &amp;&amp; bufferToSet != <span class="literal">NULL</span>)</div><div class="line">        <span class="built_in">memset</span>(bufferToSet, <span class="number">0</span>, bufferLen);</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (baseLen + <span class="number">2</span> &gt; bufferLen)</div><div class="line">        <span class="keyword">return</span> bufferToSet;</div><div class="line"></div><div class="line">    <span class="built_in">strcpy</span>(bufferToSet, base);</div><div class="line">	bufferToSet[baseLen] = id;</div><div class="line">	bufferToSet[baseLen + <span class="number">1</span>] = <span class="string">&apos;\0&apos;</span>;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> bufferToSet;</div><div class="line">}</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div></pre></td></tr></table></figure>
+<p>6) RTPStream.cpp</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//UDP Monitor reflected  write</span></div><div class="line"><span class="keyword">void</span> RTPStream::UDPMonitorWrite(<span class="keyword">void</span>* thePacketData, UInt32 inLen,  Bool16 isRTCP)</div><div class="line">{</div><div class="line">    <span class="keyword">if</span> (FALSE == fUDPMonitorEnabled || <span class="number">0</span> == fMonitorSocket || <span class="literal">NULL</span> == thePacketData)</div><div class="line">        <span class="keyword">return</span>;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> ((<span class="number">0</span> != fPlayerToMonitorAddr) &amp;&amp; (<span class="keyword">this</span>-&gt;fRemoteAddr != fPlayerToMonitorAddr))</div><div class="line">        <span class="keyword">return</span>;</div><div class="line"></div><div class="line">   UInt16 RTCPportOffset = (TRUE == isRTCP)? <span class="number">1</span> : <span class="number">0</span>;</div><div class="line"></div><div class="line">    <span class="keyword">struct</span> sockaddr_in <span class="built_in">sin</span>;</div><div class="line">    <span class="built_in">memset</span>(&amp;<span class="built_in">sin</span>, <span class="number">0</span>, <span class="keyword">sizeof</span>(<span class="keyword">struct</span> sockaddr_in));</div><div class="line">    <span class="built_in">sin</span>.sin_family = AF_INET;</div><div class="line">    <span class="built_in">sin</span>.sin_addr.s_addr = htonl(fMonitorAddr);</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (fPayloadType == qtssVideoPayloadType)</div><div class="line">	{</div><div class="line">		<span class="comment">// Fixed 4 VS2015 @ 20161216</span></div><div class="line"><span class="meta">#<span class="meta-keyword">if</span> __Win32__</span></div><div class="line">		<span class="built_in">sin</span>.sin_port = (<span class="keyword">unsigned</span> <span class="keyword">short</span>)htons(fMonitorVideoDestPort + RTCPportOffset);</div><div class="line"><span class="meta">#<span class="meta-keyword">else</span></span></div><div class="line">		<span class="built_in">sin</span>.sin_port = (<span class="keyword">in_port_t</span>)htons(fMonitorVideoDestPort + RTCPportOffset);</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line">	}</div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (fPayloadType == qtssAudioPayloadType)</div><div class="line">	{</div><div class="line">		<span class="comment">// Fixed 4 VS2015 @ 20161216</span></div><div class="line">#<span class="keyword">if</span> <span class="number">__</span>Win32__</div><div class="line">		<span class="built_in">sin</span>.sin_port = (<span class="keyword">unsigned</span> <span class="keyword">short</span>)htons(fMonitorAudioDestPort + RTCPportOffset);</div><div class="line"><span class="meta">#<span class="meta-keyword">else</span></span></div><div class="line">		<span class="built_in">sin</span>.sin_port = (<span class="keyword">in_port_t</span>)htons(fMonitorAudioDestPort + RTCPportOffset);</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line">	}</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (<span class="built_in">sin</span>.sin_port != <span class="number">0</span>)</div><div class="line">    {</div><div class="line">		<span class="comment">// Fixed 4 VS2015 @ 20161216</span></div><div class="line">        <span class="comment">//ssize_t result = ::sendto(fMonitorSocket, thePacketData, inLen, 0, (struct sockaddr *)&amp;sin, sizeof(struct sockaddr));</span></div><div class="line">		<span class="keyword">size_t</span> result = ::sendto(fMonitorSocket, (<span class="keyword">char</span> *)thePacketData, inLen, <span class="number">0</span>, (<span class="keyword">struct</span> sockaddr *)&amp;<span class="built_in">sin</span>, <span class="keyword">sizeof</span>(<span class="keyword">struct</span> sockaddr));</div><div class="line">       <span class="keyword">if</span> (DEBUG)</div><div class="line">        {   <span class="keyword">if</span> (result &lt; <span class="number">0</span>)</div><div class="line">                qtss_printf(<span class="string">&quot;RTCP Monitor Socket sendto failed\n&quot;</span>);</div><div class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (<span class="number">0</span>)</div><div class="line">                qtss_printf(<span class="string">&quot;RTCP Monitor Socket sendto port=%hu, packetLen=%&quot;</span> <span class="number">_U</span>32BITARG_ <span class="string">&quot;\n&quot;</span>, ntohs(<span class="built_in">sin</span>.sin_port), inLen);</div><div class="line">        }</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
+<h2 id="3-Fix-Link-error"><a href="#3-Fix-Link-error" class="headerlink" title="3 Fix Link error"></a>3 Fix Link error</h2><p>&#x94FE;&#x63A5;&#x9519;&#x8BEF;&#x662F;&#x56E0;&#x4E3A;&#x627E;&#x4E0D;&#x5230;&#x5BF9;&#x5E94;&#x7684;&#x5B9E;&#x73B0;, &#x7ED9;&#x94FE;&#x63A5;&#x4E0D;&#x901A;&#x8FC7;&#x7684;&#x5DE5;&#x7A0B;&#x6DFB;&#x52A0;&#x5B9E;&#x73B0;&#x5373;&#x53EF;, &#x4E0D;&#x518D;&#x8D58;&#x8FF0;.</p>
+<ul>
+<li>StreamingLoadTool (&#x9700;&#x6DFB;&#x52A0;1&#x4E2A;cpp&#x6587;&#x4EF6;&#x5230;&#x5DE5;&#x7A0B;)</li>
+<li>StreamingServer (&#x9700;&#x6DFB;&#x52A0;N&#x4E2A;cpp&#x6587;&#x4EF6;&#x5230;&#x5DE5;&#x7A0B;)</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://snowyying.github.io/2016/media-darwin-vs-windows/" data-id="ciy6y0ti7002ho8skolzox9q1" class="article-share-link">Share</a>
+      
+        <a href="http://snowyying.github.io/2016/media-darwin-vs-windows/#ds-thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DSS/">DSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RTSP/">RTSP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/流媒体服务器/">流媒体服务器</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/media-darwin-gxx-ubuntu/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Ubuntu 编译 Darwin Streaming Server
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/media-live555-vs-windows/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Visual Studio 编译 live555</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="2016/media-darwin-vs-windows/" data-title="Visual Studio 编译 Darwin Streaming Server" data-url="http://snowyying.github.io/2016/media-darwin-vs-windows/"></div>
+  <!-- 多说评论框 end -->
+  <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"snowyying"};
+  (function() {
+  	var ds = document.createElement('script');
+  	ds.type = 'text/javascript';ds.async = true;
+  	ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+  	ds.charset = 'UTF-8';
+  	(document.getElementsByTagName('head')[0] 
+  	 || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+  <!-- 多说公共JS代码 end -->
+</section>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C-C/">C/C++</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Embedded/">Embedded</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/General/">General</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Media/">Media</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Misc/">Misc</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a><span class="category-list-count">21</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OS/">OS</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Security/">Security</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Software-Engineering/">Software Engineering</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Test/">Test</a><span class="category-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/32-bit/" style="font-size: 10px;">32-bit</a> <a href="/tags/4-1/" style="font-size: 10px;">4+1</a> <a href="/tags/ARM/" style="font-size: 10px;">ARM</a> <a href="/tags/Big-Endian/" style="font-size: 10px;">Big-Endian</a> <a href="/tags/Bitrate/" style="font-size: 10px;">Bitrate</a> <a href="/tags/Boost/" style="font-size: 10px;">Boost</a> <a href="/tags/C/" style="font-size: 12.22px;">C</a> <a href="/tags/C/" style="font-size: 12.22px;">C++</a> <a href="/tags/C-C/" style="font-size: 14.44px;">C/C++</a> <a href="/tags/CMMI/" style="font-size: 11.11px;">CMMI</a> <a href="/tags/DSS/" style="font-size: 10px;">DSS</a> <a href="/tags/GUID/" style="font-size: 10px;">GUID</a> <a href="/tags/H264/" style="font-size: 10px;">H264</a> <a href="/tags/I-O/" style="font-size: 13.33px;">I/O</a> <a href="/tags/ICE/" style="font-size: 10px;">ICE</a> <a href="/tags/IIC/" style="font-size: 10px;">IIC</a> <a href="/tags/IT/" style="font-size: 20px;">IT</a> <a href="/tags/JSON/" style="font-size: 10px;">JSON</a> <a href="/tags/KAs/" style="font-size: 10px;">KAs</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Little-Endian/" style="font-size: 10px;">Little-Endian</a> <a href="/tags/NATP/" style="font-size: 10px;">NATP</a> <a href="/tags/NTP/" style="font-size: 11.11px;">NTP</a> <a href="/tags/Network/" style="font-size: 10px;">Network</a> <a href="/tags/OS/" style="font-size: 10px;">OS</a> <a href="/tags/Proactor/" style="font-size: 10px;">Proactor</a> <a href="/tags/RTCP/" style="font-size: 10px;">RTCP</a> <a href="/tags/RTP/" style="font-size: 10px;">RTP</a> <a href="/tags/RTSP/" style="font-size: 11.11px;">RTSP</a> <a href="/tags/Reactor/" style="font-size: 10px;">Reactor</a> <a href="/tags/SO-REUSEADDR/" style="font-size: 10px;">SO_REUSEADDR</a> <a href="/tags/SQLite/" style="font-size: 10px;">SQLite</a> <a href="/tags/SQuaRE/" style="font-size: 10px;">SQuaRE</a> <a href="/tags/STUN/" style="font-size: 10px;">STUN</a> <a href="/tags/SWE/" style="font-size: 16.67px;">SWE</a> <a href="/tags/TCP-IP/" style="font-size: 13.33px;">TCP/IP</a> <a href="/tags/TRUN/" style="font-size: 10px;">TRUN</a> <a href="/tags/TWSI/" style="font-size: 10px;">TWSI</a> <a href="/tags/UDP/" style="font-size: 10px;">UDP</a> <a href="/tags/UML/" style="font-size: 10px;">UML</a> <a href="/tags/UPNP/" style="font-size: 10px;">UPNP</a> <a href="/tags/UUID/" style="font-size: 10px;">UUID</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/VS/" style="font-size: 10px;">VS</a> <a href="/tags/WS-Security/" style="font-size: 10px;">WS-Security</a> <a href="/tags/Windows/" style="font-size: 10px;">Windows</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/decode/" style="font-size: 10px;">decode</a> <a href="/tags/define/" style="font-size: 10px;">define</a> <a href="/tags/epoll/" style="font-size: 11.11px;">epoll</a> <a href="/tags/ffmpeg/" style="font-size: 11.11px;">ffmpeg</a> <a href="/tags/ffplay/" style="font-size: 10px;">ffplay</a> <a href="/tags/ffprobe/" style="font-size: 10px;">ffprobe</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/h264/" style="font-size: 10px;">h264</a> <a href="/tags/libcssl/" style="font-size: 10px;">libcssl</a> <a href="/tags/linux/" style="font-size: 11.11px;">linux</a> <a href="/tags/p2p/" style="font-size: 10px;">p2p</a> <a href="/tags/pipe/" style="font-size: 10px;">pipe</a> <a href="/tags/select/" style="font-size: 12.22px;">select</a> <a href="/tags/setsockopt/" style="font-size: 10px;">setsockopt</a> <a href="/tags/socket/" style="font-size: 11.11px;">socket</a> <a href="/tags/swebok/" style="font-size: 10px;">swebok</a> <a href="/tags/不定参数/" style="font-size: 10px;">不定参数</a> <a href="/tags/串口/" style="font-size: 10px;">串口</a> <a href="/tags/交叉编译/" style="font-size: 10px;">交叉编译</a> <a href="/tags/内存泄露/" style="font-size: 10px;">内存泄露</a> <a href="/tags/函数/" style="font-size: 10px;">函数</a> <a href="/tags/卖油翁/" style="font-size: 10px;">卖油翁</a> <a href="/tags/发展/" style="font-size: 15.56px;">发展</a> <a href="/tags/同步/" style="font-size: 10px;">同步</a> <a href="/tags/复用/" style="font-size: 10px;">复用</a> <a href="/tags/多播/" style="font-size: 10px;">多播</a> <a href="/tags/大小端/" style="font-size: 10px;">大小端</a> <a href="/tags/学习/" style="font-size: 10px;">学习</a> <a href="/tags/嵌入式/" style="font-size: 10px;">嵌入式</a> <a href="/tags/广播/" style="font-size: 10px;">广播</a> <a href="/tags/异步/" style="font-size: 10px;">异步</a> <a href="/tags/性能/" style="font-size: 13.33px;">性能</a> <a href="/tags/成长/" style="font-size: 18.89px;">成长</a> <a href="/tags/技术/" style="font-size: 10px;">技术</a> <a href="/tags/投资/" style="font-size: 10px;">投资</a> <a href="/tags/指南/" style="font-size: 15.56px;">指南</a> <a href="/tags/攻略/" style="font-size: 10px;">攻略</a> <a href="/tags/教程/" style="font-size: 10px;">教程</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/文学/" style="font-size: 10px;">文学</a> <a href="/tags/时间/" style="font-size: 10px;">时间</a> <a href="/tags/架构/" style="font-size: 10px;">架构</a> <a href="/tags/流媒体服务器/" style="font-size: 10px;">流媒体服务器</a> <a href="/tags/测试/" style="font-size: 11.11px;">测试</a> <a href="/tags/熟能生巧/" style="font-size: 10px;">熟能生巧</a> <a href="/tags/程序员/" style="font-size: 17.78px;">程序员</a> <a href="/tags/管道/" style="font-size: 10px;">管道</a> <a href="/tags/组播/" style="font-size: 10px;">组播</a> <a href="/tags/统一建模语言/" style="font-size: 10px;">统一建模语言</a> <a href="/tags/网络/" style="font-size: 16.67px;">网络</a> <a href="/tags/设计模式/" style="font-size: 13.33px;">设计模式</a> <a href="/tags/软件质量/" style="font-size: 11.11px;">软件质量</a> <a href="/tags/进程间通信/" style="font-size: 10px;">进程间通信</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">16</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/it-manage-redmine/">it manage redmine</a>
+          </li>
+        
+          <li>
+            <a href="/2017/radio-spectrum/">无线电波段和频谱</a>
+          </li>
+        
+          <li>
+            <a href="/2017/network-tcpip-11-tcp-protocol/">TCP/IP 协议 - TCP 协议</a>
+          </li>
+        
+          <li>
+            <a href="/2017/network-tcpip-10-dns/">TCP/IP 协议 - DNS</a>
+          </li>
+        
+          <li>
+            <a href="/2017/network-tcpip-9-igmp/">TCP/IP 协议 - IGMP</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Snowyying<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> . 
+Analyse with <script src="https://s4.cnzz.com/z_stat.php?id=1260081840&web_id=1260081840" language="JavaScript"></script>
+
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/About" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

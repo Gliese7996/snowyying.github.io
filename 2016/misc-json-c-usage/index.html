@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>json-c 使用总结 | Snowyying</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1 json_object_get / json_object_put &amp;#x51FD;&amp;#x6570;12345struct json_object* json_object_get(struct json_object *json); // &amp;#x5C06;json&amp;#x5BF9;&amp;#x8C61;&amp;#x7684;&amp;#x5F15;&amp;#x7528;&amp;#x8BA1;&amp;#x6570;&amp;#x52A0;1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="json-c 使用总结">
+<meta property="og:url" content="http://snowyying.github.io/2016/misc-json-c-usage/index.html">
+<meta property="og:site_name" content="Snowyying">
+<meta property="og:description" content="1 json_object_get / json_object_put &amp;#x51FD;&amp;#x6570;12345struct json_object* json_object_get(struct json_object *json); // &amp;#x5C06;json&amp;#x5BF9;&amp;#x8C61;&amp;#x7684;&amp;#x5F15;&amp;#x7528;&amp;#x8BA1;&amp;#x6570;&amp;#x52A0;1">
+<meta property="og:updated_time" content="2017-01-12T03:43:21.222Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="json-c 使用总结">
+<meta name="twitter:description" content="1 json_object_get / json_object_put &amp;#x51FD;&amp;#x6570;12345struct json_object* json_object_get(struct json_object *json); // &amp;#x5C06;json&amp;#x5BF9;&amp;#x8C61;&amp;#x7684;&amp;#x5F15;&amp;#x7528;&amp;#x8BA1;&amp;#x6570;&amp;#x52A0;1">
+  
+    <link rel="alternate" href="/atom.xml" title="Snowyying" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Snowyying</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Learn and live.</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/About">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://snowyying.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-misc-json-c-usage" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      json-c 使用总结
+    </h1>
+  
+
+      </header>
+    
+  
+  <div class="article-meta">
+    <a href="/2016/misc-json-c-usage/" class="article-date">
+  <time datetime="2016-09-27T10:06:47.000Z" itemprop="datePublished">2016-09-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Misc/">Misc</a>
+  </div>
+
+  </div>
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h6 id="1-json-object-get-json-object-put-&#x51FD;&#x6570;"><a href="#1-json-object-get-json-object-put-&#x51FD;&#x6570;" class="headerlink" title="1 json_object_get / json_object_put &#x51FD;&#x6570;"></a>1 json_object_get / json_object_put &#x51FD;&#x6570;</h6><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">struct</span> json_object* <span class="title">json_object_get</span><span class="params">(<span class="keyword">struct</span> json_object *json)</span></span>; <span class="comment">// &#x5C06;json&#x5BF9;&#x8C61;&#x7684;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x52A0;1&#x3002;</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">json_object_put</span><span class="params">(<span class="keyword">struct</span> json_object *json)</span></span>; <span class="comment">// &#x5C06;json&#x5BF9;&#x8C61;&#x7684;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x51CF;1&#x3002;</span></div><div class="line"><span class="comment">// &#x6B64;&#x65F6;&#x5982;&#x679C;json&#x7684;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x5927;&#x4E8E;0&#xFF0C;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;;</span></div><div class="line"><span class="comment">// &#x5982;&#x679C;json&#x7684;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x4E3A;0&#xFF0C;&#x5219;&#x9012;&#x5F52;&#x7684;&#x5BF9;&#x6BCF;&#x4E2A;&#x5B50;&#x5BF9;&#x8C61;&#x7684;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x51CF;1&#xFF0C;&#x5B50;&#x5BF9;&#x8C61;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x4E3A;0&#x65F6;&#x91CA;&#x653E;&#x6240;&#x5360;&#x7528;&#x5185;&#x5B58;&#x3002;</span></div></pre></td></tr></table></figure>
+<p>&#x5982;&#x679C;&#x5BF9;json&#x5BF9;&#x8C61;&#x663E;&#x5F0F;&#x8C03;&#x7528;&#x4E86;json_object_get&#xFF0C;&#x4E4B;&#x540E;&#x5FC5;&#x987B;&#x6210;&#x5BF9;&#x8C03;&#x7528;json_object_put&#xFF0C;&#x5426;&#x5219;&#x5C06;&#x5BFC;&#x81F4;&#x8BE5;json&#x5BF9;&#x8C61;&#x6240;&#x5360;&#x7528;&#x5185;&#x5B58;&#x6CC4;&#x6F0F;&#x3002;</p>
+<h6 id="2-json-object-new-XXX-&#x7CFB;&#x5217;&#x51FD;&#x6570;"><a href="#2-json-object-new-XXX-&#x7CFB;&#x5217;&#x51FD;&#x6570;" class="headerlink" title="2 json_object_new_XXX &#x7CFB;&#x5217;&#x51FD;&#x6570;"></a>2 json_object_new_XXX &#x7CFB;&#x5217;&#x51FD;&#x6570;</h6><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">struct</span> json_object* <span class="title">json_object_new_object</span><span class="params">(<span class="keyword">void</span>)</span></span>;</div><div class="line"><span class="function"><span class="keyword">struct</span> json_object* <span class="title">json_object_new_int</span><span class="params">(<span class="keyword">int</span> i)</span></span>;</div><div class="line"><span class="function"><span class="keyword">struct</span> json_object* <span class="title">json_object_new_double</span><span class="params">(<span class="keyword">double</span> d)</span></span>;</div><div class="line"><span class="function"><span class="keyword">struct</span> json_object* <span class="title">json_object_new_array</span><span class="params">(<span class="keyword">void</span>)</span></span>;</div><div class="line"><span class="function"><span class="keyword">struct</span> json_object* <span class="title">json_object_new_string</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *s)</span></span>;</div><div class="line"><span class="function"><span class="keyword">struct</span> json_object* <span class="title">json_object_new_string_len</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *s, <span class="keyword">int</span> len)</span></span>;</div></pre></td></tr></table></figure>
+<p>json_object_new_XXX&#x7CFB;&#x5217;&#x51FD;&#x6570;&#x7528;&#x6765;&#x521B;&#x5EFA;XXX&#x7C7B;&#x578B;&#x7684;json&#x5BF9;&#x8C61;&#xFF0C;&#x521B;&#x5EFA;&#x7684;json&#x5BF9;&#x8C61;&#x9ED8;&#x8BA4;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x4E3A;1&#xFF0C;&#x56E0;&#x6B64;&#x5728;&#x8BE5;&#x5BF9;&#x8C61;&#x4F7F;&#x7528;&#x5B8C;&#x540E;&#x4E5F;&#x9700;&#x8981;&#x8C03;&#x7528;&#x4E00;&#x6B21;json_object_put&#x6765;&#x628A;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x7F6E;0&#xFF0C;&#x4ECE;&#x800C;&#x91CA;&#x653E;&#x5185;&#x5B58;&#x3002;</p>
+<a id="more"></a>
+<h6 id="3-json-tokener-parse-&#x51FD;&#x6570;"><a href="#3-json-tokener-parse-&#x51FD;&#x6570;" class="headerlink" title="3 json_tokener_parse &#x51FD;&#x6570;"></a>3 json_tokener_parse &#x51FD;&#x6570;</h6><p><code>struct json_object* json_tokener_parse(const char *str);</code><br>json_tokener_parse&#x5C06;&#x7B26;&#x5408;json&#x683C;&#x5F0F;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x6784;&#x9020;&#x4E3A;&#x4E00;&#x4E2A;json&#x5BF9;&#x8C61;&#xFF0C;&#x6784;&#x9020;&#x7684;json&#x5BF9;&#x8C61;&#x9ED8;&#x8BA4;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x4E3A;1&#xFF0C;&#x540C;&#x6837;&#x9700;&#x8981;&#x5728;&#x4F7F;&#x7528;&#x5B8C;&#x540E;&#x5BF9;&#x8BE5;&#x5BF9;&#x8C61;&#x8C03;&#x7528;&#x4E00;&#x6B21;json_object_put&#x3002;</p>
+<h6 id="4-is-error&#x5B8F;"><a href="#4-is-error&#x5B8F;" class="headerlink" title="4 is_error&#x5B8F;"></a>4 is_error&#x5B8F;</h6><p><code>is_error(json)</code><br>&#x5982;&#x679C;&#x4F20;&#x5165;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x662F;&#x975E;&#x6CD5;&#x7684;json&#x683C;&#x5F0F;&#xFF0C;&#x9519;&#x8BEF;&#x5224;&#x65AD;&#x5E94;&#x8BE5;&#x4F7F;&#x7528;is_error&#x5B8F;&#xFF0C;&#x800C;&#x975E; if(NULL != json)&#xFF0C;CGI&#x4E2D;&#x76EE;&#x524D;&#x6709;&#x5F88;&#x591A;&#x8FD9;&#x79CD;&#x9519;&#x8BEF;&#x7528;&#x6CD5;(&#x867D;&#x7136;&#x597D;&#x50CF;&#x6CA1;&#x5F15;&#x53D1;&#x4EC0;&#x4E48;&#x95EE;&#x9898;)</p>
+<h6 id="5-json-object-object-XXX&#x51FD;&#x6570;"><a href="#5-json-object-object-XXX&#x51FD;&#x6570;" class="headerlink" title="5 json_object_object_XXX&#x51FD;&#x6570;"></a>5 json_object_object_XXX&#x51FD;&#x6570;</h6><ul>
+<li><p><code>void json_object_object_del(struct json_object* json, const char *key);</code><br>&#x4ECE;json&#x5BF9;&#x8C61;&#x4E2D;&#x5220;&#x9664;&#x952E;&#x503C;&#x4E3A;key&#x7684;&#x5B50;&#x5BF9;&#x8C61;&#xFF0C;&#x5E76;&#x91CA;&#x653E;&#x8BE5;&#x5B50;&#x5BF9;&#x8C61;&#x53CA;&#x952E;&#x503C;&#x6240;&#x5360;&#x7684;&#x5185;&#x5B58;&#xFF08;&#x6CE8;&#xFF1A;&#x53EF;&#x80FD;&#x6709;&#x6587;&#x6863;&#x8BF4;json_object_object_del&#x53EA;&#x662F;&#x5220;&#x9664;&#x800C;&#x4E0D;&#x91CA;&#x653E;&#x5185;&#x5B58;&#xFF0C;&#x4F46;&#x5B9E;&#x9645;&#x4E0A;&#x8FD9;&#x662F;&#x9519;&#x8BEF;&#x7684;&#xFF09;&#x3002;</p>
+</li>
+<li><p><code>struct json_object* json_object_object_get(struct json_object* json, const char *key);</code> &#x4ECE;json&#x4E2D;&#x83B7;&#x53D6;&#x952E;&#x503C;&#x4E3A;key&#x7684;&#x5B50;&#x5BF9;&#x8C61;&#x3002;&#x9519;&#x8BEF;&#x5224;&#x65AD;&#x540C;&#x6837;&#x5E94;&#x8BE5;&#x7528;is_error(json)&#x5B8F;&#x3002;</p>
+</li>
+<li><p><code>void json_object_object_add(struct json_object* json, const char *key, struct json_object *val);</code> &#x66F4;&#x65B0;&#x952E;&#x503C;&#x4E3A;key&#x7684;&#x5B50;&#x9879;&#x7684;&#x503C;&#x3002;&#x6574;&#x4E2A;&#x8FC7;&#x7A0B;&#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x8FD9;&#x6837;&#x7684;&#xFF1A;&#x5148;&#x4ECE;json&#x4E2D;&#x5220;&#x9664;&#x5E76;&#x91CA;&#x653E;&#x952E;&#x503C;key&#x53CA;&#x5176;&#x503C;&#x7684;&#x5185;&#x5B58;&#xFF0C;&#x7136;&#x540E;&#x91CD;&#x65B0;&#x5206;&#x914D;&#x5185;&#x5B58;&#x6DFB;&#x52A0;&#x952E;&#x503C;&#x548C;&#x65B0;&#x7684;&#x503C;&#xFF0C;&#x6240;&#x4EE5;json_object_object_add&#x662F;&#x5305;&#x542B;json_object_object_del&#x64CD;&#x4F5C;&#x7684;&#x3002;</p>
+</li>
+</ul>
+<h6 id="6-json-object-get-XXX&#x7CFB;&#x5217;&#x51FD;&#x6570;"><a href="#6-json-object-get-XXX&#x7CFB;&#x5217;&#x51FD;&#x6570;" class="headerlink" title="6 json_object_get_XXX&#x7CFB;&#x5217;&#x51FD;&#x6570;"></a>6 json_object_get_XXX&#x7CFB;&#x5217;&#x51FD;&#x6570;</h6><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">struct</span> lh_table* <span class="title">json_object_get_object</span><span class="params">(<span class="keyword">struct</span> json_object *json)</span></span>;</div><div class="line"><span class="function"><span class="keyword">const</span> <span class="keyword">char</span>* <span class="title">json_object_get_string</span><span class="params">(<span class="keyword">struct</span> json_object *json)</span></span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">json_object_get_int</span><span class="params">(<span class="keyword">struct</span> json_object *json)</span></span>;</div><div class="line"><span class="function"><span class="keyword">double</span> <span class="title">json_object_get_double</span><span class="params">(<span class="keyword">struct</span> json_object *json)</span></span>;</div></pre></td></tr></table></figure>
+<p>&#x8FD9;&#x7C7B;&#x51FD;&#x6570;&#x53EA;&#x662F;&#x83B7;&#x53D6;json&#x5BF9;&#x8C61;&#x7684;&#x5B9E;&#x9645;&#x6570;&#x636E;&#x5185;&#x5BB9;&#xFF0C;&#x4E0D;&#x66F4;&#x65B0;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#xFF0C;&#x4E5F;&#x4E0D;&#x5206;&#x914D;&#x5185;&#x5B58;&#x3002;</p>
+<h6 id="7-json-object-array-XXX&#x7CFB;&#x5217;&#x51FD;&#x6570;"><a href="#7-json-object-array-XXX&#x7CFB;&#x5217;&#x51FD;&#x6570;" class="headerlink" title="7 json_object_array_XXX&#x7CFB;&#x5217;&#x51FD;&#x6570;"></a>7 json_object_array_XXX&#x7CFB;&#x5217;&#x51FD;&#x6570;</h6><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">struct</span> json_object* <span class="title">json_object_array_get_sub_array</span><span class="params">(<span class="keyword">struct</span> json_object *json, <span class="keyword">int</span> start_idx, <span class="keyword">int</span> number)</span></span>;</div><div class="line"><span class="comment">// &#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x7528;&#x6765;&#x4ECE;&#x4E00;&#x4E2A;json&#x6570;&#x7EC4;&#x5BF9;&#x8C61;&#x4E2D;&#x53D6;&#x6570;&#x7EC4;&#x5E8F;&#x53F7;start_idx&#x5F00;&#x59CB;&#x7684;&#x3001;&#x603B;&#x5171;number&#x957F;&#x5EA6;&#x7684;&#x5B50;&#x6570;&#x7EC4;&#x5BF9;&#x8C61;&#x3002;&#x5206;&#x9875;&#x663E;&#x793A;&#x529F;&#x80FD;&#x5E38;&#x7528;&#x5230;&#x3002;</span></div><div class="line"><span class="comment">// *&#x6CE8;&#xFF1A;&#x8FD4;&#x56DE;&#x7684;&#x5B50;&#x6570;&#x7EC4;&#x662F;&#x6709;&#x91CD;&#x65B0;&#x5206;&#x914D;&#x5185;&#x5B58;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x540C;&#x6837;&#x8981;&#x5BF9;&#x8FD4;&#x56DE;&#x7684;json_object*&#x505A;&#x4E00;&#x6B21;json_object_put&#x64CD;&#x4F5C;&#x6765;&#x91CA;&#x653E;&#x5185;&#x5B58;&#x3002;*</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">json_object_array_add</span><span class="params">(<span class="keyword">struct</span> json_object *json,<span class="keyword">struct</span> json_object *val)</span></span>; <span class="comment">// &#x5411;&#x6570;&#x7EC4;&#x4E2D;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x503C;&#x3002;</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">json_object_array_length</span><span class="params">(<span class="keyword">struct</span> json_object *json)</span></span>; <span class="comment">// &#x83B7;&#x53D6;&#x6570;&#x7EC4;&#x957F;&#x5EA6;&#x3002;</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">json_object_array_put_idx</span><span class="params">(<span class="keyword">struct</span> json_object *json, <span class="keyword">int</span> idx, <span class="keyword">struct</span> json_object *val)</span></span>; <span class="comment">// &#x66F4;&#x65B0;&#x6570;&#x7EC4;&#x4E2D;&#x5E8F;&#x53F7;&#x4E3A;idx&#x90A3;&#x4E00;&#x9879;&#x7684;&#x503C;&#xFF0C;&#x8001;&#x7684;&#x503C;&#x540C;&#x6837;&#x4F1A;&#x5148;&#x88AB;&#x91CA;&#x653E;&#x3002;</span></div><div class="line"><span class="function"><span class="keyword">struct</span> json_object* <span class="title">json_object_array_get_idx</span><span class="params">(<span class="keyword">struct</span> json_object *json, <span class="keyword">int</span> idx)</span></span>; <span class="comment">// &#x83B7;&#x53D6;&#x6570;&#x7EC4;&#x4E2D;&#x5E8F;&#x53F7;&#x4E3A;idx&#x90A3;&#x4E00;&#x9879;&#x7684;json&#x5BF9;&#x8C61;&#xFF0C;&#x4E0D;&#x66F4;&#x65B0;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#xFF0C;&#x4E5F;&#x4E0D;&#x5206;&#x914D;&#x5185;&#x5B58;&#x3002;</span></div><div class="line"><span class="function"><span class="keyword">struct</span> json_object* <span class="title">json_object_array_sort</span><span class="params">(<span class="keyword">struct</span> json_object *json, <span class="keyword">const</span> <span class="keyword">char</span> *keyname, <span class="keyword">int</span> sord )</span></span>;</div><div class="line"><span class="comment">// &#x6839;&#x636E;&#x952E;&#x503C;&#x4E3A;keyname&#x7684;&#x9879;&#x7684;&#x503C;&#x8FDB;&#x884C;&#x5347;&#x5E8F;&#x6216;&#x964D;&#x5E8F;&#x6392;&#x5E8F;&#xFF0C;&#x53EA;&#x662F;&#x6539;&#x53D8;&#x6570;&#x7EC4;&#x6210;&#x5458;&#x7684;&#x987A;&#x5E8F;&#xFF0C;&#x4E0D;&#x66F4;&#x65B0;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#xFF0C;&#x4E5F;&#x4E0D;&#x5206;&#x914D;&#x5185;&#x5B58;&#x3002;</span></div></pre></td></tr></table></figure>
+<h6 id="&#x53C2;&#x8003;"><a href="#&#x53C2;&#x8003;" class="headerlink" title="&#x53C2;&#x8003;"></a>&#x53C2;&#x8003;</h6><ul>
+<li><a href="http://www.tuicool.com/articles/6Bre6r" target="_blank" rel="external">http://www.tuicool.com/articles/6Bre6r</a></li>
+<li><a href="https://my.oschina.net/BambooLi/blog/514961" target="_blank" rel="external">https://my.oschina.net/BambooLi/blog/514961</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://snowyying.github.io/2016/misc-json-c-usage/" data-id="ciy6y0tiv003ao8skli1sspmp" class="article-share-link">Share</a>
+      
+        <a href="http://snowyying.github.io/2016/misc-json-c-usage/#ds-thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C-C/">C/C++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JSON/">JSON</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/network-socket-select/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          socket编程之select函数
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/os-io-twsi-i2c/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">IIC 使用总结</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="2016/misc-json-c-usage/" data-title="json-c 使用总结" data-url="http://snowyying.github.io/2016/misc-json-c-usage/"></div>
+  <!-- 多说评论框 end -->
+  <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"snowyying"};
+  (function() {
+  	var ds = document.createElement('script');
+  	ds.type = 'text/javascript';ds.async = true;
+  	ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+  	ds.charset = 'UTF-8';
+  	(document.getElementsByTagName('head')[0] 
+  	 || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+  <!-- 多说公共JS代码 end -->
+</section>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C-C/">C/C++</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Embedded/">Embedded</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/General/">General</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Media/">Media</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Misc/">Misc</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a><span class="category-list-count">21</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OS/">OS</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Security/">Security</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Software-Engineering/">Software Engineering</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Test/">Test</a><span class="category-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/32-bit/" style="font-size: 10px;">32-bit</a> <a href="/tags/4-1/" style="font-size: 10px;">4+1</a> <a href="/tags/ARM/" style="font-size: 10px;">ARM</a> <a href="/tags/Big-Endian/" style="font-size: 10px;">Big-Endian</a> <a href="/tags/Bitrate/" style="font-size: 10px;">Bitrate</a> <a href="/tags/Boost/" style="font-size: 10px;">Boost</a> <a href="/tags/C/" style="font-size: 12.22px;">C</a> <a href="/tags/C/" style="font-size: 12.22px;">C++</a> <a href="/tags/C-C/" style="font-size: 14.44px;">C/C++</a> <a href="/tags/CMMI/" style="font-size: 11.11px;">CMMI</a> <a href="/tags/DSS/" style="font-size: 10px;">DSS</a> <a href="/tags/GUID/" style="font-size: 10px;">GUID</a> <a href="/tags/H264/" style="font-size: 10px;">H264</a> <a href="/tags/I-O/" style="font-size: 13.33px;">I/O</a> <a href="/tags/ICE/" style="font-size: 10px;">ICE</a> <a href="/tags/IIC/" style="font-size: 10px;">IIC</a> <a href="/tags/IT/" style="font-size: 20px;">IT</a> <a href="/tags/JSON/" style="font-size: 10px;">JSON</a> <a href="/tags/KAs/" style="font-size: 10px;">KAs</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Little-Endian/" style="font-size: 10px;">Little-Endian</a> <a href="/tags/NATP/" style="font-size: 10px;">NATP</a> <a href="/tags/NTP/" style="font-size: 11.11px;">NTP</a> <a href="/tags/Network/" style="font-size: 10px;">Network</a> <a href="/tags/OS/" style="font-size: 10px;">OS</a> <a href="/tags/Proactor/" style="font-size: 10px;">Proactor</a> <a href="/tags/RTCP/" style="font-size: 10px;">RTCP</a> <a href="/tags/RTP/" style="font-size: 10px;">RTP</a> <a href="/tags/RTSP/" style="font-size: 11.11px;">RTSP</a> <a href="/tags/Reactor/" style="font-size: 10px;">Reactor</a> <a href="/tags/SO-REUSEADDR/" style="font-size: 10px;">SO_REUSEADDR</a> <a href="/tags/SQLite/" style="font-size: 10px;">SQLite</a> <a href="/tags/SQuaRE/" style="font-size: 10px;">SQuaRE</a> <a href="/tags/STUN/" style="font-size: 10px;">STUN</a> <a href="/tags/SWE/" style="font-size: 16.67px;">SWE</a> <a href="/tags/TCP-IP/" style="font-size: 13.33px;">TCP/IP</a> <a href="/tags/TRUN/" style="font-size: 10px;">TRUN</a> <a href="/tags/TWSI/" style="font-size: 10px;">TWSI</a> <a href="/tags/UDP/" style="font-size: 10px;">UDP</a> <a href="/tags/UML/" style="font-size: 10px;">UML</a> <a href="/tags/UPNP/" style="font-size: 10px;">UPNP</a> <a href="/tags/UUID/" style="font-size: 10px;">UUID</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/VS/" style="font-size: 10px;">VS</a> <a href="/tags/WS-Security/" style="font-size: 10px;">WS-Security</a> <a href="/tags/Windows/" style="font-size: 10px;">Windows</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/decode/" style="font-size: 10px;">decode</a> <a href="/tags/define/" style="font-size: 10px;">define</a> <a href="/tags/epoll/" style="font-size: 11.11px;">epoll</a> <a href="/tags/ffmpeg/" style="font-size: 11.11px;">ffmpeg</a> <a href="/tags/ffplay/" style="font-size: 10px;">ffplay</a> <a href="/tags/ffprobe/" style="font-size: 10px;">ffprobe</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/h264/" style="font-size: 10px;">h264</a> <a href="/tags/libcssl/" style="font-size: 10px;">libcssl</a> <a href="/tags/linux/" style="font-size: 11.11px;">linux</a> <a href="/tags/p2p/" style="font-size: 10px;">p2p</a> <a href="/tags/pipe/" style="font-size: 10px;">pipe</a> <a href="/tags/select/" style="font-size: 12.22px;">select</a> <a href="/tags/setsockopt/" style="font-size: 10px;">setsockopt</a> <a href="/tags/socket/" style="font-size: 11.11px;">socket</a> <a href="/tags/swebok/" style="font-size: 10px;">swebok</a> <a href="/tags/不定参数/" style="font-size: 10px;">不定参数</a> <a href="/tags/串口/" style="font-size: 10px;">串口</a> <a href="/tags/交叉编译/" style="font-size: 10px;">交叉编译</a> <a href="/tags/内存泄露/" style="font-size: 10px;">内存泄露</a> <a href="/tags/函数/" style="font-size: 10px;">函数</a> <a href="/tags/卖油翁/" style="font-size: 10px;">卖油翁</a> <a href="/tags/发展/" style="font-size: 15.56px;">发展</a> <a href="/tags/同步/" style="font-size: 10px;">同步</a> <a href="/tags/复用/" style="font-size: 10px;">复用</a> <a href="/tags/多播/" style="font-size: 10px;">多播</a> <a href="/tags/大小端/" style="font-size: 10px;">大小端</a> <a href="/tags/学习/" style="font-size: 10px;">学习</a> <a href="/tags/嵌入式/" style="font-size: 10px;">嵌入式</a> <a href="/tags/广播/" style="font-size: 10px;">广播</a> <a href="/tags/异步/" style="font-size: 10px;">异步</a> <a href="/tags/性能/" style="font-size: 13.33px;">性能</a> <a href="/tags/成长/" style="font-size: 18.89px;">成长</a> <a href="/tags/技术/" style="font-size: 10px;">技术</a> <a href="/tags/投资/" style="font-size: 10px;">投资</a> <a href="/tags/指南/" style="font-size: 15.56px;">指南</a> <a href="/tags/攻略/" style="font-size: 10px;">攻略</a> <a href="/tags/教程/" style="font-size: 10px;">教程</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/文学/" style="font-size: 10px;">文学</a> <a href="/tags/时间/" style="font-size: 10px;">时间</a> <a href="/tags/架构/" style="font-size: 10px;">架构</a> <a href="/tags/流媒体服务器/" style="font-size: 10px;">流媒体服务器</a> <a href="/tags/测试/" style="font-size: 11.11px;">测试</a> <a href="/tags/熟能生巧/" style="font-size: 10px;">熟能生巧</a> <a href="/tags/程序员/" style="font-size: 17.78px;">程序员</a> <a href="/tags/管道/" style="font-size: 10px;">管道</a> <a href="/tags/组播/" style="font-size: 10px;">组播</a> <a href="/tags/统一建模语言/" style="font-size: 10px;">统一建模语言</a> <a href="/tags/网络/" style="font-size: 16.67px;">网络</a> <a href="/tags/设计模式/" style="font-size: 13.33px;">设计模式</a> <a href="/tags/软件质量/" style="font-size: 11.11px;">软件质量</a> <a href="/tags/进程间通信/" style="font-size: 10px;">进程间通信</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">16</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/it-manage-redmine/">it manage redmine</a>
+          </li>
+        
+          <li>
+            <a href="/2017/radio-spectrum/">无线电波段和频谱</a>
+          </li>
+        
+          <li>
+            <a href="/2017/network-tcpip-11-tcp-protocol/">TCP/IP 协议 - TCP 协议</a>
+          </li>
+        
+          <li>
+            <a href="/2017/network-tcpip-10-dns/">TCP/IP 协议 - DNS</a>
+          </li>
+        
+          <li>
+            <a href="/2017/network-tcpip-9-igmp/">TCP/IP 协议 - IGMP</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Snowyying<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> . 
+Analyse with <script src="https://s4.cnzz.com/z_stat.php?id=1260081840&web_id=1260081840" language="JavaScript"></script>
+
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/About" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

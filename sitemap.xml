@@ -2,317 +2,569 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://snowyying.github.io/2016/it-kas-4-snowyying/</loc>
+    <loc>http://snowyying.github.io/2017/it-manage-redmine/</loc>
     
-    <lastmod>2016-12-03T00:40:34.103Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.github.io/2016/twsi-i2c/</loc>
-    
-    <lastmod>2016-12-03T00:29:01.574Z</lastmod>
+    <lastmod>2017-01-21T07:57:48.455Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://snowyying.github.io/2016/Effective-modern-Cpp/</loc>
+    <loc>http://snowyying.github.io/2017/radio-spectrum/</loc>
     
-    <lastmod>2016-12-01T05:51:45.720Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.github.io/2016/programming-guide-extensive-and-professional/</loc>
-    
-    <lastmod>2016-12-01T05:49:32.096Z</lastmod>
+    <lastmod>2017-01-18T03:28:54.683Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://snowyying.github.io/2016/programming-guide-become-a-master/</loc>
+    <loc>http://snowyying.github.io/2016/media-live555-vs-windows/</loc>
     
-    <lastmod>2016-12-01T05:48:08.320Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.github.io/2016/programming-guide-driving-force/</loc>
-    
-    <lastmod>2016-12-01T05:46:35.908Z</lastmod>
+    <lastmod>2017-01-12T06:16:07.501Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://snowyying.github.io/2016/programming-guide-golden-time/</loc>
+    <loc>http://snowyying.github.io/2016/security-rsa-overview/</loc>
     
-    <lastmod>2016-12-01T05:45:30.340Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.github.io/2016/programming-guide-dream/</loc>
-    
-    <lastmod>2016-12-01T05:40:09.001Z</lastmod>
+    <lastmod>2017-01-12T06:14:50.085Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://snowyying.github.io/2016/stress-testing/</loc>
+    <loc>http://snowyying.github.io/2016/security-dh-key-exchange/</loc>
     
-    <lastmod>2016-12-01T05:35:52.020Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.github.io/2016/sa-4-1-model/</loc>
-    
-    <lastmod>2016-12-01T05:34:08.955Z</lastmod>
+    <lastmod>2017-01-12T06:14:20.106Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://snowyying.github.io/2016/programming-guide-development-direction/</loc>
+    <loc>http://snowyying.github.io/2016/security-digital-signature/</loc>
     
-    <lastmod>2016-12-01T05:32:57.670Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.github.io/2016/programming-guide-the-master/</loc>
-    
-    <lastmod>2016-12-01T05:27:37.095Z</lastmod>
+    <lastmod>2017-01-12T06:13:52.245Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://snowyying.github.io/2016/programming-guide-the-origin/</loc>
+    <loc>http://snowyying.github.io/2016/security-ssl-tls/</loc>
     
-    <lastmod>2016-12-01T05:26:16.100Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.github.io/2016/select-vs-epoll-2/</loc>
-    
-    <lastmod>2016-12-01T05:08:44.750Z</lastmod>
+    <lastmod>2017-01-12T06:13:27.380Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://snowyying.github.io/2016/select-vs-epoll-1/</loc>
+    <loc>http://snowyying.github.io/2016/security-ws-security/</loc>
     
-    <lastmod>2016-12-01T05:01:28.781Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.github.io/2016/socket-select/</loc>
-    
-    <lastmod>2016-12-01T04:55:54.957Z</lastmod>
+    <lastmod>2017-01-12T06:13:01.034Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://snowyying.github.io/2016/select-implement/</loc>
+    <loc>http://snowyying.github.io/2016/swe-square-overview/</loc>
     
-    <lastmod>2016-12-01T04:55:42.401Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.github.io/2016/linux-serial-with-libcssl/</loc>
-    
-    <lastmod>2016-12-01T04:54:57.832Z</lastmod>
+    <lastmod>2017-01-12T06:08:11.920Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://snowyying.github.io/2016/define-symbol/</loc>
+    <loc>http://snowyying.github.io/2016/os-select-implement/</loc>
     
-    <lastmod>2016-12-01T04:54:00.615Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.github.io/2016/io-reactor-and-proactor/</loc>
-    
-    <lastmod>2016-12-01T04:49:29.475Z</lastmod>
+    <lastmod>2017-01-12T06:06:48.103Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://snowyying.github.io/2016/outstanding-programmer/</loc>
+    <loc>http://snowyying.github.io/2016/network-socket-select/</loc>
     
-    <lastmod>2016-12-01T04:48:19.343Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.github.io/2016/io-multiplexing-mechanism/</loc>
-    
-    <lastmod>2016-12-01T04:48:18.094Z</lastmod>
+    <lastmod>2017-01-12T06:06:26.533Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://snowyying.github.io/2016/programmers-10-investment/</loc>
+    <loc>http://snowyying.github.io/2016/os-io-multiplexing/</loc>
     
-    <lastmod>2016-12-01T04:48:02.310Z</lastmod>
+    <lastmod>2017-01-12T06:05:08.631Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://snowyying.github.io/2016/socket-SO-REUSEADDR/</loc>
+    <loc>http://snowyying.github.io/2016/os-io-asynchronous-linux/</loc>
     
-    <lastmod>2016-12-01T04:43:46.329Z</lastmod>
+    <lastmod>2017-01-12T06:04:48.862Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/misc-ubuntu-run-32b-on-64b/</loc>
+    
+    <lastmod>2017-01-12T06:01:21.803Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/embed-cross-compile/</loc>
+    
+    <lastmod>2017-01-12T06:01:03.647Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/os-big-little-endian/</loc>
+    
+    <lastmod>2017-01-12T06:00:44.498Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/os-signal-communications-linux/</loc>
+    
+    <lastmod>2017-01-12T05:59:18.485Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/os-pipes-communications-windows/</loc>
+    
+    <lastmod>2017-01-12T05:59:13.286Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/os-io-reactor-proactor/</loc>
+    
+    <lastmod>2017-01-12T05:57:07.895Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/network-understand-tcpip-1/</loc>
+    
+    <lastmod>2017-01-12T05:56:33.663Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/network-understand-tcpip-2/</loc>
+    
+    <lastmod>2017-01-12T05:56:33.641Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/network-select-vs-epoll-1/</loc>
+    
+    <lastmod>2017-01-12T05:56:04.570Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/network-select-vs-epoll-2/</loc>
+    
+    <lastmod>2017-01-12T05:56:04.533Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/network-p2p-overview/</loc>
+    
+    <lastmod>2017-01-12T05:52:59.426Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/media-darwin-vs-windows/</loc>
+    
+    <lastmod>2017-01-12T05:52:20.533Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/media-darwin-gxx-ubuntu/</loc>
+    
+    <lastmod>2017-01-12T05:51:46.594Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2017/g-literature-maiyouweng/</loc>
+    
+    <lastmod>2017-01-12T05:51:07.447Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2017/network-tcpip-1-overview/</loc>
+    
+    <lastmod>2017-01-12T05:50:41.092Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2017/network-tcpip-3-ip-protocol/</loc>
+    
+    <lastmod>2017-01-12T05:50:02.694Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2017/network-tcpip-7-udp-protocol/</loc>
+    
+    <lastmod>2017-01-12T05:49:18.098Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/test-memory-leak-detect/</loc>
+    
+    <lastmod>2017-01-12T04:54:05.127Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/swe-uml-overview/</loc>
+    
+    <lastmod>2017-01-12T04:53:10.536Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2017/network-tcpip-11-tcp-protocol/</loc>
+    
+    <lastmod>2017-01-12T04:44:40.180Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/media-ffxxx-usage/</loc>
+    
+    <lastmod>2017-01-12T04:11:27.727Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/g-programmer-leveling-up-strategy/</loc>
+    
+    <lastmod>2017-01-12T03:51:50.999Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/it-kas-recommend-books/</loc>
+    
+    <lastmod>2017-01-12T03:50:37.438Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/media-h264-bitrate-control/</loc>
+    
+    <lastmod>2017-01-12T03:46:25.208Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/media-ffmepg-h264-decode/</loc>
+    
+    <lastmod>2017-01-12T03:46:05.794Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/misc-json-c-usage/</loc>
+    
+    <lastmod>2017-01-12T03:43:21.222Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/network-socket-reuseaddr/</loc>
+    
+    <lastmod>2017-01-12T03:42:50.933Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/misc-sqlite3-usage/</loc>
+    
+    <lastmod>2017-01-12T03:42:15.361Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/os-io-twsi-i2c/</loc>
+    
+    <lastmod>2017-01-12T03:41:20.828Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/os-io-serial-libcssl-linux/</loc>
+    
+    <lastmod>2017-01-12T03:40:59.636Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/misc-generate-guid-uuid/</loc>
+    
+    <lastmod>2017-01-12T03:35:23.274Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/c-const-usage-summary/</loc>
+    
+    <lastmod>2017-01-12T03:33:21.542Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2017/network-tcpip-8-boardcast-multicast/</loc>
+    
+    <lastmod>2017-01-12T03:21:00.931Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2017/network-tcpip-6-routing/</loc>
+    
+    <lastmod>2017-01-12T03:21:00.901Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2017/network-tcpip-5-icmp/</loc>
+    
+    <lastmod>2017-01-12T03:21:00.890Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2017/network-tcpip-4-arp-rarp/</loc>
+    
+    <lastmod>2017-01-12T03:21:00.879Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/c-define-symbol/</loc>
+    
+    <lastmod>2017-01-12T03:00:38.776Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/swe-dp-overview/</loc>
+    
+    <lastmod>2017-01-12T02:46:54.403Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/swe-sa-4a1-model/</loc>
+    
+    <lastmod>2017-01-12T02:46:18.822Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/network-trace-route/</loc>
+    
+    <lastmod>2017-01-12T02:44:33.772Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2017/network-tcpip-10-dns/</loc>
+    
+    <lastmod>2017-01-12T02:43:22.347Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2017/network-tcpip-9-igmp/</loc>
+    
+    <lastmod>2017-01-12T02:43:12.798Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2017/network-tcpip-2-data-link/</loc>
+    
+    <lastmod>2017-01-12T02:42:41.567Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/c-boost-vs-windows/</loc>
+    
+    <lastmod>2017-01-12T02:32:53.573Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/g-programming-guide-1-origin/</loc>
+    
+    <lastmod>2017-01-12T02:31:14.136Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/g-programming-guide-3-direction/</loc>
+    
+    <lastmod>2017-01-12T02:31:14.121Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/g-programming-guide-2-the-master/</loc>
+    
+    <lastmod>2017-01-12T02:31:14.107Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/g-programming-guide-4-become-master/</loc>
+    
+    <lastmod>2017-01-12T02:31:14.095Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/g-programming-guide-5-balance/</loc>
+    
+    <lastmod>2017-01-12T02:31:14.081Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/g-programming-guide-6-golden-time/</loc>
+    
+    <lastmod>2017-01-12T02:31:14.066Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/g-programming-guide-7-driving-force/</loc>
+    
+    <lastmod>2017-01-12T02:31:14.048Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/g-programming-guide-8-dream/</loc>
+    
+    <lastmod>2017-01-12T02:31:11.108Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/g-c-cpp-growth/</loc>
+    
+    <lastmod>2017-01-12T02:29:47.968Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/g-lead-the-industry/</loc>
+    
+    <lastmod>2017-01-12T02:29:47.958Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/g-programmer-outstanding/</loc>
+    
+    <lastmod>2017-01-12T02:29:47.944Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/g-programmers-10-investment/</loc>
+    
+    <lastmod>2017-01-12T02:29:47.931Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://snowyying.github.io/2016/Blog-move-to-github/</loc>
     
-    <lastmod>2016-12-01T03:57:53.157Z</lastmod>
+    <lastmod>2017-01-12T02:25:11.924Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://snowyying.github.io/2016/programmer-leveling-up-strategy/</loc>
+    <loc>http://snowyying.github.io/2016/test-performance-testing/</loc>
     
-    <lastmod>2016-12-01T03:49:47.475Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.github.io/2016/Big-Endian-Little-Endian/</loc>
-    
-    <lastmod>2016-12-01T03:36:11.008Z</lastmod>
+    <lastmod>2017-01-12T02:18:31.709Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://snowyying.github.io/2016/swebok-overview/</loc>
+    <loc>http://snowyying.github.io/2016/network-rtsp-overview/</loc>
+    
+    <lastmod>2016-12-16T09:34:36.859Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/it-kas-4-snowyying/</loc>
+    
+    <lastmod>2016-12-12T06:38:12.122Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/c-effective-modern-cpp/</loc>
+    
+    <lastmod>2016-12-01T05:51:45.720Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/swe-swebok/</loc>
     
     <lastmod>2016-12-01T01:44:55.693Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://snowyying.github.io/2016/ffmepg-h264-decode/</loc>
-    
-    <lastmod>2016-12-01T01:43:54.166Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.github.io/2016/const-usage-summary/</loc>
-    
-    <lastmod>2016-12-01T01:43:44.750Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.github.io/2016/more-effective-cpp/</loc>
+    <loc>http://snowyying.github.io/2016/c-more-effective-cpp/</loc>
     
     <lastmod>2016-12-01T01:32:41.913Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://snowyying.github.io/2016/effective-cpp/</loc>
+    <loc>http://snowyying.github.io/2016/c-effective-cpp/</loc>
     
     <lastmod>2016-11-30T16:36:57.185Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://snowyying.github.io/2016/dp-overview/</loc>
-    
-    <lastmod>2016-11-26T01:28:35.046Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.github.io/2016/json-c-usage-summary/</loc>
-    
-    <lastmod>2016-11-26T01:23:07.218Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.github.io/2016/memory-leak-detect/</loc>
-    
-    <lastmod>2016-11-25T06:16:15.698Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.github.io/2016/uml-overview/</loc>
-    
-    <lastmod>2016-11-17T03:50:03.205Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.github.io/2016/square-overview/</loc>
-    
-    <lastmod>2016-11-17T03:48:12.515Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.github.io/2016/KPAs-4-CMMI/</loc>
+    <loc>http://snowyying.github.io/2016/swe-cmmi-kpas/</loc>
     
     <lastmod>2016-11-17T03:46:26.480Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://snowyying.github.io/2016/cmmi-overview/</loc>
+    <loc>http://snowyying.github.io/2016/swe-cmmi-overview/</loc>
     
     <lastmod>2016-11-17T03:44:35.788Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://snowyying.github.io/2016/arm-cross-compile/</loc>
-    
-    <lastmod>2016-11-16T15:42:02.108Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.github.io/2016/dp-metaphor/</loc>
+    <loc>http://snowyying.github.io/2016/swe-dp-metaphor/</loc>
     
     <lastmod>2016-11-16T15:39:12.315Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://snowyying.github.io/2016/sqlite3-usage-summary/</loc>
-    
-    <lastmod>2016-11-16T15:33:55.665Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.github.io/2016/trace-route/</loc>
-    
-    <lastmod>2016-11-16T15:29:44.128Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.github.io/2016/dp-explain/</loc>
+    <loc>http://snowyying.github.io/2016/swe-dp-explain/</loc>
     
     <lastmod>2016-11-16T15:20:24.344Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.github.io/2016/p2p-overview/</loc>
-    
-    <lastmod>2016-11-16T14:41:10.071Z</lastmod>
     
   </url>
   
@@ -324,79 +576,16 @@
   </url>
   
   <url>
-    <loc>http://snowyying.github.io/2016/ntp-time/</loc>
+    <loc>http://snowyying.github.io/2016/network-ntp-time/</loc>
     
     <lastmod>2016-11-14T07:40:21.922Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://snowyying.github.io/2016/generate-guid-uuid/</loc>
-    
-    <lastmod>2016-11-14T07:39:22.630Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.github.io/2016/ffxxxx/</loc>
-    
-    <lastmod>2016-11-14T07:25:19.650Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.github.io/2016/boost-vs-windows/</loc>
-    
-    <lastmod>2016-11-14T07:20:20.738Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.github.io/2016/c-cpp-growth/</loc>
-    
-    <lastmod>2016-11-14T06:55:31.470Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.github.io/2016/variadic-functions/</loc>
+    <loc>http://snowyying.github.io/2016/c-variadic-functions/</loc>
     
     <lastmod>2016-09-10T08:44:16.544Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.github.io/2016/lead-the-industry/</loc>
-    
-    <lastmod>2016-08-25T05:39:33.567Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.github.io/2016/linux-asynchronous-io/</loc>
-    
-    <lastmod>2016-08-25T04:03:25.986Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.github.io/2016/Understand-TCP-IP-network-1/</loc>
-    
-    <lastmod>2016-08-25T04:03:25.940Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.github.io/2016/Understand-TCP-IP-network-2/</loc>
-    
-    <lastmod>2016-08-25T04:03:19.555Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.github.io/2016/run-32b-on-64b-ubuntu/</loc>
-    
-    <lastmod>2016-08-17T02:00:36.104Z</lastmod>
     
   </url>
   
