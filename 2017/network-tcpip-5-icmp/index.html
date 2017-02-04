@@ -13,7 +13,7 @@
 <meta property="og:description" content="ICMP&amp;#x662F;&amp;#xFF08;Internet Control Message Protocol&amp;#xFF09;Internet&amp;#x63A7;&amp;#x5236;&amp;#x62A5;&amp;#x6587;&amp;#x534F;&amp;#x8BAE;&amp;#x3002;&amp;#x5B83;&amp;#x662F;TCP/IP&amp;#x534F;&amp;#x8BAE;&amp;#x65CF;&amp;#x7684;&amp;#x4E00;&amp;#x4E2A;&amp;#x5">
 <meta property="og:image" content="http://snowyying.github.io/2017/network-tcpip-5-icmp/icmp-header.jpg">
 <meta property="og:image" content="http://snowyying.github.io/2017/network-tcpip-5-icmp/icmp-msg-type.jpg">
-<meta property="og:updated_time" content="2017-02-03T16:38:50.217Z">
+<meta property="og:updated_time" content="2017-02-04T13:43:39.353Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TCP/IP 协议 - ICMP 协议">
 <meta name="twitter:description" content="ICMP&amp;#x662F;&amp;#xFF08;Internet Control Message Protocol&amp;#xFF09;Internet&amp;#x63A7;&amp;#x5236;&amp;#x62A5;&amp;#x6587;&amp;#x534F;&amp;#x8BAE;&amp;#x3002;&amp;#x5B83;&amp;#x662F;TCP/IP&amp;#x534F;&amp;#x8BAE;&amp;#x65CF;&amp;#x7684;&amp;#x4E00;&amp;#x4E2A;&amp;#x5">
@@ -104,7 +104,7 @@
         <blockquote>
 <p>ICMP&#x662F;&#xFF08;Internet Control Message Protocol&#xFF09;Internet&#x63A7;&#x5236;&#x62A5;&#x6587;&#x534F;&#x8BAE;&#x3002;&#x5B83;&#x662F;TCP/IP&#x534F;&#x8BAE;&#x65CF;&#x7684;&#x4E00;&#x4E2A;&#x5B50;&#x534F;&#x8BAE;&#xFF0C;&#x7528;&#x4E8E;&#x5728;IP&#x4E3B;&#x673A;&#x3001;&#x8DEF;&#x7531;&#x5668;&#x4E4B;&#x95F4;&#x4F20;&#x9012;&#x63A7;&#x5236;&#x6D88;&#x606F;&#x3002;&#x63A7;&#x5236;&#x6D88;&#x606F;&#x662F;&#x6307;&#x7F51;&#x7EDC;&#x901A;&#x4E0D;&#x901A;&#x3001;&#x4E3B;&#x673A;&#x662F;&#x5426;&#x53EF;&#x8FBE;&#x3001;&#x8DEF;&#x7531;&#x662F;&#x5426;&#x53EF;&#x7528;&#x7B49;&#x7F51;&#x7EDC;&#x672C;&#x8EAB;&#x7684;&#x6D88;&#x606F;&#x3002;&#x8FD9;&#x4E9B;&#x63A7;&#x5236;&#x6D88;&#x606F;&#x867D;&#x7136;&#x5E76;&#x4E0D;&#x4F20;&#x8F93;&#x7528;&#x6237;&#x6570;&#x636E;&#xFF0C;&#x4F46;&#x662F;&#x5BF9;&#x4E8E;&#x7528;&#x6237;&#x6570;&#x636E;&#x7684;&#x4F20;&#x9012;&#x8D77;&#x7740;&#x91CD;&#x8981;&#x7684;&#x4F5C;&#x7528;&#x3002;</p>
 </blockquote>
-<h6 id="ICMP-&#x5F15;&#x8A00;"><a href="#ICMP-&#x5F15;&#x8A00;" class="headerlink" title="ICMP &#x5F15;&#x8A00;"></a>ICMP &#x5F15;&#x8A00;</h6><p>ICMP &#x7ECF;&#x5E38;&#x88AB;&#x8BA4;&#x4E3A;&#x662F;IP&#x5C42;&#x7684;&#x4E00;&#x4E2A;&#x7EC4;&#x6210;&#x90E8;&#x5206;. &#x5B83;&#x4F20;&#x9012;&#x5DEE;&#x9519;&#x62A5;&#x6587;&#x4EE5;&#x53CA;&#x5176;&#x4ED6;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x4FE1;&#x606F;. ICMP&#x62A5;&#x6587;&#x901A;&#x5E38;&#x88AB;IP&#x5C42;&#x6216;&#x66F4;&#x9AD8;&#x5C42;&#x534F;&#x8BAE;(TCP/UDP)&#x4F7F;&#x7528;.</p>
+<h2 id="1-ICMP-&#x5F15;&#x8A00;"><a href="#1-ICMP-&#x5F15;&#x8A00;" class="headerlink" title="1. ICMP &#x5F15;&#x8A00;"></a>1. ICMP &#x5F15;&#x8A00;</h2><p>ICMP &#x7ECF;&#x5E38;&#x88AB;&#x8BA4;&#x4E3A;&#x662F;IP&#x5C42;&#x7684;&#x4E00;&#x4E2A;&#x7EC4;&#x6210;&#x90E8;&#x5206;. &#x5B83;&#x4F20;&#x9012;&#x5DEE;&#x9519;&#x62A5;&#x6587;&#x4EE5;&#x53CA;&#x5176;&#x4ED6;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x4FE1;&#x606F;. ICMP&#x62A5;&#x6587;&#x901A;&#x5E38;&#x88AB;IP&#x5C42;&#x6216;&#x66F4;&#x9AD8;&#x5C42;&#x534F;&#x8BAE;(TCP/UDP)&#x4F7F;&#x7528;.</p>
 <p><em>&#x4E00;&#x4E9B;ICMP&#x62A5;&#x6587;&#x628A;&#x5DEE;&#x9519;&#x62A5;&#x6587;&#x8FD4;&#x56DE;&#x7ED9;&#x7528;&#x6237;&#x8FDB;&#x7A0B;</em></p>
 <p><img src="/2017/network-tcpip-5-icmp/icmp-header.jpg" alt="ICMP&#x62A5;&#x6587;&#x7C7B;&#x578B;"></p>
 <ul>
@@ -112,7 +112,7 @@
 <li>&#x68C0;&#x9A8C;&#x548C;: &#x8986;&#x76D6;&#x6574;&#x4E2A;ICMP&#x62A5;&#x6587;. &#x4E0E;IP&#x5934;&#x68C0;&#x9A8C;&#x548C;&#x7B97;&#x6CD5;&#x76F8;&#x540C;. ICMP&#x7684;&#x68C0;&#x9A8C;&#x548C;&#x662F;&#x5FC5;&#x987B;&#x7684;.</li>
 </ul>
 <a id="more"></a>
-<h6 id="ICMP-&#x62A5;&#x6587;&#x7C7B;&#x578B;"><a href="#ICMP-&#x62A5;&#x6587;&#x7C7B;&#x578B;" class="headerlink" title="ICMP &#x62A5;&#x6587;&#x7C7B;&#x578B;"></a>ICMP &#x62A5;&#x6587;&#x7C7B;&#x578B;</h6><p><img src="/2017/network-tcpip-5-icmp/icmp-msg-type.jpg" alt="ICMP&#x62A5;&#x6587;&#x7C7B;&#x578B;"></p>
+<h2 id="2-ICMP-&#x62A5;&#x6587;&#x7C7B;&#x578B;"><a href="#2-ICMP-&#x62A5;&#x6587;&#x7C7B;&#x578B;" class="headerlink" title="2. ICMP &#x62A5;&#x6587;&#x7C7B;&#x578B;"></a>2. ICMP &#x62A5;&#x6587;&#x7C7B;&#x578B;</h2><p><img src="/2017/network-tcpip-5-icmp/icmp-msg-type.jpg" alt="ICMP&#x62A5;&#x6587;&#x7C7B;&#x578B;"></p>
 <p>ICMP&#x62A5;&#x6587;&#x6709;&#x4E24;&#x79CD;, &#x5206;&#x522B;&#x662F;&#x67E5;&#x8BE2;&#x62A5;&#x6587;&#x548C;&#x5DEE;&#x9519;&#x62A5;&#x6587;.</p>
 <p>&#x5BF9;&#x5DEE;&#x9519;&#x62A5;&#x6587;&#x9700;&#x8981;&#x7279;&#x6B8A;&#x5904;&#x7406;, &#x5982;&#x5BF9;&#x5DEE;&#x9519;&#x62A5;&#x6587;&#x8FDB;&#x884C;&#x60F3;&#x8981;&#x65F6;, &#x6C38;&#x8FDC;&#x4E0D;&#x4F1A;&#x751F;&#x6210;&#x53E6;&#x4E00;&#x4EFD;&#x5DEE;&#x9519;&#x62A5;&#x6587;.</p>
 <p>&#x5F53;&#x53D1;&#x9001;&#x4E00;&#x4EFD;ICMP&#x5DEE;&#x9519;&#x62A5;&#x6587;&#x65F6;, &#x62A5;&#x6587;&#x59CB;&#x7EC8;&#x5305;&#x542B;IP&#x5934;&#x90E8;&#x548C;&#x4EA7;&#x751F;ICMP&#x5DEE;&#x9519;&#x62A5;&#x6587;&#x7684;IP&#x6570;&#x636E;&#x62A5;&#x7684;&#x524D;8&#x4E2A;&#x5B57;&#x8282;. &#x8FD9;&#x6837;, &#x63A5;&#x6536;ICMP&#x5DEE;&#x9519;&#x62A5;&#x6587;&#x7684;&#x6A21;&#x5757;&#x5C31;&#x4F1A;&#x628A;&#x5B83;&#x4E0E;&#x67D0;&#x4E2A;&#x7279;&#x5B9A;&#x7684;&#x534F;&#x8BAE;(&#x6839;&#x636E;IP&#x6570;&#x636E;&#x62A5;&#x5934;&#x4E2D;&#x7684;&#x534F;&#x8BAE;&#x5B57;&#x6BB5;&#x6765;&#x5224;&#x65AD;)&#x548C;&#x7528;&#x6237;&#x8FDB;&#x7A0B;(&#x6839;&#x636E;IP&#x6570;&#x636E;&#x62A5;&#x4E2D;&#x7684;TCP&#x6216;UDP&#x62A5;&#x6587;&#x5934;&#x90E8;&#x4E2D;&#x7684;&#x7AEF;&#x53E3;&#x53F7;&#x6765;&#x5224;&#x65AD;)&#x8054;&#x7CFB;&#x8D77;&#x6765;.</p>
@@ -125,11 +125,11 @@
 <li>&#x6E90;&#x5730;&#x5740;&#x4E0D;&#x662F;&#x5355;&#x4E2A;&#x4E3B;&#x673A;&#x7684;&#x6570;&#x636E;&#x62A5;(&#x6E90;&#x5730;&#x5740;&#x4E0D;&#x80FD;&#x4E3A;&#x96F6;&#x5730;&#x5740;, &#x73AF;&#x56DE;&#x5730;&#x5740;, &#x5E7F;&#x64AD;&#x5730;&#x5740;&#x6216;&#x591A;&#x64AD;&#x5730;&#x5740;)</li>
 </ul>
 <p>&#x8FD9;&#x4E9B;&#x89C4;&#x5219;&#x662F;&#x4E3A;&#x4E86;&#x9632;&#x6B62;&#x5E7F;&#x64AD;&#x98CE;&#x66B4;.</p>
-
+<h2 id="3-Ping-amp-Traceroute"><a href="#3-Ping-amp-Traceroute" class="headerlink" title="3. Ping &amp; Traceroute"></a>3. Ping &amp; Traceroute</h2>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://snowyying.github.io/2017/network-tcpip-5-icmp/" data-id="ciyqlzeel004slcskr0p64ut3" class="article-share-link">Share</a>
+      <a data-url="http://snowyying.github.io/2017/network-tcpip-5-icmp/" data-id="ciyravwrf004ljwskru6pfav3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -185,7 +185,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -198,15 +198,15 @@
       <ul>
         
           <li>
-            <a href="/2017/network-tcpip-12-snmp/">TCP/IP 协议 - SNMP</a>
-          </li>
-        
-          <li>
             <a href="/2017/it-manage-redmine/">IT 项目管理工具 Redmine</a>
           </li>
         
           <li>
             <a href="/2017/misc-radio-spectrum/">无线电波段和频谱</a>
+          </li>
+        
+          <li>
+            <a href="/2017/network-tcpip-12-snmp/">TCP/IP 协议 - SNMP</a>
           </li>
         
           <li>

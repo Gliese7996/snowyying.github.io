@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="Snowyying">
 <meta property="og:description" content="&amp;#x5E94;&amp;#x7528;&amp;#x7A0B;&amp;#x5E8F;&amp;#x5FC5;&amp;#x987B;&amp;#x5173;&amp;#x5FC3;IP&amp;#x6570;&amp;#x636E;&amp;#x62A5;&amp;#x7684;&amp;#x957F;&amp;#x5EA6;, &amp;#x5982;&amp;#x679C;&amp;#x5B83;&amp;#x8D85;&amp;#x8FC7;&amp;#x7F51;&amp;#x7EDC;&amp;#x7684;MTU, &amp;#x5219;&amp;#x898">
 <meta property="og:image" content="http://snowyying.github.io/2017/network-tcpip-7-udp-protocol/udp-header.jpg">
-<meta property="og:updated_time" content="2017-01-12T05:49:18.098Z">
+<meta property="og:updated_time" content="2017-02-04T13:47:18.001Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TCP/IP 协议 - UDP 协议">
 <meta name="twitter:description" content="&amp;#x5E94;&amp;#x7528;&amp;#x7A0B;&amp;#x5E8F;&amp;#x5FC5;&amp;#x987B;&amp;#x5173;&amp;#x5FC3;IP&amp;#x6570;&amp;#x636E;&amp;#x62A5;&amp;#x7684;&amp;#x957F;&amp;#x5EA6;, &amp;#x5982;&amp;#x679C;&amp;#x5B83;&amp;#x8D85;&amp;#x8FC7;&amp;#x7F51;&amp;#x7EDC;&amp;#x7684;MTU, &amp;#x5219;&amp;#x898">
@@ -103,14 +103,14 @@
         <blockquote>
 <p>&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x5FC5;&#x987B;&#x5173;&#x5FC3;IP&#x6570;&#x636E;&#x62A5;&#x7684;&#x957F;&#x5EA6;, &#x5982;&#x679C;&#x5B83;&#x8D85;&#x8FC7;&#x7F51;&#x7EDC;&#x7684;MTU, &#x5219;&#x8981;&#x5BF9;IP&#x6570;&#x636E;&#x62A5;&#x8FDB;&#x884C;&#x5206;&#x7247;.</p>
 </blockquote>
-<h6 id="UDP-&#x5934;"><a href="#UDP-&#x5934;" class="headerlink" title="UDP &#x5934;"></a>UDP &#x5934;</h6><p><img src="/2017/network-tcpip-7-udp-protocol/udp-header.jpg" alt="UDP Header"></p>
+<h2 id="1-UDP-&#x5934;"><a href="#1-UDP-&#x5934;" class="headerlink" title="1. UDP &#x5934;"></a>1. UDP &#x5934;</h2><p><img src="/2017/network-tcpip-7-udp-protocol/udp-header.jpg" alt="UDP Header"></p>
 <p><em>&#x7AEF;&#x53E3;&#x53F7;&#x8868;&#x793A;&#x53D1;&#x9001;&#x548C;&#x63A5;&#x6536;&#x8FDB;&#x7A0B;(TCP/UDP&#x7684;&#x7AEF;&#x53E3;&#x53F7;&#x662F;&#x72EC;&#x7ACB;&#x7684;)</em></p>
 <ul>
 <li>IP &#x957F;&#x5EA6;: &#x6570;&#x636E;&#x62A5;&#x6587;&#x5168;&#x957F;.</li>
 <li>UDP &#x957F;&#x5EA6;: UDP&#x5934; + UDP&#x6570;&#x636E; &#x7684;&#x5B57;&#x8282;&#x957F;&#x5EA6;(&gt;= 8). [UDP &#x957F;&#x5EA6;&#x662F;&#x5197;&#x4F59;&#x7684;, = IP&#x62A5;&#x6587;&#x957F;&#x5EA6; - IP&#x5934;]</li>
 </ul>
 <a id="more"></a>
-<h6 id="UDP-&#x6821;&#x9A8C;&#x548C;"><a href="#UDP-&#x6821;&#x9A8C;&#x548C;" class="headerlink" title="UDP &#x6821;&#x9A8C;&#x548C;"></a>UDP &#x6821;&#x9A8C;&#x548C;</h6><p><em>UDP&#x6821;&#x9A8C;&#x548C;&#x662F;&#x53EF;&#x9009;&#x7684;; TCP&#x6821;&#x9A8C;&#x548C;&#x662F;&#x5FC5;&#x987B;&#x7684;.</em></p>
+<h2 id="2-UDP-&#x6821;&#x9A8C;&#x548C;"><a href="#2-UDP-&#x6821;&#x9A8C;&#x548C;" class="headerlink" title="2. UDP &#x6821;&#x9A8C;&#x548C;"></a>2. UDP &#x6821;&#x9A8C;&#x548C;</h2><p><em>UDP&#x6821;&#x9A8C;&#x548C;&#x662F;&#x53EF;&#x9009;&#x7684;; TCP&#x6821;&#x9A8C;&#x548C;&#x662F;&#x5FC5;&#x987B;&#x7684;.</em></p>
 <ul>
 <li>IP &#x6821;&#x9A8C;&#x548C;: &#x53EA;&#x8986;&#x76D6;IP&#x5934;</li>
 <li>UDP &#x6821;&#x9A8C;&#x548C;: &#x8986;&#x76D6; UDP&#x5934; + UDP&#x6570;&#x636E;</li>
@@ -120,17 +120,17 @@
 <li>&#x6570;&#x636E;&#x5305;&#x957F;&#x5EA6;&#x5B58;&#x5728;&#x5947;&#x6570;, &#x6700;&#x540E;&#x5B57;&#x8282;&#x8865;0&#x586B;&#x5145;(&#x4EC5;&#x7528;&#x4E8E;&#x6821;&#x9A8C;)</li>
 <li>UDP &#x548C; TCP &#x90FD;&#x5B58;&#x5728;12 Byte&#x7684;&#x4F2A;&#x5934;&#x90E8;(&#x4EC5;&#x7528;&#x4E8E;&#x6821;&#x9A8C;)</li>
 </ol>
-<h6 id="IP-&#x5206;&#x7247;"><a href="#IP-&#x5206;&#x7247;" class="headerlink" title="IP &#x5206;&#x7247;"></a>IP &#x5206;&#x7247;</h6><h6 id="ICMP-&#x4E0D;&#x53EF;&#x8FBE;&#x5DEE;&#x9519;"><a href="#ICMP-&#x4E0D;&#x53EF;&#x8FBE;&#x5DEE;&#x9519;" class="headerlink" title="ICMP &#x4E0D;&#x53EF;&#x8FBE;&#x5DEE;&#x9519;"></a>ICMP &#x4E0D;&#x53EF;&#x8FBE;&#x5DEE;&#x9519;</h6><p>&#x9700;&#x8981;&#x5206;&#x7247;</p>
-<h6 id="&#x786E;&#x5B9A;&#x8DEF;&#x5F84;-MTU"><a href="#&#x786E;&#x5B9A;&#x8DEF;&#x5F84;-MTU" class="headerlink" title="&#x786E;&#x5B9A;&#x8DEF;&#x5F84; MTU"></a>&#x786E;&#x5B9A;&#x8DEF;&#x5F84; MTU</h6><ul>
+<h2 id="3-IP-&#x5206;&#x7247;"><a href="#3-IP-&#x5206;&#x7247;" class="headerlink" title="3. IP &#x5206;&#x7247;"></a>3. IP &#x5206;&#x7247;</h2><h2 id="4-ICMP-&#x4E0D;&#x53EF;&#x8FBE;&#x5DEE;&#x9519;"><a href="#4-ICMP-&#x4E0D;&#x53EF;&#x8FBE;&#x5DEE;&#x9519;" class="headerlink" title="4. ICMP &#x4E0D;&#x53EF;&#x8FBE;&#x5DEE;&#x9519;"></a>4. ICMP &#x4E0D;&#x53EF;&#x8FBE;&#x5DEE;&#x9519;</h2><p>&#x9700;&#x8981;&#x5206;&#x7247;</p>
+<h2 id="5-&#x786E;&#x5B9A;&#x8DEF;&#x5F84;-MTU"><a href="#5-&#x786E;&#x5B9A;&#x8DEF;&#x5F84;-MTU" class="headerlink" title="5. &#x786E;&#x5B9A;&#x8DEF;&#x5F84; MTU"></a>5. &#x786E;&#x5B9A;&#x8DEF;&#x5F84; MTU</h2><ul>
 <li>&#x7528;Traceroute&#x786E;&#x5B9A;MTU&#x8DEF;&#x5F84;</li>
 <li>&#x91C7;&#x7528;UDP&#x7684;&#x8DEF;&#x5F84;MTU&#x53D1;&#x73B0;</li>
 </ul>
-<h6 id="&#x6700;&#x5927;UDP&#x6570;&#x636E;&#x62A5;&#x957F;&#x5EA6;"><a href="#&#x6700;&#x5927;UDP&#x6570;&#x636E;&#x62A5;&#x957F;&#x5EA6;" class="headerlink" title="&#x6700;&#x5927;UDP&#x6570;&#x636E;&#x62A5;&#x957F;&#x5EA6;"></a>&#x6700;&#x5927;UDP&#x6570;&#x636E;&#x62A5;&#x957F;&#x5EA6;</h6><p>&#x6570;&#x636E;&#x62A5;&#x622A;&#x65AD;</p>
-<h6 id="ICMP&#x6E90;&#x7AD9;&#x6291;&#x5236;&#x5DEE;&#x9519;"><a href="#ICMP&#x6E90;&#x7AD9;&#x6291;&#x5236;&#x5DEE;&#x9519;" class="headerlink" title="ICMP&#x6E90;&#x7AD9;&#x6291;&#x5236;&#x5DEE;&#x9519;"></a>ICMP&#x6E90;&#x7AD9;&#x6291;&#x5236;&#x5DEE;&#x9519;</h6><h6 id="UDP&#x670D;&#x52A1;&#x5668;&#x8BBE;&#x8BA1;"><a href="#UDP&#x670D;&#x52A1;&#x5668;&#x8BBE;&#x8BA1;" class="headerlink" title="UDP&#x670D;&#x52A1;&#x5668;&#x8BBE;&#x8BA1;"></a>UDP&#x670D;&#x52A1;&#x5668;&#x8BBE;&#x8BA1;</h6>
+<h2 id="6-UPD&#x4E0E;ARP&#x4EA4;&#x4E92;"><a href="#6-UPD&#x4E0E;ARP&#x4EA4;&#x4E92;" class="headerlink" title="6. UPD&#x4E0E;ARP&#x4EA4;&#x4E92;"></a>6. UPD&#x4E0E;ARP&#x4EA4;&#x4E92;</h2><h2 id="7-&#x6700;&#x5927;UDP&#x6570;&#x636E;&#x62A5;&#x957F;&#x5EA6;"><a href="#7-&#x6700;&#x5927;UDP&#x6570;&#x636E;&#x62A5;&#x957F;&#x5EA6;" class="headerlink" title="7. &#x6700;&#x5927;UDP&#x6570;&#x636E;&#x62A5;&#x957F;&#x5EA6;"></a>7. &#x6700;&#x5927;UDP&#x6570;&#x636E;&#x62A5;&#x957F;&#x5EA6;</h2><p>&#x6570;&#x636E;&#x62A5;&#x622A;&#x65AD;</p>
+<h2 id="8-ICMP&#x6E90;&#x7AD9;&#x6291;&#x5236;&#x5DEE;&#x9519;"><a href="#8-ICMP&#x6E90;&#x7AD9;&#x6291;&#x5236;&#x5DEE;&#x9519;" class="headerlink" title="8. ICMP&#x6E90;&#x7AD9;&#x6291;&#x5236;&#x5DEE;&#x9519;"></a>8. ICMP&#x6E90;&#x7AD9;&#x6291;&#x5236;&#x5DEE;&#x9519;</h2><h2 id="9-UDP&#x670D;&#x52A1;&#x5668;&#x8BBE;&#x8BA1;"><a href="#9-UDP&#x670D;&#x52A1;&#x5668;&#x8BBE;&#x8BA1;" class="headerlink" title="9. UDP&#x670D;&#x52A1;&#x5668;&#x8BBE;&#x8BA1;"></a>9. UDP&#x670D;&#x52A1;&#x5668;&#x8BBE;&#x8BA1;</h2>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://snowyying.github.io/2017/network-tcpip-7-udp-protocol/" data-id="ciyqlzeeo004zlcskxxs7kvqs" class="article-share-link">Share</a>
+      <a data-url="http://snowyying.github.io/2017/network-tcpip-7-udp-protocol/" data-id="ciyravwrl004qjwsk5kwl47ov" class="article-share-link">Share</a>
       
         <a href="http://snowyying.github.io/2017/network-tcpip-7-udp-protocol/#ds-thread" class="article-comment-link">留言</a>
       
@@ -209,7 +209,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -222,15 +222,15 @@
       <ul>
         
           <li>
-            <a href="/2017/network-tcpip-12-snmp/">TCP/IP 协议 - SNMP</a>
-          </li>
-        
-          <li>
             <a href="/2017/it-manage-redmine/">IT 项目管理工具 Redmine</a>
           </li>
         
           <li>
             <a href="/2017/misc-radio-spectrum/">无线电波段和频谱</a>
+          </li>
+        
+          <li>
+            <a href="/2017/network-tcpip-12-snmp/">TCP/IP 协议 - SNMP</a>
           </li>
         
           <li>
