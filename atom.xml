@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://snowyying.github.io/"/>
-  <updated>2017-01-21T14:16:43.446Z</updated>
+  <updated>2017-02-04T02:01:04.720Z</updated>
   <id>http://snowyying.github.io/</id>
   
   <author>
@@ -16,17 +16,13 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>jsoncpp 使用总结</title>
-    <link href="http://snowyying.github.io/2017/misc-jsoncpp-usage/"/>
-    <id>http://snowyying.github.io/2017/misc-jsoncpp-usage/</id>
-    <published>2017-09-28T14:11:25.000Z</published>
-    <updated>2017-01-21T14:16:43.446Z</updated>
-    
-    <content type="html"><![CDATA[<h6 id="Array"><a href="#Array" class="headerlink" title="Array"></a>Array</h6>]]></content>
+    <title>TCP/IP 协议 - SNMP</title>
+    <link href="http://snowyying.github.io/2017/network-tcpip-12-snmp/"/>
+    <id>http://snowyying.github.io/2017/network-tcpip-12-snmp/</id>
+    <published>2017-02-03T17:40:08.000Z</published>
+    <updated>2017-02-04T02:01:04.720Z</updated>
     
     <summary type="html">
-    
-      &lt;h6 id=&quot;Array&quot;&gt;&lt;a href=&quot;#Array&quot; class=&quot;headerlink&quot; title=&quot;Array&quot;&gt;&lt;/a&gt;Array&lt;/h6&gt;
     
     </summary>
     
@@ -444,7 +440,7 @@
     <link href="http://snowyying.github.io/2017/network-tcpip-5-icmp/"/>
     <id>http://snowyying.github.io/2017/network-tcpip-5-icmp/</id>
     <published>2017-01-05T02:09:42.000Z</published>
-    <updated>2017-02-03T16:09:02.356Z</updated>
+    <updated>2017-02-03T16:38:50.217Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>ICMP&#x662F;&#xFF08;Internet Control Message Protocol&#xFF09;Internet&#x63A7;&#x5236;&#x62A5;&#x6587;&#x534F;&#x8BAE;&#x3002;&#x5B83;&#x662F;TCP/IP&#x534F;&#x8BAE;&#x65CF;&#x7684;&#x4E00;&#x4E2A;&#x5B50;&#x534F;&#x8BAE;&#xFF0C;&#x7528;&#x4E8E;&#x5728;IP&#x4E3B;&#x673A;&#x3001;&#x8DEF;&#x7531;&#x5668;&#x4E4B;&#x95F4;&#x4F20;&#x9012;&#x63A7;&#x5236;&#x6D88;&#x606F;&#x3002;&#x63A7;&#x5236;&#x6D88;&#x606F;&#x662F;&#x6307;&#x7F51;&#x7EDC;&#x901A;&#x4E0D;&#x901A;&#x3001;&#x4E3B;&#x673A;&#x662F;&#x5426;&#x53EF;&#x8FBE;&#x3001;&#x8DEF;&#x7531;&#x662F;&#x5426;&#x53EF;&#x7528;&#x7B49;&#x7F51;&#x7EDC;&#x672C;&#x8EAB;&#x7684;&#x6D88;&#x606F;&#x3002;&#x8FD9;&#x4E9B;&#x63A7;&#x5236;&#x6D88;&#x606F;&#x867D;&#x7136;&#x5E76;&#x4E0D;&#x4F20;&#x8F93;&#x7528;&#x6237;&#x6570;&#x636E;&#xFF0C;&#x4F46;&#x662F;&#x5BF9;&#x4E8E;&#x7528;&#x6237;&#x6570;&#x636E;&#x7684;&#x4F20;&#x9012;&#x8D77;&#x7740;&#x91CD;&#x8981;&#x7684;&#x4F5C;&#x7528;&#x3002;</p>
@@ -456,6 +452,7 @@
 <li>&#x7C7B;&#x578B;: &#x6709;15&#x4E2A;&#x4E0D;&#x540C;&#x7684;&#x503C;, &#x4EE5;&#x63CF;&#x8FF0;&#x7279;&#x5B9A;&#x7C7B;&#x578B;&#x7684;ICMP&#x62A5;&#x6587;. <em>&#x67D0;&#x4E9B;ICMP&#x62A5;&#x6587;&#x8FD8;&#x4F7F;&#x7528;&#x4EE3;&#x7801;&#x5B57;&#x6BB5;&#x7684;&#x503C;&#x6765;&#x8FDB;&#x4E00;&#x6B65;&#x63CF;&#x8FF0;&#x4E0D;&#x540C;&#x7684;&#x6761;&#x4EF6;. </em></li>
 <li>&#x68C0;&#x9A8C;&#x548C;: &#x8986;&#x76D6;&#x6574;&#x4E2A;ICMP&#x62A5;&#x6587;. &#x4E0E;IP&#x5934;&#x68C0;&#x9A8C;&#x548C;&#x7B97;&#x6CD5;&#x76F8;&#x540C;. ICMP&#x7684;&#x68C0;&#x9A8C;&#x548C;&#x662F;&#x5FC5;&#x987B;&#x7684;.</li>
 </ul>
+<a id="more"></a>
 <h6 id="ICMP-&#x62A5;&#x6587;&#x7C7B;&#x578B;"><a href="#ICMP-&#x62A5;&#x6587;&#x7C7B;&#x578B;" class="headerlink" title="ICMP &#x62A5;&#x6587;&#x7C7B;&#x578B;"></a>ICMP &#x62A5;&#x6587;&#x7C7B;&#x578B;</h6><p><img src="/2017/network-tcpip-5-icmp/icmp-msg-type.jpg" alt="ICMP&#x62A5;&#x6587;&#x7C7B;&#x578B;"></p>
 <p>ICMP&#x62A5;&#x6587;&#x6709;&#x4E24;&#x79CD;, &#x5206;&#x522B;&#x662F;&#x67E5;&#x8BE2;&#x62A5;&#x6587;&#x548C;&#x5DEE;&#x9519;&#x62A5;&#x6587;.</p>
 <p>&#x5BF9;&#x5DEE;&#x9519;&#x62A5;&#x6587;&#x9700;&#x8981;&#x7279;&#x6B8A;&#x5904;&#x7406;, &#x5982;&#x5BF9;&#x5DEE;&#x9519;&#x62A5;&#x6587;&#x8FDB;&#x884C;&#x60F3;&#x8981;&#x65F6;, &#x6C38;&#x8FDC;&#x4E0D;&#x4F1A;&#x751F;&#x6210;&#x53E6;&#x4E00;&#x4EFD;&#x5DEE;&#x9519;&#x62A5;&#x6587;.</p>
@@ -474,7 +471,15 @@
     <summary type="html">
     
       &lt;blockquote&gt;
-&lt;p&gt;ICMP&amp;#x662F;&amp;#xFF08;Internet Control Message Protocol&amp;#xFF09;Internet&amp;#x63A7;&amp;#x5236;&amp;#x62A5;&amp;#x6587;&amp;#x534F;&amp;#x8BAE;&amp;#x3002
+&lt;p&gt;ICMP&amp;#x662F;&amp;#xFF08;Internet Control Message Protocol&amp;#xFF09;Internet&amp;#x63A7;&amp;#x5236;&amp;#x62A5;&amp;#x6587;&amp;#x534F;&amp;#x8BAE;&amp;#x3002;&amp;#x5B83;&amp;#x662F;TCP/IP&amp;#x534F;&amp;#x8BAE;&amp;#x65CF;&amp;#x7684;&amp;#x4E00;&amp;#x4E2A;&amp;#x5B50;&amp;#x534F;&amp;#x8BAE;&amp;#xFF0C;&amp;#x7528;&amp;#x4E8E;&amp;#x5728;IP&amp;#x4E3B;&amp;#x673A;&amp;#x3001;&amp;#x8DEF;&amp;#x7531;&amp;#x5668;&amp;#x4E4B;&amp;#x95F4;&amp;#x4F20;&amp;#x9012;&amp;#x63A7;&amp;#x5236;&amp;#x6D88;&amp;#x606F;&amp;#x3002;&amp;#x63A7;&amp;#x5236;&amp;#x6D88;&amp;#x606F;&amp;#x662F;&amp;#x6307;&amp;#x7F51;&amp;#x7EDC;&amp;#x901A;&amp;#x4E0D;&amp;#x901A;&amp;#x3001;&amp;#x4E3B;&amp;#x673A;&amp;#x662F;&amp;#x5426;&amp;#x53EF;&amp;#x8FBE;&amp;#x3001;&amp;#x8DEF;&amp;#x7531;&amp;#x662F;&amp;#x5426;&amp;#x53EF;&amp;#x7528;&amp;#x7B49;&amp;#x7F51;&amp;#x7EDC;&amp;#x672C;&amp;#x8EAB;&amp;#x7684;&amp;#x6D88;&amp;#x606F;&amp;#x3002;&amp;#x8FD9;&amp;#x4E9B;&amp;#x63A7;&amp;#x5236;&amp;#x6D88;&amp;#x606F;&amp;#x867D;&amp;#x7136;&amp;#x5E76;&amp;#x4E0D;&amp;#x4F20;&amp;#x8F93;&amp;#x7528;&amp;#x6237;&amp;#x6570;&amp;#x636E;&amp;#xFF0C;&amp;#x4F46;&amp;#x662F;&amp;#x5BF9;&amp;#x4E8E;&amp;#x7528;&amp;#x6237;&amp;#x6570;&amp;#x636E;&amp;#x7684;&amp;#x4F20;&amp;#x9012;&amp;#x8D77;&amp;#x7740;&amp;#x91CD;&amp;#x8981;&amp;#x7684;&amp;#x4F5C;&amp;#x7528;&amp;#x3002;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h6 id=&quot;ICMP-&amp;#x5F15;&amp;#x8A00;&quot;&gt;&lt;a href=&quot;#ICMP-&amp;#x5F15;&amp;#x8A00;&quot; class=&quot;headerlink&quot; title=&quot;ICMP &amp;#x5F15;&amp;#x8A00;&quot;&gt;&lt;/a&gt;ICMP &amp;#x5F15;&amp;#x8A00;&lt;/h6&gt;&lt;p&gt;ICMP &amp;#x7ECF;&amp;#x5E38;&amp;#x88AB;&amp;#x8BA4;&amp;#x4E3A;&amp;#x662F;IP&amp;#x5C42;&amp;#x7684;&amp;#x4E00;&amp;#x4E2A;&amp;#x7EC4;&amp;#x6210;&amp;#x90E8;&amp;#x5206;. &amp;#x5B83;&amp;#x4F20;&amp;#x9012;&amp;#x5DEE;&amp;#x9519;&amp;#x62A5;&amp;#x6587;&amp;#x4EE5;&amp;#x53CA;&amp;#x5176;&amp;#x4ED6;&amp;#x9700;&amp;#x8981;&amp;#x6CE8;&amp;#x610F;&amp;#x7684;&amp;#x4FE1;&amp;#x606F;. ICMP&amp;#x62A5;&amp;#x6587;&amp;#x901A;&amp;#x5E38;&amp;#x88AB;IP&amp;#x5C42;&amp;#x6216;&amp;#x66F4;&amp;#x9AD8;&amp;#x5C42;&amp;#x534F;&amp;#x8BAE;(TCP/UDP)&amp;#x4F7F;&amp;#x7528;.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&amp;#x4E00;&amp;#x4E9B;ICMP&amp;#x62A5;&amp;#x6587;&amp;#x628A;&amp;#x5DEE;&amp;#x9519;&amp;#x62A5;&amp;#x6587;&amp;#x8FD4;&amp;#x56DE;&amp;#x7ED9;&amp;#x7528;&amp;#x6237;&amp;#x8FDB;&amp;#x7A0B;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/2017/network-tcpip-5-icmp/icmp-header.jpg&quot; alt=&quot;ICMP&amp;#x62A5;&amp;#x6587;&amp;#x7C7B;&amp;#x578B;&quot;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&amp;#x7C7B;&amp;#x578B;: &amp;#x6709;15&amp;#x4E2A;&amp;#x4E0D;&amp;#x540C;&amp;#x7684;&amp;#x503C;, &amp;#x4EE5;&amp;#x63CF;&amp;#x8FF0;&amp;#x7279;&amp;#x5B9A;&amp;#x7C7B;&amp;#x578B;&amp;#x7684;ICMP&amp;#x62A5;&amp;#x6587;. &lt;em&gt;&amp;#x67D0;&amp;#x4E9B;ICMP&amp;#x62A5;&amp;#x6587;&amp;#x8FD8;&amp;#x4F7F;&amp;#x7528;&amp;#x4EE3;&amp;#x7801;&amp;#x5B57;&amp;#x6BB5;&amp;#x7684;&amp;#x503C;&amp;#x6765;&amp;#x8FDB;&amp;#x4E00;&amp;#x6B65;&amp;#x63CF;&amp;#x8FF0;&amp;#x4E0D;&amp;#x540C;&amp;#x7684;&amp;#x6761;&amp;#x4EF6;. &lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&amp;#x68C0;&amp;#x9A8C;&amp;#x548C;: &amp;#x8986;&amp;#x76D6;&amp;#x6574;&amp;#x4E2A;ICMP&amp;#x62A5;&amp;#x6587;. &amp;#x4E0E;IP&amp;#x5934;&amp;#x68C0;&amp;#x9A8C;&amp;#x548C;&amp;#x7B97;&amp;#x6CD5;&amp;#x76F8;&amp;#x540C;. ICMP&amp;#x7684;&amp;#x68C0;&amp;#x9A8C;&amp;#x548C;&amp;#x662F;&amp;#x5FC5;&amp;#x987B;&amp;#x7684;.&lt;/li&gt;
+&lt;/ul&gt;
     
     </summary>
     
@@ -557,7 +562,7 @@
     <link href="http://snowyying.github.io/2017/network-tcpip-1-overview/"/>
     <id>http://snowyying.github.io/2017/network-tcpip-1-overview/</id>
     <published>2017-01-03T02:55:38.000Z</published>
-    <updated>2017-01-12T05:50:41.092Z</updated>
+    <updated>2017-02-04T01:57:41.305Z</updated>
     
     <content type="html"><![CDATA[<p><img src="/2017/network-tcpip-1-overview/tcpip-overview.gif" alt="TCP/IP"></p>
 <a id="more"></a>
@@ -576,15 +581,129 @@
 <ul>
 <li>&#x5355;&#x64AD;&#x5730;&#x5740;: &#x76EE;&#x7684;&#x7AEF;&#x4E3A;&#x5355;&#x4E2A;&#x4E3B;&#x673A;</li>
 <li>&#x7EC4;&#x64AD;&#x5730;&#x5740;: &#x76EE;&#x7684;&#x7AEF;&#x4E3A;&#x540C;&#x4E00;&#x7EC4;&#x5185;&#x6240;&#x6709;&#x4E3B;&#x673A;</li>
-<li><p>&#x5E7F;&#x64AD;&#x5730;&#x5740;: &#x76EE;&#x7684;&#x7AEF;&#x4E3A;&#x7ED9;&#x5B9A;&#x7F51;&#x7EDC;&#x4E0A;&#x6240;&#x6709;&#x4E3B;&#x673A;</p>
-</li>
-<li><p>A&#x7C7B;: 0+7bit(&#x7F51;&#x7EDC;&#x53F7;)+24bit(&#x4E3B;&#x673A;&#x53F7;); 0.0.0.0 ~ 127.255.255.255</p>
-</li>
-<li>B&#x7C7B;: 10+14bit(&#x7F51;&#x7EDC;&#x53F7;)+16bit(&#x4E3B;&#x673A;&#x53F7;); 128.0.0.0 ~ 191.255.255.255</li>
-<li>C&#x7C7B;: 110+21bit(&#x7F51;&#x7EDC;&#x53F7;)+8bit(&#x4E3B;&#x673A;&#x53F7;); 192.0.0.0 ~ 223.255.255.255</li>
-<li>D&#x7C7B;: 1110+28bit(&#x591A;&#x64AD;&#x7EC4;&#x53F7;); 224.0.0.0 ~ 239.255.255.255</li>
-<li>E&#x7C7B;: 11110(Reserved); 240.0.0.0 ~ 255.255.255.255</li>
+<li>&#x5E7F;&#x64AD;&#x5730;&#x5740;: &#x76EE;&#x7684;&#x7AEF;&#x4E3A;&#x7ED9;&#x5B9A;&#x7F51;&#x7EDC;&#x4E0A;&#x6240;&#x6709;&#x4E3B;&#x673A;</li>
 </ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">&#x7C7B;&#x578B;</th>
+<th style="text-align:left">&#x8303;&#x56F4;</th>
+<th style="text-align:left">&#x8303;&#x56F4;</th>
+<th style="text-align:left">&#x7528;&#x9014;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">A&#x7C7B;</td>
+<td style="text-align:left">0+7bit(&#x7F51;&#x7EDC;&#x53F7;)+24bit(&#x4E3B;&#x673A;&#x53F7;)</td>
+<td style="text-align:left">0.0.0.0 ~ 127.255.255.255</td>
+<td style="text-align:left">&#x5355;&#x64AD;</td>
+</tr>
+<tr>
+<td style="text-align:left">B&#x7C7B;</td>
+<td style="text-align:left">10+14bit(&#x7F51;&#x7EDC;&#x53F7;)+16bit(&#x4E3B;&#x673A;&#x53F7;)</td>
+<td style="text-align:left">128.0.0.0 ~ 191.255.255.255</td>
+<td style="text-align:left">&#x5355;&#x64AD;</td>
+</tr>
+<tr>
+<td style="text-align:left">C&#x7C7B;</td>
+<td style="text-align:left">110+21bit(&#x7F51;&#x7EDC;&#x53F7;)+8bit(&#x4E3B;&#x673A;&#x53F7;)</td>
+<td style="text-align:left">192.0.0.0 ~ 223.255.255.255</td>
+<td style="text-align:left">&#x5355;&#x64AD;</td>
+</tr>
+<tr>
+<td style="text-align:left">D&#x7C7B;</td>
+<td style="text-align:left">1110+28bit(&#x591A;&#x64AD;&#x7EC4;&#x53F7;)</td>
+<td style="text-align:left">224.0.0.0 ~ 239.255.255.255</td>
+<td style="text-align:left">&#x591A;&#x64AD;</td>
+</tr>
+<tr>
+<td style="text-align:left">E&#x7C7B;</td>
+<td style="text-align:left">11110(Reserved)</td>
+<td style="text-align:left">240.0.0.0 ~ 255.255.255.255</td>
+<td style="text-align:left">&#x4FDD;&#x7559;</td>
+</tr>
+</tbody>
+</table>
+<p>&#x7279;&#x6B8A;&#x60C5;&#x51B5;&#x5730;&#x5740;</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">IP&#x5730;&#x5740;</th>
+<th style="text-align:left">IP&#x5730;&#x5740;</th>
+<th style="text-align:left">IP&#x5730;&#x5740;</th>
+<th style="text-align:left">&#x53EF;&#x4EE5;&#x4E3A;</th>
+<th style="text-align:left">&#x53EF;&#x4EE5;&#x4E3A;</th>
+<th style="text-align:left">&#x63CF;&#x8FF0;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">&#x7F51;&#x7EDC;&#x53F7;</td>
+<td style="text-align:left">&#x5B50;&#x7F51;&#x53F7;</td>
+<td style="text-align:left">&#x4E3B;&#x673A;&#x53F7;</td>
+<td style="text-align:left">&#x6E90;&#x7AEF;</td>
+<td style="text-align:left">&#x76EE;&#x7684;&#x7AEF;</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">0</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">OK</td>
+<td style="text-align:left">&#x4E0D;&#x53EF;&#x80FD;</td>
+<td style="text-align:left">&#x7F51;&#x7EDC;&#x4E0A;&#x7684;&#x4E3B;&#x673A;</td>
+</tr>
+<tr>
+<td style="text-align:left">0</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"><em>hostid</em></td>
+<td style="text-align:left">OK</td>
+<td style="text-align:left">&#x4E0D;&#x53EF;&#x80FD;</td>
+<td style="text-align:left">&#x7F51;&#x7EDC;&#x4E0A;&#x7684;&#x7279;&#x5B9A;&#x4E3B;&#x673A;</td>
+</tr>
+<tr>
+<td style="text-align:left">127</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">&#x4EFB;&#x4F55;&#x503C;</td>
+<td style="text-align:left">OK</td>
+<td style="text-align:left">OK</td>
+<td style="text-align:left">&#x73AF;&#x56DE;&#x5730;&#x5740;</td>
+</tr>
+<tr>
+<td style="text-align:left">-1</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">-1</td>
+<td style="text-align:left">&#x4E0D;&#x53EF;&#x80FD;</td>
+<td style="text-align:left">OK</td>
+<td style="text-align:left">&#x53D7;&#x9650;&#x7684;&#x5E7F;&#x64AD;(&#x6C38;&#x8FDC;&#x4E0D;&#x88AB;&#x8F6C;&#x53D1;)</td>
+</tr>
+<tr>
+<td style="text-align:left"><em>netid</em></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">-1</td>
+<td style="text-align:left">&#x4E0D;&#x53EF;&#x80FD;</td>
+<td style="text-align:left">OK</td>
+<td style="text-align:left">&#x4EE5;&#x7F51;&#x7EDC;&#x4E3A;&#x76EE;&#x7684;&#x5411;netid&#x5E7F;&#x64AD;</td>
+</tr>
+<tr>
+<td style="text-align:left"><em>netid</em></td>
+<td style="text-align:left"><em>subnetid</em></td>
+<td style="text-align:left">-1</td>
+<td style="text-align:left">&#x4E0D;&#x53EF;&#x80FD;</td>
+<td style="text-align:left">OK</td>
+<td style="text-align:left">&#x4EE5;&#x5B50;&#x7F51;&#x4E3A;&#x76EE;&#x7684;&#x5411;netid, subnetid&#x5E7F;&#x64AD;</td>
+</tr>
+<tr>
+<td style="text-align:left"><em>netid</em></td>
+<td style="text-align:left">-1</td>
+<td style="text-align:left">-1</td>
+<td style="text-align:left">&#x4E0D;&#x53EF;&#x80FD;</td>
+<td style="text-align:left">OK</td>
+<td style="text-align:left">&#x4EE5;&#x6240;&#x4EE5;&#x5B50;&#x7F51;&#x4E3A;&#x76EE;&#x7684;&#x5411;netid&#x5E7F;&#x64AD;</td>
+</tr>
+</tbody>
+</table>
 <p>DNS</p>
 <h6 id="&#x5C01;&#x88C5;-&#x4E0E;-&#x5206;&#x7528;"><a href="#&#x5C01;&#x88C5;-&#x4E0E;-&#x5206;&#x7528;" class="headerlink" title="&#x5C01;&#x88C5; &#x4E0E; &#x5206;&#x7528;"></a>&#x5C01;&#x88C5; &#x4E0E; &#x5206;&#x7528;</h6><h6 id="&#x7AEF;&#x53E3;&#x53F7;"><a href="#&#x7AEF;&#x53E3;&#x53F7;" class="headerlink" title="&#x7AEF;&#x53E3;&#x53F7;"></a>&#x7AEF;&#x53E3;&#x53F7;</h6><h6 id="&#x6807;&#x51C6;-&#x4E0E;-&#x670D;&#x52A1;"><a href="#&#x6807;&#x51C6;-&#x4E0E;-&#x670D;&#x52A1;" class="headerlink" title="&#x6807;&#x51C6; &#x4E0E; &#x670D;&#x52A1;"></a>&#x6807;&#x51C6; &#x4E0E; &#x670D;&#x52A1;</h6><h6 id="&#x5B9E;&#x73B0;-&#x4E0E;-&#x63A5;&#x53E3;"><a href="#&#x5B9E;&#x73B0;-&#x4E0E;-&#x63A5;&#x53E3;" class="headerlink" title="&#x5B9E;&#x73B0; &#x4E0E; &#x63A5;&#x53E3;"></a>&#x5B9E;&#x73B0; &#x4E0E; &#x63A5;&#x53E3;</h6>]]></content>
     
