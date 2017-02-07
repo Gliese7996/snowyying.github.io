@@ -269,10 +269,10 @@
     <link href="http://snowyying.github.io/2017/network-tcpip-11-tcp-protocol/"/>
     <id>http://snowyying.github.io/2017/network-tcpip-11-tcp-protocol/</id>
     <published>2017-01-15T07:45:38.000Z</published>
-    <updated>2017-01-12T04:44:40.180Z</updated>
+    <updated>2017-02-06T06:50:28.459Z</updated>
     
     <content type="html"><![CDATA[<h6 id="TCP-&#x5934;"><a href="#TCP-&#x5934;" class="headerlink" title="TCP &#x5934;"></a>TCP &#x5934;</h6><p><img src="/2017/network-tcpip-11-tcp-protocol/tcp-header.png" alt="TCP Header"></p>
-]]></content>
+<h2 id="1-TCP-&#x534F;&#x8BAE;"><a href="#1-TCP-&#x534F;&#x8BAE;" class="headerlink" title="1. TCP &#x534F;&#x8BAE;"></a>1. TCP &#x534F;&#x8BAE;</h2><h4 id="1-1-TCP-&#x7684;&#x670D;&#x52A1;"><a href="#1-1-TCP-&#x7684;&#x670D;&#x52A1;" class="headerlink" title="1.1 TCP &#x7684;&#x670D;&#x52A1;"></a>1.1 TCP &#x7684;&#x670D;&#x52A1;</h4><h4 id="1-2-TCP-&#x5934;"><a href="#1-2-TCP-&#x5934;" class="headerlink" title="1.2 TCP &#x5934;"></a>1.2 TCP &#x5934;</h4><h2 id="2-TCP-&#x8FDE;&#x63A5;&#x7684;&#x5EFA;&#x7ACB;&#x548C;&#x7EC8;&#x6B62;"><a href="#2-TCP-&#x8FDE;&#x63A5;&#x7684;&#x5EFA;&#x7ACB;&#x548C;&#x7EC8;&#x6B62;" class="headerlink" title="2. TCP &#x8FDE;&#x63A5;&#x7684;&#x5EFA;&#x7ACB;&#x548C;&#x7EC8;&#x6B62;"></a>2. TCP &#x8FDE;&#x63A5;&#x7684;&#x5EFA;&#x7ACB;&#x548C;&#x7EC8;&#x6B62;</h2><h2 id="3-TCP-&#x7684;&#x4EA4;&#x4E92;&#x6570;&#x636E;&#x6D41;"><a href="#3-TCP-&#x7684;&#x4EA4;&#x4E92;&#x6570;&#x636E;&#x6D41;" class="headerlink" title="3. TCP &#x7684;&#x4EA4;&#x4E92;&#x6570;&#x636E;&#x6D41;"></a>3. TCP &#x7684;&#x4EA4;&#x4E92;&#x6570;&#x636E;&#x6D41;</h2><h2 id="4-TCP-&#x7684;&#x6210;&#x5757;&#x6570;&#x636E;&#x6D41;"><a href="#4-TCP-&#x7684;&#x6210;&#x5757;&#x6570;&#x636E;&#x6D41;" class="headerlink" title="4. TCP &#x7684;&#x6210;&#x5757;&#x6570;&#x636E;&#x6D41;"></a>4. TCP &#x7684;&#x6210;&#x5757;&#x6570;&#x636E;&#x6D41;</h2><h2 id="5-TCP-&#x7684;&#x8D85;&#x65F6;&#x4E0E;&#x91CD;&#x4F20;"><a href="#5-TCP-&#x7684;&#x8D85;&#x65F6;&#x4E0E;&#x91CD;&#x4F20;" class="headerlink" title="5. TCP &#x7684;&#x8D85;&#x65F6;&#x4E0E;&#x91CD;&#x4F20;"></a>5. TCP &#x7684;&#x8D85;&#x65F6;&#x4E0E;&#x91CD;&#x4F20;</h2><h2 id="6-TCP-&#x7684;&#x575A;&#x5B9A;&#x5B9A;&#x65F6;&#x5668;"><a href="#6-TCP-&#x7684;&#x575A;&#x5B9A;&#x5B9A;&#x65F6;&#x5668;" class="headerlink" title="6. TCP &#x7684;&#x575A;&#x5B9A;&#x5B9A;&#x65F6;&#x5668;"></a>6. TCP &#x7684;&#x575A;&#x5B9A;&#x5B9A;&#x65F6;&#x5668;</h2><h2 id="7-TCP-&#x7684;&#x4FDD;&#x6D3B;&#x5B9A;&#x65F6;&#x5668;"><a href="#7-TCP-&#x7684;&#x4FDD;&#x6D3B;&#x5B9A;&#x65F6;&#x5668;" class="headerlink" title="7. TCP &#x7684;&#x4FDD;&#x6D3B;&#x5B9A;&#x65F6;&#x5668;"></a>7. TCP &#x7684;&#x4FDD;&#x6D3B;&#x5B9A;&#x65F6;&#x5668;</h2><h2 id="8-TCP-&#x7684;&#x672A;&#x6765;&#x548C;&#x6027;&#x80FD;"><a href="#8-TCP-&#x7684;&#x672A;&#x6765;&#x548C;&#x6027;&#x80FD;" class="headerlink" title="8. TCP &#x7684;&#x672A;&#x6765;&#x548C;&#x6027;&#x80FD;"></a>8. TCP &#x7684;&#x672A;&#x6765;&#x548C;&#x6027;&#x80FD;</h2>]]></content>
     
     <summary type="html">
     
@@ -571,7 +571,7 @@
     <link href="http://snowyying.github.io/2017/network-tcpip-1-overview/"/>
     <id>http://snowyying.github.io/2017/network-tcpip-1-overview/</id>
     <published>2017-01-03T02:55:38.000Z</published>
-    <updated>2017-02-04T13:36:14.740Z</updated>
+    <updated>2017-02-06T06:51:12.350Z</updated>
     
     <content type="html"><![CDATA[<p><img src="/2017/network-tcpip-1-overview/tcpip-overview.gif" alt="TCP/IP"></p>
 <a id="more"></a>
@@ -820,22 +820,6 @@
   </entry>
   
   <entry>
-    <title>网络安全 - SSL 和 TLS</title>
-    <link href="http://snowyying.github.io/2016/security-ssl-tls/"/>
-    <id>http://snowyying.github.io/2016/security-ssl-tls/</id>
-    <published>2016-12-29T07:12:51.000Z</published>
-    <updated>2017-01-12T06:13:27.380Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="Security" scheme="http://snowyying.github.io/categories/Security/"/>
-    
-    
-  </entry>
-  
-  <entry>
     <title>网络安全 - WS-Security</title>
     <link href="http://snowyying.github.io/2016/security-ws-security/"/>
     <id>http://snowyying.github.io/2016/security-ws-security/</id>
@@ -863,13 +847,22 @@
   </entry>
   
   <entry>
-    <title>网络安全 - 数字签名</title>
-    <link href="http://snowyying.github.io/2016/security-digital-signature/"/>
-    <id>http://snowyying.github.io/2016/security-digital-signature/</id>
-    <published>2016-12-29T05:58:26.000Z</published>
-    <updated>2017-01-12T06:13:52.245Z</updated>
+    <title>网络安全 - 密钥交换</title>
+    <link href="http://snowyying.github.io/2016/security-key-exchange/"/>
+    <id>http://snowyying.github.io/2016/security-key-exchange/</id>
+    <published>2016-12-28T05:48:43.000Z</published>
+    <updated>2017-02-07T06:52:09.932Z</updated>
+    
+    <content type="html"><![CDATA[<p>&#x5BC6;&#x94A5;&#x4EA4;&#x6362;&#x7684;&#x4E24;&#x79CD;&#x673A;&#x5236;</p>
+<p>Diffie-Hellman</p>
+<p>&#x516C;&#x94A5;&#x52A0;&#x5BC6;</p>
+]]></content>
     
     <summary type="html">
+    
+      &lt;p&gt;&amp;#x5BC6;&amp;#x94A5;&amp;#x4EA4;&amp;#x6362;&amp;#x7684;&amp;#x4E24;&amp;#x79CD;&amp;#x673A;&amp;#x5236;&lt;/p&gt;
+&lt;p&gt;Diffie-Hellman&lt;/p&gt;
+&lt;p&gt;&amp;#x516C;&amp;#x94A5;&amp;#x52A0;&amp;#x5BC6;&lt;/p
     
     </summary>
     
@@ -879,13 +872,21 @@
   </entry>
   
   <entry>
-    <title>网络安全 - RSA 算法</title>
-    <link href="http://snowyying.github.io/2016/security-rsa-overview/"/>
-    <id>http://snowyying.github.io/2016/security-rsa-overview/</id>
-    <published>2016-12-29T05:57:44.000Z</published>
-    <updated>2017-01-12T06:14:50.085Z</updated>
+    <title>网络安全 - 安全协议</title>
+    <link href="http://snowyying.github.io/2016/security-protocols/"/>
+    <id>http://snowyying.github.io/2016/security-protocols/</id>
+    <published>2016-12-27T07:12:51.000Z</published>
+    <updated>2017-02-07T06:52:13.316Z</updated>
+    
+    <content type="html"><![CDATA[<p>SSL &#x548C; TLS</p>
+<p>SET</p>
+]]></content>
     
     <summary type="html">
+    
+      &lt;p&gt;SSL &amp;#x548C; TLS&lt;/p&gt;
+&lt;p&gt;SET&lt;/p&gt;
+
     
     </summary>
     
@@ -895,13 +896,50 @@
   </entry>
   
   <entry>
-    <title>网络安全 - DH 密钥交换</title>
-    <link href="http://snowyying.github.io/2016/security-dh-key-exchange/"/>
-    <id>http://snowyying.github.io/2016/security-dh-key-exchange/</id>
-    <published>2016-12-29T05:48:43.000Z</published>
-    <updated>2017-01-12T06:14:20.106Z</updated>
+    <title>网络安全 - 认证技术</title>
+    <link href="http://snowyying.github.io/2016/security-authentication/"/>
+    <id>http://snowyying.github.io/2016/security-authentication/</id>
+    <published>2016-12-26T06:23:53.000Z</published>
+    <updated>2017-02-07T06:45:14.818Z</updated>
+    
+    <content type="html"><![CDATA[<p>&#x6570;&#x5B57;&#x7B7E;&#x540D;</p>
+<p>&#x6570;&#x5B57;&#x8BC1;&#x4E66;</p>
+<p>PKI/CA</p>
+]]></content>
     
     <summary type="html">
+    
+      &lt;p&gt;&amp;#x6570;&amp;#x5B57;&amp;#x7B7E;&amp;#x540D;&lt;/p&gt;
+&lt;p&gt;&amp;#x6570;&amp;#x5B57;&amp;#x8BC1;&amp;#x4E66;&lt;/p&gt;
+&lt;p&gt;PKI/CA&lt;/p&gt;
+
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>网络安全 - 加密技术</title>
+    <link href="http://snowyying.github.io/2016/security-encryption/"/>
+    <id>http://snowyying.github.io/2016/security-encryption/</id>
+    <published>2016-12-25T05:57:44.000Z</published>
+    <updated>2017-02-07T06:47:27.961Z</updated>
+    
+    <content type="html"><![CDATA[<p>&#x5BF9;&#x79F0;&#x52A0;&#x5BC6;</p>
+<p>&#x975E;&#x5BF9;&#x79F0;&#x52A0;&#x5BC6;</p>
+<p>&#x5355;&#x5411;&#x52A0;&#x5BC6;</p>
+<p>ECC<br>RSA</p>
+<p>&#x6240;&#x8C13;&#x79BB;&#x6563;&#x5BF9;&#x6570;&#xFF0C;&#x5C31;&#x662F;&#x7ED9;&#x5B9A;&#x6B63;&#x6574;&#x6570;x&#xFF0C;y&#xFF0C;n&#xFF0C;&#x6C42;&#x51FA;&#x6B63;&#x6574;&#x6570;k&#xFF08;&#x5982;&#x679C;&#x5B58;&#x5728;&#x7684;&#x8BDD;&#xFF09;&#xFF0C;&#x4F7F;y&#x2261;xk(mod n)&#x3002;&#x5C31;&#x76EE;&#x524D;&#x800C;&#x8A00;&#xFF0C;&#x4EBA;&#x4EEC;&#x8FD8;&#x6CA1;&#x6709;&#x627E;&#x5230;&#x8BA1;&#x7B97;&#x79BB;&#x6563;&#x5BF9;&#x6570;&#x7684;&#x5FEB;&#x901F;&#x7B97;&#x6CD5;&#xFF08;&#x6240;&#x8C13;&#x5FEB;&#x901F;&#x7B97;&#x6CD5;&#xFF0C;&#x662F;&#x6307;&#x5176;&#x8BA1;&#x7B97;&#x590D;&#x6742;&#x6027;&#x5728;&#x591A;&#x9879;&#x5F0F;&#x8303;&#x56F4;&#x5185;&#x7684;&#x7B97;&#x6CD5;&#xFF0C;&#x5373;O(logn)k&#xFF0C;&#x5176;&#x4E2D;k&#x4E3A;&#x5E38;&#x6570;&#xFF09;&#x3002;&#x867D;&#x7136;&#x6709;&#x5FEB;&#x901F;&#x8BA1;&#x7B97;&#x79BB;&#x6563;&#x5BF9;&#x6570;&#x7684;&#x91CF;&#x5B50;&#x7B97;&#x6CD5;</p>
+<p><a href="http://blog.sina.com.cn/s/blog_9d357d970100zl8d.html" target="_blank" rel="external">http://blog.sina.com.cn/s/blog_9d357d970100zl8d.html</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&amp;#x5BF9;&amp;#x79F0;&amp;#x52A0;&amp;#x5BC6;&lt;/p&gt;
+&lt;p&gt;&amp;#x975E;&amp;#x5BF9;&amp;#x79F0;&amp;#x52A0;&amp;#x5BC6;&lt;/p&gt;
+&lt;p&gt;&amp;#x5355;&amp;#x5411;&amp;#x52A0;&amp;#x5BC6;&lt;/p&gt;
+&lt;p&gt;ECC&lt;br&gt;RS
     
     </summary>
     
