@@ -949,6 +949,20 @@
   </entry>
   
   <entry>
+    <title>网络安全 - 概述</title>
+    <link href="http://snowyying.github.io/2016/security-overview/"/>
+    <id>http://snowyying.github.io/2016/security-overview/</id>
+    <published>2016-12-24T07:00:32.000Z</published>
+    <updated>2017-02-07T07:25:29.402Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>Ubuntu 编译 Darwin Streaming Server</title>
     <link href="http://snowyying.github.io/2016/media-darwin-gxx-ubuntu/"/>
     <id>http://snowyying.github.io/2016/media-darwin-gxx-ubuntu/</id>
@@ -1137,43 +1151,6 @@
       <category term="TRUN" scheme="http://snowyying.github.io/tags/TRUN/"/>
     
       <category term="ICE" scheme="http://snowyying.github.io/tags/ICE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>RTSP/RTP/RTCP 概览</title>
-    <link href="http://snowyying.github.io/2016/network-rtsp-overview/"/>
-    <id>http://snowyying.github.io/2016/network-rtsp-overview/</id>
-    <published>2016-12-16T09:16:59.000Z</published>
-    <updated>2016-12-16T09:34:36.859Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote>
-<ul>
-<li>RTSP to control presentation sessions with commands such as PLAY and PAUSE.</li>
-<li>RTP to deliver actual stream data to clients, regardless of the client type or media encoding</li>
-<li>RTCP to communicate and monitor individual stream information between clients and servers</li>
-<li>SDP to give clients information about a requested piece of media</li>
-</ul>
-</blockquote>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;RTSP to control presentation sessions with commands such as PLAY and PAUSE.&lt;/li&gt;
-&lt;li&gt;RTP to deliver actual stream data
-    
-    </summary>
-    
-      <category term="Network" scheme="http://snowyying.github.io/categories/Network/"/>
-    
-    
-      <category term="RTSP" scheme="http://snowyying.github.io/tags/RTSP/"/>
-    
-      <category term="RTP" scheme="http://snowyying.github.io/tags/RTP/"/>
-    
-      <category term="RTCP" scheme="http://snowyying.github.io/tags/RTCP/"/>
     
   </entry>
   
