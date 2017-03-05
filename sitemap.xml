@@ -2,6 +2,55 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://snowyying.github.io/2017/misc-fallible-it-words/</loc>
+    
+    <lastmod>2017-03-05T05:46:24.274Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2017/misc-key-matrix/</loc>
+    
+    <lastmod>2017-03-05T05:28:10.158Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2017/os-io-fast-gpio/</loc>
+    
+    <lastmod>2017-03-05T04:43:59.370Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2017/network-tcpip-errata/</loc>
+    
+    <lastmod>2017-02-23T04:01:33.913Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2017/network-tcpip-1-overview/</loc>
+    
+    <lastmod>2017-02-09T03:07:18.706Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/swe-dp-principle/</loc>
+    
+    <lastmod>2017-02-08T06:50:13.960Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2017/swe-dp-cp-factory/</loc>
+    
+    <lastmod>2017-02-08T03:54:10.586Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://snowyying.github.io/2016/security-overview/</loc>
     
     <lastmod>2017-02-07T07:25:29.402Z</lastmod>
@@ -26,13 +75,6 @@
     <loc>http://snowyying.github.io/2016/os-io-reactor-proactor/</loc>
     
     <lastmod>2017-02-07T07:13:08.039Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.github.io/2016/swe-dp-principle/</loc>
-    
-    <lastmod>2017-02-07T07:11:11.079Z</lastmod>
     
   </url>
   
@@ -117,13 +159,6 @@
     <loc>http://snowyying.github.io/2016/swe-cmmi-kpas/</loc>
     
     <lastmod>2017-02-07T06:31:43.479Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.github.io/2017/network-tcpip-1-overview/</loc>
-    
-    <lastmod>2017-02-06T06:51:12.350Z</lastmod>
     
   </url>
   

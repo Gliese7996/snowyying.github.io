@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://snowyying.github.io/"/>
-  <updated>2017-01-21T11:39:25.671Z</updated>
+  <updated>2017-03-05T04:43:59.370Z</updated>
   <id>http://snowyying.github.io/</id>
   
   <author>
@@ -14,6 +14,383 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ARM Linux 通过 mmap 操作 GPIO (快速 GPIO)</title>
+    <link href="http://snowyying.github.io/2017/os-io-fast-gpio/"/>
+    <id>http://snowyying.github.io/2017/os-io-fast-gpio/</id>
+    <published>2017-03-04T04:10:49.000Z</published>
+    <updated>2017-03-05T04:43:59.370Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>/dev/mem&#x662F;&#x7269;&#x7406;&#x5185;&#x5B58;&#x7684;&#x5168;&#x6620;&#x50CF;&#xFF0C;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x8BBF;&#x95EE;&#x7269;&#x7406;&#x5185;&#x5B58;&#xFF0C;&#x4E00;&#x822C;&#x7528;&#x6CD5;&#x662F;open(&#x201C;/dev/mem&#x201D;,O_RDWR|O_SYNC)&#xFF0C;&#x7136;&#x540E;mmap&#xFF0C;&#x63A5;&#x7740;&#x5C31;&#x53EF;&#x4EE5;&#x7528;mmap&#x7684;&#x5730;&#x5740;&#x6765;&#x8BBF;&#x95EE;&#x7269;&#x7406;&#x5185;&#x5B58;&#xFF0C;&#x8FD9;&#x5B9E;&#x9645;&#x4E0A;&#x5C31;&#x662F;&#x5B9E;&#x73B0;&#x7528;&#x6237;&#x7A7A;&#x95F4;&#x9A71;&#x52A8;&#x7684;&#x4E00;&#x79CD;&#x65B9;&#x6CD5;&#x3002;</p>
+</blockquote>
+<a id="more"></a>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;fcntl.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;errno.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/mman.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> GPIO_BASE 0x20170000 <span class="comment">// GPIO &#x5BC4;&#x5B58;&#x5668;&#x57FA;&#x5740;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> BLOCK_SIZE (4*1024) <span class="comment">// &#x9875;&#x5927;&#x5C0F; (&#x4E0D;&#x89E3;&#x91CA;)</span></span></div><div class="line"></div><div class="line"><span class="keyword">static</span> <span class="keyword">volatile</span> <span class="keyword">unsigned</span> <span class="keyword">int</span> gpio_addr; <span class="comment">// GPIO &#x5BC4;&#x5B58;&#x5668;&#x57FA;&#x5740;(&#x503C;)</span></div><div class="line"><span class="keyword">static</span> <span class="keyword">volatile</span> <span class="keyword">unsigned</span> <span class="keyword">int</span> *gpio_base; <span class="comment">// GPIO &#x5BC4;&#x5B58;&#x5668;&#x57FA;&#x5740;&#x6307;&#x9488;</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">init_gpio</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">int</span> base)</span></span></div><div class="line">{</div><div class="line">	<span class="keyword">int</span> mem_fd;</div><div class="line">	<span class="keyword">void</span> *gpio_map;</div><div class="line"></div><div class="line">	<span class="comment">/* open /dev/mem */</span></div><div class="line">	<span class="keyword">if</span> ((mem_fd = open(<span class="string">&quot;/dev/mem&quot;</span>, O_RDWR|O_SYNC)) &lt; <span class="number">0</span>)</div><div class="line">	{</div><div class="line">		<span class="built_in">printf</span>(<span class="string">&quot;#[E][MMP] can&apos;t open &apos;/dev/mem&apos; \n&quot;</span>);</div><div class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line">	}</div><div class="line"></div><div class="line">	<span class="comment">/* mmap GPIO */</span></div><div class="line">	gpio_map = mmap(<span class="literal">NULL</span>,</div><div class="line">		BLOCK_SIZE,</div><div class="line">		PROT_READ|PROT_WRITE,</div><div class="line">		MAP_SHARED,</div><div class="line">		mem_fd,</div><div class="line">		base);</div><div class="line">	close(mem_fd);</div><div class="line">	<span class="keyword">if</span> (gpio_map == MAP_FAILED)</div><div class="line">	{</div><div class="line">		 <span class="built_in">printf</span>(<span class="string">&quot;#[E][MMP] mmap error, ec = [%d] \n&quot;</span>, errno);</div><div class="line">		 <span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line">	}</div><div class="line"></div><div class="line">	<span class="comment">// always use volatile pointer</span></div><div class="line">	gpio_addr = base;</div><div class="line">	gpio_base = (<span class="keyword">volatile</span> <span class="keyword">unsigned</span> <span class="keyword">int</span> *)gpio_map;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">&quot;#[I][MMP] fast gpio maped, base = [%08x] ! \n&quot;</span>, gpio_addr);</div><div class="line"></div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">}  </div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">gpio_uninit</span><span class="params">()</span></span></div><div class="line">{</div><div class="line">	munmap((<span class="keyword">void</span> *)gpio_base, <span class="number">0x00</span>);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">&quot;#[I][MMP] fast gpio unmaped, base = [%08x] ! \n&quot;</span>, gpio_addr);</div><div class="line">}</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">unsigned</span> <span class="keyword">int</span> <span class="title">gpio_stat</span><span class="params">(<span class="keyword">int</span> offset)</span></span></div><div class="line">{</div><div class="line">	<span class="keyword">volatile</span> <span class="keyword">unsigned</span> <span class="keyword">int</span> *gpio_reg = gpio_base + offset;</div><div class="line">	<span class="keyword">volatile</span> <span class="keyword">unsigned</span> <span class="keyword">int</span> val = *((<span class="keyword">volatile</span> <span class="keyword">unsigned</span> <span class="keyword">int</span>*)gpio_reg);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">&quot;#[I][MMP] fast gpio stat [%08x]:[%08x] \n&quot;</span>,</div><div class="line">    gpio_addr+offset, val);</div><div class="line"></div><div class="line">	<span class="keyword">return</span> val;</div><div class="line">}</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">gpio_get</span><span class="params">(<span class="keyword">int</span> offset, <span class="keyword">int</span> bit)</span></span></div><div class="line">{</div><div class="line">	<span class="keyword">volatile</span> <span class="keyword">unsigned</span> <span class="keyword">int</span> *gpio_reg = gpio_base + offset;</div><div class="line">	<span class="keyword">volatile</span> <span class="keyword">unsigned</span> <span class="keyword">int</span> val = *((<span class="keyword">volatile</span> <span class="keyword">unsigned</span> <span class="keyword">int</span>*)gpio_reg);</div><div class="line">	<span class="keyword">volatile</span> <span class="keyword">unsigned</span> <span class="keyword">int</span> status = (val &amp; (<span class="number">1</span> &lt;&lt; bit)) &gt;&gt; bit;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">&quot;# mmap gpio reg get [%08x]:[%08x], status = [%d] \n&quot;</span>,</div><div class="line">    gpio_addr+offset, val, status);</div><div class="line"></div><div class="line">	<span class="keyword">return</span> status;</div><div class="line">}</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">gpio_set</span><span class="params">(<span class="keyword">int</span> offset, <span class="keyword">int</span> bit, <span class="keyword">int</span> status)</span></span></div><div class="line">{</div><div class="line">	<span class="keyword">volatile</span> <span class="keyword">unsigned</span> <span class="keyword">int</span> *gpio_reg = gpio_base + offset;</div><div class="line">	<span class="keyword">volatile</span> <span class="keyword">unsigned</span> <span class="keyword">int</span> bit_set_val = <span class="number">1</span> &lt;&lt; bit;</div><div class="line">	<span class="keyword">if</span> (status)</div><div class="line">		*gpio_reg = (*gpio_reg) | bit_set_val;</div><div class="line">	<span class="keyword">else</span></div><div class="line">		*gpio_reg = (*gpio_reg) &amp; (~bit_set_val);</div><div class="line">	<span class="comment">//printf(&quot;#[I][MMP] bit = [%08x] \n&quot;, bit_set_val);</span></div><div class="line">	<span class="built_in">printf</span>(<span class="string">&quot;#[I][MMP] fast gpio set [%08x]:[%08x], status = [%d] \n&quot;</span>,</div><div class="line">    gpio_addr+offset, *((<span class="keyword">volatile</span> <span class="keyword">unsigned</span> <span class="keyword">int</span>*)gpio_reg), status);</div><div class="line"></div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">}</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">{</div><div class="line">	<span class="built_in">printf</span>(<span class="string">&quot;# GPIO Demo [&gt;&gt;&gt;] \n&quot;</span>);</div><div class="line"></div><div class="line">	<span class="comment">// init</span></div><div class="line">	init_gpio(GPIO_BASE);</div><div class="line"></div><div class="line">	<span class="comment">// stat</span></div><div class="line"><span class="meta">#<span class="meta-keyword">if</span> 0</span></div><div class="line">	<span class="keyword">while</span> (<span class="number">1</span>)</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line">	{</div><div class="line">		<span class="keyword">int</span> i = <span class="number">0</span>;</div><div class="line">		<span class="keyword">for</span> (; i&lt;<span class="number">20</span>; i++)</div><div class="line">		{</div><div class="line">			gpio_stat(i*<span class="number">4</span>);</div><div class="line">		}</div><div class="line">	}</div><div class="line"></div><div class="line">	<span class="comment">// get / set</span></div><div class="line">	<span class="keyword">while</span> (<span class="number">1</span>)</div><div class="line">	{</div><div class="line"><span class="meta">#<span class="meta-keyword">if</span> 0</span></div><div class="line">		gpio_get(<span class="number">0x04</span>, <span class="number">9</span>);</div><div class="line">		sleep(<span class="number">3</span>);</div><div class="line"><span class="meta">#<span class="meta-keyword">else</span></span></div><div class="line">		gpio_set(<span class="number">0x04</span>, <span class="number">9</span>, <span class="number">1</span>);</div><div class="line">		sleep(<span class="number">3</span>);</div><div class="line">		gpio_set(<span class="number">0x04</span>, <span class="number">9</span>, <span class="number">0</span>);</div><div class="line">		sleep(<span class="number">3</span>);</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line">	}</div><div class="line"></div><div class="line">	<span class="comment">// uninit</span></div><div class="line">	gpio_uninit();</div><div class="line"></div><div class="line">	<span class="built_in">printf</span>(<span class="string">&quot;# GPIO Demo [&lt;&lt;&lt;] \n&quot;</span>);</div><div class="line"></div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">}</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;/dev/mem&amp;#x662F;&amp;#x7269;&amp;#x7406;&amp;#x5185;&amp;#x5B58;&amp;#x7684;&amp;#x5168;&amp;#x6620;&amp;#x50CF;&amp;#xFF0C;&amp;#x53EF;&amp;#x4EE5;&amp;#x7528;&amp;#x6765;&amp;#x8BBF;&amp;#x95EE;&amp;#x7269;&amp;#x7406;&amp;#x5185;&amp;#x5B58;&amp;#xFF0C;&amp;#x4E00;&amp;#x822C;&amp;#x7528;&amp;#x6CD5;&amp;#x662F;open(&amp;#x201C;/dev/mem&amp;#x201D;,O_RDWR|O_SYNC)&amp;#xFF0C;&amp;#x7136;&amp;#x540E;mmap&amp;#xFF0C;&amp;#x63A5;&amp;#x7740;&amp;#x5C31;&amp;#x53EF;&amp;#x4EE5;&amp;#x7528;mmap&amp;#x7684;&amp;#x5730;&amp;#x5740;&amp;#x6765;&amp;#x8BBF;&amp;#x95EE;&amp;#x7269;&amp;#x7406;&amp;#x5185;&amp;#x5B58;&amp;#xFF0C;&amp;#x8FD9;&amp;#x5B9E;&amp;#x9645;&amp;#x4E0A;&amp;#x5C31;&amp;#x662F;&amp;#x5B9E;&amp;#x73B0;&amp;#x7528;&amp;#x6237;&amp;#x7A7A;&amp;#x95F4;&amp;#x9A71;&amp;#x52A8;&amp;#x7684;&amp;#x4E00;&amp;#x79CD;&amp;#x65B9;&amp;#x6CD5;&amp;#x3002;&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="OS" scheme="http://snowyying.github.io/categories/OS/"/>
+    
+    
+      <category term="IT" scheme="http://snowyying.github.io/tags/IT/"/>
+    
+      <category term="I/O" scheme="http://snowyying.github.io/tags/I-O/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>最少 GPIO 的矩阵按键扫描电路</title>
+    <link href="http://snowyying.github.io/2017/misc-key-matrix/"/>
+    <id>http://snowyying.github.io/2017/misc-key-matrix/</id>
+    <published>2017-03-02T10:13:50.000Z</published>
+    <updated>2017-03-05T05:28:10.158Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>&#x5728;&#x952E;&#x76D8;&#x4E2D;&#x6309;&#x952E;&#x6570;&#x91CF;&#x8F83;&#x591A;&#x65F6;&#xFF0C;&#x4E3A;&#x4E86;&#x51CF;&#x5C11;I/O&#x53E3;&#x7684;&#x5360;&#x7528;&#xFF0C;&#x901A;&#x5E38;&#x5C06;&#x6309;&#x952E;&#x6392;&#x5217;&#x6210;&#x77E9;&#x9635;&#x5F62;&#x5F0F;&#x3002;&#x5728;&#x77E9;&#x9635;&#x5F0F;&#x952E;&#x76D8;&#x4E2D;&#xFF0C;&#x6BCF;&#x6761;&#x6C34;&#x5E73;&#x7EBF;&#x548C;&#x5782;&#x76F4;&#x7EBF;&#x5728;&#x4EA4;&#x53C9;&#x5904;&#x4E0D;&#x76F4;&#x63A5;&#x8FDE;&#x901A;&#xFF0C;&#x800C;&#x662F;&#x901A;&#x8FC7;&#x4E00;&#x4E2A;&#x6309;&#x952E;&#x52A0;&#x4EE5;&#x8FDE;&#x63A5;&#x3002;&#x8FD9;&#x6837;&#xFF0C;&#x4E00;&#x4E2A;&#x7AEF;&#x53E3;&#xFF08;&#x5982;P1&#x53E3;&#xFF09;&#x5C31;&#x53EF;&#x4EE5;&#x6784;&#x6210;4*4=16&#x4E2A;&#x6309;&#x952E;&#xFF0C;&#x6BD4;&#x4E4B;&#x76F4;&#x63A5;&#x5C06;&#x7AEF;&#x53E3;&#x7EBF;&#x7528;&#x4E8E;&#x952E;&#x76D8;&#x591A;&#x51FA;&#x4E86;&#x4E00;&#x500D;&#xFF0C;&#x800C;&#x4E14;&#x7EBF;&#x6570;&#x8D8A;&#x591A;&#xFF0C;&#x533A;&#x522B;&#x8D8A;&#x660E;&#x663E;&#xFF0C;&#x6BD4;&#x5982;&#x518D;&#x591A;&#x52A0;&#x4E00;&#x6761;&#x7EBF;&#x5C31;&#x53EF;&#x4EE5;&#x6784;&#x6210;20&#x952E;&#x7684;&#x952E;&#x76D8;&#xFF0C;&#x800C;&#x76F4;&#x63A5;&#x7528;&#x7AEF;&#x53E3;&#x7EBF;&#x5219;&#x53EA;&#x80FD;&#x591A;&#x51FA;&#x4E00;&#x952E;&#xFF08;9&#x952E;&#xFF09;&#x3002;</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="&#x77E9;&#x9635;&#x626B;&#x63CF;"><a href="#&#x77E9;&#x9635;&#x626B;&#x63CF;" class="headerlink" title="&#x77E9;&#x9635;&#x626B;&#x63CF;"></a>&#x77E9;&#x9635;&#x626B;&#x63CF;</h2><p>&#x6700;&#x5E38;&#x7528;&#x7684;&#x7EB5;&#x6A2A;&#x626B;&#x63CF;&#x7535;&#x8DEF;, &#x7535;&#x8DEF;&#x8BBE;&#x8BA1;&#x7B80;&#x5355;, &#x4F46;&#x5E76;&#x4E0D;&#x662F;GPIO&#x7528;&#x7684;&#x6700;&#x5C11;&#x7684;&#x65B9;&#x5F0F;.</p>
+<p><img src="/2017/misc-key-matrix/8io-16key-matrix.jpg" alt="8IO-16&#x6309;&#x952E;&#x626B;&#x63CF;&#x7535;&#x8DEF;"></p>
+<h2 id="&#x6309;&#x4F4D;&#x626B;&#x63CF;"><a href="#&#x6309;&#x4F4D;&#x626B;&#x63CF;" class="headerlink" title="&#x6309;&#x4F4D;&#x626B;&#x63CF;"></a>&#x6309;&#x4F4D;&#x626B;&#x63CF;</h2><p>&#x6BCF;&#x6B21;&#x626B;&#x63CF;&#x5168;&#x90E8;GPIO, &#x6309;&#x626B;&#x63CF;&#x7ED3;&#x679C;&#x7EC4;&#x6210;&#x4F4D;&#x8FD0;&#x7B97;&#x5F97;&#x5230;&#x5177;&#x4F53;&#x952E;&#x503C;, &#x7535;&#x8DEF;&#x8BBE;&#x8BA1;&#x590D;&#x6742;.</p>
+<p><img src="/2017/misc-key-matrix/4io-12key-matrix.png" alt="4IO-12&#x6309;&#x952E;&#x626B;&#x63CF;&#x7535;&#x8DEF;"></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;&amp;#x5728;&amp;#x952E;&amp;#x76D8;&amp;#x4E2D;&amp;#x6309;&amp;#x952E;&amp;#x6570;&amp;#x91CF;&amp;#x8F83;&amp;#x591A;&amp;#x65F6;&amp;#xFF0C;&amp;#x4E3A;&amp;#x4E86;&amp;#x51CF;&amp;#x5C11;I/O&amp;#x53E3;&amp;#x7684;&amp;#x5360;&amp;#x7528;&amp;#xFF0C;&amp;#x901A;&amp;#x5E38;&amp;#x5C06;&amp;#x6309;&amp;#x952E;&amp;#x6392;&amp;#x5217;&amp;#x6210;&amp;#x77E9;&amp;#x9635;&amp;#x5F62;&amp;#x5F0F;&amp;#x3002;&amp;#x5728;&amp;#x77E9;&amp;#x9635;&amp;#x5F0F;&amp;#x952E;&amp;#x76D8;&amp;#x4E2D;&amp;#xFF0C;&amp;#x6BCF;&amp;#x6761;&amp;#x6C34;&amp;#x5E73;&amp;#x7EBF;&amp;#x548C;&amp;#x5782;&amp;#x76F4;&amp;#x7EBF;&amp;#x5728;&amp;#x4EA4;&amp;#x53C9;&amp;#x5904;&amp;#x4E0D;&amp;#x76F4;&amp;#x63A5;&amp;#x8FDE;&amp;#x901A;&amp;#xFF0C;&amp;#x800C;&amp;#x662F;&amp;#x901A;&amp;#x8FC7;&amp;#x4E00;&amp;#x4E2A;&amp;#x6309;&amp;#x952E;&amp;#x52A0;&amp;#x4EE5;&amp;#x8FDE;&amp;#x63A5;&amp;#x3002;&amp;#x8FD9;&amp;#x6837;&amp;#xFF0C;&amp;#x4E00;&amp;#x4E2A;&amp;#x7AEF;&amp;#x53E3;&amp;#xFF08;&amp;#x5982;P1&amp;#x53E3;&amp;#xFF09;&amp;#x5C31;&amp;#x53EF;&amp;#x4EE5;&amp;#x6784;&amp;#x6210;4*4=16&amp;#x4E2A;&amp;#x6309;&amp;#x952E;&amp;#xFF0C;&amp;#x6BD4;&amp;#x4E4B;&amp;#x76F4;&amp;#x63A5;&amp;#x5C06;&amp;#x7AEF;&amp;#x53E3;&amp;#x7EBF;&amp;#x7528;&amp;#x4E8E;&amp;#x952E;&amp;#x76D8;&amp;#x591A;&amp;#x51FA;&amp;#x4E86;&amp;#x4E00;&amp;#x500D;&amp;#xFF0C;&amp;#x800C;&amp;#x4E14;&amp;#x7EBF;&amp;#x6570;&amp;#x8D8A;&amp;#x591A;&amp;#xFF0C;&amp;#x533A;&amp;#x522B;&amp;#x8D8A;&amp;#x660E;&amp;#x663E;&amp;#xFF0C;&amp;#x6BD4;&amp;#x5982;&amp;#x518D;&amp;#x591A;&amp;#x52A0;&amp;#x4E00;&amp;#x6761;&amp;#x7EBF;&amp;#x5C31;&amp;#x53EF;&amp;#x4EE5;&amp;#x6784;&amp;#x6210;20&amp;#x952E;&amp;#x7684;&amp;#x952E;&amp;#x76D8;&amp;#xFF0C;&amp;#x800C;&amp;#x76F4;&amp;#x63A5;&amp;#x7528;&amp;#x7AEF;&amp;#x53E3;&amp;#x7EBF;&amp;#x5219;&amp;#x53EA;&amp;#x80FD;&amp;#x591A;&amp;#x51FA;&amp;#x4E00;&amp;#x952E;&amp;#xFF08;9&amp;#x952E;&amp;#xFF09;&amp;#x3002;&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="Misc" scheme="http://snowyying.github.io/categories/Misc/"/>
+    
+    
+      <category term="按键" scheme="http://snowyying.github.io/tags/%E6%8C%89%E9%94%AE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>中国程序员容易发音错误的计算机相关英文单词</title>
+    <link href="http://snowyying.github.io/2017/misc-fallible-it-words/"/>
+    <id>http://snowyying.github.io/2017/misc-fallible-it-words/</id>
+    <published>2017-03-02T10:11:33.000Z</published>
+    <updated>2017-03-05T05:46:24.274Z</updated>
+    
+    <content type="html"><![CDATA[<p><code>&#x6765;&#x81EA;: http://www.techug.com/post/chinese-programmer-wrong-pronunciation.html &#x7A0B;&#x5E8F;&#x5E08; 2017-02-23</code></p>
+<blockquote>
+<p>&#x82F1;&#x6587;&#x662F;&#x4E2D;&#x56FD;&#x5927;&#x591A;&#x6570;&#x7A0B;&#x5E8F;&#x5458;&#x7684;&#x201C;&#x547D;&#x95E8;&#x201D;&#xFF0C;&#x5728;&#x5DE5;&#x4F5C;&#x4E2D;&#x6216;&#x591A;&#x6216;&#x5C11;&#x4E5F;&#x4F1A;&#x9047;&#x5230;&#x6765;&#x81EA;&#x82F1;&#x6587;&#x7684;&#x6311;&#x6218;&#xFF0C;&#x8BFB;&#x5199;&#x5FC5;&#x4E0D;&#x53EF;&#x5C11;;&#x800C;&#x53D1;&#x97F3;&#x5F80;&#x5F80;&#x5BB9;&#x6613;&#x88AB;&#x5FFD;&#x89C6;&#xFF0C;Github&#x7684;&#x8D21;&#x732E;&#x8005;shimohq&#x540C;&#x5B66;&#x7EC6;&#x5FC3;&#x7684;&#x6536;&#x96C6;&#x4E86;&#x4E00;&#x4E9B;&#x7A0B;&#x5E8F;&#x5458;&#x5E38;&#x7528;&#x7684;&#x82F1;&#x6587;&#x5355;&#x8BCD;&#xFF0C;&#x800C;&#x4E14;&#x5BB9;&#x6613;&#x53D1;&#x97F3;&#x9519;&#x8BEF;&#x3002;&#x770B;&#x770B;&#x4F60;&#x65E5;&#x5E38;&#x54EA;&#x4E9B;&#x5355;&#x8BCD;&#x7684;&#x53D1;&#x97F3;&#x662F;&#x975E;&#x4E3B;&#x6D41;;&#x5C0F;&#x7F16;&#x547D;&#x4E2D;&#x4E86;&#x4E0D;&#x5C11;!</p>
+</blockquote>
+<p><img src="/2017/misc-fallible-it-words/c2554c50d35d9e31fd6cebe8b3c88726.jpg" alt=""></p>
+<a id="more"></a>
+<p>&#x4E2D;&#x56FD;&#x7A0B;&#x5E8F;&#x5458;&#x5BB9;&#x6613;&#x53D1;&#x97F3;&#x9519;&#x8BEF;&#x7684;&#x5355;&#x8BCD;</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">&#x5355;&#x8BCD;</th>
+<th style="text-align:left">&#x6B63;&#x786E;&#x53D1;&#x97F3;</th>
+<th style="text-align:left">&#x9519;&#x8BEF;&#x53D1;&#x97F3;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">access</td>
+<td style="text-align:left">[&#x2018;&#xE6;kses]</td>
+<td style="text-align:left">[&#x259;k&#x2019;ses]</td>
+</tr>
+<tr>
+<td style="text-align:left">Angular</td>
+<td style="text-align:left">[&#x2018;&#xE6;&#x14B;gj&#x28A;l&#x259;]</td>
+<td style="text-align:left">[&#x2018;&#xE6;&#x14B;&#x261;&#x259;l&#x259;; &#x2018;&#xE6;&#x14B;d&#x292;&#x28C;l&#x259;]</td>
+</tr>
+<tr>
+<td style="text-align:left">AJAX</td>
+<td style="text-align:left">[&#x2018;eid&#x292;&#xE6;ks]</td>
+<td style="text-align:left">[&#x259;&#x2019;d&#x292;&#x28C;ks]</td>
+</tr>
+<tr>
+<td style="text-align:left">Apache</td>
+<td style="text-align:left">[&#x259;&#x2019;p&#xE6;t&#x283;&#x26A;]</td>
+<td style="text-align:left">[&#x28C;p&#x28C;t&#x283;]</td>
+</tr>
+<tr>
+<td style="text-align:left">app</td>
+<td style="text-align:left">[&#xE6;p]</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">archive</td>
+<td style="text-align:left">[&#x2018;&#x251;&#x2D0;ka&#x26A;v]</td>
+<td style="text-align:left">[&#x2018;&#x259;t&#x283;&#x26A;v]</td>
+</tr>
+<tr>
+<td style="text-align:left">array</td>
+<td style="text-align:left">[&#x259;&#x2019;rei]</td>
+<td style="text-align:left">[&#xE6;&#x2019;rei]</td>
+</tr>
+<tr>
+<td style="text-align:left">avatar</td>
+<td style="text-align:left">[&#x2018;&#xE6;v&#x259;t&#x251;&#x2D0;]</td>
+<td style="text-align:left">[&#x259;&#x2019;v&#x28C;t&#x251;]</td>
+</tr>
+<tr>
+<td style="text-align:left">cache</td>
+<td style="text-align:left">[k&#xE6;&#x283;]</td>
+<td style="text-align:left">[k&#xE6;t&#x283;]</td>
+</tr>
+<tr>
+<td style="text-align:left">deque</td>
+<td style="text-align:left">[&#x2018;dek]</td>
+<td style="text-align:left">[di&#x2019;kju]</td>
+</tr>
+<tr>
+<td style="text-align:left">digest</td>
+<td style="text-align:left">[&#x2018;d&#x251;&#x26A;d&#x292;&#x25B;st]</td>
+<td style="text-align:left">[&#x2018;d&#x26A;g&#x25B;st]</td>
+</tr>
+<tr>
+<td style="text-align:left">Django</td>
+<td style="text-align:left">[&#x2C8;d&#x292;&#xE6;&#x14B;&#x261;o&#x28A;]</td>
+<td style="text-align:left">[di&#x2C8;d&#x292;&#xE6;&#x14B;&#x261;o&#x28A;]</td>
+</tr>
+<tr>
+<td style="text-align:left">doc</td>
+<td style="text-align:left">[d&#x252;k]</td>
+<td style="text-align:left">[da&#x28A;k]</td>
+</tr>
+<tr>
+<td style="text-align:left">Git</td>
+<td style="text-align:left">[&#x261;&#x26A;t]</td>
+<td style="text-align:left">[d&#x292;&#x26A;t; j&#x26A;t]</td>
+</tr>
+<tr>
+<td style="text-align:left">GNU</td>
+<td style="text-align:left">[gnu:]</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">GUI</td>
+<td style="text-align:left">[&#x2C8;&#x261;ui]</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">hidden</td>
+<td style="text-align:left">[&#x2018;h&#x26A;dn]</td>
+<td style="text-align:left">[&#x2018;ha&#x26A;dn]</td>
+</tr>
+<tr>
+<td style="text-align:left">image</td>
+<td style="text-align:left">[&#x2018;&#x26A;m&#x26A;d&#x292;]</td>
+<td style="text-align:left">[&#x26A;&#x2019;me&#x26A;d&#x292;]</td>
+</tr>
+<tr>
+<td style="text-align:left">integer</td>
+<td style="text-align:left">[&#x2018;&#x26A;nt&#x26A;d&#x292;&#x259;]</td>
+<td style="text-align:left">[&#x2C8;&#x26A;nta&#x26A;g&#x259;]</td>
+</tr>
+<tr>
+<td style="text-align:left">issue</td>
+<td style="text-align:left">[&#x2018;&#x26A;&#x283;u&#x2D0;]</td>
+<td style="text-align:left">[&#x2C8;a&#x26A;&#x283;u&#x2D0;]</td>
+</tr>
+<tr>
+<td style="text-align:left">jpg(jpeg)</td>
+<td style="text-align:left">[&#x2018;d&#x292;e&#x26A;pe&#x261;]</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">Linux</td>
+<td style="text-align:left">[&#x2018;l&#x26A;n&#x259;ks]</td>
+<td style="text-align:left">[&#x2C8;l&#x26A;n&#x28C;ks; &#x2C8;l&#x26A;nju&#x2D0;ks]</td>
+</tr>
+<tr>
+<td style="text-align:left">main</td>
+<td style="text-align:left">[me&#x26A;n]</td>
+<td style="text-align:left">[m&#x26A;n]</td>
+</tr>
+<tr>
+<td style="text-align:left">margin</td>
+<td style="text-align:left">[&#x2018;m&#x251;&#x2D0;d&#x292;&#x26A;n]</td>
+<td style="text-align:left">[&#x2018;m&#x28C;g&#x26A;n]</td>
+</tr>
+<tr>
+<td style="text-align:left">maven</td>
+<td style="text-align:left">[&#x2018;me&#x26A;vn]</td>
+<td style="text-align:left">[&#x2018;ma&#x2D0;vn]</td>
+</tr>
+<tr>
+<td style="text-align:left">module</td>
+<td style="text-align:left">[&#x2018;m&#x252;dju&#x2D0;l]</td>
+<td style="text-align:left">[&#x2018;m&#x259;&#x28A;dl]</td>
+</tr>
+<tr>
+<td style="text-align:left">nginx</td>
+<td style="text-align:left">Engine X</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">null</td>
+<td style="text-align:left">[n&#x28C;l]</td>
+<td style="text-align:left">[na&#x28A;]</td>
+</tr>
+<tr>
+<td style="text-align:left">OS X</td>
+<td style="text-align:left">OS ten</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">parameter</td>
+<td style="text-align:left">[p&#x259;&#x2019;r&#xE6;m&#x26A;t&#x259;]</td>
+<td style="text-align:left">[&#x2018;p&#xE6;r&#x259;m&#x26A;t&#x259;]</td>
+</tr>
+<tr>
+<td style="text-align:left">putty</td>
+<td style="text-align:left">[&#x2C8;p&#x28C;ti]</td>
+<td style="text-align:left">[&#x2C8;pu&#x2D0;ti]</td>
+</tr>
+<tr>
+<td style="text-align:left">query</td>
+<td style="text-align:left">[&#x2018;kw&#x26A;&#x259;ri]</td>
+<td style="text-align:left">[&#x2018;kwa&#x26A;ri]</td>
+</tr>
+<tr>
+<td style="text-align:left">retina</td>
+<td style="text-align:left">[&#x2018;ret&#x26A;n&#x259;]</td>
+<td style="text-align:left">[&#x2018;ritina]</td>
+</tr>
+<tr>
+<td style="text-align:left">safari</td>
+<td style="text-align:left">[s&#x259;&#x2019;f&#x251;&#x2D0;r&#x26A;]</td>
+<td style="text-align:left">[s&#xE6;f&#x259;r&#x26A;]</td>
+</tr>
+<tr>
+<td style="text-align:left">scheme</td>
+<td style="text-align:left">[ski&#x2D0;m]</td>
+<td style="text-align:left">[s&#x2019;k&#xE6;m&#x259;]</td>
+</tr>
+<tr>
+<td style="text-align:left">sudo</td>
+<td style="text-align:left">[&#x2018;su&#x2D0;du&#x2D0;]</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">suite</td>
+<td style="text-align:left">[swi&#x2D0;t]</td>
+<td style="text-align:left">[sju&#x2D0;t]</td>
+</tr>
+<tr>
+<td style="text-align:left">typical</td>
+<td style="text-align:left">[&#x2018;t&#x26A;p&#x26A;kl]</td>
+<td style="text-align:left">[&#x2018;ta&#x26A;p&#x26A;k&#x259;l]</td>
+</tr>
+<tr>
+<td style="text-align:left">Ubuntu</td>
+<td style="text-align:left">[&#x28A;&#x2019;b&#x28A;nt&#x28A;]</td>
+<td style="text-align:left">[ju&#x2D0;&#x2019;b&#x28A;nt&#x28A;]</td>
+</tr>
+<tr>
+<td style="text-align:left">width</td>
+<td style="text-align:left">[w&#x26A;d&#x3B8;]</td>
+<td style="text-align:left">[wa&#x26A;d&#x3B8;]</td>
+</tr>
+<tr>
+<td style="text-align:left">YouTube</td>
+<td style="text-align:left">[&#x2018;ju&#x2D0;&#x2019;tju&#x2D0;b]</td>
+<td style="text-align:left">[&#x2018;ju&#x2D0;&#x2019;t&#x28A;b&#x26A;]</td>
+</tr>
+</tbody>
+</table>
+<p>&#x672C;&#x7740;&#x7B80;&#x5355;&#x7684;&#x539F;&#x5219;, &#x53C8;&#x4E3A;&#x4E86;&#x907F;&#x514D;&#x7A0B;&#x5E8F;&#x733F;&#x4EEC;&#x51FA;&#x73B0;&#x9009;&#x62E9;&#x56F0;&#x96BE;&#x75C7;, &#x2018;&#x6B63;&#x786E;&#x97F3;&#x6807;&#x2019;&#x91C7;&#x7528;&#x4E86;&#x6700;&#x63A5;&#x8FD1;&#x6709;&#x9053;&#x8BCD;&#x5178;&#x97F3;&#x9891;&#x7684;&#x82F1;&#x5F0F; DJ &#x97F3;&#x6807;, &#x4E0D;&#x4EE3;&#x8868;&#x5176;&#x552F;&#x4E00;&#x6027;.</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;code&gt;&amp;#x6765;&amp;#x81EA;: http://www.techug.com/post/chinese-programmer-wrong-pronunciation.html &amp;#x7A0B;&amp;#x5E8F;&amp;#x5E08; 2017-02-23&lt;/code&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&amp;#x82F1;&amp;#x6587;&amp;#x662F;&amp;#x4E2D;&amp;#x56FD;&amp;#x5927;&amp;#x591A;&amp;#x6570;&amp;#x7A0B;&amp;#x5E8F;&amp;#x5458;&amp;#x7684;&amp;#x201C;&amp;#x547D;&amp;#x95E8;&amp;#x201D;&amp;#xFF0C;&amp;#x5728;&amp;#x5DE5;&amp;#x4F5C;&amp;#x4E2D;&amp;#x6216;&amp;#x591A;&amp;#x6216;&amp;#x5C11;&amp;#x4E5F;&amp;#x4F1A;&amp;#x9047;&amp;#x5230;&amp;#x6765;&amp;#x81EA;&amp;#x82F1;&amp;#x6587;&amp;#x7684;&amp;#x6311;&amp;#x6218;&amp;#xFF0C;&amp;#x8BFB;&amp;#x5199;&amp;#x5FC5;&amp;#x4E0D;&amp;#x53EF;&amp;#x5C11;;&amp;#x800C;&amp;#x53D1;&amp;#x97F3;&amp;#x5F80;&amp;#x5F80;&amp;#x5BB9;&amp;#x6613;&amp;#x88AB;&amp;#x5FFD;&amp;#x89C6;&amp;#xFF0C;Github&amp;#x7684;&amp;#x8D21;&amp;#x732E;&amp;#x8005;shimohq&amp;#x540C;&amp;#x5B66;&amp;#x7EC6;&amp;#x5FC3;&amp;#x7684;&amp;#x6536;&amp;#x96C6;&amp;#x4E86;&amp;#x4E00;&amp;#x4E9B;&amp;#x7A0B;&amp;#x5E8F;&amp;#x5458;&amp;#x5E38;&amp;#x7528;&amp;#x7684;&amp;#x82F1;&amp;#x6587;&amp;#x5355;&amp;#x8BCD;&amp;#xFF0C;&amp;#x800C;&amp;#x4E14;&amp;#x5BB9;&amp;#x6613;&amp;#x53D1;&amp;#x97F3;&amp;#x9519;&amp;#x8BEF;&amp;#x3002;&amp;#x770B;&amp;#x770B;&amp;#x4F60;&amp;#x65E5;&amp;#x5E38;&amp;#x54EA;&amp;#x4E9B;&amp;#x5355;&amp;#x8BCD;&amp;#x7684;&amp;#x53D1;&amp;#x97F3;&amp;#x662F;&amp;#x975E;&amp;#x4E3B;&amp;#x6D41;;&amp;#x5C0F;&amp;#x7F16;&amp;#x547D;&amp;#x4E2D;&amp;#x4E86;&amp;#x4E0D;&amp;#x5C11;!&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&quot;/2017/misc-fallible-it-words/c2554c50d35d9e31fd6cebe8b3c88726.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Misc" scheme="http://snowyying.github.io/categories/Misc/"/>
+    
+    
+      <category term="计算机" scheme="http://snowyying.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+    
+      <category term="英语" scheme="http://snowyying.github.io/tags/%E8%8B%B1%E8%AF%AD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>TCP/IP 协议 - 勘误表</title>
+    <link href="http://snowyying.github.io/2017/network-tcpip-errata/"/>
+    <id>http://snowyying.github.io/2017/network-tcpip-errata/</id>
+    <published>2017-02-23T03:25:12.000Z</published>
+    <updated>2017-02-23T04:01:33.913Z</updated>
+    
+    <content type="html"><![CDATA[<p>&#x673A;&#x68B0;&#x5DE5;&#x4E1A;&#x51FA;&#x7248;&#x793E; </p>
+<h6 id="P42-&#x7B2C;13&#x884C;"><a href="#P42-&#x7B2C;13&#x884C;" class="headerlink" title="P42 (&#x7B2C;13&#x884C;)"></a>P42 (&#x7B2C;13&#x884C;)</h6><p>&#x8BD1;&#x6587;: &#x4ECE;&#x7B2C;2&#x884C;&#x4E2D;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x5C3D;&#x7BA1;ARP&#x8BF7;&#x6C42;&#x662F;&#x5E7F;&#x64AD;&#x7684;&#xFF0C;&#x4F46;&#x662F;ARP&#x5E94;&#x7B54;&#x7684;&#x76EE;&#x7684;&#x5730;&#x5740;&#x5374;&#x662F;bsdi(0:0:c0:6f:2d:40)&#x3002;ARP&#x5E94;&#x7B54;&#x662F;&#x76F4;&#x63A5;&#x9001;&#x5230;&#x8BF7;&#x6C42;&#x7AEF;&#x4E3B;&#x673A;&#x7684;&#xFF0C;&#x800C;&#x662F;&#x5E7F;&#x64AD;&#x7684;&#x3002;</p>
+<p>&#x539F;&#x6587;: From line 2 we see that while the ARP request is broadcast, the destination address of the ARP reply is bsdi(0:0:c0:6f:2d:40). The ARP reply is sent directly to the requesting host; it is not broadcast.</p>
+<hr>
+<h6 id="P43-&#x5012;&#x6570;&#x7B2C;3&#x884C;"><a href="#P43-&#x5012;&#x6570;&#x7B2C;3&#x884C;" class="headerlink" title="P43 (&#x5012;&#x6570;&#x7B2C;3&#x884C;)"></a>P43 (&#x5012;&#x6570;&#x7B2C;3&#x884C;)</h6><p>&#x8BD1;&#x6587;: &#x8DEF;&#x7531;&#x5668;netb&#x8BC6;&#x522B;&#x51FA;&#x8BE5;IP&#x5730;&#x5740;&#x5C5E;&#x4E8E;&#x5B83;&#x7684;&#x4E00;&#x4E2A;&#x62D4;&#x53F7;&#x4E3B;&#x673A;&#xFF0C;&#x4E8E;&#x662F;&#x628A;&#x5B83;&#x7684;&#x4EE5;&#x592A;&#x7F51;&#x63A5;&#x53E3;&#x5730;&#x5740;140.252.1&#x4F5C;&#x4E3A;&#x786C;&#x4EF6;&#x5730;&#x5740;&#x6765;&#x56DE;&#x7B54;&#x3002;</p>
+<p>&#x539F;&#x6587;: The router netb recognizes this IP address as one belonging to one of its dialup hosts, and responds with the hardware address of its Ethernet interface on the cable 140.252.1.</p>
+<hr>
+<h6 id="P48-&#x7B2C;12&#x884C;"><a href="#P48-&#x7B2C;12&#x884C;" class="headerlink" title="P48 (&#x7B2C;12&#x884C;)"></a>P48 (&#x7B2C;12&#x884C;)</h6><p>&#x8BD1;&#x6587;: &#x8FD9;&#x79CD;&#x4E0D;&#x786E;&#x5B9A;&#x7684;&#x60C5;&#x51B5;&#x4E00;&#x76F4;&#x7EE7;&#x7EED;&#x4E0B;&#x53BB;&#x3002;</p>
+<p>&#x539F;&#x6587;: This continues indefinitely.</p>
+<p>&#x7ED3;&#x5408;&#x4E0A;&#x4E0B;&#x6587;&#xFF0C;&#x6211;&#x8BA4;&#x4E3A;&#x8FD9;&#x513F;&#x5E94;&#x8BE5;&#x662F;&#x201C;&#x8FD9;&#x79CD;&#x5FAA;&#x73AF;&#x4F1A;&#x4E00;&#x76F4;&#x7EE7;&#x7EED;&#x4E0B;&#x53BB;&#x201D;&#x7684;&#x610F;&#x601D;&#xFF0C;&#x800C;&#x6CA1;&#x6709;&#x201C;&#x4E0D;&#x786E;&#x5B9A;&#x201D;&#x4E4B;&#x610F;&#xFF1B;&#x51B5;&#x4E14;&#x7D27;&#x8DDF;&#x7740;&#x63D0;&#x5230;&#x201C;&#x5982;&#x679C;&#x8BA1;&#x7B97;&#x4E00;&#x4E0B;&#x4E24;&#x6B21;&#x91CD;&#x53D1;&#x4E4B;&#x95F4;&#x7684;&#x65F6;&#x95F4;&#x95F4;&#x9694;&#xFF0C;&#x6211;&#x4EEC;&#x53D1;&#x73B0;&#x5B58;&#x5728;&#x4E00;&#x79CD;&#x53CC;&#x500D;&#x7684;&#x5173;&#x7CFB;&#xFF1A;&#x4ECE; 5 . 3 4&#x5230;6 . 5 5&#x662F;1 . 2 1&#x79D2;&#xFF0C;&#x4ECE; 6 . 5 5&#x5230;8 . 9 7&#x662F;2 . 4 2&#x79D2;&#xFF0C;&#x4ECE;8 . 9 7&#x5230;1 3 . 8 0&#x662F;4 . 8 3&#x79D2;&#xFF0C;&#x4E00;&#x76F4;&#x8FD9;&#x6837;&#x7EE7;&#x7EED;&#x4E0B;&#x53BB;&#x3002;&#x5F53;&#x65F6;&#x95F4;&#x95F4;&#x9694;&#x8FBE;&#x5230;&#x67D0;&#x4E2A;&#x9608;&#x503C;&#x65F6;&#xFF08;&#x5927;&#x4E8E;4 2 . 8 0&#x79D2;&#xFF09; &#xFF0C;&#x5B83;&#x53C8;&#x91CD;&#x65B0;&#x7F6E;&#x4E3A;5 . 3 4&#x79D2;&#x201D;&#xFF0C;&#x8BF4;&#x660E;&#x5E76;&#x65E0;&#x4E0D;&#x786E;&#x5B9A;&#x7684;&#x610F;&#x601D;&#x3002;</p>
+<hr>
+<h6 id="P212-&#x56FE;20-4"><a href="#P212-&#x56FE;20-4" class="headerlink" title="P212 (&#x56FE;20-4)"></a>P212 (&#x56FE;20-4)</h6><p>&#x80FD;&#x591F;&#x53D1;&#x9001;ASAP, ASAP&#x662F;&#x201C;As Soon As Possible&#x201D;.</p>
+<hr>
+<h6 id="P247-&#x7B2C;13&#x884C;"><a href="#P247-&#x7B2C;13&#x884C;" class="headerlink" title="P247 (&#x7B2C;13&#x884C;)"></a>P247 (&#x7B2C;13&#x884C;)</h6><p>&#x8BD1;&#x6587;: &#x6761;&#x4EF6;&#xFF08;c&#xFF09;&#x4F7F;&#x6211;&#x4EEC;&#x5728;&#x6709;&#x5C1A;&#x672A;&#x88AB;&#x786E;&#x8BA4;&#x7684;&#x6570;&#x636E;&#xFF08;&#x6B63;&#x5728;&#x7B49;&#x5F85;&#x786E;&#x8BA4;&#xFF09;&#x4EE5;&#x53CA;&#x5728;&#x4E0D;&#x80FD;&#x4F7F;&#x7528;Nagle&#x7B97;&#x6CD5;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x907F;&#x514D;&#x4F7F;&#x7528;&#x5C0F;&#x7684;&#x62A5;&#x6587;&#x6BB5;&#x3002;</p>
+<p>&#x539F;&#x6587;: Condition (c) prevents us from sending small segments when we have<br>unacknowledged data that is waiting to be ACKed and the Nagle algorithm is<br>enabled.</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&amp;#x673A;&amp;#x68B0;&amp;#x5DE5;&amp;#x4E1A;&amp;#x51FA;&amp;#x7248;&amp;#x793E; &lt;/p&gt;
+&lt;h6 id=&quot;P42-&amp;#x7B2C;13&amp;#x884C;&quot;&gt;&lt;a href=&quot;#P42-&amp;#x7B2C;13&amp;#x884C;&quot; class=&quot;he
+    
+    </summary>
+    
+      <category term="Network" scheme="http://snowyying.github.io/categories/Network/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>设计模式 - 工厂模式</title>
+    <link href="http://snowyying.github.io/2017/swe-dp-cp-factory/"/>
+    <id>http://snowyying.github.io/2017/swe-dp-cp-factory/</id>
+    <published>2017-02-07T07:59:31.000Z</published>
+    <updated>2017-02-08T03:54:10.586Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="&#x7B80;&#x5355;&#x5DE5;&#x5382;&#x6A21;&#x5F0F;"><a href="#&#x7B80;&#x5355;&#x5DE5;&#x5382;&#x6A21;&#x5F0F;" class="headerlink" title="&#x7B80;&#x5355;&#x5DE5;&#x5382;&#x6A21;&#x5F0F;"></a>&#x7B80;&#x5355;&#x5DE5;&#x5382;&#x6A21;&#x5F0F;</h2><h2 id="&#x5DE5;&#x5382;-&#x65B9;&#x6CD5;-&#x6A21;&#x5F0F;"><a href="#&#x5DE5;&#x5382;-&#x65B9;&#x6CD5;-&#x6A21;&#x5F0F;" class="headerlink" title="&#x5DE5;&#x5382;(&#x65B9;&#x6CD5;)&#x6A21;&#x5F0F;"></a>&#x5DE5;&#x5382;(&#x65B9;&#x6CD5;)&#x6A21;&#x5F0F;</h2><h2 id="&#x62BD;&#x8C61;&#x5DE5;&#x5382;&#x6A21;&#x5F0F;"><a href="#&#x62BD;&#x8C61;&#x5DE5;&#x5382;&#x6A21;&#x5F0F;" class="headerlink" title="&#x62BD;&#x8C61;&#x5DE5;&#x5382;&#x6A21;&#x5F0F;"></a>&#x62BD;&#x8C61;&#x5DE5;&#x5382;&#x6A21;&#x5F0F;</h2>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;&amp;#x7B80;&amp;#x5355;&amp;#x5DE5;&amp;#x5382;&amp;#x6A21;&amp;#x5F0F;&quot;&gt;&lt;a href=&quot;#&amp;#x7B80;&amp;#x5355;&amp;#x5DE5;&amp;#x5382;&amp;#x6A21;&amp;#x5F0F;&quot; class=&quot;headerlink&quot; tit
+    
+    </summary>
+    
+      <category term="Software Engineering" scheme="http://snowyying.github.io/categories/Software-Engineering/"/>
+    
+    
+      <category term="设计模式" scheme="http://snowyying.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+      <category term="SWE" scheme="http://snowyying.github.io/tags/SWE/"/>
+    
+      <category term="工厂模式" scheme="http://snowyying.github.io/tags/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
   
   <entry>
     <title>IT 项目管理工具 Redmine</title>
@@ -571,7 +948,7 @@
     <link href="http://snowyying.github.io/2017/network-tcpip-1-overview/"/>
     <id>http://snowyying.github.io/2017/network-tcpip-1-overview/</id>
     <published>2017-01-03T02:55:38.000Z</published>
-    <updated>2017-02-06T06:51:12.350Z</updated>
+    <updated>2017-02-09T03:07:18.706Z</updated>
     
     <content type="html"><![CDATA[<p><img src="/2017/network-tcpip-1-overview/tcpip-overview.gif" alt="TCP/IP"></p>
 <a id="more"></a>
@@ -622,6 +999,14 @@
 </tr>
 </tbody>
 </table>
+<p>&#x76F8;&#x5173;&#x534F;&#x8BAE;</p>
+<ul>
+<li>&#x7269;&#x7406;&#x5C42;: &#x4EE5;&#x592A;&#x7F51; &#xB7; &#x8C03;&#x5236;&#x89E3;&#x8C03;&#x5668; &#xB7; &#x7535;&#x529B;&#x7EBF;&#x901A;&#x4FE1;(PLC) &#xB7; SONET/SDH &#xB7; G.709 &#xB7; &#x5149;&#x5BFC;&#x7EA4;&#x7EF4; &#xB7; &#x540C;&#x8F74;&#x7535;&#x7F06; &#xB7; &#x53CC;&#x7EDE;&#x7EBF; &#x7B49;</li>
+<li>&#x6570;&#x636E;&#x94FE;&#x8DEF;&#x5C42;: Wi-Fi(IEEE 802.11) &#xB7; WiMAX(IEEE 802.16) &#xB7;ATM &#xB7; DTM &#xB7; &#x4EE4;&#x724C;&#x73AF; &#xB7; &#x4EE5;&#x592A;&#x7F51; &#xB7;FDDI &#xB7; &#x5E27;&#x4E2D;&#x7EE7; &#xB7; GPRS &#xB7; EVDO &#xB7;HSPA &#xB7; HDLC &#xB7; PPP &#xB7; L2TP &#xB7;PPTP &#xB7; ISDN&#xB7;STP &#x7B49;</li>
+<li>&#x7F51;&#x7EDC;&#x5C42;&#x534F;&#x8BAE;: IP (IPv4 &#xB7; IPv6) &#xB7; ICMP&#xB7; ICMPv6&#xB7;IGMP &#xB7;IS-IS &#xB7; IPsec &#xB7; ARP &#xB7; RARP&#x7B49;</li>
+<li>&#x4F20;&#x8F93;&#x5C42;&#x534F;&#x8BAE;: TCP &#xB7; UDP &#xB7; TLS &#xB7; DCCP &#xB7; SCTP &#xB7; RSVP &#xB7; OSPF &#x7B49;</li>
+<li>&#x5E94;&#x7528;&#x5C42;&#x534F;&#x8BAE;: DHCP &#xB7;DNS &#xB7; FTP &#xB7; Gopher &#xB7; HTTP&#xB7; IMAP4 &#xB7; IRC &#xB7; NNTP &#xB7; XMPP &#xB7;POP3 &#xB7; SIP &#xB7; SMTP &#xB7;SNMP &#xB7; SSH &#xB7;TELNET &#xB7; RPC &#xB7; RTCP &#xB7; RTP &#xB7;RTSP&#xB7; SDP &#xB7; SOAP &#xB7; GTP &#xB7; STUN &#xB7; NTP&#xB7; SSDP &#xB7; BGP &#xB7; RIP &#x7B49;</li>
+</ul>
 <p>End-to-end / Hop-by-Hop</p>
 <h2 id="2-&#x7F51;&#x7EDC;&#x5730;&#x5740;"><a href="#2-&#x7F51;&#x7EDC;&#x5730;&#x5740;" class="headerlink" title="2. &#x7F51;&#x7EDC;&#x5730;&#x5740;"></a>2. &#x7F51;&#x7EDC;&#x5730;&#x5740;</h2><p>&#x7F51;&#x7EDC;&#x53F7; + &#x4E3B;&#x673A;&#x53F7; (32 Bit)</p>
 <ul>
@@ -945,212 +1330,6 @@
     
       <category term="Security" scheme="http://snowyying.github.io/categories/Security/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>网络安全 - 概述</title>
-    <link href="http://snowyying.github.io/2016/security-overview/"/>
-    <id>http://snowyying.github.io/2016/security-overview/</id>
-    <published>2016-12-24T07:00:32.000Z</published>
-    <updated>2017-02-07T07:25:29.402Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Ubuntu 编译 Darwin Streaming Server</title>
-    <link href="http://snowyying.github.io/2016/media-darwin-gxx-ubuntu/"/>
-    <id>http://snowyying.github.io/2016/media-darwin-gxx-ubuntu/</id>
-    <published>2016-12-23T05:57:54.000Z</published>
-    <updated>2017-01-12T05:51:46.594Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="1-Patch"><a href="#1-Patch" class="headerlink" title="1 Patch"></a>1 Patch</h2><p>&#x7ED9;&#x4EE3;&#x7801;&#x6253;&#x4E0A;&#x8865;&#x4E01;</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">patch -bp1 &lt; dss-hh-20080728-1.patch</div><div class="line">patch -bp1 &lt; dss-6.0.3.patch</div></pre></td></tr></table></figure>
-<h2 id="2-Build"><a href="#2-Build" class="headerlink" title="2 Build"></a>2 Build</h2><p>&#x7ED9;&#x90E8;&#x5206; Makefile &#x589E;&#x52A0; pthread &#x5E93;&#x7684;&#x94FE;&#x63A5; (LIBS += -lpthread)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ vim QTFileTools/QTFileInfo.tproj/Makefile.POSIX</div><div class="line">$ vim QTFileTools/QTFileTest.tproj/Makefile.POSIX</div><div class="line">$ vim QTFileTools/QTSampleLister.tproj/Makefile.POSIX</div><div class="line">$ vim QTFileTools/QTTrackInfo.tproj.tproj/Makefile.POSIX</div></pre></td></tr></table></figure>
-<h2 id="3-Install"><a href="#3-Install" class="headerlink" title="3 Install"></a>3 Install</h2><p>&#x6253;&#x5305;</p>
-<a id="more"></a>
-<h2 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h2><ol>
-<li>chown: invalid user: &#x2018;qtss&#x2019;</li>
-</ol>
-<p>&#x67E5;&#x770B; qtss &#x662F;&#x5426;&#x5B58;&#x5728;&#x7528;&#x6237;&#x548C;&#x7EC4;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">snowyying@snowyying-ub16:~/nps/DarwinStreamingSrvr-Linux$ cat /etc/group | grep qtss</div><div class="line">qtss:x:1001:</div><div class="line">snowyying@snowyying-ub16:~/nps/DarwinStreamingSrvr-Linux$ cat /etc/passwd | grep qtss</div><div class="line">snowyying@snowyying-ub16:~/nps/DarwinStreamingSrvr-Linux$</div></pre></td></tr></table></figure></p>
-<p>&#x5982;&#x679C;&#x6CA1;&#x6709;&#x5219;&#x6DFB;&#x52A0;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">snowyying@snowyying-ub16:~/nps/DarwinStreamingSrvr-Linux$ sudo useradd -g 1001 qtss</div></pre></td></tr></table></figure></p>
-<p>&#x518D;&#x6B21;&#x786E;&#x8BA4;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">snowyying@snowyying-ub16:~/nps/DarwinStreamingSrvr-Linux$ cat /etc/passwd | grep qtss</div><div class="line">qtss:x:1001:1001::/home/qtss:</div><div class="line">snowyying@snowyying-ub16:~/nps/DarwinStreamingSrvr-Linux$</div></pre></td></tr></table></figure></p>
-<ol>
-<li>&#x7F51;&#x9875;&#x4E0D;&#x663E;&#x793A;&#x6587;&#x5B57;<br>perl&#x7248;&#x672C;&#x592A;&#x9AD8;&#x4E86;, &#x5B89;&#x88C5;5.16.3&#x7248;&#x672C;, &#x91CD;&#x65B0;./Install</li>
-</ol>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;1-Patch&quot;&gt;&lt;a href=&quot;#1-Patch&quot; class=&quot;headerlink&quot; title=&quot;1 Patch&quot;&gt;&lt;/a&gt;1 Patch&lt;/h2&gt;&lt;p&gt;&amp;#x7ED9;&amp;#x4EE3;&amp;#x7801;&amp;#x6253;&amp;#x4E0A;&amp;#x8865;&amp;#x4E01;&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;patch -bp1 &amp;lt; dss-hh-20080728-1.patch&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;patch -bp1 &amp;lt; dss-6.0.3.patch&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&quot;2-Build&quot;&gt;&lt;a href=&quot;#2-Build&quot; class=&quot;headerlink&quot; title=&quot;2 Build&quot;&gt;&lt;/a&gt;2 Build&lt;/h2&gt;&lt;p&gt;&amp;#x7ED9;&amp;#x90E8;&amp;#x5206; Makefile &amp;#x589E;&amp;#x52A0; pthread &amp;#x5E93;&amp;#x7684;&amp;#x94FE;&amp;#x63A5; (LIBS += -lpthread)&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;$ vim QTFileTools/QTFileInfo.tproj/Makefile.POSIX&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;$ vim QTFileTools/QTFileTest.tproj/Makefile.POSIX&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;$ vim QTFileTools/QTSampleLister.tproj/Makefile.POSIX&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;$ vim QTFileTools/QTTrackInfo.tproj.tproj/Makefile.POSIX&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&quot;3-Install&quot;&gt;&lt;a href=&quot;#3-Install&quot; class=&quot;headerlink&quot; title=&quot;3 Install&quot;&gt;&lt;/a&gt;3 Install&lt;/h2&gt;&lt;p&gt;&amp;#x6253;&amp;#x5305;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Media" scheme="http://snowyying.github.io/categories/Media/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Visual Studio 编译 Darwin Streaming Server</title>
-    <link href="http://snowyying.github.io/2016/media-darwin-vs-windows/"/>
-    <id>http://snowyying.github.io/2016/media-darwin-vs-windows/</id>
-    <published>2016-12-20T09:16:29.000Z</published>
-    <updated>2017-01-12T05:52:20.533Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="1-Patch"><a href="#1-Patch" class="headerlink" title="1 Patch"></a>1 Patch</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">patch -bp1 &lt; dss-hh-20080728-1.patch</div><div class="line">patch -bp1 &lt; dss-6.0.3.patch</div></pre></td></tr></table></figure>
-<a id="more"></a>
-<h2 id="2-Fix-compile-error"><a href="#2-Fix-compile-error" class="headerlink" title="2 Fix compile error"></a>2 Fix compile error</h2><h6 id="1-OSHeaders-h"><a href="#1-OSHeaders-h" class="headerlink" title="1) OSHeaders.h"></a>1) OSHeaders.h</h6><ul>
-<li>&#x89E3;&#x51B3;socket&#x76F8;&#x5173;&#x51FD;&#x6570;&#x91CD;&#x590D;&#x5B9A;&#x95EE;&#x9898;;</li>
-<li>&#x89E3;&#x51B3;time&#x76F8;&#x5173;&#x51FD;&#x6570;&#x7F16;&#x8BD1;&#x5931;&#x8D25;&#x7684;&#x95EE;&#x9898;.</li>
-</ul>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">elif</span> __Win32__</span></div><div class="line">    <span class="comment">// Fixed 4 VS2015 @ 20161216</span></div><div class="line">    <span class="comment">// Add space characters &apos; &apos;</span></div><div class="line">    <span class="comment">/* Defines */</span></div><div class="line">    <span class="meta">#<span class="meta-keyword">define</span> _64BITARG_ <span class="meta-string">&quot;I64&quot;</span></span></div><div class="line">    <span class="meta">#<span class="meta-keyword">define</span> _S64BITARG_ <span class="meta-string">&quot;I64d&quot;</span></span></div><div class="line">    <span class="meta">#<span class="meta-keyword">define</span> _U64BITARG_ <span class="meta-string">&quot;I64u&quot;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">if</span> __LP64__</span></div><div class="line">	<span class="meta">#<span class="meta-keyword">define</span> _S32BITARG_ <span class="meta-string">&quot;d&quot;</span></span></div><div class="line">	<span class="meta">#<span class="meta-keyword">define</span> _U32BITARG_ <span class="meta-string">&quot;u&quot;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">else</span></span></div><div class="line">	<span class="meta">#<span class="meta-keyword">define</span> _S32BITARG_ <span class="meta-string">&quot;ld&quot;</span></span></div><div class="line">	<span class="meta">#<span class="meta-keyword">define</span> _U32BITARG_ <span class="meta-string">&quot;lu&quot;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line"></div><div class="line">    <span class="comment">/* paths */</span></div><div class="line">    <span class="meta">#<span class="meta-keyword">define</span> kEOLString <span class="meta-string">&quot;\r\n&quot;</span></span></div><div class="line">    <span class="meta">#<span class="meta-keyword">define</span> kPathDelimiterString <span class="meta-string">&quot;\\&quot;</span></span></div><div class="line">    <span class="meta">#<span class="meta-keyword">define</span> kPathDelimiterChar <span class="meta-string">&apos;\\&apos;</span></span></div><div class="line">    <span class="meta">#<span class="meta-keyword">define</span> kPartialPathBeginsWithDelimiter 0</span></div><div class="line"></div><div class="line">    <span class="meta">#<span class="meta-keyword">define</span> crypt(buf, salt) ((char*)buf)</span></div><div class="line"></div><div class="line">    <span class="comment">// Fixed 4 VS2015 @ 20161216</span></div><div class="line">    <span class="meta">#<span class="meta-keyword">define</span> WIN32_LEAN_AND_MEAN</span></div><div class="line"></div><div class="line">    <span class="comment">/* Includes */</span></div><div class="line">    <span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;windows.h&gt;</span></span></div><div class="line">    <span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;winsock2.h&gt;</span></span></div><div class="line">    <span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;mswsock.h&gt;</span></span></div><div class="line">    <span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;process.h&gt;</span></span></div><div class="line">    <span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ws2tcpip.h&gt;</span></span></div><div class="line">    <span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;io.h&gt;</span></span></div><div class="line">    <span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;direct.h&gt;</span></span></div><div class="line">    <span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;errno.h&gt;</span></span></div><div class="line"></div><div class="line">    <span class="comment">// Fixed 4 VS2015 @ 20161216</span></div><div class="line">    <span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;mmsystem.h&gt;</span></span></div></pre></td></tr></table></figure>
-<h6 id="2-&#x5B8F;&#x5B9A;&#x4E49;"><a href="#2-&#x5B8F;&#x5B9A;&#x4E49;" class="headerlink" title="2) &#x5B8F;&#x5B9A;&#x4E49;"></a>2) &#x5B8F;&#x5B9A;&#x4E49;</h6><p>&#x641C;&#x7D22;&#x89E3;&#x51B3;&#x65B9;&#x6848;, &#x5728;<code>_S32BITARG_ / _U32BITARG_ / _64BITARG_ / _S64BITARG_ / _U64BITARG_</code>&#x524D;&#x540E;&#x52A0;&#x7A7A;&#x683C;.</p>
-<p><em>&#x5728;VS2015&#x4E0B;&#x5B8F;&#x5B9A;&#x4E49;&#x5FC5;&#x987B;&#x524D;&#x540E;&#x5E26;&#x7A7A;&#x683C;&#x7B26;, &#x5426;&#x5219;&#x4F1A;&#x88AB;&#x8BC6;&#x522B;&#x6210;&#x5B57;&#x7B26;&#x4E32;&#x5BFC;&#x81F4;&#x7F16;&#x8BD1;&#x5931;&#x8D25;.</em></p>
-<h6 id="3-arpa-inet-h"><a href="#3-arpa-inet-h" class="headerlink" title="3) arpa/inet.h"></a>3) arpa/inet.h</h6><p>&#x641C;&#x7D22;&#x89E3;&#x51B3;&#x65B9;&#x6848;, &#x5BF9;#include <arpa inet.h="">&#x8FDB;&#x884C;&#x4FEE;&#x6539;, &#x5728;Windows&#x4E0A;&#x5E73;&#x53F0;&#x4E0A;&#x6CA1;&#x6709;&#x6B64;&#x5934;&#x6587;&#x4EF6;.</arpa></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Fixed 4 VS2015 @ 20161216</span></div><div class="line"><span class="meta">#<span class="meta-keyword">if</span> __Win32__</span></div><div class="line"><span class="meta">#<span class="meta-keyword">else</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;arpa/inet.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div></pre></td></tr></table></figure>
-<p>4) QTAccessFile.cpp</p>
-<p>&#x6CE8;&#x91CA;&#x6389;&#x4EE5;&#x4E0B;&#x5934;&#x6587;&#x4EF6;&#x7684;&#x5F15;&#x7528;, &#x540C;&#x65F6;, &#x6CE8;&#x91CA;&#x6389;&#x4E00;&#x4E2A;&#x672A;&#x88AB;&#x5F15;&#x7528;&#x7684;&#x51FD;&#x6570;.</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Fixed 4 VS2015 @ 20161216</span></div><div class="line"><span class="meta">#<span class="meta-keyword">if</span> __Win32__</span></div><div class="line"><span class="meta">#<span class="meta-keyword">else</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;grp.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> __MacOSX__</span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;membership.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;pwd.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;signal.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line"></div><div class="line">...</div><div class="line"></div><div class="line"><span class="comment">// Fixed 4 VS2015 @ 20161216</span></div><div class="line"><span class="meta">#<span class="meta-keyword">if</span> 0</span></div><div class="line">Bool16 DSAccessFile::ValidUser( <span class="keyword">char</span>*userName, <span class="keyword">void</span>* extraDataPtr)</div><div class="line">{</div><div class="line">    <span class="keyword">struct</span> passwd	*user = getpwnam(userName);</div><div class="line">    Bool16 result =<span class="literal">true</span>;</div><div class="line">    <span class="keyword">if</span> ( user == <span class="literal">NULL</span> )</div><div class="line">    {    </div><div class="line">         <span class="keyword">return</span> result;</div><div class="line">    }</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">}</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div></pre></td></tr></table></figure>
-<p>5) QTSSPasswd.cpp</p>
-<p>&#x6253;&#x5F00;&#x6B64;&#x6CE8;&#x91CA;</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Fixed 4 VS2015 @ 20161216</span></div><div class="line"><span class="meta">#<span class="meta-keyword">if</span> __Win32__</span></div><div class="line"><span class="comment">/* unused routine */</span></div><div class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">char</span>* <span class="title">SetTempPath</span><span class="params">(<span class="keyword">char</span>* bufferToSet, <span class="keyword">int</span> bufferLen, <span class="keyword">char</span>* base, <span class="keyword">int</span> baseLen, <span class="keyword">char</span> id)</span></span></div><div class="line">{</div><div class="line">    <span class="keyword">if</span> (bufferLen &gt; <span class="number">0</span> &amp;&amp; bufferToSet != <span class="literal">NULL</span>)</div><div class="line">        <span class="built_in">memset</span>(bufferToSet, <span class="number">0</span>, bufferLen);</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (baseLen + <span class="number">2</span> &gt; bufferLen)</div><div class="line">        <span class="keyword">return</span> bufferToSet;</div><div class="line"></div><div class="line">    <span class="built_in">strcpy</span>(bufferToSet, base);</div><div class="line">	bufferToSet[baseLen] = id;</div><div class="line">	bufferToSet[baseLen + <span class="number">1</span>] = <span class="string">&apos;\0&apos;</span>;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> bufferToSet;</div><div class="line">}</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div></pre></td></tr></table></figure>
-<p>6) RTPStream.cpp</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//UDP Monitor reflected  write</span></div><div class="line"><span class="keyword">void</span> RTPStream::UDPMonitorWrite(<span class="keyword">void</span>* thePacketData, UInt32 inLen,  Bool16 isRTCP)</div><div class="line">{</div><div class="line">    <span class="keyword">if</span> (FALSE == fUDPMonitorEnabled || <span class="number">0</span> == fMonitorSocket || <span class="literal">NULL</span> == thePacketData)</div><div class="line">        <span class="keyword">return</span>;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> ((<span class="number">0</span> != fPlayerToMonitorAddr) &amp;&amp; (<span class="keyword">this</span>-&gt;fRemoteAddr != fPlayerToMonitorAddr))</div><div class="line">        <span class="keyword">return</span>;</div><div class="line"></div><div class="line">   UInt16 RTCPportOffset = (TRUE == isRTCP)? <span class="number">1</span> : <span class="number">0</span>;</div><div class="line"></div><div class="line">    <span class="keyword">struct</span> sockaddr_in <span class="built_in">sin</span>;</div><div class="line">    <span class="built_in">memset</span>(&amp;<span class="built_in">sin</span>, <span class="number">0</span>, <span class="keyword">sizeof</span>(<span class="keyword">struct</span> sockaddr_in));</div><div class="line">    <span class="built_in">sin</span>.sin_family = AF_INET;</div><div class="line">    <span class="built_in">sin</span>.sin_addr.s_addr = htonl(fMonitorAddr);</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (fPayloadType == qtssVideoPayloadType)</div><div class="line">	{</div><div class="line">		<span class="comment">// Fixed 4 VS2015 @ 20161216</span></div><div class="line"><span class="meta">#<span class="meta-keyword">if</span> __Win32__</span></div><div class="line">		<span class="built_in">sin</span>.sin_port = (<span class="keyword">unsigned</span> <span class="keyword">short</span>)htons(fMonitorVideoDestPort + RTCPportOffset);</div><div class="line"><span class="meta">#<span class="meta-keyword">else</span></span></div><div class="line">		<span class="built_in">sin</span>.sin_port = (<span class="keyword">in_port_t</span>)htons(fMonitorVideoDestPort + RTCPportOffset);</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line">	}</div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (fPayloadType == qtssAudioPayloadType)</div><div class="line">	{</div><div class="line">		<span class="comment">// Fixed 4 VS2015 @ 20161216</span></div><div class="line">#<span class="keyword">if</span> <span class="number">__</span>Win32__</div><div class="line">		<span class="built_in">sin</span>.sin_port = (<span class="keyword">unsigned</span> <span class="keyword">short</span>)htons(fMonitorAudioDestPort + RTCPportOffset);</div><div class="line"><span class="meta">#<span class="meta-keyword">else</span></span></div><div class="line">		<span class="built_in">sin</span>.sin_port = (<span class="keyword">in_port_t</span>)htons(fMonitorAudioDestPort + RTCPportOffset);</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line">	}</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (<span class="built_in">sin</span>.sin_port != <span class="number">0</span>)</div><div class="line">    {</div><div class="line">		<span class="comment">// Fixed 4 VS2015 @ 20161216</span></div><div class="line">        <span class="comment">//ssize_t result = ::sendto(fMonitorSocket, thePacketData, inLen, 0, (struct sockaddr *)&amp;sin, sizeof(struct sockaddr));</span></div><div class="line">		<span class="keyword">size_t</span> result = ::sendto(fMonitorSocket, (<span class="keyword">char</span> *)thePacketData, inLen, <span class="number">0</span>, (<span class="keyword">struct</span> sockaddr *)&amp;<span class="built_in">sin</span>, <span class="keyword">sizeof</span>(<span class="keyword">struct</span> sockaddr));</div><div class="line">       <span class="keyword">if</span> (DEBUG)</div><div class="line">        {   <span class="keyword">if</span> (result &lt; <span class="number">0</span>)</div><div class="line">                qtss_printf(<span class="string">&quot;RTCP Monitor Socket sendto failed\n&quot;</span>);</div><div class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (<span class="number">0</span>)</div><div class="line">                qtss_printf(<span class="string">&quot;RTCP Monitor Socket sendto port=%hu, packetLen=%&quot;</span> <span class="number">_U</span>32BITARG_ <span class="string">&quot;\n&quot;</span>, ntohs(<span class="built_in">sin</span>.sin_port), inLen);</div><div class="line">        }</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
-<h2 id="3-Fix-Link-error"><a href="#3-Fix-Link-error" class="headerlink" title="3 Fix Link error"></a>3 Fix Link error</h2><p>&#x94FE;&#x63A5;&#x9519;&#x8BEF;&#x662F;&#x56E0;&#x4E3A;&#x627E;&#x4E0D;&#x5230;&#x5BF9;&#x5E94;&#x7684;&#x5B9E;&#x73B0;, &#x7ED9;&#x94FE;&#x63A5;&#x4E0D;&#x901A;&#x8FC7;&#x7684;&#x5DE5;&#x7A0B;&#x6DFB;&#x52A0;&#x5B9E;&#x73B0;&#x5373;&#x53EF;, &#x4E0D;&#x518D;&#x8D58;&#x8FF0;.</p>
-<ul>
-<li>StreamingLoadTool (&#x9700;&#x6DFB;&#x52A0;1&#x4E2A;cpp&#x6587;&#x4EF6;&#x5230;&#x5DE5;&#x7A0B;)</li>
-<li>StreamingServer (&#x9700;&#x6DFB;&#x52A0;N&#x4E2A;cpp&#x6587;&#x4EF6;&#x5230;&#x5DE5;&#x7A0B;)</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;1-Patch&quot;&gt;&lt;a href=&quot;#1-Patch&quot; class=&quot;headerlink&quot; title=&quot;1 Patch&quot;&gt;&lt;/a&gt;1 Patch&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;patch -bp1 &amp;lt; dss-hh-20080728-1.patch&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;patch -bp1 &amp;lt; dss-6.0.3.patch&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-      <category term="Media" scheme="http://snowyying.github.io/categories/Media/"/>
-    
-    
-      <category term="DSS" scheme="http://snowyying.github.io/tags/DSS/"/>
-    
-      <category term="RTSP" scheme="http://snowyying.github.io/tags/RTSP/"/>
-    
-      <category term="流媒体服务器" scheme="http://snowyying.github.io/tags/%E6%B5%81%E5%AA%92%E4%BD%93%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Visual Studio 编译 live555</title>
-    <link href="http://snowyying.github.io/2016/media-live555-vs-windows/"/>
-    <id>http://snowyying.github.io/2016/media-live555-vs-windows/</id>
-    <published>2016-12-19T00:42:16.000Z</published>
-    <updated>2017-01-12T06:16:07.501Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="Media" scheme="http://snowyying.github.io/categories/Media/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>p2p 概览</title>
-    <link href="http://snowyying.github.io/2016/network-p2p-overview/"/>
-    <id>http://snowyying.github.io/2016/network-p2p-overview/</id>
-    <published>2016-12-18T02:50:41.000Z</published>
-    <updated>2017-01-12T05:52:59.426Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="1-NAT"><a href="#1-NAT" class="headerlink" title="1 NAT"></a>1 NAT</h2><p>NAT&#xFF08;Network Address Translation&#xFF0C;&#x7F51;&#x7EDC;&#x5730;&#x5740;&#x8F6C;&#x6362;&#xFF09;&#x662F;1994&#x5E74;&#x63D0;&#x51FA;&#x7684;&#x3002;&#x5F53;&#x5728;&#x4E13;&#x7528;&#x7F51;&#x5185;&#x90E8;&#x7684;&#x4E00;&#x4E9B;&#x4E3B;&#x673A;&#x672C;&#x6765;&#x5DF2;&#x7ECF;&#x5206;&#x914D;&#x5230;&#x4E86;&#x672C;&#x5730;IP&#x5730;&#x5740;&#xFF08;&#x5373;&#x4EC5;&#x5728;&#x672C;&#x4E13;&#x7528;&#x7F51;&#x5185;&#x4F7F;&#x7528;&#x7684;&#x4E13;&#x7528;&#x5730;&#x5740;&#xFF09;&#xFF0C;&#x4F46;&#x73B0;&#x5728;&#x53C8;&#x60F3;&#x548C;&#x56E0;&#x7279;&#x7F51;&#x4E0A;&#x7684;&#x4E3B;&#x673A;&#x901A;&#x4FE1;&#xFF08;&#x5E76;&#x4E0D;&#x9700;&#x8981;&#x52A0;&#x5BC6;&#xFF09;&#x65F6;&#xFF0C;&#x53EF;&#x4F7F;&#x7528;NAT&#x65B9;&#x6CD5;&#x3002;</p>
-<p>NAT&#x5927;&#x81F4;&#x5206;&#x4E3A;&#x4E0B;&#x9762;&#x56DB;&#x7C7B;</p>
-<ol>
-<li><p>Full Cone<br>&#x8FD9;&#x79CD;NAT&#x5185;&#x90E8;&#x7684;&#x673A;&#x5668;A&#x8FDE;&#x63A5;&#x8FC7;&#x5916;&#x7F51;&#x673A;&#x5668;C&#x540E;,NAT&#x4F1A;&#x6253;&#x5F00;&#x4E00;&#x4E2A;&#x7AEF;&#x53E3;.&#x7136;&#x540E;&#x5916;&#x7F51;&#x7684;&#x4EFB;&#x4F55;&#x53D1;&#x5230;&#x8FD9;&#x4E2A;&#x6253;&#x5F00;&#x7684;&#x7AEF;&#x53E3;&#x7684;UDP&#x6570;&#x636E;&#x62A5;&#x90FD;&#x53EF;&#x4EE5;&#x5230;&#x8FBE;A.&#x4E0D;&#x7BA1;&#x662F;&#x4E0D;&#x662F;C&#x53D1;&#x8FC7;&#x6765;&#x7684;.<br>&#x4F8B;&#x5982; A:192.168.8.100 NAT:202.100.100.100 C:292.88.88.88<br>A(192.168.8.100:5000) -&gt; NAT(202.100.100.100 : 8000) -&gt; C(292.88.88.88:2000)<br>&#x4EFB;&#x4F55;&#x53D1;&#x9001;&#x5230; NAT(202.100.100.100:8000)&#x7684;&#x6570;&#x636E;&#x90FD;&#x53EF;&#x4EE5;&#x5230;&#x8FBE;A(192.168.8.100:5000)</p>
-</li>
-<li><p>Restricted Cone<br>&#x8FD9;&#x79CD;NAT&#x5185;&#x90E8;&#x7684;&#x673A;&#x5668;A&#x8FDE;&#x63A5;&#x8FC7;&#x5916;&#x7F51;&#x7684;&#x673A;&#x5668;C&#x540E;,NAT&#x6253;&#x5F00;&#x4E00;&#x4E2A;&#x7AEF;&#x53E3;.&#x7136;&#x540E;C&#x53EF;&#x4EE5;&#x7528;&#x4EFB;&#x4F55;&#x7AEF;&#x53E3;&#x548C;A&#x901A;&#x4FE1;.&#x5176;&#x4ED6;&#x7684;&#x5916;&#x7F51;&#x673A;&#x5668;&#x4E0D;&#x884C;.<br>&#x4F8B;&#x5982; A:192.168.8.100 NAT:202.100.100.100 C:292.88.88.88<br>A(192.168.8.100:5000) -&gt; NAT(202.100.100.100 : 8000) -&gt; C(292.88.88.88:2000)<br>&#x4EFB;&#x4F55;&#x4ECE;C&#x53D1;&#x9001;&#x5230; NAT(202.100.100.100:8000)&#x7684;&#x6570;&#x636E;&#x90FD;&#x53EF;&#x4EE5;&#x5230;&#x8FBE;A(192.168.8.100:5000)</p>
-</li>
-<li><p>Port Restricted Cone<br>&#x8FD9;&#x79CD;NAT&#x5185;&#x90E8;&#x7684;&#x673A;&#x5668;A&#x8FDE;&#x63A5;&#x8FC7;&#x5916;&#x7F51;&#x7684;&#x673A;&#x5668;C&#x540E;,NAT&#x6253;&#x5F00;&#x4E00;&#x4E2A;&#x7AEF;&#x53E3;.&#x7136;&#x540E;C&#x53EF;&#x4EE5;&#x7528;&#x539F;&#x6765;&#x7684;&#x7AEF;&#x53E3;&#x548C;A&#x901A;&#x4FE1;.&#x5176;&#x4ED6;&#x7684;&#x5916;&#x7F51;&#x673A;&#x5668;&#x4E0D;&#x884C;.<br>&#x4F8B;&#x5982; A:192.168.8.100 NAT:202.100.100.100 C:292.88.88.88<br>A(192.168.8.100:5000) -&gt; NAT(202.100.100.100 : 8000) -&gt; C(292.88.88.88:2000)<br>C(202.88.88.88:2000)&#x53D1;&#x9001;&#x5230; NAT(202.100.100.100:8000)&#x7684;&#x6570;&#x636E;&#x90FD;&#x53EF;&#x4EE5;&#x5230;&#x8FBE;A(192.168.8.100:5000)<br><em>&#x4EE5;&#x4E0A;&#x4E09;&#x79CD;NAT&#x901A;&#x79F0;Cone NAT.&#x6211;&#x4EEC;&#x53EA;&#x80FD;&#x7528;&#x8FD9;&#x79CD;NAT&#x8FDB;&#x884C;UDP&#x6253;&#x6D1E;.</em></p>
-</li>
-<li><p>Symmetic<br>&#x5BF9;&#x4E8E;&#x8FD9;&#x79CD;NAT.&#x8FDE;&#x63A5;&#x4E0D;&#x540C;&#x7684;&#x5916;&#x90E8;&#x76EE;&#x6807;.&#x539F;&#x6765;NAT&#x6253;&#x5F00;&#x7684;&#x7AEF;&#x53E3;&#x4F1A;&#x53D8;&#x5316;.&#x800C;Cone NAT&#x4E0D;&#x4F1A;.&#x867D;&#x7136;&#x53EF;&#x4EE5;&#x7528;&#x7AEF;&#x53E3;&#x731C;&#x6D4B;.&#x4F46;&#x662F;&#x6210;&#x529F;&#x7684;&#x6982;&#x7387;&#x5F88;&#x5C0F;.&#x56E0;&#x6B64;&#x653E;&#x5F03;&#x8FD9;&#x79CD;NAT&#x7684;UDP&#x6253;&#x6D1E;.</p>
-</li>
-</ol>
-<p><img src="/2016/network-p2p-overview/nat-detect.gif" alt="NAT &#x68C0;&#x6D4B;&#x6D41;&#x7A0B;"></p>
-<a id="more"></a>
-<p><strong>*. &#x76F8;&#x5173;&#x534F;&#x8BAE;</strong></p>
-<ul>
-<li><em>NAPT/PAT: Network Address Port Translation / Port address Translation</em></li>
-<li><em>UPnP: Universal Plug and Play</em></li>
-</ul>
-<p>&#x8BF4;&#x660E;: 1) &#x901A;&#x5E38;&#x6211;&#x4EEC;&#x63CF;&#x8FF0;&#x7684;NAT&#x5C31;&#x662F;&#x6307;NAPT; 2) UPnP&#x7531;&#x4E8E;&#x5305;&#x542B;&#x7AEF;&#x53E3;&#x6620;&#x5C04;, &#x6240;&#x4EE5;&#x4E5F;&#x5E38;&#x88AB;&#x7528;&#x4E8E;NAT&#x7A7F;&#x900F;.</p>
-<h2 id="2-SDP"><a href="#2-SDP" class="headerlink" title="2 SDP"></a>2 SDP</h2><p>Session Description Protocol</p>
-<h2 id="3-ICE"><a href="#3-ICE" class="headerlink" title="3 ICE"></a>3 ICE</h2><p>Interactive Connectivity Establishment</p>
-<p>ICE&#x662F;&#x5B9E;&#x73B0;NAT&#x7A7F;&#x900F;&#x7684;&#x4E00;&#x79CD;&#x6280;&#x672F;&#x65B9;&#x6848;. ICE&#x662F;&#x4E00;&#x79CD;NAT&#x7A7F;&#x900F;&#x6280;&#x672F;&#xFF0C;&#x901A;&#x8FC7;offer/answer&#x6A21;&#x578B;&#x5EFA;&#x7ACB;&#x57FA;&#x4E8E;UDP&#x7684;&#x5A92;&#x4ECB;&#x6D41;&#x3002;ICE&#x662F;offer/answer&#x6A21;&#x578B;&#x7684;&#x6269;&#x5C55;&#xFF0C;&#x901A;&#x8FC7;&#x5728;offer&#x548C;answer&#x7684;SDP&#x91CC;&#x9762;&#x5305;&#x542B;&#x591A;&#x79CD;IP&#x5730;&#x5740;&#x548C;&#x7AEF;&#x53E3;&#xFF0C;&#x7136;&#x540E;&#x5BF9;&#x672C;&#x5730;SDP&#x548C;&#x8FDC;&#x7A0B;SDP&#x91CC;&#x9762;&#x7684;IP&#x5730;&#x5740;&#x8FDB;&#x884C;&#x914D;&#x5BF9;&#xFF0C;&#x7136;&#x540E;&#x901A;&#x8FC7;P2P&#x8FDE;&#x901A;&#x6027;&#x68C0;&#x67E5;&#x8FDB;&#x884C;&#x8FDE;&#x901A;&#x6027;&#x6D4B;&#x8BD5;&#x5DE5;&#x4F5C;&#xFF0C;&#x5982;&#x679C;&#x6D4B;&#x8BD5;&#x901A;&#x8FC7;&#x5373;&#x8868;&#x660E;&#x8BE5;&#x4F20;&#x8F93;&#x5730;&#x5740;&#x5BF9;&#x53EF;&#x4EE5;&#x5EFA;&#x7ACB;&#x8FDE;&#x63A5;&#x3002;&#x5176;&#x4E2D;IP&#x5730;&#x5740;&#x548C;&#x7AEF;&#x53E3;&#xFF08;&#x4E5F;&#x5C31;&#x662F;&#x5730;&#x5740;&#xFF09;&#x6709;&#x4EE5;&#x4E0B;&#x51E0;&#x79CD;&#xFF1A;&#x672C;&#x673A;&#x5730;&#x5740;&#x3001;&#x901A;&#x8FC7;STUN&#x670D;&#x52A1;&#x5668;&#x53CD;&#x5C04;&#x540E;&#x83B7;&#x53D6;&#x7684;server-reflexive&#x5730;&#x5740;&#xFF08;&#x5185;&#x7F51;&#x5730;&#x5740;&#x88AB;NAT&#x6620;&#x5C04;&#x540E;&#x7684;&#x5730;&#x5740;&#xFF09;&#x3001;relayed&#x5730;&#x5740;&#xFF08;&#x548C;TURN&#x8F6C;&#x53D1;&#x670D;&#x52A1;&#x5668;&#x76F8;&#x5BF9;&#x5E94;&#x7684;&#x5730;&#x5740;&#xFF09;&#x53CA;Peer reflexive&#x5730;&#x5740;&#x7B49;&#x3002;</p>
-<ul>
-<li>STUN: Session Traversal Utilities for NAT / NAT&#x4F1A;&#x8BDD;&#x7A7F;&#x900F;&#x5DE5;&#x5177;; STUN&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x79CD;&#x65B9;&#x5F0F;&#x4F7F;&#x4E00;&#x4E2A;&#x7AEF;&#x70B9;&#x80FD;&#x591F;&#x786E;&#x5B9A;NAT&#x5206;&#x914D;&#x7684;&#x548C;&#x672C;&#x5730;&#x79C1;&#x6709;IP&#x5730;&#x5740;&#x548C;&#x7AEF;&#x53E3;&#x76F8;&#x5BF9;&#x5E94;&#x7684;&#x516C;&#x7F51;IP&#x5730;&#x5740;&#x548C;&#x7AEF;&#x53E3;&#x4EE5;&#x53CA;NAT&#x7684;&#x7C7B;&#x578B;&#x4FE1;&#x606F;&#x3002;&#x5B83;&#x4E5F;&#x4E3A;&#x7AEF;&#x70B9;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x79CD;&#x65B9;&#x5F0F;&#x4FDD;&#x6301;&#x4E00;&#x4E2A;NAT&#x7ED1;&#x5B9A;&#x4E0D;&#x8FC7;&#x671F;&#x3002;NAT&#x7ED1;&#x5B9A;&#x8FC7;&#x671F;&#x5219;&#x8868;&#x793A;&#x4E3A;&#x76F8;&#x540C;&#x7684;&#x5185;&#x7F51;&#x5730;&#x5740;&#x91CD;&#x65B0;&#x5206;&#x914D;&#x5916;&#x7F51;&#x5730;&#x5740;&#x4E5F;&#x5C31;&#x662F;&#x7AEF;&#x53E3;&#x53F7;&#x3002;</li>
-<li>TURN: Traversal Using Relay NAT; TURN&#x662F;STUN&#x534F;&#x8BAE;&#x7684;&#x6269;&#x5C55;&#xFF0C;&#x5728;&#x5B9E;&#x9645;&#x5E94;&#x7528;&#x4E2D;&#x4ED6;&#x4E5F;&#x53EF;&#x4EE5;&#x5145;&#x5F53;STUN&#x7684;&#x89D2;&#x8272;. &#x5982;&#x679C;&#x4E00;&#x4E2A;&#x4F4D;&#x4E8E;NAT&#x540E;&#x9762;&#x7684;&#x8BBE;&#x5907;&#x60F3;&#x8981;&#x548C;&#x53E6;&#x5916;&#x4E00;&#x4E2A;&#x4F4D;&#x4E8E;NAT&#x540E;&#x9762;&#x7684;&#x8BBE;&#x5907;&#x5EFA;&#x7ACB;&#x901A;&#x4FE1;&#xFF0C;&#x5F53;&#x91C7;&#x7528;UDP&#x6253;&#x6D1E;&#x6280;&#x672F;&#x4E0D;&#x80FD;&#x6539;&#x5B9E;&#x73B0;&#x7684;&#x65F6;&#x5019;&#x5C31;&#x5FC5;&#x987B;&#x8981;&#x4E00;&#x53F0;&#x4E2D;&#x95F4;&#x670D;&#x52A1;&#x5668;&#x626E;&#x6F14;&#x6570;&#x636E;&#x5305;&#x8F6C;&#x53D1;&#x7684;&#x89D2;&#x8272;&#xFF0C;&#x8FD9;&#x53F0;TURN&#x670D;&#x52A1;&#x5668;&#x9700;&#x8981;&#x62E5;&#x6709;&#x516C;&#x7F51;&#x7684;IP&#x5730;&#x5740;.</li>
-</ul>
-<p><strong>ICE&#x8FDB;&#x884C;NAT&#x7A7F;&#x900F;&#x7684;&#x57FA;&#x672C;&#x8FC7;&#x7A0B;</strong></p>
-<p>&#x5728;&#x901A;&#x5E38;&#x7684;ICE&#x90E8;&#x7F72;&#x73AF;&#x5883;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x6709;&#x4E24;&#x4E2A;&#x5BA2;&#x670D;&#x7AEF;&#x60F3;&#x8981;&#x5EFA;&#x7ACB;&#x901A;&#x4FE1;&#x8FDE;&#x63A5;&#xFF0C;&#x4ED6;&#x4EEC;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x901A;&#x8FC7;signaling&#x670D;&#x52A1;&#x5668;&#xFF08;&#x5982;SIP&#x670D;&#x52A1;&#x5668;&#xFF09;&#x6267;&#x884C;offer/answer&#x8FC7;&#x7A0B;&#x6765;&#x4EA4;&#x6362;SDP&#x6D88;&#x606F;&#x3002;</p>
-<p>&#x5728;ICE&#x8FC7;&#x7A0B;&#x5F00;&#x59CB;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5BA2;&#x670D;&#x7AEF;&#x5FFD;&#x7565;&#x4ED6;&#x4EEC;&#x5404;&#x81EA;&#x7684;&#x7F51;&#x7EDC;&#x62D3;&#x6251;&#x7ED3;&#x6784;&#xFF0C;&#x4E0D;&#x7BA1;&#x662F;&#x4E0D;&#x662F;&#x5728;NAT&#x8BBE;&#x5907;&#x540E;&#x9762;&#x6216;&#x8005;&#x591A;&#x4E2A;NAT&#x540E;&#x9762;&#xFF0C;ICE&#x5141;&#x8BB8;&#x5BA2;&#x670D;&#x7AEF;&#x53D1;&#x73B0;&#x4ED6;&#x4EEC;&#x7684;&#x6240;&#x5728;&#x7F51;&#x7EDC;&#x7684;&#x62D3;&#x6251;&#x7ED3;&#x6784;&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x7136;&#x540E;&#x627E;&#x51FA;&#x4E00;&#x4E2A;&#x6216;&#x8005;&#x66F4;&#x591A;&#x7684;&#x53EF;&#x4EE5;&#x5EFA;&#x7ACB;&#x901A;&#x4FE1;&#x8FDE;&#x63A5;&#x7684;&#x8DEF;&#x5F84;&#x3002;</p>
-<p>&#x4E0B;&#x56FE;&#x663E;&#x793A;&#x4E86;&#x4E00;&#x4E2A;&#x5178;&#x578B;&#x7684;ICE&#x90E8;&#x7F72;&#x73AF;&#x5883;&#xFF0C;&#x5BA2;&#x670D;&#x7AEF;L&#x548C;R&#x90FD;&#x5728;&#x5404;&#x81EA;&#x7684;NAT&#x8BBE;&#x5907;&#x540E;&#x9762;&#xFF0C;&#x4E0B;&#x9762;&#x7B80;&#x5355;&#x63CF;&#x8FF0;&#x4E0B;ICE&#x5EFA;&#x7ACB;&#x901A;&#x4FE1;&#x7684;&#x8FC7;&#x7A0B;&#xFF1A;</p>
-<ol>
-<li>L&#x548C;R&#x5148;&#x5206;&#x522B;&#x901A;&#x8FC7;STUN&#x548C;TURN&#x670D;&#x52A1;&#x5668;&#x83B7;&#x53D6;&#x81EA;&#x5DF1;&#x7684;host address,server-reflexive address&#x3001;relayed address&#xFF08;&#x548C;TURN&#x8F6C;&#x53D1;&#x670D;&#x52A1;&#x5668;&#x76F8;&#x5BF9;&#x5E94;&#x7684;&#x5730;&#x5740;&#xFF09;&#xFF0C;&#x5176;&#x4E2D;server-reflexive address&#x548C;relayed address&#x901A;&#x8FC7;&#x5B9A;&#x65F6;&#x5237;&#x65B0;&#x4FDD;&#x8BC1;&#x5730;&#x5740;&#x4E0D;&#x8FC7;&#x671F;&#x3002;&#x8FD9;&#x4E9B;&#x5730;&#x5740;&#x901A;&#x5E38;&#x53EB;&#x505A;candinate&#x5730;&#x5740;&#x3002;</li>
-<li>&#x7ED9;&#x8FD9;&#x4E9B;candinate&#x5730;&#x5740;&#x5206;&#x914D;&#x4F18;&#x5148;&#x7EA7;&#x6392;&#x5E8F;&#x5E76;&#x683C;&#x5F0F;&#x5316;&#x6210;SDP&#x683C;&#x5F0F;&#xFF0C;&#x901A;&#x8FC7;SIP&#x670D;&#x52A1;&#x5668;&#x4EA4;&#x6362;&#x5F7C;&#x6B64;&#x7684;SDP&#xFF1B;</li>
-<li>&#x4EA4;&#x6362;&#x5B8C;&#x6210;&#x540E;&#x6839;&#x636E;&#x4E00;&#x5B9A;&#x7684;&#x539F;&#x5219;&#x628A;&#x672C;&#x5730;&#x7684;&#x5019;&#x9009;&#x548C;&#x8FDC;&#x7A0B;&#x7684;&#x5019;&#x9009;&#x8FDB;&#x884C;&#x914D;&#x5BF9;&#xFF0C;&#x6BCF;&#x4E00;&#x5BF9;&#x90FD;&#x6709;&#x81EA;&#x5DF1;&#x7684;&#x4F18;&#x5148;&#x7EA7;&#x5E76;&#x6839;&#x636E;&#x4F18;&#x5148;&#x7EA7;&#x8FDB;&#x884C;&#x6392;&#x5E8F;&#x540E;&#x653E;&#x5165;Check&#x5217;&#x8868;&#x91CC;&#x9762;&#xFF08;&#x4E24;&#x8FB9;&#x90FD;&#x4F1A;&#x6709;&#x76F8;&#x540C;&#x7684;Check&#x5217;&#x8868;&#xFF09;&#x3002;</li>
-<li>&#x7136;&#x540E;&#x8FDB;&#x884C;&#x8FDE;&#x63A5;&#x6027;&#x6D4B;&#x8BD5;&#xFF0C;&#x6D4B;&#x8BD5;&#x524D;&#x4F1A;&#x9009;&#x62E9;&#x4E00;&#x4E2A;&#x5BA2;&#x670D;&#x7AEF;&#x626E;&#x6F14;Controlled&#x89D2;&#x8272;&#x548C;&#x53E6;&#x4E00;&#x4E2A;&#x626E;&#x6F14;Controling&#x89D2;&#x8272;&#xFF0C;&#x8FDE;&#x901A;&#x6027;&#x68C0;&#x67E5;&#x5B8C;&#x6210;&#x540E;&#x626E;&#x6F14;Controling&#x89D2;&#x8272;&#x7684;&#x5BA2;&#x670D;&#x7AEF;&#x8D1F;&#x8D23;&#x5728;&#x6709;&#x6548;&#x7684;Candinate&#x5BF9;&#x5217;&#x8868;&#x91CC;&#x9762;&#x9009;&#x62E9;&#x4E00;&#x4E2A;&#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;&#x88AB;&#x9009;&#x4E2D;&#x7684;&#x4F20;&#x8F93;&#x901A;&#x9053;&#x5E76;&#x901A;&#x77E5;Controlled&#x7684;&#x5BA2;&#x670D;&#x7AEF;&#x3002;</li>
-<li>&#x5229;&#x7528;&#x88AB;&#x9009;&#x4E2D;&#x7684;candinate&#x5730;&#x5740;&#x5BF9;&#x8FDB;&#x884C;&#x901A;&#x4FE1;&#x3002;</li>
-</ol>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">.                       +-----------+</div><div class="line">.                       |    SIP    |</div><div class="line">.      +-------+        |    Srvr   |         +-------+</div><div class="line">.      | STUN  |        |           |         | STUN  |</div><div class="line">.      | Srvr  |        +-----------+         | Srvr  |</div><div class="line">.      |       |        /           \         |       |</div><div class="line">.      +-------+       /             \        +-------+</div><div class="line">.                     /&lt;- Signaling -&gt;\</div><div class="line">.                    /                 \</div><div class="line">.               +--------+          +--------+</div><div class="line">.               |  NAT   |          |  NAT   |</div><div class="line">.               +--------+          +--------+</div><div class="line">.                 /                       \</div><div class="line">.                /                         \</div><div class="line">.               /                           \</div><div class="line">.           +-------+                    +-------+</div><div class="line">.           | Agent |                    | Agent |</div><div class="line">.           |   L   |                    |   R   |</div><div class="line">.           |       |                    |       |</div><div class="line">.           +-------+                    +-------+</div></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;1-NAT&quot;&gt;&lt;a href=&quot;#1-NAT&quot; class=&quot;headerlink&quot; title=&quot;1 NAT&quot;&gt;&lt;/a&gt;1 NAT&lt;/h2&gt;&lt;p&gt;NAT&amp;#xFF08;Network Address Translation&amp;#xFF0C;&amp;#x7F51;&amp;#x7EDC;&amp;#x5730;&amp;#x5740;&amp;#x8F6C;&amp;#x6362;&amp;#xFF09;&amp;#x662F;1994&amp;#x5E74;&amp;#x63D0;&amp;#x51FA;&amp;#x7684;&amp;#x3002;&amp;#x5F53;&amp;#x5728;&amp;#x4E13;&amp;#x7528;&amp;#x7F51;&amp;#x5185;&amp;#x90E8;&amp;#x7684;&amp;#x4E00;&amp;#x4E9B;&amp;#x4E3B;&amp;#x673A;&amp;#x672C;&amp;#x6765;&amp;#x5DF2;&amp;#x7ECF;&amp;#x5206;&amp;#x914D;&amp;#x5230;&amp;#x4E86;&amp;#x672C;&amp;#x5730;IP&amp;#x5730;&amp;#x5740;&amp;#xFF08;&amp;#x5373;&amp;#x4EC5;&amp;#x5728;&amp;#x672C;&amp;#x4E13;&amp;#x7528;&amp;#x7F51;&amp;#x5185;&amp;#x4F7F;&amp;#x7528;&amp;#x7684;&amp;#x4E13;&amp;#x7528;&amp;#x5730;&amp;#x5740;&amp;#xFF09;&amp;#xFF0C;&amp;#x4F46;&amp;#x73B0;&amp;#x5728;&amp;#x53C8;&amp;#x60F3;&amp;#x548C;&amp;#x56E0;&amp;#x7279;&amp;#x7F51;&amp;#x4E0A;&amp;#x7684;&amp;#x4E3B;&amp;#x673A;&amp;#x901A;&amp;#x4FE1;&amp;#xFF08;&amp;#x5E76;&amp;#x4E0D;&amp;#x9700;&amp;#x8981;&amp;#x52A0;&amp;#x5BC6;&amp;#xFF09;&amp;#x65F6;&amp;#xFF0C;&amp;#x53EF;&amp;#x4F7F;&amp;#x7528;NAT&amp;#x65B9;&amp;#x6CD5;&amp;#x3002;&lt;/p&gt;
-&lt;p&gt;NAT&amp;#x5927;&amp;#x81F4;&amp;#x5206;&amp;#x4E3A;&amp;#x4E0B;&amp;#x9762;&amp;#x56DB;&amp;#x7C7B;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;Full Cone&lt;br&gt;&amp;#x8FD9;&amp;#x79CD;NAT&amp;#x5185;&amp;#x90E8;&amp;#x7684;&amp;#x673A;&amp;#x5668;A&amp;#x8FDE;&amp;#x63A5;&amp;#x8FC7;&amp;#x5916;&amp;#x7F51;&amp;#x673A;&amp;#x5668;C&amp;#x540E;,NAT&amp;#x4F1A;&amp;#x6253;&amp;#x5F00;&amp;#x4E00;&amp;#x4E2A;&amp;#x7AEF;&amp;#x53E3;.&amp;#x7136;&amp;#x540E;&amp;#x5916;&amp;#x7F51;&amp;#x7684;&amp;#x4EFB;&amp;#x4F55;&amp;#x53D1;&amp;#x5230;&amp;#x8FD9;&amp;#x4E2A;&amp;#x6253;&amp;#x5F00;&amp;#x7684;&amp;#x7AEF;&amp;#x53E3;&amp;#x7684;UDP&amp;#x6570;&amp;#x636E;&amp;#x62A5;&amp;#x90FD;&amp;#x53EF;&amp;#x4EE5;&amp;#x5230;&amp;#x8FBE;A.&amp;#x4E0D;&amp;#x7BA1;&amp;#x662F;&amp;#x4E0D;&amp;#x662F;C&amp;#x53D1;&amp;#x8FC7;&amp;#x6765;&amp;#x7684;.&lt;br&gt;&amp;#x4F8B;&amp;#x5982; A:192.168.8.100 NAT:202.100.100.100 C:292.88.88.88&lt;br&gt;A(192.168.8.100:5000) -&amp;gt; NAT(202.100.100.100 : 8000) -&amp;gt; C(292.88.88.88:2000)&lt;br&gt;&amp;#x4EFB;&amp;#x4F55;&amp;#x53D1;&amp;#x9001;&amp;#x5230; NAT(202.100.100.100:8000)&amp;#x7684;&amp;#x6570;&amp;#x636E;&amp;#x90FD;&amp;#x53EF;&amp;#x4EE5;&amp;#x5230;&amp;#x8FBE;A(192.168.8.100:5000)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Restricted Cone&lt;br&gt;&amp;#x8FD9;&amp;#x79CD;NAT&amp;#x5185;&amp;#x90E8;&amp;#x7684;&amp;#x673A;&amp;#x5668;A&amp;#x8FDE;&amp;#x63A5;&amp;#x8FC7;&amp;#x5916;&amp;#x7F51;&amp;#x7684;&amp;#x673A;&amp;#x5668;C&amp;#x540E;,NAT&amp;#x6253;&amp;#x5F00;&amp;#x4E00;&amp;#x4E2A;&amp;#x7AEF;&amp;#x53E3;.&amp;#x7136;&amp;#x540E;C&amp;#x53EF;&amp;#x4EE5;&amp;#x7528;&amp;#x4EFB;&amp;#x4F55;&amp;#x7AEF;&amp;#x53E3;&amp;#x548C;A&amp;#x901A;&amp;#x4FE1;.&amp;#x5176;&amp;#x4ED6;&amp;#x7684;&amp;#x5916;&amp;#x7F51;&amp;#x673A;&amp;#x5668;&amp;#x4E0D;&amp;#x884C;.&lt;br&gt;&amp;#x4F8B;&amp;#x5982; A:192.168.8.100 NAT:202.100.100.100 C:292.88.88.88&lt;br&gt;A(192.168.8.100:5000) -&amp;gt; NAT(202.100.100.100 : 8000) -&amp;gt; C(292.88.88.88:2000)&lt;br&gt;&amp;#x4EFB;&amp;#x4F55;&amp;#x4ECE;C&amp;#x53D1;&amp;#x9001;&amp;#x5230; NAT(202.100.100.100:8000)&amp;#x7684;&amp;#x6570;&amp;#x636E;&amp;#x90FD;&amp;#x53EF;&amp;#x4EE5;&amp;#x5230;&amp;#x8FBE;A(192.168.8.100:5000)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Port Restricted Cone&lt;br&gt;&amp;#x8FD9;&amp;#x79CD;NAT&amp;#x5185;&amp;#x90E8;&amp;#x7684;&amp;#x673A;&amp;#x5668;A&amp;#x8FDE;&amp;#x63A5;&amp;#x8FC7;&amp;#x5916;&amp;#x7F51;&amp;#x7684;&amp;#x673A;&amp;#x5668;C&amp;#x540E;,NAT&amp;#x6253;&amp;#x5F00;&amp;#x4E00;&amp;#x4E2A;&amp;#x7AEF;&amp;#x53E3;.&amp;#x7136;&amp;#x540E;C&amp;#x53EF;&amp;#x4EE5;&amp;#x7528;&amp;#x539F;&amp;#x6765;&amp;#x7684;&amp;#x7AEF;&amp;#x53E3;&amp;#x548C;A&amp;#x901A;&amp;#x4FE1;.&amp;#x5176;&amp;#x4ED6;&amp;#x7684;&amp;#x5916;&amp;#x7F51;&amp;#x673A;&amp;#x5668;&amp;#x4E0D;&amp;#x884C;.&lt;br&gt;&amp;#x4F8B;&amp;#x5982; A:192.168.8.100 NAT:202.100.100.100 C:292.88.88.88&lt;br&gt;A(192.168.8.100:5000) -&amp;gt; NAT(202.100.100.100 : 8000) -&amp;gt; C(292.88.88.88:2000)&lt;br&gt;C(202.88.88.88:2000)&amp;#x53D1;&amp;#x9001;&amp;#x5230; NAT(202.100.100.100:8000)&amp;#x7684;&amp;#x6570;&amp;#x636E;&amp;#x90FD;&amp;#x53EF;&amp;#x4EE5;&amp;#x5230;&amp;#x8FBE;A(192.168.8.100:5000)&lt;br&gt;&lt;em&gt;&amp;#x4EE5;&amp;#x4E0A;&amp;#x4E09;&amp;#x79CD;NAT&amp;#x901A;&amp;#x79F0;Cone NAT.&amp;#x6211;&amp;#x4EEC;&amp;#x53EA;&amp;#x80FD;&amp;#x7528;&amp;#x8FD9;&amp;#x79CD;NAT&amp;#x8FDB;&amp;#x884C;UDP&amp;#x6253;&amp;#x6D1E;.&lt;/em&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Symmetic&lt;br&gt;&amp;#x5BF9;&amp;#x4E8E;&amp;#x8FD9;&amp;#x79CD;NAT.&amp;#x8FDE;&amp;#x63A5;&amp;#x4E0D;&amp;#x540C;&amp;#x7684;&amp;#x5916;&amp;#x90E8;&amp;#x76EE;&amp;#x6807;.&amp;#x539F;&amp;#x6765;NAT&amp;#x6253;&amp;#x5F00;&amp;#x7684;&amp;#x7AEF;&amp;#x53E3;&amp;#x4F1A;&amp;#x53D8;&amp;#x5316;.&amp;#x800C;Cone NAT&amp;#x4E0D;&amp;#x4F1A;.&amp;#x867D;&amp;#x7136;&amp;#x53EF;&amp;#x4EE5;&amp;#x7528;&amp;#x7AEF;&amp;#x53E3;&amp;#x731C;&amp;#x6D4B;.&amp;#x4F46;&amp;#x662F;&amp;#x6210;&amp;#x529F;&amp;#x7684;&amp;#x6982;&amp;#x7387;&amp;#x5F88;&amp;#x5C0F;.&amp;#x56E0;&amp;#x6B64;&amp;#x653E;&amp;#x5F03;&amp;#x8FD9;&amp;#x79CD;NAT&amp;#x7684;UDP&amp;#x6253;&amp;#x6D1E;.&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;img src=&quot;/2016/network-p2p-overview/nat-detect.gif&quot; alt=&quot;NAT &amp;#x68C0;&amp;#x6D4B;&amp;#x6D41;&amp;#x7A0B;&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Network" scheme="http://snowyying.github.io/categories/Network/"/>
-    
-    
-      <category term="NTP" scheme="http://snowyying.github.io/tags/NTP/"/>
-    
-      <category term="Network" scheme="http://snowyying.github.io/tags/Network/"/>
-    
-      <category term="p2p" scheme="http://snowyying.github.io/tags/p2p/"/>
-    
-      <category term="NATP" scheme="http://snowyying.github.io/tags/NATP/"/>
-    
-      <category term="UPNP" scheme="http://snowyying.github.io/tags/UPNP/"/>
-    
-      <category term="STUN" scheme="http://snowyying.github.io/tags/STUN/"/>
-    
-      <category term="TRUN" scheme="http://snowyying.github.io/tags/TRUN/"/>
-    
-      <category term="ICE" scheme="http://snowyying.github.io/tags/ICE/"/>
     
   </entry>
   
