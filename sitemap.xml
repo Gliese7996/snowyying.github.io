@@ -2,16 +2,58 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://snowyying.github.io/2017/misc-fallible-it-words/</loc>
+    <loc>http://snowyying.github.io/2017/network-api-restful-overview/</loc>
     
-    <lastmod>2017-03-05T05:46:24.274Z</lastmod>
+    <lastmod>2017-03-19T06:02:20.556Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2017/it-sms-platform-alidayu/</loc>
+    
+    <lastmod>2017-03-19T06:01:17.993Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2017/c-c-cpp-hybird-programming/</loc>
+    
+    <lastmod>2017-03-19T04:05:04.446Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2017/iot-push-mqtt-protocol/</loc>
+    
+    <lastmod>2017-03-19T04:04:28.890Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2017/it-pay-platform-weixin/</loc>
+    
+    <lastmod>2017-03-19T03:40:57.012Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://snowyying.github.io/2017/misc-key-matrix/</loc>
     
-    <lastmod>2017-03-05T05:28:10.158Z</lastmod>
+    <lastmod>2017-03-18T03:14:54.065Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2017/network-curl-ubuntu/</loc>
+    
+    <lastmod>2017-03-18T03:14:19.043Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2017/misc-fallible-it-words/</loc>
+    
+    <lastmod>2017-03-05T05:46:24.274Z</lastmod>
     
   </url>
   
