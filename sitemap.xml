@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://snowyying.github.io/About/index.html</loc>
+    
+    <lastmod>2017-03-19T06:33:23.634Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://snowyying.github.io/2017/it-sms-platform-alidayu/</loc>
     
     <lastmod>2017-03-19T06:13:40.344Z</lastmod>
@@ -271,13 +278,6 @@
     <loc>http://snowyying.github.io/2016/test-performance-testing/</loc>
     
     <lastmod>2017-02-03T16:43:13.868Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.github.io/About/index.html</loc>
-    
-    <lastmod>2017-02-03T15:12:33.597Z</lastmod>
     
   </url>
   
