@@ -188,6 +188,7 @@ body {
   }
 }
 .article-date,
+.article-category,
 .article-category-link,
 .archive-year,
 .widget-title {
@@ -511,6 +512,7 @@ body {
 }
 .article-inner {
   overflow: hidden;
+  border-top: 5px solid #555;
 }
 .article-meta:before,
 .article-meta:after {
