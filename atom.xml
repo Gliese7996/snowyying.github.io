@@ -107,7 +107,7 @@
     <link href="http://snowyying.github.io/2017/gen-programmer-skill-map/"/>
     <id>http://snowyying.github.io/2017/gen-programmer-skill-map/</id>
     <published>2017-03-20T04:32:52.000Z</published>
-    <updated>2017-03-20T14:22:08.614Z</updated>
+    <updated>2017-03-20T14:38:22.615Z</updated>
     
     <content type="html"><![CDATA[<p><code>&#x8F6C;&#x81EA;: http://skill-map.stuq.org</code></p>
 <p><img src="/2017/gen-programmer-skill-map/png-ProgrammingLanguage-by-StuQ.png" alt="&#x7F16;&#x7A0B;&#x8BED;&#x8A00;"></p>
@@ -139,6 +139,20 @@
     
     </summary>
     
+      <category term="General" scheme="http://snowyying.github.io/categories/General/"/>
+    
+    
+      <category term="IT" scheme="http://snowyying.github.io/tags/IT/"/>
+    
+      <category term="成长" scheme="http://snowyying.github.io/tags/%E6%88%90%E9%95%BF/"/>
+    
+      <category term="程序员" scheme="http://snowyying.github.io/tags/%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
+    
+      <category term="技能" scheme="http://snowyying.github.io/tags/%E6%8A%80%E8%83%BD/"/>
+    
+      <category term="技术路线" scheme="http://snowyying.github.io/tags/%E6%8A%80%E6%9C%AF%E8%B7%AF%E7%BA%BF/"/>
+    
+      <category term="技术图谱" scheme="http://snowyying.github.io/tags/%E6%8A%80%E6%9C%AF%E5%9B%BE%E8%B0%B1/"/>
     
   </entry>
   
@@ -881,7 +895,7 @@
     <link href="http://snowyying.github.io/2017/swe-dp-cp-factory/"/>
     <id>http://snowyying.github.io/2017/swe-dp-cp-factory/</id>
     <published>2017-02-07T07:59:31.000Z</published>
-    <updated>2017-02-08T03:54:10.586Z</updated>
+    <updated>2017-03-20T14:40:23.652Z</updated>
     
     <content type="html"><![CDATA[<h2 id="&#x7B80;&#x5355;&#x5DE5;&#x5382;&#x6A21;&#x5F0F;"><a href="#&#x7B80;&#x5355;&#x5DE5;&#x5382;&#x6A21;&#x5F0F;" class="headerlink" title="&#x7B80;&#x5355;&#x5DE5;&#x5382;&#x6A21;&#x5F0F;"></a>&#x7B80;&#x5355;&#x5DE5;&#x5382;&#x6A21;&#x5F0F;</h2><h2 id="&#x5DE5;&#x5382;-&#x65B9;&#x6CD5;-&#x6A21;&#x5F0F;"><a href="#&#x5DE5;&#x5382;-&#x65B9;&#x6CD5;-&#x6A21;&#x5F0F;" class="headerlink" title="&#x5DE5;&#x5382;(&#x65B9;&#x6CD5;)&#x6A21;&#x5F0F;"></a>&#x5DE5;&#x5382;(&#x65B9;&#x6CD5;)&#x6A21;&#x5F0F;</h2><h2 id="&#x62BD;&#x8C61;&#x5DE5;&#x5382;&#x6A21;&#x5F0F;"><a href="#&#x62BD;&#x8C61;&#x5DE5;&#x5382;&#x6A21;&#x5F0F;" class="headerlink" title="&#x62BD;&#x8C61;&#x5DE5;&#x5382;&#x6A21;&#x5F0F;"></a>&#x62BD;&#x8C61;&#x5DE5;&#x5382;&#x6A21;&#x5F0F;</h2>]]></content>
     
@@ -1213,7 +1227,7 @@
     <link href="http://snowyying.github.io/2017/net-tcpip-8-boardcast-multicast/"/>
     <id>http://snowyying.github.io/2017/net-tcpip-8-boardcast-multicast/</id>
     <published>2017-01-10T01:58:53.000Z</published>
-    <updated>2017-02-04T13:50:45.771Z</updated>
+    <updated>2017-03-20T14:40:53.534Z</updated>
     
     <content type="html"><![CDATA[<h2 id="1-&#x5E7F;&#x64AD;"><a href="#1-&#x5E7F;&#x64AD;" class="headerlink" title="1. &#x5E7F;&#x64AD;"></a>1. &#x5E7F;&#x64AD;</h2><h6 id="&#x53D7;&#x9650;&#x7684;&#x5E7F;&#x64AD;"><a href="#&#x53D7;&#x9650;&#x7684;&#x5E7F;&#x64AD;" class="headerlink" title="&#x53D7;&#x9650;&#x7684;&#x5E7F;&#x64AD;"></a>&#x53D7;&#x9650;&#x7684;&#x5E7F;&#x64AD;</h6><h6 id="&#x6307;&#x5411;&#x7F51;&#x7EDC;&#x7684;&#x5E7F;&#x64AD;"><a href="#&#x6307;&#x5411;&#x7F51;&#x7EDC;&#x7684;&#x5E7F;&#x64AD;" class="headerlink" title="&#x6307;&#x5411;&#x7F51;&#x7EDC;&#x7684;&#x5E7F;&#x64AD;"></a>&#x6307;&#x5411;&#x7F51;&#x7EDC;&#x7684;&#x5E7F;&#x64AD;</h6><h6 id="&#x6307;&#x5411;&#x5B50;&#x7F51;&#x7684;&#x5E7F;&#x64AD;"><a href="#&#x6307;&#x5411;&#x5B50;&#x7F51;&#x7684;&#x5E7F;&#x64AD;" class="headerlink" title="&#x6307;&#x5411;&#x5B50;&#x7F51;&#x7684;&#x5E7F;&#x64AD;"></a>&#x6307;&#x5411;&#x5B50;&#x7F51;&#x7684;&#x5E7F;&#x64AD;</h6><h6 id="&#x6307;&#x5411;&#x6240;&#x4EE5;&#x5B50;&#x7F51;&#x7684;&#x5E7F;&#x64AD;"><a href="#&#x6307;&#x5411;&#x6240;&#x4EE5;&#x5B50;&#x7F51;&#x7684;&#x5E7F;&#x64AD;" class="headerlink" title="&#x6307;&#x5411;&#x6240;&#x4EE5;&#x5B50;&#x7F51;&#x7684;&#x5E7F;&#x64AD;"></a>&#x6307;&#x5411;&#x6240;&#x4EE5;&#x5B50;&#x7F51;&#x7684;&#x5E7F;&#x64AD;</h6><h2 id="2-&#x591A;&#x64AD;"><a href="#2-&#x591A;&#x64AD;" class="headerlink" title="2. &#x591A;&#x64AD;"></a>2. &#x591A;&#x64AD;</h2><p>IP&#x591A;&#x64AD;&#x63D0;&#x4F9B;&#x4E24;&#x7C7B;&#x670D;&#x52A1;:</p>
 <ul>
