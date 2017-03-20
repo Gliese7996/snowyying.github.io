@@ -2,7 +2,175 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://snowyying.github.io/2017/network-restful-simple-web-server/</loc>
+    <loc>http://snowyying.github.io/2017/os-linux-construct-comic/</loc>
+    
+    <lastmod>2017-03-20T04:57:40.842Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/net-trace-route/</loc>
+    
+    <lastmod>2017-03-20T04:53:50.592Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/net-understand-tcpip-2/</loc>
+    
+    <lastmod>2017-03-20T04:53:47.519Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/net-understand-tcpip-1/</loc>
+    
+    <lastmod>2017-03-20T04:53:28.496Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2017/net-tcpip-11-tcp-protocol/</loc>
+    
+    <lastmod>2017-03-20T04:51:23.995Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2017/net-tcpip-7-udp-protocol/</loc>
+    
+    <lastmod>2017-03-20T04:51:23.987Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2017/net-tcpip-5-icmp/</loc>
+    
+    <lastmod>2017-03-20T04:51:23.977Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2017/net-tcpip-3-ip-protocol/</loc>
+    
+    <lastmod>2017-03-20T04:51:23.968Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2017/net-tcpip-1-overview/</loc>
+    
+    <lastmod>2017-03-20T04:50:49.893Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/net-p2p-overview/</loc>
+    
+    <lastmod>2017-03-20T04:49:40.136Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2017/net-curl-ubuntu/</loc>
+    
+    <lastmod>2017-03-20T04:49:40.126Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/net-socket-select/</loc>
+    
+    <lastmod>2017-03-20T04:49:35.733Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2017/gen-literature-maiyouweng/</loc>
+    
+    <lastmod>2017-03-20T04:48:20.183Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2017/gen-programmer-skill-map/</loc>
+    
+    <lastmod>2017-03-20T04:43:52.911Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/os-io-serial-libcssl-linux/</loc>
+    
+    <lastmod>2017-03-20T04:42:29.422Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/os-io-multiplexing/</loc>
+    
+    <lastmod>2017-03-20T04:42:29.404Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/net-socket-reuseaddr/</loc>
+    
+    <lastmod>2017-03-20T04:42:29.327Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/misc-generate-guid-uuid/</loc>
+    
+    <lastmod>2017-03-20T04:42:29.311Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2017/iot-push-mqtt-protocol/</loc>
+    
+    <lastmod>2017-03-20T04:42:29.294Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/swe-swebok/</loc>
+    
+    <lastmod>2017-03-20T04:42:29.282Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/swe-square-overview/</loc>
+    
+    <lastmod>2017-03-20T04:42:29.264Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/os-select-implement/</loc>
+    
+    <lastmod>2017-03-20T04:42:29.242Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2017/misc-key-matrix/</loc>
+    
+    <lastmod>2017-03-20T04:40:33.465Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2016/gen-lead-the-industry/</loc>
+    
+    <lastmod>2017-03-20T04:38:53.069Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.github.io/2017/net-restful-simple-web-server/</loc>
     
     <lastmod>2017-03-20T02:19:38.330Z</lastmod>
     
@@ -37,7 +205,7 @@
   </url>
   
   <url>
-    <loc>http://snowyying.github.io/2017/network-api-restful-overview/</loc>
+    <loc>http://snowyying.github.io/2017/net-restful-overview/</loc>
     
     <lastmod>2017-03-19T06:02:20.556Z</lastmod>
     
@@ -47,27 +215,6 @@
     <loc>http://snowyying.github.io/2017/c-c-cpp-hybird-programming/</loc>
     
     <lastmod>2017-03-19T04:05:04.446Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.github.io/2017/iot-push-mqtt-protocol/</loc>
-    
-    <lastmod>2017-03-19T04:04:28.890Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.github.io/2017/misc-key-matrix/</loc>
-    
-    <lastmod>2017-03-18T03:14:54.065Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.github.io/2017/network-curl-ubuntu/</loc>
-    
-    <lastmod>2017-03-18T03:14:19.043Z</lastmod>
     
   </url>
   
@@ -86,16 +233,9 @@
   </url>
   
   <url>
-    <loc>http://snowyying.github.io/2017/network-tcpip-errata/</loc>
+    <loc>http://snowyying.github.io/2017/net-tcpip-errata/</loc>
     
     <lastmod>2017-02-23T04:01:33.913Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.github.io/2017/network-tcpip-1-overview/</loc>
-    
-    <lastmod>2017-02-09T03:07:18.706Z</lastmod>
     
   </url>
   
@@ -177,13 +317,6 @@
   </url>
   
   <url>
-    <loc>http://snowyying.github.io/2016/swe-swebok/</loc>
-    
-    <lastmod>2017-02-07T06:33:32.969Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://snowyying.github.io/2016/swe-dp-overview/</loc>
     
     <lastmod>2017-02-07T06:33:32.936Z</lastmod>
@@ -212,13 +345,6 @@
   </url>
   
   <url>
-    <loc>http://snowyying.github.io/2016/swe-square-overview/</loc>
-    
-    <lastmod>2017-02-07T06:31:48.003Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://snowyying.github.io/2016/swe-cmmi-kpas/</loc>
     
     <lastmod>2017-02-07T06:31:43.479Z</lastmod>
@@ -226,56 +352,28 @@
   </url>
   
   <url>
-    <loc>http://snowyying.github.io/2017/network-tcpip-11-tcp-protocol/</loc>
-    
-    <lastmod>2017-02-06T06:50:28.459Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.github.io/2017/network-tcpip-12-snmp/</loc>
+    <loc>http://snowyying.github.io/2017/net-tcpip-12-snmp/</loc>
     
     <lastmod>2017-02-04T13:53:23.544Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://snowyying.github.io/2017/network-tcpip-9-igmp/</loc>
+    <loc>http://snowyying.github.io/2017/net-tcpip-9-igmp/</loc>
     
     <lastmod>2017-02-04T13:53:11.575Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://snowyying.github.io/2017/network-tcpip-8-boardcast-multicast/</loc>
+    <loc>http://snowyying.github.io/2017/net-tcpip-8-boardcast-multicast/</loc>
     
     <lastmod>2017-02-04T13:50:45.771Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://snowyying.github.io/2017/network-tcpip-7-udp-protocol/</loc>
-    
-    <lastmod>2017-02-04T13:47:18.001Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.github.io/2017/network-tcpip-5-icmp/</loc>
-    
-    <lastmod>2017-02-04T13:43:39.353Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.github.io/2017/network-tcpip-3-ip-protocol/</loc>
-    
-    <lastmod>2017-02-04T13:41:32.966Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.github.io/2017/network-tcpip-2-data-link/</loc>
+    <loc>http://snowyying.github.io/2017/net-tcpip-2-data-link/</loc>
     
     <lastmod>2017-02-04T13:39:23.635Z</lastmod>
     
@@ -366,27 +464,6 @@
   </url>
   
   <url>
-    <loc>http://snowyying.github.io/2016/os-select-implement/</loc>
-    
-    <lastmod>2017-01-12T06:06:48.103Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.github.io/2016/network-socket-select/</loc>
-    
-    <lastmod>2017-01-12T06:06:26.533Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.github.io/2016/os-io-multiplexing/</loc>
-    
-    <lastmod>2017-01-12T06:05:08.631Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://snowyying.github.io/2016/os-io-asynchronous-linux/</loc>
     
     <lastmod>2017-01-12T06:04:48.862Z</lastmod>
@@ -429,27 +506,6 @@
   </url>
   
   <url>
-    <loc>http://snowyying.github.io/2016/network-understand-tcpip-1/</loc>
-    
-    <lastmod>2017-01-12T05:56:33.663Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.github.io/2016/network-understand-tcpip-2/</loc>
-    
-    <lastmod>2017-01-12T05:56:33.641Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.github.io/2016/network-p2p-overview/</loc>
-    
-    <lastmod>2017-01-12T05:52:59.426Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://snowyying.github.io/2016/media-darwin-vs-windows/</loc>
     
     <lastmod>2017-01-12T05:52:20.533Z</lastmod>
@@ -460,13 +516,6 @@
     <loc>http://snowyying.github.io/2016/media-darwin-gxx-ubuntu/</loc>
     
     <lastmod>2017-01-12T05:51:46.594Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.github.io/2017/g-literature-maiyouweng/</loc>
-    
-    <lastmod>2017-01-12T05:51:07.447Z</lastmod>
     
   </url>
   
@@ -485,7 +534,7 @@
   </url>
   
   <url>
-    <loc>http://snowyying.github.io/2016/g-programmer-leveling-up-strategy/</loc>
+    <loc>http://snowyying.github.io/2016/gen-programmer-leveling-up-strategy/</loc>
     
     <lastmod>2017-01-12T03:51:50.999Z</lastmod>
     
@@ -513,13 +562,6 @@
   </url>
   
   <url>
-    <loc>http://snowyying.github.io/2016/network-socket-reuseaddr/</loc>
-    
-    <lastmod>2017-01-12T03:42:50.933Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://snowyying.github.io/2016/misc-sqlite3-usage/</loc>
     
     <lastmod>2017-01-12T03:42:15.361Z</lastmod>
@@ -534,42 +576,21 @@
   </url>
   
   <url>
-    <loc>http://snowyying.github.io/2016/os-io-serial-libcssl-linux/</loc>
-    
-    <lastmod>2017-01-12T03:40:59.636Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.github.io/2016/misc-generate-guid-uuid/</loc>
-    
-    <lastmod>2017-01-12T03:35:23.274Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.github.io/2017/network-tcpip-6-routing/</loc>
+    <loc>http://snowyying.github.io/2017/net-tcpip-6-routing/</loc>
     
     <lastmod>2017-01-12T03:21:00.901Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://snowyying.github.io/2017/network-tcpip-4-arp-rarp/</loc>
+    <loc>http://snowyying.github.io/2017/net-tcpip-4-arp-rarp/</loc>
     
     <lastmod>2017-01-12T03:21:00.879Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://snowyying.github.io/2016/network-trace-route/</loc>
-    
-    <lastmod>2017-01-12T02:44:33.772Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.github.io/2017/network-tcpip-10-dns/</loc>
+    <loc>http://snowyying.github.io/2017/net-tcpip-10-dns/</loc>
     
     <lastmod>2017-01-12T02:43:22.347Z</lastmod>
     
@@ -583,84 +604,77 @@
   </url>
   
   <url>
-    <loc>http://snowyying.github.io/2016/g-programming-guide-1-origin/</loc>
+    <loc>http://snowyying.github.io/2016/gen-programming-guide-1-origin/</loc>
     
     <lastmod>2017-01-12T02:31:14.136Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://snowyying.github.io/2016/g-programming-guide-3-direction/</loc>
+    <loc>http://snowyying.github.io/2016/gen-programming-guide-3-direction/</loc>
     
     <lastmod>2017-01-12T02:31:14.121Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://snowyying.github.io/2016/g-programming-guide-2-the-master/</loc>
+    <loc>http://snowyying.github.io/2016/gen-programming-guide-2-the-master/</loc>
     
     <lastmod>2017-01-12T02:31:14.107Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://snowyying.github.io/2016/g-programming-guide-4-become-master/</loc>
+    <loc>http://snowyying.github.io/2016/gen-programming-guide-4-become-master/</loc>
     
     <lastmod>2017-01-12T02:31:14.095Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://snowyying.github.io/2016/g-programming-guide-5-balance/</loc>
+    <loc>http://snowyying.github.io/2016/gen-programming-guide-5-balance/</loc>
     
     <lastmod>2017-01-12T02:31:14.081Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://snowyying.github.io/2016/g-programming-guide-6-golden-time/</loc>
+    <loc>http://snowyying.github.io/2016/gen-programming-guide-6-golden-time/</loc>
     
     <lastmod>2017-01-12T02:31:14.066Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://snowyying.github.io/2016/g-programming-guide-7-driving-force/</loc>
+    <loc>http://snowyying.github.io/2016/gen-programming-guide-7-driving-force/</loc>
     
     <lastmod>2017-01-12T02:31:14.048Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://snowyying.github.io/2016/g-programming-guide-8-dream/</loc>
+    <loc>http://snowyying.github.io/2016/gen-programming-guide-8-dream/</loc>
     
     <lastmod>2017-01-12T02:31:11.108Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://snowyying.github.io/2016/g-c-cpp-growth/</loc>
+    <loc>http://snowyying.github.io/2016/gen-c-cpp-growth/</loc>
     
     <lastmod>2017-01-12T02:29:47.968Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://snowyying.github.io/2016/g-lead-the-industry/</loc>
-    
-    <lastmod>2017-01-12T02:29:47.958Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.github.io/2016/g-programmer-outstanding/</loc>
+    <loc>http://snowyying.github.io/2016/gen-programmer-outstanding/</loc>
     
     <lastmod>2017-01-12T02:29:47.944Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://snowyying.github.io/2016/g-programmers-10-investment/</loc>
+    <loc>http://snowyying.github.io/2016/gen-programmers-10-investment/</loc>
     
     <lastmod>2017-01-12T02:29:47.931Z</lastmod>
     
@@ -674,7 +688,7 @@
   </url>
   
   <url>
-    <loc>http://snowyying.github.io/2016/network-rtsp-overview/</loc>
+    <loc>http://snowyying.github.io/2016/net-rtsp-overview/</loc>
     
     <lastmod>2016-12-16T09:34:36.859Z</lastmod>
     
@@ -709,7 +723,7 @@
   </url>
   
   <url>
-    <loc>http://snowyying.github.io/2016/network-ntp-time/</loc>
+    <loc>http://snowyying.github.io/2016/net-ntp-time/</loc>
     
     <lastmod>2016-11-14T07:40:21.922Z</lastmod>
     

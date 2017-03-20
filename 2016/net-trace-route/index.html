@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Traceroute 网络命令原理 | Snowyying</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="&amp;#x3000;&amp;#x3000;traceroute&amp;#xFF0C; &amp;#x4E5F;&amp;#x5C31;&amp;#x662F; trace route&amp;#xFF0C;&amp;#x8DDF;&amp;#x8E2A;&amp;#x8DEF;&amp;#x7531;&amp;#x3002;&amp;#x8FD9;&amp;#x4E2A;&amp;#x7A0B;&amp;#x5E8F;&amp;#x6700;&amp;#x65E9;&amp;#x662F;Van Jacobson&amp;#x5B9E;&amp;#x7">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Traceroute 网络命令原理">
+<meta property="og:url" content="http://snowyying.github.io/2016/net-trace-route/index.html">
+<meta property="og:site_name" content="Snowyying">
+<meta property="og:description" content="&amp;#x3000;&amp;#x3000;traceroute&amp;#xFF0C; &amp;#x4E5F;&amp;#x5C31;&amp;#x662F; trace route&amp;#xFF0C;&amp;#x8DDF;&amp;#x8E2A;&amp;#x8DEF;&amp;#x7531;&amp;#x3002;&amp;#x8FD9;&amp;#x4E2A;&amp;#x7A0B;&amp;#x5E8F;&amp;#x6700;&amp;#x65E9;&amp;#x662F;Van Jacobson&amp;#x5B9E;&amp;#x7">
+<meta property="og:image" content="http://snowyying.github.io/2016/net-trace-route/Windows_tracert.png">
+<meta property="og:updated_time" content="2017-03-20T04:53:50.592Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Traceroute 网络命令原理">
+<meta name="twitter:description" content="&amp;#x3000;&amp;#x3000;traceroute&amp;#xFF0C; &amp;#x4E5F;&amp;#x5C31;&amp;#x662F; trace route&amp;#xFF0C;&amp;#x8DDF;&amp;#x8E2A;&amp;#x8DEF;&amp;#x7531;&amp;#x3002;&amp;#x8FD9;&amp;#x4E2A;&amp;#x7A0B;&amp;#x5E8F;&amp;#x6700;&amp;#x65E9;&amp;#x662F;Van Jacobson&amp;#x5B9E;&amp;#x7">
+<meta name="twitter:image" content="http://snowyying.github.io/2016/net-trace-route/Windows_tracert.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Snowyying" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Snowyying</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">天下武功, 无坚不破, 唯快不破.</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/About">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://snowyying.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-net-trace-route" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Traceroute 网络命令原理
+    </h1>
+  
+
+      </header>
+    
+
+  <div class="article-meta">
+    <a href="/2016/net-trace-route/" class="article-date">
+  <time datetime="2016-10-28T09:22:24.000Z" itemprop="datePublished">2016-10-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Network/">Network</a>
+  </div>
+
+  </div>
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="/2016/net-trace-route/Windows_tracert.png" alt="Windows_tracert"></p>
+<p>&#x3000;&#x3000;traceroute&#xFF0C; &#x4E5F;&#x5C31;&#x662F; trace route&#xFF0C;&#x8DDF;&#x8E2A;&#x8DEF;&#x7531;&#x3002;&#x8FD9;&#x4E2A;&#x7A0B;&#x5E8F;&#x6700;&#x65E9;&#x662F;Van Jacobson&#x5B9E;&#x73B0;&#x7684;&#x3002;&#x6E90;&#x7801;&#x5728;&#x7F51;&#x4E0A;&#x53EF;&#x4EE5;&#x627E;&#x5230;&#xFF0C;&#x4E0D;&#x8FC7;&#x6211;&#x8FD8;&#x6CA1;&#x6709;&#x53BB;&#x627E;&#x3002;&#x4E3B;&#x8981;&#x7684;&#x539F;&#x7406;&#x662F;IP&#x8DEF;&#x7531;&#x8FC7;&#x7A0B;&#x4E2D;&#x5BF9;&#x6570;&#x636E;&#x5305;TTL(Time to Live&#xFF0C;&#x5B58;&#x6D3B;&#x65F6;&#x95F4;)&#x7684;&#x5904;&#x7406;&#x3002;&#x5F53;&#x8DEF;&#x7531;&#x5668;&#x6536;&#x5230;&#x4E00;&#x4E2A;IP&#x5305;&#x65F6;&#xFF0C;&#x4F1A;&#x4FEE;&#x6539;IP&#x5305;&#x7684;TTL&#xFF08;&#x53CA;&#x7531;&#x6B64;&#x9020;&#x6210;&#x7684;&#x5934;&#x90E8;&#x68C0;&#x9A8C;&#x548C;checksum&#x53D8;&#x5316;&#xFF09;&#x3002;&#x6BCF;&#x6536;&#x5230;&#x4E00;&#x4E2A;&#x5305;&#xFF0C;&#x68C0;&#x67E5;&#x8FD9;&#x4E2A; &#x7684;TTL&#x662F;&#x5426;&#x662F;0&#x6216;1&#x3002;&#x5982;&#x679C;&#x662F;&#xFF0C;&#x8868;&#x660E;&#x8FD9;&#x4E2A;&#x5305;&#x8FD8;&#x6CA1;&#x6709;&#x5230;&#x8FBE;&#x76EE;&#x7684;&#x5730;&#xFF0C;&#x800C;&#x4E14;&#x5269;&#x4F59;&#x65F6;&#x95F4;&#x4E0D;&#x591A;&#x4E86;&#xFF0C;&#x80AF;&#x5B9A;&#x662F;&#x5230;&#x4E0D;&#x4E86;&#x76EE;&#x7684;&#x5730;&#x4E86;&#x3002;&#x8FD9;&#x6837;&#x8DEF;&#x7531;&#x5668;&#x5C31;&#x7B80;&#x5355;&#x5730;&#x4E22;&#x5F03;&#x8FD9;&#x4E2A;&#x5305;&#xFF0C;&#x5E76;&#x7ED9;&#x6E90;&#x4E3B;&#x673A;&#x53D1;&#x9001; ICMP&#x901A;&#x77E5;&#xFF0C;&#x8BF4;&#x8FD9;&#x4E2A;&#x5305;&#x5DF2;&#x7ECF;&#x8D85;&#x65F6;&#x4E86;&#x3002;ICMP&#x7684;&#x901A;&#x77E5;&#x4FE1;&#x606F;&#x91CC;&#x5305;&#x542B;&#x5F53;&#x524D;&#x8DEF;&#x7531;&#x5668;&#x53D1;&#x9001;&#x65F6;&#x6240;&#x7528;&#x7684;IP&#x3002;</p>
+<p>&#x3000;&#x3000;&#x8FD9;&#x6837;&#x5C31;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x6784;&#x9020;&#x6570;&#x636E;&#x5305;&#xFF0C;&#x6765;&#x95F4;&#x63A5;&#x68C0;&#x67E5;&#x5230; &#x8FBE;&#x4E00;&#x4E2A;&#x4E3B;&#x673A;&#x65F6;&#x7ECF;&#x8FC7;&#x4E86;&#x54EA;&#x4E9B;&#x8DEF;&#x7531;&#x3002;&#x4E00;&#x5F00;&#x59CB;&#x53D1;&#x9001;&#x4E00;&#x4E2A;TTL&#x4E3A;1&#x7684;&#x5305;&#xFF0C;&#x8FD9;&#x6837;&#x5230;&#x8FBE;&#x7B2C;&#x4E00;&#x4E2A;&#x8DEF;&#x7531;&#x5668;&#x7684;&#x65F6;&#x5019;&#x5C31;&#x5DF2;&#x7ECF;&#x8D85;&#x65F6;&#x4E86;&#xFF0C;&#x7B2C;&#x4E00;&#x4E2A;&#x8DEF;&#x7531;&#x5668;&#x5C31;&#x53D1;&#x901A;&#x77E5;&#x8BF4;&#x5305;&#x8D85;&#x65F6;&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x53EF;&#x4EE5;&#x8BB0;&#x5F55;&#x4E0B; &#x6240;&#x7ECF;&#x8FC7;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x8DEF;&#x7531;&#x5668;&#x7684;IP&#x3002;&#x7136;&#x540E;TTL&#x52A0;1&#xFF0C;&#x5B89;&#x5168;&#x901A;&#x8FC7;&#x7B2C;&#x4E00;&#x4E2A;&#x8DEF;&#x7531;&#x5668;&#xFF0C;&#x800C;&#x7B2C;&#x4E8C;&#x4E2A;&#x8DEF;&#x7531;&#x5668;&#x7684;&#x7684;&#x5904;&#x7406;&#x4E0E;&#x7B2C;&#x4E00;&#x4E2A;&#x76F8;&#x540C;&#xFF0C;&#x4E22;&#x5305;&#xFF0C;&#x53D1;&#x901A;&#x77E5;&#x8BF4;&#x5305;&#x8D85;&#x65F6;&#x4E86;&#xFF0C;&#x8FD9;&#x6837;&#x8BB0;&#x5F55;&#x4E0B;&#x7B2C;&#x4E8C;&#x4E2A;&#x8DEF; &#x7531;&#x5668;IP&#xFF0C;&#x7531;&#x6B64;&#x53EF;&#x4EE5;&#x4E00;&#x76F4;&#x8FDB;&#x884C;&#x4E0B;&#x53BB;&#xFF0C;&#x76F4;&#x5230;&#x8FD9;&#x4E2A;&#x6570;&#x636E;&#x5305;&#x5230;&#x8FBE;&#x76EE;&#x6807;&#x4E3B;&#x673A;&#xFF0C;&#x7531;&#x6B64;&#x6253;&#x5370;&#x51FA;&#x6240;&#x6709;&#x7ECF;&#x8FC7;&#x7684;&#x8DEF;&#x7531;&#x5668;&#x3002;</p>
+<a id="more"></a>
+<p>&#x3000;&#x3000;&#x5728;&#x901A;&#x4FE1;&#x4E2D;&#xFF0C;IP&#x5C42;&#x53EA;&#x8D1F;&#x8D23;&#x6570;&#x636E;&#x7684;&#x8DEF;&#x7531;&#x4E0E;&#x4F20; &#x8F93;&#xFF0C;&#x5E76;&#x4E0D;&#x5904;&#x7406;&#x6570;&#x636E;&#x5305;&#x7684;&#x5185;&#x5BB9;&#x3002;&#x4F8B;&#x5982;ICMP&#xFF0C;&#x6216;TCP&#xFF0C;UDP&#xFF0C;&#x8FD9;&#x4E9B;&#x534F;&#x8BAE;&#x662F;&#x4F9D;&#x8D56;IP&#x5C42;&#x7684;&#x4F20;&#x8F93;&#x529F;&#x80FD;&#x6765;&#x4F20;&#x9001;&#x6570;&#x636E;&#x7684;&#x3002;&#x5728;&#x901A;&#x4FE1;&#x53CC;&#x65B9;&#x7684;&#x4E3B;&#x673A;&#x4E2D;&#xFF0C;&#x6536;&#x5230;&#x8FD9;&#x4E9B;&#x534F;&#x8BAE;&#x7684;&#x6570;&#x636E;&#x5305; &#x540E;&#xFF0C;&#x4E00;&#x822C;&#x5728;&#x901A;&#x4FE1;&#x7684;&#x5BF9;&#x5E94;&#x4E3B;&#x673A;&#x4E0A;&#xFF0C;&#x4F1A;&#x6709;&#x7A0B;&#x5E8F;&#x6765;&#x5904;&#x7406;&#x8FD9;&#x4E9B;&#x6570;&#x636E;&#x3002;&#x800C;&#x76F4;&#x63A5;&#x7684;IP&#x6570;&#x636E;&#x62A5;&#x662F;&#x6CA1;&#x6709;&#x7528;&#x5904;&#x7684;&#xFF08;win2000&#x7684;&#x9A71;&#x52A8;&#x5C42;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x4F7F;&#x7528;IP&#x62A5;&#x800C;&#x4E0D;&#x9700;&#x8981;&#x52A0;&#x4E0A;&#x5176;&#x4ED6;&#x534F; &#x8BAE;&#xFF0C;&#x4F46;&#x662F;&#x4E00;&#x822C;&#x662F;&#x4E0D;&#x4F1A;&#x8FD9;&#x6837;&#x7528;&#x7684;&#xFF09;&#x3002;&#x56E0;&#x6B64;traceroute&#x7A0B;&#x5E8F;&#x53D1;&#x9001;&#x4E00;&#x4E2A;UDP&#x5305;&#x6765;&#x8BD5;&#x63A2;&#x3002;&#x5BF9;&#x8DEF;&#x7531;&#x5668;&#x6765;&#x8BF4;&#xFF0C;UDP&#x6570;&#x636E;&#x62A5;&#x53EA;&#x662F;IP&#x6570;&#x636E;&#x62A5;&#x7684;&#x4E00;&#x79CD;&#xFF0C;&#x5B83;&#x5E76;&#x4E0D;&#x5173;&#x5FC3; UDP&#x6570;&#x636E;&#x62A5;&#x7684;&#x5177;&#x4F53;&#x5185;&#x5BB9;&#x3002;&#x76F4;&#x5230;&#x8FD9;&#x4E2A;&#x5305;&#x5230;&#x8FBE;&#x76EE;&#x7684;&#x7AEF;&#x7684;&#x4E3B;&#x673A;&#x4F1A;&#xFF0C;&#x76EE;&#x7684;&#x4E3B;&#x673A;&#x7684;&#x5185;&#x6838;&#x4F1A;&#x89E3;&#x6790;UDP&#x6570;&#x636E;&#x62A5;&#xFF0C;&#x5E76;&#x67E5;&#x627E;&#x6570;&#x636E;&#x62A5;&#x4E2D;&#x8981;&#x6C42;&#x7AEF;&#x53E3;&#x662F;&#x5426;&#x5DF2;&#x7ECF;&#x6709;&#x8FDB;&#x7A0B;&#x5728;&#x4F7F;&#x7528;&#x3002;&#x5982;&#x679C;&#x627E;&#x5230;&#xFF0C;&#x5219; &#x901A;&#x77E5;&#x8FDB;&#x7A0B;&#x6709;&#x6570;&#x636E;&#x5230;&#x8FBE;&#x3002;&#x800C;&#x5982;&#x679C;&#x627E;&#x4E0D;&#x5230;&#xFF0C;&#x5219;&#x53D1;&#x9001;&#x4E00;&#x4E2A;&#x201D;&#x76EE;&#x7684;&#x7AEF;&#x53E3;&#x4E0D;&#x53EF;&#x8FBE;&#x201D;&#x7684;ICMP&#x9519;&#x8BEF;&#x6570;&#x636E;&#x56DE;&#x5230;&#x6E90;&#x4E3B;&#x673A;&#x3002;</p>
+<p>&#x3000;&#x3000;&#x8FD9;&#x6837;&#x5C31;&#x53EF;&#x4EE5;&#x5B8C;&#x5168;&#x786E;&#x5B9A;&#x4E0B;&#x6765;&#x3002;trcertroute&#x5EFA;&#x7ACB;&#x4E00;&#x4E2A;UDP&#x6570;&#x636E;&#x5305;&#xFF0C;&#x4E0D;&#x65AD;&#x4FEE;&#x6539;TTL&#x503C;&#x5E76;&#x53D1;&#x9001;&#x51FA;&#x53BB;&#xFF0C;&#x5982;&#x679C;&#x6536;&#x5230;&#x201D;&#x8D85;&#x65F6;&#x9519;&#x201D;&#xFF0C;&#x8868;&#x793A;&#x521A;&#x521A;&#x5230;&#x8FBE;&#x7684;&#x662F;&#x8DEF;&#x7531;&#x5668;&#xFF0C;&#x800C;&#x5982;&#x679C;&#x6536;&#x5230;&#x7684;&#x662F;&#x201D;&#x7AEF;&#x53E3;&#x4E0D;&#x53EF;&#x8FBE;&#x201D;&#x9519;&#x8BEF;&#xFF0C;&#x8868;&#x793A;&#x521A;&#x521A;&#x5230;&#x8FBE;&#x7684;&#x5C31;&#x662F;&#x76EE;&#x7684;&#x4E3B;&#x673A;&#x3002;&#x8FD9;&#x6837;&#x8DEF;&#x7531;&#x8DDF;&#x8E2A;&#x5B8C;&#x6210;&#xFF0C;&#x7A0B;&#x5E8F;&#x7ED3;&#x675F;&#x3002;</p>
+<p>&#x6709;&#x51E0;&#x4E2A;&#x7EC6;&#x8282;&#xFF1A;</p>
+<ol>
+<li>&#x5C40;&#x57DF;&#x7F51;&#x7684;&#x8DEF;&#x7531;&#x662F;&#x76F8;&#x5BF9;&#x7A33;&#x5B9A;&#x7684;&#xFF0C;&#x56E0;&#x6B64;&#x7528;traceroute&#x6253;&#x5370;&#x51FA;&#x6765;&#x7684;&#x54CD;&#x5E94;&#x65F6;&#x95F4;&#x76F8;&#x5DEE;&#x4E0D;&#x5927;&#x3002;&#x800C;&#x5982;&#x679C;&#x7528;&#x6765;&#x8DDF;&#x8E2A;&#x5E7F;&#x57DF;&#x7F51;&#x7684;&#x8DEF;&#x7531;&#xFF0C;&#x7531;&#x4E8E;&#x5E7F;&#x57DF;&#x7F51;&#x7684;&#x8DEF;&#x7531;&#x4FE1;&#x606F;&#x662F;&#x52A8;&#x6001;&#x53D8;&#x5316;&#x7684;&#xFF0C;&#x800C;&#x4E14;&#x5E76;&#x4E0D;&#x80FD;&#x786E;&#x5B9A;&#x662F;&#x53D1;&#x9001;&#x8DEF;&#x5F84;&#x8017;&#x65F6;&#x8FD8;&#x662F;&#x8FD4;&#x56DE;&#x8DEF;&#x5F84;&#x8017;&#x65F6;&#x8F83;&#x591A;&#xFF0C;&#x56E0;&#x6B64;&#x65F6;&#x95F4;&#x4E0E;&#x8DEF;&#x7531;&#x4FE1;&#x606F;&#x53EA;&#x80FD;&#x505A;&#x4E3A;&#x53C2;&#x8003;&#x3002;</li>
+<li>TTL &#x7684;&#x9009;&#x62E9;&#x3002;&#x5982;&#x679C;&#x628A;TTL&#x8BBE;&#x5F97;&#x8DB3;&#x591F;&#x5927;&#xFF0C;&#x662F;&#x4E0D;&#x662F;&#x4E00;&#x5B9A;&#x53EF;&#x4EE5;&#x6253;&#x5370;&#x51FA;&#x6240;&#x6709;&#x8DEF;&#x7531;&#xFF0C;&#x6BD4;&#x5982;&#x4E00;&#x4E2A;&#x6570;&#x636E;&#x5305;&#x7ECF;&#x8FC7;300&#x4E2A;&#x8DEF;&#x7531;&#x5668;&#x624D;&#x5230;&#x8FBE;&#x76EE;&#x7684;&#x7AEF;&#x3002;&#x5F53;&#x7136;&#x5728;&#x73B0;&#x6709;&#x7F51;&#x7EDC;&#x73AF;&#x5883;&#x4E0B;&#x4E0D;&#x592A;&#x53EF;&#x80FD;&#x51FA;&#x73B0;&#x8981;&#x7ECF; &#x8FC7;&#x8FD9;&#x4E48;&#x591A;&#x8DEF;&#x7531;&#x7684;&#x60C5;&#x51B5;&#x3002;&#x800C;TTL&#x4FE1;&#x606F;&#x5728;IP&#x6570;&#x636E;&#x62A5;&#x4E2D;&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x5B57;&#x8282;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x6700;&#x591A;&#x80FD;&#x8BBE;&#x5B9A;&#x5230;255&#xFF08;256&#x4EE5;&#x540E;&#x53C8;&#x91CD;&#x65B0;&#x4ECE;0&#x5F00;&#x59CB;&#xFF09;&#x3002;&#x8BBE;&#x5B9A;&#x8FD9;&#x4E2A;&#x4FE1;&#x606F;&#x7684;&#x76EE;&#x7684;&#xFF0C;&#x5C31;&#x662F;&#x9632;&#x6B62;&#x4E00; &#x4E9B;&#x50F5;&#x800C;&#x4E0D;&#x5316;&#x7684;&#x6570;&#x636E;&#x62A5;&#x5728;&#x7F51;&#x7EDC;&#x6F2B;&#x4E0A;&#x65E0;&#x76EE;&#x7684;&#x7684;&#x6E38;&#x8361;&#x800C;&#x4E0D;&#x6D88;&#x5931;&#x3002;&#x6570;&#x636E;&#x62A5;&#x6BCF;&#x7ECF;&#x8FC7;&#x4E00;&#x4E2A;&#x8DEF;&#x7531;&#x5668;&#xFF0C;&#x8DEF;&#x7531;&#x5668;&#x5C31;&#x628A;TTL&#x51CF;1&#xFF08;&#x6216;&#x5728;&#x8BE5;&#x8DEF;&#x7531;&#x5668;&#x88AB;&#x5904;&#x7406;&#x524D;&#x7ECF;&#x8FC7;&#x7684;&#x79D2;&#x6570;&#xFF09;&#xFF0C;&#x603B;&#x6709;&#x4E00;&#x4E2A;&#x65F6;&#x5019;&#x4F1A; &#x88AB;&#x51CF;&#x5230;1&#xFF0C;&#x7136;&#x540E;&#x8DEF;&#x7531;&#x5668;&#x4F1A;&#x628A;&#x5B83;&#x4E22;&#x5F03;&#x3002;</li>
+<li>traceroute&#x7684;&#x662F;&#x4EE5;&#x6536;&#x5230;&#x201D;&#x7AEF;&#x53E3;&#x4E0D;&#x53EF;&#x8FBE;&#x201D;&#x4E3A;&#x6807;&#x5FD7;&#x6765;&#x7ED3;&#x675F;&#x7684;&#x3002;&#x524D;&#x63D0;&#x662F;&#x53D1;&#x51FA;&#x7684;UDP&#x6570;&#x636E;&#x62A5;&#x4E2D;&#x8981;&#x6C42; &#x7684;&#x7AEF;&#x53E3;&#x5728;&#x76EE;&#x7684;&#x4E3B;&#x673A;&#x4E0A;&#x6CA1;&#x6709;&#x8FDB;&#x7A0B;&#x5728;&#x4F7F;&#x7528;&#x3002;&#x800C;&#x5982;&#x679C;&#x76EE;&#x7684;&#x4E3B;&#x673A;&#x4E0A;&#x6B63;&#x597D;&#x6709;&#x8FDB;&#x7A0B;&#x5728;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x7AEF;&#x53E3;&#xFF0C;&#x63A5;&#x6536;&#x8FD9;&#x4E2A;&#x5305;&#x5E76;&#x6309;&#x6B63;&#x5E38;&#x65B9;&#x5F0F;&#x5904;&#x7406;&#xFF0C;&#x8FD9;&#x6837;traceroute&#x5C31;&#x6536;&#x4E0D;&#x5230;&#x201D;&#x7AEF;&#x53E3;&#x4E0D; &#x53EF;&#x8FBE;&#x201D;&#x7684;&#x9519;&#x8BEF;&#x4E86;&#x3002;&#x4E3A;&#x4E86;&#x907F;&#x514D;&#x51FA;&#x73B0;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#xFF0C;UDP&#x6570;&#x636E;&#x62A5;&#x7684;&#x7AEF;&#x53E3;&#x5F88;&#x9AD8;&#xFF08;&#x4E66;&#x4E2D;&#x7684;&#x5B9E;&#x73B0;&#x662F;&#x521D;&#x59CB;&#x503C;33435&#xFF0C;&#x4EE5;&#x540E;&#x6BCF;&#x53D1;&#x9001;&#x4E00;&#x6B21;&#x518D;&#x52A0;1&#xFF0C;&#x7AEF;&#x53E3;&#x53F7;&#x6700;&#x5927;&#x53EF;&#x4EE5;&#x5230;65535&#xFF09;&#x3002; &#x666E;&#x901A;&#x7A0B;&#x5E8F;&#x4E00;&#x822C;&#x4E0D;&#x4F1A;&#x4F7F;&#x7528;&#x8FD9;&#x4E9B;&#x9AD8;&#x7AEF;&#x53E3;&#x3002;&#x95EE;&#x9898;&#x662F;&#x5047;&#x5982;&#x771F;&#x7684;&#x5B58;&#x5728;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x65F6;&#xFF0C;traceroute&#x4F1A;&#x600E;&#x4E48;&#x5904;&#x7406;&#xFF1F;&#x800C;&#x597D;&#x50CF;Solaris&#x7CFB;&#x7EDF;&#x53EF;&#x80FD;&#x4F1A;&#x4F7F;&#x7528;&#x9AD8;&#x7AEF;&#x53E3;&#xFF0C;&#x8FD9;&#x65F6;&#x53C8;&#x600E; &#x4E48;&#x6837;&#x3002;</li>
+<li>&#x5728;&#x53D1;&#x9001;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x8981;&#x7ECF;&#x8FC7;&#x8BB8;&#x591A;&#x7684;&#x8DEF;&#x7531;&#xFF0C;&#x5230;&#x8FBE;&#x76EE;&#x7684;&#x4E3B;&#x673A;&#x524D;&#xFF0C;&#x53EF;&#x80FD;&#x8FD8;&#x8981;&#x7ECF;&#x8FC7;&#x7F51;&#x5173;&#xFF0C;&#x9632;&#x706B;&#x5899;&#xFF0C;&#x4EE5;&#x53CA;&#x5176;&#x4ED6;&#x4F8B;&#x5982;IDS&#x7684;&#x8FC7;&#x6EE4;&#xFF0C;&#x53D1;&#x9001;&#x5305;&#x80FD;&#x4E0D;&#x80FD;&#x5230;&#x8FBE;&#x76EE;&#x7684;&#x4E3B;&#x673A;&#x8FD8;&#x662F;&#x4E2A;&#x95EE;&#x9898;&#x3002;&#x800C;&#x5373;&#x4F7F;&#x5230; &#x8FBE;&#x4E86;&#xFF0C;&#x53D1;&#x9001;&#x7684;ICMP&#x4FE1;&#x606F;&#x80FD;&#x4E0D;&#x80FD;&#x8FD4;&#x56DE;&#x4E5F;&#x662F;&#x4E2A;&#x95EE;&#x9898;&#x3002;&#x56E0;&#x4E3A;&#x6CBF;&#x9014;&#x7ECF;&#x8FC7;&#x7684;&#x5173;&#x5361;&#x592A;&#x591A;&#xFF0C;&#x9047;&#x4E0A;&#x9ED1;&#x6D1E;&#x8DEF;&#x7531;&#x5668;&#xFF0C;&#x4E0D;&#x8F6C;&#x53D1;&#x8FD9;&#x4E9B;&#x4FE1;&#x606F;&#x7684;&#x8BDD;&#xFF0C;&#x90A3;&#x5C31;&#x4E00;&#x70B9;&#x529E;&#x6CD5;&#x4E5F;&#x6CA1;&#x6709;&#x4E86;&#x3002;</li>
+</ol>
+<p>&#x3000; &#x3000;&#x4E66;&#x4E2D;&#x8FD8;&#x63D0;&#x5230;&#x539F;&#x6765;&#x7684;traceroute&#x91CC;&#x6709;&#x4E00;&#x4E2A;&#x9009;&#x9879;&#xFF0C;&#x53EF;&#x4EE5;&#x6307;&#x5B9A;&#x6570;&#x636E;&#x5305;&#x7ECF;&#x8FC7;&#x7684;&#x8DEF;&#x7531;&#x5668;&#x3002;&#x5982;&#x679C;&#x662F;&#x5BBD;&#x8DEF;&#x7531;&#xFF0C;&#x5219;&#x53EA;&#x8981;&#x7ECF;&#x8FC7;&#x6307;&#x5B9A;&#x7684;&#x8DEF;&#x7531;&#x5373;&#x53EF;&#x3002;&#x800C;&#x5982;&#x679C;&#x662F;&#x4E25;&#x8DEF;&#x7531;&#xFF0C;&#x5219;&#x5FC5;&#x987B;&#x6309; &#x6307;&#x5B9A;&#x7684;&#x987A;&#x5E8F;&#x7ECF;&#x8FC7;&#x6307;&#x5B9A;&#x7684;&#x8DEF;&#x7531;&#x5668;&#x3002;&#x56E0;&#x4E3A;&#x8FD9;&#x4E2A;&#x9009;&#x9879;&#x53EF;&#x80FD;&#x5BFC;&#x81F4;&#x67D0;&#x4E2A;&#x56FA;&#x5B9A;&#x7684;&#x8DEF;&#x7531;&#x5904;&#x7406;&#x4FE1;&#x606F;&#x592A;&#x591A;&#xFF0C;&#x5728;&#x516C;&#x5E03;&#x7684;&#x6E90;&#x7801;&#x91CC;&#x5DF2;&#x7ECF;&#x53D6;&#x6D88;&#x4E86;&#x3002;&#x4F46;&#x662F;&#x53EF;&#x4EE5;&#x627E;&#x5230;&#x8865;&#x4E01;&#xFF0C;&#x8FD8;&#x662F;&#x53EF;&#x4EE5;&#x7528;&#x8D77;&#x6765;&#x7684;&#x3002;&#x4ECE;&#x6BD4;&#x8F83; &#x7684;&#x7ED3;&#x679C;&#x770B;&#xFF0C;&#x4F3C;&#x4E4E;&#x6307;&#x5B9A;&#x8DEF;&#x7531;&#x5668;&#x53CD;&#x800C;&#x4E0D;&#x5982;&#x8BA9;&#x8DEF;&#x7531;&#x5668;&#x91C7;&#x7528;&#x9ED8;&#x8BA4;&#x8DEF;&#x7531;&#x5904;&#x7406;&#x5F97;&#x5FEB;&#x3002;&#x800C;&#x5BF9;&#x4E8E;&#x4E25;&#x8DEF;&#x7531;&#x6765;&#x8BF4;&#xFF0C;&#x8981;&#x6210;&#x529F;&#x5C31;&#x8981;&#x66F4;&#x96BE;&#x4E00;&#x4E9B;&#xFF0C;&#x56E0;&#x4E3A;&#x5E76;&#x4E0D;&#x4E00;&#x5B9A;&#x4F60;&#x6307;&#x5B9A;&#x7684;&#x8DEF;&#x7531;&#x5668;&#x6B63;&#x597D;&#x6709;&#x6761;&#x76EE;&#x5230;&#x63A5;&#x4E0B;&#x6765; &#x7684;&#x8DEF;&#x7531;&#x5668;&#x3002;</p>
+<p>&#x3000; &#x3000;ping&#x7A0B;&#x5E8F;&#x662F;&#x5229;&#x7528;icmp&#x7684;&#x56DE;&#x590D;&#x8BF7;&#x6C42;&#x6765;&#x63A2;&#x6D4B;&#x8FDC;&#x7AEF;&#x4E3B;&#x673A;&#x662F;&#x5426;&#x53EF;&#x8FBE;&#x3002;&#xFF08;&#x5E76;&#x4E0D;&#x80FD;&#x7EE7;&#x7EED;&#x5224;&#x65AD;&#x7AEF;&#x53E3;&#x662F;&#x5426;&#x53EF;&#x8FBE;&#x3002;&#x8981;&#x60F3;&#x67E5;&#x770B;&#x7AEF;&#x53E3;&#xFF0C;&#x5C31;&#x8981;&#x4F7F;&#x7528;&#x626B;&#x63CF;&#x5668;&#x4E86;&#x3002;&#xFF09;win2000&#x91CC;&#x7684;&#x7F51;&#x7EDC;&#x5E93;&#x91CC;&#x5DF2; &#x7ECF;&#x63D0;&#x4F9B;&#x7F51;&#x7EDC;&#x51FD;&#x6570;&#x5E93;(icmp.dll)&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x5229;&#x7528;icmp&#x6765;&#x63A2;&#x6D4B;&#x8FDC;&#x7AEF;&#x4E3B;&#x673A;&#x3002;&#x76F8;&#x6BD4;&#x8D77;&#x4F7F;&#x7528;&#x7BA1;&#x9053;&#x6765;&#x8BFB;ping&#x7684;&#x7ED3;&#x679C;&#xFF0C;&#x6216;&#x8005;&#x5D4C;&#x5165;ping&#x6E90;&#x7801;&#xFF0C;&#x8FD9;&#x4E2A;&#x662F;&#x6700;&#x7B80;&#x5355;&#x7684;&#x65B9; &#x6CD5;&#x4E86;&#xFF08;&#x6CA1;&#x529E;&#x6CD5;&#xFF0C;&#x4EBA;&#x61D2;&#xFF09;&#x3002;ping&#x5176;&#x5B9E;&#x8FD8;&#x6709;&#x4E00;&#x4E2A;R&#x9009;&#x9879;&#xFF0C;&#x7528;&#x6765;&#x8BB0;&#x5F55;&#x7ECF;&#x8FC7;&#x7684;&#x8DEF;&#x7531;&#xFF0C;&#x4EE5;&#x524D;&#x4E00;&#x76F4;&#x4E0D;&#x77E5;&#x9053;&#x3002;(pingwww.google.com-r 7)&#x8BB0;&#x5F55;&#x7ECF;&#x8FC7;&#x7684;7&#x4E2A;&#x8DEF;&#x7531;&#x5668;&#x3002;&#x6309;&#x7167;&#x5206;&#x6790;&#xFF0C;&#x6839;&#x636E;&#x6240;&#x5728;&#x73AF;&#x5883;&#x9650;&#x5236;&#x6700;&#x591A;&#x53EF;&#x4EE5;&#x8BB0;&#x5F55;8~9&#x4E2A;&#x9879;&#x76EE;&#x3002;</p>
+<p>&#x3000;&#x3000;&#x9664;&#x4E86;&#x56DE;&#x663E;&#x8BF7;&#x6C42;&#x5916;&#xFF0C;&#x8FD8;&#x53EF;&#x4EE5;&#x5229;&#x7528;icmp&#x6765;&#x5B9E;&#x73B0;&#x65F6;&#x95F4;&#x8BF7;&#x6C42;&#x3002;&#x5728;icmp&#x7684;&#x6570;&#x636E;&#x5305;&#x4E2D;&#x53EF;&#x4EE5;&#x5305;&#x542B;&#x53D1;&#x9001;&#x65F6;&#x95F4;&#xFF0C;&#x76EE;&#x7684;&#x4E3B;&#x673A;&#x6536;&#x5230;&#x540E;&#x518D;&#x9644;&#x4E0A;&#x81EA;&#x8EAB;&#x5F53;&#x65F6;&#x65F6;&#x95F4;&#x624D;&#x53D1;&#x56DE;&#x3002;&#x8FD9;&#x6837;&#x53EF;&#x4EE5;&#x505A;&#x4E00;&#x4E2A;&#x65F6;&#x95F4;&#x6821;&#x9A8C;&#xFF0C;&#x5E76;&#x53EF;&#x4EE5;&#x5224;&#x65AD;&#x6E90;&#x4E0E;&#x76EE;&#x7684;&#x4E4B;&#x95F4;&#x7684;&#x901A;&#x8BAF;&#x901F;&#x5EA6;&#x3002;&#x7531;&#x4E8E;&#x5177;&#x4F53;&#x7684;&#x5185;&#x5BB9;&#x90E8;&#x5206;&#x6BD4;&#x8F83;&#x70E6;&#xFF0C;&#x7C7B;&#x578B;&#x592A;&#x591A;&#xFF0C;&#x4E00;&#x4E0B;&#x5B50;&#x8BB0;&#x4E0D;&#x4F4F;&#x5404;&#x4E2A;&#x7C7B;&#x578B;&#x7684;&#x610F;&#x601D;&#x3002;<br>&#x3000;&#x3000;&#x4E00;&#x822C;&#x7528;ping&#x7684;&#x65F6;&#x5019;&#x53EA;&#x662F;&#x7528;&#x4E86;&#x5B83;&#x7684;&#x6700;&#x7B80;&#x5355;&#x7684;&#x529F;&#x80FD;&#xFF1A;&#x68C0;&#x67E5;&#x4E3B;&#x673A;&#x80FD;&#x4E0D;&#x80FD;&#x8FDE;&#x5230;&#x3002;&#x5176;&#x5B9E;&#x4F7F;&#x7528;&#x5B83;&#x6240;&#x63D0;&#x4F9B;&#x7684;&#x5176;&#x4ED6;&#x9009;&#x9879;&#xFF0C;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x8BB8;&#x591A;&#x7EC6;&#x8282;&#x4E0A;&#x7684;&#x63A7;&#x5236;&#xFF0C;&#x4F8B;&#x5982;&#x6570;&#x636E;&#x5305;&#x957F;&#x5EA6;&#xFF0C;TTL&#xFF0C;&#x8DEF;&#x7531;&#x8BB0;&#x5F55;&#xFF0C;&#x5BBD;/&#x4E25;&#x8DEF;&#x7531;&#x7ECF;&#x8FC7;&#x8DEF;&#x7531;&#x7B49;&#x3002;</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://snowyying.github.io/2016/net-trace-route/" data-id="cj0hn4q2k005ez0skdc5lxml3" class="article-share-link">Share</a>
+      
+        <a href="http://snowyying.github.io/2016/net-trace-route/#ds-thread" class="article-comment-link">留言</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/swe-swebok/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          软件工程知识体系指南概览 (swebok)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/net-understand-tcpip-2/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">理解 TCP/IP 网络栈&amp;编写网络应用 (下)</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="2016/net-trace-route/" data-title="Traceroute 网络命令原理" data-url="http://snowyying.github.io/2016/net-trace-route/"></div>
+  <!-- 多说评论框 end -->
+  <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"snowyying"};
+  (function() {
+  	var ds = document.createElement('script');
+  	ds.type = 'text/javascript';ds.async = true;
+  	ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+  	ds.charset = 'UTF-8';
+  	(document.getElementsByTagName('head')[0]
+  	 || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+  <!-- 多说公共JS代码 end -->
+</section>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C-C/">C/C++</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Embedded/">Embedded</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/General/">General</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Media/">Media</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Misc/">Misc</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a><span class="category-list-count">20</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OS/">OS</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Security/">Security</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Software-Engineering/">Software Engineering</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Test/">Test</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/网络/">网络</a><span class="category-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/32-bit/" style="font-size: 10px;">32-bit</a> <a href="/tags/4-1/" style="font-size: 10px;">4+1</a> <a href="/tags/ARM/" style="font-size: 10px;">ARM</a> <a href="/tags/Big-Endian/" style="font-size: 10px;">Big-Endian</a> <a href="/tags/Bitrate/" style="font-size: 10px;">Bitrate</a> <a href="/tags/Boost/" style="font-size: 10px;">Boost</a> <a href="/tags/C/" style="font-size: 12.22px;">C</a> <a href="/tags/C/" style="font-size: 12.22px;">C++</a> <a href="/tags/C-C/" style="font-size: 15.56px;">C/C++</a> <a href="/tags/CMMI/" style="font-size: 11.11px;">CMMI</a> <a href="/tags/DSS/" style="font-size: 10px;">DSS</a> <a href="/tags/GUID/" style="font-size: 10px;">GUID</a> <a href="/tags/H264/" style="font-size: 10px;">H264</a> <a href="/tags/I-O/" style="font-size: 15.56px;">I/O</a> <a href="/tags/ICE/" style="font-size: 10px;">ICE</a> <a href="/tags/IIC/" style="font-size: 10px;">IIC</a> <a href="/tags/IT/" style="font-size: 20px;">IT</a> <a href="/tags/JSON/" style="font-size: 10px;">JSON</a> <a href="/tags/KAs/" style="font-size: 10px;">KAs</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Little-Endian/" style="font-size: 10px;">Little-Endian</a> <a href="/tags/NATP/" style="font-size: 10px;">NATP</a> <a href="/tags/NTP/" style="font-size: 11.11px;">NTP</a> <a href="/tags/Network/" style="font-size: 10px;">Network</a> <a href="/tags/OS/" style="font-size: 12.22px;">OS</a> <a href="/tags/Proactor/" style="font-size: 10px;">Proactor</a> <a href="/tags/RTCP/" style="font-size: 10px;">RTCP</a> <a href="/tags/RTP/" style="font-size: 10px;">RTP</a> <a href="/tags/RTSP/" style="font-size: 11.11px;">RTSP</a> <a href="/tags/Reactor/" style="font-size: 10px;">Reactor</a> <a href="/tags/Redmine/" style="font-size: 10px;">Redmine</a> <a href="/tags/SO-REUSEADDR/" style="font-size: 10px;">SO_REUSEADDR</a> <a href="/tags/SQLite/" style="font-size: 10px;">SQLite</a> <a href="/tags/SQuaRE/" style="font-size: 10px;">SQuaRE</a> <a href="/tags/STUN/" style="font-size: 10px;">STUN</a> <a href="/tags/SWE/" style="font-size: 17.78px;">SWE</a> <a href="/tags/TCP-IP/" style="font-size: 13.33px;">TCP/IP</a> <a href="/tags/TRUN/" style="font-size: 10px;">TRUN</a> <a href="/tags/TWSI/" style="font-size: 10px;">TWSI</a> <a href="/tags/UDP/" style="font-size: 10px;">UDP</a> <a href="/tags/UML/" style="font-size: 10px;">UML</a> <a href="/tags/UPNP/" style="font-size: 10px;">UPNP</a> <a href="/tags/UUID/" style="font-size: 10px;">UUID</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/VS/" style="font-size: 10px;">VS</a> <a href="/tags/WS-Security/" style="font-size: 10px;">WS-Security</a> <a href="/tags/Windows/" style="font-size: 10px;">Windows</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/curl/" style="font-size: 10px;">curl</a> <a href="/tags/decode/" style="font-size: 10px;">decode</a> <a href="/tags/define/" style="font-size: 10px;">define</a> <a href="/tags/epoll/" style="font-size: 12.22px;">epoll</a> <a href="/tags/ffmpeg/" style="font-size: 11.11px;">ffmpeg</a> <a href="/tags/ffplay/" style="font-size: 10px;">ffplay</a> <a href="/tags/ffprobe/" style="font-size: 10px;">ffprobe</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/h264/" style="font-size: 10px;">h264</a> <a href="/tags/http/" style="font-size: 11.11px;">http</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/libcssl/" style="font-size: 10px;">libcssl</a> <a href="/tags/linux/" style="font-size: 11.11px;">linux</a> <a href="/tags/p2p/" style="font-size: 10px;">p2p</a> <a href="/tags/pipe/" style="font-size: 10px;">pipe</a> <a href="/tags/poll/" style="font-size: 11.11px;">poll</a> <a href="/tags/select/" style="font-size: 13.33px;">select</a> <a href="/tags/setsockopt/" style="font-size: 10px;">setsockopt</a> <a href="/tags/socket/" style="font-size: 11.11px;">socket</a> <a href="/tags/swebok/" style="font-size: 10px;">swebok</a> <a href="/tags/不定参数/" style="font-size: 10px;">不定参数</a> <a href="/tags/串口/" style="font-size: 10px;">串口</a> <a href="/tags/交叉编译/" style="font-size: 10px;">交叉编译</a> <a href="/tags/内存泄露/" style="font-size: 10px;">内存泄露</a> <a href="/tags/函数/" style="font-size: 10px;">函数</a> <a href="/tags/卖油翁/" style="font-size: 10px;">卖油翁</a> <a href="/tags/发展/" style="font-size: 16.67px;">发展</a> <a href="/tags/同步/" style="font-size: 10px;">同步</a> <a href="/tags/复用/" style="font-size: 10px;">复用</a> <a href="/tags/多播/" style="font-size: 10px;">多播</a> <a href="/tags/大小端/" style="font-size: 10px;">大小端</a> <a href="/tags/学习/" style="font-size: 10px;">学习</a> <a href="/tags/安全/" style="font-size: 10px;">安全</a> <a href="/tags/嵌入式/" style="font-size: 10px;">嵌入式</a> <a href="/tags/工厂模式/" style="font-size: 10px;">工厂模式</a> <a href="/tags/广播/" style="font-size: 10px;">广播</a> <a href="/tags/异步/" style="font-size: 10px;">异步</a> <a href="/tags/微信/" style="font-size: 10px;">微信</a> <a href="/tags/性能/" style="font-size: 13.33px;">性能</a> <a href="/tags/成长/" style="font-size: 18.89px;">成长</a> <a href="/tags/技术/" style="font-size: 10px;">技术</a> <a href="/tags/投资/" style="font-size: 10px;">投资</a> <a href="/tags/指南/" style="font-size: 16.67px;">指南</a> <a href="/tags/按键/" style="font-size: 10px;">按键</a> <a href="/tags/支付/" style="font-size: 10px;">支付</a> <a href="/tags/攻略/" style="font-size: 10px;">攻略</a> <a href="/tags/教程/" style="font-size: 10px;">教程</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/文学/" style="font-size: 10px;">文学</a> <a href="/tags/无线电/" style="font-size: 10px;">无线电</a> <a href="/tags/时间/" style="font-size: 10px;">时间</a> <a href="/tags/架构/" style="font-size: 10px;">架构</a> <a href="/tags/框架/" style="font-size: 10px;">框架</a> <a href="/tags/流媒体服务器/" style="font-size: 10px;">流媒体服务器</a> <a href="/tags/测试/" style="font-size: 11.11px;">测试</a> <a href="/tags/熟能生巧/" style="font-size: 10px;">熟能生巧</a> <a href="/tags/电磁波/" style="font-size: 10px;">电磁波</a> <a href="/tags/短信/" style="font-size: 10px;">短信</a> <a href="/tags/程序员/" style="font-size: 17.78px;">程序员</a> <a href="/tags/管道/" style="font-size: 10px;">管道</a> <a href="/tags/组播/" style="font-size: 10px;">组播</a> <a href="/tags/统一建模语言/" style="font-size: 10px;">统一建模语言</a> <a href="/tags/网络/" style="font-size: 17.78px;">网络</a> <a href="/tags/英语/" style="font-size: 10px;">英语</a> <a href="/tags/计算机/" style="font-size: 10px;">计算机</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 14.44px;">设计模式</a> <a href="/tags/调试/" style="font-size: 10px;">调试</a> <a href="/tags/软件质量/" style="font-size: 11.11px;">软件质量</a> <a href="/tags/进程间通信/" style="font-size: 10px;">进程间通信</a> <a href="/tags/通信/" style="font-size: 10px;">通信</a> <a href="/tags/阿里大于/" style="font-size: 10px;">阿里大于</a> <a href="/tags/项目管理/" style="font-size: 10px;">项目管理</a> <a href="/tags/验证码/" style="font-size: 10px;">验证码</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">2017-03</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">2017-02</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">2017-01</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">2016-12</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">2016-11</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">2016-10</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">2016-09</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">2016-08</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">2016-07</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/os-linux-construct-comic/">漫画趣解 linux 内核构造</a>
+          </li>
+        
+          <li>
+            <a href="/2017/gen-programmer-skill-map/">程序员技能图谱</a>
+          </li>
+        
+          <li>
+            <a href="/2017/net-restful-simple-web-server/">开源 http(s) 框架 Simple Web Server</a>
+          </li>
+        
+          <li>
+            <a href="/2017/it-pay-platform-weixin/">支付平台 - APP 微信支付</a>
+          </li>
+        
+          <li>
+            <a href="/2017/net-curl-ubuntu/">Ubuntu 安装使用 curl</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Snowyying<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> . 
+Analyse with <script src="https://s4.cnzz.com/z_stat.php?id=1260081840&web_id=1260081840" language="JavaScript"></script>
+
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/About" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
