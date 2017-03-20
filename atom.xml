@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://snowyying.github.io/"/>
-  <updated>2017-03-20T06:15:18.424Z</updated>
+  <updated>2017-03-20T06:20:40.351Z</updated>
   <id>http://snowyying.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://snowyying.github.io/2017/os-linux-construct-comic/"/>
     <id>http://snowyying.github.io/2017/os-linux-construct-comic/</id>
     <published>2017-03-20T04:35:44.000Z</published>
-    <updated>2017-03-20T06:15:18.424Z</updated>
+    <updated>2017-03-20T06:20:40.351Z</updated>
     
     <content type="html"><![CDATA[<p><code>&#x8F6C;&#x81EA;: http://www.techug.com/post/carton-inside-the-linux-kernel.html</code></p>
 <blockquote>
@@ -89,6 +89,16 @@
     
     </summary>
     
+      <category term="OS" scheme="http://snowyying.github.io/categories/OS/"/>
+    
+    
+      <category term="Linux" scheme="http://snowyying.github.io/tags/Linux/"/>
+    
+      <category term="OS" scheme="http://snowyying.github.io/tags/OS/"/>
+    
+      <category term="内核" scheme="http://snowyying.github.io/tags/%E5%86%85%E6%A0%B8/"/>
+    
+      <category term="构造" scheme="http://snowyying.github.io/tags/%E6%9E%84%E9%80%A0/"/>
     
   </entry>
   
@@ -97,15 +107,17 @@
     <link href="http://snowyying.github.io/2017/gen-programmer-skill-map/"/>
     <id>http://snowyying.github.io/2017/gen-programmer-skill-map/</id>
     <published>2017-03-20T04:32:52.000Z</published>
-    <updated>2017-03-20T04:43:52.911Z</updated>
+    <updated>2017-03-20T06:38:21.225Z</updated>
     
-    <content type="html"><![CDATA[<p><code>&#x8F6C;&#x81EA;: http://www.techug.com/post/programmer-skills-map.html</code></p>
+    <content type="html"><![CDATA[<p><code>&#x8F6C;&#x81EA;: http://skill-map.stuq.org</code></p>
+<p><img src="/2017/gen-programmer-skill-map/png-Architect-by-StuQ.png" alt="&#x7CFB;&#x7EDF;&#x67B6;&#x6784;&#x5E08;"></p>
+<a id="more"></a>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;&lt;code&gt;&amp;#x8F6C;&amp;#x81EA;: http://www.techug.com/post/programmer-skills-map.html&lt;/code&gt;&lt;/p&gt;
-
+      &lt;p&gt;&lt;code&gt;&amp;#x8F6C;&amp;#x81EA;: http://skill-map.stuq.org&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/2017/gen-programmer-skill-map/png-Architect-by-StuQ.png&quot; alt=&quot;&amp;#x7CFB;&amp;#x7EDF;&amp;#x67B6;&amp;#x6784;&amp;#x5E08;&quot;&gt;&lt;/p&gt;
     
     </summary>
     
