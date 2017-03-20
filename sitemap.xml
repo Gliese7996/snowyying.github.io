@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://snowyying.github.io/2017/network-restful-simple-web-server/</loc>
+    
+    <lastmod>2017-03-20T02:06:51.817Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://snowyying.github.io//404.html</loc>
     
     <lastmod>2017-03-19T09:00:51.142Z</lastmod>
