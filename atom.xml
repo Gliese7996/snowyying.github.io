@@ -174,9 +174,9 @@
     
       <category term="http" scheme="http://snowyying.github.io/tags/http/"/>
     
-      <category term="框架" scheme="http://snowyying.github.io/tags/%E6%A1%86%E6%9E%B6/"/>
-    
       <category term="https" scheme="http://snowyying.github.io/tags/https/"/>
+    
+      <category term="框架" scheme="http://snowyying.github.io/tags/%E6%A1%86%E6%9E%B6/"/>
     
   </entry>
   
@@ -331,7 +331,7 @@
     <link href="http://snowyying.github.io/2017/net-curl-ubuntu/"/>
     <id>http://snowyying.github.io/2017/net-curl-ubuntu/</id>
     <published>2017-03-18T03:12:34.000Z</published>
-    <updated>2017-03-20T04:49:40.126Z</updated>
+    <updated>2017-03-20T14:57:14.264Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>curl&#x662F;&#x5229;&#x7528;URL&#x8BED;&#x6CD5;&#x5728;&#x547D;&#x4EE4;&#x884C;&#x65B9;&#x5F0F;&#x4E0B;&#x5DE5;&#x4F5C;&#x7684;&#x5F00;&#x6E90;&#x6587;&#x4EF6;&#x4F20;&#x8F93;&#x5DE5;&#x5177;&#x3002;&#x5B83;&#x88AB;&#x5E7F;&#x6CDB;&#x5E94;&#x7528;&#x5728;Unix&#x3001;&#x591A;&#x79CD;Linux&#x53D1;&#x884C;&#x7248;&#x4E2D;&#xFF0C;&#x5E76;&#x4E14;&#x6709;DOS&#x548C;Win32&#x3001;Win64&#x4E0B;&#x7684;&#x79FB;&#x690D;&#x7248;&#x672C;&#x3002;</p>
@@ -355,6 +355,8 @@
       <category term="curl" scheme="http://snowyying.github.io/tags/curl/"/>
     
       <category term="http" scheme="http://snowyying.github.io/tags/http/"/>
+    
+      <category term="https" scheme="http://snowyying.github.io/tags/https/"/>
     
       <category term="调试" scheme="http://snowyying.github.io/tags/%E8%B0%83%E8%AF%95/"/>
     
@@ -516,11 +518,13 @@
     <link href="http://snowyying.github.io/2017/net-restful-overview/"/>
     <id>http://snowyying.github.io/2017/net-restful-overview/</id>
     <published>2017-03-08T04:30:42.000Z</published>
-    <updated>2017-03-19T06:02:20.556Z</updated>
+    <updated>2017-03-20T14:57:24.660Z</updated>
     
     <summary type="html">
     
     </summary>
+    
+      <category term="Network" scheme="http://snowyying.github.io/categories/Network/"/>
     
     
   </entry>
@@ -544,7 +548,7 @@
     <link href="http://snowyying.github.io/2017/os-io-fast-gpio/"/>
     <id>http://snowyying.github.io/2017/os-io-fast-gpio/</id>
     <published>2017-03-04T04:10:49.000Z</published>
-    <updated>2017-03-05T04:43:59.370Z</updated>
+    <updated>2017-03-20T14:50:03.015Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>/dev/mem&#x662F;&#x7269;&#x7406;&#x5185;&#x5B58;&#x7684;&#x5168;&#x6620;&#x50CF;&#xFF0C;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x8BBF;&#x95EE;&#x7269;&#x7406;&#x5185;&#x5B58;&#xFF0C;&#x4E00;&#x822C;&#x7528;&#x6CD5;&#x662F;open(&#x201C;/dev/mem&#x201D;,O_RDWR|O_SYNC)&#xFF0C;&#x7136;&#x540E;mmap&#xFF0C;&#x63A5;&#x7740;&#x5C31;&#x53EF;&#x4EE5;&#x7528;mmap&#x7684;&#x5730;&#x5740;&#x6765;&#x8BBF;&#x95EE;&#x7269;&#x7406;&#x5185;&#x5B58;&#xFF0C;&#x8FD9;&#x5B9E;&#x9645;&#x4E0A;&#x5C31;&#x662F;&#x5B9E;&#x73B0;&#x7528;&#x6237;&#x7A7A;&#x95F4;&#x9A71;&#x52A8;&#x7684;&#x4E00;&#x79CD;&#x65B9;&#x6CD5;&#x3002;</p>
@@ -566,7 +570,11 @@
     
       <category term="IT" scheme="http://snowyying.github.io/tags/IT/"/>
     
+      <category term="GPIO" scheme="http://snowyying.github.io/tags/GPIO/"/>
+    
       <category term="I/O" scheme="http://snowyying.github.io/tags/I-O/"/>
+    
+      <category term="快速 GPIO" scheme="http://snowyying.github.io/tags/%E5%BF%AB%E9%80%9F-GPIO/"/>
     
   </entry>
   
@@ -575,7 +583,7 @@
     <link href="http://snowyying.github.io/2017/misc-key-matrix/"/>
     <id>http://snowyying.github.io/2017/misc-key-matrix/</id>
     <published>2017-03-02T10:13:50.000Z</published>
-    <updated>2017-03-20T04:40:33.465Z</updated>
+    <updated>2017-03-20T14:50:44.121Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>&#x5728;&#x952E;&#x76D8;&#x4E2D;&#x6309;&#x952E;&#x6570;&#x91CF;&#x8F83;&#x591A;&#x65F6;&#xFF0C;&#x4E3A;&#x4E86;&#x51CF;&#x5C11;I/O&#x53E3;&#x7684;&#x5360;&#x7528;&#xFF0C;&#x901A;&#x5E38;&#x5C06;&#x6309;&#x952E;&#x6392;&#x5217;&#x6210;&#x77E9;&#x9635;&#x5F62;&#x5F0F;&#x3002;&#x5728;&#x77E9;&#x9635;&#x5F0F;&#x952E;&#x76D8;&#x4E2D;&#xFF0C;&#x6BCF;&#x6761;&#x6C34;&#x5E73;&#x7EBF;&#x548C;&#x5782;&#x76F4;&#x7EBF;&#x5728;&#x4EA4;&#x53C9;&#x5904;&#x4E0D;&#x76F4;&#x63A5;&#x8FDE;&#x901A;&#xFF0C;&#x800C;&#x662F;&#x901A;&#x8FC7;&#x4E00;&#x4E2A;&#x6309;&#x952E;&#x52A0;&#x4EE5;&#x8FDE;&#x63A5;&#x3002;&#x8FD9;&#x6837;&#xFF0C;&#x4E00;&#x4E2A;&#x7AEF;&#x53E3;&#xFF08;&#x5982;P1&#x53E3;&#xFF09;&#x5C31;&#x53EF;&#x4EE5;&#x6784;&#x6210;4*4=16&#x4E2A;&#x6309;&#x952E;&#xFF0C;&#x6BD4;&#x4E4B;&#x76F4;&#x63A5;&#x5C06;&#x7AEF;&#x53E3;&#x7EBF;&#x7528;&#x4E8E;&#x952E;&#x76D8;&#x591A;&#x51FA;&#x4E86;&#x4E00;&#x500D;&#xFF0C;&#x800C;&#x4E14;&#x7EBF;&#x6570;&#x8D8A;&#x591A;&#xFF0C;&#x533A;&#x522B;&#x8D8A;&#x660E;&#x663E;&#xFF0C;&#x6BD4;&#x5982;&#x518D;&#x591A;&#x52A0;&#x4E00;&#x6761;&#x7EBF;&#x5C31;&#x53EF;&#x4EE5;&#x6784;&#x6210;20&#x952E;&#x7684;&#x952E;&#x76D8;&#xFF0C;&#x800C;&#x76F4;&#x63A5;&#x7528;&#x7AEF;&#x53E3;&#x7EBF;&#x5219;&#x53EA;&#x80FD;&#x591A;&#x51FA;&#x4E00;&#x952E;&#xFF08;9&#x952E;&#xFF09;&#x3002;</p>
@@ -598,7 +606,15 @@
       <category term="Misc" scheme="http://snowyying.github.io/categories/Misc/"/>
     
     
+      <category term="GPIO" scheme="http://snowyying.github.io/tags/GPIO/"/>
+    
+      <category term="Key" scheme="http://snowyying.github.io/tags/Key/"/>
+    
       <category term="按键" scheme="http://snowyying.github.io/tags/%E6%8C%89%E9%94%AE/"/>
+    
+      <category term="矩阵按键" scheme="http://snowyying.github.io/tags/%E7%9F%A9%E9%98%B5%E6%8C%89%E9%94%AE/"/>
+    
+      <category term="按键扫描" scheme="http://snowyying.github.io/tags/%E6%8C%89%E9%94%AE%E6%89%AB%E6%8F%8F/"/>
     
   </entry>
   
@@ -607,7 +623,7 @@
     <link href="http://snowyying.github.io/2017/misc-fallible-it-words/"/>
     <id>http://snowyying.github.io/2017/misc-fallible-it-words/</id>
     <published>2017-03-02T10:11:33.000Z</published>
-    <updated>2017-03-05T05:46:24.274Z</updated>
+    <updated>2017-03-20T14:51:35.594Z</updated>
     
     <content type="html"><![CDATA[<p><code>&#x6765;&#x81EA;: http://www.techug.com/post/chinese-programmer-wrong-pronunciation.html &#x7A0B;&#x5E8F;&#x5E08; 2017-02-23</code></p>
 <blockquote>
@@ -852,6 +868,8 @@
     
       <category term="英语" scheme="http://snowyying.github.io/tags/%E8%8B%B1%E8%AF%AD/"/>
     
+      <category term="发音" scheme="http://snowyying.github.io/tags/%E5%8F%91%E9%9F%B3/"/>
+    
   </entry>
   
   <entry>
@@ -859,9 +877,9 @@
     <link href="http://snowyying.github.io/2017/net-tcpip-errata/"/>
     <id>http://snowyying.github.io/2017/net-tcpip-errata/</id>
     <published>2017-02-23T03:25:12.000Z</published>
-    <updated>2017-02-23T04:01:33.913Z</updated>
+    <updated>2017-03-20T14:54:47.675Z</updated>
     
-    <content type="html"><![CDATA[<p>&#x673A;&#x68B0;&#x5DE5;&#x4E1A;&#x51FA;&#x7248;&#x793E; </p>
+    <content type="html"><![CDATA[<p>&#x673A;&#x68B0;&#x5DE5;&#x4E1A;&#x51FA;&#x7248;&#x793E;</p>
 <h6 id="P42-&#x7B2C;13&#x884C;"><a href="#P42-&#x7B2C;13&#x884C;" class="headerlink" title="P42 (&#x7B2C;13&#x884C;)"></a>P42 (&#x7B2C;13&#x884C;)</h6><p>&#x8BD1;&#x6587;: &#x4ECE;&#x7B2C;2&#x884C;&#x4E2D;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x5C3D;&#x7BA1;ARP&#x8BF7;&#x6C42;&#x662F;&#x5E7F;&#x64AD;&#x7684;&#xFF0C;&#x4F46;&#x662F;ARP&#x5E94;&#x7B54;&#x7684;&#x76EE;&#x7684;&#x5730;&#x5740;&#x5374;&#x662F;bsdi(0:0:c0:6f:2d:40)&#x3002;ARP&#x5E94;&#x7B54;&#x662F;&#x76F4;&#x63A5;&#x9001;&#x5230;&#x8BF7;&#x6C42;&#x7AEF;&#x4E3B;&#x673A;&#x7684;&#xFF0C;&#x800C;&#x662F;&#x5E7F;&#x64AD;&#x7684;&#x3002;</p>
 <p>&#x539F;&#x6587;: From line 2 we see that while the ARP request is broadcast, the destination address of the ARP reply is bsdi(0:0:c0:6f:2d:40). The ARP reply is sent directly to the requesting host; it is not broadcast.</p>
 <hr>
@@ -880,13 +898,21 @@
     
     <summary type="html">
     
-      &lt;p&gt;&amp;#x673A;&amp;#x68B0;&amp;#x5DE5;&amp;#x4E1A;&amp;#x51FA;&amp;#x7248;&amp;#x793E; &lt;/p&gt;
-&lt;h6 id=&quot;P42-&amp;#x7B2C;13&amp;#x884C;&quot;&gt;&lt;a href=&quot;#P42-&amp;#x7B2C;13&amp;#x884C;&quot; class=&quot;he
+      &lt;p&gt;&amp;#x673A;&amp;#x68B0;&amp;#x5DE5;&amp;#x4E1A;&amp;#x51FA;&amp;#x7248;&amp;#x793E;&lt;/p&gt;
+&lt;h6 id=&quot;P42-&amp;#x7B2C;13&amp;#x884C;&quot;&gt;&lt;a href=&quot;#P42-&amp;#x7B2C;13&amp;#x884C;&quot; class=&quot;hea
     
     </summary>
     
       <category term="Network" scheme="http://snowyying.github.io/categories/Network/"/>
     
+    
+      <category term="网络" scheme="http://snowyying.github.io/tags/%E7%BD%91%E7%BB%9C/"/>
+    
+      <category term="TCP/IP 协议" scheme="http://snowyying.github.io/tags/TCP-IP-%E5%8D%8F%E8%AE%AE/"/>
+    
+      <category term="勘误" scheme="http://snowyying.github.io/tags/%E5%8B%98%E8%AF%AF/"/>
+    
+      <category term="勘误表" scheme="http://snowyying.github.io/tags/%E5%8B%98%E8%AF%AF%E8%A1%A8/"/>
     
   </entry>
   
@@ -1156,12 +1182,20 @@
     <link href="http://snowyying.github.io/2017/net-tcpip-12-snmp/"/>
     <id>http://snowyying.github.io/2017/net-tcpip-12-snmp/</id>
     <published>2017-01-17T17:40:08.000Z</published>
-    <updated>2017-02-04T13:53:23.544Z</updated>
+    <updated>2017-03-20T14:54:47.709Z</updated>
     
     <summary type="html">
     
     </summary>
     
+      <category term="Network" scheme="http://snowyying.github.io/categories/Network/"/>
+    
+    
+      <category term="网络" scheme="http://snowyying.github.io/tags/%E7%BD%91%E7%BB%9C/"/>
+    
+      <category term="TCP/IP 协议" scheme="http://snowyying.github.io/tags/TCP-IP-%E5%8D%8F%E8%AE%AE/"/>
+    
+      <category term="SNMP" scheme="http://snowyying.github.io/tags/SNMP/"/>
     
   </entry>
   
@@ -1170,7 +1204,7 @@
     <link href="http://snowyying.github.io/2017/net-tcpip-11-tcp-protocol/"/>
     <id>http://snowyying.github.io/2017/net-tcpip-11-tcp-protocol/</id>
     <published>2017-01-15T07:45:38.000Z</published>
-    <updated>2017-03-20T04:51:23.995Z</updated>
+    <updated>2017-03-20T14:54:43.664Z</updated>
     
     <content type="html"><![CDATA[<h6 id="TCP-&#x5934;"><a href="#TCP-&#x5934;" class="headerlink" title="TCP &#x5934;"></a>TCP &#x5934;</h6><p><img src="/2017/net-tcpip-11-tcp-protocol/tcp-header.png" alt="TCP Header"></p>
 <h2 id="1-TCP-&#x534F;&#x8BAE;"><a href="#1-TCP-&#x534F;&#x8BAE;" class="headerlink" title="1. TCP &#x534F;&#x8BAE;"></a>1. TCP &#x534F;&#x8BAE;</h2><h4 id="1-1-TCP-&#x7684;&#x670D;&#x52A1;"><a href="#1-1-TCP-&#x7684;&#x670D;&#x52A1;" class="headerlink" title="1.1 TCP &#x7684;&#x670D;&#x52A1;"></a>1.1 TCP &#x7684;&#x670D;&#x52A1;</h4><h4 id="1-2-TCP-&#x5934;"><a href="#1-2-TCP-&#x5934;" class="headerlink" title="1.2 TCP &#x5934;"></a>1.2 TCP &#x5934;</h4><h2 id="2-TCP-&#x8FDE;&#x63A5;&#x7684;&#x5EFA;&#x7ACB;&#x548C;&#x7EC8;&#x6B62;"><a href="#2-TCP-&#x8FDE;&#x63A5;&#x7684;&#x5EFA;&#x7ACB;&#x548C;&#x7EC8;&#x6B62;" class="headerlink" title="2. TCP &#x8FDE;&#x63A5;&#x7684;&#x5EFA;&#x7ACB;&#x548C;&#x7EC8;&#x6B62;"></a>2. TCP &#x8FDE;&#x63A5;&#x7684;&#x5EFA;&#x7ACB;&#x548C;&#x7EC8;&#x6B62;</h2><h2 id="3-TCP-&#x7684;&#x4EA4;&#x4E92;&#x6570;&#x636E;&#x6D41;"><a href="#3-TCP-&#x7684;&#x4EA4;&#x4E92;&#x6570;&#x636E;&#x6D41;" class="headerlink" title="3. TCP &#x7684;&#x4EA4;&#x4E92;&#x6570;&#x636E;&#x6D41;"></a>3. TCP &#x7684;&#x4EA4;&#x4E92;&#x6570;&#x636E;&#x6D41;</h2><h2 id="4-TCP-&#x7684;&#x6210;&#x5757;&#x6570;&#x636E;&#x6D41;"><a href="#4-TCP-&#x7684;&#x6210;&#x5757;&#x6570;&#x636E;&#x6D41;" class="headerlink" title="4. TCP &#x7684;&#x6210;&#x5757;&#x6570;&#x636E;&#x6D41;"></a>4. TCP &#x7684;&#x6210;&#x5757;&#x6570;&#x636E;&#x6D41;</h2><h2 id="5-TCP-&#x7684;&#x8D85;&#x65F6;&#x4E0E;&#x91CD;&#x4F20;"><a href="#5-TCP-&#x7684;&#x8D85;&#x65F6;&#x4E0E;&#x91CD;&#x4F20;" class="headerlink" title="5. TCP &#x7684;&#x8D85;&#x65F6;&#x4E0E;&#x91CD;&#x4F20;"></a>5. TCP &#x7684;&#x8D85;&#x65F6;&#x4E0E;&#x91CD;&#x4F20;</h2><h2 id="6-TCP-&#x7684;&#x575A;&#x5B9A;&#x5B9A;&#x65F6;&#x5668;"><a href="#6-TCP-&#x7684;&#x575A;&#x5B9A;&#x5B9A;&#x65F6;&#x5668;" class="headerlink" title="6. TCP &#x7684;&#x575A;&#x5B9A;&#x5B9A;&#x65F6;&#x5668;"></a>6. TCP &#x7684;&#x575A;&#x5B9A;&#x5B9A;&#x65F6;&#x5668;</h2><h2 id="7-TCP-&#x7684;&#x4FDD;&#x6D3B;&#x5B9A;&#x65F6;&#x5668;"><a href="#7-TCP-&#x7684;&#x4FDD;&#x6D3B;&#x5B9A;&#x65F6;&#x5668;" class="headerlink" title="7. TCP &#x7684;&#x4FDD;&#x6D3B;&#x5B9A;&#x65F6;&#x5668;"></a>7. TCP &#x7684;&#x4FDD;&#x6D3B;&#x5B9A;&#x65F6;&#x5668;</h2><h2 id="8-TCP-&#x7684;&#x672A;&#x6765;&#x548C;&#x6027;&#x80FD;"><a href="#8-TCP-&#x7684;&#x672A;&#x6765;&#x548C;&#x6027;&#x80FD;" class="headerlink" title="8. TCP &#x7684;&#x672A;&#x6765;&#x548C;&#x6027;&#x80FD;"></a>8. TCP &#x7684;&#x672A;&#x6765;&#x548C;&#x6027;&#x80FD;</h2>]]></content>
@@ -1184,6 +1218,14 @@
       <category term="Network" scheme="http://snowyying.github.io/categories/Network/"/>
     
     
+      <category term="网络" scheme="http://snowyying.github.io/tags/%E7%BD%91%E7%BB%9C/"/>
+    
+      <category term="TCP/IP 协议" scheme="http://snowyying.github.io/tags/TCP-IP-%E5%8D%8F%E8%AE%AE/"/>
+    
+      <category term="TCP" scheme="http://snowyying.github.io/tags/TCP/"/>
+    
+      <category term="TCP 协议" scheme="http://snowyying.github.io/tags/TCP-%E5%8D%8F%E8%AE%AE/"/>
+    
   </entry>
   
   <entry>
@@ -1191,7 +1233,7 @@
     <link href="http://snowyying.github.io/2017/net-tcpip-10-dns/"/>
     <id>http://snowyying.github.io/2017/net-tcpip-10-dns/</id>
     <published>2017-01-12T02:14:37.000Z</published>
-    <updated>2017-01-12T02:43:22.347Z</updated>
+    <updated>2017-03-20T14:54:47.687Z</updated>
     
     <summary type="html">
     
@@ -1200,6 +1242,12 @@
       <category term="Network" scheme="http://snowyying.github.io/categories/Network/"/>
     
     
+      <category term="网络" scheme="http://snowyying.github.io/tags/%E7%BD%91%E7%BB%9C/"/>
+    
+      <category term="TCP/IP 协议" scheme="http://snowyying.github.io/tags/TCP-IP-%E5%8D%8F%E8%AE%AE/"/>
+    
+      <category term="DNS" scheme="http://snowyying.github.io/tags/DNS/"/>
+    
   </entry>
   
   <entry>
@@ -1207,7 +1255,7 @@
     <link href="http://snowyying.github.io/2017/net-tcpip-9-igmp/"/>
     <id>http://snowyying.github.io/2017/net-tcpip-9-igmp/</id>
     <published>2017-01-12T02:14:28.000Z</published>
-    <updated>2017-02-04T13:53:11.575Z</updated>
+    <updated>2017-03-20T14:54:47.700Z</updated>
     
     <content type="html"><![CDATA[<h2 id="1-IGMP-&#x62A5;&#x6587;"><a href="#1-IGMP-&#x62A5;&#x6587;" class="headerlink" title="1. IGMP &#x62A5;&#x6587;"></a>1. IGMP &#x62A5;&#x6587;</h2><h2 id="2-IGMP-&#x534F;&#x8BAE;"><a href="#2-IGMP-&#x534F;&#x8BAE;" class="headerlink" title="2. IGMP &#x534F;&#x8BAE;"></a>2. IGMP &#x534F;&#x8BAE;</h2><h6 id="&#x52A0;&#x5165;&#x4E00;&#x4E2A;&#x591A;&#x64AD;&#x7EC4;"><a href="#&#x52A0;&#x5165;&#x4E00;&#x4E2A;&#x591A;&#x64AD;&#x7EC4;" class="headerlink" title="&#x52A0;&#x5165;&#x4E00;&#x4E2A;&#x591A;&#x64AD;&#x7EC4;"></a>&#x52A0;&#x5165;&#x4E00;&#x4E2A;&#x591A;&#x64AD;&#x7EC4;</h6><h6 id="IGMP-&#x62A5;&#x544A;&#x548C;&#x67E5;&#x8BE2;"><a href="#IGMP-&#x62A5;&#x544A;&#x548C;&#x67E5;&#x8BE2;" class="headerlink" title="IGMP &#x62A5;&#x544A;&#x548C;&#x67E5;&#x8BE2;"></a>IGMP &#x62A5;&#x544A;&#x548C;&#x67E5;&#x8BE2;</h6><h6 id="&#x5B9E;&#x73B0;&#x7EC6;&#x8282;"><a href="#&#x5B9E;&#x73B0;&#x7EC6;&#x8282;" class="headerlink" title="&#x5B9E;&#x73B0;&#x7EC6;&#x8282;"></a>&#x5B9E;&#x73B0;&#x7EC6;&#x8282;</h6><h6 id="&#x751F;&#x5B58;&#x65F6;&#x95F4;&#x5B57;&#x6BB5;"><a href="#&#x751F;&#x5B58;&#x65F6;&#x95F4;&#x5B57;&#x6BB5;" class="headerlink" title="&#x751F;&#x5B58;&#x65F6;&#x95F4;&#x5B57;&#x6BB5;"></a>&#x751F;&#x5B58;&#x65F6;&#x95F4;&#x5B57;&#x6BB5;</h6><h6 id="&#x6240;&#x4EE5;&#x4E3B;&#x673A;&#x7EC4;"><a href="#&#x6240;&#x4EE5;&#x4E3B;&#x673A;&#x7EC4;" class="headerlink" title="&#x6240;&#x4EE5;&#x4E3B;&#x673A;&#x7EC4;"></a>&#x6240;&#x4EE5;&#x4E3B;&#x673A;&#x7EC4;</h6>]]></content>
     
@@ -1220,6 +1268,12 @@
       <category term="Network" scheme="http://snowyying.github.io/categories/Network/"/>
     
     
+      <category term="网络" scheme="http://snowyying.github.io/tags/%E7%BD%91%E7%BB%9C/"/>
+    
+      <category term="TCP/IP 协议" scheme="http://snowyying.github.io/tags/TCP-IP-%E5%8D%8F%E8%AE%AE/"/>
+    
+      <category term="IGMP" scheme="http://snowyying.github.io/tags/IGMP/"/>
+    
   </entry>
   
   <entry>
@@ -1227,7 +1281,7 @@
     <link href="http://snowyying.github.io/2017/net-tcpip-8-boardcast-multicast/"/>
     <id>http://snowyying.github.io/2017/net-tcpip-8-boardcast-multicast/</id>
     <published>2017-01-10T01:58:53.000Z</published>
-    <updated>2017-03-20T14:40:53.534Z</updated>
+    <updated>2017-03-20T14:54:47.653Z</updated>
     
     <content type="html"><![CDATA[<h2 id="1-&#x5E7F;&#x64AD;"><a href="#1-&#x5E7F;&#x64AD;" class="headerlink" title="1. &#x5E7F;&#x64AD;"></a>1. &#x5E7F;&#x64AD;</h2><h6 id="&#x53D7;&#x9650;&#x7684;&#x5E7F;&#x64AD;"><a href="#&#x53D7;&#x9650;&#x7684;&#x5E7F;&#x64AD;" class="headerlink" title="&#x53D7;&#x9650;&#x7684;&#x5E7F;&#x64AD;"></a>&#x53D7;&#x9650;&#x7684;&#x5E7F;&#x64AD;</h6><h6 id="&#x6307;&#x5411;&#x7F51;&#x7EDC;&#x7684;&#x5E7F;&#x64AD;"><a href="#&#x6307;&#x5411;&#x7F51;&#x7EDC;&#x7684;&#x5E7F;&#x64AD;" class="headerlink" title="&#x6307;&#x5411;&#x7F51;&#x7EDC;&#x7684;&#x5E7F;&#x64AD;"></a>&#x6307;&#x5411;&#x7F51;&#x7EDC;&#x7684;&#x5E7F;&#x64AD;</h6><h6 id="&#x6307;&#x5411;&#x5B50;&#x7F51;&#x7684;&#x5E7F;&#x64AD;"><a href="#&#x6307;&#x5411;&#x5B50;&#x7F51;&#x7684;&#x5E7F;&#x64AD;" class="headerlink" title="&#x6307;&#x5411;&#x5B50;&#x7F51;&#x7684;&#x5E7F;&#x64AD;"></a>&#x6307;&#x5411;&#x5B50;&#x7F51;&#x7684;&#x5E7F;&#x64AD;</h6><h6 id="&#x6307;&#x5411;&#x6240;&#x4EE5;&#x5B50;&#x7F51;&#x7684;&#x5E7F;&#x64AD;"><a href="#&#x6307;&#x5411;&#x6240;&#x4EE5;&#x5B50;&#x7F51;&#x7684;&#x5E7F;&#x64AD;" class="headerlink" title="&#x6307;&#x5411;&#x6240;&#x4EE5;&#x5B50;&#x7F51;&#x7684;&#x5E7F;&#x64AD;"></a>&#x6307;&#x5411;&#x6240;&#x4EE5;&#x5B50;&#x7F51;&#x7684;&#x5E7F;&#x64AD;</h6><h2 id="2-&#x591A;&#x64AD;"><a href="#2-&#x591A;&#x64AD;" class="headerlink" title="2. &#x591A;&#x64AD;"></a>2. &#x591A;&#x64AD;</h2><p>IP&#x591A;&#x64AD;&#x63D0;&#x4F9B;&#x4E24;&#x7C7B;&#x670D;&#x52A1;:</p>
 <ul>
@@ -1245,7 +1299,9 @@
       <category term="Network" scheme="http://snowyying.github.io/categories/Network/"/>
     
     
-      <category term="TCP/IP" scheme="http://snowyying.github.io/tags/TCP-IP/"/>
+      <category term="网络" scheme="http://snowyying.github.io/tags/%E7%BD%91%E7%BB%9C/"/>
+    
+      <category term="TCP/IP 协议" scheme="http://snowyying.github.io/tags/TCP-IP-%E5%8D%8F%E8%AE%AE/"/>
     
       <category term="多播" scheme="http://snowyying.github.io/tags/%E5%A4%9A%E6%92%AD/"/>
     
@@ -1260,7 +1316,7 @@
     <link href="http://snowyying.github.io/2017/net-tcpip-7-udp-protocol/"/>
     <id>http://snowyying.github.io/2017/net-tcpip-7-udp-protocol/</id>
     <published>2017-01-09T07:45:25.000Z</published>
-    <updated>2017-03-20T04:51:23.987Z</updated>
+    <updated>2017-03-20T14:54:47.661Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x5FC5;&#x987B;&#x5173;&#x5FC3;IP&#x6570;&#x636E;&#x62A5;&#x7684;&#x957F;&#x5EA6;, &#x5982;&#x679C;&#x5B83;&#x8D85;&#x8FC7;&#x7F51;&#x7EDC;&#x7684;MTU, &#x5219;&#x8981;&#x5BF9;IP&#x6570;&#x636E;&#x62A5;&#x8FDB;&#x884C;&#x5206;&#x7247;.</p>
@@ -1307,9 +1363,13 @@
       <category term="Network" scheme="http://snowyying.github.io/categories/Network/"/>
     
     
-      <category term="TCP/IP" scheme="http://snowyying.github.io/tags/TCP-IP/"/>
+      <category term="网络" scheme="http://snowyying.github.io/tags/%E7%BD%91%E7%BB%9C/"/>
+    
+      <category term="TCP/IP 协议" scheme="http://snowyying.github.io/tags/TCP-IP-%E5%8D%8F%E8%AE%AE/"/>
     
       <category term="UDP" scheme="http://snowyying.github.io/tags/UDP/"/>
+    
+      <category term="UDP 协议" scheme="http://snowyying.github.io/tags/UDP-%E5%8D%8F%E8%AE%AE/"/>
     
   </entry>
   
@@ -1318,7 +1378,7 @@
     <link href="http://snowyying.github.io/2017/net-tcpip-6-routing/"/>
     <id>http://snowyying.github.io/2017/net-tcpip-6-routing/</id>
     <published>2017-01-07T02:10:28.000Z</published>
-    <updated>2017-01-12T03:21:00.901Z</updated>
+    <updated>2017-03-20T14:55:06.441Z</updated>
     
     <summary type="html">
     
@@ -1326,6 +1386,12 @@
     
       <category term="Network" scheme="http://snowyying.github.io/categories/Network/"/>
     
+    
+      <category term="网络" scheme="http://snowyying.github.io/tags/%E7%BD%91%E7%BB%9C/"/>
+    
+      <category term="TCP/IP 协议" scheme="http://snowyying.github.io/tags/TCP-IP-%E5%8D%8F%E8%AE%AE/"/>
+    
+      <category term="选路" scheme="http://snowyying.github.io/tags/%E9%80%89%E8%B7%AF/"/>
     
   </entry>
   
@@ -1334,7 +1400,7 @@
     <link href="http://snowyying.github.io/2017/net-tcpip-4-arp-rarp/"/>
     <id>http://snowyying.github.io/2017/net-tcpip-4-arp-rarp/</id>
     <published>2017-01-05T06:25:19.000Z</published>
-    <updated>2017-01-12T03:21:00.879Z</updated>
+    <updated>2017-03-20T14:55:28.725Z</updated>
     
     <summary type="html">
     
@@ -1343,6 +1409,14 @@
       <category term="Network" scheme="http://snowyying.github.io/categories/Network/"/>
     
     
+      <category term="网络" scheme="http://snowyying.github.io/tags/%E7%BD%91%E7%BB%9C/"/>
+    
+      <category term="TCP/IP 协议" scheme="http://snowyying.github.io/tags/TCP-IP-%E5%8D%8F%E8%AE%AE/"/>
+    
+      <category term="ARP" scheme="http://snowyying.github.io/tags/ARP/"/>
+    
+      <category term="RARP" scheme="http://snowyying.github.io/tags/RARP/"/>
+    
   </entry>
   
   <entry>
@@ -1350,7 +1424,7 @@
     <link href="http://snowyying.github.io/2017/net-tcpip-5-icmp/"/>
     <id>http://snowyying.github.io/2017/net-tcpip-5-icmp/</id>
     <published>2017-01-05T02:09:42.000Z</published>
-    <updated>2017-03-20T04:51:23.977Z</updated>
+    <updated>2017-03-20T14:57:24.640Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>ICMP&#x662F;&#xFF08;Internet Control Message Protocol&#xFF09;Internet&#x63A7;&#x5236;&#x62A5;&#x6587;&#x534F;&#x8BAE;&#x3002;&#x5B83;&#x662F;TCP/IP&#x534F;&#x8BAE;&#x65CF;&#x7684;&#x4E00;&#x4E2A;&#x5B50;&#x534F;&#x8BAE;&#xFF0C;&#x7528;&#x4E8E;&#x5728;IP&#x4E3B;&#x673A;&#x3001;&#x8DEF;&#x7531;&#x5668;&#x4E4B;&#x95F4;&#x4F20;&#x9012;&#x63A7;&#x5236;&#x6D88;&#x606F;&#x3002;&#x63A7;&#x5236;&#x6D88;&#x606F;&#x662F;&#x6307;&#x7F51;&#x7EDC;&#x901A;&#x4E0D;&#x901A;&#x3001;&#x4E3B;&#x673A;&#x662F;&#x5426;&#x53EF;&#x8FBE;&#x3001;&#x8DEF;&#x7531;&#x662F;&#x5426;&#x53EF;&#x7528;&#x7B49;&#x7F51;&#x7EDC;&#x672C;&#x8EAB;&#x7684;&#x6D88;&#x606F;&#x3002;&#x8FD9;&#x4E9B;&#x63A7;&#x5236;&#x6D88;&#x606F;&#x867D;&#x7136;&#x5E76;&#x4E0D;&#x4F20;&#x8F93;&#x7528;&#x6237;&#x6570;&#x636E;&#xFF0C;&#x4F46;&#x662F;&#x5BF9;&#x4E8E;&#x7528;&#x6237;&#x6570;&#x636E;&#x7684;&#x4F20;&#x9012;&#x8D77;&#x7740;&#x91CD;&#x8981;&#x7684;&#x4F5C;&#x7528;&#x3002;</p>
@@ -1395,6 +1469,12 @@
     
       <category term="Network" scheme="http://snowyying.github.io/categories/Network/"/>
     
+    
+      <category term="网络" scheme="http://snowyying.github.io/tags/%E7%BD%91%E7%BB%9C/"/>
+    
+      <category term="TCP/IP 协议" scheme="http://snowyying.github.io/tags/TCP-IP-%E5%8D%8F%E8%AE%AE/"/>
+    
+      <category term="ICMP" scheme="http://snowyying.github.io/tags/ICMP/"/>
     
   </entry>
   
