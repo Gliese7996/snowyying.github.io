@@ -161,13 +161,13 @@
     <link href="http://snowyying.github.io/2017/net-restful-simple-web-server/"/>
     <id>http://snowyying.github.io/2017/net-restful-simple-web-server/</id>
     <published>2017-03-20T01:36:22.000Z</published>
-    <updated>2017-03-20T02:19:38.330Z</updated>
+    <updated>2017-03-20T14:59:34.407Z</updated>
     
     <summary type="html">
     
     </summary>
     
-      <category term="网络" scheme="http://snowyying.github.io/categories/%E7%BD%91%E7%BB%9C/"/>
+      <category term="Network" scheme="http://snowyying.github.io/categories/Network/"/>
     
     
       <category term="网络" scheme="http://snowyying.github.io/tags/%E7%BD%91%E7%BB%9C/"/>
@@ -331,7 +331,7 @@
     <link href="http://snowyying.github.io/2017/net-curl-ubuntu/"/>
     <id>http://snowyying.github.io/2017/net-curl-ubuntu/</id>
     <published>2017-03-18T03:12:34.000Z</published>
-    <updated>2017-03-20T14:57:14.264Z</updated>
+    <updated>2017-03-20T14:59:20.843Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>curl&#x662F;&#x5229;&#x7528;URL&#x8BED;&#x6CD5;&#x5728;&#x547D;&#x4EE4;&#x884C;&#x65B9;&#x5F0F;&#x4E0B;&#x5DE5;&#x4F5C;&#x7684;&#x5F00;&#x6E90;&#x6587;&#x4EF6;&#x4F20;&#x8F93;&#x5DE5;&#x5177;&#x3002;&#x5B83;&#x88AB;&#x5E7F;&#x6CDB;&#x5E94;&#x7528;&#x5728;Unix&#x3001;&#x591A;&#x79CD;Linux&#x53D1;&#x884C;&#x7248;&#x4E2D;&#xFF0C;&#x5E76;&#x4E14;&#x6709;DOS&#x548C;Win32&#x3001;Win64&#x4E0B;&#x7684;&#x79FB;&#x690D;&#x7248;&#x672C;&#x3002;</p>
@@ -347,7 +347,7 @@
     
     </summary>
     
-      <category term="网络" scheme="http://snowyying.github.io/categories/%E7%BD%91%E7%BB%9C/"/>
+      <category term="Network" scheme="http://snowyying.github.io/categories/Network/"/>
     
     
       <category term="网络" scheme="http://snowyying.github.io/tags/%E7%BD%91%E7%BB%9C/"/>
