@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://snowyying.github.io//404.html</loc>
+    
+    <lastmod>2017-03-21T01:57:54.835Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://snowyying.github.io/2017/gen-programmer-skill-map/</loc>
     
     <lastmod>2017-03-21T00:43:44.229Z</lastmod>
@@ -285,13 +292,6 @@
     <loc>http://snowyying.github.io/2016/gen-lead-the-industry/</loc>
     
     <lastmod>2017-03-20T04:38:53.069Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.github.io//404.html</loc>
-    
-    <lastmod>2017-03-19T09:00:51.142Z</lastmod>
     
   </url>
   
