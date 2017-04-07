@@ -2,6 +2,118 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://snowyying.site/2016/swe-uml-overview/</loc>
+    
+    <lastmod>2017-04-07T08:47:09.692Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.site/2016/swe-swebok/</loc>
+    
+    <lastmod>2017-04-07T08:47:09.682Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.site/2016/swe-square-overview/</loc>
+    
+    <lastmod>2017-04-07T08:47:09.672Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.site/2016/swe-sa-4a1-model/</loc>
+    
+    <lastmod>2017-04-07T08:47:09.658Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.site/2016/swe-dp-principle/</loc>
+    
+    <lastmod>2017-04-07T08:47:09.648Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.site/2016/swe-dp-overview/</loc>
+    
+    <lastmod>2017-04-07T08:47:09.635Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.site/2016/swe-dp-metaphor/</loc>
+    
+    <lastmod>2017-04-07T08:47:09.625Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.site/2016/swe-dp-explain/</loc>
+    
+    <lastmod>2017-04-07T08:47:09.610Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.site/2017/swe-dp-cp-factory/</loc>
+    
+    <lastmod>2017-04-07T08:47:09.599Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.site/2016/swe-cmmi-overview/</loc>
+    
+    <lastmod>2017-04-07T08:47:09.588Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.site/2016/swe-cmmi-kpas/</loc>
+    
+    <lastmod>2017-04-07T08:47:09.571Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.site/2017/test-framework-google-test/</loc>
+    
+    <lastmod>2017-04-07T08:45:57.408Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.site/2017/web-website-structure-evolution/</loc>
+    
+    <lastmod>2017-04-07T08:36:26.719Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.site/2017/web-website-architecture-evolution/</loc>
+    
+    <lastmod>2017-04-07T08:33:16.800Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.site/2017/iot-push-mqtt-protocol/</loc>
+    
+    <lastmod>2017-04-07T07:46:33.551Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.site/2017/it-sms-platform-alidayu/</loc>
+    
+    <lastmod>2017-04-02T01:21:37.420Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://snowyying.site//404.html</loc>
     
     <lastmod>2017-03-21T02:14:55.439Z</lastmod>
@@ -170,13 +282,6 @@
   </url>
   
   <url>
-    <loc>http://snowyying.site/2017/swe-dp-cp-factory/</loc>
-    
-    <lastmod>2017-03-20T14:40:23.652Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://snowyying.site/2016/gen-c-cpp-growth/</loc>
     
     <lastmod>2017-03-20T14:38:27.721Z</lastmod>
@@ -261,27 +366,6 @@
   </url>
   
   <url>
-    <loc>http://snowyying.site/2017/iot-push-mqtt-protocol/</loc>
-    
-    <lastmod>2017-03-20T04:42:29.294Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.site/2016/swe-swebok/</loc>
-    
-    <lastmod>2017-03-20T04:42:29.282Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.site/2016/swe-square-overview/</loc>
-    
-    <lastmod>2017-03-20T04:42:29.264Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://snowyying.site/2016/os-select-implement/</loc>
     
     <lastmod>2017-03-20T04:42:29.242Z</lastmod>
@@ -296,13 +380,6 @@
   </url>
   
   <url>
-    <loc>http://snowyying.site/2017/it-sms-platform-alidayu/</loc>
-    
-    <lastmod>2017-03-19T06:13:40.344Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://snowyying.site/2017/it-pay-platform-weixin/</loc>
     
     <lastmod>2017-03-19T06:11:44.137Z</lastmod>
@@ -313,13 +390,6 @@
     <loc>http://snowyying.site/2017/c-c-cpp-hybird-programming/</loc>
     
     <lastmod>2017-03-19T04:05:04.446Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.site/2016/swe-dp-principle/</loc>
-    
-    <lastmod>2017-02-08T06:50:13.960Z</lastmod>
     
   </url>
   
@@ -369,48 +439,6 @@
     <loc>http://snowyying.site/2016/security-encryption/</loc>
     
     <lastmod>2017-02-07T06:47:27.961Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.site/2016/swe-dp-metaphor/</loc>
-    
-    <lastmod>2017-02-07T06:33:51.381Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.site/2016/swe-dp-overview/</loc>
-    
-    <lastmod>2017-02-07T06:33:32.936Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.site/2016/swe-sa-4a1-model/</loc>
-    
-    <lastmod>2017-02-07T06:32:24.837Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.site/2016/swe-uml-overview/</loc>
-    
-    <lastmod>2017-02-07T06:31:48.030Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.site/2016/swe-cmmi-overview/</loc>
-    
-    <lastmod>2017-02-07T06:31:48.018Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.site/2016/swe-cmmi-kpas/</loc>
-    
-    <lastmod>2017-02-07T06:31:43.479Z</lastmod>
     
   </url>
   
@@ -712,13 +740,6 @@
     <loc>http://snowyying.site/2016/c-effective-cpp/</loc>
     
     <lastmod>2016-11-30T16:36:57.185Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.site/2016/swe-dp-explain/</loc>
-    
-    <lastmod>2016-11-16T15:20:24.344Z</lastmod>
     
   </url>
   
