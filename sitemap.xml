@@ -2,6 +2,132 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://snowyying.site/2017/web-framework-ionic-highcharts/</loc>
+    
+    <lastmod>2017-06-06T03:03:41.434Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.site/2017/iot-wifi-esp82xx-guide/</loc>
+    
+    <lastmod>2017-06-05T10:15:25.413Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.site/2017/web-server-nginx-ubuntu/</loc>
+    
+    <lastmod>2017-05-26T07:33:00.957Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.site/2017/web-framework-ionic-demo/</loc>
+    
+    <lastmod>2017-05-26T07:32:49.464Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.site/2017/media-libpng-vs-windows/</loc>
+    
+    <lastmod>2017-05-10T09:13:49.435Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.site/2017/misc-qr-lib-zxing/</loc>
+    
+    <lastmod>2017-05-10T08:04:54.643Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.site/2017/security-lib-cryptopp-md5/</loc>
+    
+    <lastmod>2017-05-10T07:51:56.609Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.site/2017/swe-uml-state-example-iot/</loc>
+    
+    <lastmod>2017-05-06T03:57:19.246Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.site/2017/iot-push-mqtt-protocol/</loc>
+    
+    <lastmod>2017-04-28T09:05:33.430Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.site/2017/sa-course-p08-software-engineering/</loc>
+    
+    <lastmod>2017-04-20T07:38:12.902Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.site/2017/sa-course-p07-informatization/</loc>
+    
+    <lastmod>2017-04-20T07:38:12.895Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.site/2017/sa-course-p17-Embedded-system-analysis-design/</loc>
+    
+    <lastmod>2017-04-20T07:38:12.887Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.site/2017/sa-course-p11-requirement-engineering/</loc>
+    
+    <lastmod>2017-04-20T07:38:12.877Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.site/2017/sa-course-p10-system-analysis/</loc>
+    
+    <lastmod>2017-04-20T07:38:12.868Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.site/2017/sa-course-p09-system-planning/</loc>
+    
+    <lastmod>2017-04-20T07:37:31.443Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.site/2017/sa-course-brief/</loc>
+    
+    <lastmod>2017-04-20T07:16:59.322Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.site/2017/c-string-convert-vs-windows/</loc>
+    
+    <lastmod>2017-04-17T02:33:06.852Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.site/2017/embed-at-command/</loc>
+    
+    <lastmod>2017-04-11T03:30:22.303Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://snowyying.site/2016/swe-uml-overview/</loc>
     
     <lastmod>2017-04-07T08:47:09.692Z</lastmod>
@@ -96,13 +222,6 @@
     <loc>http://snowyying.site/2017/web-website-architecture-evolution/</loc>
     
     <lastmod>2017-04-07T08:33:16.800Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.site/2017/iot-push-mqtt-protocol/</loc>
-    
-    <lastmod>2017-04-07T07:46:33.551Z</lastmod>
     
   </url>
   
