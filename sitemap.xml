@@ -2,44 +2,100 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://snowyying.site/2017/web-framework-ionic-highcharts/</loc>
+    <loc>http://snowyying.site/2017/web-framework-ionic-demo/</loc>
     
-    <lastmod>2017-06-06T03:03:41.434Z</lastmod>
+    <lastmod>2017-09-19T08:30:58.303Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.site/2017/it-pay-weixin-mp/</loc>
+    
+    <lastmod>2017-09-19T08:29:48.021Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.site/2017/it-pay-weixin-api/</loc>
+    
+    <lastmod>2017-09-19T08:11:06.790Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.site/2017/net-curl-ubuntu/</loc>
+    
+    <lastmod>2017-09-01T07:02:07.752Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.site/2017/web-nodejs-websocket-mqtt/</loc>
+    
+    <lastmod>2017-08-22T08:11:29.916Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.site/2016/swe-dp-principle/</loc>
+    
+    <lastmod>2017-08-08T12:04:42.278Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.site/2017/web-api-rest-graphql/</loc>
+    
+    <lastmod>2017-08-08T12:02:38.033Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://snowyying.site/2017/iot-wifi-esp82xx-guide/</loc>
     
-    <lastmod>2017-06-05T10:15:25.413Z</lastmod>
+    <lastmod>2017-08-08T10:39:16.045Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://snowyying.site/2017/web-server-nginx-ubuntu/</loc>
     
-    <lastmod>2017-05-26T07:33:00.957Z</lastmod>
+    <lastmod>2017-08-08T10:15:00.370Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://snowyying.site/2017/web-framework-ionic-demo/</loc>
+    <loc>http://snowyying.site/2017/web-framework-angle-admin/</loc>
     
-    <lastmod>2017-05-26T07:32:49.464Z</lastmod>
+    <lastmod>2017-08-08T10:03:51.744Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.site/2017/web-website-architecture-evolution/</loc>
+    
+    <lastmod>2017-08-07T16:40:44.809Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.site/2017/sa-cloud-iaas-paas-saas/</loc>
+    
+    <lastmod>2017-08-07T16:40:34.045Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://snowyying.site/2017/media-libpng-vs-windows/</loc>
     
-    <lastmod>2017-05-10T09:13:49.435Z</lastmod>
+    <lastmod>2017-05-10T09:13:49.436Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://snowyying.site/2017/misc-qr-lib-zxing/</loc>
     
-    <lastmod>2017-05-10T08:04:54.643Z</lastmod>
+    <lastmod>2017-05-10T08:04:54.644Z</lastmod>
     
   </url>
   
@@ -53,14 +109,14 @@
   <url>
     <loc>http://snowyying.site/2017/swe-uml-state-example-iot/</loc>
     
-    <lastmod>2017-05-06T03:57:19.246Z</lastmod>
+    <lastmod>2017-05-06T03:57:19.247Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://snowyying.site/2017/iot-push-mqtt-protocol/</loc>
     
-    <lastmod>2017-04-28T09:05:33.430Z</lastmod>
+    <lastmod>2017-04-28T09:05:33.431Z</lastmod>
     
   </url>
   
@@ -95,21 +151,21 @@
   <url>
     <loc>http://snowyying.site/2017/sa-course-p10-system-analysis/</loc>
     
-    <lastmod>2017-04-20T07:38:12.868Z</lastmod>
+    <lastmod>2017-04-20T07:38:12.869Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://snowyying.site/2017/sa-course-p09-system-planning/</loc>
     
-    <lastmod>2017-04-20T07:37:31.443Z</lastmod>
+    <lastmod>2017-04-20T07:37:31.444Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://snowyying.site/2017/sa-course-brief/</loc>
     
-    <lastmod>2017-04-20T07:16:59.322Z</lastmod>
+    <lastmod>2017-04-20T07:16:59.323Z</lastmod>
     
   </url>
   
@@ -123,105 +179,91 @@
   <url>
     <loc>http://snowyying.site/2017/embed-at-command/</loc>
     
-    <lastmod>2017-04-11T03:30:22.303Z</lastmod>
+    <lastmod>2017-04-11T03:30:22.304Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://snowyying.site/2016/swe-uml-overview/</loc>
     
-    <lastmod>2017-04-07T08:47:09.692Z</lastmod>
+    <lastmod>2017-04-07T08:47:09.693Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://snowyying.site/2016/swe-swebok/</loc>
     
-    <lastmod>2017-04-07T08:47:09.682Z</lastmod>
+    <lastmod>2017-04-07T08:47:09.683Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://snowyying.site/2016/swe-square-overview/</loc>
     
-    <lastmod>2017-04-07T08:47:09.672Z</lastmod>
+    <lastmod>2017-04-07T08:47:09.673Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://snowyying.site/2016/swe-sa-4a1-model/</loc>
     
-    <lastmod>2017-04-07T08:47:09.658Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.site/2016/swe-dp-principle/</loc>
-    
-    <lastmod>2017-04-07T08:47:09.648Z</lastmod>
+    <lastmod>2017-04-07T08:47:09.659Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://snowyying.site/2016/swe-dp-overview/</loc>
     
-    <lastmod>2017-04-07T08:47:09.635Z</lastmod>
+    <lastmod>2017-04-07T08:47:09.636Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://snowyying.site/2016/swe-dp-metaphor/</loc>
     
-    <lastmod>2017-04-07T08:47:09.625Z</lastmod>
+    <lastmod>2017-04-07T08:47:09.626Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://snowyying.site/2016/swe-dp-explain/</loc>
     
-    <lastmod>2017-04-07T08:47:09.610Z</lastmod>
+    <lastmod>2017-04-07T08:47:09.611Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://snowyying.site/2017/swe-dp-cp-factory/</loc>
     
-    <lastmod>2017-04-07T08:47:09.599Z</lastmod>
+    <lastmod>2017-04-07T08:47:09.600Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://snowyying.site/2016/swe-cmmi-overview/</loc>
     
-    <lastmod>2017-04-07T08:47:09.588Z</lastmod>
+    <lastmod>2017-04-07T08:47:09.589Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://snowyying.site/2016/swe-cmmi-kpas/</loc>
     
-    <lastmod>2017-04-07T08:47:09.571Z</lastmod>
+    <lastmod>2017-04-07T08:47:09.572Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://snowyying.site/2017/test-framework-google-test/</loc>
     
-    <lastmod>2017-04-07T08:45:57.408Z</lastmod>
+    <lastmod>2017-04-07T08:45:57.409Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://snowyying.site/2017/web-website-structure-evolution/</loc>
     
-    <lastmod>2017-04-07T08:36:26.719Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.site/2017/web-website-architecture-evolution/</loc>
-    
-    <lastmod>2017-04-07T08:33:16.800Z</lastmod>
+    <lastmod>2017-04-07T08:36:26.720Z</lastmod>
     
   </url>
   
@@ -235,7 +277,7 @@
   <url>
     <loc>http://snowyying.site//404.html</loc>
     
-    <lastmod>2017-03-21T02:14:55.439Z</lastmod>
+    <lastmod>2017-03-21T02:14:55.440Z</lastmod>
     
   </url>
   
@@ -249,21 +291,14 @@
   <url>
     <loc>http://snowyying.site/2017/net-restful-simple-web-server/</loc>
     
-    <lastmod>2017-03-20T14:59:34.407Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.site/2017/net-curl-ubuntu/</loc>
-    
-    <lastmod>2017-03-20T14:59:20.843Z</lastmod>
+    <lastmod>2017-03-20T14:59:34.408Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://snowyying.site/2017/net-restful-overview/</loc>
     
-    <lastmod>2017-03-20T14:57:24.660Z</lastmod>
+    <lastmod>2017-03-20T14:57:24.661Z</lastmod>
     
   </url>
   
@@ -284,21 +319,21 @@
   <url>
     <loc>http://snowyying.site/2016/net-p2p-overview/</loc>
     
-    <lastmod>2017-03-20T14:56:59.936Z</lastmod>
+    <lastmod>2017-03-20T14:56:59.937Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://snowyying.site/2017/net-tcpip-1-overview/</loc>
     
-    <lastmod>2017-03-20T14:56:13.423Z</lastmod>
+    <lastmod>2017-03-20T14:56:13.424Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://snowyying.site/2017/net-tcpip-2-data-link/</loc>
     
-    <lastmod>2017-03-20T14:56:05.940Z</lastmod>
+    <lastmod>2017-03-20T14:56:05.941Z</lastmod>
     
   </url>
   
@@ -312,70 +347,70 @@
   <url>
     <loc>http://snowyying.site/2017/net-tcpip-4-arp-rarp/</loc>
     
-    <lastmod>2017-03-20T14:55:28.725Z</lastmod>
+    <lastmod>2017-03-20T14:55:28.726Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://snowyying.site/2017/net-tcpip-6-routing/</loc>
     
-    <lastmod>2017-03-20T14:55:06.441Z</lastmod>
+    <lastmod>2017-03-20T14:55:06.442Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://snowyying.site/2017/net-tcpip-12-snmp/</loc>
     
-    <lastmod>2017-03-20T14:54:47.709Z</lastmod>
+    <lastmod>2017-03-20T14:54:47.710Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://snowyying.site/2017/net-tcpip-9-igmp/</loc>
     
-    <lastmod>2017-03-20T14:54:47.700Z</lastmod>
+    <lastmod>2017-03-20T14:54:47.701Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://snowyying.site/2017/net-tcpip-10-dns/</loc>
     
-    <lastmod>2017-03-20T14:54:47.687Z</lastmod>
+    <lastmod>2017-03-20T14:54:47.688Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://snowyying.site/2017/net-tcpip-errata/</loc>
     
-    <lastmod>2017-03-20T14:54:47.675Z</lastmod>
+    <lastmod>2017-03-20T14:54:47.676Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://snowyying.site/2017/net-tcpip-7-udp-protocol/</loc>
     
-    <lastmod>2017-03-20T14:54:47.661Z</lastmod>
+    <lastmod>2017-03-20T14:54:47.662Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://snowyying.site/2017/net-tcpip-8-boardcast-multicast/</loc>
     
-    <lastmod>2017-03-20T14:54:47.653Z</lastmod>
+    <lastmod>2017-03-20T14:54:47.654Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://snowyying.site/2017/net-tcpip-11-tcp-protocol/</loc>
     
-    <lastmod>2017-03-20T14:54:43.664Z</lastmod>
+    <lastmod>2017-03-20T14:54:43.665Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://snowyying.site/2017/misc-fallible-it-words/</loc>
     
-    <lastmod>2017-03-20T14:51:35.594Z</lastmod>
+    <lastmod>2017-03-20T14:51:35.595Z</lastmod>
     
   </url>
   
@@ -403,7 +438,7 @@
   <url>
     <loc>http://snowyying.site/2016/gen-c-cpp-growth/</loc>
     
-    <lastmod>2017-03-20T14:38:27.721Z</lastmod>
+    <lastmod>2017-03-20T14:38:27.722Z</lastmod>
     
   </url>
   
@@ -417,7 +452,7 @@
   <url>
     <loc>http://snowyying.site/2017/os-linux-construct-comic/</loc>
     
-    <lastmod>2017-03-20T06:20:40.351Z</lastmod>
+    <lastmod>2017-03-20T06:20:40.352Z</lastmod>
     
   </url>
   
@@ -445,7 +480,7 @@
   <url>
     <loc>http://snowyying.site/2016/net-socket-select/</loc>
     
-    <lastmod>2017-03-20T04:49:35.733Z</lastmod>
+    <lastmod>2017-03-20T04:49:35.734Z</lastmod>
     
   </url>
   
@@ -466,28 +501,28 @@
   <url>
     <loc>http://snowyying.site/2016/os-io-multiplexing/</loc>
     
-    <lastmod>2017-03-20T04:42:29.404Z</lastmod>
+    <lastmod>2017-03-20T04:42:29.405Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://snowyying.site/2016/net-socket-reuseaddr/</loc>
     
-    <lastmod>2017-03-20T04:42:29.327Z</lastmod>
+    <lastmod>2017-03-20T04:42:29.328Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://snowyying.site/2016/misc-generate-guid-uuid/</loc>
     
-    <lastmod>2017-03-20T04:42:29.311Z</lastmod>
+    <lastmod>2017-03-20T04:42:29.312Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://snowyying.site/2016/os-select-implement/</loc>
     
-    <lastmod>2017-03-20T04:42:29.242Z</lastmod>
+    <lastmod>2017-03-20T04:42:29.243Z</lastmod>
     
   </url>
   
@@ -495,13 +530,6 @@
     <loc>http://snowyying.site/2016/gen-lead-the-industry/</loc>
     
     <lastmod>2017-03-20T04:38:53.069Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.site/2017/it-pay-platform-weixin/</loc>
-    
-    <lastmod>2017-03-19T06:11:44.137Z</lastmod>
     
   </url>
   
@@ -515,14 +543,14 @@
   <url>
     <loc>http://snowyying.site/2016/security-overview/</loc>
     
-    <lastmod>2017-02-07T07:25:29.402Z</lastmod>
+    <lastmod>2017-02-07T07:25:29.403Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://snowyying.site/2016/os-io-select-vs-epoll-2/</loc>
     
-    <lastmod>2017-02-07T07:18:58.813Z</lastmod>
+    <lastmod>2017-02-07T07:18:58.814Z</lastmod>
     
   </url>
   
@@ -543,14 +571,14 @@
   <url>
     <loc>http://snowyying.site/2016/security-protocols/</loc>
     
-    <lastmod>2017-02-07T06:52:13.316Z</lastmod>
+    <lastmod>2017-02-07T06:52:13.317Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://snowyying.site/2016/security-key-exchange/</loc>
     
-    <lastmod>2017-02-07T06:52:09.932Z</lastmod>
+    <lastmod>2017-02-07T06:52:09.933Z</lastmod>
     
   </url>
   
@@ -564,21 +592,21 @@
   <url>
     <loc>http://snowyying.site/2016/misc-jsoncpp-usage/</loc>
     
-    <lastmod>2017-02-04T01:10:46.526Z</lastmod>
+    <lastmod>2017-02-04T01:10:46.527Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://snowyying.site/2016/test-performance-testing/</loc>
     
-    <lastmod>2017-02-03T16:43:13.868Z</lastmod>
+    <lastmod>2017-02-03T16:43:13.869Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://snowyying.site/2016/c-const-usage-summary/</loc>
     
-    <lastmod>2017-01-21T14:02:41.587Z</lastmod>
+    <lastmod>2017-01-21T14:02:41.588Z</lastmod>
     
   </url>
   
@@ -592,14 +620,14 @@
   <url>
     <loc>http://snowyying.site/2017/misc-radio-spectrum/</loc>
     
-    <lastmod>2017-01-21T13:18:58.990Z</lastmod>
+    <lastmod>2017-01-21T13:18:58.991Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://snowyying.site/2016/c-effective-modern-cpp/</loc>
     
-    <lastmod>2017-01-21T13:17:43.188Z</lastmod>
+    <lastmod>2017-01-21T13:17:43.189Z</lastmod>
     
   </url>
   
@@ -613,7 +641,7 @@
   <url>
     <loc>http://snowyying.site/2016/c-define-symbol/</loc>
     
-    <lastmod>2017-01-21T13:16:37.411Z</lastmod>
+    <lastmod>2017-01-21T13:16:37.412Z</lastmod>
     
   </url>
   
@@ -634,21 +662,21 @@
   <url>
     <loc>http://snowyying.site/2016/media-live555-vs-windows/</loc>
     
-    <lastmod>2017-01-12T06:16:07.501Z</lastmod>
+    <lastmod>2017-01-12T06:16:07.502Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://snowyying.site/2016/security-ws-security/</loc>
     
-    <lastmod>2017-01-12T06:13:01.034Z</lastmod>
+    <lastmod>2017-01-12T06:13:01.035Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://snowyying.site/2016/os-io-asynchronous-linux/</loc>
     
-    <lastmod>2017-01-12T06:04:48.862Z</lastmod>
+    <lastmod>2017-01-12T06:04:48.863Z</lastmod>
     
   </url>
   
@@ -690,7 +718,7 @@
   <url>
     <loc>http://snowyying.site/2016/media-darwin-vs-windows/</loc>
     
-    <lastmod>2017-01-12T05:52:20.533Z</lastmod>
+    <lastmod>2017-01-12T05:52:20.534Z</lastmod>
     
   </url>
   
@@ -704,14 +732,14 @@
   <url>
     <loc>http://snowyying.site/2016/test-memory-leak-detect/</loc>
     
-    <lastmod>2017-01-12T04:54:05.127Z</lastmod>
+    <lastmod>2017-01-12T04:54:05.128Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://snowyying.site/2016/media-ffxxx-usage/</loc>
     
-    <lastmod>2017-01-12T04:11:27.727Z</lastmod>
+    <lastmod>2017-01-12T04:11:27.728Z</lastmod>
     
   </url>
   
@@ -732,28 +760,28 @@
   <url>
     <loc>http://snowyying.site/2016/media-ffmepg-h264-decode/</loc>
     
-    <lastmod>2017-01-12T03:46:05.794Z</lastmod>
+    <lastmod>2017-01-12T03:46:05.795Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://snowyying.site/2016/misc-json-c-usage/</loc>
     
-    <lastmod>2017-01-12T03:43:21.222Z</lastmod>
+    <lastmod>2017-01-12T03:43:21.223Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://snowyying.site/2016/misc-sqlite3-usage/</loc>
     
-    <lastmod>2017-01-12T03:42:15.361Z</lastmod>
+    <lastmod>2017-01-12T03:42:15.362Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://snowyying.site/2016/os-io-twsi-i2c/</loc>
     
-    <lastmod>2017-01-12T03:41:20.828Z</lastmod>
+    <lastmod>2017-01-12T03:41:20.829Z</lastmod>
     
   </url>
   
@@ -767,21 +795,21 @@
   <url>
     <loc>http://snowyying.site/2016/gen-programming-guide-1-origin/</loc>
     
-    <lastmod>2017-01-12T02:31:14.136Z</lastmod>
+    <lastmod>2017-01-12T02:31:14.137Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://snowyying.site/2016/gen-programming-guide-3-direction/</loc>
     
-    <lastmod>2017-01-12T02:31:14.121Z</lastmod>
+    <lastmod>2017-01-12T02:31:14.122Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://snowyying.site/2016/gen-programming-guide-2-the-master/</loc>
     
-    <lastmod>2017-01-12T02:31:14.107Z</lastmod>
+    <lastmod>2017-01-12T02:31:14.108Z</lastmod>
     
   </url>
   
@@ -816,7 +844,7 @@
   <url>
     <loc>http://snowyying.site/2016/gen-programming-guide-8-dream/</loc>
     
-    <lastmod>2017-01-12T02:31:11.108Z</lastmod>
+    <lastmod>2017-01-12T02:31:11.109Z</lastmod>
     
   </url>
   
@@ -837,14 +865,14 @@
   <url>
     <loc>http://snowyying.site/2016/Blog-move-to-github/</loc>
     
-    <lastmod>2017-01-12T02:25:11.924Z</lastmod>
+    <lastmod>2017-01-12T02:25:11.925Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://snowyying.site/2016/it-kas-4-snowyying/</loc>
     
-    <lastmod>2016-12-12T06:38:12.122Z</lastmod>
+    <lastmod>2016-12-12T06:38:12.123Z</lastmod>
     
   </url>
   
@@ -858,21 +886,21 @@
   <url>
     <loc>http://snowyying.site/2016/c-effective-cpp/</loc>
     
-    <lastmod>2016-11-30T16:36:57.185Z</lastmod>
+    <lastmod>2016-11-30T16:36:57.186Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://snowyying.site/2016/net-ntp-time/</loc>
     
-    <lastmod>2016-11-14T07:40:21.922Z</lastmod>
+    <lastmod>2016-11-14T07:40:21.923Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://snowyying.site/NPS/index.html</loc>
     
-    <lastmod>2016-08-02T02:57:01.823Z</lastmod>
+    <lastmod>2016-08-02T02:57:01.824Z</lastmod>
     
   </url>
   
