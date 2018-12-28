@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>系统架构师教程学习 - 计算机结构及组成 | Snowyying</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1. &amp;#x7CFB;&amp;#x7EDF;&amp;#x7EC4;&amp;#x6210;1.1 &amp;#x786C;&amp;#x4EF6;&amp;#x7EC4;&amp;#x6210;
+&amp;#x8FD0;&amp;#x7B97;&amp;#x5668;
+&amp;#x63A7;&amp;#x5236;&amp;#x5668;
+&amp;#x5B58;&amp;#x50A8;&amp;#x5668; (&amp;#x4E3B;&amp;#x5B58;+&amp;#x8F85;&amp;#x5B58;)
+&amp;#x8F93;&amp;#x5165;&amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="系统架构师教程学习 - 计算机结构及组成">
+<meta property="og:url" content="http://snowyying.site/2018/sa2v4-p01-structure-and-composition/index.html">
+<meta property="og:site_name" content="Snowyying">
+<meta property="og:description" content="1. &amp;#x7CFB;&amp;#x7EDF;&amp;#x7EC4;&amp;#x6210;1.1 &amp;#x786C;&amp;#x4EF6;&amp;#x7EC4;&amp;#x6210;
+&amp;#x8FD0;&amp;#x7B97;&amp;#x5668;
+&amp;#x63A7;&amp;#x5236;&amp;#x5668;
+&amp;#x5B58;&amp;#x50A8;&amp;#x5668; (&amp;#x4E3B;&amp;#x5B58;+&amp;#x8F85;&amp;#x5B58;)
+&amp;#x8F93;&amp;#x5165;&amp;">
+<meta property="og:updated_time" content="2018-12-28T12:28:05.346Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="系统架构师教程学习 - 计算机结构及组成">
+<meta name="twitter:description" content="1. &amp;#x7CFB;&amp;#x7EDF;&amp;#x7EC4;&amp;#x6210;1.1 &amp;#x786C;&amp;#x4EF6;&amp;#x7EC4;&amp;#x6210;
+&amp;#x8FD0;&amp;#x7B97;&amp;#x5668;
+&amp;#x63A7;&amp;#x5236;&amp;#x5668;
+&amp;#x5B58;&amp;#x50A8;&amp;#x5668; (&amp;#x4E3B;&amp;#x5B58;+&amp;#x8F85;&amp;#x5B58;)
+&amp;#x8F93;&amp;#x5165;&amp;">
+  
+    <link rel="alternate" href="/atom.xml" title="Snowyying" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Snowyying</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">天下武功, 无坚不摧, 唯快不破.</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/About">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://snowyying.site"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-sa2v4-p01-structure-and-composition" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      系统架构师教程学习 - 计算机结构及组成
+    </h1>
+  
+
+      </header>
+    
+
+  <div class="article-meta">
+    <a href="/2018/sa2v4-p01-structure-and-composition/" class="article-date">
+  <time datetime="2018-08-04T09:20:23.000Z" itemprop="datePublished">2018-08-04</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/SA-SWE/">SA & SWE</a>
+  </div>
+
+  </div>
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="1-&#x7CFB;&#x7EDF;&#x7EC4;&#x6210;"><a href="#1-&#x7CFB;&#x7EDF;&#x7EC4;&#x6210;" class="headerlink" title="1. &#x7CFB;&#x7EDF;&#x7EC4;&#x6210;"></a>1. &#x7CFB;&#x7EDF;&#x7EC4;&#x6210;</h1><h2 id="1-1-&#x786C;&#x4EF6;&#x7EC4;&#x6210;"><a href="#1-1-&#x786C;&#x4EF6;&#x7EC4;&#x6210;" class="headerlink" title="1.1 &#x786C;&#x4EF6;&#x7EC4;&#x6210;"></a>1.1 &#x786C;&#x4EF6;&#x7EC4;&#x6210;</h2><ul>
+<li><strong>&#x8FD0;&#x7B97;&#x5668;</strong></li>
+<li><strong>&#x63A7;&#x5236;&#x5668;</strong></li>
+<li><strong>&#x5B58;&#x50A8;&#x5668;</strong> (&#x4E3B;&#x5B58;+&#x8F85;&#x5B58;)</li>
+<li><strong>&#x8F93;&#x5165;&#x8BBE;&#x5907;</strong></li>
+<li><strong>&#x8F93;&#x51FA;&#x8BBE;&#x5907;</strong></li>
+</ul>
+<p>&#x6CE8;&#x610F;</p>
+<ol>
+<li><em>&#x4EE5;&#x8FD0;&#x7B97;&#x5668;&#x4E3A;&#x4E2D;&#x5FC3; [&#x539F;&#x59CB;]  -&gt; &#x4EE5;&#x5B58;&#x50A8;&#x5668;&#x4E3A;&#x4E2D;&#x5FC3; [&#x73B0;&#x5728;];</em></li>
+<li><em>&#x63A7;&#x5236;&#x5668;&#x548C;&#x8FD0;&#x7B97;&#x5668;&#x7EDF;&#x79F0;&#x4E3A;&#x4E2D;&#x592E;&#x5904;&#x7406;&#x5668;;</em></li>
+<li><em>&#x4E3B;&#x673A;: &#x8FD0;&#x7B97;&#x5668; + &#x63A7;&#x5236;&#x5668; + &#x4E3B;&#x5B58;;</em></li>
+<li><em>&#x5916;&#x8BBE;: &#x8F93;&#x5165;&#x8BBE;&#x5907; + &#x8F93;&#x51FA;&#x8BBE;&#x5907; + &#x8F85;&#x5B58;.</em></li>
+</ol>
+<p>!()[]</p>
+<h3 id="1-&#x63A7;&#x5236;&#x5668;"><a href="#1-&#x63A7;&#x5236;&#x5668;" class="headerlink" title="1. &#x63A7;&#x5236;&#x5668;"></a>1. &#x63A7;&#x5236;&#x5668;</h3><p>&#x5206;&#x6790;&#x548C;&#x6267;&#x884C;&#x6307;&#x4EE4;&#x7684;&#x90E8;&#x4EF6; &lt;&#x4F9D;&#x636E;&#x673A;&#x5668;&#x6307;&#x4EE4;&gt;</p>
+<ul>
+<li>&#x7A0B;&#x5E8F;&#x8BA1;&#x6570;&#x5668; (PC): &#x5B58;&#x50A8;&#x4E0B;&#x4E00;&#x6761;&#x6307;&#x4EE4;&#x5730;&#x5740;</li>
+<li>&#x6307;&#x4EE4;&#x5BC4;&#x5B58;&#x5668; (IR): &#x5B58;&#x50A8;&#x5373;&#x5C06;&#x6267;&#x884C;&#x7684;&#x6307;&#x4EE4;</li>
+<li>&#x6307;&#x4EE4;&#x8BD1;&#x7801;&#x5668; (ID): &#x5BF9;&#x64CD;&#x4F5C;&#x7801;&#x8FDB;&#x884C;&#x89E3;&#x91CA;</li>
+</ul>
+<h3 id="2-&#x8FD0;&#x7B97;&#x5668;"><a href="#2-&#x8FD0;&#x7B97;&#x5668;" class="headerlink" title="2. &#x8FD0;&#x7B97;&#x5668;"></a>2. &#x8FD0;&#x7B97;&#x5668;</h3><p>Arithmeticand Logic Unit (ALU), &#x5728;&#x63A7;&#x5236;&#x5668;&#x63A7;&#x5236;&#x4E0B;&#x5B8C;&#x6210;&#x7B97;&#x672F;&#x548C;&#x903B;&#x8F91;&#x8FD0;&#x7B97;</p>
+<ul>
+<li>&#x7B97;&#x672F;&#x903B;&#x8F91;&#x5355;&#x5143; (ALU): &#x7B97;&#x672F;&#x548C;&#x903B;&#x8F91;&#x8FD0;&#x7B97;</li>
+<li>&#x7D2F;&#x52A0;&#x5BC4;&#x5B58;&#x5668; (AC): &#x901A;&#x7528;&#x5BC4;&#x5B58;&#x5668;, &#x4E3A;ALU&#x63D0;&#x4F9B;&#x6682;&#x5B58;&#x6570;&#x636E;</li>
+<li>&#x6570;&#x636E;&#x7F13;&#x51B2;&#x5BC4;&#x5B58;&#x5668; (DR): &#x5199;&#x5185;&#x5B58;&#x65F6;, &#x6682;&#x5B58;&#x6307;&#x4EE4;&#x6216;&#x6570;&#x636E;</li>
+<li>&#x72B6;&#x6001;&#x6761;&#x4EF6;&#x5BC4;&#x5B58;&#x5668; (PSW): &#x72B6;&#x6001;&#x4E0E;&#x63A7;&#x5236;&#x6807;&#x5FD7; <em>(&#x4E5F;&#x6709;&#x5C06;&#x5176;&#x5F52;&#x4E3A;&#x63A7;&#x5236;&#x5668;&#x7684;)</em></li>
+</ul>
+<h2 id="1-2-&#x7ED3;&#x6784;&#x5206;&#x7C7B;"><a href="#1-2-&#x7ED3;&#x6784;&#x5206;&#x7C7B;" class="headerlink" title="1.2 &#x7ED3;&#x6784;&#x5206;&#x7C7B;"></a>1.2 &#x7ED3;&#x6784;&#x5206;&#x7C7B;</h2><p>&#x7535;&#x5B50;&#x7BA1;&#x548C;&#x6676;&#x4F53;&#x7BA1;&#x65F6;&#x4EE3; -&gt; &#x96C6;&#x6210;&#x7535;&#x8DEF;&#x65F6;&#x4EE3;&#xFF08;&#x4E2D;&#x5C0F;&#x89C4;&#x6A21;&#x3001;&#x5927;&#x89C4;&#x6A21;&#x3001;&#x8D85;&#x5927;&#x89C4;&#x6A21;&#x3001;&#x751A;&#x5927;&#x89C4;&#x6A21;&#x3001;&#x6781;&#x5927;&#x89C4;&#x6A21;&#xFF09;</p>
+<h3 id="1-&#x5B58;&#x50A8;&#x7A0B;&#x5E8F;&#x6982;&#x5FF5;"><a href="#1-&#x5B58;&#x50A8;&#x7A0B;&#x5E8F;&#x6982;&#x5FF5;" class="headerlink" title="1. &#x5B58;&#x50A8;&#x7A0B;&#x5E8F;&#x6982;&#x5FF5;"></a>1. &#x5B58;&#x50A8;&#x7A0B;&#x5E8F;&#x6982;&#x5FF5;</h3><p>&#x51AF;.&#x8BFA;&#x4F9D;&#x66FC; 1946&#x5E74;6&#x6708;&#x63D0;&#x51FA;:</p>
+<ul>
+<li>&#x8BA1;&#x7B97;&#x673A;&#x7531;&#x8FD0;&#x7B97;&#x5668;, &#x63A7;&#x5236;&#x5668;, &#x5B58;&#x50A8;&#x5668;, &#x8F93;&#x5165;&#x8BBE;&#x5907;&#x548C;&#x8F93;&#x51FA;&#x8BBE;&#x5907;&#x4E94;&#x5927;&#x57FA;&#x672C;&#x90E8;&#x4EF6;&#x7EC4;&#x6210;;</li>
+<li>&#x8BA1;&#x7B97;&#x673A;&#x5185;&#x90E8;&#x91C7;&#x7528;&#x4E8C;&#x8FDB;&#x5236;&#x8868;&#x793A;&#x6307;&#x4EE4;&#x548C;&#x6570;&#x636E;;</li>
+<li>&#x5C06;&#x7F16;&#x597D;&#x7684;&#x7A0B;&#x5E8F;&#x548C;&#x539F;&#x59CB;&#x6570;&#x636E;&#x4E8B;&#x5148;&#x5B58;&#x5165;&#x5B58;&#x50A8;&#x5668;&#x4E2D;, &#x7136;&#x540E;&#x518D;&#x542F;&#x52A8;&#x8BA1;&#x7B97;&#x673A;. </li>
+</ul>
+<h3 id="2-Flynn-&#x5206;&#x7C7B;"><a href="#2-Flynn-&#x5206;&#x7C7B;" class="headerlink" title="2. Flynn &#x5206;&#x7C7B;"></a>2. Flynn &#x5206;&#x7C7B;</h3><p>Michael.J.Flynn 1966&#x5E74;&#x63D0;&#x51FA;&#x6839;&#x636E;&#x6307;&#x4EE4;&#x6D41;, &#x6570;&#x636E;&#x6D41;&#x7684;&#x591A;&#x500D;&#x6027;&#x7279;&#x5F81;:</p>
+<ul>
+<li>&#x6307;&#x4EE4;&#x6D41;: &#x673A;&#x5668;&#x6267;&#x884C;&#x7684;&#x6307;&#x4EE4;&#x5E8F;&#x5217;</li>
+<li>&#x6570;&#x636E;&#x6D41;: &#x6307;&#x4EE4;&#x6D41;&#x8C03;&#x7528;&#x7684;&#x6570;&#x636E;&#x5E8F;&#x5217;, &#x5305;&#x62EC;&#x8F93;&#x5165;&#x548C;&#x4E2D;&#x95F4;&#x7ED3;&#x679C;, &#x4F46;&#x4E0D;&#x5305;&#x62EC;&#x8F93;&#x51FA;&#x6570;&#x636E;</li>
+</ul>
+<p>&#x5206;&#x7C7B;</p>
+<ol>
+<li><strong>SISD</strong>: &#x4F20;&#x7EDF;&#x7684;&#x987A;&#x5E8F;&#x6267;&#x884C;&#x5355;&#x5904;&#x7406;&#x5668;&#x8BA1;&#x7B97;&#x673A;, &#x6307;&#x4EE4;&#x90E8;&#x4EF6;&#x6BCF;&#x6B21;&#x53EA;&#x80FD;&#x5BF9;&#x4E00;&#x6761;&#x6307;&#x4EE4;&#x8BD1;&#x7801;, &#x5E76;&#x53EA;&#x5BF9;&#x4E00;&#x4E2A;&#x64CD;&#x4F5C;&#x90E8;&#x4EF6;&#x5206;&#x914D;&#x6570;&#x636E;;</li>
+<li><strong>SIMD</strong>: &#x5E76;&#x884C;&#x5904;&#x7406;&#x673A;(&#x77E9;&#x9635;&#x5904;&#x7406;&#x673A;), &#x591A;&#x4E2A;&#x91CD;&#x590D;&#x7684;&#x5904;&#x7406;&#x5355;&#x5143;, &#x7531;&#x5355;&#x4E00;&#x6307;&#x4EE4;&#x90E8;&#x4EF6;&#x63A7;&#x5236;, &#x5206;&#x914D;&#x4E0D;&#x540C;&#x6570;&#x636E;;</li>
+<li><strong>MISD</strong>: &#x5F88;&#x5C11;&#x89C1;. &#x6709;&#x6587;&#x732E;&#x628A;&#x6D41;&#x6C34;&#x7EBF;&#x770B;&#x4F5C;&#x591A;&#x4E2A;&#x6307;&#x4EE4;&#x90E8;&#x4EF6;, &#x79F0;&#x6D41;&#x6C34;&#x7EBF;&#x8BA1;&#x7B97;&#x673A;&#x662F; MISD. </li>
+<li><strong>MIMD</strong>: &#x80FD;&#x5B9E;&#x73B0;&#x4F5C;&#x4E1A;&#x3001;&#x4EFB;&#x52A1;&#x3001;&#x6307;&#x4EE4;&#x7B49;&#x5404;&#x7EA7;&#x5168;&#x9762;&#x5E76;&#x884C;&#x7684;&#x591A;&#x673A;&#x7CFB;&#x7EDF;.</li>
+</ol>
+<h2 id="1-3-CISC-RISC"><a href="#1-3-CISC-RISC" class="headerlink" title="1.3 CISC / RISC"></a>1.3 CISC / RISC</h2><p><em>Complex / Reduced Instruction Set Computer</em></p>
+<ul>
+<li><strong>CISC</strong>: &#x589E;&#x5F3A;&#x6307;&#x4EE4;&#x7684;&#x529F;&#x80FD;, &#x8BBE;&#x7F6E;&#x529F;&#x80FD;&#x590D;&#x6742;&#x7684;&#x6307;&#x4EE4;, &#x628A;&#x4E00;&#x4E9B;&#x539F;&#x6765;&#x7531;&#x8F6F;&#x4EF6;&#x5B9E;&#x73B0;&#x7684;&#x5E38;&#x7528;&#x7684;&#x529F;&#x80FD;&#x6539;&#x7528;&#x786C;&#x4EF6;&#x7684;&#x6307;&#x4EE4;&#x7CFB;&#x7EDF;&#x6765;&#x5B9E;&#x73B0;;</li>
+<li><strong>RISC</strong>: &#x5C3D;&#x91CF;&#x7B80;&#x5316;&#x6307;&#x4EE4;&#x529F;&#x80FD;, &#x53EA;&#x4FDD;&#x7559;&#x529F;&#x80FD;&#x7B80;&#x5355;&#x80FD;&#x5728;&#x4E00;&#x4E2A;&#x8282;&#x62CD;&#x5185;&#x6267;&#x884C;&#x5B8C;&#x6210;&#x6307;&#x4EE4;.</li>
+</ul>
+<h3 id="1-CISC"><a href="#1-CISC" class="headerlink" title="1. CISC"></a>1. CISC</h3><ul>
+<li>&#x6307;&#x4EE4;&#x6570;&#x91CF;&#x591A;</li>
+<li>&#x6307;&#x4EE4;&#x4F7F;&#x7528;&#x9891;&#x7387;&#x76F8;&#x5DEE;&#x60AC;&#x6B8A;</li>
+<li>&#x652F;&#x6301;&#x591A;&#x79CD;&#x5BFB;&#x5740;&#x65B9;&#x5F0F;</li>
+<li>&#x53D8;&#x957F;&#x7684;&#x6307;&#x4EE4;</li>
+<li>&#x6307;&#x4EE4;&#x53EF;&#x5BF9;&#x6CE8;&#x518C;&#x5355;&#x5143;&#x7684;&#x6570;&#x636E;&#x76F4;&#x63A5;&#x5904;&#x7406;</li>
+<li>&#x4EE5;&#x5FAE;&#x7A0B;&#x5E8F;&#x63A7;&#x5236;&#x4F4D;&#x7F6E;</li>
+</ul>
+<h3 id="2-RISC"><a href="#2-RISC" class="headerlink" title="2. RISC"></a>2. RISC</h3><ul>
+<li>&#x6307;&#x4EE4;&#x6570;&#x91CF;&#x5C11;</li>
+<li>&#x652F;&#x6301;&#x5BFB;&#x5740;&#x65B9;&#x5F0F;&#x5C11;: &#x901A;&#x5E38;&#x53EA;&#x652F;&#x6301;&#x5BC4;&#x5B58;&#x5668;&#x5BFB;&#x5740;, &#x7ACB;&#x5373;&#x6570;&#x5BFB;&#x5740;&#x548C;&#x76F8;&#x5BF9;&#x5BFB;&#x5740;</li>
+<li>&#x6307;&#x4EE4;&#x957F;&#x5EA6;&#x56FA;&#x5B9A;</li>
+<li>&#x4EE5;&#x786C;&#x5E03;&#x7EBF;&#x903B;&#x8F91;&#x63A7;&#x5236;&#x4E3A;&#x4E3B;</li>
+<li>&#x5355;&#x5468;&#x671F;&#x6307;&#x4EE4;&#x6267;&#x884C;</li>
+<li>&#x4F18;&#x5316;&#x7684;&#x7F16;&#x8BD1;&#x5668;</li>
+<li>CPU&#x4E2D;&#x901A;&#x7528;&#x5BC4;&#x5B58;&#x5668;&#x6570;&#x91CF;&#x591A;</li>
+</ul>
+<h2 id="1-4-&#x603B;&#x7EBF;"><a href="#1-4-&#x603B;&#x7EBF;" class="headerlink" title="1.4 &#x603B;&#x7EBF;"></a>1.4 &#x603B;&#x7EBF;</h2><p>&#x603B;&#x7EBF;&#x662F;&#x4E00;&#x7EC4;&#x80FD;&#x4E3A;&#x591A;&#x4E2A;&#x90E8;&#x4EF6; <strong>&#x5206;&#x65F6;&#x5171;&#x4EAB;</strong> &#x7684;&#x516C;&#x5171;&#x4FE1;&#x606F;&#x4F20;&#x9001;&#x7EBF;&#x8DEF;. </p>
+<ul>
+<li><em>&#x5171;&#x4EAB;: &#x6307;&#x603B;&#x7EBF;&#x4E0A;&#x53EF;&#x4EE5;&#x6302;&#x63A5;&#x591A;&#x4E2A;&#x90E8;&#x4EF6;</em></li>
+<li><em>&#x5206;&#x65F6;: &#x6307;&#x540C;&#x4E00;&#x65F6;&#x523B;&#x53EA;&#x5141;&#x8BB8;&#x6709;&#x4E00;&#x4E2A;&#x90E8;&#x4EF6;&#x5411;&#x603B;&#x7EBF;&#x53D1;&#x9001;&#x4FE1;&#x606F;</em></li>
+</ul>
+<p>&#x5206;&#x7C7B;</p>
+<ul>
+<li>&#x6309;&#x603B;&#x7EBF;&#x76F8;&#x5BF9;&#x4E8E; CPU &#x6216;&#x5176;&#x4ED6;&#x82AF;&#x7247;&#x7684;&#x4F4D;&#x7F6E;&#x53EF;&#x5206;&#x4E3A; <strong>&#x5185;&#x90E8;&#x603B;&#x7EBF;&#x548C;&#x5916;&#x90E8;&#x603B;&#x7EBF;</strong>;</li>
+<li>&#x6309;&#x603B;&#x7EBF;&#x529F;&#x80FD;&#x6765;&#x5212;&#x5206;, &#x53EF;&#x5206;&#x4E3A; <strong>&#x5730;&#x5740;&#x603B;&#x7EBF;&#x3001;&#x6570;&#x636E;&#x603B;&#x7EBF;&#x3001;&#x63A7;&#x5236;&#x603B;&#x7EBF;</strong>. </li>
+</ul>
+<p><em>&#x7531;&#x4E8E; CPU &#x901A;&#x8FC7;&#x603B;&#x7EBF;&#x5B9E;&#x73B0;&#x7A0B;&#x5E8F;&#x53D6;&#x6307;&#x4EE4;&#x3001;&#x5185;&#x5B58;/&#x5916;&#x8BBE;&#x7684;&#x6570;&#x636E;&#x4EA4;&#x6362;, &#x5728; CPU &#x4E0E;&#x5916;&#x8BBE;&#x4E00;&#x5B9A;&#x7684;&#x60C5;&#x51B5;&#x4E0B;, &#x603B;&#x7EBF;&#x901F;&#x5EA6;&#x662F;&#x5236;&#x7EA6;&#x8BA1;&#x7B97;&#x673A;&#x6574;&#x4F53;&#x6027;&#x80FD;&#x7684;&#x6700;&#x5927;&#x56E0;&#x7D20;.</em></p>
+<h1 id="2-&#x5B58;&#x50A8;&#x7CFB;&#x7EDF;"><a href="#2-&#x5B58;&#x50A8;&#x7CFB;&#x7EDF;" class="headerlink" title="2. &#x5B58;&#x50A8;&#x7CFB;&#x7EDF;"></a>2. &#x5B58;&#x50A8;&#x7CFB;&#x7EDF;</h1><p>&#x5B58;&#x50A8;&#x5668;&#x7CFB;&#x7EDF;&#x5206;&#x7EA7;: </p>
+<p>Cache - &#x4E3B;&#x5B58; - &#x8F85;&#x5B58; (<em>Register &#x2014;&gt; L1 Cache &#x2014;&gt; L2 Cache &#x2014;&gt; L3 Cache &#x2014;&gt; Memory &#x2014;&gt; Mass storage</em>)</p>
+<ul>
+<li><em>&#x91C7;&#x7528;&#x591A;&#x7EA7;&#x5B58;&#x50A8;&#x5668;&#x4F53;&#x7CFB;, &#x80FD;&#x591F;&#x83B7;&#x5F97;&#x5C3D;&#x53EF;&#x80FD;&#x9AD8;&#x7684;&#x5B58;&#x53D6;&#x901F;&#x7387;&#x540C;&#x65F6;&#x4FDD;&#x6301;&#x8F83;&#x4F4E;&#x7684;&#x6210;&#x672C;.</em></li>
+<li><em>&#x591A;&#x5C42;&#x7EA7;&#x7684;&#x5B58;&#x50A8;&#x4F53;&#x7CFB;&#x4E4B;&#x6240;&#x4EE5;&#x80FD;&#x7528;&#x4F4E;&#x6295;&#x5165;&#x6362;&#x6765;&#x8F83;&#x9AD8;&#x7684;&#x5B58;&#x53D6;&#x901F;&#x7387;, &#x5F97;&#x76CA;&#x4E8E;&#x5C40;&#x90E8;&#x6027;&#x539F;&#x7406;(Spatial Locality/Temporal Locality).</em></li>
+</ul>
+<p>&#x5B58;&#x53D6;&#x65B9;&#x5F0F;: </p>
+<ol>
+<li><strong>&#x987A;&#x5E8F;&#x5B58;&#x53D6;</strong>: &#x5FC5;&#x987B;&#x6309;&#x7279;&#x5B9A;&#x7684;&#x7EBF;&#x6027;&#x987A;&#x5E8F;&#x8FDB;&#x884C; (&#x78C1;&#x5E26;)</li>
+<li><strong>&#x76F4;&#x63A5;&#x5B58;&#x53D6;</strong>: &#x4F7F;&#x7528;&#x4E00;&#x4E2A;&#x5171;&#x4EAB;&#x7684;&#x8BFB;&#x5199;&#x88C5;&#x7F6E;&#x5BF9;&#x6240;&#x6709;&#x7684;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x8BBF;&#x95EE;; &#x6570;&#x636E;&#x5757;&#x62E5;&#x6709;&#x552F;&#x4E00;&#x5730;&#x5740;&#x6807;&#x8BC6;, &#x8BFB;&#x5199;&#x88C5;&#x7F6E;&#x76F4;&#x63A5;&#x79FB;&#x52A8;&#x5230;&#x76EE;&#x7684;&#x6570;&#x636E;&#x5757;&#x6240;&#x5728;&#x4F4D;&#x7F6E;&#x8FDB;&#x884C;&#x8BBF;&#x95EE; (&#x78C1;&#x76D8;)</li>
+<li><strong>&#x968F;&#x673A;&#x5B58;&#x53D6;</strong>: &#x6BCF;&#x4E00;&#x4E2A;&#x53EF;&#x5BFB;&#x5740;&#x5355;&#x5143;&#x90FD;&#x5177;&#x6709;&#x552F;&#x4E00;&#x7684;&#x5730;&#x5740;&#x548C;&#x8BFB;&#x5199;&#x88C5;&#x7F6E;, &#x7CFB;&#x7EDF;&#x53EF;&#x5728;&#x76F8;&#x540C;&#x7684;&#x65F6;&#x95F4;&#x5185;&#x5BF9;&#x4EFB;&#x610F;&#x4E00;&#x4E2A;&#x5B58;&#x50A8;&#x5355;&#x5143;&#x7684;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x8BBF;&#x95EE;, &#x800C;&#x4E0E;&#x5148;&#x524D;&#x7684;&#x8BBF;&#x95EE;&#x5E8F;&#x5217;&#x65E0;&#x5173;. (&#x4E3B;&#x5B58;)</li>
+<li><strong>&#x76F8;&#x8054;&#x5B58;&#x53D6;</strong>: &#x76F8;&#x8054;&#x5B58;&#x53D6;&#x4E5F;&#x662F;&#x4E00;&#x79CD;&#x968F;&#x673A;&#x5B58;&#x53D6;&#x7684;&#x5F62;&#x5F0F;, &#x4F46;&#x662F;&#x9009;&#x62E9;&#x67D0;&#x4E00;&#x5355;&#x5143;&#x8FDB;&#x884C;&#x8BFB;&#x5199;&#x662F;&#x53D6;&#x51B3;&#x4E8E;&#x5176;&#x5185;&#x5BB9;&#x800C;&#x4E0D;&#x662F;&#x5176;&#x5730;&#x5740;. &#x4E0E;&#x666E;&#x901A;&#x7684;&#x968F;&#x673A;&#x5B58;&#x53D6;&#x65B9;&#x5F0F;&#x4E00;&#x6837;, &#x6BCF;&#x4E2A;&#x5355;&#x5143;&#x90FD;&#x6709;&#x81EA;&#x5DF1;&#x7684;&#x8BFB;&#x5199;&#x88C5;&#x7F6E;, &#x8BFB;&#x5199;&#x65F6;&#x95F4;&#x4E5F;&#x662F;&#x4E00;&#x4E2A;&#x5E38;&#x6570;. &#x4F7F;&#x7528;&#x76F8;&#x8054;&#x5B58;&#x53D6;&#x65B9;&#x5F0F;, &#x53EF;&#x4EE5;&#x5BF9;&#x6240;&#x6709;&#x7684;&#x5B58;&#x50A8;&#x5355;&#x5143;&#x7684;&#x7279;&#x5B9A;&#x4F4D;&#x8FDB;&#x884C;&#x6BD4;&#x8F83;, &#x9009;&#x62E9;&#x7B26;&#x5408;&#x6761;&#x4EF6;&#x7684;&#x5355;&#x5143;&#x8FDB;&#x884C;&#x8BBF;&#x95EE;. (Cache)</li>
+</ol>
+<h2 id="2-1-&#x4E3B;&#x5B58;&#x50A8;&#x5668;"><a href="#2-1-&#x4E3B;&#x5B58;&#x50A8;&#x5668;" class="headerlink" title="2.1 &#x4E3B;&#x5B58;&#x50A8;&#x5668;"></a>2.1 &#x4E3B;&#x5B58;&#x50A8;&#x5668;</h2><p>&#x4E3B;&#x5B58;&#x7528;&#x6765;&#x5B58;&#x653E;&#x8BA1;&#x7B97;&#x673A;&#x8FD0;&#x884C;&#x671F;&#x95F4;&#x6240;&#x9700;&#x8981;&#x7684;&#x7A0B;&#x5E8F;&#x548C;&#x6570;&#x636E;&#xFF0C;CPU &#x53EF;&#x76F4;&#x63A5;&#x968F;&#x673A;&#x5730;&#x8FDB;&#x884C;&#x8BFB;/&#x5199;&#x3002;&#x7531;&#x4E8E; CPU &#x8981;&#x9891;&#x7E41;&#x5730;&#x8BBF;&#x95EE;&#x4E3B;&#x5B58;&#xFF0C;&#x6240;&#x4EE5;&#x4E3B;&#x5B58;&#x7684;&#x6027;&#x80FD;&#x5728;&#x5F88;&#x5927;&#x7A0B;&#x5EA6;&#x4E0A;&#x5F71;&#x54CD;&#x4E86;&#x6574;&#x4E2A;&#x8BA1;&#x7B97;&#x673A;&#x7CFB;&#x7EDF;&#x7684;&#x6027;&#x80FD;&#x3002;</p>
+<h3 id="1-&#x968F;&#x673A;&#x5B58;&#x53D6;&#x5B58;&#x50A8;&#x5668;"><a href="#1-&#x968F;&#x673A;&#x5B58;&#x53D6;&#x5B58;&#x50A8;&#x5668;" class="headerlink" title="1. &#x968F;&#x673A;&#x5B58;&#x53D6;&#x5B58;&#x50A8;&#x5668;"></a>1. &#x968F;&#x673A;&#x5B58;&#x53D6;&#x5B58;&#x50A8;&#x5668;</h3><p>RAM: Dynamic RAM / Static RAM</p>
+<h3 id="2-&#x53EA;&#x8BFB;&#x5B58;&#x50A8;&#x5668;"><a href="#2-&#x53EA;&#x8BFB;&#x5B58;&#x50A8;&#x5668;" class="headerlink" title="2. &#x53EA;&#x8BFB;&#x5B58;&#x50A8;&#x5668;"></a>2. &#x53EA;&#x8BFB;&#x5B58;&#x50A8;&#x5668;</h3><p>ROM</p>
+<h2 id="2-2-&#x8F85;&#x52A9;&#x5B58;&#x50A8;&#x5668;"><a href="#2-2-&#x8F85;&#x52A9;&#x5B58;&#x50A8;&#x5668;" class="headerlink" title="2.2 &#x8F85;&#x52A9;&#x5B58;&#x50A8;&#x5668;"></a>2.2 &#x8F85;&#x52A9;&#x5B58;&#x50A8;&#x5668;</h2><p><strong>&#x78C1;&#x76D8;&#x8BBF;&#x95EE;&#x65F6;&#x95F4; (&#x5B58;&#x53D6;&#x65F6;&#x95F4;)</strong> = <strong>&#x5BFB;&#x9053;&#x65F6;&#x95F4;</strong> + <strong>&#x65CB;&#x8F6C;&#x5EF6;&#x8FDF;&#x65F6;&#x95F4;</strong></p>
+<h2 id="2-3-Cache-&#x5B58;&#x50A8;&#x5668;"><a href="#2-3-Cache-&#x5B58;&#x50A8;&#x5668;" class="headerlink" title="2.3 Cache &#x5B58;&#x50A8;&#x5668;"></a>2.3 Cache &#x5B58;&#x50A8;&#x5668;</h2><p>Cache &#x7684;&#x529F;&#x80FD;&#x662F;&#x63D0;&#x9AD8; CPU &#x6570;&#x636E;&#x8F93;&#x5165;&#x8F93;&#x51FA;&#x7684;&#x901F;&#x7387;&#xFF0C;&#x7A81;&#x7834;&#x6240;&#x8C13;&#x7684;&#x201C;&#x51AF;&#x2022;&#x8BFA;&#x4F9D;&#x66FC;&#x74F6;&#x9888;&#x201D;&#xFF0C;&#x5373; CPU &#x4E0E;&#x5B58;&#x50A8;&#x7CFB;&#x7EDF;&#x95F4;&#x6570;&#x636E;&#x4F20;&#x9001;&#x5E26;&#x5BBD;&#x9650;&#x5236;. </p>
+<p><em>&#x901A;&#x8FC7;&#x4F18;&#x5316;&#x8C03;&#x5EA6;&#x7B97;&#x6CD5;&#xFF0C;&#x7CFB;&#x7EDF;&#x7684;&#x6027;&#x80FD;&#x4F1A;&#x5927;&#x5927;&#x6539;&#x5584;&#xFF0C;&#x4EFF;&#x4F5B;&#x5176;&#x5B58;&#x50A8;&#x7CFB;&#x7EDF;&#x5BB9;&#x91CF;&#x4E0E;&#x5185;&#x5B58;&#x76F8;&#x5F53;&#x800C;&#x8BBF;&#x95EE;&#x901F;&#x5EA6;&#x8FD1;&#x4F3C; Cache&#x3002;</em></p>
+<h3 id="1-&#x7F13;&#x5B58;&#x57FA;&#x672C;&#x539F;&#x7406;"><a href="#1-&#x7F13;&#x5B58;&#x57FA;&#x672C;&#x539F;&#x7406;" class="headerlink" title="1. &#x7F13;&#x5B58;&#x57FA;&#x672C;&#x539F;&#x7406;"></a>1. &#x7F13;&#x5B58;&#x57FA;&#x672C;&#x539F;&#x7406;</h3><p>&#x4F7F;&#x7528; Cache &#x6539;&#x5584;&#x7CFB;&#x7EDF;&#x6027;&#x80FD;&#x7684;&#x4F9D;&#x636E;&#x662F;&#x7A0B;&#x5E8F;&#x7684;&#x5C40;&#x90E8;&#x6027;&#x539F;&#x7406;&#x3002;&#x6839;&#x636E;&#x7A0B;&#x5E8F;&#x7684;&#x5C40;&#x90E8;&#x6027;&#x539F;&#x7406;&#xFF0C;&#x6700;&#x8FD1;&#x7684;&#x3001;&#x672A;&#x6765;&#x8981;&#x7528;&#x7684;&#x6307;&#x4EE4;&#x548C;&#x6570;&#x636E;&#x5927;&#x591A;&#x5C40;&#x9650;&#x4E8E;&#x6B63;&#x5728;&#x7528;&#x7684;&#x6307;&#x4EE4;&#x548C;&#x6570;&#x636E;&#xFF0C;&#x6216;&#x662F;&#x5B58;&#x653E;&#x5728;&#x4E0E;&#x8FD9;&#x4E9B;&#x6307;&#x4EE4;&#x548C;&#x6570;&#x636E;&#x4F4D;&#x7F6E;&#x4E0A;&#x90BB;&#x8FD1;&#x7684;&#x5355;&#x5143;&#x4E2D;. </p>
+<p><strong>&#x5E73;&#x5747;&#x5468;&#x671F;</strong>[t1: cache &#x5468;&#x671F;&#x65F6;&#x95F4;&#xFF0C;t2 &#x5185;&#x5B58;&#x5468;&#x671F;&#x65F6;&#x95F4;, h &#x547D;&#x4E2D;&#x7387;]: </p>
+<p>t3 = t1&#x2032;h + t2&#x2032;(1-h) </p>
+<h3 id="2-&#x7F13;&#x5B58;&#x4E00;&#x81F4;&#x6027;&#x95EE;&#x9898;-lt-gt"><a href="#2-&#x7F13;&#x5B58;&#x4E00;&#x81F4;&#x6027;&#x95EE;&#x9898;-lt-gt" class="headerlink" title="2. &#x7F13;&#x5B58;&#x4E00;&#x81F4;&#x6027;&#x95EE;&#x9898; &lt;!&gt;"></a>2. &#x7F13;&#x5B58;&#x4E00;&#x81F4;&#x6027;&#x95EE;&#x9898; &lt;!&gt;</h3><ol>
+<li>&#x901A;&#x8FC7;&#x5728;&#x603B;&#x7EBF;&#x52A0;LOCK#&#x9501;&#x7684;&#x65B9;&#x5F0F;</li>
+<li>&#x901A;&#x8FC7;&#x7F13;&#x5B58;&#x4E00;&#x81F4;&#x6027;&#x534F;&#x8BAE; [MESI/MESU -&gt; MOESI(AMD)/MESIF(Intel)]</li>
+</ol>
+<h3 id="3-&#x6620;&#x5C04;&#x673A;&#x5236;-lt-gt"><a href="#3-&#x6620;&#x5C04;&#x673A;&#x5236;-lt-gt" class="headerlink" title="3. &#x6620;&#x5C04;&#x673A;&#x5236; &lt;!&gt;"></a>3. &#x6620;&#x5C04;&#x673A;&#x5236; &lt;!&gt;</h3><p>&#x5F53; CPU &#x53D1;&#x51FA;&#x8BBF;&#x5B58;&#x8BF7;&#x6C42;&#x540E;&#xFF0C;&#x5B58;&#x50A8;&#x5668;&#x5730;&#x5740;&#x5148;&#x88AB;&#x9001;&#x5230; Cache &#x63A7;&#x5236;&#x5668;&#x4EE5;&#x786E;&#x5B9A;&#x6240;&#x9700;&#x6570;&#x636E;&#x662F;&#x5426;&#x5DF2;&#x5728; Cache &#x4E2D;&#xFF0C;&#x82E5;&#x547D;&#x4E2D;&#x5219;&#x76F4;&#x63A5;&#x5BF9; Cache &#x8FDB;&#x884C;&#x8BBF;&#x95EE;&#x3002;&#x8FD9;&#x4E2A;&#x8FC7;&#x7A0B;&#x79F0;&#x4E3A; Cache &#x7684;&#x5730;&#x5740;&#x6620;&#x5C04;&#xFF08;&#x6620;&#x50CF;&#xFF09;&#x3002;</p>
+<p><em>&#x5728; Cache &#x7684;&#x5730;&#x5740;&#x6620;&#x5C04;&#x4E2D;&#xFF0C;&#x4E3B;&#x5B58;&#x548C; Cache &#x5C06;&#x5747;&#x5206;&#x6210;&#x5BB9;&#x91CF;&#x76F8;&#x540C;&#x7684;&#x5757;&#xFF08;&#x9875;&#xFF09;&#x3002;</em></p>
+<h4 id="1-&#x76F4;&#x63A5;&#x6620;&#x50CF;"><a href="#1-&#x76F4;&#x63A5;&#x6620;&#x50CF;" class="headerlink" title="1) &#x76F4;&#x63A5;&#x6620;&#x50CF;"></a>1) &#x76F4;&#x63A5;&#x6620;&#x50CF;</h4><p>!()[]</p>
+<h4 id="2-&#x5168;&#x76F8;&#x8054;&#x6620;&#x50CF;"><a href="#2-&#x5168;&#x76F8;&#x8054;&#x6620;&#x50CF;" class="headerlink" title="2) &#x5168;&#x76F8;&#x8054;&#x6620;&#x50CF;"></a>2) &#x5168;&#x76F8;&#x8054;&#x6620;&#x50CF;</h4><p>!()[]</p>
+<h4 id="3-&#x7EC4;&#x76F8;&#x8054;&#x6620;&#x50CF;"><a href="#3-&#x7EC4;&#x76F8;&#x8054;&#x6620;&#x50CF;" class="headerlink" title="3) &#x7EC4;&#x76F8;&#x8054;&#x6620;&#x50CF;"></a>3) &#x7EC4;&#x76F8;&#x8054;&#x6620;&#x50CF;</h4><p>!()[]</p>
+<h3 id="4-&#x66FF;&#x6362;&#x7B97;&#x6CD5;"><a href="#4-&#x66FF;&#x6362;&#x7B97;&#x6CD5;" class="headerlink" title="4. &#x66FF;&#x6362;&#x7B97;&#x6CD5;"></a>4. &#x66FF;&#x6362;&#x7B97;&#x6CD5;</h3><p>Cache &#x5DF2;&#x5B58;&#x6EE1;&#x6570;&#x636E;&#x540E;&#xFF0C;&#x65B0;&#x6570;&#x636E;&#x66FF;&#x6362;&#xFF08;&#x6DD8;&#x6C70;&#xFF09;Cache &#x4E2D;&#x7684;&#x67D0;&#x4E9B;&#x65E7;&#x6570;&#x636E;</p>
+<ul>
+<li>&#x968F;&#x673A;&#x7B97;&#x6CD5;</li>
+<li>&#x5148;&#x8FDB;&#x5148;&#x51FA; (First In and First Out / FIFO)</li>
+<li>&#x8FD1;&#x671F;&#x6700;&#x5C11;&#x4F7F;&#x7528; (Least Recently Used / LRU)</li>
+</ul>
+<h3 id="5-&#x5199;&#x64CD;&#x4F5C;"><a href="#5-&#x5199;&#x64CD;&#x4F5C;" class="headerlink" title="5. &#x5199;&#x64CD;&#x4F5C;"></a>5. &#x5199;&#x64CD;&#x4F5C;</h3><p>&#x4FDD;&#x8BC1;&#x7F13;&#x5B58;&#x5728; Cache &#x4E2D;&#x7684;&#x6570;&#x636E;&#x4E0E;&#x5185;&#x5B58;&#x4E2D;&#x7684;&#x5185;&#x5BB9;&#x4E00;&#x81F4;</p>
+<ul>
+<li>&#x5199;&#x901A; (write through)</li>
+<li>&#x5199;&#x56DE; (write back)</li>
+<li>&#x6807;&#x8BB0;&#x6CD5;</li>
+</ul>
+<h1 id="3-&#x6D41;&#x6C34;&#x7EBF;-lt-gt"><a href="#3-&#x6D41;&#x6C34;&#x7EBF;-lt-gt" class="headerlink" title="3. &#x6D41;&#x6C34;&#x7EBF; &lt;!&gt;"></a>3. &#x6D41;&#x6C34;&#x7EBF; &lt;!&gt;</h1><p>&#x6D41;&#x6C34;&#x7EBF; (pipeline) &#x6280;&#x672F;&#x628A;&#x4E00;&#x4E2A;&#x4EFB;&#x52A1;&#x5206;&#x89E3;&#x4E3A;&#x82E5;&#x5E72;&#x987A;&#x5E8F;&#x6267;&#x884C;&#x7684;&#x5B50;&#x4EFB;&#x52A1;&#xFF0C;&#x4E0D;&#x540C;&#x7684;&#x5B50;&#x4EFB;&#x52A1;&#x7531;&#x4E0D;&#x540C;&#x7684;&#x6267;&#x884C;&#x673A;&#x6784;&#x8D1F;&#x8D23;&#x6267;&#x884C;&#xFF0C;&#x800C;&#x8FD9;&#x4E9B;&#x673A;&#x6784;&#x53EF;&#x4EE5;&#x540C;&#x65F6;&#x5E76;&#x884C;&#x5DE5;&#x4F5C;&#x3002;</p>
+<blockquote>
+<p>&#x6D41;&#x6C34;&#x7EBF;&#x8FC7;&#x7A0B;&#x7531;&#x591A;&#x4E2A;&#x76F8;&#x4E92;&#x5173;&#x8054;&#x7684;&#x5B50;&#x8FC7;&#x7A0B;&#x7EC4;&#x6210;&#xFF0C;&#x6BCF;&#x4E2A;&#x5B50;&#x8FC7;&#x7A0B;&#x79F0;&#x4E3A;&#x6D41;&#x6C34;&#x7EBF;&#x7684;&#x201C;&#x7EA7;&#x201D;&#x6216;&#x201C;&#x6BB5;&#x201D;&#x3002;&#x6D41;&#x6C34;&#x7EBF;&#x7684;&#x6BB5;&#x6570;&#x53EF;&#x4EE5;&#x79F0;&#x4E3A;&#x6D41;&#x6C34;&#x7EBF;&#x7684;&#x201C;&#x6DF1;&#x5EA6;&#x201D;&#x6216;&#x201C;&#x6D41;&#x6C34;&#x6DF1;&#x5EA6;&#x201D;&#x3002;</p>
+</blockquote>
+<p><em>&#x5728;&#x4EFB;&#x4E00;&#x65F6;&#x523B;&#xFF0C;&#x4EFB;&#x4E00;&#x4EFB;&#x52A1;&#x53EA;&#x5360;&#x7528;&#x5176;&#x4E2D;&#x4E00;&#x4E2A;&#x6267;&#x884C;&#x673A;&#x6784;&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x591A;&#x4E2A;&#x4EFB;&#x52A1;&#x7684;&#x91CD;&#x53E0;&#x6267;&#x884C;&#xFF0C;&#x4EE5;&#x63D0;&#x9AD8;&#x5DE5;&#x4F5C;&#x6548;&#x7387;&#x3002;</em></p>
+<h2 id="3-1-&#x6D41;&#x6C34;&#x7EBF;&#x5468;&#x671F;"><a href="#3-1-&#x6D41;&#x6C34;&#x7EBF;&#x5468;&#x671F;" class="headerlink" title="3.1 &#x6D41;&#x6C34;&#x7EBF;&#x5468;&#x671F;"></a>3.1 &#x6D41;&#x6C34;&#x7EBF;&#x5468;&#x671F;</h2><p>&#x6D41;&#x6C34;&#x7EBF;&#x5C06;&#x9700;&#x8981;&#x5904;&#x7406;&#x7684;&#x5DE5;&#x4F5C;&#x5206;&#x4E3A; N &#x4E2A;&#x9636;&#x6BB5;&#xFF0C;&#x6700;&#x8017;&#x65F6;&#x7684;&#x90A3;&#x4E00;&#x6BB5;&#x6240;&#x6D88;&#x8017;&#x7684;&#x65F6;&#x95F4;&#x4E3A;<strong>&#x6D41;&#x6C34;&#x7EBF;&#x5468;&#x671F;</strong>&#x3002;</p>
+<h2 id="3-2-&#x6D41;&#x6C34;&#x7EBF;&#x6267;&#x884C;&#x65F6;&#x95F4;"><a href="#3-2-&#x6D41;&#x6C34;&#x7EBF;&#x6267;&#x884C;&#x65F6;&#x95F4;" class="headerlink" title="3.2 &#x6D41;&#x6C34;&#x7EBF;&#x6267;&#x884C;&#x65F6;&#x95F4;"></a>3.2 &#x6D41;&#x6C34;&#x7EBF;&#x6267;&#x884C;&#x65F6;&#x95F4;</h2><p>&#x6D41;&#x6C34;&#x7EBF;&#x6267;&#x884C;&#x65F6;&#x95F4; = &#x7B2C; 1 &#x6761;&#x6307;&#x4EE4;&#x7684;&#x6267;&#x884C;&#x65F6;&#x95F4; + (n-1)*&#x6D41;&#x6C34;&#x7EBF;&#x5468;&#x671F; <nt +="" (k-1)t=""></nt></p>
+<h2 id="3-3-&#x6D41;&#x6C34;&#x7EBF;&#x7684;&#x541E;&#x5410;&#x7387;"><a href="#3-3-&#x6D41;&#x6C34;&#x7EBF;&#x7684;&#x541E;&#x5410;&#x7387;" class="headerlink" title="3.3 &#x6D41;&#x6C34;&#x7EBF;&#x7684;&#x541E;&#x5410;&#x7387;"></a>3.3 &#x6D41;&#x6C34;&#x7EBF;&#x7684;&#x541E;&#x5410;&#x7387;</h2><p>&#x5355;&#x4F4D;&#x65F6;&#x95F4;&#x5185;&#x6D41;&#x6C34;&#x7EBF;&#x6240;&#x5B8C;&#x6210;&#x7684;&#x4EFB;&#x52A1;&#x6570;&#x91CF;&#x6216;&#x8F93;&#x51FA;&#x7684;&#x7ED3;&#x679C;&#x6570;&#x91CF;</p>
+<h2 id="3-4-&#x6D41;&#x6C34;&#x7EBF;&#x7684;&#x52A0;&#x901F;&#x6BD4;"><a href="#3-4-&#x6D41;&#x6C34;&#x7EBF;&#x7684;&#x52A0;&#x901F;&#x6BD4;" class="headerlink" title="3.4 &#x6D41;&#x6C34;&#x7EBF;&#x7684;&#x52A0;&#x901F;&#x6BD4;"></a>3.4 &#x6D41;&#x6C34;&#x7EBF;&#x7684;&#x52A0;&#x901F;&#x6BD4;</h2><p>&#x5B8C;&#x6210;&#x540C;&#x6837;&#x4EFB;&#x52A1;&#xFF0C;&#x4E0D;&#x4F7F;&#x7528;&#x6D41;&#x6C34;&#x7EBF;&#x6240;&#x7528;&#x7684;&#x65F6;&#x95F4;&#x4E0E;&#x4F7F;&#x7528;&#x6D41;&#x6C34;&#x7EBF;&#x6240;&#x7528;&#x7684;&#x65F6;&#x95F4;&#x4E4B;&#x6BD4;&#x79F0;&#x4E3A;&#x6D41;&#x6C34;&#x7EBF;&#x7684;&#x52A0;&#x901F;&#x6BD4; (speedup ratio)</p>
+<hr>
+<h1 id="A-&#x5B58;&#x50A8;&#x5B50;&#x7CFB;&#x7EDF;"><a href="#A-&#x5B58;&#x50A8;&#x5B50;&#x7CFB;&#x7EDF;" class="headerlink" title="A. &#x5B58;&#x50A8;&#x5B50;&#x7CFB;&#x7EDF;"></a>A. &#x5B58;&#x50A8;&#x5B50;&#x7CFB;&#x7EDF;</h1><blockquote>
+<p>&#x968F;&#x7740;&#x5DE5;&#x827A;&#x6C34;&#x5E73;&#x7684;&#x63D0;&#x9AD8;&#xFF0C;&#x96C6;&#x6210;&#x7535;&#x8DEF;&#x7684;&#x96C6;&#x6210;&#x7A0B;&#x5EA6;&#x8D8A;&#x6765;&#x8D8A;&#x9AD8;&#xFF0C;&#x4E3B;&#x9891;&#x4E5F;&#x4E0D;&#x65AD;&#x63D0;&#x9AD8;&#xFF0C;&#x5904;&#x7406;&#x5668;&#x7684;&#x529F;&#x80FD;&#x90E8;&#x4EF6;&#x7684;&#x8BA1;&#x7B97;&#x80FD;&#x529B;&#x8D8A;&#x6765;&#x8D8A;&#x5F3A;&#xFF08;&#x73B0;&#x5728;&#x5DF2;&#x7ECF;&#x80FD;&#x591F;&#x4E00;&#x62CD;&#x5C31;&#x5B8C;&#x6210;32&#x4F4D;&#x5B9A;&#x70B9;&#x4E58;&#x6CD5;&#xFF09;&#xFF0C;&#x5904;&#x7406;&#x5668;&#x7684;&#x6027;&#x80FD;&#x74F6;&#x9888;&#x4E0D;&#x518D;&#x518D;&#x662F;&#x5904;&#x7406;&#x5668;&#x6838;&#x5FC3;&#x7684;&#x8BA1;&#x7B97;&#x80FD;&#x529B;&#x4E86;&#xFF0C;&#x800C;&#x662F;&#x7A81;&#x51FA;&#x8868;&#x73B0;&#x4E3A;&#x8BBF;&#x5B58;&#x7684;&#x74F6;&#x9888;&#x4E0A;&#x4E86;&#xFF0C;&#x201C;&#x5982;&#x4F55;&#x5582;&#x9971;&#x9965;&#x997F;&#x7684;CPU&#x201D;&#x6210;&#x4E86;&#x5904;&#x7406;&#x5668;&#x8BBE;&#x8BA1;&#x7684;&#x4E3B;&#x8981;&#x95EE;&#x9898;&#xFF0C;&#x56E0;&#x6B64;&#x8BBE;&#x8BA1;&#x4E00;&#x4E2A;&#x9AD8;&#x6548;&#x7684;&#xFF0C;&#x80FD;&#x5C3D;&#x91CF;&#x5582;&#x5F97;&#x5FEB;&#x70B9;&#x7684;&#x5B58;&#x50A8;&#x5B50;&#x7CFB;&#x7EDF;&#x5BF9;&#x4E8E;&#x5F53;&#x4ECA;&#x7684;&#x5904;&#x7406;&#x5668;&#x8BBE;&#x8BA1;&#x8D8A;&#x6765;&#x8D8A;&#x91CD;&#x8981;&#x3002;</p>
+<p>&#x7531;&#x4E8E;&#x8F85;&#x5B58;&#xFF08;&#x5982;&#x786C;&#x76D8;&#xFF09;&#x7684;&#x8BBF;&#x95EE;&#x901F;&#x5EA6;&#x592A;&#x6162;&#xFF0C;&#x6839;&#x672C;&#x65E0;&#x6CD5;&#x5582;&#x9971;&#x9965;&#x997F;&#x7684;CPU&#xFF0C;&#x4E8E;&#x662F;&#x51FA;&#x73B0;&#x4E86;&#x4E3B;&#x5B58;&#xFF0C;&#x968F;&#x7740;&#x5904;&#x7406;&#x5668;&#x6027;&#x80FD;&#x63D0;&#x9AD8;&#xFF0C;&#x4E3B;&#x5B58;&#x7684;&#x901F;&#x5EA6;&#x4E5F;&#x4E0D;&#x591F;&#xFF0C;&#x6839;&#x636E;&#x5C40;&#x90E8;&#x6027;&#x539F;&#x7406;&#xFF0C;&#x4E8E;&#x662F;&#x51FA;&#x73B0;&#x4E86;Cache&#xFF0C;&#x6700;&#x65E9;Cache&#x505A;&#x5728;&#x7247;&#x5916;&#xFF0C;&#x540E;&#x6765;&#x5904;&#x7406;&#x5668;&#x6027;&#x80FD;&#x63D0;&#x9AD8;&#x4E86;&#xFF0C;&#x505A;&#x5728;&#x5916;&#x9762;&#x4E5F;&#x4E0D;&#x884C;&#xFF0C;&#x4E8E;&#x662F;&#x505A;&#x5230;&#x4E86;&#x7247;&#x5185;&#xFF0C;&#x4E4B;&#x540E;&#x4E3A;&#x4E86;&#x66F4;&#x4F18;&#x5316;Cache&#xFF0C;&#x53C8;&#x51FA;&#x73B0;&#x4E86;L1Cache&#xFF0C;L2 Cache&#xFF0C;&#x751A;&#x81F3;L3 Cache&#x3002;&#x968F;&#x7740;SMP&#x4EE5;&#x53CA;CMP&#x7684;&#x51FA;&#x73B0;&#xFF0C;&#x5B58;&#x50A8;&#x4E00;&#x81F4;&#x6027;&#x95EE;&#x9898;&#x6108;&#x52A0;&#x7A81;&#x51FA;&#xFF0C;&#x6210;&#x4E3A;&#x5F71;&#x54CD;&#x7A0B;&#x5E8F;&#x6267;&#x884C;&#x662F;&#x5426;&#x6B63;&#x786E;&#x7684;&#x4E00;&#x4E2A;&#x91CD;&#x8981;&#x56E0;&#x7D20;&#x3002;</p>
+<p>&#x53E6;&#x4E00;&#x65B9;&#x9762;&#xFF0C;&#x968F;&#x7740;&#x591A;&#x4EFB;&#x52A1;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x7684;&#x5F15;&#x5165;&#xFF0C;&#x5BFC;&#x81F4;&#x4E86;&#x903B;&#x8F91;&#x5730;&#x5740;&#xFF08;&#x53C8;&#x53EB;&#x865A;&#x62DF;&#x5730;&#x5740;&#xFF09;&#x548C;&#x7269;&#x7406;&#x5730;&#x5740;&#x7684;&#x533A;&#x5206;&#xFF0C;&#x4E3A;&#x4E86;&#x5EFA;&#x7ACB;&#x865A;&#x62DF;&#x5730;&#x5740;VA&#x548C;&#x7269;&#x7406;&#x5730;&#x5740;PA&#x7684;&#x6620;&#x5C04;&#x5173;&#x7CFB;&#xFF0C;&#x51FA;&#x73B0;&#x4E86;&#x9875;&#x8868;&#x673A;&#x5236;&#x3002;&#x4F46;&#x662F;&#xFF0C;&#x76F4;&#x63A5;&#x5728;&#x4E3B;&#x5B58;&#x4E2D;&#x67E5;&#x627E;&#x9875;&#x8868;&#x8FDB;&#x884C;&#x865A;&#x5B9E;&#x5730;&#x5740;&#x8F6C;&#x5316;&#x7684;&#x4EE3;&#x4EF7;&#x592A;&#x9AD8;&#x4E86;&#xFF0C;&#x4E8E;&#x662F;&#x53C8;&#x51FA;&#x73B0;&#x4E86;&#x65C1;&#x8DEF;&#x8F6C;&#x6362;&#x7F13;&#x51B2;TLB&#xFF08;&#x53C8;&#x79F0;&#x4E3A;&#x9875;&#x8868;&#x7F13;&#x51B2;&#xFF0C;Translation lookaside buffer&#xFF09;&#xFF0C;&#x8FD8;&#x662F;&#x6839;&#x636E;&#x5C40;&#x90E8;&#x6027;&#x539F;&#x7406;&#xFF0C;&#x901A;&#x8FC7;&#x5C06;&#x6700;&#x5E38;&#x4F7F;&#x7528;&#x6216;&#x8005;&#x6700;&#x8FD1;&#x4F7F;&#x7528;&#x7684;&#x9875;&#x8868;&#x76F4;&#x63A5;&#x4FDD;&#x5B58;&#x5728;&#x5904;&#x7406;&#x5668;&#x6838;&#x5185;&#xFF0C;&#x53EF;&#x4EE5;&#x5927;&#x5927;&#x7684;&#x63D0;&#x9AD8;&#x865A;&#x5B9E;&#x5730;&#x5740;&#x8F6C;&#x6362;&#x7684;&#x901F;&#x5EA6;&#xFF0C;&#x63D0;&#x9AD8;&#x5904;&#x7406;&#x5668;&#x7684;&#x6574;&#x4F53;&#x6027;&#x80FD;&#x3002;</p>
+<p>&#x7EB5;&#x89C2;&#x771F;&#x4E2A;&#x5904;&#x7406;&#x5668;&#x5B58;&#x50A8;&#x7CFB;&#x7EDF;&#x7684;&#x53D1;&#x5C55;&#xFF0C;&#x5176;&#x57FA;&#x672C;&#x76EE;&#x7684;&#x90FD;&#x662F;&#x5582;&#x9971;CPU&#xFF0C;&#x8BBE;&#x8BA1;&#x7684;&#x57FA;&#x672C;&#x4F9D;&#x636E;&#x90FD;&#x662F;&#x7A0B;&#x5E8F;&#x7684;&#x65F6;&#x95F4;&#x5C40;&#x90E8;&#x6027;&#x548C;&#x7A7A;&#x95F4;&#x5C40;&#x90E8;&#x6027;&#x3002;</p>
+</blockquote>
+<h1 id="B-&#x5E76;&#x53D1;&#x7F16;&#x7A0B;"><a href="#B-&#x5E76;&#x53D1;&#x7F16;&#x7A0B;" class="headerlink" title="B. &#x5E76;&#x53D1;&#x7F16;&#x7A0B;"></a>B. &#x5E76;&#x53D1;&#x7F16;&#x7A0B;</h1><p>&#x4E09;&#x4E2A;&#x95EE;&#x9898;&#xFF1A;&#x539F;&#x5B50;&#x6027;&#x95EE;&#x9898;&#xFF0C;&#x53EF;&#x89C1;&#x6027;&#x95EE;&#x9898;&#xFF0C;&#x6709;&#x5E8F;&#x6027;&#x95EE;&#x9898;&#x3002;</p>
+<h2 id="1-Volatile"><a href="#1-Volatile" class="headerlink" title="1. Volatile"></a>1. Volatile</h2><p>&#x8D77;&#x6E90; memory-mapeed I/O</p>
+<ul>
+<li>&#x6613;&#x53D8;&#x7684;</li>
+<li>&#x4E0D;&#x53EF;&#x4F18;&#x5316;&#x7684;</li>
+<li>&#x987A;&#x5E8F;&#x6027; (Volatile&#x53D8;&#x91CF;&#x95F4;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x662F;&#x4E0D;&#x4F1A;&#x88AB;&#x7F16;&#x8BD1;&#x5668;&#x4EA4;&#x6362;&#x987A;&#x5E8F;&#x7684;, &#x4F46;&#x975E;Volatile&#x53EF;&#x80FD;&#x4EA4;&#x6362;&#x987A;&#x5E8F;)</li>
+</ul>
+<p><em>&#x6CE8;&#x610F;: Volatile&#x867D;&#x7136;&#x80FD;&#x963B;&#x6B62;&#x7F16;&#x8BD1;&#x5668;&#x7684;&#x4E71;&#x5E8F;&#x4F18;&#x5316;, &#x4F46;&#x65E0;&#x6CD5;&#x963B;&#x6B62; CPU &#x7684;&#x6307;&#x4EE4;&#x4E71;&#x5E8F;&#x6267;&#x884C;&#x7684;&#x884C;&#x4E3A;. [StoreLoad] [CPU Memory Model]</em></p>
+<h2 id="2-happens-before"><a href="#2-happens-before" class="headerlink" title="2. happens-before"></a>2. happens-before</h2><p>&#x4E24;&#x4E2A;&#x64CD;&#x4F5C;&#x7684;&#x6267;&#x884C;&#x6B21;&#x5E8F;&#x65E0;&#x6CD5;&#x4ECE;happens-before&#x539F;&#x5219;&#x63A8;&#x5BFC;&#x51FA;&#x6765;&#xFF0C;&#x90A3;&#x4E48;&#x5B83;&#x4EEC;&#x5C31;&#x4E0D;&#x80FD;&#x4FDD;&#x8BC1;&#x5B83;&#x4EEC;&#x7684;&#x6709;&#x5E8F;&#x6027;. </p>
+<ul>
+<li>&#x7A0B;&#x5E8F;&#x6B21;&#x5E8F;&#x89C4;&#x5219;&#xFF1A;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x5185;&#xFF0C;&#x6309;&#x7167;&#x4EE3;&#x7801;&#x987A;&#x5E8F;&#xFF0C;&#x4E66;&#x5199;&#x5728;&#x524D;&#x9762;&#x7684;&#x64CD;&#x4F5C;&#x5148;&#x884C;&#x53D1;&#x751F;&#x4E8E;&#x4E66;&#x5199;&#x5728;&#x540E;&#x9762;&#x7684;&#x64CD;&#x4F5C;</li>
+<li>&#x9501;&#x5B9A;&#x89C4;&#x5219;&#xFF1A;&#x4E00;&#x4E2A;unLock&#x64CD;&#x4F5C;&#x5148;&#x884C;&#x53D1;&#x751F;&#x4E8E;&#x540E;&#x9762;&#x5BF9;&#x540C;&#x4E00;&#x4E2A;&#x9501;&#x989D;lock&#x64CD;&#x4F5C;</li>
+<li>volatile&#x53D8;&#x91CF;&#x89C4;&#x5219;&#xFF1A;&#x5BF9;&#x4E00;&#x4E2A;&#x53D8;&#x91CF;&#x7684;&#x5199;&#x64CD;&#x4F5C;&#x5148;&#x884C;&#x53D1;&#x751F;&#x4E8E;&#x540E;&#x9762;&#x5BF9;&#x8FD9;&#x4E2A;&#x53D8;&#x91CF;&#x7684;&#x8BFB;&#x64CD;&#x4F5C;</li>
+<li>&#x4F20;&#x9012;&#x89C4;&#x5219;&#xFF1A;&#x5982;&#x679C;&#x64CD;&#x4F5C;A&#x5148;&#x884C;&#x53D1;&#x751F;&#x4E8E;&#x64CD;&#x4F5C;B&#xFF0C;&#x800C;&#x64CD;&#x4F5C;B&#x53C8;&#x5148;&#x884C;&#x53D1;&#x751F;&#x4E8E;&#x64CD;&#x4F5C;C&#xFF0C;&#x5219;&#x53EF;&#x4EE5;&#x5F97;&#x51FA;&#x64CD;&#x4F5C;A&#x5148;&#x884C;&#x53D1;&#x751F;&#x4E8E;&#x64CD;&#x4F5C;C</li>
+<li>&#x7EBF;&#x7A0B;&#x542F;&#x52A8;&#x89C4;&#x5219;&#xFF1A;Thread&#x5BF9;&#x8C61;&#x7684;start()&#x65B9;&#x6CD5;&#x5148;&#x884C;&#x53D1;&#x751F;&#x4E8E;&#x6B64;&#x7EBF;&#x7A0B;&#x7684;&#x6BCF;&#x4E2A;&#x4E00;&#x4E2A;&#x52A8;&#x4F5C;</li>
+<li>&#x7EBF;&#x7A0B;&#x4E2D;&#x65AD;&#x89C4;&#x5219;&#xFF1A;&#x5BF9;&#x7EBF;&#x7A0B;interrupt()&#x65B9;&#x6CD5;&#x7684;&#x8C03;&#x7528;&#x5148;&#x884C;&#x53D1;&#x751F;&#x4E8E;&#x88AB;&#x4E2D;&#x65AD;&#x7EBF;&#x7A0B;&#x7684;&#x4EE3;&#x7801;&#x68C0;&#x6D4B;&#x5230;&#x4E2D;&#x65AD;&#x4E8B;&#x4EF6;&#x7684;&#x53D1;&#x751F;</li>
+<li>&#x7EBF;&#x7A0B;&#x7EC8;&#x7ED3;&#x89C4;&#x5219;&#xFF1A;&#x7EBF;&#x7A0B;&#x4E2D;&#x6240;&#x6709;&#x7684;&#x64CD;&#x4F5C;&#x90FD;&#x5148;&#x884C;&#x53D1;&#x751F;&#x4E8E;&#x7EBF;&#x7A0B;&#x7684;&#x7EC8;&#x6B62;&#x68C0;&#x6D4B;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;Thread.join()&#x65B9;&#x6CD5;&#x7ED3;&#x675F;&#x3001;Thread.isAlive()&#x7684;&#x8FD4;&#x56DE;&#x503C;&#x624B;&#x6BB5;&#x68C0;&#x6D4B;&#x5230;&#x7EBF;&#x7A0B;&#x5DF2;&#x7ECF;&#x7EC8;&#x6B62;&#x6267;&#x884C;</li>
+<li>&#x5BF9;&#x8C61;&#x7EC8;&#x7ED3;&#x89C4;&#x5219;&#xFF1A;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x521D;&#x59CB;&#x5316;&#x5B8C;&#x6210;&#x5148;&#x884C;&#x53D1;&#x751F;&#x4E8E;&#x4ED6;&#x7684;finalize()&#x65B9;&#x6CD5;&#x7684;&#x5F00;&#x59CB;</li>
+</ul>
+<h1 id="C-MESI"><a href="#C-MESI" class="headerlink" title="C. MESI"></a>C. MESI</h1>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://snowyying.site/2018/sa2v4-p01-structure-and-composition/" data-id="cjq80jk1m0000owuc33ht0ovk" class="article-share-link">Share</a>
+      
+        <a href="http://snowyying.site/2018/sa2v4-p01-structure-and-composition/#ds-thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SA/">SA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/系统架构师/">系统架构师</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/计算机原理/">计算机原理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/计算机组成/">计算机组成</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/计算机结构/">计算机结构</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/sa2v4-p02-operating-system/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          系统架构师教程学习 - 操作系统
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/gen-tech-interpretation/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">史上最污技术解读</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="2018/sa2v4-p01-structure-and-composition/" data-title="系统架构师教程学习 - 计算机结构及组成" data-url="http://snowyying.site/2018/sa2v4-p01-structure-and-composition/"></div>
+  <!-- 多说评论框 end -->
+  <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"snowyying"};
+  (function() {
+  	var ds = document.createElement('script');
+  	ds.type = 'text/javascript';ds.async = true;
+  	ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+  	ds.charset = 'UTF-8';
+  	(document.getElementsByTagName('head')[0]
+  	 || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+  <!-- 多说公共JS代码 end -->
+</section>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C-C/">C/C++</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Embedded-IoT/">Embedded & IoT</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/General/">General</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Media/">Media</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Misc/">Misc</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a><span class="category-list-count">23</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OS/">OS</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SA-SWE/">SA & SWE</a><span class="category-list-count">23</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Security/">Security</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Test/">Test</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a><span class="category-list-count">13</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/32-bit/" style="font-size: 10px;">32-bit</a> <a href="/tags/4-1/" style="font-size: 10px;">4+1</a> <a href="/tags/ARM/" style="font-size: 10px;">ARM</a> <a href="/tags/ARP/" style="font-size: 10px;">ARP</a> <a href="/tags/AT指令/" style="font-size: 10px;">AT指令</a> <a href="/tags/Angle/" style="font-size: 10px;">Angle</a> <a href="/tags/Angular/" style="font-size: 10px;">Angular</a> <a href="/tags/AngularJS/" style="font-size: 10px;">AngularJS</a> <a href="/tags/Backend/" style="font-size: 10px;">Backend</a> <a href="/tags/Big-Endian/" style="font-size: 10px;">Big-Endian</a> <a href="/tags/Bitrate/" style="font-size: 10px;">Bitrate</a> <a href="/tags/Boost/" style="font-size: 10px;">Boost</a> <a href="/tags/C/" style="font-size: 10.77px;">C</a> <a href="/tags/C/" style="font-size: 11.54px;">C++</a> <a href="/tags/C-C/" style="font-size: 16.15px;">C/C++</a> <a href="/tags/CMMI/" style="font-size: 10.77px;">CMMI</a> <a href="/tags/Cloud/" style="font-size: 10px;">Cloud</a> <a href="/tags/DNS/" style="font-size: 10px;">DNS</a> <a href="/tags/DSS/" style="font-size: 10px;">DSS</a> <a href="/tags/ESP82xx/" style="font-size: 10px;">ESP82xx</a> <a href="/tags/Frontend/" style="font-size: 10px;">Frontend</a> <a href="/tags/GPIO/" style="font-size: 10.77px;">GPIO</a> <a href="/tags/GUID/" style="font-size: 10px;">GUID</a> <a href="/tags/Google/" style="font-size: 10px;">Google</a> <a href="/tags/GraphQL/" style="font-size: 10px;">GraphQL</a> <a href="/tags/H264/" style="font-size: 10px;">H264</a> <a href="/tags/I-O/" style="font-size: 15.38px;">I/O</a> <a href="/tags/ICE/" style="font-size: 10.77px;">ICE</a> <a href="/tags/ICMP/" style="font-size: 10px;">ICMP</a> <a href="/tags/IGMP/" style="font-size: 10px;">IGMP</a> <a href="/tags/IIC/" style="font-size: 10px;">IIC</a> <a href="/tags/IP/" style="font-size: 10px;">IP</a> <a href="/tags/IP-协议/" style="font-size: 10px;">IP 协议</a> <a href="/tags/IT/" style="font-size: 19.23px;">IT</a> <a href="/tags/IT，-技术，-解读/" style="font-size: 10px;">IT， 技术， 解读</a> <a href="/tags/IaaS/" style="font-size: 10px;">IaaS</a> <a href="/tags/IoT/" style="font-size: 12.31px;">IoT</a> <a href="/tags/Iot/" style="font-size: 10px;">Iot</a> <a href="/tags/JSON/" style="font-size: 10px;">JSON</a> <a href="/tags/KAs/" style="font-size: 10px;">KAs</a> <a href="/tags/Kali/" style="font-size: 12.31px;">Kali</a> <a href="/tags/Key/" style="font-size: 10px;">Key</a> <a href="/tags/Linux/" style="font-size: 10.77px;">Linux</a> <a href="/tags/Little-Endian/" style="font-size: 10px;">Little-Endian</a> <a href="/tags/LoRa/" style="font-size: 10px;">LoRa</a> <a href="/tags/MQTT/" style="font-size: 10px;">MQTT</a> <a href="/tags/Metapackages/" style="font-size: 10px;">Metapackages</a> <a href="/tags/NAT/" style="font-size: 10.77px;">NAT</a> <a href="/tags/NATP/" style="font-size: 10px;">NATP</a> <a href="/tags/NB-IoT/" style="font-size: 10px;">NB-IoT</a> <a href="/tags/NSA/" style="font-size: 10px;">NSA</a> <a href="/tags/NTP/" style="font-size: 10px;">NTP</a> <a href="/tags/OS/" style="font-size: 13.08px;">OS</a> <a href="/tags/PaaS/" style="font-size: 10px;">PaaS</a> <a href="/tags/Proactor/" style="font-size: 10px;">Proactor</a> <a href="/tags/Push/" style="font-size: 10px;">Push</a> <a href="/tags/RARP/" style="font-size: 10px;">RARP</a> <a href="/tags/REST/" style="font-size: 10px;">REST</a> <a href="/tags/RESTful/" style="font-size: 10px;">RESTful</a> <a href="/tags/RTCP/" style="font-size: 10px;">RTCP</a> <a href="/tags/RTP/" style="font-size: 10px;">RTP</a> <a href="/tags/RTSP/" style="font-size: 10.77px;">RTSP</a> <a href="/tags/Reactor/" style="font-size: 10px;">Reactor</a> <a href="/tags/Redmine/" style="font-size: 10px;">Redmine</a> <a href="/tags/SA/" style="font-size: 16.92px;">SA</a> <a href="/tags/SNMP/" style="font-size: 10px;">SNMP</a> <a href="/tags/SO-REUSEADDR/" style="font-size: 10px;">SO_REUSEADDR</a> <a href="/tags/SQLite/" style="font-size: 10px;">SQLite</a> <a href="/tags/SQuaRE/" style="font-size: 10px;">SQuaRE</a> <a href="/tags/SSL/" style="font-size: 10px;">SSL</a> <a href="/tags/STUN/" style="font-size: 10.77px;">STUN</a> <a href="/tags/SWE/" style="font-size: 17.69px;">SWE</a> <a href="/tags/SaaS/" style="font-size: 10px;">SaaS</a> <a href="/tags/Server/" style="font-size: 10px;">Server</a> <a href="/tags/Shadow-broker/" style="font-size: 10px;">Shadow broker</a> <a href="/tags/Sigfox/" style="font-size: 10px;">Sigfox</a> <a href="/tags/State/" style="font-size: 10px;">State</a> <a href="/tags/TCP/" style="font-size: 10px;">TCP</a> <a href="/tags/TCP-协议/" style="font-size: 10px;">TCP 协议</a> <a href="/tags/TCP-IP/" style="font-size: 10.77px;">TCP/IP</a> <a href="/tags/TCP-IP-协议/" style="font-size: 18.46px;">TCP/IP 协议</a> <a href="/tags/TLS/" style="font-size: 10px;">TLS</a> <a href="/tags/TRUN/" style="font-size: 10.77px;">TRUN</a> <a href="/tags/TWSI/" style="font-size: 10px;">TWSI</a> <a href="/tags/Test/" style="font-size: 10px;">Test</a> <a href="/tags/Tool/" style="font-size: 11.54px;">Tool</a> <a href="/tags/UDP/" style="font-size: 10px;">UDP</a> <a href="/tags/UDP-协议/" style="font-size: 10px;">UDP 协议</a> <a href="/tags/UML/" style="font-size: 10.77px;">UML</a> <a href="/tags/UPNP/" style="font-size: 10px;">UPNP</a> <a href="/tags/UUID/" style="font-size: 10px;">UUID</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/VS/" style="font-size: 10px;">VS</a> <a href="/tags/WIFI/" style="font-size: 10px;">WIFI</a> <a href="/tags/WS-Security/" style="font-size: 10px;">WS-Security</a> <a href="/tags/Web/" style="font-size: 15.38px;">Web</a> <a href="/tags/Websocket/" style="font-size: 10px;">Websocket</a> <a href="/tags/Windows/" style="font-size: 10px;">Windows</a> <a href="/tags/Zero-Copy/" style="font-size: 10px;">Zero-Copy</a> <a href="/tags/ZigBee/" style="font-size: 10px;">ZigBee</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/bootstrap/" style="font-size: 10px;">bootstrap</a> <a href="/tags/coturn/" style="font-size: 10px;">coturn</a> <a href="/tags/curl/" style="font-size: 10px;">curl</a> <a href="/tags/decode/" style="font-size: 10px;">decode</a> <a href="/tags/define/" style="font-size: 10px;">define</a> <a href="/tags/eMTC/" style="font-size: 10px;">eMTC</a> <a href="/tags/epoll/" style="font-size: 11.54px;">epoll</a> <a href="/tags/ffmpeg/" style="font-size: 10.77px;">ffmpeg</a> <a href="/tags/ffplay/" style="font-size: 10px;">ffplay</a> <a href="/tags/ffprobe/" style="font-size: 10px;">ffprobe</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/h264/" style="font-size: 10px;">h264</a> <a href="/tags/http/" style="font-size: 10.77px;">http</a> <a href="/tags/https/" style="font-size: 10.77px;">https</a> <a href="/tags/ionic/" style="font-size: 10px;">ionic</a> <a href="/tags/libcssl/" style="font-size: 10px;">libcssl</a> <a href="/tags/linux/" style="font-size: 10.77px;">linux</a> <a href="/tags/mqtt/" style="font-size: 10px;">mqtt</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/p2p/" style="font-size: 10.77px;">p2p</a> <a href="/tags/pipe/" style="font-size: 10px;">pipe</a> <a href="/tags/poll/" style="font-size: 10.77px;">poll</a> <a href="/tags/select/" style="font-size: 12.31px;">select</a> <a href="/tags/setsockopt/" style="font-size: 10px;">setsockopt</a> <a href="/tags/socket/" style="font-size: 10.77px;">socket</a> <a href="/tags/swebok/" style="font-size: 10px;">swebok</a> <a href="/tags/不定参数/" style="font-size: 10px;">不定参数</a> <a href="/tags/串口/" style="font-size: 10px;">串口</a> <a href="/tags/交叉编译/" style="font-size: 10px;">交叉编译</a> <a href="/tags/信息收集/" style="font-size: 10px;">信息收集</a> <a href="/tags/公众号/" style="font-size: 10px;">公众号</a> <a href="/tags/内存泄露/" style="font-size: 10px;">内存泄露</a> <a href="/tags/内核/" style="font-size: 10px;">内核</a> <a href="/tags/函数/" style="font-size: 10px;">函数</a> <a href="/tags/勘误/" style="font-size: 10px;">勘误</a> <a href="/tags/勘误表/" style="font-size: 10px;">勘误表</a> <a href="/tags/卖油翁/" style="font-size: 10px;">卖油翁</a> <a href="/tags/压力测试/" style="font-size: 10px;">压力测试</a> <a href="/tags/发展/" style="font-size: 15.38px;">发展</a> <a href="/tags/发音/" style="font-size: 10px;">发音</a> <a href="/tags/同步/" style="font-size: 10px;">同步</a> <a href="/tags/复用/" style="font-size: 10px;">复用</a> <a href="/tags/多播/" style="font-size: 10px;">多播</a> <a href="/tags/大小端/" style="font-size: 10px;">大小端</a> <a href="/tags/安全/" style="font-size: 13.08px;">安全</a> <a href="/tags/客户端/" style="font-size: 10.77px;">客户端</a> <a href="/tags/嵌入式/" style="font-size: 10px;">嵌入式</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/工厂模式/" style="font-size: 10px;">工厂模式</a> <a href="/tags/广播/" style="font-size: 10px;">广播</a> <a href="/tags/应用证书/" style="font-size: 10px;">应用证书</a> <a href="/tags/开发/" style="font-size: 10px;">开发</a> <a href="/tags/异步/" style="font-size: 10px;">异步</a> <a href="/tags/微信/" style="font-size: 10.77px;">微信</a> <a href="/tags/快速-GPIO/" style="font-size: 10px;">快速 GPIO</a> <a href="/tags/性能/" style="font-size: 12.31px;">性能</a> <a href="/tags/成长/" style="font-size: 18.46px;">成长</a> <a href="/tags/技术/" style="font-size: 10px;">技术</a> <a href="/tags/技术图谱/" style="font-size: 10px;">技术图谱</a> <a href="/tags/技术路线/" style="font-size: 10px;">技术路线</a> <a href="/tags/技能/" style="font-size: 10px;">技能</a> <a href="/tags/投资/" style="font-size: 10px;">投资</a> <a href="/tags/指南/" style="font-size: 15.38px;">指南</a> <a href="/tags/按键/" style="font-size: 10px;">按键</a> <a href="/tags/按键扫描/" style="font-size: 10px;">按键扫描</a> <a href="/tags/操作系统/" style="font-size: 10px;">操作系统</a> <a href="/tags/支付/" style="font-size: 10.77px;">支付</a> <a href="/tags/攻略/" style="font-size: 10px;">攻略</a> <a href="/tags/教程/" style="font-size: 10px;">教程</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据链路层/" style="font-size: 10px;">数据链路层</a> <a href="/tags/文学/" style="font-size: 10px;">文学</a> <a href="/tags/无线电/" style="font-size: 10px;">无线电</a> <a href="/tags/时间/" style="font-size: 10px;">时间</a> <a href="/tags/服务器证书/" style="font-size: 10px;">服务器证书</a> <a href="/tags/构造/" style="font-size: 10px;">构造</a> <a href="/tags/架构/" style="font-size: 12.31px;">架构</a> <a href="/tags/根证书/" style="font-size: 10px;">根证书</a> <a href="/tags/框架/" style="font-size: 10.77px;">框架</a> <a href="/tags/模式/" style="font-size: 10px;">模式</a> <a href="/tags/流媒体服务器/" style="font-size: 10px;">流媒体服务器</a> <a href="/tags/测试/" style="font-size: 11.54px;">测试</a> <a href="/tags/游戏/" style="font-size: 10px;">游戏</a> <a href="/tags/演进/" style="font-size: 10.77px;">演进</a> <a href="/tags/熟能生巧/" style="font-size: 10px;">熟能生巧</a> <a href="/tags/状态图/" style="font-size: 10px;">状态图</a> <a href="/tags/电磁波/" style="font-size: 10px;">电磁波</a> <a href="/tags/矩阵按键/" style="font-size: 10px;">矩阵按键</a> <a href="/tags/短信/" style="font-size: 10.77px;">短信</a> <a href="/tags/程序员/" style="font-size: 17.69px;">程序员</a> <a href="/tags/管道/" style="font-size: 10px;">管道</a> <a href="/tags/系统分析师/" style="font-size: 14.62px;">系统分析师</a> <a href="/tags/系统架构师/" style="font-size: 10.77px;">系统架构师</a> <a href="/tags/组播/" style="font-size: 10px;">组播</a> <a href="/tags/统一建模语言/" style="font-size: 10px;">统一建模语言</a> <a href="/tags/网站/" style="font-size: 10.77px;">网站</a> <a href="/tags/网络/" style="font-size: 20px;">网络</a> <a href="/tags/英语/" style="font-size: 10px;">英语</a> <a href="/tags/计算机/" style="font-size: 10px;">计算机</a> <a href="/tags/计算机原理/" style="font-size: 10px;">计算机原理</a> <a href="/tags/计算机组成/" style="font-size: 10px;">计算机组成</a> <a href="/tags/计算机结构/" style="font-size: 10px;">计算机结构</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 13.85px;">设计模式</a> <a href="/tags/证书/" style="font-size: 10px;">证书</a> <a href="/tags/调试/" style="font-size: 10px;">调试</a> <a href="/tags/软件质量/" style="font-size: 10.77px;">软件质量</a> <a href="/tags/进程间通信/" style="font-size: 10px;">进程间通信</a> <a href="/tags/选路/" style="font-size: 10px;">选路</a> <a href="/tags/通信/" style="font-size: 10px;">通信</a> <a href="/tags/阿里大于/" style="font-size: 10px;">阿里大于</a> <a href="/tags/项目管理/" style="font-size: 10px;">项目管理</a> <a href="/tags/验证码/" style="font-size: 10px;">验证码</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">2018-10</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">2018-09</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">2018-08</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">2018-01</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">2017-10</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">2017-09</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">2017-08</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">2017-07</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">2017-06</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">2017-05</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">2017-04</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">2017-03</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">2017-02</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">2017-01</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">2016-12</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">2016-11</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">2016-10</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">2016-09</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">2016-08</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">2016-07</a><span class="archive-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/os-io-zero-copy/">Zero-Copy &amp; sendfile 浅析</a>
+          </li>
+        
+          <li>
+            <a href="/2018/c-cpp-game-server-develop/">C++游戏服务器开发常用工具介绍</a>
+          </li>
+        
+          <li>
+            <a href="/2018/iot-connect-type/">物联网 - NB-IoT、eMTC、LoRa、Sigfox及ZigBee的应用场景</a>
+          </li>
+        
+          <li>
+            <a href="/2018/c-malloc-impl/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/sa2v4-p02-operating-system/">系统架构师教程学习 - 操作系统</a>
+          </li>
+        
+          <li>
+            <a href="/2018/sa2v4-p01-structure-and-composition/">系统架构师教程学习 - 计算机结构及组成</a>
+          </li>
+        
+          <li>
+            <a href="/2018/gen-tech-interpretation/">史上最污技术解读</a>
+          </li>
+        
+          <li>
+            <a href="/2018/swe-10-common-patterns/">10种常见的软件架构模式</a>
+          </li>
+        
+          <li>
+            <a href="/2018/security-lost-in-translation-leak/">The Shadow Brokers &quot;Lost In Translation&quot; leak</a>
+          </li>
+        
+          <li>
+            <a href="/2018/security-kali-metapackages/">Kali Linux Metapackages</a>
+          </li>
+        
+          <li>
+            <a href="/2018/security-kali-stress-testing-tool/">Kali Linux - Stress Testing Tool</a>
+          </li>
+        
+          <li>
+            <a href="/2018/security-kali-Info-gathering-tool/">Kali Linux - Information Gathering Tool</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Snowyying<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> . 
+Analyse with <script src="https://s4.cnzz.com/z_stat.php?id=1260081840&web_id=1260081840" language="JavaScript"></script>
+
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/About" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+<script src="http://libs.baidu.com/jquery/2.0.3/jquery.min.js"></script>
+<script type="text/javascript">
+//<![CDATA[
+if (typeof jQuery == 'undefined') {
+document.write(unescape("%3Cscript src='/js/jquery-2.0.3.min.js' type='text/javascript'%3E%3C/script%3E"));
+}
+// ]]>
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
