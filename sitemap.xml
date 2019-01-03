@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://snowyying.site/2018/it-iot-recommend-book/</loc>
+    
+    <lastmod>2019-01-03T15:26:26.361Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.site/2016/it-bok-recommend-books/</loc>
+    
+    <lastmod>2019-01-03T14:46:57.144Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.site/2016/it-bok-4-snowyying/</loc>
+    
+    <lastmod>2019-01-03T14:32:33.427Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://snowyying.site/2018/gen-tech-interpretation/</loc>
     
     <lastmod>2019-01-03T14:22:18.431Z</lastmod>
@@ -786,20 +807,6 @@
   </url>
   
   <url>
-    <loc>http://snowyying.site/2016/it-kas-recommend-books/</loc>
-    
-    <lastmod>2017-10-22T06:28:44.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.site/2016/it-kas-4-snowyying/</loc>
-    
-    <lastmod>2017-10-22T06:28:40.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://snowyying.site/2016/c-cpp-growth-roadmap/</loc>
     
     <lastmod>2017-10-22T06:26:30.000Z</lastmod>
@@ -891,14 +898,14 @@
   </url>
   
   <url>
-    <loc>http://snowyying.site/2017/net-tcpip-8-boardcast-multicast/</loc>
+    <loc>http://snowyying.site/2017/net-tcpip-12-snmp/</loc>
     
     <lastmod>2017-03-20T14:54:48.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://snowyying.site/2017/net-tcpip-12-snmp/</loc>
+    <loc>http://snowyying.site/2017/net-tcpip-8-boardcast-multicast/</loc>
     
     <lastmod>2017-03-20T14:54:48.000Z</lastmod>
     
@@ -940,14 +947,14 @@
   </url>
   
   <url>
-    <loc>http://snowyying.site/2016/gen-programming-guide-5-balance/</loc>
+    <loc>http://snowyying.site/2016/gen-programming-guide-7-driving-force/</loc>
     
     <lastmod>2017-01-12T02:31:16.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://snowyying.site/2016/gen-programming-guide-6-golden-time/</loc>
+    <loc>http://snowyying.site/2016/gen-programming-guide-3-direction/</loc>
     
     <lastmod>2017-01-12T02:31:16.000Z</lastmod>
     
@@ -968,14 +975,7 @@
   </url>
   
   <url>
-    <loc>http://snowyying.site/2016/gen-programming-guide-7-driving-force/</loc>
-    
-    <lastmod>2017-01-12T02:31:16.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowyying.site/2016/gen-programming-guide-3-direction/</loc>
+    <loc>http://snowyying.site/2016/gen-programming-guide-5-balance/</loc>
     
     <lastmod>2017-01-12T02:31:16.000Z</lastmod>
     
@@ -983,6 +983,13 @@
   
   <url>
     <loc>http://snowyying.site/2016/gen-programming-guide-4-become-master/</loc>
+    
+    <lastmod>2017-01-12T02:31:16.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowyying.site/2016/gen-programming-guide-6-golden-time/</loc>
     
     <lastmod>2017-01-12T02:31:16.000Z</lastmod>
     

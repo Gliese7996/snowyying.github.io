@@ -70,6 +70,65 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-os-io-reactor-proactor" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/os-io-reactor-proactor/">两种高性能 I/O 设计模式 (Reactor/Proactor) 的比较</a>
+    </h1>
+  
+
+      </header>
+    
+
+  <div class="article-meta">
+    <a href="/2016/os-io-reactor-proactor/" class="article-date">
+  <time datetime="2016-11-07T15:46:47.000Z" itemprop="datePublished">2016-11-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/OS/">OS</a>
+  </div>
+
+  </div>
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><code>&#x6765;&#x81EA;: &#x4F2F;&#x4E50;&#x5728;&#x7EBF; IT&#x6280;&#x672F; &#x8BBE;&#x8BA1;&#x6A21;&#x5F0F; http://blog.jobbole.com/59676/ 2014/02/17</code></p>
+<h2 id="&#x7EFC;&#x8FF0;"><a href="#&#x7EFC;&#x8FF0;" class="headerlink" title="&#x7EFC;&#x8FF0;"></a>&#x7EFC;&#x8FF0;</h2><p>&#x8FD9;&#x7BC7;&#x6587;&#x7AE0;&#x63A2;&#x8BA8;&#x5E76;&#x6BD4;&#x8F83;&#x4E24;&#x79CD;&#x7528;&#x4E8E;TCP&#x670D;&#x52A1;&#x5668;&#x7684;&#x9AD8;&#x6027;&#x80FD;&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#x3002; &#x9664;&#x4E86;&#x4ECB;&#x7ECD;&#x73B0;&#x6709;&#x7684;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#xFF0C;&#x8FD8;&#x63D0;&#x51FA;&#x4E86;&#x4E00;&#x79CD;&#x66F4;&#x5177;&#x4F38;&#x7F29;&#x6027;&#xFF0C;&#x53EA;&#x9700;&#x8981;&#x7EF4;&#x62A4;&#x4E00;&#x4EFD;&#x4EE3;&#x7801;&#x5E76;&#x4E14;&#x8DE8;&#x5E73;&#x53F0;&#x7684;&#x89E3;&#x51B3;&#x65B9;&#x6848;(&#x542B;&#x4EE3;&#x7801;&#x793A;&#x4F8B;)&#xFF0C;&#x4EE5;&#x53CA;&#x5176;&#x5728;&#x4E0D;&#x540C;&#x5E73;&#x53F0;&#x4E0A;&#x7684;&#x5FAE;&#x8C03;&#x3002; &#x6B64;&#x6587;&#x8FD8;&#x6BD4;&#x8F83;&#x4E86;java&#x3001;c#&#x3001;c++&#x5BF9;&#x5404;&#x81EA;&#x73B0;&#x6709;&#x4EE5;&#x53CA;&#x63D0;&#x5230;&#x7684;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#x7684;&#x5B9E;&#x73B0;&#x6027;&#x80FD;&#x3002;</p>
+<p>&#x7CFB;&#x7EDF;I/O &#x53EF;&#x5206;&#x4E3A;&#x963B;&#x585E;&#x578B;&#xFF0C; &#x975E;&#x963B;&#x585E;&#x540C;&#x6B65;&#x578B;&#x4EE5;&#x53CA;&#x975E;&#x963B;&#x585E;&#x5F02;&#x6B65;&#x578B;[1&#x3001;2]&#x3002; &#x963B;&#x585E;&#x578B;I/O&#x610F;&#x5473;&#x7740;&#x63A7;&#x5236;&#x6743;&#x53EA;&#x5230;&#x8C03;&#x7528;&#x64CD;&#x4F5C;&#x7ED3;&#x675F;&#x4E86;&#x624D;&#x4F1A;&#x56DE;&#x5230;&#x8C03;&#x7528;&#x8005;&#x624B;&#x91CC;&#x3002; &#x7ED3;&#x679C;&#x8C03;&#x7528;&#x8005;&#x88AB;&#x963B;&#x585E;&#x4E86;&#xFF0C; &#x8FD9;&#x6BB5;&#x65F6;&#x95F4;&#x4E86;&#x505A;&#x4E0D;&#x4E86;&#x4EFB;&#x4F55;&#x5176;&#x5B83;&#x4E8B;&#x60C5;&#x3002; &#x66F4;&#x90C1;&#x95F7;&#x7684;&#x662F;&#xFF0C;&#x5728;&#x7B49;&#x5F85;IO&#x7ED3;&#x679C;&#x7684;&#x65F6;&#x95F4;&#x91CC;&#xFF0C;&#x8C03;&#x7528;&#x8005;&#x6240;&#x5728;&#x7EBF;&#x7A0B;&#x6B64;&#x65F6;&#x65E0;&#x6CD5;&#x817E;&#x51FA;&#x624B;&#x6765;&#x53BB;&#x54CD;&#x5E94;&#x5176;&#x5B83;&#x7684;&#x8BF7;&#x6C42;&#xFF0C;&#x8FD9;&#x771F;&#x662F;&#x592A;&#x6D6A;&#x8D39;&#x8D44;&#x6E90;&#x4E86;&#x3002;&#x62FF;read()&#x64CD;&#x4F5C;&#x6765;&#x8BF4;&#x5427;&#xFF0C; &#x8C03;&#x7528;&#x6B64;&#x51FD;&#x6570;&#x7684;&#x4EE3;&#x7801;&#x4F1A;&#x4E00;&#x76F4;&#x50F5;&#x5728;&#x6B64;&#x5904;&#x76F4;&#x81F3;&#x5B83;&#x6240;&#x8BFB;&#x7684;socket&#x7F13;&#x5B58;&#x4E2D;&#x6709;&#x6570;&#x636E;&#x5230;&#x6765;&#x3002;</p>
+<p>&#x76F8;&#x6BD4;&#x4E4B;&#x4E0B;&#xFF0C;&#x975E;&#x963B;&#x585E;&#x540C;&#x6B65;&#x662F;&#x4F1A;&#x7ACB;&#x5373;&#x8FD4;&#x56DE;&#x63A7;&#x5236;&#x6743;&#x7ED9;&#x8C03;&#x7528;&#x8005;&#x7684;&#x3002;&#x8C03;&#x7528;&#x8005;&#x4E0D;&#x9700;&#x8981;&#x7B49;&#x7B49;&#xFF0C;&#x5B83;&#x4ECE;&#x8C03;&#x7528;&#x7684;&#x51FD;&#x6570;&#x83B7;&#x53D6;&#x4E24;&#x79CD;&#x7ED3;&#x679C;&#xFF1A;&#x8981;&#x4E48;&#x6B64;&#x6B21;&#x8C03;&#x7528;&#x6210;&#x529F;&#x8FDB;&#x884C;&#x4E86;;&#x8981;&#x4E48;&#x7CFB;&#x7EDF;&#x8FD4;&#x56DE;&#x9519;&#x8BEF;&#x6807;&#x8BC6;&#x544A;&#x8BC9;&#x8C03;&#x7528;&#x8005;&#x5F53;&#x524D;&#x8D44;&#x6E90;&#x4E0D;&#x53EF;&#x7528;&#xFF0C;&#x4F60;&#x518D;&#x7B49;&#x7B49;&#x6216;&#x8005;&#x518D;&#x8BD5;&#x5EA6;&#x770B;&#x5427;&#x3002;&#x6BD4;&#x5982;read()&#x64CD;&#x4F5C;&#xFF0C; &#x5982;&#x679C;&#x5F53;&#x524D;socket&#x65E0;&#x6570;&#x636E;&#x53EF;&#x8BFB;&#xFF0C;&#x5219;&#x7ACB;&#x5373;&#x8FD4;&#x56DE;EWOULBLOCK/EAGAIN&#xFF0C;&#x544A;&#x8BC9;&#x8C03;&#x7528;read()&#x8005;&#x201D;&#x6570;&#x636E;&#x8FD8;&#x6CA1;&#x51C6;&#x5907;&#x597D;&#xFF0C;&#x4F60;&#x7A0D;&#x540E;&#x518D;&#x8BD5;&#x201D;&#x3002;</p>
+<p>&#x5728;&#x975E;&#x963B;&#x585E;&#x5F02;&#x6B65;&#x8C03;&#x7528;&#x4E2D;&#xFF0C;&#x7A0D;&#x6709;&#x4E0D;&#x540C;&#x3002;&#x8C03;&#x7528;&#x51FD;&#x6570;&#x5728;&#x7ACB;&#x5373;&#x8FD4;&#x56DE;&#x65F6;&#xFF0C;&#x8FD8;&#x544A;&#x8BC9;&#x8C03;&#x7528;&#x8005;&#xFF0C;&#x8FD9;&#x6B21;&#x8BF7;&#x6C42;&#x5DF2;&#x7ECF;&#x5F00;&#x59CB;&#x4E86;&#x3002;&#x7CFB;&#x7EDF;&#x4F1A;&#x4F7F;&#x7528;&#x53E6;&#x5916;&#x7684;&#x8D44;&#x6E90;&#x6216;&#x8005;&#x7EBF;&#x7A0B;&#x6765;&#x5B8C;&#x6210;&#x8FD9;&#x6B21;&#x8C03;&#x7528;&#x64CD;&#x4F5C;&#xFF0C;&#x5E76;&#x5728;&#x5B8C;&#x6210;&#x7684;&#x65F6;&#x5019;&#x77E5;&#x4F1A;&#x8C03;&#x7528;&#x8005;&#xFF08;&#x6BD4;&#x5982;&#x901A;&#x8FC7;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#xFF09;&#x3002;&#x62FF;Windows&#x7684;ReadFile()&#x6216;&#x8005;POSIX&#x7684;aio_read()&#x6765;&#x8BF4;&#xFF0C;&#x8C03;&#x7528;&#x5B83;&#x4E4B;&#x540E;&#xFF0C;&#x51FD;&#x6570;&#x7ACB;&#x5373;&#x8FD4;&#x56DE;&#xFF0C;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x5728;&#x540E;&#x53F0;&#x540C;&#x65F6;&#x5F00;&#x59CB;&#x8BFB;&#x64CD;&#x4F5C;&#x3002;</p>
+<p>&#x5728;&#x4EE5;&#x4E0A;&#x4E09;&#x79CD;IO&#x5F62;&#x5F0F;&#x4E2D;&#xFF0C;&#x975E;&#x963B;&#x585E;&#x5F02;&#x6B65;&#x662F;&#x6027;&#x80FD;&#x6700;&#x9AD8;&#x3001;&#x4F38;&#x7F29;&#x6027;&#x6700;&#x597D;&#x7684;&#x3002;</p>
+<p>&#x8FD9;&#x7BC7;&#x6587;&#x7AE0;&#x63A2;&#x8BA8;&#x4E0D;&#x540C;&#x7684;I/O&#x5229;&#x7528;&#x673A;&#x5236;&#x5E76;&#x63D0;&#x4F9B;&#x4E00;&#x79CD;&#x8DE8;&#x5E73;&#x53F0;&#x7684;&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;(&#x89E3;&#x51B3;&#x65B9;&#x6848;)&#x3002; &#x5E0C;&#x671B;&#x6B64;&#x6587;&#x53EF;&#x4EE5;&#x7ED9;&#x4E8E;TCP&#x9AD8;&#x6027;&#x80FD;&#x670D;&#x52A1;&#x5668;&#x5F00;&#x53D1;&#x8005;&#x4E00;&#x4E9B;&#x5E2E;&#x52A9;&#xFF0C;&#x9009;&#x62E9;&#x6700;&#x4F73;&#x7684;&#x8BBE;&#x8BA1;&#x65B9;&#x6848;&#x3002;&#x4E0B;&#x9762;&#x6211;&#x4EEC;&#x4F1A;&#x6BD4;&#x8F83; Java&#x3001;C#&#x3001; C++&#x5404;&#x81EA;&#x5BF9;&#x63A2;&#x8BA8;&#x65B9;&#x6848;&#x7684;&#x5B9E;&#x73B0;&#x4EE5;&#x53CA;&#x6027;&#x80FD;&#x3002; &#x6211;&#x4EEC;&#x5728;&#x6587;&#x7AE0;&#x7684;&#x540E;&#x9762;&#x5C31;&#x4E0D;&#x518D;&#x63D0;&#x53CA;&#x963B;&#x585E;&#x5F0F;&#x7684;&#x65B9;&#x6848;&#x4E86;&#xFF0C;&#x56E0;&#x4E3A;&#x963B;&#x585E;&#x5F0F;I/O&#x5B9E;&#x5728;&#x662F;&#x7F3A;&#x5C11;&#x53EF;&#x4F38;&#x7F29;&#x6027;&#xFF0C;&#x6027;&#x80FD;&#x4E5F;&#x8FBE;&#x4E0D;&#x5230;&#x9AD8;&#x6027;&#x80FD;&#x670D;&#x52A1;&#x5668;&#x7684;&#x8981;&#x6C42;&#x3002;</p>
+        
+          <p class="article-more-link">
+            <a href="/2016/os-io-reactor-proactor/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://snowyying.site/2016/os-io-reactor-proactor/" data-id="cjqgrjzxo007c80ucaeic4irq" class="article-share-link">Share</a>
+      
+        <a href="http://snowyying.site/2016/os-io-reactor-proactor/#ds-thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/I-O/">I/O</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IT/">IT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Proactor/">Proactor</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Reactor/">Reactor</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/性能/">性能</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网络/">网络</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-os-io-select-vs-epoll-2" class="article article-type-post" itemscope itemprop="blogPost">
 
   <div class="article-inner">
@@ -119,7 +178,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://snowyying.site/2016/os-io-select-vs-epoll-2/" data-id="cjqgotzkg0072x4ucekw102sf" class="article-share-link">Share</a>
+      <a data-url="http://snowyying.site/2016/os-io-select-vs-epoll-2/" data-id="cjqgrjzxz007k80ucqr1aa0yc" class="article-share-link">Share</a>
       
         <a href="http://snowyying.site/2016/os-io-select-vs-epoll-2/#ds-thread" class="article-comment-link">留言</a>
       
@@ -175,7 +234,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://snowyying.site/2016/os-io-select-vs-epoll-1/" data-id="cjqgotzk4006qx4uchgg39vf0" class="article-share-link">Share</a>
+      <a data-url="http://snowyying.site/2016/os-io-select-vs-epoll-1/" data-id="cjqgrjzxs007f80ucma5w0pvo" class="article-share-link">Share</a>
       
         <a href="http://snowyying.site/2016/os-io-select-vs-epoll-1/#ds-thread" class="article-comment-link">留言</a>
       
@@ -242,7 +301,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://snowyying.site/2016/os-io-multiplexing/" data-id="cjqgotzjy006lx4ucjhvwbxxn" class="article-share-link">Share</a>
+      <a data-url="http://snowyying.site/2016/os-io-multiplexing/" data-id="cjqgrjzxn007a80uc57zg6b19" class="article-share-link">Share</a>
       
         <a href="http://snowyying.site/2016/os-io-multiplexing/#ds-thread" class="article-comment-link">留言</a>
       
@@ -297,7 +356,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://snowyying.site/2016/os-io-fast-gpio/" data-id="cjqgotzk2006ox4uc3nvyaj1w" class="article-share-link">Share</a>
+      <a data-url="http://snowyying.site/2016/os-io-fast-gpio/" data-id="cjqgrjzxi007480uc9oyors3t" class="article-share-link">Share</a>
       
         <a href="http://snowyying.site/2016/os-io-fast-gpio/#ds-thread" class="article-comment-link">留言</a>
       
@@ -350,7 +409,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://snowyying.site/2016/os-pipes-communications-windows/" data-id="cjqgotzkk0075x4uczwbltec1" class="article-share-link">Share</a>
+      <a data-url="http://snowyying.site/2016/os-pipes-communications-windows/" data-id="cjqgrjzy2007o80uc6rkoszhy" class="article-share-link">Share</a>
       
         <a href="http://snowyying.site/2016/os-pipes-communications-windows/#ds-thread" class="article-comment-link">留言</a>
       
@@ -408,7 +467,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://snowyying.site/2016/os-big-little-endian/" data-id="cjqgotzk8006wx4uc2e5elcno" class="article-share-link">Share</a>
+      <a data-url="http://snowyying.site/2016/os-big-little-endian/" data-id="cjqgrjzxl007780ucyn9kwjtu" class="article-share-link">Share</a>
       
         <a href="http://snowyying.site/2016/os-big-little-endian/#ds-thread" class="article-comment-link">留言</a>
       
@@ -457,7 +516,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://snowyying.site/2016/c-effective-modern-cpp/" data-id="cjqgotzeq000hx4uc29dfss36" class="article-share-link">Share</a>
+      <a data-url="http://snowyying.site/2016/c-effective-modern-cpp/" data-id="cjqgrjztb000z80uck3et7e7t" class="article-share-link">Share</a>
       
         <a href="http://snowyying.site/2016/c-effective-modern-cpp/#ds-thread" class="article-comment-link">留言</a>
       
@@ -506,7 +565,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://snowyying.site/2016/c-more-effective-cpp/" data-id="cjqgotzf7000vx4ucqswqwiv4" class="article-share-link">Share</a>
+      <a data-url="http://snowyying.site/2016/c-more-effective-cpp/" data-id="cjqgrjztf001980ucsivjx39l" class="article-share-link">Share</a>
       
         <a href="http://snowyying.site/2016/c-more-effective-cpp/#ds-thread" class="article-comment-link">留言</a>
       
@@ -555,7 +614,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://snowyying.site/2016/c-effective-cpp/" data-id="cjqgotzey000lx4ucyod0kzl0" class="article-share-link">Share</a>
+      <a data-url="http://snowyying.site/2016/c-effective-cpp/" data-id="cjqgrjzt7000w80ucqbr55ztf" class="article-share-link">Share</a>
       
         <a href="http://snowyying.site/2016/c-effective-cpp/#ds-thread" class="article-comment-link">留言</a>
       
@@ -599,7 +658,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://snowyying.site/2016/c-string-convert-vs-windows/" data-id="cjqgotzf4000qx4uc57cc0ex0" class="article-share-link">Share</a>
+      <a data-url="http://snowyying.site/2016/c-string-convert-vs-windows/" data-id="cjqgrjzte001680ucf1we94ov" class="article-share-link">Share</a>
       
       
     </footer>
@@ -657,7 +716,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://snowyying.site/2016/c-boost-vs-windows/" data-id="cjqgotzdq0002x4uc8864mrcv" class="article-share-link">Share</a>
+      <a data-url="http://snowyying.site/2016/c-boost-vs-windows/" data-id="cjqgrjzsx000l80ucc1yr62jp" class="article-share-link">Share</a>
       
         <a href="http://snowyying.site/2016/c-boost-vs-windows/#ds-thread" class="article-comment-link">留言</a>
       
@@ -874,7 +933,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://snowyying.site/2016/c-unsafe-functions/" data-id="cjqgotzf6000tx4ucj6qmx6yi" class="article-share-link">Share</a>
+      <a data-url="http://snowyying.site/2016/c-unsafe-functions/" data-id="cjqgrjzth001d80ucpsw28lso" class="article-share-link">Share</a>
       
         <a href="http://snowyying.site/2016/c-unsafe-functions/#ds-thread" class="article-comment-link">留言</a>
       
@@ -923,7 +982,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://snowyying.site/2016/c-variadic-functions/" data-id="cjqgotzf9000yx4ucd8eqqby5" class="article-share-link">Share</a>
+      <a data-url="http://snowyying.site/2016/c-variadic-functions/" data-id="cjqgrjzti001g80ucg1vsc1h6" class="article-share-link">Share</a>
       
         <a href="http://snowyying.site/2016/c-variadic-functions/#ds-thread" class="article-comment-link">留言</a>
       
@@ -967,7 +1026,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://snowyying.site/2016/c-c-cpp-hybird-programming/" data-id="cjqgotze8000ax4ucdfo6o3d2" class="article-share-link">Share</a>
+      <a data-url="http://snowyying.site/2016/c-c-cpp-hybird-programming/" data-id="cjqgrjzsy000n80uchx5re5t7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1019,7 +1078,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://snowyying.site/2016/c-define-symbol/" data-id="cjqgotzek000dx4uc9acnjoag" class="article-share-link">Share</a>
+      <a data-url="http://snowyying.site/2016/c-define-symbol/" data-id="cjqgrjzt2000r80uc5nos5pps" class="article-share-link">Share</a>
       
         <a href="http://snowyying.site/2016/c-define-symbol/#ds-thread" class="article-comment-link">留言</a>
       
@@ -1068,7 +1127,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://snowyying.site/2016/c-const-usage-summary/" data-id="cjqgotzdx0005x4ucyp48rxq7" class="article-share-link">Share</a>
+      <a data-url="http://snowyying.site/2016/c-const-usage-summary/" data-id="cjqgrjzsm000g80uckiljwlmc" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1137,7 +1196,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://snowyying.site/2016/c-cpp-growth-roadmap/" data-id="cjqgotzed000bx4uc4duykicp" class="article-share-link">Share</a>
+      <a data-url="http://snowyying.site/2016/c-cpp-growth-roadmap/" data-id="cjqgrjzt5000t80ucvt1rm6ta" class="article-share-link">Share</a>
       
         <a href="http://snowyying.site/2016/c-cpp-growth-roadmap/#ds-thread" class="article-comment-link">留言</a>
       
@@ -1181,7 +1240,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://snowyying.site/2016/misc-jsoncpp-usage/" data-id="cjqgotzht003vx4ucm9s4cjai" class="article-share-link">Share</a>
+      <a data-url="http://snowyying.site/2016/misc-jsoncpp-usage/" data-id="cjqgrjzvt004o80ucqfkmmpdw" class="article-share-link">Share</a>
       
         <a href="http://snowyying.site/2016/misc-jsoncpp-usage/#ds-thread" class="article-comment-link">留言</a>
       
@@ -1235,7 +1294,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://snowyying.site/2016/misc-json-c-usage/" data-id="cjqgotzi50047x4ucs3ng2oy5" class="article-share-link">Share</a>
+      <a data-url="http://snowyying.site/2016/misc-json-c-usage/" data-id="cjqgrjzvu004s80ucmc0igkrh" class="article-share-link">Share</a>
       
         <a href="http://snowyying.site/2016/misc-json-c-usage/#ds-thread" class="article-comment-link">留言</a>
       
@@ -1288,7 +1347,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://snowyying.site/2016/misc-sqlite3-usage/" data-id="cjqgotzic004hx4ucs92ypggw" class="article-share-link">Share</a>
+      <a data-url="http://snowyying.site/2016/misc-sqlite3-usage/" data-id="cjqgrjzw6005980ucg2fpeil6" class="article-share-link">Share</a>
       
         <a href="http://snowyying.site/2016/misc-sqlite3-usage/#ds-thread" class="article-comment-link">留言</a>
       
@@ -1341,7 +1400,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://snowyying.site/2016/misc-generate-guid-uuid/" data-id="cjqgotzhy0040x4ucnzp54hsv" class="article-share-link">Share</a>
+      <a data-url="http://snowyying.site/2016/misc-generate-guid-uuid/" data-id="cjqgrjzvr004l80uc7bz0lvq2" class="article-share-link">Share</a>
       
         <a href="http://snowyying.site/2016/misc-generate-guid-uuid/#ds-thread" class="article-comment-link">留言</a>
       
@@ -1399,7 +1458,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://snowyying.site/2016/test-framework-google-test/" data-id="cjqgotzoc00aex4ucysd7syps" class="article-share-link">Share</a>
+      <a data-url="http://snowyying.site/2016/test-framework-google-test/" data-id="cjqgrk00m00b680uc2vux6ed9" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Google/">Google</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Test/">Test</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/框架/">框架</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/测试/">测试</a></li></ul>
@@ -1453,7 +1512,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://snowyying.site/2016/test-memory-leak-detect/" data-id="cjqgotzoh00akx4uc63zzig83" class="article-share-link">Share</a>
+      <a data-url="http://snowyying.site/2016/test-memory-leak-detect/" data-id="cjqgrk00u00bi80ucq62iiaso" class="article-share-link">Share</a>
       
         <a href="http://snowyying.site/2016/test-memory-leak-detect/#ds-thread" class="article-comment-link">留言</a>
       
@@ -1504,67 +1563,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://snowyying.site/2016/test-performance-testing/" data-id="cjqgotzop00aqx4ucrpgd8of3" class="article-share-link">Share</a>
+      <a data-url="http://snowyying.site/2016/test-performance-testing/" data-id="cjqgrk00r00ba80uc31z9maxj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/性能/">性能</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/测试/">测试</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-misc-ubuntu-run-32b-on-64b" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/misc-ubuntu-run-32b-on-64b/">64-bit Ubuntu 系统上运行 32-bit 程序</a>
-    </h1>
-  
-
-      </header>
-    
-
-  <div class="article-meta">
-    <a href="/2016/misc-ubuntu-run-32b-on-64b/" class="article-date">
-  <time datetime="2016-09-04T16:00:00.000Z" itemprop="datePublished">2016-09-05</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Misc/">Misc</a>
-  </div>
-
-  </div>
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Method-1"><a href="#Method-1" class="headerlink" title="Method 1"></a>Method 1</h2><p>To run a 32-bit executable file on a 64-bit multi-architecture Ubuntu system, you have to add the i386 architecture and install the three library packages libc6:i386, libncurses5:i386, and libstdc++6:i386:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo dpkg --add-architecture i386</div></pre></td></tr></table></figure>
-<p>Or if you are using Ubuntu 12.04 LTS (Precise Pangolin) or below, use this:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">echo</span> <span class="string">&quot;foreign-architecture i386&quot;</span> &gt; /etc/dpkg/dpkg.cfg.d/multiarch</div></pre></td></tr></table></figure>
-<p>Then:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo apt-get update</div><div class="line">sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386</div></pre></td></tr></table></figure>
-<p>After these steps, you should be able to run the 32-bit application:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./example32bitprogram</div></pre></td></tr></table></figure>
-<h2 id="Method-2"><a href="#Method-2" class="headerlink" title="Method 2"></a>Method 2</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install ia32-libs</div></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://snowyying.site/2016/misc-ubuntu-run-32b-on-64b/" data-id="cjqgotzib004fx4uctr4h0e1f" class="article-share-link">Share</a>
-      
-        <a href="http://snowyying.site/2016/misc-ubuntu-run-32b-on-64b/#ds-thread" class="article-comment-link">留言</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/32-bit/">32-bit</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ubuntu/">Ubuntu</a></li></ul>
 
     </footer>
   </div>
@@ -1588,7 +1590,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C-C/">C/C++</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Embedded-IoT/">Embedded & IoT</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/General/">General</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Media/">Media</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Misc/">Misc</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a><span class="category-list-count">23</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OS/">OS</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SA-SWE/">SA & SWE</a><span class="category-list-count">23</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Security/">Security</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Test/">Test</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a><span class="category-list-count">13</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C-C/">C/C++</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Embedded-IoT/">Embedded & IoT</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/General/">General</a><span class="category-list-count">20</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Media/">Media</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Misc/">Misc</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a><span class="category-list-count">23</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OS/">OS</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SA-SWE/">SA & SWE</a><span class="category-list-count">23</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Security/">Security</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Test/">Test</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a><span class="category-list-count">13</span></li></ul>
     </div>
   </div>
 
@@ -1598,7 +1600,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/32-bit/" style="font-size: 10px;">32-bit</a> <a href="/tags/4-1/" style="font-size: 10px;">4+1</a> <a href="/tags/ARM/" style="font-size: 10px;">ARM</a> <a href="/tags/ARP/" style="font-size: 10px;">ARP</a> <a href="/tags/AT指令/" style="font-size: 10px;">AT指令</a> <a href="/tags/Angle/" style="font-size: 10px;">Angle</a> <a href="/tags/Angular/" style="font-size: 10px;">Angular</a> <a href="/tags/AngularJS/" style="font-size: 10px;">AngularJS</a> <a href="/tags/Backend/" style="font-size: 10px;">Backend</a> <a href="/tags/Big-Endian/" style="font-size: 10px;">Big-Endian</a> <a href="/tags/Bitrate/" style="font-size: 10px;">Bitrate</a> <a href="/tags/Boost/" style="font-size: 10px;">Boost</a> <a href="/tags/C/" style="font-size: 10.83px;">C</a> <a href="/tags/C/" style="font-size: 11.67px;">C++</a> <a href="/tags/C-C/" style="font-size: 16.67px;">C/C++</a> <a href="/tags/CMMI/" style="font-size: 10.83px;">CMMI</a> <a href="/tags/Cloud/" style="font-size: 10px;">Cloud</a> <a href="/tags/DNS/" style="font-size: 10px;">DNS</a> <a href="/tags/DSS/" style="font-size: 10px;">DSS</a> <a href="/tags/ESP82xx/" style="font-size: 10px;">ESP82xx</a> <a href="/tags/Frontend/" style="font-size: 10px;">Frontend</a> <a href="/tags/GPIO/" style="font-size: 10.83px;">GPIO</a> <a href="/tags/GUID/" style="font-size: 10px;">GUID</a> <a href="/tags/Google/" style="font-size: 10px;">Google</a> <a href="/tags/GraphQL/" style="font-size: 10px;">GraphQL</a> <a href="/tags/H264/" style="font-size: 10px;">H264</a> <a href="/tags/I-O/" style="font-size: 15.83px;">I/O</a> <a href="/tags/ICE/" style="font-size: 10.83px;">ICE</a> <a href="/tags/ICMP/" style="font-size: 10px;">ICMP</a> <a href="/tags/IGMP/" style="font-size: 10px;">IGMP</a> <a href="/tags/IIC/" style="font-size: 10px;">IIC</a> <a href="/tags/IP/" style="font-size: 10px;">IP</a> <a href="/tags/IP-协议/" style="font-size: 10px;">IP 协议</a> <a href="/tags/IT/" style="font-size: 19.17px;">IT</a> <a href="/tags/IT，-技术，-解读/" style="font-size: 10px;">IT， 技术， 解读</a> <a href="/tags/IaaS/" style="font-size: 10px;">IaaS</a> <a href="/tags/IoT/" style="font-size: 12.5px;">IoT</a> <a href="/tags/Iot/" style="font-size: 10px;">Iot</a> <a href="/tags/JSON/" style="font-size: 10px;">JSON</a> <a href="/tags/KAs/" style="font-size: 10px;">KAs</a> <a href="/tags/Kali/" style="font-size: 12.5px;">Kali</a> <a href="/tags/Key/" style="font-size: 10px;">Key</a> <a href="/tags/Linux/" style="font-size: 10.83px;">Linux</a> <a href="/tags/Little-Endian/" style="font-size: 10px;">Little-Endian</a> <a href="/tags/LoRa/" style="font-size: 10px;">LoRa</a> <a href="/tags/MQTT/" style="font-size: 10px;">MQTT</a> <a href="/tags/Metapackages/" style="font-size: 10px;">Metapackages</a> <a href="/tags/NAT/" style="font-size: 10.83px;">NAT</a> <a href="/tags/NATP/" style="font-size: 10px;">NATP</a> <a href="/tags/NB-IoT/" style="font-size: 10px;">NB-IoT</a> <a href="/tags/NSA/" style="font-size: 10px;">NSA</a> <a href="/tags/NTP/" style="font-size: 10px;">NTP</a> <a href="/tags/OS/" style="font-size: 13.33px;">OS</a> <a href="/tags/PaaS/" style="font-size: 10px;">PaaS</a> <a href="/tags/Proactor/" style="font-size: 10px;">Proactor</a> <a href="/tags/Push/" style="font-size: 10px;">Push</a> <a href="/tags/RARP/" style="font-size: 10px;">RARP</a> <a href="/tags/REST/" style="font-size: 10px;">REST</a> <a href="/tags/RESTful/" style="font-size: 10px;">RESTful</a> <a href="/tags/RTCP/" style="font-size: 10px;">RTCP</a> <a href="/tags/RTP/" style="font-size: 10px;">RTP</a> <a href="/tags/RTSP/" style="font-size: 10.83px;">RTSP</a> <a href="/tags/Reactor/" style="font-size: 10px;">Reactor</a> <a href="/tags/Redmine/" style="font-size: 10px;">Redmine</a> <a href="/tags/SA/" style="font-size: 16.67px;">SA</a> <a href="/tags/SNMP/" style="font-size: 10px;">SNMP</a> <a href="/tags/SO-REUSEADDR/" style="font-size: 10px;">SO_REUSEADDR</a> <a href="/tags/SQLite/" style="font-size: 10px;">SQLite</a> <a href="/tags/SQuaRE/" style="font-size: 10px;">SQuaRE</a> <a href="/tags/SSL/" style="font-size: 10px;">SSL</a> <a href="/tags/STUN/" style="font-size: 10.83px;">STUN</a> <a href="/tags/SWE/" style="font-size: 17.5px;">SWE</a> <a href="/tags/SaaS/" style="font-size: 10px;">SaaS</a> <a href="/tags/Server/" style="font-size: 10px;">Server</a> <a href="/tags/Shadow-broker/" style="font-size: 10px;">Shadow broker</a> <a href="/tags/Sigfox/" style="font-size: 10px;">Sigfox</a> <a href="/tags/State/" style="font-size: 10px;">State</a> <a href="/tags/TCP/" style="font-size: 10px;">TCP</a> <a href="/tags/TCP-协议/" style="font-size: 10px;">TCP 协议</a> <a href="/tags/TCP-IP/" style="font-size: 10.83px;">TCP/IP</a> <a href="/tags/TCP-IP-协议/" style="font-size: 18.33px;">TCP/IP 协议</a> <a href="/tags/TLS/" style="font-size: 10px;">TLS</a> <a href="/tags/TRUN/" style="font-size: 10.83px;">TRUN</a> <a href="/tags/TWSI/" style="font-size: 10px;">TWSI</a> <a href="/tags/Test/" style="font-size: 10px;">Test</a> <a href="/tags/Tool/" style="font-size: 11.67px;">Tool</a> <a href="/tags/UDP/" style="font-size: 10px;">UDP</a> <a href="/tags/UDP-协议/" style="font-size: 10px;">UDP 协议</a> <a href="/tags/UML/" style="font-size: 10.83px;">UML</a> <a href="/tags/UPNP/" style="font-size: 10px;">UPNP</a> <a href="/tags/UUID/" style="font-size: 10px;">UUID</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/VS/" style="font-size: 10px;">VS</a> <a href="/tags/WIFI/" style="font-size: 10px;">WIFI</a> <a href="/tags/WS-Security/" style="font-size: 10px;">WS-Security</a> <a href="/tags/Web/" style="font-size: 15.83px;">Web</a> <a href="/tags/Websocket/" style="font-size: 10px;">Websocket</a> <a href="/tags/Windows/" style="font-size: 10px;">Windows</a> <a href="/tags/Zero-Copy/" style="font-size: 10px;">Zero-Copy</a> <a href="/tags/ZigBee/" style="font-size: 10px;">ZigBee</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/bootstrap/" style="font-size: 10px;">bootstrap</a> <a href="/tags/coturn/" style="font-size: 10px;">coturn</a> <a href="/tags/curl/" style="font-size: 10px;">curl</a> <a href="/tags/decode/" style="font-size: 10px;">decode</a> <a href="/tags/define/" style="font-size: 10px;">define</a> <a href="/tags/eMTC/" style="font-size: 10px;">eMTC</a> <a href="/tags/epoll/" style="font-size: 11.67px;">epoll</a> <a href="/tags/ffmpeg/" style="font-size: 10.83px;">ffmpeg</a> <a href="/tags/ffplay/" style="font-size: 10px;">ffplay</a> <a href="/tags/ffprobe/" style="font-size: 10px;">ffprobe</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/h264/" style="font-size: 10px;">h264</a> <a href="/tags/http/" style="font-size: 10.83px;">http</a> <a href="/tags/https/" style="font-size: 10.83px;">https</a> <a href="/tags/ionic/" style="font-size: 10px;">ionic</a> <a href="/tags/libcssl/" style="font-size: 10px;">libcssl</a> <a href="/tags/linux/" style="font-size: 10.83px;">linux</a> <a href="/tags/mqtt/" style="font-size: 10px;">mqtt</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/p2p/" style="font-size: 10.83px;">p2p</a> <a href="/tags/pipe/" style="font-size: 10px;">pipe</a> <a href="/tags/poll/" style="font-size: 10.83px;">poll</a> <a href="/tags/select/" style="font-size: 12.5px;">select</a> <a href="/tags/setsockopt/" style="font-size: 10px;">setsockopt</a> <a href="/tags/socket/" style="font-size: 10.83px;">socket</a> <a href="/tags/swebok/" style="font-size: 10px;">swebok</a> <a href="/tags/不定参数/" style="font-size: 10px;">不定参数</a> <a href="/tags/串口/" style="font-size: 10px;">串口</a> <a href="/tags/交叉编译/" style="font-size: 10px;">交叉编译</a> <a href="/tags/信息收集/" style="font-size: 10px;">信息收集</a> <a href="/tags/公众号/" style="font-size: 10px;">公众号</a> <a href="/tags/内存泄露/" style="font-size: 10px;">内存泄露</a> <a href="/tags/内核/" style="font-size: 10px;">内核</a> <a href="/tags/函数/" style="font-size: 10px;">函数</a> <a href="/tags/勘误/" style="font-size: 10px;">勘误</a> <a href="/tags/勘误表/" style="font-size: 10px;">勘误表</a> <a href="/tags/卖油翁/" style="font-size: 10px;">卖油翁</a> <a href="/tags/压力测试/" style="font-size: 10px;">压力测试</a> <a href="/tags/发展/" style="font-size: 15.83px;">发展</a> <a href="/tags/发音/" style="font-size: 10px;">发音</a> <a href="/tags/同步/" style="font-size: 10px;">同步</a> <a href="/tags/复用/" style="font-size: 10px;">复用</a> <a href="/tags/多播/" style="font-size: 10px;">多播</a> <a href="/tags/大小端/" style="font-size: 10px;">大小端</a> <a href="/tags/安全/" style="font-size: 13.33px;">安全</a> <a href="/tags/宏/" style="font-size: 10px;">宏</a> <a href="/tags/客户端/" style="font-size: 10.83px;">客户端</a> <a href="/tags/嵌入式/" style="font-size: 10px;">嵌入式</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/工厂模式/" style="font-size: 10px;">工厂模式</a> <a href="/tags/广播/" style="font-size: 10px;">广播</a> <a href="/tags/应用证书/" style="font-size: 10px;">应用证书</a> <a href="/tags/开发/" style="font-size: 10px;">开发</a> <a href="/tags/异步/" style="font-size: 10px;">异步</a> <a href="/tags/微信/" style="font-size: 10.83px;">微信</a> <a href="/tags/快速-GPIO/" style="font-size: 10px;">快速 GPIO</a> <a href="/tags/性能/" style="font-size: 12.5px;">性能</a> <a href="/tags/成长/" style="font-size: 18.33px;">成长</a> <a href="/tags/技术/" style="font-size: 10px;">技术</a> <a href="/tags/技术图谱/" style="font-size: 10px;">技术图谱</a> <a href="/tags/技术路线/" style="font-size: 10px;">技术路线</a> <a href="/tags/技能/" style="font-size: 10px;">技能</a> <a href="/tags/投资/" style="font-size: 10px;">投资</a> <a href="/tags/指南/" style="font-size: 15.83px;">指南</a> <a href="/tags/按键/" style="font-size: 10px;">按键</a> <a href="/tags/按键扫描/" style="font-size: 10px;">按键扫描</a> <a href="/tags/操作系统/" style="font-size: 10px;">操作系统</a> <a href="/tags/支付/" style="font-size: 10.83px;">支付</a> <a href="/tags/攻略/" style="font-size: 10px;">攻略</a> <a href="/tags/教程/" style="font-size: 10px;">教程</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据链路层/" style="font-size: 10px;">数据链路层</a> <a href="/tags/文学/" style="font-size: 10px;">文学</a> <a href="/tags/无线电/" style="font-size: 10px;">无线电</a> <a href="/tags/时间/" style="font-size: 10px;">时间</a> <a href="/tags/服务器证书/" style="font-size: 10px;">服务器证书</a> <a href="/tags/构造/" style="font-size: 10px;">构造</a> <a href="/tags/架构/" style="font-size: 12.5px;">架构</a> <a href="/tags/根证书/" style="font-size: 10px;">根证书</a> <a href="/tags/框架/" style="font-size: 10.83px;">框架</a> <a href="/tags/模式/" style="font-size: 10px;">模式</a> <a href="/tags/流媒体服务器/" style="font-size: 10px;">流媒体服务器</a> <a href="/tags/测试/" style="font-size: 11.67px;">测试</a> <a href="/tags/游戏/" style="font-size: 10px;">游戏</a> <a href="/tags/演进/" style="font-size: 10.83px;">演进</a> <a href="/tags/熟能生巧/" style="font-size: 10px;">熟能生巧</a> <a href="/tags/状态图/" style="font-size: 10px;">状态图</a> <a href="/tags/电磁波/" style="font-size: 10px;">电磁波</a> <a href="/tags/矩阵按键/" style="font-size: 10px;">矩阵按键</a> <a href="/tags/短信/" style="font-size: 10.83px;">短信</a> <a href="/tags/程序员/" style="font-size: 17.5px;">程序员</a> <a href="/tags/管道/" style="font-size: 10px;">管道</a> <a href="/tags/系统分析师/" style="font-size: 15px;">系统分析师</a> <a href="/tags/系统架构师/" style="font-size: 10.83px;">系统架构师</a> <a href="/tags/组播/" style="font-size: 10px;">组播</a> <a href="/tags/统一建模语言/" style="font-size: 10px;">统一建模语言</a> <a href="/tags/网站/" style="font-size: 10.83px;">网站</a> <a href="/tags/网络/" style="font-size: 20px;">网络</a> <a href="/tags/英语/" style="font-size: 10px;">英语</a> <a href="/tags/计算机/" style="font-size: 10px;">计算机</a> <a href="/tags/计算机原理/" style="font-size: 10px;">计算机原理</a> <a href="/tags/计算机组成/" style="font-size: 10px;">计算机组成</a> <a href="/tags/计算机结构/" style="font-size: 10px;">计算机结构</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 14.17px;">设计模式</a> <a href="/tags/证书/" style="font-size: 10px;">证书</a> <a href="/tags/调试/" style="font-size: 10px;">调试</a> <a href="/tags/软件质量/" style="font-size: 10.83px;">软件质量</a> <a href="/tags/进程间通信/" style="font-size: 10px;">进程间通信</a> <a href="/tags/选路/" style="font-size: 10px;">选路</a> <a href="/tags/通信/" style="font-size: 10px;">通信</a> <a href="/tags/阿里大于/" style="font-size: 10px;">阿里大于</a> <a href="/tags/项目管理/" style="font-size: 10px;">项目管理</a> <a href="/tags/验证码/" style="font-size: 10px;">验证码</a>
+      <a href="/tags/32-bit/" style="font-size: 10px;">32-bit</a> <a href="/tags/4-1/" style="font-size: 10px;">4+1</a> <a href="/tags/ARM/" style="font-size: 10px;">ARM</a> <a href="/tags/ARP/" style="font-size: 10px;">ARP</a> <a href="/tags/AT指令/" style="font-size: 10px;">AT指令</a> <a href="/tags/Angle/" style="font-size: 10px;">Angle</a> <a href="/tags/Angular/" style="font-size: 10px;">Angular</a> <a href="/tags/AngularJS/" style="font-size: 10px;">AngularJS</a> <a href="/tags/Backend/" style="font-size: 10px;">Backend</a> <a href="/tags/Big-Endian/" style="font-size: 10px;">Big-Endian</a> <a href="/tags/Bitrate/" style="font-size: 10px;">Bitrate</a> <a href="/tags/BoK/" style="font-size: 10px;">BoK</a> <a href="/tags/Boost/" style="font-size: 10px;">Boost</a> <a href="/tags/C/" style="font-size: 10.83px;">C</a> <a href="/tags/C/" style="font-size: 11.67px;">C++</a> <a href="/tags/C-C/" style="font-size: 16.67px;">C/C++</a> <a href="/tags/CMMI/" style="font-size: 10.83px;">CMMI</a> <a href="/tags/Cloud/" style="font-size: 10px;">Cloud</a> <a href="/tags/DNS/" style="font-size: 10px;">DNS</a> <a href="/tags/DSS/" style="font-size: 10px;">DSS</a> <a href="/tags/ESP82xx/" style="font-size: 10px;">ESP82xx</a> <a href="/tags/Frontend/" style="font-size: 10px;">Frontend</a> <a href="/tags/GPIO/" style="font-size: 10.83px;">GPIO</a> <a href="/tags/GUID/" style="font-size: 10px;">GUID</a> <a href="/tags/Google/" style="font-size: 10px;">Google</a> <a href="/tags/GraphQL/" style="font-size: 10px;">GraphQL</a> <a href="/tags/H264/" style="font-size: 10px;">H264</a> <a href="/tags/I-O/" style="font-size: 15.83px;">I/O</a> <a href="/tags/ICE/" style="font-size: 10.83px;">ICE</a> <a href="/tags/ICMP/" style="font-size: 10px;">ICMP</a> <a href="/tags/IGMP/" style="font-size: 10px;">IGMP</a> <a href="/tags/IIC/" style="font-size: 10px;">IIC</a> <a href="/tags/IP/" style="font-size: 10px;">IP</a> <a href="/tags/IP-协议/" style="font-size: 10px;">IP 协议</a> <a href="/tags/IT/" style="font-size: 19.17px;">IT</a> <a href="/tags/IT，-技术，-解读/" style="font-size: 10px;">IT， 技术， 解读</a> <a href="/tags/IaaS/" style="font-size: 10px;">IaaS</a> <a href="/tags/IoT/" style="font-size: 13.33px;">IoT</a> <a href="/tags/Iot/" style="font-size: 10px;">Iot</a> <a href="/tags/JSON/" style="font-size: 10px;">JSON</a> <a href="/tags/Kali/" style="font-size: 12.5px;">Kali</a> <a href="/tags/Key/" style="font-size: 10px;">Key</a> <a href="/tags/Linux/" style="font-size: 10.83px;">Linux</a> <a href="/tags/Little-Endian/" style="font-size: 10px;">Little-Endian</a> <a href="/tags/LoRa/" style="font-size: 10px;">LoRa</a> <a href="/tags/MQTT/" style="font-size: 10px;">MQTT</a> <a href="/tags/Metapackages/" style="font-size: 10px;">Metapackages</a> <a href="/tags/NAT/" style="font-size: 10.83px;">NAT</a> <a href="/tags/NATP/" style="font-size: 10px;">NATP</a> <a href="/tags/NB-IoT/" style="font-size: 10px;">NB-IoT</a> <a href="/tags/NSA/" style="font-size: 10px;">NSA</a> <a href="/tags/NTP/" style="font-size: 10px;">NTP</a> <a href="/tags/OS/" style="font-size: 13.33px;">OS</a> <a href="/tags/PaaS/" style="font-size: 10px;">PaaS</a> <a href="/tags/Proactor/" style="font-size: 10px;">Proactor</a> <a href="/tags/Push/" style="font-size: 10px;">Push</a> <a href="/tags/RARP/" style="font-size: 10px;">RARP</a> <a href="/tags/REST/" style="font-size: 10px;">REST</a> <a href="/tags/RESTful/" style="font-size: 10px;">RESTful</a> <a href="/tags/RTCP/" style="font-size: 10px;">RTCP</a> <a href="/tags/RTP/" style="font-size: 10px;">RTP</a> <a href="/tags/RTSP/" style="font-size: 10.83px;">RTSP</a> <a href="/tags/Reactor/" style="font-size: 10px;">Reactor</a> <a href="/tags/Redmine/" style="font-size: 10px;">Redmine</a> <a href="/tags/SA/" style="font-size: 16.67px;">SA</a> <a href="/tags/SNMP/" style="font-size: 10px;">SNMP</a> <a href="/tags/SO-REUSEADDR/" style="font-size: 10px;">SO_REUSEADDR</a> <a href="/tags/SQLite/" style="font-size: 10px;">SQLite</a> <a href="/tags/SQuaRE/" style="font-size: 10px;">SQuaRE</a> <a href="/tags/SSL/" style="font-size: 10px;">SSL</a> <a href="/tags/STUN/" style="font-size: 10.83px;">STUN</a> <a href="/tags/SWE/" style="font-size: 17.5px;">SWE</a> <a href="/tags/SaaS/" style="font-size: 10px;">SaaS</a> <a href="/tags/Server/" style="font-size: 10px;">Server</a> <a href="/tags/Shadow-broker/" style="font-size: 10px;">Shadow broker</a> <a href="/tags/Sigfox/" style="font-size: 10px;">Sigfox</a> <a href="/tags/State/" style="font-size: 10px;">State</a> <a href="/tags/TCP/" style="font-size: 10px;">TCP</a> <a href="/tags/TCP-协议/" style="font-size: 10px;">TCP 协议</a> <a href="/tags/TCP-IP/" style="font-size: 10.83px;">TCP/IP</a> <a href="/tags/TCP-IP-协议/" style="font-size: 18.33px;">TCP/IP 协议</a> <a href="/tags/TLS/" style="font-size: 10px;">TLS</a> <a href="/tags/TRUN/" style="font-size: 10.83px;">TRUN</a> <a href="/tags/TWSI/" style="font-size: 10px;">TWSI</a> <a href="/tags/Test/" style="font-size: 10px;">Test</a> <a href="/tags/Tool/" style="font-size: 11.67px;">Tool</a> <a href="/tags/UDP/" style="font-size: 10px;">UDP</a> <a href="/tags/UDP-协议/" style="font-size: 10px;">UDP 协议</a> <a href="/tags/UML/" style="font-size: 10.83px;">UML</a> <a href="/tags/UPNP/" style="font-size: 10px;">UPNP</a> <a href="/tags/UUID/" style="font-size: 10px;">UUID</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/VS/" style="font-size: 10px;">VS</a> <a href="/tags/WIFI/" style="font-size: 10px;">WIFI</a> <a href="/tags/WS-Security/" style="font-size: 10px;">WS-Security</a> <a href="/tags/Web/" style="font-size: 15.83px;">Web</a> <a href="/tags/Websocket/" style="font-size: 10px;">Websocket</a> <a href="/tags/Windows/" style="font-size: 10px;">Windows</a> <a href="/tags/Zero-Copy/" style="font-size: 10px;">Zero-Copy</a> <a href="/tags/ZigBee/" style="font-size: 10px;">ZigBee</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/bootstrap/" style="font-size: 10px;">bootstrap</a> <a href="/tags/coturn/" style="font-size: 10px;">coturn</a> <a href="/tags/curl/" style="font-size: 10px;">curl</a> <a href="/tags/decode/" style="font-size: 10px;">decode</a> <a href="/tags/define/" style="font-size: 10px;">define</a> <a href="/tags/eMTC/" style="font-size: 10px;">eMTC</a> <a href="/tags/epoll/" style="font-size: 11.67px;">epoll</a> <a href="/tags/ffmpeg/" style="font-size: 10.83px;">ffmpeg</a> <a href="/tags/ffplay/" style="font-size: 10px;">ffplay</a> <a href="/tags/ffprobe/" style="font-size: 10px;">ffprobe</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/h264/" style="font-size: 10px;">h264</a> <a href="/tags/http/" style="font-size: 10.83px;">http</a> <a href="/tags/https/" style="font-size: 10.83px;">https</a> <a href="/tags/ionic/" style="font-size: 10px;">ionic</a> <a href="/tags/libcssl/" style="font-size: 10px;">libcssl</a> <a href="/tags/linux/" style="font-size: 10.83px;">linux</a> <a href="/tags/mqtt/" style="font-size: 10px;">mqtt</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/p2p/" style="font-size: 10.83px;">p2p</a> <a href="/tags/pipe/" style="font-size: 10px;">pipe</a> <a href="/tags/poll/" style="font-size: 10.83px;">poll</a> <a href="/tags/select/" style="font-size: 12.5px;">select</a> <a href="/tags/setsockopt/" style="font-size: 10px;">setsockopt</a> <a href="/tags/socket/" style="font-size: 10.83px;">socket</a> <a href="/tags/swebok/" style="font-size: 10px;">swebok</a> <a href="/tags/不定参数/" style="font-size: 10px;">不定参数</a> <a href="/tags/串口/" style="font-size: 10px;">串口</a> <a href="/tags/书目/" style="font-size: 10px;">书目</a> <a href="/tags/交叉编译/" style="font-size: 10px;">交叉编译</a> <a href="/tags/信息收集/" style="font-size: 10px;">信息收集</a> <a href="/tags/公众号/" style="font-size: 10px;">公众号</a> <a href="/tags/内存泄露/" style="font-size: 10px;">内存泄露</a> <a href="/tags/内核/" style="font-size: 10px;">内核</a> <a href="/tags/函数/" style="font-size: 10px;">函数</a> <a href="/tags/勘误/" style="font-size: 10px;">勘误</a> <a href="/tags/勘误表/" style="font-size: 10px;">勘误表</a> <a href="/tags/卖油翁/" style="font-size: 10px;">卖油翁</a> <a href="/tags/压力测试/" style="font-size: 10px;">压力测试</a> <a href="/tags/发展/" style="font-size: 15.83px;">发展</a> <a href="/tags/发音/" style="font-size: 10px;">发音</a> <a href="/tags/同步/" style="font-size: 10px;">同步</a> <a href="/tags/复用/" style="font-size: 10px;">复用</a> <a href="/tags/多播/" style="font-size: 10px;">多播</a> <a href="/tags/大小端/" style="font-size: 10px;">大小端</a> <a href="/tags/安全/" style="font-size: 13.33px;">安全</a> <a href="/tags/宏/" style="font-size: 10px;">宏</a> <a href="/tags/客户端/" style="font-size: 10.83px;">客户端</a> <a href="/tags/嵌入式/" style="font-size: 10px;">嵌入式</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/工厂模式/" style="font-size: 10px;">工厂模式</a> <a href="/tags/广播/" style="font-size: 10px;">广播</a> <a href="/tags/应用证书/" style="font-size: 10px;">应用证书</a> <a href="/tags/开发/" style="font-size: 10px;">开发</a> <a href="/tags/异步/" style="font-size: 10px;">异步</a> <a href="/tags/微信/" style="font-size: 10.83px;">微信</a> <a href="/tags/快速-GPIO/" style="font-size: 10px;">快速 GPIO</a> <a href="/tags/性能/" style="font-size: 12.5px;">性能</a> <a href="/tags/成长/" style="font-size: 18.33px;">成长</a> <a href="/tags/技术/" style="font-size: 10px;">技术</a> <a href="/tags/技术图谱/" style="font-size: 10px;">技术图谱</a> <a href="/tags/技术路线/" style="font-size: 10px;">技术路线</a> <a href="/tags/技能/" style="font-size: 10px;">技能</a> <a href="/tags/投资/" style="font-size: 10px;">投资</a> <a href="/tags/指南/" style="font-size: 15.83px;">指南</a> <a href="/tags/按键/" style="font-size: 10px;">按键</a> <a href="/tags/按键扫描/" style="font-size: 10px;">按键扫描</a> <a href="/tags/操作系统/" style="font-size: 10px;">操作系统</a> <a href="/tags/支付/" style="font-size: 10.83px;">支付</a> <a href="/tags/攻略/" style="font-size: 10px;">攻略</a> <a href="/tags/教程/" style="font-size: 10px;">教程</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据链路层/" style="font-size: 10px;">数据链路层</a> <a href="/tags/文学/" style="font-size: 10px;">文学</a> <a href="/tags/无线电/" style="font-size: 10px;">无线电</a> <a href="/tags/时间/" style="font-size: 10px;">时间</a> <a href="/tags/服务器证书/" style="font-size: 10px;">服务器证书</a> <a href="/tags/构造/" style="font-size: 10px;">构造</a> <a href="/tags/架构/" style="font-size: 12.5px;">架构</a> <a href="/tags/根证书/" style="font-size: 10px;">根证书</a> <a href="/tags/框架/" style="font-size: 10.83px;">框架</a> <a href="/tags/模式/" style="font-size: 10px;">模式</a> <a href="/tags/流媒体服务器/" style="font-size: 10px;">流媒体服务器</a> <a href="/tags/测试/" style="font-size: 11.67px;">测试</a> <a href="/tags/游戏/" style="font-size: 10px;">游戏</a> <a href="/tags/演进/" style="font-size: 10.83px;">演进</a> <a href="/tags/熟能生巧/" style="font-size: 10px;">熟能生巧</a> <a href="/tags/状态图/" style="font-size: 10px;">状态图</a> <a href="/tags/电磁波/" style="font-size: 10px;">电磁波</a> <a href="/tags/矩阵按键/" style="font-size: 10px;">矩阵按键</a> <a href="/tags/短信/" style="font-size: 10.83px;">短信</a> <a href="/tags/程序员/" style="font-size: 17.5px;">程序员</a> <a href="/tags/管道/" style="font-size: 10px;">管道</a> <a href="/tags/系统分析师/" style="font-size: 15px;">系统分析师</a> <a href="/tags/系统架构师/" style="font-size: 10.83px;">系统架构师</a> <a href="/tags/组播/" style="font-size: 10px;">组播</a> <a href="/tags/统一建模语言/" style="font-size: 10px;">统一建模语言</a> <a href="/tags/网站/" style="font-size: 10.83px;">网站</a> <a href="/tags/网络/" style="font-size: 20px;">网络</a> <a href="/tags/英语/" style="font-size: 10px;">英语</a> <a href="/tags/计算机/" style="font-size: 10px;">计算机</a> <a href="/tags/计算机原理/" style="font-size: 10px;">计算机原理</a> <a href="/tags/计算机组成/" style="font-size: 10px;">计算机组成</a> <a href="/tags/计算机结构/" style="font-size: 10px;">计算机结构</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 14.17px;">设计模式</a> <a href="/tags/证书/" style="font-size: 10px;">证书</a> <a href="/tags/调试/" style="font-size: 10px;">调试</a> <a href="/tags/软件质量/" style="font-size: 10.83px;">软件质量</a> <a href="/tags/进程间通信/" style="font-size: 10px;">进程间通信</a> <a href="/tags/选路/" style="font-size: 10px;">选路</a> <a href="/tags/通信/" style="font-size: 10px;">通信</a> <a href="/tags/阿里大于/" style="font-size: 10px;">阿里大于</a> <a href="/tags/项目管理/" style="font-size: 10px;">项目管理</a> <a href="/tags/验证码/" style="font-size: 10px;">验证码</a>
     </div>
   </div>
 
@@ -1607,7 +1609,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">2018-10</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">2018-08</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">2018-01</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">2017-10</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">2017-09</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">2017-08</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">2017-07</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">2017-06</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">2017-05</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">2017-04</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">2017-03</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">2017-02</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">2017-01</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">2016-12</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">2016-11</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">2016-10</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">2016-09</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">2016-08</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">2016-07</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">2018-12</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">2018-10</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">2018-08</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">2018-01</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">2017-10</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">2017-09</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">2017-08</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">2017-07</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">2017-06</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">2017-05</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">2017-04</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">2017-03</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">2017-02</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">2017-01</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">2016-12</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">2016-11</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">2016-10</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">2016-09</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">2016-08</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">2016-07</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -1618,6 +1620,10 @@
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/it-iot-recommend-book/">IT物联网架构推荐书目 2018</a>
+          </li>
         
           <li>
             <a href="/2018/os-io-zero-copy/">Zero-Copy &amp; sendfile 浅析</a>
@@ -1661,10 +1667,6 @@
         
           <li>
             <a href="/2018/security-kali-Info-gathering-tool/">Kali Linux - Information Gathering Tool</a>
-          </li>
-        
-          <li>
-            <a href="/2018/security-kali-tools-listing/">Kali Linux - Tools Listing</a>
           </li>
         
       </ul>
