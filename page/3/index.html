@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
   <title>Snowyying</title>
@@ -11,6 +11,7 @@
 <meta property="og:url" content="http://snowyying.site/page/3/index.html">
 <meta property="og:site_name" content="Snowyying">
 <meta property="og:description" content="Snowyying&apos;s blog">
+<meta property="og:locale" content="zh-CN">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Snowyying">
 <meta name="twitter:description" content="Snowyying&apos;s blog">
@@ -27,7 +28,7 @@
   
 
 </head>
-
+</html>
 <body>
   <div id="container">
     <div id="wrap">
@@ -62,7 +63,7 @@
         <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://snowyying.site"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://snowyying.site"></form>
       </div>
     </div>
   </div>
@@ -70,7 +71,7 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-sa-course-p11-requirement-engineering" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-security-overview" class="article article-type-post" itemscope="" itemprop="blogPost">
 
   <div class="article-inner">
     
@@ -79,7 +80,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/sa-course-p11-requirement-engineering/">系统分析师教程学习 - 需求工程</a>
+      <a class="article-title" href="/2017/security-overview/">网络安全 - 概述</a>
     </h1>
   
 
@@ -87,8 +88,485 @@
     
 
   <div class="article-meta">
-    <a href="/2017/sa-course-p11-requirement-engineering/" class="article-date">
-  <time datetime="2017-04-13T07:34:53.000Z" itemprop="datePublished">2017-04-13</time>
+    <a href="/2017/security-overview/" class="article-date">
+  <time datetime="2017-07-01T07:00:32.000Z" itemprop="datePublished">2017-07-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Security/">Security</a>
+  </div>
+
+  </div>
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>TODO</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://snowyying.site/2017/security-overview/" data-id="cjuh5p3vz008ho821x2ijjl6f" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-iot-wifi-esp82xx-guide" class="article article-type-post" itemscope="" itemprop="blogPost">
+
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/iot-wifi-esp82xx-guide/">物联网 - WIFI 芯片 ESP82xx 使用</a>
+    </h1>
+  
+
+      </header>
+    
+
+  <div class="article-meta">
+    <a href="/2017/iot-wifi-esp82xx-guide/" class="article-date">
+  <time datetime="2017-06-20T09:03:24.000Z" itemprop="datePublished">2017-06-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Embedded-IoT/">Embedded & IoT</a>
+  </div>
+
+  </div>
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>&#x524D;&#x8A00;&#xFF1A;2015&#x5E74;&#x7269;&#x8054;&#x7F51;&#x5904;&#x4E8E;&#x7206;&#x53D1;&#x7684;&#x4E00;&#x5E74;&#xFF0C;&#x4E50;&#x946B;&#x7684;ESP8266WIFI &#x82AF;&#x7247;&#x6210;&#x4E3A;&#x5F3A;&#x70C8;&#x7684;&#x50AC;&#x5316;&#x5242;&#x3002;&#x6210;&#x529F;&#x7684;&#x5C06;2014&#x5E74;&#x524D;&#x7684;40&#x4EE5;&#x4E0A;&#x7684;WIFI&#x6210;&#x672C;&#x538B;&#x7F29;&#x5230;&#x73B0;&#x5728;&#x7684;10&#x5143;&#x5DE6;&#x53F3;&#x3002;&#x5185;&#x7F6E;WIFI&#x524D;&#x7AEF;&#x548C;&#x9AD8;&#x6027;&#x80FD;&#x7684;32&#x4F4D;MCU&#xFF0C;&#x57FA;&#x672C;&#x5F15;&#x7206;&#x7269;&#x8054;&#x7F51;&#x5E02;&#x573A;&#xFF0C;&#x51E0;&#x4E4E;&#x7275;&#x626F;&#x5230;&#x7535;&#x5B50;&#x7684;&#x884C;&#x4E1A;&#xFF0C;&#x90FD;&#x53EF;&#x4EE5;&#x7528;&#x4E0A;&#xFF0C;&#x6BD4;&#x5982;WIFI&#x5F00;&#x5173; &#x706F;&#x5177; WIFI&#x5B9A;&#x4F4D;  &#x7535;&#x996D;&#x9505; &#x7535;&#x51B0;&#x7BB1; &#x6D17;&#x8863;&#x673A; &#x53A8;&#x623F;&#x7535;&#x5668; &#x7A7A;&#x8C03; &#x7A7A;&#x6C14;&#x51C0;&#x5316;&#x5668; &#x7B49;&#x6D88;&#x8D39;&#x7C7B;&#x5C0F;&#x5BB6;&#x7535;&#x4E0E;&#x5927;&#x5BB6;&#x7535;&#xFF0C;&#x90FD;&#x9762;&#x4E34;&#x8FD9;&#x4E00;&#x573A;&#x6280;&#x672F;&#x9769;&#x65B0;&#xFF0C;&#x4E0E;&#x65B0;&#x7684;&#x7528;&#x6237;&#x4F53;&#x9A8C;&#xFF01;&#x51E0;&#x4E4E;&#x52BF;&#x5728;&#x5FC5;&#x884C;&#x3002;&#x6BD4;&#x5982;&#x4E00;&#x53F0;&#x7A7A;&#x8C03;&#xFF0C;&#x589E;&#x52A0;&#x4E86;10&#x5757;&#x94B1;&#x5DE6;&#x53F3;&#x7684;&#x6210;&#x672C;&#xFF0C;&#x4F46;&#x662F;&#x5374;&#x80FD;&#x7528;&#x4EFB;&#x4F55;&#x667A;&#x80FD;&#x7EC8;&#x7AEF;&#x6BD4;&#x5982;&#x624B;&#x673A;&#x5E73;&#x677F; &#x7535;&#x8111;&#x7B49;&#x76F4;&#x63A5;&#x63A7;&#x5236;&#x3002;<br>&#x603B;&#x7ED3;&#xFF1A;WIFI&#x7684;&#x52A0;&#x5165;&#x4E0D;&#x662F;&#x9526;&#x4E0A;&#x6DFB;&#x82B1;&#xFF0C;&#x800C;&#x662F;&#x6BD4;&#x8F83;&#x5B9E;&#x7528;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x5C06;&#x76F4;&#x63A5;&#x51B3;&#x5B9A;&#x7740;&#x4F60;&#x4EA7;&#x54C1;&#x7684;&#x6863;&#x6B21;&#x548C;&#x9500;&#x8DEF;&#x3002;&#x51E0;&#x4E4E;&#x51B3;&#x5B9A;&#x7740;&#x60A8;&#x8FD9;&#x6B3E;&#x4EA7;&#x54C1;&#x7684;&#x5B58;&#x4EA1;&#x3002;</p>
+</blockquote>
+<h2 id="1-&#x4E0B;&#x8F7D;SDK"><a href="#1-&#x4E0B;&#x8F7D;SDK" class="headerlink" title="1. &#x4E0B;&#x8F7D;SDK"></a>1. &#x4E0B;&#x8F7D;SDK</h2><p><a href="http://www.espressif.com/products/hardware/esp8266ex/overview/" target="_blank" rel="noopener">espressif.com</a> -&gt; Resource -&gt; SDKs &amp; Demos</p>
+<p><img src="/2017/iot-wifi-esp82xx-guide/espressif_sdk_demo.png" alt="SKD&amp;Demo"></p>
+        
+          <p class="article-more-link">
+            <a href="/2017/iot-wifi-esp82xx-guide/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://snowyying.site/2017/iot-wifi-esp82xx-guide/" data-id="cjuh5p3sn002qo8214tus989m" class="article-share-link">Share</a>
+      
+        <a href="http://snowyying.site/2017/iot-wifi-esp82xx-guide/#ds-thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ESP82xx/">ESP82xx</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IoT/">IoT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WIFI/">WIFI</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-iot-push-mqtt-protocol" class="article article-type-post" itemscope="" itemprop="blogPost">
+
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/iot-push-mqtt-protocol/">物联网 - MQTT 协议与应用</a>
+    </h1>
+  
+
+      </header>
+    
+
+  <div class="article-meta">
+    <a href="/2017/iot-push-mqtt-protocol/" class="article-date">
+  <time datetime="2017-06-15T09:03:24.000Z" itemprop="datePublished">2017-06-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Embedded-IoT/">Embedded & IoT</a>
+  </div>
+
+  </div>
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>broker: Apollo mosquitto EMQ</p>
+<p>EMQTT(<a href="http://emqtt.io/)&#x662F;&#x76EE;&#x524D;&#x5168;&#x7403;&#x7269;&#x8054;&#x7F51;&#x5E02;&#x573A;&#x6392;&#x540D;&#x7B2C;&#x4E00;&#x7684;&#x5F00;&#x6E90;MQTT&#x6D88;&#x606F;&#x670D;&#x52A1;&#x3002;&#x5168;&#x7403;&#x5E02;&#x573A;(&#x5370;&#x5EA6;&#x3001;&#x5317;&#x7F8E;&#x3001;&#x6B27;&#x6D32;&#x3001;&#x4E2D;&#x56FD;)" target="_blank" rel="noopener">http://emqtt.io/)&#x662F;&#x76EE;&#x524D;&#x5168;&#x7403;&#x7269;&#x8054;&#x7F51;&#x5E02;&#x573A;&#x6392;&#x540D;&#x7B2C;&#x4E00;&#x7684;&#x5F00;&#x6E90;MQTT&#x6D88;&#x606F;&#x670D;&#x52A1;&#x3002;&#x5168;&#x7403;&#x5E02;&#x573A;(&#x5370;&#x5EA6;&#x3001;&#x5317;&#x7F8E;&#x3001;&#x6B27;&#x6D32;&#x3001;&#x4E2D;&#x56FD;)</a> &#x7D2F;&#x8BA1;4000&#xFF0B;&#x7528;&#x6237;&#xFF0C;1000&#x4E07;&#x7EBF;MQTT&#x8FDE;&#x63A5;&#x90E8;&#x7F72;&#x3002;&#x4E2D;&#x56FD;&#x5E02;&#x573A;&#x90E8;&#x5206;&#x7269;&#x8054;&#x7F51;&#x516C;&#x53F8;&#xFF0C;&#x5305;&#x62EC;&#x667A;&#x80FD;&#x786C;&#x4EF6;&#x3001;&#x667A;&#x80FD;&#x5BB6;&#x5C45;&#x3001;&#x79FB;&#x52A8;&#x6D88;&#x606F;&#x3001;&#x7269;&#x8054;&#x7F51;&#x4E91;&#x5E73;&#x53F0;&#xFF0C;&#x662F;&#x57FA;&#x4E8E;&#x6216;&#x53C2;&#x8003;EMQTT&#x9879;&#x76EE;&#x5F00;&#x53D1;&#x3002;MQTT&#x9879;&#x76EE;&#x5728;&#x7269;&#x8054;&#x7F51;&#x7CFB;&#x7EDF;&#x4EE5;&#x6838;&#x5FC3;&#x7684;MQTT&#x6D88;&#x606F;&#x670D;&#x52A1;&#x65B9;&#x5F0F;&#xFF0C;&#x8FDE;&#x63A5;&#x6D77;&#x91CF;&#x7684;&#x4F20;&#x611F;&#x5668;&#x3001;&#x79FB;&#x52A8;&#x7EC8;&#x7AEF;&#x3001;&#x4E91;&#x7AEF;&#x5E94;&#x7528;&#x670D;&#x52A1;&#x548C;&#x6570;&#x636E;&#x5904;&#x7406;&#x670D;&#x52A1;&#x3002;&#x6280;&#x672F;&#x548C;&#x4EA7;&#x54C1;&#x65B9;&#x9762;&#xFF0C;EMQTT&#x9879;&#x76EE;&#x672C;&#x8EAB;&#x91C7;&#x7528;&#x4E86;&#x7C7B;&#x4F3C;WhatsApp&#x7684;&#x8BBE;&#x8BA1;&#x67B6;&#x6784;&#xFF0C;&#x6838;&#x5FC3;&#x89E3;&#x51B3;&#x7269;&#x8054;&#x7F51;&#x670D;&#x52A1;&#x5668;&#x9700;&#x8981;&#x5904;&#x7406;&#x5927;&#x91CF;&#x5E76;&#x53D1;&#x8FDE;&#x63A5;&#x95EE;&#x9898;&#xFF0C;&#x662F;&#x76EE;&#x524D;&#x5168;&#x7403;&#x5E02;&#x573A;&#x552F;&#x4E00;&#x4E00;&#x4E2A;&#x771F;&#x6B63;&#x5355;&#x8282;&#x70B9;&#x627F;&#x8F7D;100&#x4E07;&#xFF0C;&#x96C6;&#x7FA4;&#x627F;&#x8F7D;&#x5230;1000&#x4E07;&#x7EBF;&#x7684;&#x5F00;&#x6E90;&#x9879;&#x76EE;&#x3002;EMQTT&#x9879;&#x76EE;&#x5B9E;&#x73B0;&#x5B8C;&#x6574;&#x534F;&#x8BAE;&#x89C4;&#x8303;(Apollo, RabbitMQ&#x90E8;&#x5206;&#x652F;&#x6301;&#xFF09;&#xFF0C;&#x652F;&#x6301;100&#x4E07;&#x7EA7;&#x7684;&#x8FDE;&#x63A5;&#x89C4;&#x6A21;&#xFF08;Mosquitto&#x3001;Mosca 10&#x4E07;&#x7EA7;&#x522B;&#xFF09;&#xFF0C;&#x540C;&#x65F6;&#x652F;&#x6301;&#x4E0E;&#x4F01;&#x4E1A;&#x73B0;&#x6709;&#x7CFB;&#x7EDF;&#x4F8B;&#x5982;MySQL&#x3001;PostgreSQL&#x3001;MongoDB&#x3001;Redis&#x96C6;&#x6210;(&#x5176;&#x4ED6;&#x5747;&#x4E0D;&#x652F;&#x6301;)&#x3002;</p>
+<p>&#x5176;&#x4ED6;&#x53EF;&#x66FF;&#x4EE3;&#x6280;&#x672F;&#x65B9;&#x6848;</p>
+<p>websocket</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://snowyying.site/2017/iot-push-mqtt-protocol/" data-id="cjuh5p3sj002jo8216y6ubfjb" class="article-share-link">Share</a>
+      
+        <a href="http://snowyying.site/2017/iot-push-mqtt-protocol/#ds-thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IoT/">IoT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mqtt/">mqtt</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-embed-serial-libcssl-linux" class="article article-type-post" itemscope="" itemprop="blogPost">
+
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/embed-serial-libcssl-linux/">linux 下使用 libcssl 库串口编程</a>
+    </h1>
+  
+
+      </header>
+    
+
+  <div class="article-meta">
+    <a href="/2017/embed-serial-libcssl-linux/" class="article-date">
+  <time datetime="2017-06-10T03:46:46.000Z" itemprop="datePublished">2017-06-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Embedded-IoT/">Embedded & IoT</a>
+  </div>
+
+  </div>
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>&#x4F7F;&#x7528;libcssl(&#x6700;&#x65B0;&#x7248;0.9.4)&#x8FDB;&#x884C;&#x4E32;&#x53E3;&#x901A;&#x8BAF;&#x65F6;, &#x53D1;&#x73B0;&#x5947;&#x5076;&#x6821;&#x9A8C;&#x8BBE;&#x7F6E;&#x65E0;&#x6548;, &#x67E5;&#x770B;&#x6E90;&#x7801;&#x540E;&#x53D1;&#x73B0;&#x6709;&#x4E24;&#x5904;&#x95EE;&#x9898;</p>
+        
+          <p class="article-more-link">
+            <a href="/2017/embed-serial-libcssl-linux/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://snowyying.site/2017/embed-serial-libcssl-linux/" data-id="cjuh5p3s1001oo821klxr9shp" class="article-share-link">Share</a>
+      
+        <a href="http://snowyying.site/2017/embed-serial-libcssl-linux/#ds-thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IT/">IT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/libcssl/">libcssl</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/串口/">串口</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-embed-io-twsi-i2c" class="article article-type-post" itemscope="" itemprop="blogPost">
+
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/embed-io-twsi-i2c/">IIC 使用总结</a>
+    </h1>
+  
+
+      </header>
+    
+
+  <div class="article-meta">
+    <a href="/2017/embed-io-twsi-i2c/" class="article-date">
+  <time datetime="2017-06-08T02:13:04.000Z" itemprop="datePublished">2017-06-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Embedded-IoT/">Embedded & IoT</a>
+  </div>
+
+  </div>
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="&#x5730;&#x5740;"><a href="#&#x5730;&#x5740;" class="headerlink" title="&#x5730;&#x5740;"></a>&#x5730;&#x5740;</h2><ul>
+<li>IIC&#x5730;&#x5740;&#x5206;7&#x4F4D;&#x5730;&#x5740;&#x548C;10&#x4F4D;&#x5730;&#x5740;</li>
+<li>IIC&#x5730;&#x5740;&#x4E3A;7&#x4F4D;&#x65F6;, &#x4F4E;&#x4F4D;&#x7528;&#x4E8E;&#x8868;&#x793A;&#x8BFB;&#x5199;, &#x56E0;&#x6B64;&#x5728;&#x6709;&#x7684;&#x9A71;&#x52A8;&#x4E2D;&#x9700;&#x8981;&#x5C06;&#x5B9E;&#x9645;&#x5730;&#x5740;&#x53F3;&#x79FB;1&#x4F4D;</li>
+<li>&#x82E5;&#x67D0;&#x4E9B;&#x5668;&#x4EF6;IIC&#x5730;&#x5740;&#x76F8;&#x540C;&#x5219;&#x4F1A;&#x4EA7;&#x751F;&#x51B2;&#x7A81;, &#x53EF;&#x4EE5;&#x4F7F;&#x7528;GPIO&#x8F6F;&#x4EF6;&#x6A21;&#x62DF;IIC</li>
+</ul>
+<p><em>IIC&#x534F;&#x8BAE;&#x5E76;&#x4E0D;&#x6807;&#x51C6;, &#x6BCF;&#x4E2A;&#x5382;&#x5BB6;&#x6709;&#x81EA;&#x5DF1;&#x7684;&#x89C4;&#x5B9A;, &#x4E00;&#x5B9A;&#x8981;&#x53C2;&#x8003;&#x6570;&#x636E;&#x624B;&#x518C;.</em></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://snowyying.site/2017/embed-io-twsi-i2c/" data-id="cjuh5p3rz001ko8213la4bqnn" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/I-O/">I/O</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IIC/">IIC</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/TWSI/">TWSI</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-embed-at-command" class="article article-type-post" itemscope="" itemprop="blogPost">
+
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/embed-at-command/">AT 指令短信和联网操作总结</a>
+    </h1>
+  
+
+      </header>
+    
+
+  <div class="article-meta">
+    <a href="/2017/embed-at-command/" class="article-date">
+  <time datetime="2017-06-05T02:34:06.000Z" itemprop="datePublished">2017-06-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Embedded-IoT/">Embedded & IoT</a>
+  </div>
+
+  </div>
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="AT-&#x6536;&#x53D1;&#x77ED;&#x4FE1;"><a href="#AT-&#x6536;&#x53D1;&#x77ED;&#x4FE1;" class="headerlink" title="AT &#x6536;&#x53D1;&#x77ED;&#x4FE1;"></a>AT &#x6536;&#x53D1;&#x77ED;&#x4FE1;</h2><p><strong>&#x53D1;&#x9001;</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1. AT+CMGF=1</span><br><span class="line">2. AT+CMGS=&quot;130xxxxxxxx&quot;</span><br><span class="line">&gt;</span><br><span class="line">3. 0x1A</span><br></pre></td></tr></table></figure>
+<p><em>&#x6CE8;&#x610F;: &#x6240;&#x6709; AT &#x6307;&#x4EE4;&#x5FC5;&#x987B;&#x4EE5; &#x201C;\r\n&#x201D; &#x7ED3;&#x5C3E;.</em></p>
+        
+          <p class="article-more-link">
+            <a href="/2017/embed-at-command/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://snowyying.site/2017/embed-at-command/" data-id="cjuh5p3rw001co821jnccj4s4" class="article-share-link">Share</a>
+      
+        <a href="http://snowyying.site/2017/embed-at-command/#ds-thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AT指令/">AT指令</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/短信/">短信</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-embed-misc-key-matrix" class="article article-type-post" itemscope="" itemprop="blogPost">
+
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/embed-misc-key-matrix/">GPIO 的矩阵按键扫描电路</a>
+    </h1>
+  
+
+      </header>
+    
+
+  <div class="article-meta">
+    <a href="/2017/embed-misc-key-matrix/" class="article-date">
+  <time datetime="2017-06-03T10:13:50.000Z" itemprop="datePublished">2017-06-03</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Embedded-IoT/">Embedded & IoT</a>
+  </div>
+
+  </div>
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>&#x5728;&#x952E;&#x76D8;&#x4E2D;&#x6309;&#x952E;&#x6570;&#x91CF;&#x8F83;&#x591A;&#x65F6;&#xFF0C;&#x4E3A;&#x4E86;&#x51CF;&#x5C11;I/O&#x53E3;&#x7684;&#x5360;&#x7528;&#xFF0C;&#x901A;&#x5E38;&#x5C06;&#x6309;&#x952E;&#x6392;&#x5217;&#x6210;&#x77E9;&#x9635;&#x5F62;&#x5F0F;&#x3002;&#x5728;&#x77E9;&#x9635;&#x5F0F;&#x952E;&#x76D8;&#x4E2D;&#xFF0C;&#x6BCF;&#x6761;&#x6C34;&#x5E73;&#x7EBF;&#x548C;&#x5782;&#x76F4;&#x7EBF;&#x5728;&#x4EA4;&#x53C9;&#x5904;&#x4E0D;&#x76F4;&#x63A5;&#x8FDE;&#x901A;&#xFF0C;&#x800C;&#x662F;&#x901A;&#x8FC7;&#x4E00;&#x4E2A;&#x6309;&#x952E;&#x52A0;&#x4EE5;&#x8FDE;&#x63A5;&#x3002;&#x8FD9;&#x6837;&#xFF0C;&#x4E00;&#x4E2A;&#x7AEF;&#x53E3;&#xFF08;&#x5982;P1&#x53E3;&#xFF09;&#x5C31;&#x53EF;&#x4EE5;&#x6784;&#x6210;4*4=16&#x4E2A;&#x6309;&#x952E;&#xFF0C;&#x6BD4;&#x4E4B;&#x76F4;&#x63A5;&#x5C06;&#x7AEF;&#x53E3;&#x7EBF;&#x7528;&#x4E8E;&#x952E;&#x76D8;&#x591A;&#x51FA;&#x4E86;&#x4E00;&#x500D;&#xFF0C;&#x800C;&#x4E14;&#x7EBF;&#x6570;&#x8D8A;&#x591A;&#xFF0C;&#x533A;&#x522B;&#x8D8A;&#x660E;&#x663E;&#xFF0C;&#x6BD4;&#x5982;&#x518D;&#x591A;&#x52A0;&#x4E00;&#x6761;&#x7EBF;&#x5C31;&#x53EF;&#x4EE5;&#x6784;&#x6210;20&#x952E;&#x7684;&#x952E;&#x76D8;&#xFF0C;&#x800C;&#x76F4;&#x63A5;&#x7528;&#x7AEF;&#x53E3;&#x7EBF;&#x5219;&#x53EA;&#x80FD;&#x591A;&#x51FA;&#x4E00;&#x952E;&#xFF08;9&#x952E;&#xFF09;&#x3002;</p>
+</blockquote>
+        
+          <p class="article-more-link">
+            <a href="/2017/embed-misc-key-matrix/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://snowyying.site/2017/embed-misc-key-matrix/" data-id="cjuh5p3ry001ho821umm9up2z" class="article-share-link">Share</a>
+      
+        <a href="http://snowyying.site/2017/embed-misc-key-matrix/#ds-thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GPIO/">GPIO</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Key/">Key</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/按键/">按键</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/按键扫描/">按键扫描</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/矩阵按键/">矩阵按键</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-embed-cross-compile" class="article article-type-post" itemscope="" itemprop="blogPost">
+
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/embed-cross-compile/">ARM 交叉编译配置</a>
+    </h1>
+  
+
+      </header>
+    
+
+  <div class="article-meta">
+    <a href="/2017/embed-cross-compile/" class="article-date">
+  <time datetime="2017-06-01T10:13:05.000Z" itemprop="datePublished">2017-06-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Embedded-IoT/">Embedded & IoT</a>
+  </div>
+
+  </div>
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Configure"><a href="#Configure" class="headerlink" title="Configure"></a>Configure</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">./configure --host=arm-linux \</span><br><span class="line">CC=arm-none-linux-gnueabi-gcc \</span><br><span class="line">CPP=arm-none-linux-gnueabi-cpp \</span><br><span class="line">CXX=arm-none-linux-gnueabi-g++ \</span><br><span class="line">AR=arm-none-linux-gnueabi-ar \</span><br><span class="line">RANLIB=arm-none-linux-gnueabi-ranlib</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://snowyying.site/2017/embed-cross-compile/" data-id="cjuh5p3ru0019o82146kl2s2j" class="article-share-link">Share</a>
+      
+        <a href="http://snowyying.site/2017/embed-cross-compile/#ds-thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ARM/">ARM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/交叉编译/">交叉编译</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/嵌入式/">嵌入式</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-os-linux-construct-comic" class="article article-type-post" itemscope="" itemprop="blogPost">
+
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/os-linux-construct-comic/">漫画趣解 linux 内核构造</a>
+    </h1>
+  
+
+      </header>
+    
+
+  <div class="article-meta">
+    <a href="/2017/os-linux-construct-comic/" class="article-date">
+  <time datetime="2017-05-20T04:35:44.000Z" itemprop="datePublished">2017-05-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/OS/">OS</a>
+  </div>
+
+  </div>
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><code>&#x8F6C;&#x81EA;: http://www.techug.com/post/carton-inside-the-linux-kernel.html</code></p>
+<blockquote>
+<p>&#x4ECA;&#x5929;&#xFF0C;&#x6211;&#x6765;&#x4E3A;&#x5927;&#x5BB6;&#x89E3;&#x8BFB;&#x4E00;&#x5E45;&#x6765;&#x81EA; TurnOff.us &#x7684;&#x6F2B;&#x753B; &#x201C;InSide The Linux Kernel[1]&#x201D; &#x3002; TurnOff.us[2] &#x662F;&#x4E00;&#x4E2A;&#x6781;&#x5BA2;&#x6F2B;&#x753B;&#x7F51;&#x7AD9;&#xFF0C;&#x4F5C;&#x8005;Daniel Stori &#x753B;&#x4E86;&#x4E00;&#x4E9B;&#x975E;&#x5E38;&#x6709;&#x8DA3;&#x7684;&#x5173;&#x4E8E;&#x7F16;&#x7A0B;&#x8BED;&#x8A00;&#x3001;Web&#x3001;&#x4E91;&#x8BA1;&#x7B97;&#x3001;Linux &#x76F8;&#x5173;&#x7684;&#x6F2B;&#x753B;&#x3002;&#x4ECA;&#x5929;&#x89E3;&#x8BFB;&#x7684;&#x4FBF;&#x662F;&#x5176;&#x4E2D;&#x7684;&#x4E00;&#x7BC7;&#x3002;</p>
+</blockquote>
+<p>&#x5728;&#x5F00;&#x59CB;&#xFF0C;&#x6211;&#x4EEC;&#x5148;&#x6765;&#x770B;&#x770B;&#x8FD9;&#x5E45;&#x6F2B;&#x753B;&#x7684;&#x5168;&#x8C8C;&#xFF01;</p>
+<p><img src="/2017/os-linux-construct-comic/182127x7wi7obls96k8yb5-1000x1008.gif" alt="Inside the Linux Kernel"></p>
+<p>&#x8FD9;&#x5E45;&#x6F2B;&#x753B;&#x662F;&#x4EE5;&#x4E00;&#x4E2A;&#x623F;&#x5B50;&#x7684;&#x4FA7;&#x65B9;&#x5228;&#x9762;&#x56FE;&#x6765;&#x7ED8;&#x753B;&#x7684;&#x3002;&#x4F7F;&#x7528;&#x8FD9;&#x6837;&#x7684;&#x4E00;&#x4E2A;&#x623F;&#x5B50;&#x6765;&#x4EE3;&#x8868; Linux &#x5185;&#x6838;&#x3002;</p>
+        
+          <p class="article-more-link">
+            <a href="/2017/os-linux-construct-comic/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://snowyying.site/2017/os-linux-construct-comic/" data-id="cjuh5p3uu0065o821lsr6905v" class="article-share-link">Share</a>
+      
+        <a href="http://snowyying.site/2017/os-linux-construct-comic/#ds-thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OS/">OS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/内核/">内核</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/构造/">构造</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-sa-cloud-iaas-paas-saas" class="article article-type-post" itemscope="" itemprop="blogPost">
+
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/sa-cloud-iaas-paas-saas/">云服务 IaaS / PaaS / SaaS 的区别</a>
+    </h1>
+  
+
+      </header>
+    
+
+  <div class="article-meta">
+    <a href="/2017/sa-cloud-iaas-paas-saas/" class="article-date">
+  <time datetime="2017-05-07T16:15:41.000Z" itemprop="datePublished">2017-05-08</time>
 </a>
     
   <div class="article-category">
@@ -99,14 +577,17 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h2 id="&#x53C2;&#x8003;&#x94FE;&#x63A5;"><a href="#&#x53C2;&#x8003;&#x94FE;&#x63A5;" class="headerlink" title="&#x53C2;&#x8003;&#x94FE;&#x63A5;"></a>&#x53C2;&#x8003;&#x94FE;&#x63A5;</h2><p><a href="https://m.oursky.com/saas-paas-and-iaas-explained-in-one-graphic-d56c3e6f4606" target="_blank" rel="noopener">SaaS, PaaS and IaaS explained in one graphic</a>, by David Ng<br><a href="https://www.computenext.com/blog/when-to-use-saas-paas-and-iaas/" target="_blank" rel="noopener">When to use SaaS, PaaS, and IaaS</a>, by Eamonn Colman</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://snowyying.site/2017/sa-course-p11-requirement-engineering/" data-id="cjqgrjzyy008s80ucabmyocug" class="article-share-link">Share</a>
+      <a data-url="http://snowyying.site/2017/sa-cloud-iaas-paas-saas/" data-id="cjuh5p3ux006do8212k24loqc" class="article-share-link">Share</a>
+      
+        <a href="http://snowyying.site/2017/sa-cloud-iaas-paas-saas/#ds-thread" class="article-comment-link">留言</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SA/">SA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/系统分析师/">系统分析师</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Cloud/">Cloud</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IaaS/">IaaS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PaaS/">PaaS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SA/">SA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SaaS/">SaaS</a></li></ul>
 
     </footer>
   </div>
@@ -116,7 +597,7 @@
 
 
   
-    <article id="post-sa-course-p10-system-analysis" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-swe-sa-4a1-model" class="article article-type-post" itemscope="" itemprop="blogPost">
 
   <div class="article-inner">
     
@@ -125,7 +606,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/sa-course-p10-system-analysis/">系统分析师教程学习 - 系统分析</a>
+      <a class="article-title" href="/2017/swe-sa-4a1-model/">架构设计4+1模型</a>
     </h1>
   
 
@@ -133,7 +614,56 @@
     
 
   <div class="article-meta">
-    <a href="/2017/sa-course-p10-system-analysis/" class="article-date">
+    <a href="/2017/swe-sa-4a1-model/" class="article-date">
+  <time datetime="2017-05-03T03:29:30.000Z" itemprop="datePublished">2017-05-03</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/SA-SWE/">SA & SWE</a>
+  </div>
+
+  </div>
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="/2017/swe-sa-4a1-model/sa_4_1_model.png" alt="4+1&#x6A21;&#x578B;"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://snowyying.site/2017/swe-sa-4a1-model/" data-id="cjuh5p3w80091o821ocrdxvrc" class="article-share-link">Share</a>
+      
+        <a href="http://snowyying.site/2017/swe-sa-4a1-model/#ds-thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/4-1/">4+1</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SWE/">SWE</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/架构/">架构</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-sa2v4-p10-system-analysis" class="article article-type-post" itemscope="" itemprop="blogPost">
+
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/sa2v4-p10-system-analysis/">系统分析师教程 - 系统分析</a>
+    </h1>
+  
+
+      </header>
+    
+
+  <div class="article-meta">
+    <a href="/2017/sa2v4-p10-system-analysis/" class="article-date">
   <time datetime="2017-04-11T07:21:10.000Z" itemprop="datePublished">2017-04-11</time>
 </a>
     
@@ -148,26 +678,22 @@
         <p>TODO</p>
 <blockquote>
 <p>&#x7CFB;&#x7EDF;&#x5206;&#x6790;&#x9636;&#x6BB5;&#x4E5F;&#x79F0;&#x4E3A;&#x903B;&#x8F91;&#x8BBE;&#x8BA1;&#x9636;&#x6BB5;&#xFF0C;&#x5176;&#x4EFB;&#x52A1;&#x662F;&#x6839;&#x636E;&#x7CFB;&#x7EDF;&#x8BBE;&#x8BA1;&#x4EFB;&#x52A1;&#x4E66;&#x6240;&#x786E;&#x5B9A;&#x7684;&#x8303;&#x56F4;&#xFF0C;&#x5BF9;&#x73B0;&#x6709;&#x7CFB;&#x7EDF;&#x8FDB;&#x884C;&#x8BE6;&#x7EC6;&#x8C03;&#x67E5;&#xFF0C;&#x63CF;&#x8FF0;&#x73B0;&#x6709;&#x7CFB;&#x7EDF;&#x7684;&#x4E1A;&#x52A1;&#x6D41;&#x7A0B;&#xFF0C;&#x6307;&#x51FA;&#x73B0;&#x6709;&#x7CFB;&#x7EDF;&#x7684;&#x5C40;&#x9650;&#x6027;&#x548C;&#x4E0D;&#x8DB3;&#x4E4B;&#x5904;&#xFF0C;&#x786E;&#x5B9A;&#x65B0;&#x7CFB;&#x7EDF;&#x7684;&#x57FA;&#x672C;&#x76EE;&#x6807;&#x548C;&#x903B;&#x8F91;&#x529F;&#x80FD;&#x8981;&#x6C42;&#xFF0C;&#x5373;&#x63D0;&#x51FA;&#x65B0;&#x7CFB;&#x7EDF;&#x7684;&#x903B;&#x8F91;&#x6A21;&#x578B;&#x3002;</p>
+</blockquote>
+<blockquote>
 <p>&#x5728;&#x7CFB;&#x7EDF;&#x5206;&#x6790;&#x9636;&#x6BB5;&#xFF0C;&#x7CFB;&#x7EDF;&#x5206;&#x6790;&#x5E08;&#x8981;&#x548C;&#x7528;&#x6237;&#x8D77;&#x7EC6;&#x81F4;&#x5730;&#x8FDB;&#x884C;&#x8C03;&#x67E5;&#x5206;&#x6790;&#xFF0C;&#x628A;&#x7528;&#x6237;&#x7684;&#x521D;&#x59CB;&#x9700;&#x6C42;&#x5177;&#x4F53;&#x5316;&#x3001;&#x660E;&#x786E;&#x5316;&#xFF0C;&#x6700;&#x7EC8;&#x8F6C;&#x6362;&#x6210;&#x5173;&#x4E8E;&#x65B0;&#x7CFB;&#x7EDF;&#x201C;&#x505A;&#x4EC0;&#x4E48;&#x201D;&#x7684;&#x903B;&#x8F91;&#x6A21;&#x578B;&#x3002;&#x7CFB;&#x7EDF;&#x5206;&#x6790;&#x662F;&#x6574;&#x4E2A;&#x7CFB;&#x7EDF;&#x5EFA;&#x8BBE;&#x7684;&#x5173;&#x952E;&#x9636;&#x6BB5;&#xFF0C;&#x4E5F;&#x662F;&#x4FE1;&#x606F;&#x7CFB;&#x7EDF;&#x5EFA;&#x8BBE;&#x4E0E;&#x4E00;&#x822C;&#x5DE5;&#x7A0B;&#x9879;&#x76EE;&#x7684;&#x91CD;&#x8981;&#x533A;&#x522B;&#x4E4B;&#x6240;&#x5728;&#x3002;&#x7CFB;&#x7EDF;&#x5206;&#x6790;&#x9636;&#x6BB5;&#x7684;&#x5DE5;&#x4F5C;&#x6210;&#x679C;&#x4F53;&#x73B0;&#x5728;&#x7CFB;&#x7EDF;&#x9700;&#x6C42;&#x89C4;&#x683C;&#x8BF4;&#x660E;&#x4E66;&#x4E2D;&#xFF0C;&#x8FD9;&#x662F;&#x7CFB;&#x7EDF;&#x5EFA;&#x8BBE;&#x7684;&#x5FC5;&#x5907;&#x6587;&#x4EF6;&#xFF0C;&#x662F;&#x7CFB;&#x7EDF;&#x8BBE;&#x8BA1;&#x9636;&#x6BB5;&#x7684;&#x5DE5;&#x4F5C;&#x4F9D;&#x636E;&#xFF0C;&#x4E5F;&#x8DB3;&#x5C06;&#x6765;&#x7CFB;&#x7EDF;&#x9A8C;&#x6536;&#x7684;&#x4F9D;&#x636E;&#x3002;</p>
 </blockquote>
-<h2 id="10-1-&#x7CFB;&#x7EDF;&#x5206;&#x6790;&#x6982;&#x8FF0;"><a href="#10-1-&#x7CFB;&#x7EDF;&#x5206;&#x6790;&#x6982;&#x8FF0;" class="headerlink" title="10.1 &#x7CFB;&#x7EDF;&#x5206;&#x6790;&#x6982;&#x8FF0;"></a>10.1 &#x7CFB;&#x7EDF;&#x5206;&#x6790;&#x6982;&#x8FF0;</h2><p>&#x5728;&#x4FE1;&#x606F;&#x7CFB;&#x7EDF;&#x751F;&#x547D;&#x5468;&#x671F;&#x4E2D;&#xFF0C;&#x7CFB;&#x7EDF;&#x5206;&#x6790;&#x662F;&#x7CFB;&#x7EDF;&#x5F00;&#x53D1;&#x4E2D;&#x6700;&#x91CD;&#x8981;&#x3001;&#x6700;&#x56F0;&#x96BE;&#x7684;&#x9636;&#x6BB5;&#xFF0C;&#x5B83;&#x662F;&#x5E94;&#x7528;&#x7CFB;&#x7EDF;&#x601D;&#x60F3;&#x548C;&#x65B9;&#x6CD5;&#xFF0C;&#x628A;&#x590D;&#x6742;&#x7684;&#x5BF9;&#x8C61;&#x5206;&#x89E3;&#x4E3A;&#x7B80;&#x5355;&#x7684;&#x7EC4;&#x6210;&#x90E8;&#x5206;&#xFF0C;&#x627E;&#x51FA;&#x8FD9;&#x4E9B;&#x90E8;&#x5206;&#x7684;&#x57FA;&#x672C;&#x5C5E;&#x6027;&#x548C;&#x5F7C;&#x6B64;&#x4E4B;&#x95F4;&#x7684;&#x5173;&#x7CFB;&#x7684;&#x8FC7;&#x7A0B;&#x3002;&#x5B9E;&#x8DF5;&#x8BC1;&#x660E;&#xFF0C;&#x7CFB;&#x7EDF;&#x5206;&#x6790;&#x5DE5;&#x4F5C;&#x7684;&#x597D;&#x574F;&#xFF0C;&#x5728;&#x5F88;&#x5927;&#x7A0B;&#x5EA6;&#x4E0A;&#x51B3;&#x5B9A;&#x4FE1;&#x606F;&#x7CFB;&#x7EDF;&#x7684;&#x6210;&#x8D25;&#x3002;</p>
-<h4 id="1-&#x7CFB;&#x7EDF;&#x5206;&#x6790;&#x7684;&#x4EFB;&#x52A1;"><a href="#1-&#x7CFB;&#x7EDF;&#x5206;&#x6790;&#x7684;&#x4EFB;&#x52A1;" class="headerlink" title="1 &#x7CFB;&#x7EDF;&#x5206;&#x6790;&#x7684;&#x4EFB;&#x52A1;"></a>1 &#x7CFB;&#x7EDF;&#x5206;&#x6790;&#x7684;&#x4EFB;&#x52A1;</h4><p>&#x7CFB;&#x7EDF;&#x5206;&#x6790;&#x9636;&#x6BB5;&#x7684;&#x57FA;&#x672C;&#x4EFB;&#x52A1;&#x662F;&#x7CFB;&#x7EDF;&#x5206;&#x6790;&#x5E08;&#x548C;&#x7528;&#x6237;&#x5728;&#x5145;&#x5206;&#x89E3;&#x7528;&#x6237;&#x9700;&#x6C42;&#x7684;&#x57FA;&#x7840;&#x4E0A;&#xFF0C;&#x628A;&#x53CC;&#x65B9;&#x5BF9;&#x65B0;&#x7CFB;&#x7EDF;&#x7684;&#x7406;&#x89E3;&#x8868;&#x8FBE;&#x4E3A;&#x7CFB;&#x7EDF;&#x9700;&#x6C42;&#x89C4;&#x683C;&#x8BF4;&#x660E;&#x4E66;&#x3002;&#x65B0;&#x7CFB;&#x7EDF;&#x65E2;&#x8981;&#x6E90;&#x4E8E;&#x73B0;&#x6709;&#x7CFB;&#x7EDF;&#xFF0C;&#x53C8;&#x8981;&#x9AD8;&#x4E8E;&#x73B0;&#x6709;&#x7CFB;&#x7EDF;&#x3002;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x65B0;&#x7CFB;&#x7EDF;&#x8981;&#x6BD4;&#x73B0;&#x6709;&#x7CFB;&#x7EDF;&#x529F;&#x80FD;&#x66F4;&#x5F3A;&#xFF0C;&#x6548;&#x7387;&#x66F4;&#x9AD8;&#xFF0C;&#x4F7F;&#x7528;&#x66F4;&#x65B9;&#x4FBF;&#x3002;&#x7CFB;&#x7EDF;&#x5206;&#x6790;&#x5E08;&#x8981;&#x5728;&#x7CFB;&#x7EDF;&#x89C4;&#x5212;&#x7684;&#x57FA;&#x7840;&#x4E0A;&#xFF0C;&#x4E0E;&#x7528;&#x6237;&#x5BC6;&#x5207;&#x914D;&#x5408;&#xFF0C;&#x7528;&#x7CFB;&#x7EDF;&#x7684;&#x601D;&#x60F3;&#x548C;&#x65B9;&#x6CD5;&#xFF0C;&#x5BF9;&#x4F01;&#x4E1A;&#x7684;&#x4E1A;&#x52A1;&#x6D3B;&#x52A8;&#x8FDB;&#x884C;&#x5168;&#x9762;&#x7684;&#x8C03;&#x67E5;&#x5206;&#x6790;&#xFF0C;&#x8BE6;&#x7EC6;&#x638C;&#x63E1;&#x6709;&#x5173;&#x7684;&#x5DE5;&#x4F5C;&#x6D41;&#x7A0B;&#xFF0C;&#x6536;&#x96C6;&#x4E0E;&#x7CFB;&#x7EDF;&#x6709;&#x5173;&#x7684;&#x5404;&#x79CD;&#x8D44;&#x6599;&#xFF0C;&#x5206;&#x6790;&#x73B0;&#x6709;&#x7CFB;&#x7EDF;&#x7684;&#x5C40;&#x9650;&#x6027;&#x548C;&#x4E0D;&#x8DB3;&#x4E4B;&#x5904;&#xFF0C;&#x627E;&#x51FA;&#x5236;&#x7EA6;&#x73B0;&#x6709;&#x7CFB;&#x7EDF;&#x7684;&#x74F6;&#x9888;&#xFF0C;&#x786E;&#x5B9A;&#x65B0;&#x7CFB;&#x7EDF;&#x7684;&#x903B;&#x8F91;&#x529F;&#x80FD;&#x3002;</p>
-<h4 id="2-&#x7CFB;&#x7EDF;&#x5206;&#x6790;&#x7684;&#x96BE;&#x70B9;"><a href="#2-&#x7CFB;&#x7EDF;&#x5206;&#x6790;&#x7684;&#x96BE;&#x70B9;" class="headerlink" title="2 &#x7CFB;&#x7EDF;&#x5206;&#x6790;&#x7684;&#x96BE;&#x70B9;"></a>2 &#x7CFB;&#x7EDF;&#x5206;&#x6790;&#x7684;&#x96BE;&#x70B9;</h4><p>&#x7CFB;&#x7EDF;&#x5206;&#x6790;&#x9636;&#x6BB5;&#x8981;&#x660E;&#x786E;&#x65B0;&#x7CFB;&#x7EDF;&#x201C;&#x505A;&#x4EC0;&#x4E48;&#x201D;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x53EA;&#x6709;&#x660E;&#x786E;&#x4E86;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x540E;&#x7EED;&#x7684;&#x8BBE;&#x8BA1;&#x4E0E;&#x5B9E;&#x65CC;&#x8FC7;&#x7A0B;&#x624D;&#x80FD;&#x5F97;&#x4EE5;&#x5F00;&#x5C55;&#x3002;&#x4F46;&#x662F;&#xFF0C;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x7684;&#x660E;&#x786E;&#x662F;&#x6BD4;&#x8F83;&#x56F0;&#x96BE;&#x7684;&#xFF0C;&#x4E3B;&#x8981;&#x4F53;&#x73B0;&#x5728;&#x4EE5;&#x4E0B;&#x4E09;&#x4E2A;&#x65B9;&#x9762;&#xFF1A;</p>
-<p>1) &#x7CFB;&#x7EDF;&#x5206;&#x6790;&#x5E08;&#x4E0E;&#x7528;&#x6237;&#x5BF9;&#x7CFB;&#x7EDF;&#x7684;&#x7406;&#x89E3;&#x4E0D;&#x540C;&#x3002;&#x4E00;&#x65B9;&#x9762;&#xFF0C;&#x7CFB;&#x7EDF;&#x5206;&#x6790;&#x5E08;&#x901A;&#x5E38;&#x662F;IT&#x4E13;&#x5BB6;&#xFF0C;&#x4F46;&#x7F3A;&#x4E4F;&#x8DB3;&#x591F;&#x7684;&#x7528;&#x6237;&#x4E1A;&#x52A1;&#x9886;&#x57DF;&#x7684;&#x77E5;&#x8BC6;&#xFF0C;&#x5728;&#x7CFB;&#x7EDF;&#x5206;&#x6790;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x5F80;&#x5F80;&#x9762;&#x4E34;&#x626F;&#x52A1;&#x6D41;&#x7A0B;&#x7684;&#x56F0;&#x60D1;&#x3002;&#x4E00;&#x4E2A;&#x7A0D;&#x5177;&#x89C4;&#x6A21;&#x7684;&#x7CFB;&#x7EDF;&#xFF0C;&#x5176;&#x4E1A;&#x52A1;&#x6570;&#x636E;&#x91CF;&#x662F;&#x76F8;&#x5F53;&#x5927;&#x7684;&#xFF0C;&#x5404;&#x79CD;&#x4E1A;&#x52A1;&#x4E4B;&#x95F4;&#x7684;&#x5173;&#x7CFB;&#x4E5F;&#x662F;&#x76F8;&#x5F53;&#x590D;&#x6742;&#x7684;&#x3002;&#x4E0D;&#x61C2;&#x4E1A;&#x52A1;&#x7684;&#x7CFB;&#x7EDF;&#x5206;&#x6790;&#x5E08;&#x5F80;&#x5F80;&#x88AB;&#x5404;&#x79CD;&#x4FE1;&#x606F;&#x6D41;&#x7A0B;&#x6240;&#x6DF9;&#x6CA1;&#xFF0C;&#x96BE;&#x4EE5;&#x7406;&#x6E05;&#x5934;&#x7EEA;&#xFF0C;&#x66F4;&#x96BE;&#x4EE5;&#x5206;&#x6790;&#x51FA;&#x5236;&#x7EA6;&#x73B0;&#x6709;&#x7CFB;&#x7EDF;&#x7684;&#x74F6;&#x9888;&#x95EE;&#x9898;&#xFF1B;&#x53E6;&#x4E00;&#x65B9;&#x9762;&#xFF0C;&#x7528;&#x6237;&#x7CBE;&#x901A;&#x4E1A;&#x52A1;&#xFF0C;&#x4F46;&#x901A;&#x5E38;&#x7F3A;&#x4E4F;&#x8DB3;&#x591F;&#x7684;IT&#x77E5;&#x8BC6;&#xFF0C;&#x5BF9;&#x4FE1;&#x606F;&#x7CFB;&#x7EDF;&#x80FD;&#x201C;&#x505A;&#x4EC0;&#x4E48;&#x201D;&#x548C;&#x4E0D;&#x80FD;&#x201C;&#x505A;&#x4EC0;&#x4E48;&#x201D;&#x6BD4;&#x8F83;&#x6A21;&#x7CCA;&#xFF0C;&#x4E5F;&#x4E0D;&#x77E5;&#x9053;&#x8BE5;&#x5411;&#x7CFB;&#x7EDF;&#x5206;&#x6790;&#x5E08;&#x201C;&#x4EA4;&#x4EE3;&#x201D;&#x4EC0;&#x4E48;&#x3002;&#x5BF9;&#x4E8E;&#x4E00;&#x4E9B;&#x5177;&#x4F53;&#x7684;&#x4E1A;&#x52A1;&#xFF0C;&#x7528;&#x6237;&#x5F80;&#x5F80;&#x8BA4;&#x4E3A;&#x8FD9;&#x8DB3;&#x7406;&#x6240;&#x5F53;&#x7136;&#x7684;&#xFF0C;&#x7CFB;&#x7EDF;&#x5206;&#x6790;&#x5E08;&#x5E94;&#x8BE5;&#x77E5;&#x9053;&#x7684;&#xFF0C;&#x65E0;&#x9700;&#x4ECB;&#x7ECD;&#x3002;&#x4F46;&#x4E8B;&#x5B9E;&#x4E0A;&#xFF0C;&#x7CFB;&#x7EDF;&#x5206;&#x6790;&#x5E08;&#x5374;&#x5E76;&#x4E0D;&#x77E5;&#x9053;&#x3002;&#x8FD9;&#x6837;&#xFF0C;&#x5C31;&#x9020;&#x6210;&#x4E86;&#x7CFB;&#x7EDF;&#x5206;&#x6790;&#x5E08;&#x548C;&#x7528;&#x6237;&#x5BF9;&#x7CFB;&#x7EDF;&#x7684;&#x4E0D;&#x540C;&#x7406;&#x89E3;&#x3002;</p>
-<p>2) &#x7CFB;&#x7EDF;&#x5206;&#x6790;&#x5E08;&#x4E0E;&#x7528;&#x6237;&#x6C9F;&#x901A;&#x56F0;&#x96BE;&#x3002;&#x4FD7;&#x8BDD;&#x8BF4;&#xFF1A;&#x201C;&#x9694;&#x884C;&#x5982;&#x9694;&#x5C71;&#x201D;&#x3002;&#x7CFB;&#x7EDF;&#x5206;&#x6790;&#x5E08;&#x4E0E;&#x7528;&#x6237;&#x6240;&#x5904;&#x884C;&#x4E1A;&#x4E0D;&#x540C;&#xFF0C;&#x77E5;&#x8BC6;&#x7ED3;&#x6784;&#x4E0D;&#x540C;&#xFF0C;&#x7ECF;&#x5386;&#x4E0D;&#x540C;&#xFF0C;&#x4F7F;&#x5F97;&#x53CC;&#x65B9;&#x7684;&#x4EA4;&#x6D41;&#x5341;&#x5206;&#x56F0;&#x96BE;&#x3002;&#x5728;&#x4E0E;&#x7528;&#x6237;&#x4EA4;&#x6D41;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x7CFB;&#x7EDF;&#x5206;&#x6790;&#x5E08;&#x7684;&#x611F;&#x89C9;&#x901A;&#x5E38;&#x662F;&#x201C;&#x79C0;&#x624D;&#x78B0;&#x5230;&#x5175;&#x201D;&#xFF0C;&#x800C;&#x7528;&#x6237;&#x5374;&#x8BA4;&#x4E3A;&#x201C;&#x6211;&#x51ED;&#x4EC0;&#x4E48;&#x7ED9;&#x4F60;&#x626B;&#x76F2;&#x201D;&#x3002;&#x8FD9;&#x6837;&#xFF0C;&#x5C31;&#x5BB9;&#x6613;&#x5BFC;&#x81F4;&#x7CFB;&#x7EDF;&#x8C03;&#x67E5;&#x51FA;&#x73B0;&#x9057;&#x548C;&#x8BEF;&#x89E3;&#x3002;&#x8FD9;&#x4E9B;&#x9057;&#x6F0F;&#x548C;&#x8BEF;&#x89E3;&#x5C31;&#x662F;&#x7CFB;&#x7EDF;&#x7684;&#x9690;&#x60A3;&#xFF0C;&#x4F1A;&#x4F7F;&#x7CFB;&#x7EDF;&#x5F00;&#x53D1;&#x504F;&#x79BB;&#x6B63;&#x786E;&#x65B9;&#x5411;&#x3002;</p>
-<p>3) &#x73AF;&#x5883;&#x7684;&#x4E0D;&#x65AD;&#x53D8;&#x5316;&#x3002;&#x7CFB;&#x7EDF;&#x5206;&#x6790;&#x9636;&#x6BB5;&#x800D;&#x901A;&#x8FC7;&#x8C03;&#x67E5;&#x5206;&#x6790;&#xFF0C;&#x62BD;&#x8C61;&#x51FA;&#x65B0;&#x7CFB;&#x7EDF;&#x7684;&#x903B;&#x8F91;&#x6A21;&#x578B;&#xFF0C;&#x9501;&#x5B9A;&#x7CFB;&#x7EDF;&#x8FB9;&#x754C;&#x3001;&#x529F;&#x80FD;&#x3001;&#x5904;&#x7406;&#x8FC7;&#x7A0B;&#x548C;&#x4FE1;&#x606F;&#x7ED3;&#x6784;&#xFF0C;&#x4E3A;&#x7CFB;&#x7EDF;&#x8BBE;&#x8BA1;&#x5960;&#x5B9A;&#x57FA;&#x7840;&#x3002;&#x4F46;&#x662F;&#xFF0C;&#x4F01;&#x4E1A;&#x5185;&#x3001;&#x5916;&#x90E8;&#x73AF;&#x5883;&#x603B;&#x5728;&#x4E0D;&#x65AD;&#x5730;&#x53D1;&#x751F;&#x53D8;&#x5316;&#xFF0C;&#x5BF9;&#x4FE1;&#x606F;&#x7CFB;&#x7EDF;&#x63D0;&#x51FA;&#x65B0;&#x7684;&#x8981;&#x6C42;&#x3002;&#x53EA;&#x6709;&#x9002;&#x5E94;&#x8FD9;&#x4E9B;&#x8981;&#x6C42;&#xFF0C;&#x4FE1;&#x606F;&#x7CFB;&#x7EDF;&#x624D;&#x80FD;&#x751F;&#x5B58;&#x4E0B;&#x53BB;&#x3002;&#x5728;&#x7CFB;&#x7EDF;&#x5206;&#x6790;&#x9636;&#x6BB5;&#xFF0C;&#x7CFB;&#x7EDF;&#x5206;&#x6790;&#x5E08;&#x9700;&#x8981;&#x5145;&#x5206;&#x8003;&#x8651;&#x73AF;&#x5883;&#x7684;&#x53D8;&#x5316;&#xFF0C;&#x9057;&#x61BE;&#x7684;&#x662F;&#xFF0C;&#x8981;&#x5B8C;&#x5168;&#x786E;&#x5B9A;&#x7CFB;&#x7EDF;&#x73AF;&#x5883;&#x662F;&#x6BD4;&#x8F83;&#x56F0;&#x96BE;&#x7684;&#xFF0C;&#x6709;&#x65F6;&#x751A;&#x81F3;&#x662F;&#x4E0D;&#x53EF;&#x80FD;&#x7684;&#x3002;</p>
         
           <p class="article-more-link">
-            <a href="/2017/sa-course-p10-system-analysis/#more">Read More</a>
+            <a href="/2017/sa2v4-p10-system-analysis/#more">Read More</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://snowyying.site/2017/sa-course-p10-system-analysis/" data-id="cjqgrjzyk008h80ucmhgrczja" class="article-share-link">Share</a>
+      <a data-url="http://snowyying.site/2017/sa2v4-p10-system-analysis/" data-id="cjuh5p44f00rvo821bacqdn8u" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SA/">SA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/系统分析师/">系统分析师</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SA/">SA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/系统分析/">系统分析</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/系统分析师/">系统分析师</a></li></ul>
 
     </footer>
   </div>
@@ -177,158 +703,7 @@
 
 
   
-    <article id="post-sa-course-p09-system-planning" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/sa-course-p09-system-planning/">系统分析师教程学习 - 系统规划</a>
-    </h1>
-  
-
-      </header>
-    
-
-  <div class="article-meta">
-    <a href="/2017/sa-course-p09-system-planning/" class="article-date">
-  <time datetime="2017-04-09T07:16:50.000Z" itemprop="datePublished">2017-04-09</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/SA-SWE/">SA & SWE</a>
-  </div>
-
-  </div>
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="&#x7CFB;&#x7EDF;&#x89C4;&#x5212;"><a href="#&#x7CFB;&#x7EDF;&#x89C4;&#x5212;" class="headerlink" title="&#x7CFB;&#x7EDF;&#x89C4;&#x5212;"></a>&#x7CFB;&#x7EDF;&#x89C4;&#x5212;</h1><blockquote>
-<p>&#x7CFB;&#x7EDF;&#x89C4;&#x5212;&#x662F;&#x4FE1;&#x606F;&#x7CFB;&#x7EDF;&#x751F;&#x547D;&#x5468;&#x671F;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x9636;&#x6BB5;, &#x5176;&#x4EFB;&#x52A1;&#x662F;&#x5BF9;&#x4FE1;&#x606F;&#x7CFB;&#x7EDF;&#x7684;&#x73B0;&#x6709;&#x72B6;&#x51B5;, &#x73AF;&#x5883;&#x548C;&#x76EE;&#x6807;, &#x8FDB;&#x884C;&#x521D;&#x6B65;&#x8C03;&#x67E5;. &#x6839;&#x636E;&#x4F01;&#x4E1A;&#x7684;&#x76EE;&#x6807;&#x548C;&#x6218;&#x7565;, &#x786E;&#x5B9A;&#x4FE1;&#x606F;&#x7CFB;&#x7EDF;&#x53D1;&#x53D1;&#x5C55;&#x6218;&#x7565;, &#x5BF9;&#x5EFA;&#x8BBE;&#x65B0;&#x7CFB;&#x7EDF;&#x7684;&#x9700;&#x6C42;&#x8FDB;&#x884C;&#x5206;&#x6790;&#x548C;&#x9884;&#x6D4B;. &#x540C;&#x65F6;&#x8003;&#x8651;&#x5EFA;&#x8BBE;&#x65B0;&#x7CFB;&#x7EDF;&#x6240;&#x53D7;&#x5230;&#x7684;&#x5404;&#x79CD;&#x7EA6;&#x675F;, &#x7814;&#x7A76;&#x5EFA;&#x8BBE;&#x65B0;&#x7CFB;&#x7EDF;&#x7684;&#x5FC5;&#x8981;&#x6027;&#x548C;&#x53EF;&#x884C;&#x6027;. &#x6839;&#x636E;&#x9700;&#x8981;&#x548C;&#x53EF;&#x80FD;, &#x7ED9;&#x51FA;&#x62DF;&#x5EFA;&#x7CFB;&#x7EDF;&#x7684;&#x5907;&#x9009;&#x65B9;&#x6848;. &#x5BF9;&#x8FD9;&#x4E9B;&#x65B9;&#x6848;&#x8FDB;&#x884C;&#x53EF;&#x884C;&#x6027;&#x5206;&#x6790;, &#x5199;&#x51FA;&#x53EF;&#x884C;&#x6027;&#x7814;&#x7A76;&#x62A5;&#x544A;. &#x53EF;&#x884C;&#x6027;&#x7814;&#x7A76;&#x62A5;&#x544A;&#x5BA1;&#x8BAE;&#x901A;&#x8FC7;&#x4EE5;&#x540E;, &#x5C06;&#x65B0;&#x7CFB;&#x7EDF;&#x5EFA;&#x8BBE;&#x65B9;&#x6848;&#x53CA;&#x5B9E;&#x65BD;&#x8BA1;&#x5212;&#x7F16;&#x5199;&#x6210;&#x7CFB;&#x7EDF;&#x4EFB;&#x52A1;&#x8BBE;&#x8BA1;&#x4E66;.</p>
-</blockquote>
-<h2 id="&#x521D;&#x6B65;&#x8C03;&#x67E5;"><a href="#&#x521D;&#x6B65;&#x8C03;&#x67E5;" class="headerlink" title="&#x521D;&#x6B65;&#x8C03;&#x67E5;"></a>&#x521D;&#x6B65;&#x8C03;&#x67E5;</h2><ol>
-<li>&#x521D;&#x6B65;&#x8C03;&#x67E5;&#x7684;&#x76EE;&#x6807;</li>
-<li>&#x521D;&#x6B65;&#x8C03;&#x67E5;&#x7684;&#x65B9;&#x5F0F;</li>
-<li>&#x521D;&#x6B65;&#x8C03;&#x67E5;&#x7684;&#x5185;&#x5BB9;</li>
-</ol>
-<h2 id="&#x53EF;&#x884C;&#x6027;&#x7814;&#x7A76;-&#x53EF;&#x884C;&#x6027;&#x5206;&#x6790;"><a href="#&#x53EF;&#x884C;&#x6027;&#x7814;&#x7A76;-&#x53EF;&#x884C;&#x6027;&#x5206;&#x6790;" class="headerlink" title="&#x53EF;&#x884C;&#x6027;&#x7814;&#x7A76; (&#x53EF;&#x884C;&#x6027;&#x5206;&#x6790;)"></a>&#x53EF;&#x884C;&#x6027;&#x7814;&#x7A76; (&#x53EF;&#x884C;&#x6027;&#x5206;&#x6790;)</h2><ol>
-<li>&#x53EF;&#x884C;&#x6027;&#x8BC4;&#x4EF7;&#x51C6;&#x5219;</li>
-<li>&#x53EF;&#x884C;&#x6027;&#x7814;&#x7A76;&#x6B65;&#x9AA4;</li>
-<li>&#x53EF;&#x884C;&#x6027;&#x7814;&#x7A76;&#x62A5;&#x544A;</li>
-</ol>
-<h2 id="&#x6210;&#x672C;&#x6548;&#x76CA;&#x5206;&#x6790;"><a href="#&#x6210;&#x672C;&#x6548;&#x76CA;&#x5206;&#x6790;" class="headerlink" title="&#x6210;&#x672C;&#x6548;&#x76CA;&#x5206;&#x6790;"></a>&#x6210;&#x672C;&#x6548;&#x76CA;&#x5206;&#x6790;</h2>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://snowyying.site/2017/sa-course-p09-system-planning/" data-id="cjqgrjzyh008a80uczwun73cg" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SA/">SA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/系统分析师/">系统分析师</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-sa-course-p08-software-engineering" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/sa-course-p08-software-engineering/">系统分析师教程学习 - 软件工程</a>
-    </h1>
-  
-
-      </header>
-    
-
-  <div class="article-meta">
-    <a href="/2017/sa-course-p08-software-engineering/" class="article-date">
-  <time datetime="2017-04-07T07:33:16.000Z" itemprop="datePublished">2017-04-07</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/SA-SWE/">SA & SWE</a>
-  </div>
-
-  </div>
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://snowyying.site/2017/sa-course-p08-software-engineering/" data-id="cjqgrjzyi008c80ucalxttmg0" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SA/">SA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/系统分析师/">系统分析师</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-sa-course-p07-informatization" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/sa-course-p07-informatization/">系统分析师教程学习 - 信息化</a>
-    </h1>
-  
-
-      </header>
-    
-
-  <div class="article-meta">
-    <a href="/2017/sa-course-p07-informatization/" class="article-date">
-  <time datetime="2017-04-05T07:31:30.000Z" itemprop="datePublished">2017-04-05</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/SA-SWE/">SA & SWE</a>
-  </div>
-
-  </div>
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://snowyying.site/2017/sa-course-p07-informatization/" data-id="cjqgrjzyc008480uczpmun4p5" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SA/">SA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/系统分析师/">系统分析师</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-sa-course-brief" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-sa-course-brief" class="article article-type-post" itemscope="" itemprop="blogPost">
 
   <div class="article-inner">
     
@@ -361,7 +736,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://snowyying.site/2017/sa-course-brief/" data-id="cjqgrjzy9008280ucb6i1a64i" class="article-share-link">Share</a>
+      <a data-url="http://snowyying.site/2017/sa-course-brief/" data-id="cjuh5p3uz006ho821qh1i9omr" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SA/">SA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/系统分析师/">系统分析师</a></li></ul>
@@ -374,7 +749,7 @@
 
 
   
-    <article id="post-swe-swebok" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-swe-swebok" class="article article-type-post" itemscope="" itemprop="blogPost">
 
   <div class="article-inner">
     
@@ -404,7 +779,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>Software Engineering Body of Knowledge</p>
-<p><a href="https://www.computer.org/web/swebok" target="_blank" rel="external">https://www.computer.org/web/swebok</a></p>
+<p><a href="https://www.computer.org/web/swebok" target="_blank" rel="noopener">https://www.computer.org/web/swebok</a></p>
 <ol>
 <li>&#x7B2C;&#x4E00;&#x7AE0; &#x8F6F;&#x4EF6;&#x9700;&#x6C42;</li>
 <li>&#x7B2C;&#x4E8C;&#x7AE0; &#x8F6F;&#x4EF6;&#x8BBE;&#x8BA1;</li>
@@ -426,7 +801,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://snowyying.site/2017/swe-swebok/" data-id="cjqgrk00g00aw80uc2iph2efa" class="article-share-link">Share</a>
+      <a data-url="http://snowyying.site/2017/swe-swebok/" data-id="cjuh5p3wc0097o821px3i1sp2" class="article-share-link">Share</a>
       
         <a href="http://snowyying.site/2017/swe-swebok/#ds-thread" class="article-comment-link">留言</a>
       
@@ -441,7 +816,7 @@
 
 
   
-    <article id="post-swe-cmmi-kpas" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-swe-cmmi-kpas" class="article article-type-post" itemscope="" itemprop="blogPost">
 
   <div class="article-inner">
     
@@ -476,14 +851,14 @@
 <li>OPF&#xFF1A;&#x7EC4;&#x7EC7;&#x7EA7;&#x8FC7;&#x7A0B;&#x7126;&#x70B9;&#x3002;</li>
 <li>OT&#xFF1A;&#x7EC4;&#x7EC7;&#x57F9;&#x8BAD;&#x7BA1;&#x7406;&#x3002;</li>
 </ol>
-<h6 id="&#x4E8C;&#x3001;&#x9879;&#x76EE;&#x7BA1;&#x7406;&#xFF1A;"><a href="#&#x4E8C;&#x3001;&#x9879;&#x76EE;&#x7BA1;&#x7406;&#xFF1A;" class="headerlink" title="&#x4E8C;&#x3001;&#x9879;&#x76EE;&#x7BA1;&#x7406;&#xFF1A;"></a>&#x4E8C;&#x3001;&#x9879;&#x76EE;&#x7BA1;&#x7406;&#xFF1A;</h6><ol>
+<h6 id="&#x4E8C;&#x3001;&#x9879;&#x76EE;&#x7BA1;&#x7406;&#xFF1A;"><a href="#&#x4E8C;&#x3001;&#x9879;&#x76EE;&#x7BA1;&#x7406;&#xFF1A;" class="headerlink" title="&#x4E8C;&#x3001;&#x9879;&#x76EE;&#x7BA1;&#x7406;&#xFF1A;"></a>&#x4E8C;&#x3001;&#x9879;&#x76EE;&#x7BA1;&#x7406;&#xFF1A;</h6><ol start="4">
 <li>PP&#xFF1A;&#x9879;&#x76EE;&#x8BA1;&#x5212;&#x3002;</li>
 <li>PMC&#xFF1A;&#x9879;&#x76EE;&#x76D1;&#x7763;&#x4E0E;&#x63A7;&#x5236;&#x3002;</li>
 <li>SAM&#xFF1A;&#x4F9B;&#x5E94;&#x5546;&#x534F;&#x8BAE;&#x7BA1;&#x7406;&#x3002;</li>
 <li>IPM&#xFF1A;&#x96C6;&#x6210;&#x9879;&#x76EE;&#x7BA1;&#x7406;&#x3002;</li>
 <li>RSKM&#xFF1A;&#x98CE;&#x9669;&#x7BA1;&#x7406;&#x3002;</li>
 </ol>
-<h6 id="&#x4E09;&#x3001;&#x5DE5;&#x7A0B;&#x7BA1;&#x7406;"><a href="#&#x4E09;&#x3001;&#x5DE5;&#x7A0B;&#x7BA1;&#x7406;" class="headerlink" title="&#x4E09;&#x3001;&#x5DE5;&#x7A0B;&#x7BA1;&#x7406;:"></a>&#x4E09;&#x3001;&#x5DE5;&#x7A0B;&#x7BA1;&#x7406;:</h6><ol>
+<h6 id="&#x4E09;&#x3001;&#x5DE5;&#x7A0B;&#x7BA1;&#x7406;"><a href="#&#x4E09;&#x3001;&#x5DE5;&#x7A0B;&#x7BA1;&#x7406;" class="headerlink" title="&#x4E09;&#x3001;&#x5DE5;&#x7A0B;&#x7BA1;&#x7406;:"></a>&#x4E09;&#x3001;&#x5DE5;&#x7A0B;&#x7BA1;&#x7406;:</h6><ol start="9">
 <li>REQM&#xFF1A;&#x9700;&#x6C42;&#x7BA1;&#x7406;&#x3002;</li>
 <li>RD&#xFF1A;&#x9700;&#x6C42;&#x5F00;&#x53D1;&#x3002;</li>
 <li>TS&#xFF1A;&#x6280;&#x672F;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#x3002;</li>
@@ -491,19 +866,19 @@
 <li>VER&#xFF1A;&#x9A8C;&#x8BC1;&#x3002;</li>
 <li>VAL&#xFF1A;&#x786E;&#x8BA4;&#x3002;</li>
 </ol>
-<h6 id="&#x56DB;&#x3001;&#x652F;&#x6301;&#x7BA1;&#x7406;&#xFF1A;"><a href="#&#x56DB;&#x3001;&#x652F;&#x6301;&#x7BA1;&#x7406;&#xFF1A;" class="headerlink" title="&#x56DB;&#x3001;&#x652F;&#x6301;&#x7BA1;&#x7406;&#xFF1A;"></a>&#x56DB;&#x3001;&#x652F;&#x6301;&#x7BA1;&#x7406;&#xFF1A;</h6><ol>
+<h6 id="&#x56DB;&#x3001;&#x652F;&#x6301;&#x7BA1;&#x7406;&#xFF1A;"><a href="#&#x56DB;&#x3001;&#x652F;&#x6301;&#x7BA1;&#x7406;&#xFF1A;" class="headerlink" title="&#x56DB;&#x3001;&#x652F;&#x6301;&#x7BA1;&#x7406;&#xFF1A;"></a>&#x56DB;&#x3001;&#x652F;&#x6301;&#x7BA1;&#x7406;&#xFF1A;</h6><ol start="15">
 <li>CM&#xFF1A;&#x914D;&#x7F6E;&#x7BA1;&#x7406;&#x3002;</li>
 <li>PPQA&#xFF1A;&#x8FC7;&#x7A0B;&#x548C;&#x4EA7;&#x54C1;&#x8D28;&#x91CF;&#x4FDD;&#x8BC1;&#x3002;</li>
 <li>MA&#xFF1A;&#x6D4B;&#x91CF;&#x4E0E;&#x5206;&#x6790;&#x3002;</li>
 <li>DAR&#xFF1A;&#x51B3;&#x7B56;&#x5206;&#x6790;&#x4E0E;&#x89E3;&#x51B3;&#x3002;</li>
 </ol>
 <p>CMMI 4&#x7EA7;&#x9664;&#x7B2C;2&#x3001;3&#x7EA7;&#x6240;&#x6DB5;&#x76D6;&#x7684;18&#x4E2A;&#x8FC7;&#x7A0B;&#x57DF;&#x5916;&#xFF0C;&#x589E;&#x52A0;&#x4EE5;&#x4E0B;&#x4E24;&#x4E2A;&#x8FC7;&#x7A0B;&#x57DF;&#xFF1A;</p>
-<ol>
+<ol start="19">
 <li>OPP &#xFF1A;&#x7EC4;&#x7EC7;&#x8FC7;&#x7A0B;&#x6027;&#x80FD;&#x3002;</li>
 <li>QPM&#xFF1A;&#x91CF;&#x5316;&#x7684;&#x9879;&#x76EE;&#x7BA1;&#x7406; &#x3002;</li>
 </ol>
 <p>CMMI 5&#x7EA7;&#x5305;&#x542B;&#x7B2C;2&#x7EA7;&#x5230;&#x7B2C;4&#x7EA7;&#x7684;20&#x4E2A;&#x8FC7;&#x7A0B;&#x57DF;&#x5916;&#xFF0C;&#x589E;&#x52A0;&#x4EE5;&#x4E0B;&#x4E24;&#x4E2A;&#x8FC7;&#x7A0B;&#x57DF;&#xFF1A;</p>
-<ol>
+<ol start="21">
 <li>OID&#xFF1A;&#x7EC4;&#x7EC7;&#x521B;&#x65B0;&#x4E0E;&#x63A8;&#x5C55;&#x3002;</li>
 <li>CAR&#xFF1A;&#x56E0;&#x679C;&#x5206;&#x6790;&#x4E0E;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#x3002;</li>
 </ol>
@@ -515,7 +890,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://snowyying.site/2017/swe-cmmi-kpas/" data-id="cjqgrjzzu00a180ucc98sk8ju" class="article-share-link">Share</a>
+      <a data-url="http://snowyying.site/2017/swe-cmmi-kpas/" data-id="cjuh5p3w2008oo821odxlt86c" class="article-share-link">Share</a>
       
         <a href="http://snowyying.site/2017/swe-cmmi-kpas/#ds-thread" class="article-comment-link">留言</a>
       
@@ -530,7 +905,7 @@
 
 
   
-    <article id="post-gen-programmer-skill-map" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-gen-programmer-skill-map" class="article article-type-post" itemscope="" itemprop="blogPost">
 
   <div class="article-inner">
     
@@ -561,7 +936,7 @@
       
         <p><code>&#x8F6C;&#x81EA;: StuQ http://skill-map.stuq.org 2016~2017</code></p>
 <blockquote>
-<p>&#x6CE8;: &#x77E5;&#x8BC6;&#x9762;&#x6DB5;&#x76D6;&#x4E0E;&#x5206;&#x7C7B;&#x4E0D;&#x662F;&#x5F88;&#x79D1;&#x5B66;, &#x4EC5;&#x4F9B;&#x53C2;&#x8003;. </p>
+<p>&#x6CE8;: &#x77E5;&#x8BC6;&#x9762;&#x6DB5;&#x76D6;&#x4E0E;&#x5206;&#x7C7B;&#x4E0D;&#x662F;&#x5F88;&#x79D1;&#x5B66;, &#x4EC5;&#x4F9B;&#x53C2;&#x8003;.<br><a href="https://github.com/TeamStuQ/skill-map" target="_blank" rel="noopener">https://github.com/TeamStuQ/skill-map</a> [2019]</p>
 </blockquote>
 <p><img src="/2017/gen-programmer-skill-map/png-ProgrammingLanguage-by-StuQ.png" alt="&#x7F16;&#x7A0B;&#x8BED;&#x8A00;"></p>
         
@@ -572,7 +947,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://snowyying.site/2017/gen-programmer-skill-map/" data-id="cjqgrjzu6002c80ucaeb08023" class="article-share-link">Share</a>
+      <a data-url="http://snowyying.site/2017/gen-programmer-skill-map/" data-id="cjuh5p3s8001zo8219nispl6d" class="article-share-link">Share</a>
       
         <a href="http://snowyying.site/2017/gen-programmer-skill-map/#ds-thread" class="article-comment-link">留言</a>
       
@@ -587,7 +962,7 @@
 
 
   
-    <article id="post-swe-cmmi-overview" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-swe-cmmi-overview" class="article article-type-post" itemscope="" itemprop="blogPost">
 
   <div class="article-inner">
     
@@ -635,7 +1010,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://snowyying.site/2017/swe-cmmi-overview/" data-id="cjqgrjzzx00a780uc6vo1nhaa" class="article-share-link">Share</a>
+      <a data-url="http://snowyying.site/2017/swe-cmmi-overview/" data-id="cjuh5p44l00s5o821tkne79jh" class="article-share-link">Share</a>
       
         <a href="http://snowyying.site/2017/swe-cmmi-overview/#ds-thread" class="article-comment-link">留言</a>
       
@@ -650,7 +1025,7 @@
 
 
   
-    <article id="post-swe-square-overview" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-swe-square-overview" class="article article-type-post" itemscope="" itemprop="blogPost">
 
   <div class="article-inner">
     
@@ -692,7 +1067,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://snowyying.site/2017/swe-square-overview/" data-id="cjqgrk00c00ap80ucp4lr8vmu" class="article-share-link">Share</a>
+      <a data-url="http://snowyying.site/2017/swe-square-overview/" data-id="cjuh5p3w5008uo8210wa4etd0" class="article-share-link">Share</a>
       
         <a href="http://snowyying.site/2017/swe-square-overview/#ds-thread" class="article-comment-link">留言</a>
       
@@ -707,7 +1082,7 @@
 
 
   
-    <article id="post-swe-uml-overview" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-swe-uml-overview" class="article article-type-post" itemscope="" itemprop="blogPost">
 
   <div class="article-inner">
     
@@ -744,7 +1119,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://snowyying.site/2017/swe-uml-overview/" data-id="cjqgrk00k00b380ucg2hk6azq" class="article-share-link">Share</a>
+      <a data-url="http://snowyying.site/2017/swe-uml-overview/" data-id="cjuh5p3w6008yo821yz5xqqwz" class="article-share-link">Share</a>
       
         <a href="http://snowyying.site/2017/swe-uml-overview/#ds-thread" class="article-comment-link">留言</a>
       
@@ -759,101 +1134,7 @@
 
 
   
-    <article id="post-swe-dp-cp-factory" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/swe-dp-cp-factory/">设计模式 - 工厂模式</a>
-    </h1>
-  
-
-      </header>
-    
-
-  <div class="article-meta">
-    <a href="/2017/swe-dp-cp-factory/" class="article-date">
-  <time datetime="2017-03-07T07:59:31.000Z" itemprop="datePublished">2017-03-07</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/SA-SWE/">SA & SWE</a>
-  </div>
-
-  </div>
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="&#x7B80;&#x5355;&#x5DE5;&#x5382;&#x6A21;&#x5F0F;"><a href="#&#x7B80;&#x5355;&#x5DE5;&#x5382;&#x6A21;&#x5F0F;" class="headerlink" title="&#x7B80;&#x5355;&#x5DE5;&#x5382;&#x6A21;&#x5F0F;"></a>&#x7B80;&#x5355;&#x5DE5;&#x5382;&#x6A21;&#x5F0F;</h2><h2 id="&#x5DE5;&#x5382;-&#x65B9;&#x6CD5;-&#x6A21;&#x5F0F;"><a href="#&#x5DE5;&#x5382;-&#x65B9;&#x6CD5;-&#x6A21;&#x5F0F;" class="headerlink" title="&#x5DE5;&#x5382;(&#x65B9;&#x6CD5;)&#x6A21;&#x5F0F;"></a>&#x5DE5;&#x5382;(&#x65B9;&#x6CD5;)&#x6A21;&#x5F0F;</h2><h2 id="&#x62BD;&#x8C61;&#x5DE5;&#x5382;&#x6A21;&#x5F0F;"><a href="#&#x62BD;&#x8C61;&#x5DE5;&#x5382;&#x6A21;&#x5F0F;" class="headerlink" title="&#x62BD;&#x8C61;&#x5DE5;&#x5382;&#x6A21;&#x5F0F;"></a>&#x62BD;&#x8C61;&#x5DE5;&#x5382;&#x6A21;&#x5F0F;</h2>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://snowyying.site/2017/swe-dp-cp-factory/" data-id="cjqgrjzzz00aa80ucz60lgt7r" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SWE/">SWE</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/工厂模式/">工厂模式</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-swe-dp-explain" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/swe-dp-explain/">设计模式详解</a>
-    </h1>
-  
-
-      </header>
-    
-
-  <div class="article-meta">
-    <a href="/2017/swe-dp-explain/" class="article-date">
-  <time datetime="2017-03-05T15:11:24.000Z" itemprop="datePublished">2017-03-05</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/SA-SWE/">SA & SWE</a>
-  </div>
-
-  </div>
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://snowyying.site/2017/swe-dp-explain/" data-id="cjqgrk00000ac80ucbw0b75g1" class="article-share-link">Share</a>
-      
-        <a href="http://snowyying.site/2017/swe-dp-explain/#ds-thread" class="article-comment-link">留言</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SWE/">SWE</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-swe-dp-metaphor" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-swe-dp-metaphor" class="article article-type-post" itemscope="" itemprop="blogPost">
 
   <div class="article-inner">
     
@@ -918,7 +1199,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://snowyying.site/2017/swe-dp-metaphor/" data-id="cjqgrk00400af80ucogozrotm" class="article-share-link">Share</a>
+      <a data-url="http://snowyying.site/2017/swe-dp-metaphor/" data-id="cjuh5p46w00u5o821r2r5zuwu" class="article-share-link">Share</a>
       
         <a href="http://snowyying.site/2017/swe-dp-metaphor/#ds-thread" class="article-comment-link">留言</a>
       
@@ -933,7 +1214,7 @@
 
 
   
-    <article id="post-swe-dp-principle" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-swe-dp-principle" class="article article-type-post" itemscope="" itemprop="blogPost">
 
   <div class="article-inner">
     
@@ -971,7 +1252,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://snowyying.site/2017/swe-dp-principle/" data-id="cjqgrk00b00am80uc5mj9q0p3" class="article-share-link">Share</a>
+      <a data-url="http://snowyying.site/2017/swe-dp-principle/" data-id="cjuh5p46y00u8o821w74f0hyc" class="article-share-link">Share</a>
       
         <a href="http://snowyying.site/2017/swe-dp-principle/#ds-thread" class="article-comment-link">留言</a>
       
@@ -986,7 +1267,7 @@
 
 
   
-    <article id="post-gen-fallible-it-words" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-gen-fallible-it-words" class="article article-type-post" itemscope="" itemprop="blogPost">
 
   <div class="article-inner">
     
@@ -1028,7 +1309,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://snowyying.site/2017/gen-fallible-it-words/" data-id="cjqgrjztr001u80ucsjgxf253" class="article-share-link">Share</a>
+      <a data-url="http://snowyying.site/2017/gen-fallible-it-words/" data-id="cjuh5p3s3001ro821631ikqug" class="article-share-link">Share</a>
       
         <a href="http://snowyying.site/2017/gen-fallible-it-words/#ds-thread" class="article-comment-link">留言</a>
       
@@ -1043,7 +1324,7 @@
 
 
   
-    <article id="post-swe-dp-overview" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-swe-dp-overview" class="article article-type-post" itemscope="" itemprop="blogPost">
 
   <div class="article-inner">
     
@@ -1097,7 +1378,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://snowyying.site/2017/swe-dp-overview/" data-id="cjqgrk00700ai80uc90o0ttzh" class="article-share-link">Share</a>
+      <a data-url="http://snowyying.site/2017/swe-dp-overview/" data-id="cjuh5p3w4008ro821mka5w2ml" class="article-share-link">Share</a>
       
         <a href="http://snowyying.site/2017/swe-dp-overview/#ds-thread" class="article-comment-link">留言</a>
       
@@ -1112,7 +1393,7 @@
 
 
   
-    <article id="post-net-understand-tcpip-2" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-net-understand-tcpip-2" class="article article-type-post" itemscope="" itemprop="blogPost">
 
   <div class="article-inner">
     
@@ -1144,9 +1425,9 @@
         <p><code>&#x6765;&#x81EA;: &#x535A;&#x5BA2; Axb&#x7684;&#x81EA;&#x6211;&#x4FEE;&#x517B; http://blog.2baxb.me/archives/1190 2015/05/01</code></p>
 <h2 id="&#x4E00;-&#x6458;&#x8981;"><a href="#&#x4E00;-&#x6458;&#x8981;" class="headerlink" title="&#x4E00; &#x6458;&#x8981;"></a>&#x4E00; &#x6458;&#x8981;</h2><p>&#x8FD9;&#x662F;&#x300A;&#x7FFB;&#x8BD1;&#xFF1A;&#x7406;&#x89E3;TCP/IP&#x7F51;&#x7EDC;&#x6808;&amp;&#x7F16;&#x5199;&#x7F51;&#x7EDC;&#x5E94;&#x7528;&#x300B;&#x7684;&#x4E0B;&#x7BC7;&#xFF0C;&#x6587;&#x7AE0;&#x4E2D;&#x4F1A;&#x901A;&#x8FC7;&#x8BB2;&#x89E3;TCP&#x7684;&#x4EE3;&#x7801;&#x5B9E;&#x73B0;&#x5E2E;&#x52A9;&#x5927;&#x5BB6;&#x7406;&#x89E3;&#x53D1;&#x9001;&#x3001;&#x63A5;&#x6536;&#x6570;&#x636E;&#x7684;&#x6D41;&#x7A0B;&#xFF0C;&#x4E5F;&#x63CF;&#x8FF0;&#x4E86;&#x4E00;&#x4E9B;&#x7F51;&#x5361;&#x3001;&#x9A71;&#x52A8;&#x7B49;&#x7F51;&#x7EDC;&#x6808;&#x5E95;&#x5C42;&#x7684;&#x539F;&#x7406;&#x3002;</p>
 <blockquote>
-<p>&#x539F;&#x6587;&#x5730;&#x5740;&#xFF1A;<a href="http://www.cubrid.org/blog/dev-platform/understanding-tcp-ip-network-stack/">http://www.cubrid.org/blog/dev-platform/understanding-tcp-ip-network-stack/</a></p>
+<p>&#x539F;&#x6587;&#x5730;&#x5740;&#xFF1A;<a href="http://www.cubrid.org/blog/dev-platform/understanding-tcp-ip-network-stack/" target="_blank" rel="noopener">http://www.cubrid.org/blog/dev-platform/understanding-tcp-ip-network-stack/</a></p>
 <p>&#x539F;&#x4F5C;&#x8005;&#xFF1A;Hyeongyeop Kim</p>
-<p>&#x7FFB;&#x8BD1;&#xFF1A;@&#x86CB;&#x75BC;&#x7684;axb <a href="http://2baxb.me">http://2baxb.me</a></p>
+<p>&#x7FFB;&#x8BD1;&#xFF1A;@&#x86CB;&#x75BC;&#x7684;axb <a href="http://2baxb.me" target="_blank" rel="noopener">http://2baxb.me</a></p>
 </blockquote>
 <h2 id="&#x4E8C;-&#x6570;&#x636E;&#x7ED3;&#x6784;"><a href="#&#x4E8C;-&#x6570;&#x636E;&#x7ED3;&#x6784;" class="headerlink" title="&#x4E8C; &#x6570;&#x636E;&#x7ED3;&#x6784;"></a>&#x4E8C; &#x6570;&#x636E;&#x7ED3;&#x6784;</h2><p>&#x4EE5;&#x4E0B;&#x662F;&#x4E00;&#x4E9B;&#x5173;&#x952E;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x3002;&#x6211;&#x4EEC;&#x4E86;&#x89E3;&#x4E00;&#x4E0B;&#x8FD9;&#x4E9B;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x518D;&#x5F00;&#x59CB;&#x67E5;&#x770B;&#x4EE3;&#x7801;&#x3002;</p>
 <h4 id="1-sk-buff-structure"><a href="#1-sk-buff-structure" class="headerlink" title="1. sk_buff_structure"></a>1. sk_buff_structure</h4><p>&#x9996;&#x5148;&#xFF0C;<strong>sk_buff</strong> &#x7ED3;&#x6784;&#x6216; <strong>skb</strong> &#x7ED3;&#x6784;&#x4EE3;&#x8868;&#x4E00;&#x4E2A;&#x6570;&#x636E;&#x5305;&#x3002;<strong>&#x56FE;6</strong> &#x5C55;&#x73B0;&#x4E86; <strong>sk_buff</strong> &#x4E2D;&#x7684;&#x4E00;&#x4E9B;&#x7ED3;&#x6784;&#x3002;&#x968F;&#x7740;&#x529F;&#x80FD;&#x53D8;&#x5F97;&#x66F4;&#x5F3A;&#x5927;&#xFF0C;&#x5B83;&#x4EEC;&#x4E5F;&#x53D8;&#x5F97;&#x66F4;&#x590D;&#x6742;&#x4E86;&#x3002;&#x4F46;&#x662F;&#x8FD8;&#x662F;&#x6709;&#x4E00;&#x4E9B;&#x4EFB;&#x4F55;&#x4EBA;&#x90FD;&#x80FD;&#x60F3;&#x5230;&#x7684;&#x57FA;&#x672C;&#x529F;&#x80FD;&#x3002;</p>
@@ -1166,7 +1447,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://snowyying.site/2017/net-understand-tcpip-2/" data-id="cjqgrjzxc006z80ucgfd9pfiz" class="article-share-link">Share</a>
+      <a data-url="http://snowyying.site/2017/net-understand-tcpip-2/" data-id="cjuh5p4ab00v8o821er0958bk" class="article-share-link">Share</a>
       
         <a href="http://snowyying.site/2017/net-understand-tcpip-2/#ds-thread" class="article-comment-link">留言</a>
       
@@ -1181,7 +1462,7 @@
 
 
   
-    <article id="post-net-understand-tcpip-1" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-net-understand-tcpip-1" class="article article-type-post" itemscope="" itemprop="blogPost">
 
   <div class="article-inner">
     
@@ -1213,9 +1494,9 @@
         <p><code>&#x6765;&#x81EA;: &#x535A;&#x5BA2; Axb&#x7684;&#x81EA;&#x6211;&#x4FEE;&#x517B; http://blog.2baxb.me/archives/1174 2015/04/30</code></p>
 <h2 id="&#x4E00;-&#x6458;&#x8981;"><a href="#&#x4E00;-&#x6458;&#x8981;" class="headerlink" title="&#x4E00; &#x6458;&#x8981;"></a>&#x4E00; &#x6458;&#x8981;</h2><p>&#x4E4B;&#x524D;&#x5728;&#x7F51;&#x4E0A;&#x770B;&#x5230;&#x4E86;&#x8FD9;&#x7BC7;&#x63CF;&#x8FF0;tcp&#x7F51;&#x7EDC;&#x6808;&#x539F;&#x7406;&#x7684;&#x6587;&#x7AE0;&#xFF0C;&#x611F;&#x89C9;&#x4E0D;&#x9519;&#xFF0C;&#x51B3;&#x5B9A;&#x62BD;&#x7A7A;&#x628A;&#x8FD9;&#x7BC7;&#x6587;&#x7AE0;&#x7FFB;&#x8BD1;&#x4E00;&#x4E0B;&#x3002;&#x4E00;&#x6765;&#x91CD;&#x65B0;&#x6E29;&#x4E60;&#x4E00;&#x4E0B;TCP&#x76F8;&#x5173;&#x77E5;&#x8BC6;&#xFF0C;&#x4E8C;&#x6765;&#x7EC3;&#x7EC3;&#x82F1;&#x6587;&#x3002;&#x7531;&#x4E8E;&#x539F;&#x6587;&#x592A;&#x957F;&#xFF0C;&#x8FD9;&#x91CC;&#x628A;&#x6587;&#x7AE0;&#x5206;&#x6210;&#x4E0A;&#x4E0B;&#x4E24;&#x90E8;&#x5206;&#xFF0C;&#x5206;&#x522B;&#x5BF9;&#x5E94;&#x4E86;&#x539F;&#x7406;&#x548C;&#x4EE3;&#x7801;&#x3002; &#x5F88;&#x4E45;&#x6CA1;&#x7FFB;&#x8BD1;&#x6587;&#x7AE0;&#x4E86;&#x96BE;&#x514D;&#x6709;&#x8BEF;&#xFF0C;&#x5EFA;&#x8BAE;&#x6709;&#x80FD;&#x529B;&#x7684;&#x540C;&#x5B66;&#x8FD8;&#x662F;&#x770B;&#x4E00;&#x4E0B;&#x539F;&#x6587;&#x3002;</p>
 <blockquote>
-<p>&#x539F;&#x6587;&#x5730;&#x5740;&#xFF1A;<a href="http://www.cubrid.org/blog/dev-platform/understanding-tcp-ip-network-stack/">http://www.cubrid.org/blog/dev-platform/understanding-tcp-ip-network-stack/</a></p>
+<p>&#x539F;&#x6587;&#x5730;&#x5740;&#xFF1A;<a href="http://www.cubrid.org/blog/dev-platform/understanding-tcp-ip-network-stack/" target="_blank" rel="noopener">http://www.cubrid.org/blog/dev-platform/understanding-tcp-ip-network-stack/</a></p>
 <p>&#x539F;&#x4F5C;&#x8005;&#xFF1A;Hyeongyeop Kim</p>
-<p>&#x7FFB;&#x8BD1;&#xFF1A;@&#x86CB;&#x75BC;&#x7684;axb <a href="http://2baxb.me">http://2baxb.me</a></p>
+<p>&#x7FFB;&#x8BD1;&#xFF1A;@&#x86CB;&#x75BC;&#x7684;axb <a href="http://2baxb.me" target="_blank" rel="noopener">http://2baxb.me</a></p>
 </blockquote>
 <h2 id="&#x4E8C;-&#x6982;&#x8FF0;"><a href="#&#x4E8C;-&#x6982;&#x8FF0;" class="headerlink" title="&#x4E8C; &#x6982;&#x8FF0;"></a>&#x4E8C; &#x6982;&#x8FF0;</h2><p>&#x6211;&#x4EEC;&#x96BE;&#x4EE5;&#x60F3;&#x8C61;&#x6CA1;&#x6709;&#x4E86;TCP/IP&#x4E4B;&#x540E;&#x7684;&#x7F51;&#x7EDC;&#x670D;&#x52A1;&#x3002;&#x6240;&#x6709;&#x6211;&#x4EEC;&#x5F00;&#x53D1;&#x5E76;&#x5728;NHN&#xFF08;&#x539F;&#x6587;&#x53D1;&#x5E03;&#x7684;&#x7F51;&#x7AD9;&#xFF09;&#x4F7F;&#x7528;&#x7684;&#x7F51;&#x7EDC;&#x670D;&#x52A1;&#x90FD;&#x57FA;&#x4E8E;TCP/IP&#x8FD9;&#x4E2A;&#x575A;&#x5B9E;&#x7684;&#x57FA;&#x7840;&#x3002;&#x7406;&#x89E3;&#x6570;&#x636E;&#x5982;&#x4F55;&#x901A;&#x8FC7;&#x7F51;&#x7EDC;&#x4F20;&#x8F93;&#x53EF;&#x4EE5;&#x5E2E;&#x52A9;&#x4F60;&#x901A;&#x8FC7;&#x8C03;&#x4F18;&#x3001;&#x6392;&#x67E5;&#x6216;&#x5F15;&#x8FDB;&#x65B0;&#x6280;&#x672F;&#x4E4B;&#x7C7B;&#x7684;&#x624B;&#x6BB5;&#x63D0;&#x5347;&#x6027;&#x80FD;&#x3002;</p>
 <p>&#x672C;&#x6587;&#x5C06;&#x57FA;&#x4E8E;Linux OS&#x548C;&#x786C;&#x4EF6;&#x5C42;&#x7684;&#x6570;&#x636E;&#x6D41;&#x548C;&#x63A7;&#x5236;&#x6D41;&#x6765;&#x63CF;&#x8FF0;&#x7F51;&#x7EDC;&#x6808;&#x7684;&#x6574;&#x4F53;&#x8FD0;&#x884C;&#x65B9;&#x5F0F;&#x3002;</p>
@@ -1227,305 +1508,12 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://snowyying.site/2017/net-understand-tcpip-1/" data-id="cjqgrjzx2006p80ucz1crlhc6" class="article-share-link">Share</a>
+      <a data-url="http://snowyying.site/2017/net-understand-tcpip-1/" data-id="cjuh5p45q00two821zca6umq5" class="article-share-link">Share</a>
       
         <a href="http://snowyying.site/2017/net-understand-tcpip-1/#ds-thread" class="article-comment-link">留言</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IT/">IT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/TCP-IP/">TCP/IP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网络/">网络</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-net-socket-reuseaddr" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/net-socket-reuseaddr/">socket 选项之 SO_REUSEADDR 的意义</a>
-    </h1>
-  
-
-      </header>
-    
-
-  <div class="article-meta">
-    <a href="/2017/net-socket-reuseaddr/" class="article-date">
-  <time datetime="2017-02-05T11:46:10.000Z" itemprop="datePublished">2017-02-05</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Network/">Network</a>
-  </div>
-
-  </div>
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><code>&#x8F6C;&#x81EA;: &#x535A;&#x5BA2;&#x56ED; http://www.cnblogs.com/qq78292959/archive/2013/01/18/2865926.html 2013-01-18</code></p>
-<h6 id="1-&#x4E00;&#x822C;&#x6765;&#x8BF4;&#xFF0C;&#x4E00;&#x4E2A;&#x7AEF;&#x53E3;&#x91CA;&#x653E;&#x540E;&#x4F1A;&#x7B49;&#x5F85;&#x4E24;&#x5206;&#x949F;&#x4E4B;&#x540E;&#x624D;&#x80FD;&#x518D;&#x88AB;&#x4F7F;&#x7528;&#xFF0C;SO-REUSEADDR&#x662F;&#x8BA9;&#x7AEF;&#x53E3;&#x91CA;&#x653E;&#x540E;&#x7ACB;&#x5373;&#x5C31;&#x53EF;&#x4EE5;&#x88AB;&#x518D;&#x6B21;&#x4F7F;&#x7528;&#x3002;"><a href="#1-&#x4E00;&#x822C;&#x6765;&#x8BF4;&#xFF0C;&#x4E00;&#x4E2A;&#x7AEF;&#x53E3;&#x91CA;&#x653E;&#x540E;&#x4F1A;&#x7B49;&#x5F85;&#x4E24;&#x5206;&#x949F;&#x4E4B;&#x540E;&#x624D;&#x80FD;&#x518D;&#x88AB;&#x4F7F;&#x7528;&#xFF0C;SO-REUSEADDR&#x662F;&#x8BA9;&#x7AEF;&#x53E3;&#x91CA;&#x653E;&#x540E;&#x7ACB;&#x5373;&#x5C31;&#x53EF;&#x4EE5;&#x88AB;&#x518D;&#x6B21;&#x4F7F;&#x7528;&#x3002;" class="headerlink" title="1. &#x4E00;&#x822C;&#x6765;&#x8BF4;&#xFF0C;&#x4E00;&#x4E2A;&#x7AEF;&#x53E3;&#x91CA;&#x653E;&#x540E;&#x4F1A;&#x7B49;&#x5F85;&#x4E24;&#x5206;&#x949F;&#x4E4B;&#x540E;&#x624D;&#x80FD;&#x518D;&#x88AB;&#x4F7F;&#x7528;&#xFF0C;SO_REUSEADDR&#x662F;&#x8BA9;&#x7AEF;&#x53E3;&#x91CA;&#x653E;&#x540E;&#x7ACB;&#x5373;&#x5C31;&#x53EF;&#x4EE5;&#x88AB;&#x518D;&#x6B21;&#x4F7F;&#x7528;&#x3002;"></a>1. &#x4E00;&#x822C;&#x6765;&#x8BF4;&#xFF0C;&#x4E00;&#x4E2A;&#x7AEF;&#x53E3;&#x91CA;&#x653E;&#x540E;&#x4F1A;&#x7B49;&#x5F85;&#x4E24;&#x5206;&#x949F;&#x4E4B;&#x540E;&#x624D;&#x80FD;&#x518D;&#x88AB;&#x4F7F;&#x7528;&#xFF0C;SO_REUSEADDR&#x662F;&#x8BA9;&#x7AEF;&#x53E3;&#x91CA;&#x653E;&#x540E;&#x7ACB;&#x5373;&#x5C31;&#x53EF;&#x4EE5;&#x88AB;&#x518D;&#x6B21;&#x4F7F;&#x7528;&#x3002;</h6><p>SO_REUSEADDR&#x7528;&#x4E8E;&#x5BF9;TCP&#x5957;&#x63A5;&#x5B57;&#x5904;&#x4E8E;TIME_WAIT&#x72B6;&#x6001;&#x4E0B;&#x7684;socket&#xFF0C;&#x624D;&#x53EF;&#x4EE5;&#x91CD;&#x590D;&#x7ED1;&#x5B9A;&#x4F7F;&#x7528;&#x3002;server&#x7A0B;&#x5E8F;&#x603B;&#x662F;&#x5E94;&#x8BE5;&#x5728;&#x8C03;&#x7528;bind()&#x4E4B;&#x524D;&#x8BBE;&#x7F6E;SO_REUSEADDR&#x5957;&#x63A5;&#x5B57;&#x9009;&#x9879;&#x3002;TCP&#xFF0C;&#x5148;&#x8C03;&#x7528;close()&#x7684;&#x4E00;&#x65B9;&#x4F1A;&#x8FDB;&#x5165;TIME_WAIT&#x72B6;&#x6001;</p>
-<h6 id="2-SO-REUSEADDR&#x548C;SO-REUSEPORT"><a href="#2-SO-REUSEADDR&#x548C;SO-REUSEPORT" class="headerlink" title="2. SO_REUSEADDR&#x548C;SO_REUSEPORT"></a>2. SO_REUSEADDR&#x548C;SO_REUSEPORT</h6><p>SO_REUSEADDR&#x63D0;&#x4F9B;&#x5982;&#x4E0B;&#x56DB;&#x4E2A;&#x529F;&#x80FD;&#xFF1A;</p>
-<ul>
-<li>SO_REUSEADDR&#x5141;&#x8BB8;&#x542F;&#x52A8;&#x4E00;&#x4E2A;&#x76D1;&#x542C;&#x670D;&#x52A1;&#x5668;&#x5E76;&#x6346;&#x7ED1;&#x5176;&#x4F17;&#x6240;&#x5468;&#x77E5;&#x7AEF;&#x53E3;&#xFF0C;&#x5373;&#x4F7F;&#x4EE5;&#x524D;&#x5EFA;&#x7ACB;&#x7684;&#x5C06;&#x6B64;&#x7AEF;&#x53E3;&#x7528;&#x505A;&#x4ED6;&#x4EEC;&#x7684;&#x672C;&#x5730;&#x7AEF;&#x53E3;&#x7684;&#x8FDE;&#x63A5;&#x4ECD;&#x5B58;&#x5728;&#x3002;&#x8FD9;&#x901A;&#x5E38;&#x662F;&#x91CD;&#x542F;&#x76D1;&#x542C;&#x670D;&#x52A1;&#x5668;&#x65F6;&#x51FA;&#x73B0;&#xFF0C;&#x82E5;&#x4E0D;&#x8BBE;&#x7F6E;&#x6B64;&#x9009;&#x9879;&#xFF0C;&#x5219;bind&#x65F6;&#x5C06;&#x51FA;&#x9519;&#x3002;</li>
-<li>SO_REUSEADDR&#x5141;&#x8BB8;&#x5728;&#x540C;&#x4E00;&#x7AEF;&#x53E3;&#x4E0A;&#x542F;&#x52A8;&#x540C;&#x4E00;&#x670D;&#x52A1;&#x5668;&#x7684;&#x591A;&#x4E2A;&#x5B9E;&#x4F8B;&#xFF0C;&#x53EA;&#x8981;&#x6BCF;&#x4E2A;&#x5B9E;&#x4F8B;&#x6346;&#x7ED1;&#x4E00;&#x4E2A;&#x4E0D;&#x540C;&#x7684;&#x672C;&#x5730;IP&#x5730;&#x5740;&#x5373;&#x53EF;&#x3002;&#x5BF9;&#x4E8E;TCP&#xFF0C;&#x6211;&#x4EEC;&#x6839;&#x672C;&#x4E0D;&#x53EF;&#x80FD;&#x542F;&#x52A8;&#x6346;&#x7ED1;&#x76F8;&#x540C;IP&#x5730;&#x5740;&#x548C;&#x76F8;&#x540C;&#x7AEF;&#x53E3;&#x53F7;&#x7684;&#x591A;&#x4E2A;&#x670D;&#x52A1;&#x5668;&#x3002;</li>
-<li>SO_REUSEADDR&#x5141;&#x8BB8;&#x5355;&#x4E2A;&#x8FDB;&#x7A0B;&#x6346;&#x7ED1;&#x540C;&#x4E00;&#x7AEF;&#x53E3;&#x5230;&#x591A;&#x4E2A;&#x5957;&#x63A5;&#x53E3;&#x4E0A;&#xFF0C;&#x53EA;&#x8981;&#x6BCF;&#x4E2A;&#x6346;&#x7ED1;&#x6307;&#x5B9A;&#x4E0D;&#x540C;&#x7684;&#x672C;&#x5730;IP&#x5730;&#x5740;&#x5373;&#x53EF;&#x3002;&#x8FD9;&#x4E00;&#x822C;&#x4E0D;&#x7528;&#x4E8E;TCP&#x670D;&#x52A1;&#x5668;&#x3002;</li>
-<li>SO_REUSEADDR&#x5141;&#x8BB8;&#x5B8C;&#x5168;&#x91CD;&#x590D;&#x7684;&#x6346;&#x7ED1;&#xFF1A;&#x5F53;&#x4E00;&#x4E2A;IP&#x5730;&#x5740;&#x548C;&#x7AEF;&#x53E3;&#x7ED1;&#x5B9A;&#x5230;&#x67D0;&#x4E2A;&#x5957;&#x63A5;&#x53E3;&#x4E0A;&#x65F6;&#xFF0C;&#x8FD8;&#x5141;&#x8BB8;&#x6B64;IP&#x5730;&#x5740;&#x548C;&#x7AEF;&#x53E3;&#x6346;&#x7ED1;&#x5230;&#x53E6;&#x4E00;&#x4E2A;&#x5957;&#x63A5;&#x53E3;&#x4E0A;&#x3002;&#x4E00;&#x822C;&#x6765;&#x8BF4;&#xFF0C;&#x8FD9;&#x4E2A;&#x7279;&#x6027;&#x4EC5;&#x5728;&#x652F;&#x6301;&#x591A;&#x64AD;&#x7684;&#x7CFB;&#x7EDF;&#x4E0A;&#x624D;&#x6709;&#xFF0C;&#x800C;&#x4E14;&#x53EA;&#x5BF9;UDP&#x5957;&#x63A5;&#x53E3;&#x800C;&#x8A00;&#xFF08;TCP&#x4E0D;&#x652F;&#x6301;&#x591A;&#x64AD;&#xFF09;&#x3002;</li>
-</ul>
-<p>SO_REUSEPORT&#x9009;&#x9879;&#x6709;&#x5982;&#x4E0B;&#x8BED;&#x4E49;&#xFF1A;</p>
-<ul>
-<li>&#x6B64;&#x9009;&#x9879;&#x5141;&#x8BB8;&#x5B8C;&#x5168;&#x91CD;&#x590D;&#x6346;&#x7ED1;&#xFF0C;&#x4F46;&#x4EC5;&#x5728;&#x60F3;&#x6346;&#x7ED1;&#x76F8;&#x540C;IP&#x5730;&#x5740;&#x548C;&#x7AEF;&#x53E3;&#x7684;&#x5957;&#x63A5;&#x53E3;&#x90FD;&#x6307;&#x5B9A;&#x4E86;&#x6B64;&#x5957;&#x63A5;&#x53E3;&#x9009;&#x9879;&#x624D;&#x884C;&#x3002;</li>
-<li>&#x5982;&#x679C;&#x88AB;&#x6346;&#x7ED1;&#x7684;IP&#x5730;&#x5740;&#x662F;&#x4E00;&#x4E2A;&#x591A;&#x64AD;&#x5730;&#x5740;&#xFF0C;&#x5219;SO_REUSEADDR&#x548C;SO_REUSEPORT&#x7B49;&#x6548;&#x3002;</li>
-</ul>
-<h6 id="3-&#x4F7F;&#x7528;&#x8FD9;&#x4E24;&#x4E2A;&#x5957;&#x63A5;&#x53E3;&#x9009;&#x9879;&#x7684;&#x5EFA;&#x8BAE;"><a href="#3-&#x4F7F;&#x7528;&#x8FD9;&#x4E24;&#x4E2A;&#x5957;&#x63A5;&#x53E3;&#x9009;&#x9879;&#x7684;&#x5EFA;&#x8BAE;" class="headerlink" title="3. &#x4F7F;&#x7528;&#x8FD9;&#x4E24;&#x4E2A;&#x5957;&#x63A5;&#x53E3;&#x9009;&#x9879;&#x7684;&#x5EFA;&#x8BAE;"></a>3. &#x4F7F;&#x7528;&#x8FD9;&#x4E24;&#x4E2A;&#x5957;&#x63A5;&#x53E3;&#x9009;&#x9879;&#x7684;&#x5EFA;&#x8BAE;</h6><ul>
-<li>&#x5728;&#x6240;&#x6709;TCP&#x670D;&#x52A1;&#x5668;&#x4E2D;&#xFF0C;&#x5728;&#x8C03;&#x7528;bind&#x4E4B;&#x524D;&#x8BBE;&#x7F6E;SO_REUSEADDR&#x5957;&#x63A5;&#x53E3;&#x9009;&#x9879;&#xFF1B;</li>
-<li>&#x5F53;&#x7F16;&#x5199;&#x4E00;&#x4E2A;&#x540C;&#x4E00;&#x65F6;&#x523B;&#x5728;&#x540C;&#x4E00;&#x4E3B;&#x673A;&#x4E0A;&#x53EF;&#x8FD0;&#x884C;&#x591A;&#x6B21;&#x7684;&#x591A;&#x64AD;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x65F6;&#xFF0C;&#x8BBE;&#x7F6E;SO_REUSEADDR&#x9009;&#x9879;&#xFF0C;&#x5E76;&#x5C06;&#x672C;&#x7EC4;&#x7684;&#x591A;&#x64AD;&#x5730;&#x5740;&#x4F5C;&#x4E3A;&#x672C;&#x5730;IP&#x5730;&#x5740;&#x6346;&#x7ED1;&#x3002;<code>if (setsockopt(fd, SOL_SOCKET, SO_REUSEADDR, (const void \*)&amp;nOptval , sizeof(int)) &lt; 0) ...</code></li>
-</ul>
-        
-          <p class="article-more-link">
-            <a href="/2017/net-socket-reuseaddr/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://snowyying.site/2017/net-socket-reuseaddr/" data-id="cjqgrjzwb005l80uc2v30stgi" class="article-share-link">Share</a>
-      
-        <a href="http://snowyying.site/2017/net-socket-reuseaddr/#ds-thread" class="article-comment-link">留言</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IT/">IT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SO-REUSEADDR/">SO_REUSEADDR</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/setsockopt/">setsockopt</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/socket/">socket</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网络/">网络</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-net-socket-select" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/net-socket-select/">socket 编程之 select 函数</a>
-    </h1>
-  
-
-      </header>
-    
-
-  <div class="article-meta">
-    <a href="/2017/net-socket-select/" class="article-date">
-  <time datetime="2017-02-04T02:26:48.000Z" itemprop="datePublished">2017-02-04</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Network/">Network</a>
-  </div>
-
-  </div>
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><code>&#x8F6C;&#x81EA;: &#x535A;&#x5BA2;&#x56ED; http://www.cnblogs.com/ggzss/archive/2011/08/25/2153746.html 2011-08-25</code></p>
-<blockquote>
-<p>Select&#x5728;Socket&#x7F16;&#x7A0B;&#x4E2D;&#x8FD8;&#x662F;&#x6BD4;&#x8F83;&#x91CD;&#x8981;&#x7684;&#xFF0C;&#x5B83;&#x80FD;&#x591F;&#x76D1;&#x89C6;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x76D1;&#x89C6;&#x7684;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#x7684;&#x53D8;&#x5316;&#x60C5;&#x51B5;&#x2014;&#x2014;&#x8BFB;&#x5199;&#x6216;&#x662F;&#x5F02;&#x5E38;&#x3002;</p>
-</blockquote>
-<p>Select&#x7684;&#x51FD;&#x6570;&#x683C;&#x5F0F;, Unix&#x7CFB;&#x7EDF;&#x4E0B;&#x7684;&#x4F2F;&#x514B;&#x5229;socket&#x7F16;&#x7A0B;&#xFF0C;&#x548C;windows&#x4E0B;&#x7684;&#x7565;&#x6709;&#x533A;&#x522B;&#xFF0C;&#x4F53;&#x73B0;&#x4E24;&#x4E2A;&#x65B9;&#x9762;&#xFF1A;</p>
-<ol>
-<li>select&#x51FD;&#x6570;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x5728;windows&#x4E0B;&#x53EF;&#x4EE5;&#x5FFD;&#x7565;&#xFF0C;&#x4F46;&#x5728;linux&#x4E0B;&#x5FC5;&#x987B;&#x8BBE;&#x4E3A;&#x6700;&#x5927;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#x52A0;1&#xFF1B;</li>
-<li>&#x7ED3;&#x6784;fd_set&#x5728;&#x4E24;&#x4E2A;&#x7CFB;&#x7EDF;&#x91CC;&#x5B9A;&#x4E49;&#x4E0D;&#x4E00;&#x6837;</li>
-</ol>
-        
-          <p class="article-more-link">
-            <a href="/2017/net-socket-select/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://snowyying.site/2017/net-socket-select/" data-id="cjqgrjzwa005j80ucnf2go4h9" class="article-share-link">Share</a>
-      
-        <a href="http://snowyying.site/2017/net-socket-select/#ds-thread" class="article-comment-link">留言</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IT/">IT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/select/">select</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/socket/">socket</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网络/">网络</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-net-ntp-time" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/net-ntp-time/">使用 NTPD 进行时间同步</a>
-    </h1>
-  
-
-      </header>
-    
-
-  <div class="article-meta">
-    <a href="/2017/net-ntp-time/" class="article-date">
-  <time datetime="2017-02-03T09:00:02.000Z" itemprop="datePublished">2017-02-03</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Network/">Network</a>
-  </div>
-
-  </div>
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="NTPD"><a href="#NTPD" class="headerlink" title="NTPD"></a>NTPD</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">root@OpenWrt:~# ntpd --help</div><div class="line">BusyBox v1.22.1 (2014-09-20 22:01:35 CEST) multi-call binary.</div><div class="line"></div><div class="line">Usage: ntpd [-dnqNwl] [-S PROG] [-p PEER]...</div><div class="line"></div><div class="line">NTP client/server</div><div class="line"></div><div class="line">        -d      Verbose</div><div class="line">        -n      Do not daemonize</div><div class="line">        -q      Quit after clock is set</div><div class="line">        -N      Run at high priority</div><div class="line">        -w      Do not set time (only query peers), implies -n</div><div class="line">        -l      Run as server on port 123</div><div class="line">        -S PROG Run PROG after stepping time, stratum change, and every 11 mins</div><div class="line">        -p PEER Obtain time from PEER (may be repeated)</div><div class="line"></div><div class="line">root@OpenWrt:~# ntpd -dnw -p ntp5.aliyun.com</div><div class="line">ntpd: resolved peer ntp5.aliyun.com to 182.92.12.11</div><div class="line">ntpd: sending query to 182.92.12.11</div><div class="line">ntpd: reply from 182.92.12.11: offset:-0.004123 delay:0.037180 status:0x24 strat:2 refid:0x0a892656 rootdelay:0.000107 reach:0x01</div><div class="line">ntpd: sending query to 182.92.12.11</div><div class="line">ntpd: reply from 182.92.12.11: offset:-0.005355 delay:0.043251 status:0x24 strat:2 refid:0x0a892656 rootdelay:0.000107 reach:0x03</div><div class="line">ntpd: sending query to 182.92.12.11</div><div class="line">ntpd: reply from 182.92.12.11: offset:-0.001800 delay:0.039695 status:0x24 strat:2 refid:0x0a892656 rootdelay:0.000107 reach:0x07</div><div class="line">ntpd: sending query to 182.92.12.11</div><div class="line">ntpd: reply from 182.92.12.11: offset:-0.005965 delay:0.039983 status:0x24 strat:2 refid:0x0a892656 rootdelay:0.000107 reach:0x0f</div><div class="line">^C</div><div class="line">root@OpenWrt:~#</div></pre></td></tr></table></figure>
-        
-          <p class="article-more-link">
-            <a href="/2017/net-ntp-time/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://snowyying.site/2017/net-ntp-time/" data-id="cjqgrjzw8005d80uc3epsfplv" class="article-share-link">Share</a>
-      
-        <a href="http://snowyying.site/2017/net-ntp-time/#ds-thread" class="article-comment-link">留言</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NTP/">NTP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/同步/">同步</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/时间/">时间</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网络/">网络</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-net-utility-trace-route" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/net-utility-trace-route/">Traceroute 网络命令原理</a>
-    </h1>
-  
-
-      </header>
-    
-
-  <div class="article-meta">
-    <a href="/2017/net-utility-trace-route/" class="article-date">
-  <time datetime="2017-02-02T09:22:24.000Z" itemprop="datePublished">2017-02-02</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Network/">Network</a>
-  </div>
-
-  </div>
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/2017/net-utility-trace-route/net-trace-route/Windows_tracert.png" alt="Windows_tracert"></p>
-<p>&#x3000;&#x3000;traceroute&#xFF0C; &#x4E5F;&#x5C31;&#x662F; trace route&#xFF0C;&#x8DDF;&#x8E2A;&#x8DEF;&#x7531;&#x3002;&#x8FD9;&#x4E2A;&#x7A0B;&#x5E8F;&#x6700;&#x65E9;&#x662F;Van Jacobson&#x5B9E;&#x73B0;&#x7684;&#x3002;&#x6E90;&#x7801;&#x5728;&#x7F51;&#x4E0A;&#x53EF;&#x4EE5;&#x627E;&#x5230;&#xFF0C;&#x4E0D;&#x8FC7;&#x6211;&#x8FD8;&#x6CA1;&#x6709;&#x53BB;&#x627E;&#x3002;&#x4E3B;&#x8981;&#x7684;&#x539F;&#x7406;&#x662F;IP&#x8DEF;&#x7531;&#x8FC7;&#x7A0B;&#x4E2D;&#x5BF9;&#x6570;&#x636E;&#x5305;TTL(Time to Live&#xFF0C;&#x5B58;&#x6D3B;&#x65F6;&#x95F4;)&#x7684;&#x5904;&#x7406;&#x3002;&#x5F53;&#x8DEF;&#x7531;&#x5668;&#x6536;&#x5230;&#x4E00;&#x4E2A;IP&#x5305;&#x65F6;&#xFF0C;&#x4F1A;&#x4FEE;&#x6539;IP&#x5305;&#x7684;TTL&#xFF08;&#x53CA;&#x7531;&#x6B64;&#x9020;&#x6210;&#x7684;&#x5934;&#x90E8;&#x68C0;&#x9A8C;&#x548C;checksum&#x53D8;&#x5316;&#xFF09;&#x3002;&#x6BCF;&#x6536;&#x5230;&#x4E00;&#x4E2A;&#x5305;&#xFF0C;&#x68C0;&#x67E5;&#x8FD9;&#x4E2A; &#x7684;TTL&#x662F;&#x5426;&#x662F;0&#x6216;1&#x3002;&#x5982;&#x679C;&#x662F;&#xFF0C;&#x8868;&#x660E;&#x8FD9;&#x4E2A;&#x5305;&#x8FD8;&#x6CA1;&#x6709;&#x5230;&#x8FBE;&#x76EE;&#x7684;&#x5730;&#xFF0C;&#x800C;&#x4E14;&#x5269;&#x4F59;&#x65F6;&#x95F4;&#x4E0D;&#x591A;&#x4E86;&#xFF0C;&#x80AF;&#x5B9A;&#x662F;&#x5230;&#x4E0D;&#x4E86;&#x76EE;&#x7684;&#x5730;&#x4E86;&#x3002;&#x8FD9;&#x6837;&#x8DEF;&#x7531;&#x5668;&#x5C31;&#x7B80;&#x5355;&#x5730;&#x4E22;&#x5F03;&#x8FD9;&#x4E2A;&#x5305;&#xFF0C;&#x5E76;&#x7ED9;&#x6E90;&#x4E3B;&#x673A;&#x53D1;&#x9001; ICMP&#x901A;&#x77E5;&#xFF0C;&#x8BF4;&#x8FD9;&#x4E2A;&#x5305;&#x5DF2;&#x7ECF;&#x8D85;&#x65F6;&#x4E86;&#x3002;ICMP&#x7684;&#x901A;&#x77E5;&#x4FE1;&#x606F;&#x91CC;&#x5305;&#x542B;&#x5F53;&#x524D;&#x8DEF;&#x7531;&#x5668;&#x53D1;&#x9001;&#x65F6;&#x6240;&#x7528;&#x7684;IP&#x3002;</p>
-<p>&#x3000;&#x3000;&#x8FD9;&#x6837;&#x5C31;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x6784;&#x9020;&#x6570;&#x636E;&#x5305;&#xFF0C;&#x6765;&#x95F4;&#x63A5;&#x68C0;&#x67E5;&#x5230; &#x8FBE;&#x4E00;&#x4E2A;&#x4E3B;&#x673A;&#x65F6;&#x7ECF;&#x8FC7;&#x4E86;&#x54EA;&#x4E9B;&#x8DEF;&#x7531;&#x3002;&#x4E00;&#x5F00;&#x59CB;&#x53D1;&#x9001;&#x4E00;&#x4E2A;TTL&#x4E3A;1&#x7684;&#x5305;&#xFF0C;&#x8FD9;&#x6837;&#x5230;&#x8FBE;&#x7B2C;&#x4E00;&#x4E2A;&#x8DEF;&#x7531;&#x5668;&#x7684;&#x65F6;&#x5019;&#x5C31;&#x5DF2;&#x7ECF;&#x8D85;&#x65F6;&#x4E86;&#xFF0C;&#x7B2C;&#x4E00;&#x4E2A;&#x8DEF;&#x7531;&#x5668;&#x5C31;&#x53D1;&#x901A;&#x77E5;&#x8BF4;&#x5305;&#x8D85;&#x65F6;&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x53EF;&#x4EE5;&#x8BB0;&#x5F55;&#x4E0B; &#x6240;&#x7ECF;&#x8FC7;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x8DEF;&#x7531;&#x5668;&#x7684;IP&#x3002;&#x7136;&#x540E;TTL&#x52A0;1&#xFF0C;&#x5B89;&#x5168;&#x901A;&#x8FC7;&#x7B2C;&#x4E00;&#x4E2A;&#x8DEF;&#x7531;&#x5668;&#xFF0C;&#x800C;&#x7B2C;&#x4E8C;&#x4E2A;&#x8DEF;&#x7531;&#x5668;&#x7684;&#x7684;&#x5904;&#x7406;&#x4E0E;&#x7B2C;&#x4E00;&#x4E2A;&#x76F8;&#x540C;&#xFF0C;&#x4E22;&#x5305;&#xFF0C;&#x53D1;&#x901A;&#x77E5;&#x8BF4;&#x5305;&#x8D85;&#x65F6;&#x4E86;&#xFF0C;&#x8FD9;&#x6837;&#x8BB0;&#x5F55;&#x4E0B;&#x7B2C;&#x4E8C;&#x4E2A;&#x8DEF; &#x7531;&#x5668;IP&#xFF0C;&#x7531;&#x6B64;&#x53EF;&#x4EE5;&#x4E00;&#x76F4;&#x8FDB;&#x884C;&#x4E0B;&#x53BB;&#xFF0C;&#x76F4;&#x5230;&#x8FD9;&#x4E2A;&#x6570;&#x636E;&#x5305;&#x5230;&#x8FBE;&#x76EE;&#x6807;&#x4E3B;&#x673A;&#xFF0C;&#x7531;&#x6B64;&#x6253;&#x5370;&#x51FA;&#x6240;&#x6709;&#x7ECF;&#x8FC7;&#x7684;&#x8DEF;&#x7531;&#x5668;&#x3002;</p>
-        
-          <p class="article-more-link">
-            <a href="/2017/net-utility-trace-route/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://snowyying.site/2017/net-utility-trace-route/" data-id="cjqgrjzx9006v80uchxr17huy" class="article-share-link">Share</a>
-      
-        <a href="http://snowyying.site/2017/net-utility-trace-route/#ds-thread" class="article-comment-link">留言</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-net-curl-ubuntu" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/net-curl-ubuntu/">Ubuntu 安装使用 curl</a>
-    </h1>
-  
-
-      </header>
-    
-
-  <div class="article-meta">
-    <a href="/2017/net-curl-ubuntu/" class="article-date">
-  <time datetime="2017-02-01T03:12:34.000Z" itemprop="datePublished">2017-02-01</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Network/">Network</a>
-  </div>
-
-  </div>
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>curl&#x662F;&#x5229;&#x7528;URL&#x8BED;&#x6CD5;&#x5728;&#x547D;&#x4EE4;&#x884C;&#x65B9;&#x5F0F;&#x4E0B;&#x5DE5;&#x4F5C;&#x7684;&#x5F00;&#x6E90;&#x6587;&#x4EF6;&#x4F20;&#x8F93;&#x5DE5;&#x5177;&#x3002;&#x5B83;&#x88AB;&#x5E7F;&#x6CDB;&#x5E94;&#x7528;&#x5728;Unix&#x3001;&#x591A;&#x79CD;Linux&#x53D1;&#x884C;&#x7248;&#x4E2D;&#xFF0C;&#x5E76;&#x4E14;&#x6709;DOS&#x548C;Win32&#x3001;Win64&#x4E0B;&#x7684;&#x79FB;&#x690D;&#x7248;&#x672C;&#x3002;</p>
-</blockquote>
-<h2 id="&#x5B89;&#x88C5;"><a href="#&#x5B89;&#x88C5;" class="headerlink" title="&#x5B89;&#x88C5;"></a>&#x5B89;&#x88C5;</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install curl</div><div class="line">sudo apt-get install libcurl4-openssl-dev</div></pre></td></tr></table></figure>
-        
-          <p class="article-more-link">
-            <a href="/2017/net-curl-ubuntu/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://snowyying.site/2017/net-curl-ubuntu/" data-id="cjqgrjzw1005280uc0x8vi6yf" class="article-share-link">Share</a>
-      
-        <a href="http://snowyying.site/2017/net-curl-ubuntu/#ds-thread" class="article-comment-link">留言</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/curl/">curl</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/http/">http</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/https/">https</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网络/">网络</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/调试/">调试</a></li></ul>
 
     </footer>
   </div>
@@ -1549,7 +1537,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C-C/">C/C++</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Embedded-IoT/">Embedded & IoT</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/General/">General</a><span class="category-list-count">20</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Media/">Media</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Misc/">Misc</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a><span class="category-list-count">23</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OS/">OS</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SA-SWE/">SA & SWE</a><span class="category-list-count">23</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Security/">Security</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Test/">Test</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a><span class="category-list-count">13</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C-C/">C/C++</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Embedded-IoT/">Embedded & IoT</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/General/">General</a><span class="category-list-count">21</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Media/">Media</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Misc/">Misc</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network/">Network</a><span class="category-list-count">20</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OS/">OS</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SA-SWE/">SA & SWE</a><span class="category-list-count">25</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Security/">Security</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Test/">Test</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a><span class="category-list-count">13</span></li></ul>
     </div>
   </div>
 
@@ -1559,7 +1547,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/32-bit/" style="font-size: 10px;">32-bit</a> <a href="/tags/4-1/" style="font-size: 10px;">4+1</a> <a href="/tags/ARM/" style="font-size: 10px;">ARM</a> <a href="/tags/ARP/" style="font-size: 10px;">ARP</a> <a href="/tags/AT指令/" style="font-size: 10px;">AT指令</a> <a href="/tags/Angle/" style="font-size: 10px;">Angle</a> <a href="/tags/Angular/" style="font-size: 10px;">Angular</a> <a href="/tags/AngularJS/" style="font-size: 10px;">AngularJS</a> <a href="/tags/Backend/" style="font-size: 10px;">Backend</a> <a href="/tags/Big-Endian/" style="font-size: 10px;">Big-Endian</a> <a href="/tags/Bitrate/" style="font-size: 10px;">Bitrate</a> <a href="/tags/BoK/" style="font-size: 10px;">BoK</a> <a href="/tags/Boost/" style="font-size: 10px;">Boost</a> <a href="/tags/C/" style="font-size: 10.83px;">C</a> <a href="/tags/C/" style="font-size: 11.67px;">C++</a> <a href="/tags/C-C/" style="font-size: 16.67px;">C/C++</a> <a href="/tags/CMMI/" style="font-size: 10.83px;">CMMI</a> <a href="/tags/Cloud/" style="font-size: 10px;">Cloud</a> <a href="/tags/DNS/" style="font-size: 10px;">DNS</a> <a href="/tags/DSS/" style="font-size: 10px;">DSS</a> <a href="/tags/ESP82xx/" style="font-size: 10px;">ESP82xx</a> <a href="/tags/Frontend/" style="font-size: 10px;">Frontend</a> <a href="/tags/GPIO/" style="font-size: 10.83px;">GPIO</a> <a href="/tags/GUID/" style="font-size: 10px;">GUID</a> <a href="/tags/Google/" style="font-size: 10px;">Google</a> <a href="/tags/GraphQL/" style="font-size: 10px;">GraphQL</a> <a href="/tags/H264/" style="font-size: 10px;">H264</a> <a href="/tags/I-O/" style="font-size: 15.83px;">I/O</a> <a href="/tags/ICE/" style="font-size: 10.83px;">ICE</a> <a href="/tags/ICMP/" style="font-size: 10px;">ICMP</a> <a href="/tags/IGMP/" style="font-size: 10px;">IGMP</a> <a href="/tags/IIC/" style="font-size: 10px;">IIC</a> <a href="/tags/IP/" style="font-size: 10px;">IP</a> <a href="/tags/IP-协议/" style="font-size: 10px;">IP 协议</a> <a href="/tags/IT/" style="font-size: 19.17px;">IT</a> <a href="/tags/IT，-技术，-解读/" style="font-size: 10px;">IT， 技术， 解读</a> <a href="/tags/IaaS/" style="font-size: 10px;">IaaS</a> <a href="/tags/IoT/" style="font-size: 13.33px;">IoT</a> <a href="/tags/Iot/" style="font-size: 10px;">Iot</a> <a href="/tags/JSON/" style="font-size: 10px;">JSON</a> <a href="/tags/Kali/" style="font-size: 12.5px;">Kali</a> <a href="/tags/Key/" style="font-size: 10px;">Key</a> <a href="/tags/Linux/" style="font-size: 10.83px;">Linux</a> <a href="/tags/Little-Endian/" style="font-size: 10px;">Little-Endian</a> <a href="/tags/LoRa/" style="font-size: 10px;">LoRa</a> <a href="/tags/MQTT/" style="font-size: 10px;">MQTT</a> <a href="/tags/Metapackages/" style="font-size: 10px;">Metapackages</a> <a href="/tags/NAT/" style="font-size: 10.83px;">NAT</a> <a href="/tags/NATP/" style="font-size: 10px;">NATP</a> <a href="/tags/NB-IoT/" style="font-size: 10px;">NB-IoT</a> <a href="/tags/NSA/" style="font-size: 10px;">NSA</a> <a href="/tags/NTP/" style="font-size: 10px;">NTP</a> <a href="/tags/OS/" style="font-size: 13.33px;">OS</a> <a href="/tags/PaaS/" style="font-size: 10px;">PaaS</a> <a href="/tags/Proactor/" style="font-size: 10px;">Proactor</a> <a href="/tags/Push/" style="font-size: 10px;">Push</a> <a href="/tags/RARP/" style="font-size: 10px;">RARP</a> <a href="/tags/REST/" style="font-size: 10px;">REST</a> <a href="/tags/RESTful/" style="font-size: 10px;">RESTful</a> <a href="/tags/RTCP/" style="font-size: 10px;">RTCP</a> <a href="/tags/RTP/" style="font-size: 10px;">RTP</a> <a href="/tags/RTSP/" style="font-size: 10.83px;">RTSP</a> <a href="/tags/Reactor/" style="font-size: 10px;">Reactor</a> <a href="/tags/Redmine/" style="font-size: 10px;">Redmine</a> <a href="/tags/SA/" style="font-size: 16.67px;">SA</a> <a href="/tags/SNMP/" style="font-size: 10px;">SNMP</a> <a href="/tags/SO-REUSEADDR/" style="font-size: 10px;">SO_REUSEADDR</a> <a href="/tags/SQLite/" style="font-size: 10px;">SQLite</a> <a href="/tags/SQuaRE/" style="font-size: 10px;">SQuaRE</a> <a href="/tags/SSL/" style="font-size: 10px;">SSL</a> <a href="/tags/STUN/" style="font-size: 10.83px;">STUN</a> <a href="/tags/SWE/" style="font-size: 17.5px;">SWE</a> <a href="/tags/SaaS/" style="font-size: 10px;">SaaS</a> <a href="/tags/Server/" style="font-size: 10px;">Server</a> <a href="/tags/Shadow-broker/" style="font-size: 10px;">Shadow broker</a> <a href="/tags/Sigfox/" style="font-size: 10px;">Sigfox</a> <a href="/tags/State/" style="font-size: 10px;">State</a> <a href="/tags/TCP/" style="font-size: 10px;">TCP</a> <a href="/tags/TCP-协议/" style="font-size: 10px;">TCP 协议</a> <a href="/tags/TCP-IP/" style="font-size: 10.83px;">TCP/IP</a> <a href="/tags/TCP-IP-协议/" style="font-size: 18.33px;">TCP/IP 协议</a> <a href="/tags/TLS/" style="font-size: 10px;">TLS</a> <a href="/tags/TRUN/" style="font-size: 10.83px;">TRUN</a> <a href="/tags/TWSI/" style="font-size: 10px;">TWSI</a> <a href="/tags/Test/" style="font-size: 10px;">Test</a> <a href="/tags/Tool/" style="font-size: 11.67px;">Tool</a> <a href="/tags/UDP/" style="font-size: 10px;">UDP</a> <a href="/tags/UDP-协议/" style="font-size: 10px;">UDP 协议</a> <a href="/tags/UML/" style="font-size: 10.83px;">UML</a> <a href="/tags/UPNP/" style="font-size: 10px;">UPNP</a> <a href="/tags/UUID/" style="font-size: 10px;">UUID</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/VS/" style="font-size: 10px;">VS</a> <a href="/tags/WIFI/" style="font-size: 10px;">WIFI</a> <a href="/tags/WS-Security/" style="font-size: 10px;">WS-Security</a> <a href="/tags/Web/" style="font-size: 15.83px;">Web</a> <a href="/tags/Websocket/" style="font-size: 10px;">Websocket</a> <a href="/tags/Windows/" style="font-size: 10px;">Windows</a> <a href="/tags/Zero-Copy/" style="font-size: 10px;">Zero-Copy</a> <a href="/tags/ZigBee/" style="font-size: 10px;">ZigBee</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/bootstrap/" style="font-size: 10px;">bootstrap</a> <a href="/tags/coturn/" style="font-size: 10px;">coturn</a> <a href="/tags/curl/" style="font-size: 10px;">curl</a> <a href="/tags/decode/" style="font-size: 10px;">decode</a> <a href="/tags/define/" style="font-size: 10px;">define</a> <a href="/tags/eMTC/" style="font-size: 10px;">eMTC</a> <a href="/tags/epoll/" style="font-size: 11.67px;">epoll</a> <a href="/tags/ffmpeg/" style="font-size: 10.83px;">ffmpeg</a> <a href="/tags/ffplay/" style="font-size: 10px;">ffplay</a> <a href="/tags/ffprobe/" style="font-size: 10px;">ffprobe</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/h264/" style="font-size: 10px;">h264</a> <a href="/tags/http/" style="font-size: 10.83px;">http</a> <a href="/tags/https/" style="font-size: 10.83px;">https</a> <a href="/tags/ionic/" style="font-size: 10px;">ionic</a> <a href="/tags/libcssl/" style="font-size: 10px;">libcssl</a> <a href="/tags/linux/" style="font-size: 10.83px;">linux</a> <a href="/tags/mqtt/" style="font-size: 10px;">mqtt</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/p2p/" style="font-size: 10.83px;">p2p</a> <a href="/tags/pipe/" style="font-size: 10px;">pipe</a> <a href="/tags/poll/" style="font-size: 10.83px;">poll</a> <a href="/tags/select/" style="font-size: 12.5px;">select</a> <a href="/tags/setsockopt/" style="font-size: 10px;">setsockopt</a> <a href="/tags/socket/" style="font-size: 10.83px;">socket</a> <a href="/tags/swebok/" style="font-size: 10px;">swebok</a> <a href="/tags/不定参数/" style="font-size: 10px;">不定参数</a> <a href="/tags/串口/" style="font-size: 10px;">串口</a> <a href="/tags/书目/" style="font-size: 10px;">书目</a> <a href="/tags/交叉编译/" style="font-size: 10px;">交叉编译</a> <a href="/tags/信息收集/" style="font-size: 10px;">信息收集</a> <a href="/tags/公众号/" style="font-size: 10px;">公众号</a> <a href="/tags/内存泄露/" style="font-size: 10px;">内存泄露</a> <a href="/tags/内核/" style="font-size: 10px;">内核</a> <a href="/tags/函数/" style="font-size: 10px;">函数</a> <a href="/tags/勘误/" style="font-size: 10px;">勘误</a> <a href="/tags/勘误表/" style="font-size: 10px;">勘误表</a> <a href="/tags/卖油翁/" style="font-size: 10px;">卖油翁</a> <a href="/tags/压力测试/" style="font-size: 10px;">压力测试</a> <a href="/tags/发展/" style="font-size: 15.83px;">发展</a> <a href="/tags/发音/" style="font-size: 10px;">发音</a> <a href="/tags/同步/" style="font-size: 10px;">同步</a> <a href="/tags/复用/" style="font-size: 10px;">复用</a> <a href="/tags/多播/" style="font-size: 10px;">多播</a> <a href="/tags/大小端/" style="font-size: 10px;">大小端</a> <a href="/tags/安全/" style="font-size: 13.33px;">安全</a> <a href="/tags/宏/" style="font-size: 10px;">宏</a> <a href="/tags/客户端/" style="font-size: 10.83px;">客户端</a> <a href="/tags/嵌入式/" style="font-size: 10px;">嵌入式</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/工厂模式/" style="font-size: 10px;">工厂模式</a> <a href="/tags/广播/" style="font-size: 10px;">广播</a> <a href="/tags/应用证书/" style="font-size: 10px;">应用证书</a> <a href="/tags/开发/" style="font-size: 10px;">开发</a> <a href="/tags/异步/" style="font-size: 10px;">异步</a> <a href="/tags/微信/" style="font-size: 10.83px;">微信</a> <a href="/tags/快速-GPIO/" style="font-size: 10px;">快速 GPIO</a> <a href="/tags/性能/" style="font-size: 12.5px;">性能</a> <a href="/tags/成长/" style="font-size: 18.33px;">成长</a> <a href="/tags/技术/" style="font-size: 10px;">技术</a> <a href="/tags/技术图谱/" style="font-size: 10px;">技术图谱</a> <a href="/tags/技术路线/" style="font-size: 10px;">技术路线</a> <a href="/tags/技能/" style="font-size: 10px;">技能</a> <a href="/tags/投资/" style="font-size: 10px;">投资</a> <a href="/tags/指南/" style="font-size: 15.83px;">指南</a> <a href="/tags/按键/" style="font-size: 10px;">按键</a> <a href="/tags/按键扫描/" style="font-size: 10px;">按键扫描</a> <a href="/tags/操作系统/" style="font-size: 10px;">操作系统</a> <a href="/tags/支付/" style="font-size: 10.83px;">支付</a> <a href="/tags/攻略/" style="font-size: 10px;">攻略</a> <a href="/tags/教程/" style="font-size: 10px;">教程</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据链路层/" style="font-size: 10px;">数据链路层</a> <a href="/tags/文学/" style="font-size: 10px;">文学</a> <a href="/tags/无线电/" style="font-size: 10px;">无线电</a> <a href="/tags/时间/" style="font-size: 10px;">时间</a> <a href="/tags/服务器证书/" style="font-size: 10px;">服务器证书</a> <a href="/tags/构造/" style="font-size: 10px;">构造</a> <a href="/tags/架构/" style="font-size: 12.5px;">架构</a> <a href="/tags/根证书/" style="font-size: 10px;">根证书</a> <a href="/tags/框架/" style="font-size: 10.83px;">框架</a> <a href="/tags/模式/" style="font-size: 10px;">模式</a> <a href="/tags/流媒体服务器/" style="font-size: 10px;">流媒体服务器</a> <a href="/tags/测试/" style="font-size: 11.67px;">测试</a> <a href="/tags/游戏/" style="font-size: 10px;">游戏</a> <a href="/tags/演进/" style="font-size: 10.83px;">演进</a> <a href="/tags/熟能生巧/" style="font-size: 10px;">熟能生巧</a> <a href="/tags/状态图/" style="font-size: 10px;">状态图</a> <a href="/tags/电磁波/" style="font-size: 10px;">电磁波</a> <a href="/tags/矩阵按键/" style="font-size: 10px;">矩阵按键</a> <a href="/tags/短信/" style="font-size: 10.83px;">短信</a> <a href="/tags/程序员/" style="font-size: 17.5px;">程序员</a> <a href="/tags/管道/" style="font-size: 10px;">管道</a> <a href="/tags/系统分析师/" style="font-size: 15px;">系统分析师</a> <a href="/tags/系统架构师/" style="font-size: 10.83px;">系统架构师</a> <a href="/tags/组播/" style="font-size: 10px;">组播</a> <a href="/tags/统一建模语言/" style="font-size: 10px;">统一建模语言</a> <a href="/tags/网站/" style="font-size: 10.83px;">网站</a> <a href="/tags/网络/" style="font-size: 20px;">网络</a> <a href="/tags/英语/" style="font-size: 10px;">英语</a> <a href="/tags/计算机/" style="font-size: 10px;">计算机</a> <a href="/tags/计算机原理/" style="font-size: 10px;">计算机原理</a> <a href="/tags/计算机组成/" style="font-size: 10px;">计算机组成</a> <a href="/tags/计算机结构/" style="font-size: 10px;">计算机结构</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 14.17px;">设计模式</a> <a href="/tags/证书/" style="font-size: 10px;">证书</a> <a href="/tags/调试/" style="font-size: 10px;">调试</a> <a href="/tags/软件质量/" style="font-size: 10.83px;">软件质量</a> <a href="/tags/进程间通信/" style="font-size: 10px;">进程间通信</a> <a href="/tags/选路/" style="font-size: 10px;">选路</a> <a href="/tags/通信/" style="font-size: 10px;">通信</a> <a href="/tags/阿里大于/" style="font-size: 10px;">阿里大于</a> <a href="/tags/项目管理/" style="font-size: 10px;">项目管理</a> <a href="/tags/验证码/" style="font-size: 10px;">验证码</a>
+      <a href="/tags/32-bit/" style="font-size: 10px;">32-bit</a> <a href="/tags/4-1/" style="font-size: 10px;">4+1</a> <a href="/tags/802/" style="font-size: 10px;">802</a> <a href="/tags/ARM/" style="font-size: 10px;">ARM</a> <a href="/tags/ARP/" style="font-size: 10px;">ARP</a> <a href="/tags/AT指令/" style="font-size: 10px;">AT指令</a> <a href="/tags/AliOS-Things/" style="font-size: 10px;">AliOS Things</a> <a href="/tags/Angle/" style="font-size: 10px;">Angle</a> <a href="/tags/Angular/" style="font-size: 10px;">Angular</a> <a href="/tags/AngularJS/" style="font-size: 10px;">AngularJS</a> <a href="/tags/Backend/" style="font-size: 10px;">Backend</a> <a href="/tags/Big-Endian/" style="font-size: 10px;">Big-Endian</a> <a href="/tags/Bitrate/" style="font-size: 10px;">Bitrate</a> <a href="/tags/BoK/" style="font-size: 10.83px;">BoK</a> <a href="/tags/Boost/" style="font-size: 10px;">Boost</a> <a href="/tags/C/" style="font-size: 11.67px;">C</a> <a href="/tags/C/" style="font-size: 12.5px;">C++</a> <a href="/tags/C-C/" style="font-size: 15.83px;">C/C++</a> <a href="/tags/CMMI/" style="font-size: 10.83px;">CMMI</a> <a href="/tags/Cloud/" style="font-size: 10px;">Cloud</a> <a href="/tags/DNS/" style="font-size: 10px;">DNS</a> <a href="/tags/DSS/" style="font-size: 10px;">DSS</a> <a href="/tags/Developer-Kit/" style="font-size: 10px;">Developer Kit</a> <a href="/tags/ESP82xx/" style="font-size: 10px;">ESP82xx</a> <a href="/tags/Frontend/" style="font-size: 10px;">Frontend</a> <a href="/tags/GPIO/" style="font-size: 10.83px;">GPIO</a> <a href="/tags/GUID/" style="font-size: 10px;">GUID</a> <a href="/tags/GoF/" style="font-size: 10px;">GoF</a> <a href="/tags/Google/" style="font-size: 10px;">Google</a> <a href="/tags/GraphQL/" style="font-size: 10px;">GraphQL</a> <a href="/tags/H264/" style="font-size: 10px;">H264</a> <a href="/tags/I-O/" style="font-size: 14.17px;">I/O</a> <a href="/tags/ICE/" style="font-size: 10.83px;">ICE</a> <a href="/tags/ICMP/" style="font-size: 10px;">ICMP</a> <a href="/tags/IEEE/" style="font-size: 10px;">IEEE</a> <a href="/tags/IIC/" style="font-size: 10px;">IIC</a> <a href="/tags/IP/" style="font-size: 10px;">IP</a> <a href="/tags/IP-协议/" style="font-size: 10px;">IP 协议</a> <a href="/tags/IT/" style="font-size: 20px;">IT</a> <a href="/tags/IT，-技术，-解读/" style="font-size: 10px;">IT， 技术， 解读</a> <a href="/tags/IaaS/" style="font-size: 10px;">IaaS</a> <a href="/tags/IoT/" style="font-size: 13.33px;">IoT</a> <a href="/tags/Iot/" style="font-size: 10px;">Iot</a> <a href="/tags/JSON/" style="font-size: 10px;">JSON</a> <a href="/tags/Kali/" style="font-size: 12.5px;">Kali</a> <a href="/tags/Key/" style="font-size: 10px;">Key</a> <a href="/tags/Linux/" style="font-size: 11.67px;">Linux</a> <a href="/tags/Little-Endian/" style="font-size: 10px;">Little-Endian</a> <a href="/tags/LoRa/" style="font-size: 10px;">LoRa</a> <a href="/tags/MQTT/" style="font-size: 10px;">MQTT</a> <a href="/tags/Metapackages/" style="font-size: 10px;">Metapackages</a> <a href="/tags/NAT/" style="font-size: 10.83px;">NAT</a> <a href="/tags/NATP/" style="font-size: 10px;">NATP</a> <a href="/tags/NB-IoT/" style="font-size: 10px;">NB-IoT</a> <a href="/tags/NSA/" style="font-size: 10px;">NSA</a> <a href="/tags/NTP/" style="font-size: 10px;">NTP</a> <a href="/tags/OS/" style="font-size: 13.33px;">OS</a> <a href="/tags/PaaS/" style="font-size: 10px;">PaaS</a> <a href="/tags/Proactor/" style="font-size: 10px;">Proactor</a> <a href="/tags/Push/" style="font-size: 10px;">Push</a> <a href="/tags/QR/" style="font-size: 10px;">QR</a> <a href="/tags/RARP/" style="font-size: 10px;">RARP</a> <a href="/tags/REST/" style="font-size: 10px;">REST</a> <a href="/tags/RESTful/" style="font-size: 10px;">RESTful</a> <a href="/tags/RTCP/" style="font-size: 10px;">RTCP</a> <a href="/tags/RTP/" style="font-size: 10px;">RTP</a> <a href="/tags/RTSP/" style="font-size: 10.83px;">RTSP</a> <a href="/tags/Reactor/" style="font-size: 10px;">Reactor</a> <a href="/tags/Redmine/" style="font-size: 10px;">Redmine</a> <a href="/tags/SA/" style="font-size: 18.33px;">SA</a> <a href="/tags/SNMP/" style="font-size: 10px;">SNMP</a> <a href="/tags/SO-REUSEADDR/" style="font-size: 10px;">SO_REUSEADDR</a> <a href="/tags/SQLite/" style="font-size: 10px;">SQLite</a> <a href="/tags/SQuaRE/" style="font-size: 10px;">SQuaRE</a> <a href="/tags/SSL/" style="font-size: 10px;">SSL</a> <a href="/tags/STUN/" style="font-size: 10.83px;">STUN</a> <a href="/tags/SWE/" style="font-size: 15px;">SWE</a> <a href="/tags/SaaS/" style="font-size: 10px;">SaaS</a> <a href="/tags/Server/" style="font-size: 10px;">Server</a> <a href="/tags/Shadow-broker/" style="font-size: 10px;">Shadow broker</a> <a href="/tags/Sigfox/" style="font-size: 10px;">Sigfox</a> <a href="/tags/TCP/" style="font-size: 11.67px;">TCP</a> <a href="/tags/TCP-协议/" style="font-size: 10px;">TCP 协议</a> <a href="/tags/TCP-IP/" style="font-size: 10.83px;">TCP/IP</a> <a href="/tags/TCP-IP-协议/" style="font-size: 15.83px;">TCP/IP 协议</a> <a href="/tags/TLS/" style="font-size: 10px;">TLS</a> <a href="/tags/TRUN/" style="font-size: 10.83px;">TRUN</a> <a href="/tags/TWSI/" style="font-size: 10px;">TWSI</a> <a href="/tags/Test/" style="font-size: 10px;">Test</a> <a href="/tags/Tool/" style="font-size: 11.67px;">Tool</a> <a href="/tags/UDP/" style="font-size: 10px;">UDP</a> <a href="/tags/UDP-协议/" style="font-size: 10px;">UDP 协议</a> <a href="/tags/UML/" style="font-size: 10px;">UML</a> <a href="/tags/UPNP/" style="font-size: 10px;">UPNP</a> <a href="/tags/UUID/" style="font-size: 10px;">UUID</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/VS/" style="font-size: 10px;">VS</a> <a href="/tags/WIFI/" style="font-size: 10px;">WIFI</a> <a href="/tags/WS-Security/" style="font-size: 10px;">WS-Security</a> <a href="/tags/Web/" style="font-size: 14.17px;">Web</a> <a href="/tags/Websocket/" style="font-size: 10px;">Websocket</a> <a href="/tags/Windows/" style="font-size: 10px;">Windows</a> <a href="/tags/Zero-Copy/" style="font-size: 10px;">Zero-Copy</a> <a href="/tags/ZigBee/" style="font-size: 10px;">ZigBee</a> <a href="/tags/Zxing/" style="font-size: 10px;">Zxing</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/bootstrap/" style="font-size: 10px;">bootstrap</a> <a href="/tags/coturn/" style="font-size: 10px;">coturn</a> <a href="/tags/curl/" style="font-size: 10px;">curl</a> <a href="/tags/decode/" style="font-size: 10px;">decode</a> <a href="/tags/define/" style="font-size: 10px;">define</a> <a href="/tags/eMTC/" style="font-size: 10px;">eMTC</a> <a href="/tags/epoll/" style="font-size: 11.67px;">epoll</a> <a href="/tags/extern/" style="font-size: 10px;">extern</a> <a href="/tags/ffmpeg/" style="font-size: 10.83px;">ffmpeg</a> <a href="/tags/ffplay/" style="font-size: 10px;">ffplay</a> <a href="/tags/ffprobe/" style="font-size: 10px;">ffprobe</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/h264/" style="font-size: 10px;">h264</a> <a href="/tags/http/" style="font-size: 10.83px;">http</a> <a href="/tags/https/" style="font-size: 10.83px;">https</a> <a href="/tags/ionic/" style="font-size: 10px;">ionic</a> <a href="/tags/libcssl/" style="font-size: 10px;">libcssl</a> <a href="/tags/linux/" style="font-size: 10.83px;">linux</a> <a href="/tags/mqtt/" style="font-size: 10px;">mqtt</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/p2p/" style="font-size: 10.83px;">p2p</a> <a href="/tags/pipe/" style="font-size: 10px;">pipe</a> <a href="/tags/poll/" style="font-size: 10.83px;">poll</a> <a href="/tags/select/" style="font-size: 12.5px;">select</a> <a href="/tags/setsockopt/" style="font-size: 10px;">setsockopt</a> <a href="/tags/socket/" style="font-size: 10.83px;">socket</a> <a href="/tags/swebok/" style="font-size: 10px;">swebok</a> <a href="/tags/不定参数/" style="font-size: 10px;">不定参数</a> <a href="/tags/串口/" style="font-size: 10px;">串口</a> <a href="/tags/书目/" style="font-size: 10px;">书目</a> <a href="/tags/二维码/" style="font-size: 10px;">二维码</a> <a href="/tags/交叉编译/" style="font-size: 10px;">交叉编译</a> <a href="/tags/信息收集/" style="font-size: 10px;">信息收集</a> <a href="/tags/公众号/" style="font-size: 10px;">公众号</a> <a href="/tags/内存泄露/" style="font-size: 10px;">内存泄露</a> <a href="/tags/内核/" style="font-size: 10px;">内核</a> <a href="/tags/函数/" style="font-size: 10px;">函数</a> <a href="/tags/勘误/" style="font-size: 10px;">勘误</a> <a href="/tags/勘误表/" style="font-size: 10px;">勘误表</a> <a href="/tags/卖油翁/" style="font-size: 10px;">卖油翁</a> <a href="/tags/压力测试/" style="font-size: 10px;">压力测试</a> <a href="/tags/发展/" style="font-size: 14.17px;">发展</a> <a href="/tags/发音/" style="font-size: 10px;">发音</a> <a href="/tags/同步/" style="font-size: 10px;">同步</a> <a href="/tags/复用/" style="font-size: 10px;">复用</a> <a href="/tags/大小端/" style="font-size: 10px;">大小端</a> <a href="/tags/安全/" style="font-size: 13.33px;">安全</a> <a href="/tags/宏/" style="font-size: 10px;">宏</a> <a href="/tags/客户端/" style="font-size: 10.83px;">客户端</a> <a href="/tags/嵌入式/" style="font-size: 10px;">嵌入式</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/应用证书/" style="font-size: 10px;">应用证书</a> <a href="/tags/开发/" style="font-size: 10px;">开发</a> <a href="/tags/开发板/" style="font-size: 10px;">开发板</a> <a href="/tags/异步/" style="font-size: 10px;">异步</a> <a href="/tags/微信/" style="font-size: 10.83px;">微信</a> <a href="/tags/快速-GPIO/" style="font-size: 10px;">快速 GPIO</a> <a href="/tags/性能/" style="font-size: 12.5px;">性能</a> <a href="/tags/成长/" style="font-size: 17.5px;">成长</a> <a href="/tags/技术/" style="font-size: 10px;">技术</a> <a href="/tags/技术图谱/" style="font-size: 10px;">技术图谱</a> <a href="/tags/技术路线/" style="font-size: 10px;">技术路线</a> <a href="/tags/技能/" style="font-size: 10px;">技能</a> <a href="/tags/投资/" style="font-size: 10px;">投资</a> <a href="/tags/指南/" style="font-size: 14.17px;">指南</a> <a href="/tags/按键/" style="font-size: 10px;">按键</a> <a href="/tags/按键扫描/" style="font-size: 10px;">按键扫描</a> <a href="/tags/操作系统/" style="font-size: 10.83px;">操作系统</a> <a href="/tags/支付/" style="font-size: 10.83px;">支付</a> <a href="/tags/攻略/" style="font-size: 10px;">攻略</a> <a href="/tags/教程/" style="font-size: 10px;">教程</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据链路层/" style="font-size: 10px;">数据链路层</a> <a href="/tags/文学/" style="font-size: 10px;">文学</a> <a href="/tags/无线电/" style="font-size: 10px;">无线电</a> <a href="/tags/时间/" style="font-size: 10px;">时间</a> <a href="/tags/服务器证书/" style="font-size: 10px;">服务器证书</a> <a href="/tags/构造/" style="font-size: 10px;">构造</a> <a href="/tags/架构/" style="font-size: 12.5px;">架构</a> <a href="/tags/架构设计/" style="font-size: 10px;">架构设计</a> <a href="/tags/根证书/" style="font-size: 10px;">根证书</a> <a href="/tags/框架/" style="font-size: 10.83px;">框架</a> <a href="/tags/模式/" style="font-size: 10px;">模式</a> <a href="/tags/流媒体服务器/" style="font-size: 10px;">流媒体服务器</a> <a href="/tags/测试/" style="font-size: 11.67px;">测试</a> <a href="/tags/游戏/" style="font-size: 10px;">游戏</a> <a href="/tags/演进/" style="font-size: 10.83px;">演进</a> <a href="/tags/熟能生巧/" style="font-size: 10px;">熟能生巧</a> <a href="/tags/物理层/" style="font-size: 10px;">物理层</a> <a href="/tags/电磁波/" style="font-size: 10px;">电磁波</a> <a href="/tags/知识体系/" style="font-size: 10.83px;">知识体系</a> <a href="/tags/矩阵按键/" style="font-size: 10px;">矩阵按键</a> <a href="/tags/短信/" style="font-size: 10.83px;">短信</a> <a href="/tags/程序员/" style="font-size: 16.67px;">程序员</a> <a href="/tags/管道/" style="font-size: 10px;">管道</a> <a href="/tags/系统分析/" style="font-size: 10px;">系统分析</a> <a href="/tags/系统分析师/" style="font-size: 10.83px;">系统分析师</a> <a href="/tags/系统架构师/" style="font-size: 17.5px;">系统架构师</a> <a href="/tags/统一建模语言/" style="font-size: 10px;">统一建模语言</a> <a href="/tags/网站/" style="font-size: 10.83px;">网站</a> <a href="/tags/网络/" style="font-size: 19.17px;">网络</a> <a href="/tags/网络层/" style="font-size: 10px;">网络层</a> <a href="/tags/网络工程/" style="font-size: 10px;">网络工程</a> <a href="/tags/英语/" style="font-size: 10px;">英语</a> <a href="/tags/计算机/" style="font-size: 10px;">计算机</a> <a href="/tags/计算机原理/" style="font-size: 10px;">计算机原理</a> <a href="/tags/计算机组成/" style="font-size: 10px;">计算机组成</a> <a href="/tags/计算机结构/" style="font-size: 10px;">计算机结构</a> <a href="/tags/计算机网络/" style="font-size: 14.17px;">计算机网络</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 13.33px;">设计模式</a> <a href="/tags/证书/" style="font-size: 10px;">证书</a> <a href="/tags/调试/" style="font-size: 10px;">调试</a> <a href="/tags/软件质量/" style="font-size: 10.83px;">软件质量</a> <a href="/tags/进程间通信/" style="font-size: 10px;">进程间通信</a> <a href="/tags/选路/" style="font-size: 10px;">选路</a> <a href="/tags/通信/" style="font-size: 10px;">通信</a> <a href="/tags/阿里云/" style="font-size: 10px;">阿里云</a> <a href="/tags/阿里大于/" style="font-size: 10px;">阿里大于</a> <a href="/tags/项目管理/" style="font-size: 10px;">项目管理</a> <a href="/tags/验证码/" style="font-size: 10px;">验证码</a>
     </div>
   </div>
 
@@ -1568,7 +1556,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">2018-12</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">2018-10</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">2018-08</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">2018-01</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">2017-10</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">2017-09</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">2017-08</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">2017-07</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">2017-06</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">2017-05</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">2017-04</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">2017-03</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">2017-02</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">2017-01</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">2016-12</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">2016-11</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">2016-10</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">2016-09</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">2016-08</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">2016-07</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">2019-04</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">2019-01</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">2018-12</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">2018-10</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">2018-09</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">2018-08</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">2018-07</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">2018-06</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">2018-02</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">2018-01</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">2017-11</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">2017-10</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">2017-09</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">2017-08</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">2017-07</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">2017-06</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">2017-05</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">2017-04</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">2017-03</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">2017-02</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">2017-01</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">2016-12</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">2016-11</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">2016-10</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">2016-09</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">2016-08</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">2016-07</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -1581,7 +1569,15 @@
       <ul>
         
           <li>
-            <a href="/2018/it-iot-recommend-book/">IT物联网架构推荐书目 2018</a>
+            <a href="/2019/iot-alios-dev-kit/">使用阿里云开发物联网应用 (一) - Hello world</a>
+          </li>
+        
+          <li>
+            <a href="/2019/it-bok-2019/">IT 知识体系 2019</a>
+          </li>
+        
+          <li>
+            <a href="/2018/it-bok-books-2018/">IT物联网架构推荐书目 2018</a>
           </li>
         
           <li>
@@ -1597,35 +1593,27 @@
           </li>
         
           <li>
-            <a href="/2018/sa2v4-p02-operating-system/">系统架构师教程学习 - 操作系统</a>
+            <a href="/2018/sa2v4-p10-design-pattern/">系统架构师教程 - 设计模式</a>
           </li>
         
           <li>
-            <a href="/2018/sa2v4-p01-structure-and-composition/">系统架构师教程学习 - 计算机结构及组成</a>
+            <a href="/2018/sa2v4-p09-arch/">系统架构师教程 - 软件架构设计</a>
           </li>
         
           <li>
-            <a href="/2018/gen-tech-interpretation/">史上最污技术解读</a>
+            <a href="/2018/sa2v4-p03-network-project/">系统架构师教程 - 计算机网络 - 网络工程</a>
           </li>
         
           <li>
-            <a href="/2018/swe-10-common-patterns/">10种常见的软件架构模式</a>
+            <a href="/2018/sa2v4-p16-security/">系统架构师教程 - 安全和保密性设计</a>
           </li>
         
           <li>
-            <a href="/2018/security-lost-in-translation-leak/">The Shadow Brokers &quot;Lost In Translation&quot; leak</a>
+            <a href="/2018/sa2v4-p03-network-tcp/">系统架构师教程 - 计算机网络 - TCP 协议</a>
           </li>
         
           <li>
-            <a href="/2018/security-kali-metapackages/">Kali Linux Metapackages</a>
-          </li>
-        
-          <li>
-            <a href="/2018/security-kali-stress-testing-tool/">Kali Linux - Stress Testing Tool</a>
-          </li>
-        
-          <li>
-            <a href="/2018/security-kali-Info-gathering-tool/">Kali Linux - Information Gathering Tool</a>
+            <a href="/2018/sa2v4-p03-network-network/">系统架构师教程 - 计算机网络 - 网络层</a>
           </li>
         
       </ul>
